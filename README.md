@@ -1,2 +1,2 @@
 # Abaqus-UEL-von-Mises-plasticity
-This is the template for von Mises plasticity using UEL subroutine. It returns the exact result as *ELASTIC and *PLASTIC
+This is the template for von Mises plasticity using UEL subroutine in Abaqus/Standard. It returns the exact result as *ELASTIC and *PLASTIC
