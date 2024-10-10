@@ -1,0 +1,75 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Wed Oct  9 12:04:46 2024
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=146.46875, 
+    height=119.284721374512)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(name='cube_C3D20R_deformation_solver.odb')
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D20R_deformation/cube_C3D20R_deformation_solver.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       7
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00159847, 
+    farPlane=0.00514126, width=0.00388891, height=0.00175186, 
+    viewOffsetX=0.000470376, viewOffsetY=0.000210139)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00109273, 
+    farPlane=0.0040492, width=0.0026585, height=0.00119759, cameraPosition=(
+    0.000185431, 0.000533809, 0.00280706), cameraUpVector=(-0.824985, 
+    0.0398491, -0.563749), cameraTarget=(0.00096815, -0.000601037, 
+    -0.000581802), viewOffsetX=0.000321555, viewOffsetY=0.000143654)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00160342, 
+    farPlane=0.00450998, width=0.00390095, height=0.00175728, cameraPosition=(
+    0.00247135, 0.000823118, 0.00204064), cameraUpVector=(-0.886897, 0.421301, 
+    0.189523), cameraTarget=(-7.55777e-05, -0.000672722, -0.000118189), 
+    viewOffsetX=0.000471834, viewOffsetY=0.000210791)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00209518, 
+    farPlane=0.00450636, width=0.00509735, height=0.00229623, cameraPosition=(
+    0.00325929, -0.000394278, 0.000433661), cameraUpVector=(-0.236535, 
+    0.956203, 0.172417), cameraTarget=(-0.000378184, -5.37045e-05, 
+    0.000627775), viewOffsetX=0.000616543, viewOffsetY=0.000275439)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00143673, 
+    farPlane=0.00506915, width=0.00349541, height=0.0015746, cameraPosition=(
+    0.00282047, 0.0019382, 0.00111186), cameraUpVector=(-0.821017, 0.570903, 
+    -0.00103375), cameraTarget=(-0.000129188, -0.000168495, 0.000615658), 
+    viewOffsetX=0.000422782, viewOffsetY=0.000188877)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00163456, 
+    farPlane=0.00493209, width=0.00397672, height=0.00179142, cameraPosition=(
+    0.00179308, 0.00324195, 0.000824573), cameraUpVector=(-0.942677, 0.177719, 
+    -0.282445), cameraTarget=(-7.94332e-05, 9.92596e-05, 0.000779068), 
+    viewOffsetX=0.000480998, viewOffsetY=0.000214885)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00137436, 
+    farPlane=0.00483375, width=0.0033437, height=0.00150625, cameraPosition=(
+    0.000321419, 0.00222618, 0.00270247), cameraUpVector=(-0.623429, 0.398902, 
+    -0.672468), cameraTarget=(-0.000590328, -0.000310914, 0.000229262), 
+    viewOffsetX=0.00040443, viewOffsetY=0.000180679)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00155579, 
+    farPlane=0.00485938, width=0.00378511, height=0.00170509, cameraPosition=(
+    -0.00101975, 0.00366654, 0.000193815), cameraUpVector=(-0.481726, 
+    -0.560331, -0.673773), cameraTarget=(-0.000371007, 0.000128578, 
+    0.000862291), viewOffsetX=0.00045782, viewOffsetY=0.000204531)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00143108, 
+    farPlane=0.00497412, width=0.00348169, height=0.00156841, cameraPosition=(
+    0.00152615, 0.00289672, 0.00173471), cameraUpVector=(-0.74198, 0.301883, 
+    -0.598608), cameraTarget=(-0.000491833, 1.05998e-05, 0.000743275), 
+    viewOffsetX=0.000421121, viewOffsetY=0.000188136)

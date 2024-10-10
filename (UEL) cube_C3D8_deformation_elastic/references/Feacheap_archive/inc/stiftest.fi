@@ -1,0 +1,50 @@
+! solver.f90                                                  
+! Code converted from FORTRAN 77 fixed format to Fortran 90 free format on
+! Date: 02/04/2000  Time: 11:47:46
+ 
+!     Subroutines associated with matrix assembly and solution
+!
+!     Routines for conjugate gradient solution with indexed storage
+!
+!====================Subroutine ASSTIF_CG ======================
+
+interface
+ subroutine stiftest(nelm, nops, nmpc, elflag, MAXCOR, MAXDOF, MAXSTN,  &
+     MAXCON, MAXVAR, MAXPRP,  &
+     iep, icon, nodpn, x, utot, du, stnod,  &
+     eprop, svart, svaru, lstmpc, parmpc, maxpmc,  &
+     rmpc, drmpc,ifail)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )         :: nelm                       
+  integer, intent( in )         :: nops                       
+  integer, intent( in )         :: nmpc                       
+  integer, intent( in )         :: elflag                        
+  integer, intent( in )         :: MAXCOR                     
+  integer, intent( in )         :: MAXDOF                     
+  integer, intent( in )         :: MAXSTN                     
+  integer, intent( in )         :: MAXCON                     
+  integer, intent( in )         :: MAXVAR                     
+  integer, intent( in )         :: MAXPRP                     
+  integer, intent( in )         :: maxpmc                     
+  integer, intent( inout)       :: ifail
+  integer, intent( inout )      :: iep(7, nelm)               
+  integer, intent( in )         :: icon(MAXCON)               
+  integer, intent( inout )      :: nodpn(7, nops)             
+  integer, intent( in )         :: lstmpc(7, nmpc)            
+  real( prec ), intent( in )    :: x(MAXCOR)                     
+  real( prec ), intent( in )    :: utot(MAXDOF)                  
+  real( prec ), intent( in )    :: du(MAXDOF)                    
+  real( prec ), intent( in )    :: stnod(MAXSTN)                 
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( inout ) :: svart(MAXVAR)                 
+  real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+  real( prec ), intent( inout ) :: parmpc(maxpmc)             
+  real( prec ), intent( in )    :: rmpc(nmpc)                 
+  real( prec ), intent( in )    :: drmpc(nmpc)                
+
+ end subroutine stiftest
+end interface

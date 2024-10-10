@@ -1,0 +1,55 @@
+! usrmisc.fi                             
+! Interface blocks for usrmisc.f90
+
+interface
+  subroutine gendof(params, npar, nodflg, ndof, idof, x, ncoor, value)
+    use Types
+    implicit none
+    
+    integer, intent( inout )                 :: npar
+    integer, intent( inout )                 :: nodflg
+    integer, intent( inout )                 :: ndof
+    integer, intent( inout )                 :: idof
+    integer, intent( inout )                 :: ncoor
+    real( prec ), intent( in )               :: params(npar)
+    real( prec ), intent( in )               :: x(ncoor)
+    real( prec ), intent( out )              :: value
+
+  end subroutine gendof
+end interface
+
+interface 
+  subroutine genfor(params, npar, corn, nodflg, ndof, idof, x, ncoor, value)
+    use Types
+    implicit none
+    
+    integer, intent( in )                    :: npar
+    integer, intent( inout )                 :: nodflg
+    integer, intent( inout )                 :: ndof
+    integer, intent( inout )                 :: idof
+    integer, intent( inout )                 :: ncoor
+    real( prec ), intent( inout )            :: x(ncoor)
+    real( prec ), intent( in )               :: params(npar)
+    real( prec ), intent( out )              :: value
+    logical                                  :: corn
+  
+  end subroutine genfor
+end interface
+
+interface
+  subroutine genseg(bname, param, npar, x, maxx, npts, iopt, tan1, tan2)
+    use Types
+    implicit none
+    
+    integer, intent( inout )                 :: npar
+    integer, intent( inout )                 :: maxx
+    integer, intent( out )                   :: npts
+    integer, intent( out )                   :: iopt
+    real( prec ), intent( in )               :: param(npar)
+    real( prec ), intent( out )              :: x(2, maxx)
+    real( prec ), intent( out )              :: tan1(2)
+    real( prec ), intent( out )              :: tan2(2)
+    character ( len = 80 ), intent( inout )  :: bname
+
+  end subroutine genseg
+end interface

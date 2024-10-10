@@ -1,0 +1,1601 @@
+{VERSION 5 0 "IBM INTEL NT" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 1 12 255 0 0 1 2 1 2 
+2 1 2 0 0 0 1 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 
+0 0 0 1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Wa
+rning" -1 7 1 {CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 2 2 2 2 2 1 1 
+0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }{PSTYLE "Maple Output" -1 11 1 
+{CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }3 1 0 0 0 
+0 2 0 2 0 2 2 -1 1 }{PSTYLE "Maple Plot" -1 13 1 {CSTYLE "" -1 -1 "Tim
+es" 1 12 0 0 0 1 2 2 2 2 2 2 1 0 0 1 }3 1 0 0 0 0 2 0 2 0 2 2 -1 1 }
+{PSTYLE "Maple Output12" -1 200 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 
+1 2 2 2 2 2 2 1 0 0 1 }1 1 0 0 0 0 2 0 2 0 2 2 -1 1 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 10 "restart():" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 13 "with(plots):\n" }{MPLTEXT 1 
+0 17 "with(plottools):\n" }{MPLTEXT 1 0 13 "with(linalg):" }}{PARA 7 "
+" 1 "" {TEXT -1 97 "Warning, the previous binding of the name arrow ha
+s been removed and it now has an assigned value" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 82 "#          Example 2D and 3D Linear elastic FE
+M code illustrating the Bbar method\n" }{MPLTEXT 1 0 81 "#            \+
+Currently coded to run either plane strain (2DOF) or general 3D but\n
+" }{MPLTEXT 1 0 87 "#            could easily be modified for axisymme
+try or plane stress 2D analysis too.\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 41 "#        Variables read from input file:\n" }
+{MPLTEXT 1 0 53 "#        nprops              No. material parameters
+\n" }{MPLTEXT 1 0 57 "#        materialprops[i]    List of material pa
+rameters\n" }{MPLTEXT 1 0 69 "#        ncoord              No. spatial
+ coords (2 for 2D, 3 for 3D)\n" }{MPLTEXT 1 0 82 "#        ndof       \+
+         No. degrees of freedom per node (2 for 2D, 3 for 3D)\n" }
+{MPLTEXT 1 0 92 "#                            (here ndof=ncoord, but t
+he program allows them to be different\n" }{MPLTEXT 1 0 94 "#         \+
+                   to allow extension to plate & beam elements with C^
+1 continuity)\n" }{MPLTEXT 1 0 39 "#        nnode               No. no
+des\n" }{MPLTEXT 1 0 80 "#        coords[i,j]         ith coord of jth
+ node, for i=1..ncoord; j=1..nnode\n" }{MPLTEXT 1 0 42 "#        nelem
+               No. elements\n" }{MPLTEXT 1 0 92 "#        maxnodes    \+
+        Max no. nodes on any one element (used for array dimensioning)
+\n" }{MPLTEXT 1 0 58 "#        nelnodes[i]         No. nodes on the it
+h element\n" }{MPLTEXT 1 0 82 "#        elident[i]          An integer
+ identifier for the ith element.  Not used\n" }{MPLTEXT 1 0 94 "#     \+
+                       in this code but could be used to switch on red
+uced integration,\n" }{MPLTEXT 1 0 34 "#                            et
+c.\n" }{MPLTEXT 1 0 62 "#        connect[i,j]        List of nodes on \+
+the jth element\n" }{MPLTEXT 1 0 64 "#        nfix                Tota
+l no. prescribed displacements\n" }{MPLTEXT 1 0 71 "#        fixnodes[
+i,j]       List of prescribed displacements at nodes\n" }{MPLTEXT 1 0 
+55 "#                            fixnodes[1,j] Node number\n" }
+{MPLTEXT 1 0 85 "#                            fixnodes[2,j] Displaceme
+nt component number (1, 2 or 3)\n" }{MPLTEXT 1 0 69 "#                \+
+            fixnodes[3,j] Value of the displacement\n" }{MPLTEXT 1 0 
+76 "#        ndload              Total no. element faces subjected to \+
+tractions\n" }{MPLTEXT 1 0 55 "#        dloads[i,j]         List of el
+ement tractions\n" }{MPLTEXT 1 0 56 "#                            dloa
+ds[1,j] Element number\n" }{MPLTEXT 1 0 53 "#                         \+
+   dloads[2,j] face number\n" }{MPLTEXT 1 0 90 "#                     \+
+       dloads[3,j], dloads[4,j], dloads[5,j] Components of traction\n
+" }{MPLTEXT 1 0 48 "#                            (assumed uniform) \n
+" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 79 "#  To run the program you fi
+rst need to set up an input file, as described in \n" }{MPLTEXT 1 0 
+81 "#  the lecture notes.  Then change the fopen command below to poin
+t to the file.\n" }{MPLTEXT 1 0 85 "#  Also change the fopen command i
+n the post-processing step (near the bottom of the\n" }{MPLTEXT 1 0 
+84 "#  program) to point to a suitable output file.  Then go to the to
+p of the file and\n" }{MPLTEXT 1 0 65 "#  keep hitting return to make \+
+MAPLE execute each block of code.\n" }{MPLTEXT 1 0 3 "# \n" }{MPLTEXT 
+1 0 2 "#\n" }{MPLTEXT 1 0 81 "# ==================== Read data from th
+e input file ===========================\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 70 "# YOU NEED TO CHANGE THE PATH &
+ FILE NAME TO POINT TO YOUR INPUT FILE\n" }{MPLTEXT 1 0 66 "# Note tha
+t forward slashes are required even on Windows systems.\n" }{MPLTEXT 
+1 0 1 "#" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 116 "infile := fopen(`d:/Do
+cuments and Settings/bower/teaching/solidmechs/FEM_MAPLE/volumetric_lo
+cking_demo2.txt`,READ):\n" }{MPLTEXT 1 0 49 "# YOU NEED TO CHANGE THE \+
+NAME OF THE OUTPUT FILE\n" }{MPLTEXT 1 0 99 "outfile := fopen(`d:/Docu
+ments and Settings/bower/teaching/solidmechs/FEM_MAPLE/demo1.out`,WRIT
+E):\n" }{MPLTEXT 1 0 57 "#  Total no. material parameters, and list of
+ parameters\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 42 "   nprops := fs
+canf(infile, \"%*s %d\")[1]:\n" }{MPLTEXT 1 0 38 "   materialprops := \+
+array(1..nprops):\n" }{MPLTEXT 1 0 29 "   for i from 1 to nprops do\n
+" }{MPLTEXT 1 0 53 "     materialprops[i] := fscanf(infile,\"%*s %f\")
+[1]:\n" }{MPLTEXT 1 0 7 "   od:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 67 "#    no. coords (1 to 3), no. DOF, no. nodes and nodal coordinat
+es\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 41 "   ncoord := fscanf(infi
+le,`%*s %d`)[1]:\n" }{MPLTEXT 1 0 39 "   ndof := fscanf(infile,`%*s %d
+`)[1]:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 40 "   nnode := fscanf(in
+file,`%*s %d`)[1]:\n" }{MPLTEXT 1 0 2 " \n" }{MPLTEXT 1 0 40 "   coord
+s := array(1..ncoord,1..nnode):\n" }{MPLTEXT 1 0 36 "   dummy := fscan
+f(infile,`%s`)[1]:\n" }{MPLTEXT 1 0 28 "   for i from 1 to nnode do\n
+" }{MPLTEXT 1 0 31 "     for j from 1 to ncoord do\n" }{MPLTEXT 1 0 
+46 "       coords[j,i] := fscanf(infile,`%e`)[1]:\n" }{MPLTEXT 1 0 11 
+"       od:\n" }{MPLTEXT 1 0 8 "    od:\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 35 "#    No. elements and connectivity\n" }{MPLTEXT 1 0 
+2 "#\n" }{MPLTEXT 1 0 40 "   nelem := fscanf(infile,`%*s %d`)[1]:\n" }
+{MPLTEXT 1 0 43 "   maxnodes := fscanf(infile,`%*s %d`)[1]:\n" }
+{MPLTEXT 1 0 43 "   connect := array(1..maxnodes,1..nelem):\n" }
+{MPLTEXT 1 0 32 "   nelnodes := array(1..nelem):\n" }{MPLTEXT 1 0 31 "
+   elident := array(1..nelem):\n" }{MPLTEXT 1 0 44 "   dummy := fscanf
+(infile,`%s %*s %*s`)[1]:\n" }{MPLTEXT 1 0 28 "   for i from 1 to nele
+m do\n" }{MPLTEXT 1 0 44 "     elident[i] := fscanf(infile, `%d`)[1]:
+\n" }{MPLTEXT 1 0 45 "     nelnodes[i] := fscanf(infile, `%d`)[1]:\n" 
+}{MPLTEXT 1 0 36 "     for j from 1 to nelnodes[i] do\n" }{MPLTEXT 1 
+0 47 "       connect[j,i] := fscanf(infile,`%d`)[1]:\n" }{MPLTEXT 1 0 
+9 "     od:\n" }{MPLTEXT 1 0 7 "   od:\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 80 "#    No. nodes with prescribed displacements, with th
+e prescribed displacements\n" }{MPLTEXT 1 0 3 "# \n" }{MPLTEXT 1 0 40 
+"   nfix := fscanf(infile,` %*s %d`)[1]:\n" }{MPLTEXT 1 0 44 "   dummy
+ := fscanf(infile,`%s %*s %*s`)[1]:\n" }{MPLTEXT 1 0 36 "   fixnodes :
+= array(1..3,1..nfix):\n" }{MPLTEXT 1 0 30 "      for i from 1 to nfix
+ do\n" }{MPLTEXT 1 0 49 "        fixnodes[1,i] := fscanf(infile,`%d`)[
+1]:\n" }{MPLTEXT 1 0 49 "        fixnodes[2,i] := fscanf(infile,`%d`)[
+1]:\n" }{MPLTEXT 1 0 49 "        fixnodes[3,i] := fscanf(infile,`%e`)[
+1]:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 
+1 0 46 "#    No. loaded element faces, with the loads\n" }{MPLTEXT 1 
+0 2 "#\n" }{MPLTEXT 1 0 42 "    ndload := fscanf(infile,`%*s %d`)[1]:
+\n" }{MPLTEXT 1 0 45 "    dummy := fscanf(infile,`%s %*s %*s`)[1]:\n" 
+}{MPLTEXT 1 0 42 "    dloads := array(1..2+ndof,1..ndload):\n" }
+{MPLTEXT 1 0 33 "       for i from 1 to ndload do\n" }{MPLTEXT 1 0 48 
+"         dloads[1,i] := fscanf(infile,`%d`)[1]:\n" }{MPLTEXT 1 0 48 "
+         dloads[2,i] := fscanf(infile,`%d`)[1]:\n" }{MPLTEXT 1 0 33 " \+
+        for j from 1 to ndof do\n" }{MPLTEXT 1 0 52 "           dloads
+[j+2,i] := fscanf(infile,`%e`)[1]:\n" }{MPLTEXT 1 0 13 "         od:\n
+" }{MPLTEXT 1 0 11 "       od:\n" }{MPLTEXT 1 0 20 "    fclose(infile)
+:\n" }{MPLTEXT 1 0 1 "\n" }}}{EXCHG {PARA 200 "" 1 "" {TEXT -1 0 "" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 90 "#========================= \+
+Print the mesh as a check on the input file ==================\n" }
+{MPLTEXT 1 0 20 " if (ndof = 2) then\n" }{MPLTEXT 1 0 29 "   if (nelno
+des[1] = 3) then\n" }{MPLTEXT 1 0 67 "     elplot:=seq([[coords[1,conn
+ect[1,i]],coords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 67 "              \+
+    [coords[1,connect[2,i]],coords[2,connect[2,i]]],\n" }{MPLTEXT 1 0 
+80 "                  [coords[1,connect[3,i]],coords[2,connect[3,i]]]]
+,i=1..nelem):\n" }{MPLTEXT 1 0 31 "   elif (nelnodes[1] = 4) then\n" }
+{MPLTEXT 1 0 67 "     elplot:=seq([[coords[1,connect[1,i]],coords[2,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 67 "                  [coords[1,connect
+[2,i]],coords[2,connect[2,i]]],\n" }{MPLTEXT 1 0 67 "                 \+
+ [coords[1,connect[3,i]],coords[2,connect[3,i]]],\n" }{MPLTEXT 1 0 80 
+"                  [coords[1,connect[4,i]],coords[2,connect[4,i]]]],i=
+1..nelem):\n" }{MPLTEXT 1 0 31 "   elif (nelnodes[1] = 6) then\n" }
+{MPLTEXT 1 0 67 "     elplot:=seq([[coords[1,connect[1,i]],coords[2,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 67 "                  [coords[1,connect
+[4,i]],coords[2,connect[4,i]]],\n" }{MPLTEXT 1 0 67 "                 \+
+ [coords[1,connect[2,i]],coords[2,connect[2,i]]],\n" }{MPLTEXT 1 0 67 
+"                  [coords[1,connect[5,i]],coords[2,connect[5,i]]],\n
+" }{MPLTEXT 1 0 66 "                  [coords[1,connect[3,i]],coords[2
+,connect[3,i]]]\n" }{MPLTEXT 1 0 80 "                  [coords[1,conne
+ct[6,i]],coords[2,connect[6,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 31 "  \+
+ elif (nelnodes[1] = 8) then\n" }{MPLTEXT 1 0 67 "     elplot:=seq([[c
+oords[1,connect[1,i]],coords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 67 "  \+
+                [coords[1,connect[5,i]],coords[2,connect[5,i]]],\n" }
+{MPLTEXT 1 0 67 "                  [coords[1,connect[2,i]],coords[2,co
+nnect[2,i]]],\n" }{MPLTEXT 1 0 67 "                  [coords[1,connect
+[6,i]],coords[2,connect[6,i]]],\n" }{MPLTEXT 1 0 67 "                 \+
+ [coords[1,connect[3,i]],coords[2,connect[3,i]]],\n" }{MPLTEXT 1 0 67 
+"                  [coords[1,connect[7,i]],coords[2,connect[7,i]]],\n
+" }{MPLTEXT 1 0 67 "                  [coords[1,connect[4,i]],coords[2
+,connect[4,i]]],\n" }{MPLTEXT 1 0 82 "                  [coords[1,conn
+ect[8,i]],coords[2,connect[8,i]]]],i=1..nelem):  \n" }{MPLTEXT 1 0 7 "
+  fi: \n" }{MPLTEXT 1 0 91 "  meshplots := [PLOT(POLYGONS(elplot),SCAL
+ING(CONSTRAINED),COLOR(RGB,0,1,0),STYLE(LINE))]:\n" }{MPLTEXT 1 0 106 
+"  meshplots := [op(meshplots),PLOT(POLYGONS(elplot),SCALING(CONSTRAIN
+ED),COLOR(RGB,0,1,0),STYLE(POINT))]:\n" }{MPLTEXT 1 0 23 "  elif (ndof
+ = 3) then\n" }{MPLTEXT 1 0 30 "    if (nelnodes[1] = 4) then\n" }
+{MPLTEXT 1 0 19 "      elplot:=seq(\n" }{MPLTEXT 1 0 83 "          [[c
+oords[1,connect[1,i]],coords[2,connect[1,i]],coords[3,connect[1,i]]],
+\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[2,i]],coords[2,con
+nect[2,i]],coords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 84 "            [
+coords[1,connect[3,i]],coords[2,connect[3,i]],coords[3,connect[3,i]]],
+\n" }{MPLTEXT 1 0 85 "            [coords[1,connect[4,i]],coords[2,con
+nect[4,i]],coords[3,connect[4,i]]]],\n" }{MPLTEXT 1 0 39 "            \+
+              i=1..nelem):\n" }{MPLTEXT 1 0 32 "    elif (nelnodes[1] \+
+= 8) then\n" }{MPLTEXT 1 0 19 "      elplot:=seq(\n" }{MPLTEXT 1 0 83 
+"          [[coords[1,connect[1,i]],coords[2,connect[1,i]],coords[3,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[2,i]]
+,coords[2,connect[2,i]],coords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[3,i]],coords[2,connect[3,i]],coords[3,co
+nnect[3,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[4,i]]
+,coords[2,connect[4,i]],coords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[8,i]],coords[2,connect[8,i]],coords[3,co
+nnect[8,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[5,i]]
+,coords[2,connect[5,i]],coords[3,connect[5,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[1,i]],coords[2,connect[1,i]],coords[3,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[4,i]]
+,coords[2,connect[4,i]],coords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[8,i]],coords[2,connect[8,i]],coords[3,co
+nnect[8,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[7,i]]
+,coords[2,connect[7,i]],coords[3,connect[7,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[6,i]],coords[2,connect[6,i]],coords[3,co
+nnect[6,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[5,i]]
+,coords[2,connect[5,i]],coords[3,connect[5,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[1,i]],coords[2,connect[1,i]],coords[3,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[2,i]]
+,coords[2,connect[2,i]],coords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[6,i]],coords[2,connect[6,i]],coords[3,co
+nnect[6,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[7,i]]
+,coords[2,connect[7,i]],coords[3,connect[7,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[3,i]],coords[2,connect[3,i]],coords[3,co
+nnect[3,i]]],\n" }{MPLTEXT 1 0 85 "            [coords[1,connect[2,i]]
+,coords[2,connect[2,i]],coords[3,connect[2,i]]]],\n" }{MPLTEXT 1 0 39 
+"                          i=1..nelem):\n" }{MPLTEXT 1 0 33 "    elif \+
+(nelnodes[1] = 10) then\n" }{MPLTEXT 1 0 19 "      elplot:=seq(\n" }
+{MPLTEXT 1 0 83 "          [[coords[1,connect[1,i]],coords[2,connect[1
+,i]],coords[3,connect[1,i]]],\n" }{MPLTEXT 1 0 83 "           [coords[
+1,connect[5,i]],coords[2,connect[5,i]],coords[3,connect[5,i]]],\n" }
+{MPLTEXT 1 0 83 "           [coords[1,connect[2,i]],coords[2,connect[2
+,i]],coords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 83 "           [coords[
+1,connect[6,i]],coords[2,connect[6,i]],coords[3,connect[6,i]]],\n" }
+{MPLTEXT 1 0 83 "           [coords[1,connect[3,i]],coords[2,connect[3
+,i]],coords[3,connect[3,i]]],\n" }{MPLTEXT 1 0 86 "           [coords[
+1,connect[10,i]],coords[2,connect[10,i]],coords[3,connect[10,i]]],\n" 
+}{MPLTEXT 1 0 83 "           [coords[1,connect[4,i]],coords[2,connect[
+4,i]],coords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 83 "           [coords
+[1,connect[8,i]],coords[2,connect[8,i]],coords[3,connect[8,i]]],\n" }
+{MPLTEXT 1 0 83 "           [coords[1,connect[1,i]],coords[2,connect[1
+,i]],coords[3,connect[1,i]]],\n" }{MPLTEXT 1 0 83 "           [coords[
+1,connect[7,i]],coords[2,connect[7,i]],coords[3,connect[7,i]]],\n" }
+{MPLTEXT 1 0 83 "           [coords[1,connect[3,i]],coords[2,connect[3
+,i]],coords[3,connect[3,i]]],\n" }{MPLTEXT 1 0 86 "           [coords[
+1,connect[10,i]],coords[2,connect[10,i]],coords[3,connect[10,i]]],\n" 
+}{MPLTEXT 1 0 83 "           [coords[1,connect[4,i]],coords[2,connect[
+4,i]],coords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 84 "           [coords
+[1,connect[8,i]],coords[2,connect[8,i]],coords[3,connect[8,i]]]],\n" }
+{MPLTEXT 1 0 39 "                          i=1..nelem):\n" }{MPLTEXT 
+1 0 31 "    elif (nelnodes[1]=20) then\n" }{MPLTEXT 1 0 19 "      elpl
+ot:=seq(\n" }{MPLTEXT 1 0 83 "          [[coords[1,connect[1,i]],coord
+s[2,connect[1,i]],coords[3,connect[1,i]]],\n" }{MPLTEXT 1 0 84 "      \+
+      [coords[1,connect[9,i]],coords[2,connect[9,i]],coords[3,connect[
+9,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[2,i]],coord
+s[2,connect[2,i]],coords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 87 "      \+
+      [coords[1,connect[10,i]],coords[2,connect[10,i]],coords[3,connec
+t[10,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[3,i]],co
+ords[2,connect[3,i]],coords[3,connect[3,i]]],\n" }{MPLTEXT 1 0 87 "   \+
+         [coords[1,connect[11,i]],coords[2,connect[11,i]],coords[3,con
+nect[11,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[4,i]]
+,coords[2,connect[4,i]],coords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 87 "
+            [coords[1,connect[20,i]],coords[2,connect[20,i]],coords[3,
+connect[20,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[8,
+i]],coords[2,connect[8,i]],coords[3,connect[8,i]]],\n" }{MPLTEXT 1 0 
+87 "            [coords[1,connect[16,i]],coords[2,connect[16,i]],coord
+s[3,connect[16,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connec
+t[5,i]],coords[2,connect[5,i]],coords[3,connect[5,i]]],\n" }{MPLTEXT 
+1 0 87 "            [coords[1,connect[17,i]],coords[2,connect[17,i]],c
+oords[3,connect[17,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,co
+nnect[1,i]],coords[2,connect[1,i]],coords[3,connect[1,i]]],\n" }
+{MPLTEXT 1 0 87 "            [coords[1,connect[12,i]],coords[2,connect
+[12,i]],coords[3,connect[12,i]]],\n" }{MPLTEXT 1 0 84 "            [co
+ords[1,connect[4,i]],coords[2,connect[4,i]],coords[3,connect[4,i]]],\n
+" }{MPLTEXT 1 0 87 "            [coords[1,connect[20,i]],coords[2,conn
+ect[20,i]],coords[3,connect[20,i]]],\n" }{MPLTEXT 1 0 84 "            \+
+[coords[1,connect[8,i]],coords[2,connect[8,i]],coords[3,connect[8,i]]]
+,\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[15,i]],coords[2,c
+onnect[15,i]],coords[3,connect[15,i]]],\n" }{MPLTEXT 1 0 84 "         \+
+   [coords[1,connect[7,i]],coords[2,connect[7,i]],coords[3,connect[7,i
+]]],\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[14,i]],coords[
+2,connect[14,i]],coords[3,connect[14,i]]],\n" }{MPLTEXT 1 0 84 "      \+
+      [coords[1,connect[6,i]],coords[2,connect[6,i]],coords[3,connect[
+6,i]]],\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[13,i]],coor
+ds[2,connect[13,i]],coords[3,connect[13,i]]],\n" }{MPLTEXT 1 0 84 "   \+
+         [coords[1,connect[5,i]],coords[2,connect[5,i]],coords[3,conne
+ct[5,i]]],\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[17,i]],c
+oords[2,connect[17,i]],coords[3,connect[17,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[1,i]],coords[2,connect[1,i]],coords[3,co
+nnect[1,i]]],\n" }{MPLTEXT 1 0 84 "            [coords[1,connect[9,i]]
+,coords[2,connect[9,i]],coords[3,connect[9,i]]],\n" }{MPLTEXT 1 0 84 "
+            [coords[1,connect[2,i]],coords[2,connect[2,i]],coords[3,co
+nnect[2,i]]],\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[18,i]
+],coords[2,connect[18,i]],coords[3,connect[18,i]]],\n" }{MPLTEXT 1 0 
+84 "            [coords[1,connect[6,i]],coords[2,connect[6,i]],coords[
+3,connect[6,i]]],\n" }{MPLTEXT 1 0 87 "            [coords[1,connect[1
+4,i]],coords[2,connect[14,i]],coords[3,connect[14,i]]],\n" }{MPLTEXT 
+1 0 84 "            [coords[1,connect[7,i]],coords[2,connect[7,i]],coo
+rds[3,connect[7,i]]],\n" }{MPLTEXT 1 0 88 "            [coords[1,conne
+ct[19,i]],coords[2,connect[19,i]],coords[3,connect[19,i]]], \n" }
+{MPLTEXT 1 0 84 "            [coords[1,connect[3,i]],coords[2,connect[
+3,i]],coords[3,connect[3,i]]],\n" }{MPLTEXT 1 0 87 "            [coord
+s[1,connect[10,i]],coords[2,connect[10,i]],coords[3,connect[10,i]]],\n
+" }{MPLTEXT 1 0 85 "            [coords[1,connect[2,i]],coords[2,conne
+ct[2,i]],coords[3,connect[2,i]]]],\n" }{MPLTEXT 1 0 39 "              \+
+            i=1..nelem):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 9 "    \+
+ fi:\n" }{MPLTEXT 1 0 96 "     meshplots := [PLOT3D(POLYGONS(elplot),S
+CALING(CONSTRAINED),COLOR(RGB,0,1,0),STYLE(LINE))]:\n" }{MPLTEXT 1 0 
+131 "     meshplots :=      [op(meshplots),PLOT3D(POLYGONS(elplot),SCA
+LING(CONSTRAINED),COLOR(RGB,0,0,1),STYLE(POINT),SYMBOL(CIRCLE))]:\n" }
+{MPLTEXT 1 0 6 "  fi:\n" }{MPLTEXT 1 0 27 " plots[display](meshplots);
+" }}{PARA 13 "" 1 "" {TEXT -1 0 "" }{GLPLOT2D 287 264 264 {PLOTDATA 2 
+"6%-%)POLYGONSG6,7*7$$\"\"!F)$\"$+\"!\"#7$$\"#?F,$\"#)*F,7$$\"#QF,$\"#
+#*F,7$$\"#nF,$\"$i\"F,7$$\"#'*F,$\"$J#F,7$$\"#\\F,$\"$X#F,7$F($\"$]#F,
+7$F($\"$v\"F,7*F27$$\"#cF,$\"#$)F,7$$\"#rF,FS7$$\"$C\"F,FV7$$\"$x\"F,F
+Y7$$\"$R\"F,$\"$3#F,F<F77*FR7$FPFN7$F5F37$F:F87$F?F=7$FhnFfnFXFU7*F\\o
+7$F0F.7$F*F(7$FJF(7$FGF(7$FDFBF^oF]o7*FFFAF<7$FV$\"$+$F,7$$\"$`\"F,$\"
+$q$F,7$$\"#yF,$\"$#RF,7$F($\"$+%F,7$F($\"$D$F,7*F<FenFX7$$\"$I#F,F\\q7
+$$\"$$GF,F_q7$$\"$A#F,$\"$L$F,FjoFgo7*FXF_oF^o7$FhoFV7$F]pF[p7$FdqFbqF
+^qF[q7*F^oFeoFdo7$FhpF(7$FepF(7$FbpF`pFhqFgq-%&STYLEG6#%&POINTG-%&COLO
+RG6&%$RGBG$F)!\"\"$\"#5FgrFfr-F$6,F&FLFjnF`oFfoFjpFfqFjq-F_r6#%%LINEGF
+br-%(SCALINGG6#%,CONSTRAINEDG" 1 2 2 1 10 1 2 6 1 4 1 1.000000 
+45.000000 45.000000 1 0 "Curve 1" "Curve 2" }}{TEXT -1 0 "" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 73 "#================= Material Stiffne
+ss ==================================\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 79 "#    Computes elasticity tensor C_\{ijkl\} from shear
+ modulus and Poissons ratio\n" }{MPLTEXT 1 0 74 "#    Currently coded \+
+either for plane strain, plane stress or general 3D.\n" }{MPLTEXT 1 0 
+2 "#\n" }{MPLTEXT 1 0 61 "materialstiffness := proc (ndof,ncoord,strai
+n,materialprops)\n" }{MPLTEXT 1 0 56 "   local materialstiffness,mu,nu
+,C,i,j,k,l,planestrain:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 27 "   m
+u := materialprops[1]:\n" }{MPLTEXT 1 0 27 "   nu := materialprops[2]:
+\n" }{MPLTEXT 1 0 68 "#  planestrain = 0 => plane stress, planestrain \+
+= 1 => plane strain\n" }{MPLTEXT 1 0 36 "   planestrain := materialpro
+ps[3]:\n" }{MPLTEXT 1 0 3 "  \n" }{MPLTEXT 1 0 52 "   C := array(1..nd
+of,1..ncoord,1..ndof,1..ncoord):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 
+0 26 "   if (ncoord = 2) then  \n" }{MPLTEXT 1 0 26 "     for i from 1
+ to 2 do\n" }{MPLTEXT 1 0 28 "       for j from 1 to 2 do\n" }
+{MPLTEXT 1 0 30 "         for k from 1 to 2 do\n" }{MPLTEXT 1 0 32 "  \+
+         for l from 1 to 2 do\n" }{MPLTEXT 1 0 31 "             C[i,j,
+k,l] := 0.:\n" }{MPLTEXT 1 0 37 "             if (planestrain=1) then
+\n" }{MPLTEXT 1 0 84 "               if (i=j and k=l) then C[i,j,k,l] \+
+:= C[i,j,k,l]+2*mu*nu/(1-2*nu): fi:\n" }{MPLTEXT 1 0 18 "             \+
+else\n" }{MPLTEXT 1 0 82 "               if (i=j and k=l) then C[i,j,k
+,l] := C[i,j,k,l]+2*mu*nu/(1-nu): fi:\n" }{MPLTEXT 1 0 17 "           \+
+  fi:\n" }{MPLTEXT 1 0 68 "             if (i=l and k=j) then C[i,j,k,
+l] := C[i,j,k,l]+mu: fi:\n" }{MPLTEXT 1 0 68 "             if (i=k and
+ j=l) then C[i,j,k,l] := C[i,j,k,l]+mu: fi:\n" }{MPLTEXT 1 0 15 "     \+
+      od:\n" }{MPLTEXT 1 0 13 "         od:\n" }{MPLTEXT 1 0 11 "     \+
+  od:\n" }{MPLTEXT 1 0 9 "     od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 
+1 0 9 "        \n" }{MPLTEXT 1 0 26 "   elif (ncoord = 3) then\n" }
+{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 26 "     for i from 1 to 3 do\n" }
+{MPLTEXT 1 0 28 "       for j from 1 to 3 do\n" }{MPLTEXT 1 0 30 "    \+
+     for k from 1 to 3 do\n" }{MPLTEXT 1 0 32 "           for l from 1
+ to 3 do\n" }{MPLTEXT 1 0 32 "             C[i,j,k,l] := 0.0:\n" }
+{MPLTEXT 1 0 85 "             if (i=j and k=l) then C[i,j,k,l]:=C[i,j,
+k,l] + 2.*mu*nu/(1.-2.*nu): fi:\n" }{MPLTEXT 1 0 68 "             if (
+i=k and j=l) then C[i,j,k,l]:=C[i,j,k,l] + mu: fi:\n" }{MPLTEXT 1 0 
+68 "             if (i=l and j=k) then C[i,j,k,l]:=C[i,j,k,l] + mu: fi
+:\n" }{MPLTEXT 1 0 16 "            od:\n" }{MPLTEXT 1 0 14 "          \+
+od:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 10 "      od:\n
+" }{MPLTEXT 1 0 8 "    fi:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 27 " \+
+   materialstiffness := C\n" }{MPLTEXT 1 0 5 " end:" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 70 "#================= Material Stress ======
+============================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+57 "#   Computes stress sigma_\{ij\} given strain epsilon_\{ij\}\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 58 "materialstress := proc (ndof,nc
+oord,strain,materialprops)\n" }{MPLTEXT 1 0 42 "   local materialstres
+s,stress,C,i,j,k,l:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 52 "   C := \+
+array[1..ndof,1..ncoord,1..ndof,1..ncoord]:\n" }{MPLTEXT 1 0 39 "   st
+ress := array(1..ndof,1..ncoord):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 
+0 61 "   C := materialstiffness(ndof,ncoord,strain,materialprops):\n" 
+}{MPLTEXT 1 0 5 "    \n" }{MPLTEXT 1 0 27 "   for i from 1 to ndof do
+\n" }{MPLTEXT 1 0 31 "     for j from 1 to ncoord do\n" }{MPLTEXT 1 0 
+27 "        stress[i,j] := 0.:\n" }{MPLTEXT 1 0 32 "        for k from
+ 1 to ndof do\n" }{MPLTEXT 1 0 36 "          for l from 1 to ncoord do
+\n" }{MPLTEXT 1 0 65 "            stress[i,j] := stress[i,j] + C[i,j,k
+,l]*strain[k,l]:\n" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 
+12 "        od:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 8 "   \+
+ od:\n" }{MPLTEXT 1 0 30 "    materialstress := stress:\n" }{MPLTEXT 
+1 0 6 "  end:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 77 "#====================== No. integration points ======
+=======================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 60 "#  \+
+ Defines the number of integration points to be used for\n" }{MPLTEXT 
+1 0 22 "#   each element type\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+59 "numberofintegrationpoints := proc(ncoord,nelnodes,elident)\n" }
+{MPLTEXT 1 0 38 "   local numberofintegrationpoints,n;\n" }{MPLTEXT 1 
+0 3 "  \n" }{MPLTEXT 1 0 24 "   if (ncoord = 1) then\n" }{MPLTEXT 1 0 
+23 "     n := nelnodes:   \n" }{MPLTEXT 1 0 26 "   elif (ncoord = 2) t
+hen\n" }{MPLTEXT 1 0 40 "     if (nelnodes = 3) then n := 1: fi:\n" }
+{MPLTEXT 1 0 40 "     if (nelnodes = 6) then n := 3: fi:\n" }{MPLTEXT 
+1 0 40 "     if (nelnodes = 4) then n := 4: fi:\n" }{MPLTEXT 1 0 40 " \+
+    if (nelnodes = 8) then n := 9: fi:\n" }{MPLTEXT 1 0 26 "   elif (n
+coord = 3) then\n" }{MPLTEXT 1 0 41 "     if (nelnodes = 4) then n := \+
+1 : fi:\n" }{MPLTEXT 1 0 41 "     if (nelnodes = 10) then n := 4: fi:
+\n" }{MPLTEXT 1 0 40 "     if (nelnodes = 8) then n := 8: fi:\n" }
+{MPLTEXT 1 0 42 "     if (nelnodes = 20) then n := 27: fi:\n" }
+{MPLTEXT 1 0 7 "   fi:\n" }{MPLTEXT 1 0 35 "   numberofintegrationpoin
+ts := n:\n" }{MPLTEXT 1 0 8 "end:    " }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 85 "#====================== No. red
+uced integration points =============================\n" }{MPLTEXT 1 
+0 2 "#\n" }{MPLTEXT 1 0 60 "#   Defines the number of integration poin
+ts to be used for\n" }{MPLTEXT 1 0 55 "#   each element type when redu
+ced integration is used\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 66 "num
+berofreducedintegrationpoints := proc(ncoord,nelnodes,elident)\n" }
+{MPLTEXT 1 0 45 "   local numberofreducedintegrationpoints,n;\n" }
+{MPLTEXT 1 0 3 "  \n" }{MPLTEXT 1 0 24 "   if (ncoord = 1) then\n" }
+{MPLTEXT 1 0 23 "     n := nelnodes:   \n" }{MPLTEXT 1 0 26 "   elif (
+ncoord = 2) then\n" }{MPLTEXT 1 0 40 "     if (nelnodes = 3) then n :=
+ 1: fi:\n" }{MPLTEXT 1 0 40 "     if (nelnodes = 6) then n := 3: fi:\n
+" }{MPLTEXT 1 0 40 "     if (nelnodes = 4) then n := 1: fi:\n" }
+{MPLTEXT 1 0 40 "     if (nelnodes = 8) then n := 4: fi:\n" }{MPLTEXT 
+1 0 26 "   elif (ncoord = 3) then\n" }{MPLTEXT 1 0 41 "     if (nelnod
+es = 4) then n := 1 : fi:\n" }{MPLTEXT 1 0 41 "     if (nelnodes = 10)
+ then n := 4: fi:\n" }{MPLTEXT 1 0 40 "     if (nelnodes = 8) then n :
+= 1: fi:\n" }{MPLTEXT 1 0 41 "     if (nelnodes = 20) then n := 8: fi:
+\n" }{MPLTEXT 1 0 7 "   fi:\n" }{MPLTEXT 1 0 42 "   numberofreducedint
+egrationpoints := n:\n" }{MPLTEXT 1 0 8 "end:    " }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 
+"#\n" }{MPLTEXT 1 0 78 "#====================== INTEGRATION POINTS ===
+===============================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 44 "#   Defines positions of integration points\n" }{MPLTEXT 1 0 2 "
+#\n" }{MPLTEXT 1 0 59 "integrationpoints := proc(ncoord,nelnodes,npoin
+ts,elident)\n" }{MPLTEXT 1 0 43 "   local integrationpoints,xi,x1D,i,j
+,k,n:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 38 "   xi := array(1..ncoo
+rd,1..npoints):\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  1D eleme
+nts\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "   if (ncoord = 1) then
+\n" }{MPLTEXT 1 0 25 "     if (npoints=1) then\n" }{MPLTEXT 1 0 22 "  \+
+     xi[1,1] := 0.:\n" }{MPLTEXT 1 0 29 "     elif (npoints = 2) then
+\n" }{MPLTEXT 1 0 33 "       xi[1,1] := -0.5773502692:\n" }{MPLTEXT 1 
+0 28 "       xi[1,2] := -xi[1,1]:\n" }{MPLTEXT 1 0 29 "     elif (npoi
+nts = 3) then\n" }{MPLTEXT 1 0 33 "       xi[1,1] := -0.7745966692:\n
+" }{MPLTEXT 1 0 23 "       xi[1,2] := 0.0:\n" }{MPLTEXT 1 0 28 "      \+
+ xi[1,3] := -xi[1,1]:\n" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 2 
+"#\n" }{MPLTEXT 1 0 15 "#  2D elements\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 26 "   elif (ncoord = 2) then\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 24 "#    Triangular element\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 46 "     if ( nelnodes = 3 or nelnodes = 6 ) then\n" }
+{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" }{MPLTEXT 1 0 27 "   \+
+      xi[1,1] := 1./3.:\n" }{MPLTEXT 1 0 27 "         xi[2,1] := 1./3.
+:\n" }{MPLTEXT 1 0 31 "       elif (npoints = 3) then\n" }{MPLTEXT 1 
+0 25 "         xi[1,1] := 0.6:\n" }{MPLTEXT 1 0 25 "         xi[2,1] :
+= 0.2:\n" }{MPLTEXT 1 0 25 "         xi[1,2] := 0.2:\n" }{MPLTEXT 1 0 
+25 "         xi[2,2] := 0.6:\n" }{MPLTEXT 1 0 25 "         xi[1,3] := \+
+0.2:\n" }{MPLTEXT 1 0 25 "         xi[2,3] := 0.2:\n" }{MPLTEXT 1 0 
+31 "       elif (npoints = 4) then\n" }{MPLTEXT 1 0 27 "         xi[1,
+1] := 1./3.:\n" }{MPLTEXT 1 0 27 "         xi[2,1] := 1./3.:\n" }
+{MPLTEXT 1 0 25 "         xi[1,2] := 0.6:\n" }{MPLTEXT 1 0 25 "       \+
+  xi[2,2] := 0.2:\n" }{MPLTEXT 1 0 25 "         xi[1,3] := 0.2:\n" }
+{MPLTEXT 1 0 25 "         xi[2,3] := 0.6:\n" }{MPLTEXT 1 0 25 "       \+
+  xi[1,4] := 0.2:\n" }{MPLTEXT 1 0 25 "         xi[2,4] := 0.2:\n" }
+{MPLTEXT 1 0 11 "       fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 25 
+"#    Rectangular element\n" }{MPLTEXT 1 0 20 "#                  \n" 
+}{MPLTEXT 1 0 44 "     elif ( nelnodes=4 or nelnodes=8 ) then\n" }
+{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" 
+}{MPLTEXT 1 0 24 "         xi[1,1] := 0.:\n" }{MPLTEXT 1 0 24 "       \+
+  xi[2,1] := 0.:\n" }{MPLTEXT 1 0 31 "       elif (npoints = 4) then\n
+" }{MPLTEXT 1 0 35 "         xi[1,1] := -0.5773502692:\n" }{MPLTEXT 1 
+0 29 "         xi[2,1] := xi[1,1]:\n" }{MPLTEXT 1 0 30 "         xi[1,
+2] := -xi[1,1]:\n" }{MPLTEXT 1 0 29 "         xi[2,2] := xi[1,1]:\n" }
+{MPLTEXT 1 0 29 "         xi[1,3] := xi[1,1]:\n" }{MPLTEXT 1 0 30 "   \+
+      xi[2,3] := -xi[1,1]:\n" }{MPLTEXT 1 0 30 "         xi[1,4] := -x
+i[1,1]:\n" }{MPLTEXT 1 0 30 "         xi[2,4] := -xi[1,1]:\n" }
+{MPLTEXT 1 0 31 "       elif (npoints = 9) then\n" }{MPLTEXT 1 0 35 " \+
+        xi[1,1] := -0.7745966692:\n" }{MPLTEXT 1 0 29 "         xi[2,1
+] := xi[1,1]:\n" }{MPLTEXT 1 0 25 "         xi[1,2] := 0.0:\n" }
+{MPLTEXT 1 0 29 "         xi[2,2] := xi[1,1]:\n" }{MPLTEXT 1 0 30 "   \+
+      xi[1,3] := -xi[1,1]:\n" }{MPLTEXT 1 0 29 "         xi[2,3] := xi
+[1,1]:\n" }{MPLTEXT 1 0 29 "         xi[1,4] := xi[1,1]:\n" }{MPLTEXT 
+1 0 25 "         xi[2,4] := 0.0:\n" }{MPLTEXT 1 0 25 "         xi[1,5]
+ := 0.0:\n" }{MPLTEXT 1 0 25 "         xi[2,5] := 0.0:\n" }{MPLTEXT 1 
+0 30 "         xi[1,6] := -xi[1,1]:\n" }{MPLTEXT 1 0 25 "         xi[2
+,6] := 0.0:\n" }{MPLTEXT 1 0 29 "         xi[1,7] := xi[1,1]:\n" }
+{MPLTEXT 1 0 30 "         xi[2,7] := -xi[1,1]:\n" }{MPLTEXT 1 0 24 "  \+
+       xi[1,8] := 0.:\n" }{MPLTEXT 1 0 30 "         xi[2,8] := -xi[1,1
+]:\n" }{MPLTEXT 1 0 30 "         xi[1,9] := -xi[1,1]:\n" }{MPLTEXT 1 
+0 30 "         xi[2,9] := -xi[1,1]:\n" }{MPLTEXT 1 0 11 "       fi:\n
+" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 16 
+"#   3D elements\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 26 "   elif (n
+coord = 3) then\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  3D eleme
+nts\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 44 "     if (nelnodes = 4 o
+r nelnodes=10 ) then\n" }{MPLTEXT 1 0 29 "       if (npoints = 1) then
+\n" }{MPLTEXT 1 0 26 "         xi[1,1] := 0.25:\n" }{MPLTEXT 1 0 26 " \+
+        xi[2,1] := 0.25:\n" }{MPLTEXT 1 0 26 "         xi[3,1] := 0.25
+:\n" }{MPLTEXT 1 0 31 "       elif (npoints = 4) then\n" }{MPLTEXT 1 
+0 32 "         xi[1,1] := 0.58541020:\n" }{MPLTEXT 1 0 32 "         xi
+[2,1] := 0.13819660:\n" }{MPLTEXT 1 0 29 "         xi[3,1] := xi[2,1]:
+\n" }{MPLTEXT 1 0 29 "         xi[1,2] := xi[2,1]:\n" }{MPLTEXT 1 0 
+29 "         xi[2,2] := xi[1,1]:\n" }{MPLTEXT 1 0 29 "         xi[3,2]
+ := xi[2,1]:\n" }{MPLTEXT 1 0 29 "         xi[1,3] := xi[2,1]:\n" }
+{MPLTEXT 1 0 29 "         xi[2,3] := xi[2,1]:\n" }{MPLTEXT 1 0 29 "   \+
+      xi[3,3] := xi[1,1]:\n" }{MPLTEXT 1 0 29 "         xi[1,4] := xi[
+2,1]:\n" }{MPLTEXT 1 0 29 "         xi[2,4] := xi[2,1]:\n" }{MPLTEXT 
+1 0 29 "         xi[3,4] := xi[2,1]:\n" }{MPLTEXT 1 0 11 "       fi:\n
+" }{MPLTEXT 1 0 45 "     elif ( nelnodes=8 or nelnodes=20 ) then\n" }
+{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" }{MPLTEXT 1 0 24 "   \+
+      xi[1,1] := 0.:\n" }{MPLTEXT 1 0 24 "         xi[2,1] := 0.:\n" }
+{MPLTEXT 1 0 24 "         xi[3,1] := 0.:\n" }{MPLTEXT 1 0 31 "       e
+lif (npoints = 8) then\n" }{MPLTEXT 1 0 58 "         x1D := array(1..2
+,[-0.5773502692,0.5773502692]):\n" }{MPLTEXT 1 0 30 "         for k fr
+om 1 to 2 do\n" }{MPLTEXT 1 0 32 "           for j from 1 to 2 do\n" }
+{MPLTEXT 1 0 34 "             for i from 1 to 2 do\n" }{MPLTEXT 1 0 
+43 "               n := 4*(k-1) + 2*(j-1) + i:\n" }{MPLTEXT 1 0 34 "  \+
+             xi[1,n] := x1D[i]:\n" }{MPLTEXT 1 0 34 "               xi
+[2,n] := x1D[j]:\n" }{MPLTEXT 1 0 34 "               xi[3,n] := x1D[k]
+:\n" }{MPLTEXT 1 0 17 "             od:\n" }{MPLTEXT 1 0 15 "         \+
+  od:\n" }{MPLTEXT 1 0 13 "         od:\n" }{MPLTEXT 1 0 32 "       el
+if (npoints = 27) then\n" }{MPLTEXT 1 0 61 "         x1D := array(1..3
+,[-0.7745966692,0.,0.7745966692]):\n" }{MPLTEXT 1 0 30 "         for k
+ from 1 to 3 do\n" }{MPLTEXT 1 0 32 "           for j from 1 to 3 do\n
+" }{MPLTEXT 1 0 34 "             for i from 1 to 3 do\n" }{MPLTEXT 1 
+0 43 "               n := 9*(k-1) + 3*(j-1) + i:\n" }{MPLTEXT 1 0 34 "
+               xi[1,n] := x1D[i]:\n" }{MPLTEXT 1 0 34 "               \+
+xi[2,n] := x1D[j]:\n" }{MPLTEXT 1 0 34 "               xi[3,n] := x1D[
+k]:\n" }{MPLTEXT 1 0 17 "             od:\n" }{MPLTEXT 1 0 15 "       \+
+    od:\n" }{MPLTEXT 1 0 13 "         od:\n" }{MPLTEXT 1 0 11 "       \+
+fi:\n" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 7 "   fi:\n" }
+{MPLTEXT 1 0 28 "   integrationpoints := xi:\n" }{MPLTEXT 1 0 6 " end:
+\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 74 
+"#================= INTEGRATION WEIGHTS ==============================
+====\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "#   Defines integratio
+n weights w_i\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 61 "integrationwe
+ights := proc (ncoord,nelnodes,npoints,elident)\n" }{MPLTEXT 1 0 43 " \+
+  local integrationweights,w,w1D,j,i,k,n:\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 27 "   w := array(1..npoints):\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  1D elements\n" }{MPLTEXT 1 
+0 2 "#\n" }{MPLTEXT 1 0 24 "   if (ncoord = 1) then\n" }{MPLTEXT 1 0 
+38 "     if (npoints = 1) then w[1] = 2.:\n" }{MPLTEXT 1 0 29 "     el
+if (npoints = 2) then\n" }{MPLTEXT 1 0 21 "       w := [1.,1.]:\n" }
+{MPLTEXT 1 0 29 "     elif (npoints = 3) then\n" }{MPLTEXT 1 0 51 "   \+
+    w := [0.555555555,0.888888888,0.555555555]:\n" }{MPLTEXT 1 0 9 "  \+
+   fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  2D elements\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 2) then\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "#    Triangular element\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 46 "     if ( nelnodes = 3 or nelno
+des = 6 ) then\n" }{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" }
+{MPLTEXT 1 0 22 "         w[1] := 0.5:\n" }{MPLTEXT 1 0 31 "       eli
+f (npoints = 3) then\n" }{MPLTEXT 1 0 24 "         w[1] := 1./6.:\n" }
+{MPLTEXT 1 0 24 "         w[2] := 1./6.:\n" }{MPLTEXT 1 0 24 "        \+
+ w[3] := 1./6.:\n" }{MPLTEXT 1 0 31 "       elif (npoints = 4) then\n
+" }{MPLTEXT 1 0 48 "         w := [-27./96.,25./96.,25/96.,25/96.]:\n
+" }{MPLTEXT 1 0 11 "       fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+25 "#    Rectangular element\n" }{MPLTEXT 1 0 20 "#                  \+
+\n" }{MPLTEXT 1 0 44 "     elif ( nelnodes=4 or nelnodes=8 ) then\n" }
+{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" 
+}{MPLTEXT 1 0 21 "         w[1] := 4.:\n" }{MPLTEXT 1 0 31 "       eli
+f (npoints = 4) then\n" }{MPLTEXT 1 0 29 "         w := [1.,1.,1.,1.]:
+\n" }{MPLTEXT 1 0 32 "       elif (npoints = 9 ) then\n" }{MPLTEXT 1 
+0 69 "         w1D := array(1..3,[0.555555555,0.888888888,0.5555555555
+5]):\n" }{MPLTEXT 1 0 30 "         for j from 1 to 3 do\n" }{MPLTEXT 
+1 0 32 "           for i from 1 to 3 do\n" }{MPLTEXT 1 0 29 "         \+
+    n := 3*(j-1)+i:\n" }{MPLTEXT 1 0 36 "             w[n] := w1D[i]*w
+1D[j]:\n" }{MPLTEXT 1 0 15 "           od:\n" }{MPLTEXT 1 0 17 "      \+
+   od:    \n" }{MPLTEXT 1 0 11 "       fi:\n" }{MPLTEXT 1 0 10 "     f
+i: \n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 3) the
+n\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  3D elements\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 44 "     if (nelnodes = 4 or nelnod
+es=10 ) then\n" }{MPLTEXT 1 0 29 "       if (npoints = 1) then\n" }
+{MPLTEXT 1 0 24 "         w[1] := 1./6.:\n" }{MPLTEXT 1 0 31 "       e
+lif (npoints = 4) then\n" }{MPLTEXT 1 0 45 "         w := [1./24.,1./2
+4.,1./24.,1./24.]:\n" }{MPLTEXT 1 0 11 "       fi:\n" }{MPLTEXT 1 0 
+45 "     elif ( nelnodes=8 or nelnodes=20 ) then\n" }{MPLTEXT 1 0 29 "
+       if (npoints = 1) then\n" }{MPLTEXT 1 0 21 "         w[1] := 8.:
+\n" }{MPLTEXT 1 0 31 "       elif (npoints = 8) then\n" }{MPLTEXT 1 0 
+41 "         w := [1.,1.,1.,1.,1.,1.,1.,1.]:\n" }{MPLTEXT 1 0 32 "    \+
+   elif (npoints = 27) then\n" }{MPLTEXT 1 0 69 "         w1D := array
+(1..3,[0.555555555,0.888888888,0.55555555555]):\n" }{MPLTEXT 1 0 30 " \+
+        for k from 1 to 3 do\n" }{MPLTEXT 1 0 32 "           for j fro
+m 1 to 3 do\n" }{MPLTEXT 1 0 34 "             for i from 1 to 3 do\n" 
+}{MPLTEXT 1 0 39 "               n := 9*(k-1)+3*(j-1)+i:\n" }{MPLTEXT 
+1 0 45 "               w[n] := w1D[i]*w1D[j]*w1D[k]:\n" }{MPLTEXT 1 0 
+17 "             od:\n" }{MPLTEXT 1 0 19 "           od:    \n" }
+{MPLTEXT 1 0 13 "         od:\n" }{MPLTEXT 1 0 11 "       fi:\n" }
+{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 7 "   fi:\n" }{MPLTEXT 1 0 
+28 "   integrationweights := w:\n" }{MPLTEXT 1 0 6 " end:\n" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 70 "#=====
+============ SHAPE FUNCTIONS ==================================\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 62 "#        Calculates shape funct
+ions for various element types\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+52 "shapefunctions := proc (nelnodes,ncoord,elident,xi)\n" }{MPLTEXT 
+1 0 35 "   local shapefunctions,N,xi3,xi4:\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 28 "   N := array(1..nelnodes):\n" }{MPLTEXT 1 0 2 "#\n" 
+}{MPLTEXT 1 0 15 "#  1D elements\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 23 "  if (ncoord = 1) then\n" }{MPLTEXT 1 0 25 "    if (nelnodes=2) \+
+then\n" }{MPLTEXT 1 0 30 "      N[1] := 0.5*(1.+xi[1]):\n" }{MPLTEXT 
+1 0 30 "      N[2] := 0.5*(1.-xi[1]):\n" }{MPLTEXT 1 0 29 "    elif (n
+elnodes = 3) then\n" }{MPLTEXT 1 0 37 "      N[1] := -0.5*xi[1]*(1.-xi
+[1]):\n" }{MPLTEXT 1 0 37 "      N[2] :=  0.5*xi[1]*(1.+xi[1]):\n" }
+{MPLTEXT 1 0 37 "      N[3] := (1.-xi[1])*(1.+xi[1]):\n" }{MPLTEXT 1 
+0 9 "    fi  \n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  2D element
+s\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 2) then
+\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "#    Triangular element\n
+" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 30 "     if ( nelnodes = 3 ) the
+n\n" }{MPLTEXT 1 0 22 "       N[1] := xi[1]:\n" }{MPLTEXT 1 0 22 "    \+
+   N[2] := xi[2]:\n" }{MPLTEXT 1 0 46 "       N[3] := 1.-xi[1]-xi[2]: \+
+              \n" }{MPLTEXT 1 0 32 "     elif ( nelnodes = 6 ) then\n
+" }{MPLTEXT 1 0 30 "       xi3 := 1.-xi[1]-xi[2]:\n" }{MPLTEXT 1 0 36 
+"       N[1] := (2.*xi[1]-1.)*xi[1]:\n" }{MPLTEXT 1 0 36 "       N[2] \+
+:= (2.*xi[2]-1.)*xi[2]:\n" }{MPLTEXT 1 0 32 "       N[3] := (2.*xi3-1.
+)*xi3:\n" }{MPLTEXT 1 0 31 "       N[4] := 4.*xi[1]*xi[2]:\n" }
+{MPLTEXT 1 0 29 "       N[5] := 4.*xi[2]*xi3:\n" }{MPLTEXT 1 0 29 "   \+
+    N[6] := 4.*xi3*xi[1]:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 25 "#
+    Rectangular element\n" }{MPLTEXT 1 0 20 "#                  \n" }
+{MPLTEXT 1 0 32 "     elif ( nelnodes = 4 ) then\n" }{MPLTEXT 1 0 43 "
+       N[1] := 0.25*(1.-xi[1])*(1.-xi[2]):\n" }{MPLTEXT 1 0 43 "      \+
+ N[2] := 0.25*(1.+xi[1])*(1.-xi[2]):\n" }{MPLTEXT 1 0 43 "       N[3] \+
+:= 0.25*(1.+xi[1])*(1.+xi[2]):\n" }{MPLTEXT 1 0 43 "       N[4] := 0.2
+5*(1.-xi[1])*(1.+xi[2]):\n" }{MPLTEXT 1 0 30 "     elif (nelnodes = 8)
+ then\n" }{MPLTEXT 1 0 61 "       N[1] := -0.25*(1.-xi[1])*(1.-xi[2])*
+(1.+xi[1]+xi[2]):\n" }{MPLTEXT 1 0 60 "       N[2] := 0.25*(1.+xi[1])*
+(1.-xi[2])*(xi[1]-xi[2]-1.):\n" }{MPLTEXT 1 0 60 "       N[3] := 0.25*
+(1.+xi[1])*(1.+xi[2])*(xi[1]+xi[2]-1.):\n" }{MPLTEXT 1 0 60 "       N[
+4] := 0.25*(1.-xi[1])*(1.+xi[2])*(xi[2]-xi[1]-1.):\n" }{MPLTEXT 1 0 
+48 "       N[5] := 0.5*(1.-xi[1]*xi[1])*(1.-xi[2]):\n" }{MPLTEXT 1 0 
+48 "       N[6] := 0.5*(1.+xi[1])*(1.-xi[2]*xi[2]):\n" }{MPLTEXT 1 0 
+48 "       N[7] := 0.5*(1.-xi[1]*xi[1])*(1.+xi[2]):\n" }{MPLTEXT 1 0 
+48 "       N[8] := 0.5*(1.-xi[1])*(1.-xi[2]*xi[2]):\n" }{MPLTEXT 1 0 
+9 "     fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "   elif (ncoord
+=3) then\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 28 "     if (nelnodes =
+ 4) then\n" }{MPLTEXT 1 0 22 "       N[1] := xi[1]:\n" }{MPLTEXT 1 0 
+22 "       N[2] := xi[2]:\n" }{MPLTEXT 1 0 22 "       N[3] := xi[3]:\n
+" }{MPLTEXT 1 0 37 "       N[4] := 1.-xi[1]-xi[2]-xi[3]:\n" }{MPLTEXT 
+1 0 31 "     elif (nelnodes = 10) then\n" }{MPLTEXT 1 0 36 "       xi4
+ := 1.-xi[1]-xi[2]-xi[3]:\n" }{MPLTEXT 1 0 36 "       N[1] := (2.*xi[1
+]-1.)*xi[1]:\n" }{MPLTEXT 1 0 36 "       N[2] := (2.*xi[2]-1.)*xi[2]:
+\n" }{MPLTEXT 1 0 36 "       N[3] := (2.*xi[3]-1.)*xi[3]:\n" }
+{MPLTEXT 1 0 32 "       N[4] := (2.*xi4-1.)*xi4:\n" }{MPLTEXT 1 0 31 "
+       N[5] := 4.*xi[1]*xi[2]:\n" }{MPLTEXT 1 0 31 "       N[6] := 4.*
+xi[2]*xi[3]:\n" }{MPLTEXT 1 0 31 "       N[7] := 4.*xi[3]*xi[1]:\n" }
+{MPLTEXT 1 0 29 "       N[8] := 4.*xi[1]*xi4:\n" }{MPLTEXT 1 0 29 "   \+
+    N[9] := 4.*xi[2]*xi4:\n" }{MPLTEXT 1 0 30 "       N[10] := 4.*xi[3
+]*xi4:\n" }{MPLTEXT 1 0 30 "     elif (nelnodes = 8) then\n" }
+{MPLTEXT 1 0 52 "       N[1] := (1.-xi[1])*(1.-xi[2])*(1.-xi[3])/8.:\n
+" }{MPLTEXT 1 0 52 "       N[2] := (1.+xi[1])*(1.-xi[2])*(1.-xi[3])/8.
+:\n" }{MPLTEXT 1 0 52 "       N[3] := (1.+xi[1])*(1.+xi[2])*(1.-xi[3])
+/8.:\n" }{MPLTEXT 1 0 52 "       N[4] := (1.-xi[1])*(1.+xi[2])*(1.-xi[
+3])/8.:\n" }{MPLTEXT 1 0 52 "       N[5] := (1.-xi[1])*(1.-xi[2])*(1.+
+xi[3])/8.:\n" }{MPLTEXT 1 0 52 "       N[6] := (1.+xi[1])*(1.-xi[2])*(
+1.+xi[3])/8.:\n" }{MPLTEXT 1 0 52 "       N[7] := (1.+xi[1])*(1.+xi[2]
+)*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 52 "       N[8] := (1.-xi[1])*(1.+xi
+[2])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 31 "     elif (nelnodes = 20) the
+n\n" }{MPLTEXT 1 0 76 "       N[1] := (1.-xi[1])*(1.-xi[2])*(1.-xi[3])
+*(-xi[1]-xi[2]-xi[3]-2.)/8.:\n" }{MPLTEXT 1 0 75 "       N[2] := (1.+x
+i[1])*(1.-xi[2])*(1.-xi[3])*(xi[1]-xi[2]-xi[3]-2.)/8.:\n" }{MPLTEXT 1 
+0 75 "       N[3] := (1.+xi[1])*(1.+xi[2])*(1.-xi[3])*(xi[1]+xi[2]-xi[
+3]-2.)/8.:\n" }{MPLTEXT 1 0 76 "       N[4] := (1.-xi[1])*(1.+xi[2])*(
+1.-xi[3])*(-xi[1]+xi[2]-xi[3]-2.)/8.:\n" }{MPLTEXT 1 0 76 "       N[5]
+ := (1.-xi[1])*(1.-xi[2])*(1.+xi[3])*(-xi[1]-xi[2]+xi[3]-2.)/8.:\n" }
+{MPLTEXT 1 0 75 "       N[6] := (1.+xi[1])*(1.-xi[2])*(1.+xi[3])*(xi[1
+]-xi[2]+xi[3]-2.)/8.:\n" }{MPLTEXT 1 0 75 "       N[7] := (1.+xi[1])*(
+1.+xi[2])*(1.+xi[3])*(xi[1]+xi[2]+xi[3]-2.)/8.:\n" }{MPLTEXT 1 0 76 " \+
+      N[8] := (1.-xi[1])*(1.+xi[2])*(1.+xi[3])*(-xi[1]+xi[2]+xi[3]-2.)
+/8.:\n" }{MPLTEXT 1 0 55 "       N[9]  := (1.-xi[1]^2)*(1.-xi[2])*(1.-
+xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N[10] := (1.+xi[1])*(1.-xi[2]^2
+)*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N[11] := (1.-xi[1]^2)*(1.
++xi[2])*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N[12] := (1.-xi[1])
+*(1.-xi[2]^2)*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N[13] := (1.-
+xi[1]^2)*(1.-xi[2])*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N[14] :
+= (1.+xi[1])*(1.-xi[2]^2)*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 55 "       N
+[15] := (1.-xi[1]^2)*(1.+xi[2])*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 55 "  \+
+     N[16] := (1.-xi[1])*(1.-xi[2]^2)*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 
+55 "       N[17] := (1.-xi[1])*(1.-xi[2])*(1.-xi[3]^2)/4.:\n" }
+{MPLTEXT 1 0 55 "       N[18] := (1.+xi[1])*(1.-xi[2])*(1.-xi[3]^2)/4.
+:\n" }{MPLTEXT 1 0 55 "       N[19] := (1.+xi[1])*(1.+xi[2])*(1.-xi[3]
+^2)/4.:\n" }{MPLTEXT 1 0 55 "       N[20] := (1.-xi[1])*(1.+xi[2])*(1.
+-xi[3]^2)/4.:\n" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 7 "   fi:
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 24 "   shapefunctions := N:\n" 
+}{MPLTEXT 1 0 6 " end:\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "
+#\n" }{MPLTEXT 1 0 69 "#================= SHAPE FUNCTION DERIVATIVES =
+=====================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 57 "shape
+functionderivs := proc (nelnodes,ncoord,elident,xi)\n" }{MPLTEXT 1 0 
+43 "  local shapefunctionderivs,dNdxi,xi3,xi4:\n" }{MPLTEXT 1 0 1 "\n
+" }{MPLTEXT 1 0 48 "  dNdxi := array(sparse,1..nelnodes,1..ncoord):\n
+" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 14 "# 1D elements\n" }{MPLTEXT 
+1 0 2 "#\n" }{MPLTEXT 1 0 23 "  if (ncoord = 1) then\n" }{MPLTEXT 1 0 
+25 "    if (nelnodes=2) then\n" }{MPLTEXT 1 0 25 "      dNdxi[1,1] := \+
+0.5:\n" }{MPLTEXT 1 0 26 "      dNdxi[2,1] := -0.5:\n" }{MPLTEXT 1 0 
+29 "    elif (nelnodes = 3) then\n" }{MPLTEXT 1 0 32 "      dNdxi[1,1]
+ := -0.5+xi[1]:\n" }{MPLTEXT 1 0 32 "      dNdxi[2,1] :=  0.5+xi[1]:\n
+" }{MPLTEXT 1 0 31 "      dNdxi[3,1] := -2.*xi[1]:\n" }{MPLTEXT 1 0 7 
+"    fi\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 15 "#  2D elements\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 2) then\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "#    Triangular element\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 30 "     if ( nelnodes = 3 ) then\n
+" }{MPLTEXT 1 0 25 "       dNdxi[1,1] := 1.:\n" }{MPLTEXT 1 0 25 "    \+
+   dNdxi[2,2] := 1.:\n" }{MPLTEXT 1 0 26 "       dNdxi[3,1] := -1.:\n
+" }{MPLTEXT 1 0 41 "       dNdxi[3,2] := -1.:               \n" }
+{MPLTEXT 1 0 32 "     elif ( nelnodes = 6 ) then\n" }{MPLTEXT 1 0 30 "
+       xi3 := 1.-xi[1]-xi[2]:\n" }{MPLTEXT 1 0 34 "       dNdxi[1,1] :
+= 4.*xi[1]-1.:\n" }{MPLTEXT 1 0 34 "       dNdxi[2,2] := 4.*xi[2]-1.:
+\n" }{MPLTEXT 1 0 35 "       dNdxi[3,1] := -(4.*xi3-1.):\n" }{MPLTEXT 
+1 0 35 "       dNdxi[3,2] := -(4.*xi3-1.):\n" }{MPLTEXT 1 0 31 "      \+
+ dNdxi[4,1] := 4.*xi[2]:\n" }{MPLTEXT 1 0 31 "       dNdxi[4,2] := 4.*
+xi[1]:\n" }{MPLTEXT 1 0 32 "       dNdxi[5,1] := -4.*xi[2]:\n" }
+{MPLTEXT 1 0 32 "       dNdxi[5,2] := -4.*xi[1]:\n" }{MPLTEXT 1 0 40 "
+       dNdxi[6,1] := 4.*xi3 - 4.*xi[1]:\n" }{MPLTEXT 1 0 40 "       dN
+dxi[6,2] := 4.*xi3 - 4.*xi[2]:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+25 "#    Rectangular element\n" }{MPLTEXT 1 0 20 "#                  \+
+\n" }{MPLTEXT 1 0 32 "     elif ( nelnodes = 4 ) then\n" }{MPLTEXT 1 
+0 39 "       dNdxi[1,1] := -0.25*(1.-xi[2]):\n" }{MPLTEXT 1 0 39 "    \+
+   dNdxi[1,2] := -0.25*(1.-xi[1]):\n" }{MPLTEXT 1 0 38 "       dNdxi[2
+,1] := 0.25*(1.-xi[2]):\n" }{MPLTEXT 1 0 39 "       dNdxi[2,2] := -0.2
+5*(1.+xi[1]):\n" }{MPLTEXT 1 0 38 "       dNdxi[3,1] := 0.25*(1.+xi[2]
+):\n" }{MPLTEXT 1 0 38 "       dNdxi[3,2] := 0.25*(1.+xi[1]):\n" }
+{MPLTEXT 1 0 39 "       dNdxi[4,1] := -0.25*(1.+xi[2]):\n" }{MPLTEXT 
+1 0 38 "       dNdxi[4,2] := 0.25*(1.-xi[1]):\n" }{MPLTEXT 1 0 30 "   \+
+  elif (nelnodes = 8) then\n" }{MPLTEXT 1 0 55 "       dNdxi[1,1] := 0
+.25*(1.-xi[2])*(2.*xi[1]+xi[2]):\n" }{MPLTEXT 1 0 55 "       dNdxi[1,2
+] := 0.25*(1.-xi[1])*(xi[1]+2.*xi[2]):\n" }{MPLTEXT 1 0 55 "       dNd
+xi[2,1] := 0.25*(1.-xi[2])*(2.*xi[1]-xi[2]):\n" }{MPLTEXT 1 0 55 "    \+
+   dNdxi[2,2] := 0.25*(1.+xi[1])*(2.*xi[2]-xi[1]):\n" }{MPLTEXT 1 0 
+55 "       dNdxi[3,1] := 0.25*(1.+xi[2])*(2.*xi[1]+xi[2]):\n" }
+{MPLTEXT 1 0 55 "       dNdxi[3,2] := 0.25*(1.+xi[1])*(2.*xi[2]+xi[1])
+:\n" }{MPLTEXT 1 0 55 "       dNdxi[4,1] := 0.25*(1.+xi[2])*(2.*xi[1]-
+xi[2]):\n" }{MPLTEXT 1 0 55 "       dNdxi[4,2] := 0.25*(1.-xi[1])*(2.*
+xi[2]-xi[1]):\n" }{MPLTEXT 1 0 40 "       dNdxi[5,1] := -xi[1]*(1.-xi[
+2]):\n" }{MPLTEXT 1 0 44 "       dNdxi[5,2] := -0.5*(1.-xi[1]*xi[1]):
+\n" }{MPLTEXT 1 0 43 "       dNdxi[6,1] := 0.5*(1.-xi[2]*xi[2]):\n" }
+{MPLTEXT 1 0 40 "       dNdxi[6,2] := -(1.+xi[1])*xi[2]:\n" }{MPLTEXT 
+1 0 40 "       dNdxi[7,1] := -xi[1]*(1.+xi[2]):\n" }{MPLTEXT 1 0 43 " \+
+      dNdxi[7,2] := 0.5*(1.-xi[1]*xi[1]):\n" }{MPLTEXT 1 0 44 "       \+
+dNdxi[8,1] := -0.5*(1.-xi[2]*xi[2]):\n" }{MPLTEXT 1 0 40 "       dNdxi
+[8,2] := -(1.-xi[1])*xi[2]:\n" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 
+1 0 2 "#\n" }{MPLTEXT 1 0 17 "#    3D elements\n" }{MPLTEXT 1 0 2 "#\n
+" }{MPLTEXT 1 0 24 "   elif (ncoord=3) then\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 28 "     if (nelnodes = 4) then\n" }{MPLTEXT 1 0 25 "    \+
+   dNdxi[1,1] := 1.:\n" }{MPLTEXT 1 0 25 "       dNdxi[2,2] := 1.:\n" 
+}{MPLTEXT 1 0 25 "       dNdxi[3,3] := 1.:\n" }{MPLTEXT 1 0 26 "      \+
+ dNdxi[4,1] := -1.:\n" }{MPLTEXT 1 0 26 "       dNdxi[4,2] := -1.:\n" 
+}{MPLTEXT 1 0 26 "       dNdxi[4,3] := -1.:\n" }{MPLTEXT 1 0 31 "     \+
+elif (nelnodes = 10) then\n" }{MPLTEXT 1 0 36 "       xi4 := 1.-xi[1]-
+xi[2]-xi[3]:\n" }{MPLTEXT 1 0 36 "       dNdxi[1,1] := (4.*xi[1]-1.):
+\n" }{MPLTEXT 1 0 36 "       dNdxi[2,2] := (4.*xi[2]-1.):\n" }
+{MPLTEXT 1 0 36 "       dNdxi[3,3] := (4.*xi[3]-1.):\n" }{MPLTEXT 1 0 
+35 "       dNdxi[4,1] := -(4.*xi4-1.):\n" }{MPLTEXT 1 0 35 "       dNd
+xi[4,2] := -(4.*xi4-1.):\n" }{MPLTEXT 1 0 35 "       dNdxi[4,3] := -(4
+.*xi4-1.):\n" }{MPLTEXT 1 0 31 "       dNdxi[5,1] := 4.*xi[2]:\n" }
+{MPLTEXT 1 0 31 "       dNdxi[5,2] := 4.*xi[1]:\n" }{MPLTEXT 1 0 31 " \+
+      dNdxi[6,2] := 4.*xi[3]:\n" }{MPLTEXT 1 0 31 "       dNdxi[6,3] :
+= 4.*xi[2]:\n" }{MPLTEXT 1 0 31 "       dNdxi[7,1] := 4.*xi[3]:\n" }
+{MPLTEXT 1 0 32 "       dNdxi[7,3] := 4.*xi[1]: \n" }{MPLTEXT 1 0 37 "
+       dNdxi[8,1] := 4.*(xi4-xi[1]):\n" }{MPLTEXT 1 0 32 "       dNdxi
+[8,2] := -4.*xi[1]:\n" }{MPLTEXT 1 0 32 "       dNdxi[8,3] := -4.*xi[1
+]:\n" }{MPLTEXT 1 0 32 "       dNdxi[9,1] := -4.*xi[2]:\n" }{MPLTEXT 
+1 0 37 "       dNdxi[9,2] := 4.*(xi4-xi[2]):\n" }{MPLTEXT 1 0 32 "    \+
+   dNdxi[9,3] := -4.*xi[2]:\n" }{MPLTEXT 1 0 37 "       dNdxi[10,1] :=
+ -4.*xi[3]*xi4:\n" }{MPLTEXT 1 0 33 "       dNdxi[10,2] := -4.*xi[3]:
+\n" }{MPLTEXT 1 0 38 "       dNdxi[10,3] := 4.*(xi4-xi[3]):\n" }
+{MPLTEXT 1 0 30 "     elif (nelnodes = 8) then\n" }{MPLTEXT 1 0 48 "  \+
+     dNdxi[1,1] := -(1.-xi[2])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "   \+
+    dNdxi[1,2] := -(1.-xi[1])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "    \+
+   dNdxi[1,3] := -(1.-xi[1])*(1.-xi[2])/8.:\n" }{MPLTEXT 1 0 47 "     \+
+  dNdxi[2,1] := (1.-xi[2])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       \+
+dNdxi[2,2] := -(1.+xi[1])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       d
+Ndxi[2,3] := -(1.+xi[1])*(1.-xi[2])/8.:\n" }{MPLTEXT 1 0 47 "       dN
+dxi[3,1] := (1.+xi[2])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdx
+i[3,2] := (1.+xi[1])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[
+3,3] := -(1.+xi[1])*(1.+xi[2])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[4
+,1] := -(1.+xi[2])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[4,
+2] := (1.-xi[1])*(1.-xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[4,3]
+ := -(1.-xi[1])*(1.+xi[2])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[5,1] \+
+:= -(1.-xi[2])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[5,2] :
+= -(1.-xi[1])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[5,3] :=
+ (1.-xi[1])*(1.-xi[2])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[6,1] := (
+1.-xi[2])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[6,2] := -(1
+.+xi[1])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[6,3] := (1.+
+xi[1])*(1.-xi[2])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[7,1] := (1.+xi
+[2])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[7,2] := (1.+xi[1
+])*(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[7,3] := (1.+xi[1])
+*(1.+xi[2])/8.:\n" }{MPLTEXT 1 0 48 "       dNdxi[8,1] := -(1.+xi[2])*
+(1.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[8,2] := (1.-xi[1])*(1
+.+xi[3])/8.:\n" }{MPLTEXT 1 0 47 "       dNdxi[8,3] := (1.-xi[1])*(1.+
+xi[2])/8.:\n" }{MPLTEXT 1 0 31 "     elif (nelnodes = 20) then\n" }
+{MPLTEXT 1 0 107 "       dNdxi[1,1] := (-(1.-xi[2])*(1.-xi[3])*(-xi[1]
+-xi[2]-xi[3]-2.)-(1.-xi[1])*(1.-xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 
+0 107 "       dNdxi[1,2] := (-(1.-xi[1])*(1.-xi[3])*(-xi[1]-xi[2]-xi[3
+]-2.)-(1.-xi[1])*(1.-xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 107 "    \+
+   dNdxi[1,3] := (-(1.-xi[1])*(1.-xi[2])*(-xi[1]-xi[2]-xi[3]-2.)-(1.-x
+i[1])*(1.-xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 
+0 105 "       dNdxi[2,1] := ((1.-xi[2])*(1.-xi[3])*(xi[1]-xi[2]-xi[3]-
+2.)+(1.+xi[1])*(1.-xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "      \+
+ dNdxi[2,2] := (-(1.+xi[1])*(1.-xi[3])*(xi[1]-xi[2]-xi[3]-2.)-(1.+xi[1
+])*(1.-xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[2,3] \+
+:= (-(1.+xi[1])*(1.-xi[2])*(xi[1]-xi[2]-xi[3]-2.)-(1.+xi[1])*(1.-xi[2]
+)*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 105 "       dN
+dxi[3,1] := ((1.+xi[2])*(1.-xi[3])*(xi[1]+xi[2]-xi[3]-2.)+(1.+xi[1])*(
+1.+xi[2])*(1.-xi[3]))/8.:\n" }{MPLTEXT 1 0 105 "       dNdxi[3,2] := (
+(1.+xi[1])*(1.-xi[3])*(xi[1]+xi[2]-xi[3]-2.)+(1.+xi[1])*(1.+xi[2])*(1.
+-xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[3,3] := (-(1.+xi[1])*(
+1.+xi[2])*(xi[1]+xi[2]-xi[3]-2.)-(1.+xi[1])*(1.+xi[2])*(1.-xi[3]))/8.:
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 107 "       dNdxi[4,1] := (-(1.
++xi[2])*(1.-xi[3])*(-xi[1]+xi[2]-xi[3]-2.)-(1.-xi[1])*(1.+xi[2])*(1.-x
+i[3]))/8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[4,2] := ((1.-xi[1])*(1.-
+xi[3])*(-xi[1]+xi[2]-xi[3]-2.)+(1.-xi[1])*(1.+xi[2])*(1.-xi[3]))/8.:\n
+" }{MPLTEXT 1 0 107 "       dNdxi[4,3] := (-(1.-xi[1])*(1.+xi[2])*(-xi
+[1]+xi[2]-xi[3]-2.)-(1.-xi[1])*(1.+xi[2])*(1.-xi[3]))/8.:\n" }
+{MPLTEXT 1 0 107 "       dNdxi[5,1] := (-(1.-xi[2])*(1.+xi[3])*(-xi[1]
+-xi[2]+xi[3]-2.)-(1.-xi[1])*(1.-xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 
+0 107 "       dNdxi[5,2] := (-(1.-xi[1])*(1.+xi[3])*(-xi[1]-xi[2]+xi[3
+]-2.)-(1.-xi[1])*(1.-xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "    \+
+   dNdxi[5,3] := ((1.-xi[1])*(1.-xi[2])*(-xi[1]-xi[2]+xi[3]-2.)+(1.-xi
+[1])*(1.-xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 105 "       dNdxi[6,1
+] := ((1.-xi[2])*(1.+xi[3])*(xi[1]-xi[2]+xi[3]-2.)+(1.+xi[1])*(1.-xi[2
+])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[6,2] := (-(1.+xi
+[1])*(1.+xi[3])*(xi[1]-xi[2]+xi[3]-2.)-(1.+xi[1])*(1.-xi[2])*(1.+xi[3]
+))/8.:\n" }{MPLTEXT 1 0 105 "       dNdxi[6,3] := ((1.+xi[1])*(1.-xi[2
+])*(xi[1]-xi[2]+xi[3]-2.)+(1.+xi[1])*(1.-xi[2])*(1.+xi[3]))/8.:\n" }
+{MPLTEXT 1 0 105 "       dNdxi[7,1] := ((1.+xi[2])*(1.+xi[3])*(xi[1]+x
+i[2]+xi[3]-2.)+(1.+xi[1])*(1.+xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 
+105 "       dNdxi[7,2] := ((1.+xi[1])*(1.+xi[3])*(xi[1]+xi[2]+xi[3]-2.
+)+(1.+xi[1])*(1.+xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 105 "       d
+Ndxi[7,3] := ((1.+xi[1])*(1.+xi[2])*(xi[1]+xi[2]+xi[3]-2.)+(1.+xi[1])*
+(1.+xi[2])*(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 107 "       dNdxi[8,1] := \+
+(-(1.+xi[2])*(1.+xi[3])*(-xi[1]+xi[2]+xi[3]-2.)-(1.-xi[1])*(1.+xi[2])*
+(1.+xi[3]))/8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[8,2] := ((1.-xi[1])
+*(1.+xi[3])*(-xi[1]+xi[2]+xi[3]-2.)+(1.-xi[1])*(1.+xi[2])*(1.+xi[3]))/
+8.:\n" }{MPLTEXT 1 0 106 "       dNdxi[8,3] := ((1.-xi[1])*(1.+xi[2])*
+(-xi[1]+xi[2]+xi[3]-2.)+(1.-xi[1])*(1.+xi[2])*(1.+xi[3]))/8.:\n" }
+{MPLTEXT 1 0 58 "       dNdxi[9,1]  := -2.*xi[1]*(1.-xi[2])*(1.-xi[3])
+/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[9,2]  := -(1.-xi[1]^2)*(1.-xi[3
+])/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[9,3]  := -(1.-xi[1]^2)*(1.-xi
+[2])/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[10,1]  := (1.-xi[2]^2)*(1.-
+xi[3])/4.:\n" }{MPLTEXT 1 0 59 "       dNdxi[10,2]  := -2.*xi[2]*(1.+x
+i[1])*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 52 "       dNdxi[10,3]  := -(1.-
+xi[2]^2)*(1.+xi[1])/4.:\n" }{MPLTEXT 1 0 59 "       dNdxi[11,1]  := -2
+.*xi[1]*(1.+xi[2])*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[11
+,2]  := (1.-xi[1]^2)*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 52 "       dNdxi[
+11,3]  := -(1.-xi[1]^2)*(1.+xi[2])/4.:\n" }{MPLTEXT 1 0 52 "       dNd
+xi[12,1]  := -(1.-xi[2]^2)*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 59 "       \+
+dNdxi[12,2]  := -2.*xi[2]*(1.-xi[1])*(1.-xi[3])/4.:\n" }{MPLTEXT 1 0 
+52 "       dNdxi[12,3]  := -(1.-xi[2]^2)*(1.-xi[1])/4.:\n" }{MPLTEXT 
+1 0 59 "       dNdxi[13,1]  := -2.*xi[1]*(1.-xi[2])*(1.+xi[3])/4.:\n" 
+}{MPLTEXT 1 0 52 "       dNdxi[13,2]  := -(1.-xi[1]^2)*(1.+xi[3])/4.:
+\n" }{MPLTEXT 1 0 51 "       dNdxi[13,3]  := (1.-xi[1]^2)*(1.-xi[2])/4
+.:\n" }{MPLTEXT 1 0 51 "       dNdxi[14,1]  := (1.-xi[2]^2)*(1.+xi[3])
+/4.:\n" }{MPLTEXT 1 0 59 "       dNdxi[14,2]  := -2.*xi[2]*(1.+xi[1])*
+(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[14,3]  := (1.-xi[2]^2
+)*(1.+xi[1])/4.:\n" }{MPLTEXT 1 0 59 "       dNdxi[15,1]  := -2.*xi[1]
+*(1.+xi[2])*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 52 "       dNdxi[15,2]  :=
+  (1.-xi[1]^2)*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 51 "       dNdxi[15,3] \+
+ := (1.-xi[1]^2)*(1.+xi[2])/4.:\n" }{MPLTEXT 1 0 52 "       dNdxi[16,1
+]  := -(1.-xi[2]^2)*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 59 "       dNdxi[1
+6,2]  := -2.*xi[2]*(1.-xi[1])*(1.+xi[3])/4.:\n" }{MPLTEXT 1 0 51 "    \+
+   dNdxi[16,3]  := (1.-xi[2]^2)*(1.-xi[1])/4.:\n" }{MPLTEXT 1 0 51 "  \+
+     dNdxi[17,1] := -(1.-xi[2])*(1.-xi[3]^2)/4.:\n" }{MPLTEXT 1 0 51 "
+       dNdxi[17,2] := -(1.-xi[1])*(1.-xi[3]^2)/4.:\n" }{MPLTEXT 1 0 
+55 "       dNdxi[17,3] := -xi[3]*(1.-xi[1])*(1.-xi[2])/2.:\n" }
+{MPLTEXT 1 0 50 "       dNdxi[18,1] := (1.-xi[2])*(1.-xi[3]^2)/4.:\n" 
+}{MPLTEXT 1 0 51 "       dNdxi[18,2] := -(1.+xi[1])*(1.-xi[3]^2)/4.:\n
+" }{MPLTEXT 1 0 55 "       dNdxi[18,3] := -xi[3]*(1.+xi[1])*(1.-xi[2])
+/2.:\n" }{MPLTEXT 1 0 50 "       dNdxi[19,1] := (1.+xi[2])*(1.-xi[3]^2
+)/4.:\n" }{MPLTEXT 1 0 50 "       dNdxi[19,2] := (1.+xi[1])*(1.-xi[3]^
+2)/4.:\n" }{MPLTEXT 1 0 55 "       dNdxi[19,3] := -xi[3]*(1.+xi[1])*(1
+.+xi[2])/2.:\n" }{MPLTEXT 1 0 51 "       dNdxi[20,1] := -(1.+xi[2])*(1
+.-xi[3]^2)/4.:\n" }{MPLTEXT 1 0 50 "       dNdxi[20,2] := (1.-xi[1])*(
+1.-xi[3]^2)/4.:\n" }{MPLTEXT 1 0 55 "       dNdxi[20,3] := -xi[3]*(1.-
+xi[1])*(1.+xi[2])/2.:\n" }{MPLTEXT 1 0 9 "     fi:\n" }{MPLTEXT 1 0 7 
+"   fi:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 33 "   shapefunctionderi
+vs := dNdxi:\n" }{MPLTEXT 1 0 6 " end:\n" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 77 "#================= ELEMENT STIF
+FNESS MATRIX ================================\n" }{MPLTEXT 1 0 2 "#\n
+" }{MPLTEXT 1 0 79 "elstif := proc (ncoord,ndof,nelnodes,elident,coord
+,materialprops,displacement)\n" }{MPLTEXT 1 0 93 "   local elstif,npoi
+nts,intpt,xilist,xi,w,N,dNdxi,dNdx,dxdxi,dxidx,dt,strain,ekk,omega,dsd
+e,\n" }{MPLTEXT 1 0 47 "         Bvol,el_vol,kel,row,col,a,b,i,j,k,l: \+
+\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 34 "#  Assemble the element st
+iffness\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 16 "#    Arguments:\n" 
+}{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 72 "#      ncoord             No. \+
+coordinates (2 or 3 for 2D or 3D problem)\n" }{MPLTEXT 1 0 80 "#      \+
+ndof               No. degrees of freedom per node (often ndof = ncoor
+d)\n" }{MPLTEXT 1 0 51 "#      nelnodes           No. nodes on the ele
+ment\n" }{MPLTEXT 1 0 88 "#      elident            Element identifier
+ (not used here - for future enhancements!)\n" }{MPLTEXT 1 0 48 "#    \+
+  coords[i,a]        ith coord of ath node\n" }{MPLTEXT 1 0 83 "#     \+
+ materialprops      Material properties passed on to constitutive proc
+edures\n" }{MPLTEXT 1 0 65 "#      displacement[i,a]  ith displacement
+ component at ath node\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 20 "#   \+
+Local variables\n" }{MPLTEXT 1 0 49 "#      npoints            No. int
+egration points\n" }{MPLTEXT 1 0 73 "#      xi[i,inpt]         ith loc
+al coord of integration point no. intpt\n" }{MPLTEXT 1 0 65 "#      w[
+intpt]           weight for integration point no. intpt\n" }{MPLTEXT 
+1 0 123 "#      N[a]               Shape function associated with ath \+
+node on element\n#      Bvol[a,i]          Volumetric B matrix\n" }
+{MPLTEXT 1 0 79 "#      dNdxi[a,i]         Derivative of ath shape fun
+ction wrt ith local coord\n" }{MPLTEXT 1 0 80 "#      dNdx[a,i]       \+
+   Derivative of ath shape function wrt ith global coord\n" }{MPLTEXT 
+1 0 77 "#      dxdxi[i,j]         Derivative of ith global coord wrt j
+th local coord\n" }{MPLTEXT 1 0 77 "#      dxidx[i,j]         Derivati
+ve of ith local coord wrt jth global coord\n" }{MPLTEXT 1 0 50 "#     \+
+ det                Determinant of jacobian\n" }{MPLTEXT 1 0 47 "#    \+
+  strain[i,j]        strain_ij components\n" }{MPLTEXT 1 0 76 "#      \+
+dsde[i,j,k,l]      Derivative of stress_ij with respect to strain_kl\n
+" }{MPLTEXT 1 0 61 "#      kel[row,col]       Rows and cols of element
+ stiffness\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 66 "   npoints := numberofintegrationpoints(ncoord,nelnodes,elident)
+:\n" }{MPLTEXT 1 0 42 "   xilist := array(1..ncoord,1..npoints):\n" }
+{MPLTEXT 1 0 27 "   w := array(1..npoints):\n" }{MPLTEXT 1 0 28 "   N \+
+:= array(1..nelnodes):\n" }{MPLTEXT 1 0 42 "   dNdxi := array(1..nelno
+des,1..ncoord):\n" }{MPLTEXT 1 0 41 "   dNdx := array(1..nelnodes,1..n
+coord):\n" }{MPLTEXT 1 0 40 "   dxdxi := array(1..ncoord,1..ncoord):\n
+" }{MPLTEXT 1 0 88 "   dxidx := array(1..ncoord,1..ncoord):\n   Bvol :
+= array(sparse,1..nelnodes,1..ncoord):\n" }{MPLTEXT 1 0 39 "   strain \+
+:= array(1..ndof,1..ncoord):\n" }{MPLTEXT 1 0 51 "   dsde := array(1..
+ndof,1..ndof,1..ndof,1..ndof):\n" }{MPLTEXT 1 0 59 "   kel := array(sp
+arse,1..ndof*nelnodes,1..ndof*nelnodes):\n" }{MPLTEXT 1 0 72 "#\n#  Co
+mpute the volumetric B matrix by integrating over the element. \n#" }
+{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 45 "#  Set up integration points and
+ weights    \n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 65 "   xilist := i
+ntegrationpoints(ncoord,nelnodes,npoints,elident):\n" }{MPLTEXT 1 0 
+61 "   w := integrationweights(ncoord,nelnodes,npoints,elident):\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "#  Loop over the integration po
+ints\n" }{MPLTEXT 1 0 17 "#\n   el_vol := 0:" }{MPLTEXT 1 0 35 "\n   f
+or intpt from 1 to npoints do\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 
+63 "#     Compute shape functions and derivatives wrt local coords\n" 
+}{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i from 1 to ncoord d
+o\n" }{MPLTEXT 1 0 34 "        xi[i] := xilist[i,intpt]:\n" }{MPLTEXT 
+1 0 16 "      od:      \n" }{MPLTEXT 1 0 55 "      N := shapefunctions
+(nelnodes,ncoord,elident,xi):\n" }{MPLTEXT 1 0 64 "      dNdxi := shap
+efunctionderivs(nelnodes,ncoord,elident,xi):\n" }{MPLTEXT 1 0 2 "#\n" 
+}{MPLTEXT 1 0 54 "#     Compute the jacobian matrix and its determinan
+t\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i from 1 to nco
+ord do\n" }{MPLTEXT 1 0 34 "        for j from 1 to ncoord do\n" }
+{MPLTEXT 1 0 28 "          dxdxi[i,j] := 0.:\n" }{MPLTEXT 1 0 38 "    \+
+      for a from 1 to nelnodes do\n" }{MPLTEXT 1 0 62 "            dxd
+xi[i,j] := dxdxi[i,j] + coord[i,a]*dNdxi[a,j]:\n" }{MPLTEXT 1 0 14 "  \+
+        od:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 10 "    \+
+  od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 31 "      dxidx := inverse
+(dxdxi):\n" }{MPLTEXT 1 0 24 "      dt := det(dxdxi):\n" }{MPLTEXT 1 
+0 2 "#\n" }{MPLTEXT 1 0 74 "#     Convert shape function derivatives t
+o derivatives wrt global coords\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 34 "      for a from 1 to nelnodes do\n" }{MPLTEXT 1 0 34 "        f
+or i from 1 to ncoord do\n" }{MPLTEXT 1 0 27 "          dNdx[a,i] := 0
+.:\n" }{MPLTEXT 1 0 36 "          for j from 1 to ncoord do\n" }
+{MPLTEXT 1 0 60 "            dNdx[a,i] := dNdx[a,i] + dNdxi[a,j]*dxidx
+[j,i]:\n" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "       \+
+ od:\n" }{MPLTEXT 1 0 11 "      od:\n#" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 44 "#     Compute the integrals over the volume\n" }
+{MPLTEXT 1 0 15 "#             \n" }{MPLTEXT 1 0 34 "      for a from \+
+1 to nelnodes do\n" }{MPLTEXT 1 0 32 "        for i from 1 to ndof do
+\n" }{MPLTEXT 1 0 58 "          Bvol[a,i] := Bvol[a,i] + dNdx[a,i]*w[i
+ntpt]*dt:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 57 "      \+
+od:\n#     \n      el_vol := el_vol + w[intpt]*dt:\n#\n" }{MPLTEXT 1 
+0 209 "    od:\n#\n    omega := 0:\n    for a from 1 to nelnodes do\n \+
+     for i from 1 to ndof do\n         Bvol[a,i] := Bvol[a,i]/(ncoord*
+el_vol):\n         omega := omega + Bvol[a,i]*displacement[i,a]:\n    \+
+  od:\n    od:" }{MPLTEXT 1 0 4 "\n\n#\n" }{MPLTEXT 1 0 29 "#  Compute
+ the the stiffness\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "#  Loop \+
+over the integration points\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 34 
+"   for intpt from 1 to npoints do\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 
+1 0 63 "#     Compute shape functions and derivatives wrt local coords
+\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i from 1 to ncoo
+rd do\n" }{MPLTEXT 1 0 34 "        xi[i] := xilist[i,intpt]:\n" }
+{MPLTEXT 1 0 16 "      od:      \n" }{MPLTEXT 1 0 55 "      N := shape
+functions(nelnodes,ncoord,elident,xi):\n" }{MPLTEXT 1 0 64 "      dNdx
+i := shapefunctionderivs(nelnodes,ncoord,elident,xi):\n" }{MPLTEXT 1 
+0 2 "#\n" }{MPLTEXT 1 0 54 "#     Compute the jacobian matrix and its \+
+determinant\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i fro
+m 1 to ncoord do\n" }{MPLTEXT 1 0 34 "        for j from 1 to ncoord d
+o\n" }{MPLTEXT 1 0 28 "          dxdxi[i,j] := 0.:\n" }{MPLTEXT 1 0 
+38 "          for a from 1 to nelnodes do\n" }{MPLTEXT 1 0 62 "       \+
+     dxdxi[i,j] := dxdxi[i,j] + coord[i,a]*dNdxi[a,j]:\n" }{MPLTEXT 1 
+0 14 "          od:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 
+10 "      od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 31 "      dxidx :=
+ inverse(dxdxi):\n" }{MPLTEXT 1 0 24 "      dt := det(dxdxi):\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 74 "#     Convert shape function de
+rivatives to derivatives wrt global coords\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 34 "      for a from 1 to nelnodes do\n" }{MPLTEXT 1 0 
+34 "        for i from 1 to ncoord do\n" }{MPLTEXT 1 0 27 "          d
+Ndx[a,i] := 0.:\n" }{MPLTEXT 1 0 36 "          for j from 1 to ncoord \+
+do\n" }{MPLTEXT 1 0 60 "            dNdx[a,i] := dNdx[a,i] + dNdxi[a,j
+]*dxidx[j,i]:\n" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "
+        od:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 74 "#     Compute the (infinitesimal) strain by different
+iating displacements\n" }{MPLTEXT 1 0 75 "#     This step is not reall
+y necessary for linear elasticity calculations\n" }{MPLTEXT 1 0 73 "# \+
+    where stiffness is independent of strain.  It is included to allow
+\n" }{MPLTEXT 1 0 46 "#     extension to nonlinear materials later.\n
+" }{MPLTEXT 1 0 18 "#\n      ekk := 0:\n" }{MPLTEXT 1 0 32 "      for \+
+i from 1 to ncoord do\n" }{MPLTEXT 1 0 35 "         for j from 1 to nc
+oord do\n" }{MPLTEXT 1 0 31 "            strain[i,j] := 0.:\n" }
+{MPLTEXT 1 0 40 "            for a from 1 to nelnodes do\n" }{MPLTEXT 
+1 0 42 "              strain[i,j] := strain[i,j] \n" }{MPLTEXT 1 0 90 
+"                         + 0.5*(displacement[i,a]*dNdx[a,j]+displacem
+ent[j,a]*dNdx[a,i]):\n" }{MPLTEXT 1 0 16 "            od:\n" }
+{MPLTEXT 1 0 48 "         od:\n         ekk := ekk + strain[i,i]:\n" }
+{MPLTEXT 1 0 214 "      od:\n      strain[1,1] := strain[1,1] - ekk/nc
+oord + omega:\n      strain[2,2] := strain[2,2] - ekk/ncoord + omega:
+\n      if (ncoord = 3) then\n        strain[3,3] := strain[3,3] - ekk
+/ncoord + omega:\n      fi:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 65 
+"#     Compute the material tangent stiffness (d stress/d strain)\n" }
+{MPLTEXT 1 0 73 "#     ds/de is just C_ijkl for linear elasticity - th
+is notation is used\n" }{MPLTEXT 1 0 47 "#     to allow extension to n
+onlinear problems\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 67 "      dsd
+e := materialstiffness(ndof,ncoord,strain,materialprops):\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "#     Compute the element stiff
+ness\n" }{MPLTEXT 1 0 15 "#             \n" }{MPLTEXT 1 0 34 "      fo
+r a from 1 to nelnodes do\n" }{MPLTEXT 1 0 32 "        for i from 1 to
+ ndof do\n" }{MPLTEXT 1 0 38 "          for b from 1 to nelnodes do\n
+" }{MPLTEXT 1 0 36 "            for k from 1 to ndof do\n" }{MPLTEXT 
+1 0 35 "              row := ndof*(a-1)+i:\n" }{MPLTEXT 1 0 35 "      \+
+        col := ndof*(b-1)+k:\n" }{MPLTEXT 1 0 40 "              for j \+
+from 1 to ncoord do\n" }{MPLTEXT 1 0 42 "                for l from 1 \+
+to ncoord do\n" }{MPLTEXT 1 0 49 "                  kel[col,row] := ke
+l[col,row] +\n" }{MPLTEXT 1 0 81 "                                  ds
+de[i,j,k,l]*dNdx[b,l]*dNdx[a,j]*w[intpt]*dt:\n" }{MPLTEXT 1 0 49 "    \+
+              kel[col,row] := kel[col,row] +\n" }{MPLTEXT 1 0 96 "    \+
+                       dsde[j,j,k,l]*dNdx[b,l]*(Bvol[a,i] - dNdx[a,i]/
+ncoord)*w[intpt]*dt: \n" }{MPLTEXT 1 0 49 "                  kel[col,r
+ow] := kel[col,row] +\n" }{MPLTEXT 1 0 95 "                           \+
+dsde[i,j,l,l]*dNdx[a,j]*(Bvol[b,k] - dNdx[b,k]/ncoord)*w[intpt]*dt:\n
+" }{MPLTEXT 1 0 49 "                  kel[col,row] := kel[col,row] +\n
+" }{MPLTEXT 1 0 114 "                           dsde[j,j,l,l]*(Bvol[b,
+k]-dNdx[b,k]/ncoord)*(Bvol[a,i] - dNdx[a,i]/ncoord)*w[intpt]*dt: " }
+{MPLTEXT 1 0 1 " " }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 20 "            \+
+    od:\n" }{MPLTEXT 1 0 18 "              od:\n" }{MPLTEXT 1 0 16 "  \+
+          od:\n" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "
+        od:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 8 "    od:
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 18 "   elstif := kel:\n" }
+{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 4 "end:" }}{PARA 7 "" 0 "" {TEXT -1 
+0 "" }}{PARA 200 "" 0 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 68 "#====================== No. nodes on element faces ==
+==============\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 68 "#   This pro
+cedure returns the number of nodes on each element face\n" }{MPLTEXT 
+1 0 66 "#   for various element types.  This info is needed for comput
+ing\n" }{MPLTEXT 1 0 70 "#   the surface integrals associated with the
+ element traction vector\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 50 "nf
+acenodes := proc (ncoord,nelnodes,elident,face)\n" }{MPLTEXT 1 0 23 " \+
+  local n,nfacenodes:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 24 "   if \+
+(ncoord = 2) then\n" }{MPLTEXT 1 0 52 "     if (nelnodes = 3 or nelnod
+es = 4) then n := 2:\n" }{MPLTEXT 1 0 56 "     elif (nelnodes = 6 or n
+elnodes = 8) then n:=3: fi:\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 3) \+
+then\n" }{MPLTEXT 1 0 36 "     if (nelnodes = 4) then n := 3:\n" }
+{MPLTEXT 1 0 39 "     elif (nelnodes = 10) then n := 6:\n" }{MPLTEXT 
+1 0 38 "     elif (nelnodes = 8) then n := 4:\n" }{MPLTEXT 1 0 43 "   \+
+  elif (nelnodes = 20) then n := 8: fi:\n" }{MPLTEXT 1 0 7 "   fi:\n" 
+}{MPLTEXT 1 0 20 "   nfacenodes := n:\n" }{MPLTEXT 1 0 5 " end:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 71 "#======================= Lis
+ts of nodes on element faces =============\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 65 "#    This procedure returns the list of nodes on an e
+lement face\n" }{MPLTEXT 1 0 65 "#    The nodes are ordered so that th
+e element face forms either\n" }{MPLTEXT 1 0 69 "#    a 1D line elemen
+t or a 2D surface element for 2D or 3D problems\n" }{MPLTEXT 1 0 2 "#
+\n" }{MPLTEXT 1 0 49 "facenodes := proc (ncoord,nelnodes,elident,face)
+\n" }{MPLTEXT 1 0 31 "   local facenodes,i3,i4,list:\n" }{MPLTEXT 1 0 
+1 "\n" }{MPLTEXT 1 0 30 "   i3 := array(1..3,[2,3,1]):\n" }{MPLTEXT 1 
+0 33 "   i4 := array(1..4,[2,3,4,1]): \n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 55 "   list := array(1..nfacenodes(ncoord,nelnodes,face))
+:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 24 "   if (ncoord = 2) then\n
+" }{MPLTEXT 1 0 28 "     if (nelnodes = 3) then\n" }{MPLTEXT 1 0 24 " \+
+      list[1] := face:\n" }{MPLTEXT 1 0 28 "       list[2] := i3[face]
+:\n" }{MPLTEXT 1 0 30 "     elif (nelnodes = 6) then\n" }{MPLTEXT 1 0 
+24 "       list[1] := face:\n" }{MPLTEXT 1 0 28 "       list[2] := i3[
+face]:\n" }{MPLTEXT 1 0 26 "       list[3] := face+3:\n" }{MPLTEXT 1 
+0 28 "     elif (nelnodes=4) then\n" }{MPLTEXT 1 0 24 "       list[1] \+
+:= face:\n" }{MPLTEXT 1 0 28 "       list[2] := i4[face]:\n" }
+{MPLTEXT 1 0 28 "     elif (nelnodes=8) then\n" }{MPLTEXT 1 0 24 "    \+
+   list[1] := face:\n" }{MPLTEXT 1 0 28 "       list[2] := i4[face]:\n
+" }{MPLTEXT 1 0 26 "       list[3] := face+4:\n" }{MPLTEXT 1 0 9 "    \+
+ fi:\n" }{MPLTEXT 1 0 26 "   elif (ncoord = 3) then\n" }{MPLTEXT 1 0 
+26 "     if (nelnodes=4) then\n" }{MPLTEXT 1 0 45 "       if   (face =
+ 1) then list := [1,2,3]:\n" }{MPLTEXT 1 0 45 "       elif (face = 2) \+
+then list := [1,4,2]:\n" }{MPLTEXT 1 0 45 "       elif (face = 3) then
+ list := [2,4,3]:\n" }{MPLTEXT 1 0 49 "       elif (face = 4) then lis
+t := [3,4,1]: fi:\n" }{MPLTEXT 1 0 31 "     elif (nelnodes = 10) then
+\n" }{MPLTEXT 1 0 51 "       if   (face = 1) then list := [1,2,3,5,6,7
+]:\n" }{MPLTEXT 1 0 51 "       elif (face = 2) then list := [1,4,2,8,9
+,5]:\n" }{MPLTEXT 1 0 52 "       elif (face = 3) then list := [2,4,3,9
+,10,6]:\n" }{MPLTEXT 1 0 56 "       elif (face = 4) then list := [3,4,
+1,10,8,7]: fi:\n" }{MPLTEXT 1 0 30 "     elif (nelnodes = 8) then\n" }
+{MPLTEXT 1 0 47 "       if   (face = 1) then list := [1,2,3,4]:\n" }
+{MPLTEXT 1 0 47 "       elif (face = 2) then list := [5,8,7,6]:\n" }
+{MPLTEXT 1 0 47 "       elif (face = 3) then list := [1,5,6,2]:\n" }
+{MPLTEXT 1 0 47 "       elif (face = 4) then list := [2,6,7,3]:\n" }
+{MPLTEXT 1 0 47 "       elif (face = 5) then list := [3,7,8,4]:\n" }
+{MPLTEXT 1 0 51 "       elif (face = 6) then list := [4,8,5,1]: fi:\n
+" }{MPLTEXT 1 0 32 "     elif (nelnodes = 20) then \n" }{MPLTEXT 1 0 
+58 "       if   (face = 1) then list := [1,2,3,4,9,10,11,12]:\n" }
+{MPLTEXT 1 0 59 "       elif (face = 2) then list := [5,8,7,6,16,15,14
+,13]:\n" }{MPLTEXT 1 0 58 "       elif (face = 3) then list := [1,5,6,
+2,17,13,18,9]:\n" }{MPLTEXT 1 0 59 "       elif (face = 4) then list :
+= [2,6,7,3,18,14,19,10]:\n" }{MPLTEXT 1 0 59 "       elif (face = 5) t
+hen list := [3,7,8,4,19,15,20,11]:\n" }{MPLTEXT 1 0 63 "       elif (f
+ace = 6) then list := [4,8,5,1,20,16,17,12]: fi:\n" }{MPLTEXT 1 0 9 " \+
+    fi:\n" }{MPLTEXT 1 0 7 "   fi:\n" }{MPLTEXT 1 0 21 "  facenodes :=
+ list:\n" }{MPLTEXT 1 0 4 "end:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 2 "#\n" }{MPLTEXT 1 0 71 "#====================== ELEMENT DISTRIBU
+TED LOAD VECTOR ==============\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+65 "eldload := proc (ncoord,ndof,nfacenodes,elident,coords,traction)\n
+" }{MPLTEXT 1 0 72 "  local eldload,xilist,xi,w,N,dNdxi,dxdxi,dt,r,npo
+ints,intpt,i,j,a,row:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 61 "  npoi
+nts := numberofintegrationpoints(ncoord-1,nfacenodes):\n" }{MPLTEXT 1 
+0 43 "  xilist := array(1..ncoord-1,1..npoints):\n" }{MPLTEXT 1 0 28 "
+  xi := array[1..ncoord-1]:\n" }{MPLTEXT 1 0 26 "  w := array(1..npoin
+ts):\n" }{MPLTEXT 1 0 29 "  N := array(1..nfacenodes):\n" }{MPLTEXT 1 
+0 45 "  dNdxi := array(1..nfacenodes,1..ncoord-1):\n" }{MPLTEXT 1 0 
+41 "  dxdxi := array(1..ncoord,1..ncoord-1):\n" }{MPLTEXT 1 0 41 "  r \+
+:= array(sparse,1..ndof*nfacenodes):\n" }{MPLTEXT 1 0 4 "   \n" }
+{MPLTEXT 1 0 60 "  xilist := integrationpoints(ncoord-1,nfacenodes,npo
+ints):\n" }{MPLTEXT 1 0 56 "  w := integrationweights(ncoord-1,nfaceno
+des,npoints):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 33 "  for intpt fr
+om 1 to npoints do\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 32 "    for i
+ from 1 to ncoord-1 do\n" }{MPLTEXT 1 0 32 "      xi[i] := xilist[i,in
+tpt]:\n" }{MPLTEXT 1 0 8 "    od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 
+0 57 "    N := shapefunctions(nfacenodes,ncoord-1,elident,xi):\n" }
+{MPLTEXT 1 0 66 "    dNdxi := shapefunctionderivs(nfacenodes,ncoord-1,
+elident,xi):\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 54 "#     Compute \+
+the jacobian matrix and its determinant\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 30 "    for i from 1 to ncoord do\n" }{MPLTEXT 1 0 34 "  \+
+    for j from 1 to ncoord-1 do\n" }{MPLTEXT 1 0 26 "        dxdxi[i,j
+] := 0.:\n" }{MPLTEXT 1 0 38 "        for a from 1 to nfacenodes do\n
+" }{MPLTEXT 1 0 61 "          dxdxi[i,j] := dxdxi[i,j] + coords[i,a]*d
+Ndxi[a,j]:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 10 "     \+
+ od:\n" }{MPLTEXT 1 0 8 "    od:\n" }{MPLTEXT 1 0 25 "    if (ncoord =
+ 2) then\n" }{MPLTEXT 1 0 45 "      dt := sqrt(dxdxi[1,1]^2+dxdxi[2,1]
+^2):\n" }{MPLTEXT 1 0 27 "    elif (ncoord = 3) then\n" }{MPLTEXT 1 0 
+70 "      dt := sqrt( ((dxdxi[2,1]*dxdxi[3,2])-(dxdxi[2,2]*dxdxi[3,1])
+)^2\n" }{MPLTEXT 1 0 64 "          + ((dxdxi[1,1]*dxdxi[3,2])-(dxdxi[1
+,2]*dxdxi[3,1]))^2\n" }{MPLTEXT 1 0 67 "          + ((dxdxi[1,1]*dxdxi
+[2,2])-(dxdxi[1,2]*dxdxi[2,1]))^2 ):\n" }{MPLTEXT 1 0 8 "    fi:\n" }
+{MPLTEXT 1 0 33 "   for a from 1 to nfacenodes do\n" }{MPLTEXT 1 0 30 
+"      for i from 1 to ndof do\n" }{MPLTEXT 1 0 29 "        row := ndo
+f*(a-1)+i:\n" }{MPLTEXT 1 0 57 "        r[row] := r[row] + N[a]*tracti
+on[i]*w[intpt]*dt:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 8 "
+    od:\n" }{MPLTEXT 1 0 6 "  od:\n" }{MPLTEXT 1 0 16 "  eldload := r:
+\n" }{MPLTEXT 1 0 4 "end:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 
+"#\n" }{MPLTEXT 1 0 79 "#====================== Assemble the global st
+iffness matrix =================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 
+0 110 "globalstiffness := proc (ncoord,ndof,nnode,coords,nelem,maxnode
+s,elident,nelnodes,connect,materialprops,dofs)\n" }{MPLTEXT 1 0 78 "  \+
+  local globalstiffness,Stif,lmncoord,lmndof,kel,lmn,n,ident,a,i,k,b,r
+w,cl:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 41 "#   Assemble the glob
+al stiffness matrix\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 54 "   Stif := array(sparse,1..ndof*nnode,1..ndof*nnode):
+\n" }{MPLTEXT 1 0 45 "   lmncoord := array(1..ncoord,1..maxnodes):\n" 
+}{MPLTEXT 1 0 41 "   lmndof := array(1..ndof,1..maxnodes):\n" }
+{MPLTEXT 1 0 52 "   kel := array(1..ndof*maxnodes,1..ndof*maxnodes):\n
+" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 31 "#   Loop over all the elemen
+ts\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 30 "   for lmn from 1 to nel
+em do\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 57 "#   Extract coords of
+ nodes, DOF for the current element\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 39 "      for a from 1 to nelnodes[lmn] do\n" }{MPLTEXT 
+1 0 34 "        for i from 1 to ncoord do\n" }{MPLTEXT 1 0 53 "       \+
+   lmncoord[i,a] := coords[i,connect[a,lmn]]:\n" }{MPLTEXT 1 0 12 "   \+
+     od:\n" }{MPLTEXT 1 0 32 "        for i from 1 to ndof do\n" }
+{MPLTEXT 1 0 58 "          lmndof[i,a] := dofs[ndof*(connect[a,lmn]-1)
++i]:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 10 "      od:\n
+" }{MPLTEXT 1 0 24 "    n := nelnodes[lmn]:\n" }{MPLTEXT 1 0 27 "    i
+dent := elident[lmn]:\n" }{MPLTEXT 1 0 70 "    kel := elstif(ncoord,nd
+of,n,ident,lmncoord,materialprops,lmndof):\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 62 "#   Add the current element stiffness to the global s
+tiffness\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 37 "    for a from 1 t
+o nelnodes[lmn] do\n" }{MPLTEXT 1 0 30 "      for i from 1 to ndof do
+\n" }{MPLTEXT 1 0 41 "        for b from 1 to nelnodes[lmn] do\n" }
+{MPLTEXT 1 0 34 "          for k from 1 to ndof do\n" }{MPLTEXT 1 0 
+45 "            rw := ndof*(connect[a,lmn]-1)+i:\n" }{MPLTEXT 1 0 45 "
+            cl := ndof*(connect[b,lmn]-1)+k:\n" }{MPLTEXT 1 0 73 "    \+
+        Stif[rw,cl] := Stif[rw,cl] + kel[ndof*(a-1)+i,ndof*(b-1)+k]:\n
+" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "        od:\n" 
+}{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 8 "    od:\n" }{MPLTEXT 
+1 0 6 "  od:\n" }{MPLTEXT 1 0 30 "  globalstiffness := Stif    \n" }
+{MPLTEXT 1 0 4 "end:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "#\n
+" }{MPLTEXT 1 0 73 "#===================== Assemble the global residua
+l vector =============\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 94 "glob
+altraction := proc(ncoord,ndof,nnodes,ndload,coords,nelnodes,elident,c
+onnect,dloads,dofs)\n" }{MPLTEXT 1 0 92 "    local globaltraction,load
+,lmn,face,nfnodes,nodelist,lmncoord,n,ident,i,lmndof,traction,\n" }
+{MPLTEXT 1 0 22 "          rel,r,a,rw:\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 38 "   r := array(sparse,1..ndof*nnodes):\n" }{MPLTEXT 1 
+0 31 "   traction := array(1..ndof):\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 32 "   for load from 1 to ndload do\n" }{MPLTEXT 1 0 2 "#
+\n" }{MPLTEXT 1 0 70 "#     Extract the coords of the nodes on the app
+ropriate element face\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 29 "     \+
+ lmn := dloads[1,load]:\n" }{MPLTEXT 1 0 30 "      face := dloads[2,lo
+ad]:\n" }{MPLTEXT 1 0 26 "      n := nelnodes[lmn]:\n" }{MPLTEXT 1 0 
+29 "      ident := elident[lmn]:\n" }{MPLTEXT 1 0 50 "      nfnodes :=
+ nfacenodes(ncoord,n,ident,face):\n" }{MPLTEXT 1 0 42 "      nodelist \+
+:= array(1..nfnodes):     \n" }{MPLTEXT 1 0 55 "      nodelist := face
+nodes(ncoord,n,ident,face):     \n" }{MPLTEXT 1 0 47 "      lmncoord :
+= array(1..ncoord,1..nfnodes):\n" }{MPLTEXT 1 0 33 "      for a from 1
+ to nfnodes do\n" }{MPLTEXT 1 0 34 "        for i from 1 to ncoord do
+\n" }{MPLTEXT 1 0 74 "          lmncoord[i,a] := coords[i,connect[node
+list[a],dloads[1,load]]]:\n" }{MPLTEXT 1 0 12 "        od:\n" }
+{MPLTEXT 1 0 32 "        for i from 1 to ndof do\n" }{MPLTEXT 1 0 79 "
+          lmndof[i,a] := dofs[ndof*(connect[nodelist[a],dloads[1,load]
+]-1)+i]:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 10 "      o
+d:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 37 "#    Compute the element
+ load vector\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 29 "     for i fro
+m 1 to ndof do\n" }{MPLTEXT 1 0 40 "       traction[i] := dloads[i+2,l
+oad]:\n" }{MPLTEXT 1 0 9 "     od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 
+1 0 36 "     rel := array(1..ndof*nfnodes):\n" }{MPLTEXT 1 0 66 "     \+
+rel := eldload(ncoord,ndof,nfnodes,ident,lmncoord,traction):\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 57 "#    Assemble the element load \+
+vector into global vector\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 " \+
+    for a from 1 to nfnodes do\n" }{MPLTEXT 1 0 31 "       for i from \+
+1 to ndof do\n" }{MPLTEXT 1 0 63 "         rw := (connect[nodelist[a],
+dloads[1,load]]-1)*ndof+i:\n" }{MPLTEXT 1 0 45 "         r[rw] := r[rw
+] + rel[(a-1)*ndof+i]:\n" }{MPLTEXT 1 0 11 "       od:\n" }{MPLTEXT 1 
+0 9 "     od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 7 "   od:\n" }
+{MPLTEXT 1 0 24 "   globaltraction := r:\n" }{MPLTEXT 1 0 13 "end:    \+
+     " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 
+83 "#============================ MAIN FEM ANALYSIS PROCEDURE ========
+================\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 78 "#   dofs  \+
+      Nodal displacements.  Let u_i^a be ith displacement component\n
+" }{MPLTEXT 1 0 88 "#               at jth node.  Then dofs contain (u
+_1^1, u_2^1, u_1^2, u_2^2....) for 2D\n" }{MPLTEXT 1 0 74 "#          \+
+     and (u_1^1, u_2^1, u_3^1, u_1^2, u_2^2, u_3^2....) for 3D\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 86 "#   K           Global stiffnes
+s matrix.  Stored as [K_1111 K_1112  K_1121  K_1122...\n" }{MPLTEXT 1 
+0 86 "#                                                    K_1211 K_12
+12  K_1221  K_1222...\n" }{MPLTEXT 1 0 87 "#                          \+
+                          K_2111 K_2112  K_2121  K_2122...]\n" }
+{MPLTEXT 1 0 60 "#               for 2D problem and similarly for 3D p
+roblem\n" }{MPLTEXT 1 0 83 "#   r           Force vector.  Currently o
+nly includes contribution from tractions\n" }{MPLTEXT 1 0 73 "#       \+
+        acting on element faces (i.e. body forces are neglected)\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 39 "  dofs := array(sparse,1..nnode
+*ndof):\n" }{MPLTEXT 1 0 50 "  K := array(sparse,1..nnode*ndof,1..nnod
+e*ndof):\n" }{MPLTEXT 1 0 36 "  r := array(sparse,1..nnode*ndof):\n" }
+{MPLTEXT 1 0 4 "   \n" }{MPLTEXT 1 0 49 "  K := globalstiffness(ncoord
+,ndof,nnode,coords,\n" }{MPLTEXT 1 0 78 "                 nelem,maxnod
+es,elident,nelnodes,connect,materialprops,dofs):\n" }{MPLTEXT 1 0 1 "
+\n" }{MPLTEXT 1 0 93 "  r := globaltraction(ncoord,ndof,nnode,ndload,c
+oords,nelnodes,elident,connect,dloads,dofs):\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 94 "#  Fix constrained nodes.  We s
+hould really do this in a way that preserves the symmetry of K\n" }
+{MPLTEXT 1 0 95 "#  but it's not worth it in MAPLE as there's no speci
+al purpose solver for symmetric matrices.\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 26 "  for n from 1 to nfix do\n" }{MPLTEXT 1 0 51 "     r
+w := ndof*(fixnodes[1,n]-1) + fixnodes[2,n]:\n" }{MPLTEXT 1 0 37 "    \+
+ for cl from 1 to ndof*nnode do:\n" }{MPLTEXT 1 0 23 "        K[rw,cl]
+ := 0:\n" }{MPLTEXT 1 0 9 "     od:\n" }{MPLTEXT 1 0 21 "     K[rw,rw]
+ := 1.:\n" }{MPLTEXT 1 0 29 "     r[rw] := fixnodes[3,n]:\n" }
+{MPLTEXT 1 0 6 "  od:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 30 "# Sol
+ve for the displacements\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 24 "  \+
+dofs := linsolve(K,r):" }{TEXT -1 0 "" }}}{PARA 11 "" 0 "" {TEXT -1 0 
+"" }}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 85 "#======================
+=========== POST-PROCESSING =================================\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 37 "# Create a plot of the deformed
+ mesh\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 41 "
+  defcoords := array(1..ndof,1..nnode): \n" }{MPLTEXT 1 0 23 "  scale_
+factor := 1.0:\n" }{MPLTEXT 1 0 27 "  for i from 1 to nnode do\n" }
+{MPLTEXT 1 0 28 "    for j from 1 to ndof do\n" }{MPLTEXT 1 0 73 "    \+
+   defcoords[j,i] := coords[j,i] + scale_factor*dofs[ndof*(i-1)+j]: \n
+" }{MPLTEXT 1 0 8 "    od:\n" }{MPLTEXT 1 0 5 " od:\n" }{MPLTEXT 1 0 
+1 "\n" }{MPLTEXT 1 0 20 " if (ndof = 2) then\n" }{MPLTEXT 1 0 29 "   i
+f (nelnodes[1] = 3) then\n" }{MPLTEXT 1 0 73 "     elplot:=seq([[defco
+ords[1,connect[1,i]],defcoords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 73 "
+                  [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]
+],\n" }{MPLTEXT 1 0 86 "                  [defcoords[1,connect[3,i]],d
+efcoords[2,connect[3,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 31 "   elif (
+nelnodes[1] = 4) then\n" }{MPLTEXT 1 0 73 "     elplot:=seq([[defcoord
+s[1,connect[1,i]],defcoords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 67 "   \+
+         [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],\n" }
+{MPLTEXT 1 0 67 "            [defcoords[1,connect[3,i]],defcoords[2,co
+nnect[3,i]]],\n" }{MPLTEXT 1 0 80 "            [defcoords[1,connect[4,
+i]],defcoords[2,connect[4,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 31 "   e
+lif (nelnodes[1] = 6) then\n" }{MPLTEXT 1 0 73 "     elplot:=seq([[def
+coords[1,connect[1,i]],defcoords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 
+73 "                  [defcoords[1,connect[4,i]],defcoords[2,connect[4
+,i]]],\n" }{MPLTEXT 1 0 73 "                  [defcoords[1,connect[2,i
+]],defcoords[2,connect[2,i]]],\n" }{MPLTEXT 1 0 73 "                  \+
+[defcoords[1,connect[5,i]],defcoords[2,connect[5,i]]],\n" }{MPLTEXT 1 
+0 72 "                  [defcoords[1,connect[3,i]],defcoords[2,connect
+[3,i]]]\n" }{MPLTEXT 1 0 86 "                  [defcoords[1,connect[6,
+i]],defcoords[2,connect[6,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 31 "   e
+lif (nelnodes[1] = 8) then\n" }{MPLTEXT 1 0 73 "     elplot:=seq([[def
+coords[1,connect[1,i]],defcoords[2,connect[1,i]]],\n" }{MPLTEXT 1 0 
+73 "                  [defcoords[1,connect[5,i]],defcoords[2,connect[5
+,i]]],\n" }{MPLTEXT 1 0 73 "                  [defcoords[1,connect[2,i
+]],defcoords[2,connect[2,i]]],\n" }{MPLTEXT 1 0 73 "                  \+
+[defcoords[1,connect[6,i]],defcoords[2,connect[6,i]]],\n" }{MPLTEXT 1 
+0 73 "                  [defcoords[1,connect[3,i]],defcoords[2,connect
+[3,i]]],\n" }{MPLTEXT 1 0 73 "                  [defcoords[1,connect[7
+,i]],defcoords[2,connect[7,i]]],\n" }{MPLTEXT 1 0 73 "                \+
+  [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]],\n" }{MPLTEXT 
+1 0 86 "                  [defcoords[1,connect[8,i]],defcoords[2,conne
+ct[8,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 13 "  fi:       \n" }
+{MPLTEXT 1 0 114 "  meshplots_deformed := [op(meshplots),PLOT(POLYGONS
+(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),STYLE(LINE))]:\n" }
+{MPLTEXT 1 0 124 "  meshplots_deformed := [op(meshplots_deformed),PLOT
+(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),STYLE(POINT))]
+:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 21 "elif (ndof = 3) then\n" }
+{MPLTEXT 1 0 29 "   if (nelnodes[1] = 4) then\n" }{MPLTEXT 1 0 19 "   \+
+   elplot:=seq(\n" }{MPLTEXT 1 0 93 "           [[defcoords[1,connect[
+1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[2,i]],defcoords[2,co
+nnect[2,i]],defcoords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,co
+nnect[3,i]]],\n" }{MPLTEXT 1 0 94 "            [defcoords[1,connect[4,
+i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]]],\n" }
+{MPLTEXT 1 0 39 "                          i=1..nelem):\n" }{MPLTEXT 
+1 0 33 "    elif (nelnodes[1] = 8 ) then\n" }{MPLTEXT 1 0 19 "      el
+plot:=seq(\n" }{MPLTEXT 1 0 92 "          [[defcoords[1,connect[1,i]],
+defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }{MPLTEXT 1 
+0 93 "            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]
+,defcoords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoor
+ds[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]
+],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[4,i]],defcoor
+ds[2,connect[4,i]],defcoords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 93 "  \+
+          [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoor
+ds[3,connect[8,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,con
+nect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[1,i]],defcoords[2,co
+nnect[1,i]],defcoords[3,connect[1,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,co
+nnect[4,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[8,
+i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[7,i]],defcoords[2,co
+nnect[7,i]],defcoords[3,connect[7,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,co
+nnect[6,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[5,
+i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[1,i]],defcoords[2,co
+nnect[1,i]],defcoords[3,connect[1,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,co
+nnect[2,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[6,
+i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[7,i]],defcoords[2,co
+nnect[7,i]],defcoords[3,connect[7,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,co
+nnect[3,i]]],\n" }{MPLTEXT 1 0 94 "            [defcoords[1,connect[2,
+i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]]],\n" }
+{MPLTEXT 1 0 39 "                          i=1..nelem):\n" }{MPLTEXT 
+1 0 33 "    elif (nelnodes[1] = 10) then\n" }{MPLTEXT 1 0 19 "      el
+plot:=seq(\n" }{MPLTEXT 1 0 92 "          [[defcoords[1,connect[1,i]],
+defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }{MPLTEXT 1 
+0 92 "           [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],
+defcoords[3,connect[5,i]]],\n" }{MPLTEXT 1 0 92 "           [defcoords
+[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+\n" }{MPLTEXT 1 0 92 "           [defcoords[1,connect[6,i]],defcoords[
+2,connect[6,i]],defcoords[3,connect[6,i]]],\n" }{MPLTEXT 1 0 92 "     \+
+      [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3
+,connect[3,i]]],\n" }{MPLTEXT 1 0 95 "           [defcoords[1,connect[
+10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],\n" }
+{MPLTEXT 1 0 92 "           [defcoords[1,connect[4,i]],defcoords[2,con
+nect[4,i]],defcoords[3,connect[4,i]]],\n" }{MPLTEXT 1 0 92 "          \+
+ [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,conn
+ect[8,i]]],\n" }{MPLTEXT 1 0 92 "           [defcoords[1,connect[1,i]]
+,defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }{MPLTEXT 1 
+0 92 "           [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],
+defcoords[3,connect[7,i]]],\n" }{MPLTEXT 1 0 92 "           [defcoords
+[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+\n" }{MPLTEXT 1 0 95 "           [defcoords[1,connect[10,i]],defcoords
+[2,connect[10,i]],defcoords[3,connect[10,i]]],\n" }{MPLTEXT 1 0 92 "  \+
+         [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoord
+s[3,connect[4,i]]],\n" }{MPLTEXT 1 0 93 "           [defcoords[1,conne
+ct[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]]],\n" }
+{MPLTEXT 1 0 39 "                          i=1..nelem):\n" }{MPLTEXT 
+1 0 1 "\n" }{MPLTEXT 1 0 31 "    elif (nelnodes[1]=20) then\n" }
+{MPLTEXT 1 0 19 "      elplot:=seq(\n" }{MPLTEXT 1 0 92 "          [[d
+efcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect
+[1,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[9,i]],d
+efcoords[2,connect[9,i]],defcoords[3,connect[9,i]]],\n" }{MPLTEXT 1 0 
+93 "            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],d
+efcoords[3,connect[2,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords
+[1,connect[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]
+]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect[3,i]],defcoo
+rds[2,connect[3,i]],defcoords[3,connect[3,i]]],\n" }{MPLTEXT 1 0 96 " \+
+           [defcoords[1,connect[11,i]],defcoords[2,connect[11,i]],defc
+oords[3,connect[11,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1
+,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],\n
+" }{MPLTEXT 1 0 96 "            [defcoords[1,connect[20,i]],defcoords[
+2,connect[20,i]],defcoords[3,connect[20,i]]],\n" }{MPLTEXT 1 0 93 "   \+
+         [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoord
+s[3,connect[8,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords[1,conn
+ect[16,i]],defcoords[2,connect[16,i]],defcoords[3,connect[16,i]]],\n" 
+}{MPLTEXT 1 0 93 "            [defcoords[1,connect[5,i]],defcoords[2,c
+onnect[5,i]],defcoords[3,connect[5,i]]],\n" }{MPLTEXT 1 0 96 "        \+
+    [defcoords[1,connect[17,i]],defcoords[2,connect[17,i]],defcoords[3
+,connect[17,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connec
+t[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }
+{MPLTEXT 1 0 96 "            [defcoords[1,connect[12,i]],defcoords[2,c
+onnect[12,i]],defcoords[3,connect[12,i]]],\n" }{MPLTEXT 1 0 93 "      \+
+      [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3
+,connect[4,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords[1,connect
+[20,i]],defcoords[2,connect[20,i]],defcoords[3,connect[20,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[8,i]],defcoords[2,co
+nnect[8,i]],defcoords[3,connect[8,i]]],\n" }{MPLTEXT 1 0 96 "         \+
+   [defcoords[1,connect[15,i]],defcoords[2,connect[15,i]],defcoords[3,
+connect[15,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect
+[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],\n" }
+{MPLTEXT 1 0 96 "            [defcoords[1,connect[14,i]],defcoords[2,c
+onnect[14,i]],defcoords[3,connect[14,i]]],\n" }{MPLTEXT 1 0 93 "      \+
+      [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3
+,connect[6,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords[1,connect
+[13,i]],defcoords[2,connect[13,i]],defcoords[3,connect[13,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[5,i]],defcoords[2,co
+nnect[5,i]],defcoords[3,connect[5,i]]],\n" }{MPLTEXT 1 0 96 "         \+
+   [defcoords[1,connect[17,i]],defcoords[2,connect[17,i]],defcoords[3,
+connect[17,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect
+[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[9,i]],defcoords[2,co
+nnect[9,i]],defcoords[3,connect[9,i]]],\n" }{MPLTEXT 1 0 93 "         \+
+   [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,co
+nnect[2,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords[1,connect[18
+,i]],defcoords[2,connect[18,i]],defcoords[3,connect[18,i]]],\n" }
+{MPLTEXT 1 0 93 "            [defcoords[1,connect[6,i]],defcoords[2,co
+nnect[6,i]],defcoords[3,connect[6,i]]],\n" }{MPLTEXT 1 0 96 "         \+
+   [defcoords[1,connect[14,i]],defcoords[2,connect[14,i]],defcoords[3,
+connect[14,i]]],\n" }{MPLTEXT 1 0 93 "            [defcoords[1,connect
+[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],\n" }
+{MPLTEXT 1 0 97 "            [defcoords[1,connect[19,i]],defcoords[2,c
+onnect[19,i]],defcoords[3,connect[19,i]]], \n" }{MPLTEXT 1 0 93 "     \+
+       [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[
+3,connect[3,i]]],\n" }{MPLTEXT 1 0 96 "            [defcoords[1,connec
+t[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],\n" }
+{MPLTEXT 1 0 94 "            [defcoords[1,connect[2,i]],defcoords[2,co
+nnect[2,i]],defcoords[3,connect[2,i]]]],\n" }{MPLTEXT 1 0 39 "        \+
+                  i=1..nelem):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 
+10 "      fi:\n" }{MPLTEXT 1 0 117 "   meshplots_deformed := [op(meshp
+lots),PLOT3D(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),ST
+YLE(LINE))]:\n" }{MPLTEXT 1 0 149 "     meshplots_deformed :=      [op
+(meshplots_deformed),PLOT3D(POLYGONS(elplot),SCALING(CONSTRAINED),COLO
+R(RGB,0,0,1),STYLE(POINT),SYMBOL(CIRCLE))]:\n" }{MPLTEXT 1 0 4 "fi:\n
+" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 73 "#      Print nodal displaceme
+nts, element strains and stresses to a file\n" }{MPLTEXT 1 0 51 "   fp
+rintf(outfile,`%s\\n`,`Nodal Displacements:`):\n" }{MPLTEXT 1 0 22 "  \+
+ if (ndof = 2) then\n" }{MPLTEXT 1 0 70 "     fprintf(outfile,`%s\\n`,
+` Node      Coords         u1       u2`):\n" }{MPLTEXT 1 0 30 "     fo
+r i from 1 to nnode do\n" }{MPLTEXT 1 0 55 "      fprintf(outfile,`%3d
+ %8.4f %8.4f %8.4f %8.4f\\n`,\n" }{MPLTEXT 1 0 81 "                   \+
+            i,coords[1,i],coords[2,i],dofs[2*i-1],dofs[2*i]):\n" }
+{MPLTEXT 1 0 9 "     od:\n" }{MPLTEXT 1 0 24 "   elif (ndof = 3) then
+\n" }{MPLTEXT 1 0 88 "     fprintf(outfile,`%s\\n`,` Node            C
+oords            u1       u2       u3`):\n" }{MPLTEXT 1 0 30 "     for
+ i from 1 to nnode do\n" }{MPLTEXT 1 0 68 "      fprintf(outfile,`%3d \+
+%8.4f %8.4f %8.4f %8.4f %8.4f %8.4f \\n`,\n" }{MPLTEXT 1 0 94 "       \+
+             i,coords[1,i],coords[2,i],coords[3,i],dofs[3*i-2],dofs[3*
+i-1],dofs[3*i]):\n" }{MPLTEXT 1 0 9 "     od:\n" }{MPLTEXT 1 0 7 "   f
+i:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 54 "   fprintf(outfile,`\\n %
+s\\n`,`Strains and Stresses`):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 
+1 "\n" }{MPLTEXT 1 0 45 "   lmncoord := array(1..ncoord,1..maxnodes):
+\n" }{MPLTEXT 1 0 48 "   displacements := array(1..ndof,1..maxnodes):
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 31 "#   L
+oop over all the elements\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 30 " \+
+  for lmn from 1 to nelem do\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 50 
+"    fprintf(outfile,`%s  %d\\n`,` Element: `,lmn):\n" }{MPLTEXT 1 0 
+27 "    if (ncoord = 2) then  \n" }{MPLTEXT 1 0 113 "    fprintf(outfi
+le,`%s\\n`,` int pt    Coords          e_11      e_22     e_12      s_
+11       s_22      s_12`):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 27 " \+
+   elif (ncoord = 3) then\n" }{MPLTEXT 1 0 180 "    fprintf(outfile,`%
+s\\n`,` int pt         Coords            e_11      e_22     e_33      \+
+e_12       e_13      e_23      s_11      s_22      s_33      s_12     \+
+ s_13      s_23`):\n" }{MPLTEXT 1 0 8 "    fi:\n" }{MPLTEXT 1 0 2 "#\n
+" }{MPLTEXT 1 0 57 "#   Extract coords of nodes, DOF for the current e
+lement\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 39 "      for a from 1 t
+o nelnodes[lmn] do\n" }{MPLTEXT 1 0 34 "        for i from 1 to ncoord
+ do\n" }{MPLTEXT 1 0 53 "          lmncoord[i,a] := coords[i,connect[a
+,lmn]]:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 32 "        \+
+for i from 1 to ndof do\n" }{MPLTEXT 1 0 65 "          displacements[i
+,a] := dofs[ndof*(connect[a,lmn]-1)+i]:\n" }{MPLTEXT 1 0 12 "        o
+d:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 26 "      n := neln
+odes[lmn]:\n" }{MPLTEXT 1 0 29 "      ident := elident[lmn]:\n" }
+{MPLTEXT 1 0 2 " \n" }{MPLTEXT 1 0 54 "      npoints := numberofintegr
+ationpoints(ncoord,n):\n" }{MPLTEXT 1 0 45 "      xilist := array(1..n
+coord,1..npoints):\n" }{MPLTEXT 1 0 24 "      N := array(1..n):\n" }
+{MPLTEXT 1 0 38 "      dNdxi := array(1..n,1..ncoord):\n" }{MPLTEXT 1 
+0 37 "      dNdx := array(1..n,1..ncoord):\n" }{MPLTEXT 1 0 43 "      \+
+dxdxi := array(1..ncoord,1..ncoord):\n" }{MPLTEXT 1 0 43 "      dxidx \+
+:= array(1..ncoord,1..ncoord):\n" }{MPLTEXT 1 0 42 "      strain := ar
+ray(1..ndof,1..ncoord):\n" }{MPLTEXT 1 0 42 "      stress := array(1..
+ndof,1..ncoord):\n" }{MPLTEXT 1 0 30 "      xi := array(1..ncoord):\n
+" }{MPLTEXT 1 0 29 "      x := array(1..ncoord):\n" }{MPLTEXT 1 0 2 "#
+\n" }{MPLTEXT 1 0 30 "#  Set up integration points \n" }{MPLTEXT 1 0 
+2 "#\n" }{MPLTEXT 1 0 53 "      xilist := integrationpoints(ncoord,n,n
+points):\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "#  Loop over the i
+ntegration points\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 36 "     for \+
+intpt from 1 to npoints do\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 63 "#
+     Compute shape functions and derivatives wrt local coords\n" }
+{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 33 "       for i from 1 to ncoord d
+o\n" }{MPLTEXT 1 0 35 "         xi[i] := xilist[i,intpt]:\n" }
+{MPLTEXT 1 0 11 "       od:\n" }{MPLTEXT 1 0 53 "       N := shapefunc
+tions(n,ncoord,ident,xi):      \n" }{MPLTEXT 1 0 56 "       dNdxi := s
+hapefunctionderivs(n,ncoord,ident,xi):\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 50 "#     Compute the coords of the integration point\n" 
+}{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i from 1 to ncoord d
+o\n" }{MPLTEXT 1 0 20 "        x[i] := 0.:\n" }{MPLTEXT 1 0 29 "      \+
+  for a from 1 to n do\n" }{MPLTEXT 1 0 45 "          x[i] := x[i] + l
+mncoord[i,a]*N[a]:\n" }{MPLTEXT 1 0 12 "        od:\n" }{MPLTEXT 1 0 
+10 "      od:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 54 "#     Compute
+ the jacobian matrix and its determinant\n" }{MPLTEXT 1 0 2 "#\n" }
+{MPLTEXT 1 0 32 "      for i from 1 to ncoord do\n" }{MPLTEXT 1 0 34 "
+        for j from 1 to ncoord do\n" }{MPLTEXT 1 0 28 "          dxdxi
+[i,j] := 0.:\n" }{MPLTEXT 1 0 31 "          for a from 1 to n do\n" }
+{MPLTEXT 1 0 65 "            dxdxi[i,j] := dxdxi[i,j] + lmncoord[i,a]*
+dNdxi[a,j]:\n" }{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "  \+
+      od:\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 1 "\n" }
+{MPLTEXT 1 0 31 "      dxidx := inverse(dxdxi):\n" }{MPLTEXT 1 0 2 "#
+\n" }{MPLTEXT 1 0 74 "#     Convert shape function derivatives to deri
+vatives wrt global coords\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 27 " \+
+     for a from 1 to n do\n" }{MPLTEXT 1 0 34 "        for i from 1 to
+ ncoord do\n" }{MPLTEXT 1 0 27 "          dNdx[a,i] := 0.:\n" }
+{MPLTEXT 1 0 36 "          for j from 1 to ncoord do\n" }{MPLTEXT 1 0 
+60 "            dNdx[a,i] := dNdx[a,i] + dNdxi[a,j]*dxidx[j,i]:\n" }
+{MPLTEXT 1 0 14 "          od:\n" }{MPLTEXT 1 0 12 "        od:\n" }
+{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 74 "
+#     Compute the (infinitesimal) strain by differentiating displaceme
+nts\n" }{MPLTEXT 1 0 2 "#\n" }{MPLTEXT 1 0 32 "      for i from 1 to n
+coord do\n" }{MPLTEXT 1 0 35 "         for j from 1 to ncoord do\n" }
+{MPLTEXT 1 0 31 "            strain[i,j] := 0.:\n" }{MPLTEXT 1 0 33 " \+
+           for a from 1 to n do\n" }{MPLTEXT 1 0 42 "              str
+ain[i,j] := strain[i,j] \n" }{MPLTEXT 1 0 92 "                        \+
+ + 0.5*(displacements[i,a]*dNdx[a,j]+displacements[j,a]*dNdx[a,i]):\n
+" }{MPLTEXT 1 0 16 "            od:\n" }{MPLTEXT 1 0 13 "         od:
+\n" }{MPLTEXT 1 0 10 "      od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 
+66 "      stress := materialstress(ndof,ncoord,strain,materialprops):
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 27 "      if (ncoord = 2) then
+\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 80 "      fprintf(outfile,`%5d \+
+%7.4f %7.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f \\n`,\n" }{MPLTEXT 1 
+0 98 "        intpt,x[1],x[2],strain[1,1],strain[2,2],strain[1,2],stre
+ss[1,1],stress[2,2],stress[1,2]):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 
+0 1 "\n" }{MPLTEXT 1 0 29 "      elif (ncoord = 3) then\n" }{MPLTEXT 
+1 0 1 "\n" }{MPLTEXT 1 0 122 "      fprintf(outfile,`%5d %7.4f %7.4f %
+7.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f
+ %9.4f \\n`,\n" }{MPLTEXT 1 0 36 "              intpt,x[1],x[2],x[3],
+\n" }{MPLTEXT 1 0 87 "              strain[1,1],strain[2,2],strain[3,3
+],strain[1,2],strain[1,3],strain[2,3],\n" }{MPLTEXT 1 0 88 "          \+
+    stress[1,1],stress[2,2],stress[3,3],stress[1,2],stress[1,3],stress
+[2,3]):\n" }{MPLTEXT 1 0 10 "      fi:\n" }{MPLTEXT 1 0 9 "     od:\n
+" }{MPLTEXT 1 0 7 "   od:\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 16 "fc
+lose(outfile):" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 64 "#  Congratulations!  If you made it this \+
+far the program worked!" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 28 "
+display(meshplots_deformed);" }}{PARA 13 "" 1 "" {TEXT -1 0 "" }
+{GLPLOT2D 285 277 277 {PLOTDATA 2 "6'-%)POLYGONSG6,7*7$$\"\"!F)$\"+gtD
+F:!\"*7$$\"+_\\^^I!#5$\"+N$)p'\\\"F,7$$\"+Vim:eF0$\"+%=E(49F,7$$\"+P6y
+ayF0$\"+x#[#**=F,7$$\"+hCOT5F,$\"+`!z]]#F,7$$\"+)yj0J&F0$\"+7k0dEF,7$F
+($\"+7\\[6FF,7$F($\"+;F@`?F,7*F37$$\"+HHn4&)F0$\"+Q9`n7F,7$$\"+ckYz5F,
+$\"+(*eYz5F,7$$\"+KTn`9F,$\"+&ytOX\"F,7$$\"+8$e(=>F,$\"+]yv=>F,7$$\"+.
+q\"p]\"F,$\"+H_`aAF,F=F87*FS7$$\"+*3KvE\"F,$\"+8(p'4&)F07$$\"+)zE(49F,
+$\"+sbm:eF07$$\"+3*[#**=F,$\"+])yZ&yF07$$\"+a)z]]#F,$\"+qBOT5F,7$$\"+
+\\e`aAF,$\"+Un\"p]\"F,FgnFX7*Fgo7$$\"+A*)p'\\\"F,$\"+GZ^^IF07$$\"+NzDF
+:F,F(7$$\"+gL@`?F,F(7$$\"+Oe[6FF,F(7$$\"+Ft0dEF,$\"+KJc5`F0FapF\\p7*FG
+FBF=7$$\"+q%)3-8F,$\"+i'[-:$F,7$$\"+7LY!e\"F,$\"+-+N@QF,7$$\"+#)yCj!)F
+0$\"+:[]\\SF,7$F($\"+M%4D8%F,7$F($\"+XCh7MF,7*F=F\\oFgn7$$\"+$\\SYT#F,
+$\"+V,k9CF,7$$\"+,))3BHF,$\"+%p)3BHF,7$$\"+pC8$H#F,$\"+A2oRMF,FerF`r7*
+FgnFfpFap7$$\"+k$\\-:$F,$\"+Z%)3-8F,7$$\"+W2N@QF,$\"+$Rj/e\"F,7$$\"+_6
+oRMF,$\"+kD8$H#F,F[tFfs7*FapFjqFgq7$$\"+_Lh7MF,F(7$$\"+l.^KTF,F(7$$\"+
+Mc]\\SF,$\"+_&[K1)F0F[uFft-%&STYLEG6#%&POINTG-%&COLORG6&%$RGBG$\"#5!\"
+\"$F)F[wF\\w-F$6,F&FMFaoF[qF_rFesFetFeu-Fbv6#%%LINEGFev-F$6,7*7$F($\"$
++\"!\"#7$$\"#?Fhw$\"#)*Fhw7$$\"#QFhw$\"##*Fhw7$$\"#nFhw$\"$i\"Fhw7$$\"
+#'*Fhw$\"$J#Fhw7$$\"#\\Fhw$\"$X#Fhw7$F($\"$]#Fhw7$F($\"$v\"Fhw7*F^x7$$
+\"#cFhw$\"#$)Fhw7$$\"#rFhwF_z7$$\"$C\"FhwFbz7$$\"$x\"FhwFez7$$\"$R\"Fh
+w$\"$3#FhwFhxFcx7*F^z7$F\\zFjy7$FaxF_x7$FfxFdx7$F[yFix7$FjzFhzFdzFaz7*
+F^[l7$F\\xFjw7$FfwF(7$FfyF(7$FcyF(7$F`yF^yF`[lF_[l7*FbyF]yFhx7$Fbz$\"$
++$Fhw7$$\"$`\"Fhw$\"$q$Fhw7$$\"#yFhw$\"$#RFhw7$F($\"$+%Fhw7$F($\"$D$Fh
+w7*FhxFgzFdz7$$\"$I#FhwF^]l7$$\"$$GFhwFa]l7$$\"$A#Fhw$\"$L$FhwF\\\\lFi
+[l7*FdzFa[lF`[l7$Fj[lFbz7$F_\\lF]\\l7$Ff]lFd]lF`]lF]]l7*F`[lFg[lFf[l7$
+Fj\\lF(7$Fg\\lF(7$Fd\\lFb\\lFj]lFi]lFav-Ffv6&FhvF\\wFivF\\w-F$6,FdwFhy
+F\\[lFb[lFh[lF\\]lFh]lF\\^lF_wF`^l-%(SCALINGG6#%,CONSTRAINEDG" 1 2 2 
+1 10 1 2 6 1 4 1 1.000000 45.000000 45.000000 1 0 "Curve 1" "Curve 2" 
+"Curve 3" "Curve 4" }}{TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 50 "# Compare the FEM solution with the exact solution" }
+}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "a := coords[2,1]:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 21 "b := coords[1,nnode]:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 8 "p := 1.:" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 45 "E := 2*materialprops[1]*(1+materialprops[2])
+:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 23 "nu := materialprops[2]
+:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 72 "ur := (1+nu)*a^2*b^2*p
+/(E*(b^2-a^2))*(1/r+(1-2*materialprops[2])*r/b^2):" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 54 "u1 := subs(r=sqrt(x1^2+x2^2),ur)*x1/(sqrt(x
+1^2+x2^2)):" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 54 "u2 := subs(r
+=sqrt(x1^2+x2^2),ur)*x2/(sqrt(x1^2+x2^2)):" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 22 "  scale_factor := 1.:\n" }{MPLTEXT 1 0 27 "  for i \+
+from 1 to nnode do\n" }{MPLTEXT 1 0 92 "     defcoords[1,i] := coords[
+1,i] + scale_factor*subs(\{x1=coords[1,i],x2=coords[2,i]\},u1):\n" }
+{MPLTEXT 1 0 93 "     defcoords[2,i] := coords[2,i] + scale_factor*sub
+s(\{x1=coords[1,i],x2=coords[2,i]\},u2): \n" }{MPLTEXT 1 0 6 "  od:\n
+" }{MPLTEXT 1 0 29 "   if (nelnodes[1] = 4) then\n" }{MPLTEXT 1 0 73 "
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]
+],\n" }{MPLTEXT 1 0 67 "            [defcoords[1,connect[2,i]],defcoor
+ds[2,connect[2,i]]],\n" }{MPLTEXT 1 0 67 "            [defcoords[1,con
+nect[3,i]],defcoords[2,connect[3,i]]],\n" }{MPLTEXT 1 0 80 "          \+
+  [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]]],i=1..nelem):
+\n" }{MPLTEXT 1 0 31 "   elif (nelnodes[1] = 8) then\n" }{MPLTEXT 1 0 
+73 "     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1
+,i]]],\n" }{MPLTEXT 1 0 73 "                  [defcoords[1,connect[5,i
+]],defcoords[2,connect[5,i]]],\n" }{MPLTEXT 1 0 73 "                  \+
+[defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],\n" }{MPLTEXT 1 
+0 73 "                  [defcoords[1,connect[6,i]],defcoords[2,connect
+[6,i]]],\n" }{MPLTEXT 1 0 73 "                  [defcoords[1,connect[3
+,i]],defcoords[2,connect[3,i]]],\n" }{MPLTEXT 1 0 73 "                \+
+  [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]]],\n" }{MPLTEXT 
+1 0 73 "                  [defcoords[1,connect[4,i]],defcoords[2,conne
+ct[4,i]]],\n" }{MPLTEXT 1 0 86 "                  [defcoords[1,connect
+[8,i]],defcoords[2,connect[8,i]]]],i=1..nelem):\n" }{MPLTEXT 1 0 6 "  \+
+fi:\n" }{MPLTEXT 1 0 123 "  meshplots_deformed := [op(meshplots_deform
+ed),PLOT(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,0,0,1),STYLE(
+LINE))]:\n" }{MPLTEXT 1 0 1 "\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 54 "# The exact solution is blue, the FEM solution is red." }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 28 "display(meshplots_deformed);
+" }}{PARA 13 "" 1 "" {TEXT -1 0 "" }{GLPLOT2D 381 201 201 {PLOTDATA 2 
+"6(-%)POLYGONSG6,7*7$$\"\"!F)$\"+++SL:!\"*7$$\"+/NPmI!#5$\"+<I_-:F,7$$
+\"+h%Qd%eF0$\"+\\SG:9F,7$$\"+#3\\J'yF0$\"+K!R7!>F,7$$\"+*>$)=/\"F,$\"+
+Z9.2DF,7$$\"+dc&*=`F0$\"+GyZfEF,7$F($\"+++]8FF,7$F($\"+r&y[0#F,7*F37$$
+\"+^>fz&)F0$\"+$4=;F\"F,7$$\"+)=Mc3\"F,FT7$$\"+Ik8b9F,FW7$$\"+Mrx?>F,F
+Z7$$\"+0\\a3:F,$\"+P4RdAF,F=F87*FS7$FQFO7$F6F47$F;F97$F@F>7$FinFgnFYFV
+7*F]o7$F1F.7$F*F(7$FKF(7$FHF(7$FEFCF_oF^o7*FGFBF=7$$\"+b?%GI\"F,$\"+Is
+._JF,7$$\"+'p.5e\"F,$\"+sAMBQF,7$$\"+Y,$41)F0$\"+DT8^SF,7$F($\"+++gLTF
+,7$F($\"+J#>VT$F,7*F=FfnFY7$$\"+i`4;CF,F_q7$$\"+rrTCHF,Fbq7$$\"+u!oSH#
+F,$\"+6@5TMF,F]pFho7*FYF`oF_o7$F[pFio7$F`pF^p7$FgqFeqFaqF^q7*F_oFfoFeo
+7$F[qF(7$FhpF(7$FepFcpF[rFjq-%&STYLEG6#%%LINEG-%&COLORG6&%$RGBG$F)!\"
+\"Fir$\"#5Fjr-F$6,7*7$F($\"+gtDF:F,7$$\"+_\\^^IF0$\"+N$)p'\\\"F,7$$\"+
+Vim:eF0$\"+%=E(49F,7$$\"+P6yayF0$\"+x#[#**=F,7$$\"+hCOT5F,$\"+`!z]]#F,
+7$$\"+)yj0J&F0$\"+7k0dEF,7$F($\"+7\\[6FF,7$F($\"+;F@`?F,7*Fhs7$$\"+HHn
+4&)F0$\"+Q9`n7F,7$$\"+ckYz5F,$\"+(*eYz5F,7$$\"+KTn`9F,$\"+&ytOX\"F,7$$
+\"+8$e(=>F,$\"+]yv=>F,7$$\"+.q\"p]\"F,$\"+H_`aAF,FbtF]t7*Fhu7$$\"+*3Kv
+E\"F,$\"+8(p'4&)F07$$\"+)zE(49F,$\"+sbm:eF07$$\"+3*[#**=F,$\"+])yZ&yF0
+7$$\"+a)z]]#F,$\"+qBOT5F,7$$\"+\\e`aAF,$\"+Un\"p]\"F,FbvF]v7*Fbw7$$\"+
+A*)p'\\\"F,$\"+GZ^^IF07$$\"+NzDF:F,F(7$$\"+gL@`?F,F(7$$\"+Oe[6FF,F(7$$
+\"+Ft0dEF,$\"+KJc5`F0F\\xFgw7*F\\uFgtFbt7$$\"+q%)3-8F,$\"+i'[-:$F,7$$
+\"+7LY!e\"F,$\"+-+N@QF,7$$\"+#)yCj!)F0$\"+:[]\\SF,7$F($\"+M%4D8%F,7$F(
+$\"+XCh7MF,7*FbtFgvFbv7$$\"+$\\SYT#F,$\"+V,k9CF,7$$\"+,))3BHF,$\"+%p)3
+BHF,7$$\"+pC8$H#F,$\"+A2oRMF,F`zF[z7*FbvFaxF\\x7$$\"+k$\\-:$F,$\"+Z%)3
+-8F,7$$\"+W2N@QF,$\"+$Rj/e\"F,7$$\"+_6oRMF,$\"+kD8$H#F,Ff[lFa[l7*F\\xF
+eyFby7$$\"+_Lh7MF,F(7$$\"+l.^KTF,F(7$$\"+Mc]\\SF,$\"+_&[K1)F0Ff\\lFa\\
+l-Fbr6#%&POINTG-Ffr6&FhrF[sFirFir-F$6,F_sFbuF\\wFfxFjyF`[lF`\\lF`]lFar
+F_^l-F$6,7*7$F($\"$+\"!\"#7$$\"#?Fi^l$\"#)*Fi^l7$$\"#QFi^l$\"##*Fi^l7$
+$\"#nFi^l$\"$i\"Fi^l7$$\"#'*Fi^l$\"$J#Fi^l7$$\"#\\Fi^l$\"$X#Fi^l7$F($
+\"$]#Fi^l7$F($\"$v\"Fi^l7*F__l7$$\"#cFi^l$\"#$)Fi^l7$$\"#rFi^lF`al7$$
+\"$C\"Fi^lFcal7$$\"$x\"Fi^lFfal7$$\"$R\"Fi^l$\"$3#Fi^lFi_lFd_l7*F_al7$
+F]alF[al7$Fb_lF`_l7$Fg_lFe_l7$F\\`lFj_l7$F[blFialFealFbal7*F_bl7$F]_lF
+[_l7$Fg^lF(7$Fg`lF(7$Fd`lF(7$Fa`lF_`lFablF`bl7*Fc`lF^`lFi_l7$Fcal$\"$+
+$Fi^l7$$\"$`\"Fi^l$\"$q$Fi^l7$$\"#yFi^l$\"$#RFi^l7$F($\"$+%Fi^l7$F($\"
+$D$Fi^l7*Fi_lFhalFeal7$$\"$I#Fi^lF_dl7$$\"$$GFi^lFbdl7$$\"$A#Fi^l$\"$L
+$Fi^lF]clFjbl7*FealFbblFabl7$F[clFcal7$F`clF^cl7$FgdlFedlFadlF^dl7*Fab
+lFhblFgbl7$F[dlF(7$FhclF(7$FeclFcclF[elFjdlF\\^l-Ffr6&FhrFirF[sFir-F$6
+,Fe^lFi`lF]blFcblFiblF]dlFidlF]elFarFael-%(SCALINGG6#%,CONSTRAINEDG" 
+1 2 2 1 10 1 2 6 1 4 1 1.000000 45.000000 45.000000 1 0 "Curve 1" "Cur
+ve 2" "Curve 3" "Curve 4" "Curve 5" }}{TEXT -1 0 "" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "16 0 53" 53 }{VIEWOPTS 1 1 0 
+75 100 1802 1 1 1 1 }{PAGENUMBERS 0 1 2 33 1 1 }

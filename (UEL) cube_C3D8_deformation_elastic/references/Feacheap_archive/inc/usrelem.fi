@@ -1,0 +1,524 @@
+! usrelem.fi
+! Interface blocks for usrelem.f90
+
+interface
+  subroutine elstif(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+       utloc, maxu, stnloc, maxs, eprop, MAXPRP, svart,  &
+       svaru, MAXVAR, stif, resid, MAXSTF,ifail)
+    use Types
+    use ParamIO
+    implicit none
+    
+    integer, intent( inout )      :: lmn                             
+    integer, intent( inout )      :: iep                             
+    integer, intent( inout )      :: numnod                          
+    integer, intent( in )         :: maxx                            
+    integer, intent( in )         :: maxu                            
+    integer, intent( in )         :: maxs                            
+    integer, intent( in )         :: MAXPRP                          
+    integer, intent( in )         :: MAXVAR                          
+    integer, intent( in )         :: MAXSTF                          
+    integer, intent( inout )      :: ifail
+    integer, intent( inout )      :: nodpn(4, numnod)                
+    real( prec ), intent( inout ) :: xloc(maxx)                      
+    real( prec ), intent( inout ) :: duloc(maxu)                     
+    real( prec ), intent( inout ) :: utloc(maxu)                     
+    real( prec ), intent( inout ) :: stnloc(maxs)                    
+    real( prec ), intent( inout ) :: eprop(MAXPRP)                   
+    real( prec ), intent( in )    :: svart(MAXVAR)                   
+    real( prec ), intent( out )   :: svaru(MAXVAR)                   
+    real( prec ), intent( inout ) :: stif(MAXSTF, MAXSTF)            
+    real( prec ), intent( inout ) :: resid(MAXSTF)                   
+
+  end subroutine elstif
+end interface
+
+interface 
+  subroutine dload(lmn, iep, numnod, nodpn, eprop, MAXPRP, xloc,  &
+       maxx, iface,iopt, dlprops,ndlprp, resid, MAXSTF)
+    use Types
+    implicit none
+    
+    integer, intent( inout )      :: lmn                        
+    integer, intent( inout )      :: iep                        
+    integer, intent( inout )      :: numnod                     
+    integer, intent( in )         :: MAXPRP                     
+    integer, intent( in )         :: maxx                       
+    integer, intent( inout )      :: iface
+    integer, intent( in )         :: iopt                       
+    integer, intent( inout )      :: ndlprp                       
+    integer, intent( in )         :: MAXSTF                     
+    integer, intent( inout )      :: nodpn(4, numnod)           
+    real( prec ), intent( inout ) :: eprop(MAXPRP)              
+    real( prec ), intent( inout ) :: xloc(maxx)
+    real( prec ), intent( in )    :: dlprops(ndlprp)                 
+    real( prec ), intent( inout ) :: resid(MAXSTF)              
+
+  end subroutine dload
+end interface
+
+interface
+  subroutine elstat(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+       utloc, maxu, eprop, MAXPRP, svart, svaru, MAXVAR, stat, nstat)
+    use Types
+    implicit none
+    
+    integer, intent( inout )      :: lmn                           
+    integer, intent( inout )      :: iep                           
+    integer, intent( in )         :: numnod                        
+    integer, intent( inout )      :: maxx                          
+    integer, intent( inout )      :: maxu                          
+    integer, intent( inout )      :: MAXPRP                        
+    integer, intent( inout )      :: MAXVAR                        
+    integer, intent( in )         :: nstat                                               
+    integer, intent( inout )      :: nodpn(4, numnod)              
+    real( prec ), intent( inout ) :: xloc(maxx)                    
+    real( prec ), intent( inout ) :: duloc(maxu)                   
+    real( prec ), intent( inout ) :: utloc(maxu)                   
+    real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+    real( prec ), intent( in )    :: svart(MAXVAR)                 
+    real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+    real( prec ), intent( out )   :: stat(nstat, numnod)           
+
+  end subroutine elstat
+end interface
+
+interface
+subroutine el_mean_state(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+     utloc, maxu, eprop, MAXPRP, svart, svaru, MAXVAR, stat, nstat,mean_state_el,el_vol,nmstat)
+  use Types
+  implicit none
+
+  integer, intent( inout )      :: lmn                           
+  integer, intent( inout )      :: iep                           
+  integer, intent( in )         :: numnod                        
+  integer, intent( inout )      :: maxx                          
+  integer, intent( inout )      :: maxu                          
+  integer, intent( inout )      :: MAXPRP                        
+  integer, intent( inout )      :: MAXVAR                        
+  integer, intent( in )         :: nstat  
+  integer, intent( in )         :: nmstat                       
+  integer, intent( inout )      :: nodpn(4, numnod)              
+  real( prec ), intent( inout ) :: xloc(maxx)                    
+  real( prec ), intent( inout ) :: duloc(maxu)                   
+  real( prec ), intent( inout ) :: utloc(maxu)                   
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( in )    :: svart(MAXVAR)                 
+  real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+  real( prec ), intent( out )   :: stat(nstat, numnod)
+  real( prec ), intent( out )   :: mean_state_el(nmstat)
+  real( prec ), intent( out )   :: el_vol 
+  
+end subroutine el_mean_state
+end interface
+
+
+interface
+  subroutine elsint(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+     utloc, maxu, eprop, MAXPRP, svart, svaru, MAXVAR, stat, nstat, knproj)
+  use Types
+  implicit none
+
+  integer, intent( inout )      :: lmn                           
+  integer, intent( inout )      :: iep                           
+  integer, intent( in )         :: numnod                        
+  integer, intent( inout )      :: maxx                          
+  integer, intent( inout )      :: maxu                          
+  integer, intent( inout )      :: MAXPRP                        
+  integer, intent( inout )      :: MAXVAR                        
+  integer, intent( in )         :: nstat                         
+  integer, intent( inout )      :: knproj
+  integer, intent( inout )      :: nodpn(4, numnod)              
+  real( prec ), intent( inout ) :: xloc(maxx)                    
+  real( prec ), intent( inout ) :: duloc(maxu)                   
+  real( prec ), intent( inout ) :: utloc(maxu)                   
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( in )    :: svart(MAXVAR)                 
+  real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+  real( prec ), intent( out )   :: stat(nstat, numnod)           
+
+
+  end subroutine elsint
+end interface
+
+
+
+interface
+  subroutine elproj(lmn, iep, numnod, nodpn, xloc, maxx, eprop,  &
+       nprop, dmloc, MAXSTF)
+    use Types
+    use ParamIO
+    implicit none
+    
+    integer, intent( inout )      :: lmn                             
+    integer, intent( inout )      :: iep                             
+    integer, intent( in )         :: numnod                          
+    integer, intent( inout )      :: maxx                            
+    integer, intent( inout )      :: nprop                           
+    integer, intent( in )         :: MAXSTF
+    integer, intent( inout )      :: nodpn(4, numnod)                
+    real( prec ), intent( in )    :: xloc(maxx)                      
+    real( prec ), intent( inout ) :: eprop(nprop)                    
+    real( prec ), intent( out )   :: dmloc(MAXSTF, MAXSTF)           
+
+  end subroutine elproj
+end interface
+
+interface
+subroutine ellmproj(lmn, iep, numnod, nodpn, xloc, maxx, eprop,  &
+     nprop, lproj, MAXSTF)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: lmn                             
+  integer, intent( inout )      :: iep                             
+  integer, intent( in )         :: numnod                          
+  integer, intent( inout )      :: maxx                            
+  integer, intent( inout )      :: nprop                           
+  integer, intent( in )         :: MAXSTF
+  integer, intent( inout )      :: nodpn(2, numnod)                
+  real( prec ), intent( in )    :: xloc(maxx)                      
+  real( prec ), intent( inout ) :: eprop(nprop)                    
+  real( prec ), intent( out )   :: lproj(MAXSTF)       
+end subroutine ellmproj
+end interface
+interface
+subroutine intpts_1d(qgaus, wgaus, ngaus)
+  use Types
+  implicit none
+
+  real( prec ), intent( out ) :: qgaus(10)
+  real( prec ), intent( out ) :: wgaus(10)
+  integer, intent( inout )    :: ngaus
+  end subroutine intpts_1d
+end interface
+
+interface
+subroutine intpts_2d(pq, w, knode, NINTP)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )       :: knode
+  integer, intent( in )       :: NINTP
+  real( prec ), intent( out ) :: pq(2, 9)
+  real( prec ), intent( out ) :: w(9)
+end subroutine intpts_2d
+end interface
+
+interface
+subroutine shape_1d(knode, pq, f)
+  use Types
+  use ParamIO 
+  implicit none
+
+  integer, intent( in )       :: knode
+  real( prec ), intent( in )  :: pq(*)
+  real( prec ), intent( out ) :: f(*)
+  
+  end subroutine shape_1d
+end interface
+
+
+interface
+subroutine dshape_1d(knode, pq, f)
+  use Types
+  use ParamIO 
+  implicit none
+
+  integer, intent( in )       :: knode
+  real( prec ), intent( in )  :: pq
+  real( prec ), intent( out ) :: f(*)
+  
+end subroutine dshape_1d
+end interface
+
+interface
+subroutine dshape_2d(knode, pq, df)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )       :: knode
+  real( prec ), intent( in )  :: pq(9)
+  real( prec ), intent( out ) :: df(9, 2)
+
+end subroutine dshape_2d
+end interface
+
+interface
+subroutine intpts_3d(xi, w, knode, npoints)
+  use Types
+  use ParamIO
+
+  implicit none
+
+  integer, intent( in )       :: knode
+  integer, intent( in )       :: npoints
+  real( prec ), intent( out ) :: xi(3,*)
+  real( prec ), intent( out ) :: w(*)
+end subroutine intpts_3d
+end interface
+
+interface
+subroutine shape_3d(knode,xi,N)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer,      intent( in )  :: knode
+  real( prec ), intent( in )  :: xi(3)
+  real( prec ), intent( out ) :: N(20)
+
+end subroutine shape_3d
+end interface
+interface
+subroutine x2xi(ncoor, knode, xloc, x, pq)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: ncoor                        
+  integer, intent( in )         :: knode                        
+  real( prec ), intent( in )    :: xloc(ncoor, *)           
+  real( prec ), intent( inout ) :: pq(*)                   
+  real( prec ), intent( out )   :: x(*)                    
+ end subroutine x2xi
+end interface
+interface
+subroutine dshape_3d(knode,xi,dNdxi)
+   use Types
+   use ParamIO
+   implicit none
+
+
+   integer,  intent(in)           :: knode
+   real (prec),   intent(in)      :: xi(3)
+   real (prec),   intent(inout)   :: dNdxi(20,3)
+end subroutine dshape_3d
+end interface
+
+interface
+subroutine facenodes_2d(nelnodes,face,list,nfacenodes)
+   use Types
+   use ParamIO
+   implicit none
+
+   integer, intent (in)      :: nelnodes
+   integer, intent (in)      :: face
+   integer, intent (out)     :: list(3)
+   integer, intent (out)     :: nfacenodes
+   
+   end subroutine facenodes_2d
+end interface
+
+interface
+subroutine dload_2d(lmn, iep, numnod, nodpn, eprop, MAXPRP, xloc,  &
+     maxx, iface,iopt, dlprop,ndlprp, resid, MAXSTF)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: lmn                        
+  integer, intent( inout )      :: iep                        
+  integer, intent( inout )      :: numnod                     
+  integer, intent( in )         :: MAXPRP                     
+  integer, intent( in )         :: maxx                       
+  integer, intent( inout )      :: iface
+  integer, intent( in )         :: iopt                       
+  integer, intent( inout )      :: ndlprp                       
+  integer, intent( in )         :: MAXSTF                     
+  integer, intent( inout )      :: nodpn(4, numnod)           
+  real( prec ), intent( inout ) :: eprop(MAXPRP)              
+  real( prec ), intent( inout ) :: xloc(maxx)
+  real( prec ), intent( in )    :: dlprop(ndlprp)                 
+  real( prec ), intent( inout ) :: resid(MAXSTF)           
+  
+  end subroutine dload_2d
+end interface
+
+interface
+subroutine facenodes_3d(nelnodes,face,list,nfacenodes)
+   use Types
+   use ParamIO
+   implicit none
+
+   integer, intent (in)      :: nelnodes
+   integer, intent (in)      :: face
+   integer, intent (out)     :: list(8)
+   integer, intent (out)     :: nfacenodes
+
+end subroutine facenodes_3d
+end interface
+
+
+interface
+subroutine dload_3d(lmn, iep, numnod, nodpn, eprop, MAXPRP, xloc,  &
+     maxx, iface,iopt, dlprop,ndlprp, resid, MAXSTF)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: lmn                        
+  integer, intent( inout )      :: iep                        
+  integer, intent( inout )      :: numnod                     
+  integer, intent( in )         :: MAXPRP                     
+  integer, intent( in )         :: maxx                       
+  integer, intent( inout )      :: iface
+  integer, intent( in )         :: iopt                       
+  integer, intent( inout )      :: ndlprp                       
+  integer, intent( in )         :: MAXSTF                     
+  integer, intent( inout )      :: nodpn(4, numnod)           
+  real( prec ), intent( inout ) :: eprop(MAXPRP)              
+  real( prec ), intent( inout ) :: xloc(maxx)
+  real( prec ), intent( in )    :: dlprop(ndlprp)                 
+  real( prec ), intent( inout ) :: resid(MAXSTF)              
+
+end subroutine dload_3d
+end interface
+
+interface
+subroutine btract_2d(props,nprops, x, norm, tract)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: nprops
+  real( prec ), intent( inout ) :: x(2)
+  real( prec ), intent( inout ) :: norm(2)
+  real( prec ), intent( out )   :: tract(*)
+  real( prec ), intent( in )    :: props(nprops)
+
+end subroutine btract_2d
+
+end interface
+
+interface
+subroutine btract_3d(props,nprops, x, norm, tract)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: nprops
+  real( prec ), intent( inout ) :: x(3)
+  real( prec ), intent( inout ) :: norm(3)
+  real( prec ), intent( out )   :: tract(3)
+  real( prec ), intent( in )    :: props(nprops)
+
+end subroutine btract_3d
+end interface
+
+interface
+subroutine dof_user_sub(idof,params,npar,utot,du,rfor,ndof,value)
+   use TYPES
+   use PARAMIO
+   use Globals
+
+   integer,  intent( in )         :: idof
+   integer,  intent( in )         :: npar
+   integer,  intent( in )         :: ndof
+
+   real( prec ), intent( inout )  :: params(npar)
+   real( prec ), intent( in )     :: utot(ndof)
+   real( prec ), intent( in )     :: du(ndof)
+   real( prec ), intent( in )     :: rfor(ndof)
+   real( prec ), intent( out )  :: value
+   
+end subroutine dof_user_sub
+end interface
+interface
+subroutine for_user_sub(idof,params,npar,utot,du,rfor,ndof,value)
+   use TYPES
+   use PARAMIO
+   use Globals
+
+   integer,  intent( in )         :: idof
+   integer,  intent( in )         :: npar
+   integer,  intent( in )         :: ndof
+
+   real( prec ), intent( in )     :: params(npar)
+   real( prec ), intent( in )     :: utot(ndof)
+   real( prec ), intent( in )     :: du(ndof)
+   real( prec ), intent( in )     :: rfor(ndof)
+   real( prec ), intent( out )  :: value
+   
+end subroutine for_user_sub
+end interface
+
+interface
+  subroutine cnstrn(mpc, mpctyp, idof, param, nparam, utmpc, dumpc,  &
+       rmult, drmult, stfmpc, resmpc)
+    use Types
+    implicit none
+    
+    integer, intent( inout )      :: mpc                      
+    integer, intent( inout )      :: mpctyp                   
+    integer, intent( in )         :: nparam                   
+    integer, intent( in )         :: idof(2)                  
+    real( prec ), intent( in )    :: rmult                    
+    real( prec ), intent( in )    :: drmult                   
+    real( prec ), intent( in )    :: param(nparam)            
+    real( prec ), intent( inout ) :: utmpc(2)                 
+    real( prec ), intent( inout ) :: dumpc(2)                 
+    real( prec ), intent( out )   :: stfmpc(3, 3)             
+    real( prec ), intent( out )   :: resmpc(3)                
+
+  end subroutine cnstrn
+end interface
+interface
+subroutine elforc(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+     utloc, maxu, stnloc, maxs, eprop, MAXPRP, svart,  &
+     svaru, MAXVAR, resid, MAXFOR)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: lmn                             
+  integer, intent( inout )      :: iep                             
+  integer, intent( inout )      :: numnod                          
+  integer, intent( in )         :: maxx                            
+  integer, intent( in )         :: maxu                            
+  integer, intent( in )         :: maxs                            
+  integer, intent( in )         :: MAXPRP                          
+  integer, intent( in )         :: MAXVAR                          
+  integer, intent( in )         :: MAXFOR                          
+  integer, intent( inout )      :: nodpn(4, numnod)                
+  real( prec ), intent( inout ) :: xloc(maxx)                      
+  real( prec ), intent( inout ) :: duloc(maxu)                     
+  real( prec ), intent( inout ) :: utloc(maxu)                     
+  real( prec ), intent( inout ) :: stnloc(maxs)                    
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                   
+  real( prec ), intent( in )    :: svart(MAXVAR)                   
+  real( prec ), intent( out )   :: svaru(MAXVAR)                            
+  real( prec ), intent( inout ) :: resid(MAXFOR)                   
+end subroutine elforc
+end interface
+
+interface
+subroutine elmass(lmn, iep, numnod, nodpn, xloc, maxx, duloc,  &
+     utloc, maxu, stnloc, maxs, density, eprop, MAXPRP, svart,  &
+     svaru, MAXVAR, lumpedmass, MAXM)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: lmn                             
+  integer, intent( inout )      :: iep                             
+  integer, intent( inout )      :: numnod                          
+  integer, intent( in )         :: maxx                            
+  integer, intent( in )         :: maxu                            
+  integer, intent( in )         :: maxs                            
+  integer, intent( in )         :: MAXPRP                          
+  integer, intent( in )         :: MAXVAR                                                
+  integer, intent( in )         :: MAXM
+  integer, intent( inout )      :: nodpn(4, numnod)                
+  real( prec ), intent( inout ) :: xloc(maxx)                      
+  real( prec ), intent( inout ) :: duloc(maxu)                     
+  real( prec ), intent( inout ) :: utloc(maxu)                     
+  real( prec ), intent( inout ) :: stnloc(maxs)
+  real( prec ), intent( in )    :: density                    
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                   
+  real( prec ), intent( in )    :: svart(MAXVAR)                   
+  real( prec ), intent( in )    :: svaru(MAXVAR)                   
+  real( prec ), intent( inout ) :: lumpedmass(MAXM)                           
+
+end subroutine elmass
+end interface

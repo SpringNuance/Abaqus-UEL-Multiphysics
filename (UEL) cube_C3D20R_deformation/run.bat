@@ -1,0 +1,1 @@
+abaqus job=cube_C3D20R_deformation_UEL input=cube_C3D20R_deformation_UEL.inp user=von_Mises_plasticity_UEL cpus=1 mp_mode=threads -verbose 1 interactive

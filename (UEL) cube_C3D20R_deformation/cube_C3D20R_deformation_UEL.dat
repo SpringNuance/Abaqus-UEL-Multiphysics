@@ -1,0 +1,212 @@
+1
+
+   Abaqus 2023.HF4                                  Date 09-Oct-2024   Time 15:52:36
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2025
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *userelement, nodes=20, type=U1, properties=208, variables=240, coordinates=3
+  *Heading
+  *Element, type=U1
+  *Element, type=C3D20R
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION
+  *Elset, elset=ASSEMBLY_BOTTOM_SIDE
+  *Elset, elset=ASSEMBLY_TOP_SIDE
+  *Elset, elset=ASSEMBLY_WHOLE_CUBE_ELEMENT
+  *Elset, elset=ASSEMBLY_XSYMM_SIDE
+  *Elset, elset=ASSEMBLY_ZSYMM_SIDE
+  *material, name=VON_MISES
+  *density
+  *depvar
+  *usermaterial, constants=1
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=VON_MISES
+  *userelement, nodes=20, type=U1, properties=208, variables=240, coordinates=3
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=VON_MISES
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *uelproperty, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *output, field, numberinterval=100
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field, numberinterval=100
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field, numberinterval=100
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
+  *output, field, numberinterval=100
+  *output, history, frequency=0
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
+  *static
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *output, field, numberinterval=100
+  *nodeoutput
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: OUTPUT AT EXACT, PREDEFINED TIME POINTS WAS REQUESTED IN THIS 
+             STEP. IN ORDER TO WRITE OUTPUT AT EXACT TIME POINTS SPECIFIED, 
+             Abaqus MIGHT USE TIME INCREMENTS SMALLER THAN THE MINIMUM TIME 
+             INCREMENT ALLOWED IN THE STEP. IN ADDITION, THE NUMBER OF 
+             INCREMENTS REQUIRED TO COMPLETE THE STEP WILL IN GENERAL INCREASE.
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *boundary
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
+  *static
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     2
+          NUMBER OF NODES IS                                       20
+          NUMBER OF NODES DEFINED BY THE USER                      20
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   60
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.20    
+       SYSTEM TIME (SEC)    =     0.20    
+       TOTAL CPU TIME (SEC) =     0.40    
+       WALLCLOCK TIME (SEC) =            0
+1
+
+   Abaqus 2023.HF4                                  Date 09-Oct-2024   Time 15:52:42
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            100.    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-07
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+          LARGE DISPLACEMENT THEORY WILL BE USED
+
+
+          THE ANALYSIS IS ENDED BECAUSE OF THE PROBLEMS ENCOUNTERED
+          LOOK AT THE MSG FILE FOR THE CAUSE OF THE TERMINATION
+
+
+
+                              ANALYSIS IS ENDED
+                              WITH      1 ERROR MESSAGES ON THE MSG FILE
+                              AND       3 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      0.0    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.10    
+       WALLCLOCK TIME (SEC) =            0

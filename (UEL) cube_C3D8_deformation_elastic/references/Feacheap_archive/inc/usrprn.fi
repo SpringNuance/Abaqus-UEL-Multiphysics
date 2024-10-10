@@ -1,0 +1,175 @@
+! usrprn.fi
+! Interface blocks for usrprn.fi
+
+interface
+
+  subroutine usrprn(iunlst, nupiun, parprn, nprpar,  &
+                nelm, nops, nmpc, nfix, nfor, ndload, icon, iep,  &
+                eprop, svart, svaru, lstmpc, parmpc, rmpc,  &
+                drmpc, nodpn, x, utot, du, stnod, rfor,  &
+                stlump, lumpn, nstat, lstfix, dofval, lstfor,  &
+                forval, lstlod, alow, aupp, diag, rhs, ieqs,  &
+                jpoin, mpceq, nzone,izplmn, &
+                MAXNOD,  &
+                MAXCOR, MAXDOF, MAXSTN, MAXLMN, MAXCON, MAXPRP,  &
+                MAXVAR, MAXMPC,MAXPMP, MAXFIX, MAXFOR, MAXDLD, MAXSLO,  &
+                MAXSUP, MAXEQ, MAXLMP,  MAXZON)
+  Use Types
+  use ParamIO
+  use Paramsol
+  use Globals, only : TIME, DTIME, BTEMP, BTINC
+  implicit none
+
+  integer, intent( inout )                 :: nupiun
+  integer, intent( in )                    :: nprpar  
+  integer, intent( in )                    :: nstat  
+  integer, intent( in )                    :: MAXNOD  
+  integer, intent( in )                    :: MAXCOR  
+  integer, intent( in )                    :: MAXDOF  
+  integer, intent( in )                    :: MAXSTN  
+  integer, intent( in )                    :: MAXLMN  
+  integer, intent( in )                    :: MAXCON  
+  integer, intent( in )                    :: MAXPRP  
+  integer, intent( in )                    :: MAXVAR  
+  integer, intent( in )                    :: MAXMPC
+  integer, intent( in )                    :: MAXPMP   
+  integer, intent( in )                    :: MAXFIX  
+  integer, intent( in )                    :: MAXFOR  
+  integer, intent( in )                    :: MAXDLD  
+  integer, intent( in )                    :: MAXSLO  
+  integer, intent( in )                    :: MAXSUP  
+  integer, intent( in )                    :: MAXEQ   
+  integer, intent( in )                    :: MAXLMP  
+  integer, intent( in )                    :: MAXZON  
+
+  integer, intent( inout )                 :: iunlst(nupiun)
+  integer, intent( inout )                 :: nelm
+  integer, intent( inout )                 :: nops
+  integer, intent( inout )                 :: nmpc
+  integer, intent( inout )                 :: nfix
+  integer, intent( inout )                 :: nfor
+  integer, intent( inout )                 :: ndload
+  integer, intent( inout )                 :: icon(MAXCON)
+  integer, intent( inout )                 :: iep(7, MAXLMN)
+  integer, intent( inout )                 :: lstmpc(7, MAXMPC)
+  integer, intent( inout )                 :: nodpn(7, MAXNOD)
+  integer, intent( inout )                 :: lumpn(2,nops,nzone)
+  integer, intent( inout )                 :: lstfix(2, MAXFIX)
+  integer, intent( inout )                 :: lstfor(2, MAXFOR)
+  integer, intent( inout )                 :: lstlod(3, MAXDLD)
+  integer, intent( inout )                 :: ieqs(MAXDOF)
+  integer, intent( inout )                 :: jpoin(MAXEQ)
+  integer, intent( inout )                 :: mpceq(MAXMPC)
+  integer, intent( inout )                 :: nzone
+
+  integer, intent( inout )                 :: izplmn(2, MAXZON)
+  
+  real( prec ), intent( inout )            :: parprn(nprpar)
+  real( prec ), intent( inout )            :: eprop(MAXPRP)
+  real( prec ), intent( in )               :: svart(MAXVAR)
+  real( prec ), intent( inout )            :: svaru(MAXVAR)
+  real( prec ), intent( inout )            :: parmpc(MAXPMP)
+  real( prec ), intent( inout )            :: rmpc(MAXMPC)
+  real( prec ), intent( inout )            :: drmpc(MAXMPC)
+  real( prec ), intent( inout )            :: x(MAXCOR)
+  real( prec ), intent( inout )            :: utot(MAXDOF)
+  real( prec ), intent( inout )            :: du(MAXDOF)
+  real( prec ), intent( inout )            :: stnod(MAXSTN)
+  real( prec ), intent( inout )            :: rfor(MAXDOF)
+  real( prec ), intent( inout )            :: stlump(MAXLMP)
+  real( prec ), intent( inout )            :: dofval(MAXFIX)
+  real( prec ), intent( inout )            :: forval(MAXFOR)
+  real( prec ), intent( inout )            :: alow(MAXSLO)
+  real( prec ), intent( inout )            :: aupp(MAXSUP)
+  real( prec ), intent( inout )            :: diag(MAXEQ)
+  real( prec ), intent( inout )            :: rhs(MAXEQ)
+
+  end subroutine usrprn
+end interface
+
+interface
+
+subroutine prnstt(iun,nzone,nops,nelm,izplmn,nodpn,iep,x,MAXCOR,  &
+     icon, MAXCON, utot, du, MAXDOF, stlump, MAXLMP, lumpn)
+  use Types
+  use ParamIO
+  use Globals, only : TIME, DTIME, n_state_prints
+  implicit none
+
+  integer, intent( inout )      :: iun                      
+  integer, intent( in )         :: nops                                    
+  integer, intent( in )         :: nelm                     
+  integer, intent( in )         :: nzone
+  integer, intent( in )         :: MAXCOR                   
+  integer, intent( in )         :: MAXCON                   
+  integer, intent( in )         :: MAXDOF                   
+  integer, intent( in )         :: MAXLMP                   
+  integer, intent( in )         :: izplmn(2,nzone)
+  integer, intent( in )         :: nodpn(7, nops)           
+  integer, intent( in )         :: iep(7, nelm)             
+  integer, intent( inout )      :: icon(MAXCON)             
+  integer, intent( in )         :: lumpn(2,nops,nzone)              
+  real( prec ), intent( inout ) :: x(MAXCOR)                
+  real( prec ), intent( inout ) :: utot(MAXDOF)             
+  real( prec ), intent( inout ) :: du(MAXDOF)               
+  real( prec ), intent( inout ) :: stlump(MAXLMP)           
+
+
+  end subroutine prnstt
+end interface
+
+interface
+subroutine compute_average_state( parprn, nprpar,  &
+                nelm, nops, nodpn, icon, iep,  &
+                eprop, svart, svaru,  &
+                 x, utot, du, stnod,   &
+                stlump, lumpn, nstat, nzone,izplmn, &
+                MAXNOD,  &
+                MAXCOR, MAXDOF, MAXSTN, MAXLMN, MAXCON, MAXPRP,  &
+                MAXVAR,  MAXLMP,  MAXZON, &
+                zone_mean_state,total_mean_state,nmstat)
+
+  Use Types
+  use ParamIO
+  use Paramsol
+  use Globals, only : TIME, DTIME, BTEMP, BTINC
+  implicit none
+
+  integer, intent( in )                    :: nprpar  
+  integer, intent( in )                    :: nstat  
+  integer, intent( in )                    :: MAXNOD  
+  integer, intent( in )                    :: MAXCOR  
+  integer, intent( in )                    :: MAXDOF  
+  integer, intent( in )                    :: MAXSTN  
+  integer, intent( in )                    :: MAXLMN  
+  integer, intent( in )                    :: MAXCON  
+  integer, intent( in )                    :: MAXPRP  
+  integer, intent( in )                    :: MAXVAR  
+  integer, intent( in )                    :: MAXLMP  
+  integer, intent( in )                    :: MAXZON  
+
+  integer, intent( inout )                 :: nelm
+  integer, intent( inout )                 :: nops
+  integer, intent( inout )                 :: icon(MAXCON)
+  integer, intent( inout )                 :: iep(7, MAXLMN)
+  integer, intent( inout )                 :: nodpn(7, MAXNOD)
+  integer, intent( inout )                 :: lumpn(2,nops,nzone)
+  integer, intent( inout )                 :: nzone
+  integer, intent( inout )                 :: nmstat
+
+  integer, intent( inout )                 :: izplmn(2, MAXZON)
+  
+  real( prec ), intent( inout )            :: parprn(nprpar)
+  real( prec ), intent( inout )            :: eprop(MAXPRP)
+  real( prec ), intent( in )               :: svart(MAXVAR)
+  real( prec ), intent( inout )            :: svaru(MAXVAR)
+  real( prec ), intent( inout )            :: x(MAXCOR)
+  real( prec ), intent( inout )            :: utot(MAXDOF)
+  real( prec ), intent( inout )            :: du(MAXDOF)
+  real( prec ), intent( inout )            :: stnod(MAXSTN)
+  real( prec ), intent( inout )            :: stlump(MAXLMP)
+  real( prec ), intent( inout )            :: zone_mean_state(MAXSTT,nzone)
+  real( prec ), intent( inout )            :: total_mean_state(MAXSTT)
+  
+  end subroutine compute_average_state
+ end interface

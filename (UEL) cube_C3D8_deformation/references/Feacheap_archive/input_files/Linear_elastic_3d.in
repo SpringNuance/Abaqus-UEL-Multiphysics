@@ -1,0 +1,199 @@
+%
+%             Demonstration input file for simple general purpose FEA code FEACHEAP
+%                                    A.F. Bower, August 2011
+%
+%             This example illustrates a simple 3D elastostatic boundary value problem with 8 noded brick elements
+%             The element subroutines are in el_linelast_3Dbasic.f90.
+%
+%   Note that any line starting with a % in the first column is a comment and is ignored.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MESH DEFINITION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+    MESH
+
+%    The NODE command defines properties of the nodes.  
+%    The parameters are # of coords, # of DOF, and an optional integer identifier
+       NODES, 3, 3, 1
+%    Enter x,y,z coords of nodes.   The node number is optional, and is ignored in the code.
+         COORDINATES
+         1,  0.d0, 0.d0, 0.d0
+         2,  1.d0, 0.d0, 0.d0
+         3,  1.d0, 1.d0, 0.d0
+         4,  0.d0, 1.d0, 0.d0
+         5,  0.d0, 0.d0, 1.d0
+         6,  1.d0, 0.d0, 1.d0
+         7,  1.d0, 1.d0, 1.d0
+         8,  0.d0, 1.d0, 1.d0
+         9,  2.d0, 0.d0, 0.d0
+        10,  2.d0, 1.d0, 0.d0
+        11,   2.d0, 0.d0, 1.d0
+        12,   2.d0, 1.d0, 1.d0
+ 
+%
+%     The ELEMENT command defines properties of elements
+%     The parameters are no. nodes on the element, no. properties, total no. state variables, integer identifier
+%     2D solid elements should be numbered between 1 and 100; 3D solid elements should be numbered between
+%     1000 and 2000.
+   
+      ELEMENT, 8, 3, 0, 1001
+%       Define element properties - the values are passed to user subroutine elstif in the order they are listed here
+%       For the example provided, the params are Youngs Modulus, Poissons ratio and thermal expansion coeft
+        PROPERTIES
+         100.d0, 0.3d0, 0.d0
+%     Define mass density (for explicity dynamics only)
+%       DENSITY, 10.d0
+%     Define element connectivity
+%     The element number (first number in the list) is optional, and is ignored in the code
+        CONNECTIVITY
+    1,     1, 2, 3, 4, 5, 6, 7, 8
+    2,     2, 9, 10, 3, 6, 11, 12, 7
+
+%     The ELEMENT keyword can be repeated here to define another set of elements with different properties
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BOUNDARY CONDITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%     The BOUNDARY conditions key starts definition of BCs
+      BOUNDARY CONDITIONS
+
+%       The HISTORY key defines a time history that can be applied to DOFs or distributed loads
+        HISTORY, dof_history
+          0.d0, 0.d0
+         10.d0, 1.d0
+
+        HISTORY, dload_history
+          0.d0, 2.d0
+         10.d0, 2.d0
+
+%       The NODESET key defines a list of nodes
+        NODESET, node1
+           1
+        NODESET, left
+           1, 4, 5, 8
+        NODESET, right
+           9, 10, 12, 11
+        NODESET, side
+           1, 2, 5, 6, 11, 9
+        NODESET, constraint1
+           1, 1, 1, 1, 1
+        NODESET, constraint2
+           2, 3, 4, 9, 10
+
+%      The ELEMENTSET key defines a list of elements
+       ELEMENTSET, end_element
+           2
+
+%       The DEGREE OF FREEDOM key assigns values to nodal DOFs
+%       The syntax is node set name, DOF number, and either a value or a history name.
+%     
+        DEGREES OF FREEDOM
+           node1, 3, 0.d0
+           side, 2, 0.d0
+           left, 1, 0.d0
+%           right, 1, dof_history
+        END DEGREES OF FREEDOM
+
+
+%       The DISTRIBUTED LOAD key sets up prescribed tractions on element faces
+%       The syntax is one of the following options:
+%           element set, face #, VALUE, tx,ty,(tz)        (applies constant pressure to element face in direction DOF)
+%           element set, face #, history name, nx,ny,(nz) (time dependent pressure to element face in direction (nx,ny,nz))
+%           element set, face #, NORMAL, history name     (applies time dependent pressure normal to element face)
+%           element set, face #, SUBROUTINE, list of parameters
+
+        DISTRIBUTED LOADS
+          end_element, 4, Value, 10.d0,0.d0,0.d0
+        END DISTRIBUTED LOADS
+
+%       The CONSTRAINTS key gives a way to enforce constraints between pairs of nodes.
+%       Useful, e.g. for periodic boundary conditions.
+%
+%       The syntax is
+%       CONSTRAINTS, nodeset1, DOF1, nodeset2, DOF2, no. parameters for the constraint, optional identifier
+%
+%       The example makes DOF 3 on nodes 2, 3, 4, 9 and 10 equal to DOF 3 on node 1.
+%
+        CONSTRAINT, constraint1, 3, constraint2, 3, 1
+%          The property is a small compliance for the constraint
+           1.d-08
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Mesh printing, error checking %%%%%%%%%%%%%%%%%%%%
+
+%  Print the initial mesh to a file named initial_mesh.dat
+
+   PRINT, initial_mesh.dat
+
+%      The ALL NODES option forces quadratic elements to be subdivided for TECPLOT plotting purposes.
+       MESH, ALL NODES
+
+
+%   The CHECK STIFFNESS key tests the element subroutine to ensure that
+%   the residual force vector is consistent with the stiffness
+%       CHECK STIFFNESS, 1001
+
+%    STOP
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analysis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%   The STATIC STEP key initializes a static load step
+
+     STATIC STEP
+
+%        The TIME STEP key defines values of parameters controlling time stepping.
+%        These parameters are passed to subroutine staticstep.
+%        The parameters must be entered in the correct order
+
+          TIME STEP
+%        Initial time step value
+           0.01d0
+%        Max and min time step
+           0.5d0, 0.001d0
+%        Max no. time steps
+           20
+%        Stop time
+           10.d0
+%        Time interval between state prints and no. steps between state prints
+           1000.d0, 1
+%        Time interval between user prints and no. steps between user prints
+           1000.d0, 1000
+
+            
+%        The SOLVER key controls the equation solver and Newton-Raphson iterations
+%        The options are FACTOR for direct solver, CONJUGATE GRADIENT for cg solver
+%                        LINEAR for linear equations, NONLINEAR for nonlinear equations
+%                        For nonlinear solver, must specify convergence tolerance and max # iterations
+%                        SYMMETRIC or UNSYMMETRIC
+%        Of course for a linear elastic problem you should use
+%         SOLVER, CONJUGATE GRADIENT, LINEAR, SYMMETRIC
+%        but we use the nonlinear solver for demonstration purposes.
+
+         SOLVER, CONJUGATE GRADIENT, NONLINEAR, 0.0001d0, 20, UNSYMMETRIC
+
+%        Project element state to nodes (for contour plotting, etc).  The integer specifies # of states to project
+%        The state projection is done by a user subroutine.
+
+         PROJECT STATE, 6
+
+%      This prints the DOF values and projected nodal state for all solid elements to a tecplot readable file
+%      Nodal variables are printed as
+%         X, Y, (Z), Ux, Uy, (Uz), Projected states
+         PRINT
+           MESH, contourplots.dat
+
+%      This activates the user subroutine controlled printing
+%        PRINT
+%          USER
+%          List file names to contain the output. 
+%          FILES
+%            filename1.dat
+%            filename2.dat
+%          PARAMETERS
+%            list of parameters to be passed to the subroutine
+
+        END STATIC STEP
+         
+
+   STOP

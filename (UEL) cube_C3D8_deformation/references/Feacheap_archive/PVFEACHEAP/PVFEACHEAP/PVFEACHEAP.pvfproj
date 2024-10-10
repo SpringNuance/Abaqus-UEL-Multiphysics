@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--PGI Visual Fortran Project File-->
+<PGIproject Version="2.0">
+	<General ProjectIdGuid="{086121D0-9547-4B50-A5E9-F501241764DB}"/>
+	<Configurations>
+		<Config Name="Debug|Win32" OutDir="$(PlatformName)\$(ConfigurationName)" IntDir="$(PlatformName)\$(ConfigurationName)" CfgTyp="0" DbgEnvMerge="0" DbgMPI="0" DbgFmt="0" Optzn="0" LinkOutput="$(OutDir)\$(ProjectName).exe"/>
+		<Config Name="Release|Win32" OutDir="$(PlatformName)\$(ConfigurationName)" IntDir="$(PlatformName)\$(ConfigurationName)" CfgTyp="0" DbgEnvMerge="0" DbgMPI="0" LinkOutput="$(OutDir)\$(ProjectName).exe"/>
+	</Configurations>
+	<Files>
+		<Folder Name="Include Files">
+		</Folder>
+		<Folder Name="Resource Files">
+			<File Name="..\..\inc\el_linelast_3Dbasic.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\mesh_routines.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\misc.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\solver.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\stiftest.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\timestep.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\usrelem.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\usrmisc.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\usrprn.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\inc\usrstep.fi" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="T">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+		</Folder>
+		<Folder Name="Source Files">
+			<File Name="..\..\src\el_linelast_3Dbasic.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\feacheap.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\Globals.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\mesh_routines.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\misc.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\Parambw.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\ParamIO.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\Paramsol.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\solver.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\stiftest.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\timestep.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\Types.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\usrelem.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\usrprn.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+			<File Name="..\..\src\usrstep.f90" ProjRelPath="T" IsFixedFormat="F" IsIncludeFile="F">
+				<Config Name="Debug|Win32"/>
+				<Config Name="Release|Win32"/>
+			</File>
+		</Folder>
+	</Files>
+	<ProjStartupServices/>
+	<Globals/>
+</PGIproject>
