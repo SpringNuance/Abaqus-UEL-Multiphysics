@@ -1095,7 +1095,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! Update stran
         ! stran = stran + dstran
-        stress = matmul(ddsdde,stran_current)
+        ! stress = matmul(ddsdde,stran_current)
 
         ! Update the state variables
         ! eelas, eplas, eqplas, deqplas, sig_vonMises, sig_H are already updated in statev in UMAT_von_Mises

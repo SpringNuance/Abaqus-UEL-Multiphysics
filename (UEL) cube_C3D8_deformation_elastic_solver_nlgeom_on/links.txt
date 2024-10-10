@@ -1,0 +1,3 @@
+https://www.researchgate.net/post/Does-Non-linear-geometry-effects-NLgeomON-effect-the-reaction-forces-in-ABAQUS
+https://www.researchgate.net/post/NLgeom_off_on_in_Abaqus
+https://scicomp.stackexchange.com/questions/43222/geometrical-nonlinearity-in-abaqus

@@ -1,0 +1,197 @@
+Previous series of articles:
+
+Finite Element Theory Fundamentals and Abaqus Internal Implementation Study 
+
+======== Phase 1 ========
+
+Part 1: Study on the stiffness matrix of S4 shell elements.
+
+http://www.jishulink.com/content/post/338859
+
+Part 2: Study on the mass matrix of S4 shell elements.
+
+http://www.jishulink.com/content/post/343905
+
+Part 3: Shear self-locking and hourglass control of S4 shell units.
+
+http://www.jishulink.com/content/post/350865
+
+Chapter 4: Solving Nonlinear Problems.
+
+http://www.jishulink.com/content/post/360565
+
+Chapter 5: Unit Correctness Verification.
+
+https://www.jishulink.com/content/post/373743
+
+Chapter 6: Stiffness Matrix of General Beam Elements.
+
+https://www.jishulink.com/content/post/403932
+
+Chapter 7: Stiffness matrix of C3D8 hexahedral elements.
+
+https://www.jishulink.com/content/post/430177
+
+Chapter 8: Steps to develop subroutines for UMAT users.
+
+https://www.jishulink.com/content/post/432848
+
+Chapter 9: Writing a Linear UMAT Step By Step.
+
+http://www.jishulink.com/content/post/440874
+
+Chapter 10: Research on Coupling constraints.
+
+https://www.jishulink.com/content/post/531029
+
+======== Phase II ========
+
+Chapter 11: Summary of the first phase of practical experience in independent CAE development.
+
+http://www.jishulink.com/content/post/532475
+
+Chapter 12: Stiffness Matrix of Geometric Beam Elements.
+
+http://www.jishulink.com/content/post/534362
+
+Chapter 13: The Difference Between Explicit and Implicit.
+
+http://www.jishulink.com/content/post/537154
+
+Chapter 14: Stress Direction of Shells.
+
+https://www.jishulink.com/content/post/1189260
+
+Chapter 15: Shear stress of shell.
+
+https://www.jishulink.com/content/post/1191641
+
+Chapter 16: Part, Instance, and Assembly.
+
+https://www.jishulink.com/content/post/1195061
+
+Chapter 17: The Physical Meaning of Geometric Nonlinearity.
+
+https://www.jishulink.com/content/post/1198459
+
+Chapter 18: Geometric Nonlinear Strains.
+
+https://www.jishulink.com/content/post/1201375
+
+Chapter 19: Abaqus Geometric Nonlinear Settings and Background.
+
+http://www.jishulink.com/content/post/1203064
+
+Chapter 20: UEL User Subroutine Development Steps.
+
+https://www.jishulink.com/content/post/1204261
+
+======== Phase III ========
+
+Chapter 21: Summary of the second phase of practical experience in independent CAE development.
+
+https://www.jishulink.com/content/post/1204970
+
+Chapter 22: Solving the Stiffness Matrix of Geometric Nonlinearity.
+
+http://www.jishulink.com/content/post/1254435
+
+Chapter 23: Writing a Simple In-Plane Stretch Problem UEL Step By Step
+
+http://www.jishulink.com/content/post/1256835
+
+Chapter 24: Explicitly Solving Step By Step.
+
+https://www.jishulink.com/content/post/1261165
+
+Chapter 25: Stabilization Time Increments for Explicit Analysis.
+
+http://www.jishulink.com/content/post/1263601
+
+Chapter 26: Writing a Linear VUMAT Step By Step.
+
+https://www.jishulink.com/content/post/1266640
+
+CHAPTER XXVII: Strain Calculated and Displayed by Abaqus.
+
+https://www.jishulink.com/content/post/1273788
+
+CHAPTER XXVIII: T.L. and U.L. Description Methods for Geometric Nonlinearity
+
+https://www.jishulink.com/content/post/1282956
+
+Chapter 29: The Transition Relationship between T.L. and U.L. in Geometric Nonlinearity
+
+https://www.jishulink.com/content/post/1286065
+
+Chapter 30: Principles of Harmonic Response Analysis
+
+https://www.jishulink.com/content/post/1290151
+
+======== Phase IV ========
+
+Chapter 31: Summary of the third stage of practical experience in independent CAE development
+
+https://www.jishulink.com/content/post/1294824
+
+Chapter 32: Harmonic Response Analysis Algorithm
+
+https://www.jishulink.com/content/post/1299983
+
+Chapter 33: Linear Transient Dynamics
+
+https://www.jishulink.com/content/post/1302074
+
+Chapter 34: Nonlinear Transient Analysis
+
+https://www.jishulink.com/content/post/1787283
+
+Chapter 35: Contact Solving Algorithms
+
+https://www.jishulink.com/content/post/1792869
+
+CHAPTER 36: DLOAD USER SUBROUTINE DEVELOPMENT STEPS
+
+https://www.jishulink.com/content/post/1826803
+
+Chapter 37: Beam Element Differences (1) - Theoretical Basis
+
+https://jishulink.com/content/post/1872208
+
+Chapter 38: Beam Element Differences (2) - Beam Section Orientation
+
+https://www.jishulink.com/content/post/1874628
+
+Chapter 39: Beam Element Differences (3) - Shear Force and Bending Moment
+
+https://www.jishulink.com/content/post/1876013
+
+Chapter 40: Beam Element Differences (4) - Centroid, Shear and Offset
+
+https://www.jishulink.com/post/1888000
+
+======== Phase 5 ========
+
+Article 41: Summary of the fourth stage of practical experience in independent CAE development
+
+https://www.jishulink.com/post/1905963
+
+Chapter 42: Acoustic Analysis (1) - Finite Elements
+
+https://www.jishulink.com/post/1912491
+
+Chapter 43: Acoustic Analysis (2) - Boundary Elements
+
+https://www.jishulink.com/post/1923936
+
+Chapter 44: Acoustic Analysis (3) - Wet Modes
+
+https://www.jishulink.com/post/1928692
+
+Chapter 45: Binding Relations (1) - Uniform Form
+
+https://www.jishulink.com/post/1933077
+
+Chapter 46: Constraint Relationship (2)-Lagrange Factor Method Solution
+
+https://www.jishulink.com/post/1945262
