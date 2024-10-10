@@ -1,0 +1,114 @@
+!     Subroutines for basic 3D linear elastic elements 
+
+
+interface
+!==========================SUBROUTINE el_linelast_3dbasic ==============================
+  subroutine elstif_linelast_3Dbasic(lmn,iep,numnod, eprop, nprop, xloc, utloc, duloc, svart,  &
+     svaru, MAXVAR, stif, resid, MAXSTF)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: lmn
+  integer, intent( in )         :: iep
+  integer, intent( in )         :: numnod                                
+  integer, intent( in )         :: nprop                                
+  integer, intent( in )         :: MAXVAR                               
+  integer, intent( in )         :: MAXSTF                               
+  real( prec ), intent( inout ) :: eprop(nprop)                         
+  real( prec ), intent( inout ) :: xloc(3, numnod)                       
+  real( prec ), intent( inout ) :: utloc(3, numnod)                      
+  real( prec ), intent( inout ) :: duloc(3, numnod)                      
+  real( prec ), intent( in )    :: svart(MAXVAR)                        
+  real( prec ), intent( out )   :: svaru(MAXVAR)                        
+  real( prec ), intent( out )   :: stif(MAXSTF, MAXSTF)                 
+  real( prec ), intent( out )   :: resid(MAXSTF)                        
+
+  end subroutine elstif_linelast_3Dbasic
+end interface
+
+interface
+!===================== linelast_3d_stress ========================
+
+  subroutine linelast_3d_stress(strain,dstrain, eprop, nprop, stress)
+  use Types
+  use Globals, only : BTEMP, BTINC
+  implicit none
+
+  integer, intent( in )       :: nprop                          
+  real( prec ), intent( in )  :: strain(3, 3)
+  real( prec ), intent( in )  :: dstrain(3, 3)                         
+  real( prec ), intent( in )  :: eprop(nprop)                   
+  real( prec ), intent( out ) :: stress(3, 3)                     
+
+  end subroutine linelast_3d_stress
+end interface
+
+interface
+!=====================SUBROUTINE linelast_3D_tangent ========================
+  subroutine linelast_3D_tangent(strain,dstrain, eprop, nprop, dsde)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: nprop                         
+  real( prec ), intent( inout ) :: strain(3, 3)                      
+  real( prec ), intent( inout ) :: dstrain(3, 3)  
+  real( prec ), intent( in )    :: eprop(nprop)                  
+  real( prec ), intent( out )   :: dsde(3, 3, 3, 3)                 
+
+
+  end subroutine linelast_3D_tangent
+end interface
+
+interface
+!==========================SUBROUTINE state_linelast_3dbasic ==============================
+  subroutine state_linelast_3dbasic(lmn,iep,numnod, eprop, nprop, xloc, utloc, duloc, svart,  &
+     svaru, MAXVAR, stat, nstat)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: lmn
+  integer, intent( in )         :: iep
+  integer, intent( in )         :: numnod                                
+  integer, intent( in )         :: nprop                                
+  integer, intent( in )         :: MAXVAR                               
+  integer, intent( in )         :: nstat                              
+  real( prec ), intent( inout ) :: eprop(nprop)                         
+  real( prec ), intent( inout ) :: xloc(3, numnod)                       
+  real( prec ), intent( inout ) :: utloc(3, numnod)                      
+  real( prec ), intent( inout ) :: duloc(3, numnod)                      
+  real( prec ), intent( in )    :: svart(MAXVAR)                        
+  real( prec ), intent( in )   :: svaru(MAXVAR)                        
+  real( prec ), intent( out )   :: stat(nstat, numnod)                       
+
+
+  end subroutine state_linelast_3Dbasic
+end interface
+
+interface
+
+subroutine elforc_linelast_3Dbasic(lmn,iep,numnod, eprop, nprop, xloc, utloc, duloc, svart,  &
+     svaru, MAXVAR, resid, MAXFOR)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: lmn
+  integer, intent( in )         :: iep
+  integer, intent( in )         :: numnod                                
+  integer, intent( in )         :: nprop                                
+  integer, intent( in )         :: MAXVAR                               
+  integer, intent( in )         :: MAXFOR                             
+  real( prec ), intent( inout ) :: eprop(nprop)                         
+  real( prec ), intent( inout ) :: xloc(3, numnod)                       
+  real( prec ), intent( inout ) :: utloc(3, numnod)                      
+  real( prec ), intent( inout ) :: duloc(3, numnod)                      
+  real( prec ), intent( in )    :: svart(MAXVAR)                        
+  real( prec ), intent( out )   :: svaru(MAXVAR)                        
+              
+  real( prec ), intent( out )   :: resid(MAXFOR)         
+
+  end subroutine elforc_linelast_3Dbasic
+
+end interface

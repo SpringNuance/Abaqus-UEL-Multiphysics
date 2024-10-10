@@ -546,12 +546,12 @@ subroutine kbmatrix_full(N_deriv_global_kinpt,ntens,nnode,ndim,Bu_kinpt)
         Bu_kinpt(2,current_node_idx+2) = N_deriv_global_kinpt(2,knode)
         Bu_kinpt(3,current_node_idx+3) = N_deriv_global_kinpt(3,knode)
         ! Shear components
-        Bu_kinpt(4,current_node_idx+2) = N_deriv_global_kinpt(3,knode)
-        Bu_kinpt(4,current_node_idx+3) = N_deriv_global_kinpt(2,knode)
+        Bu_kinpt(4,current_node_idx+1) = N_deriv_global_kinpt(2,knode)
+        Bu_kinpt(4,current_node_idx+2) = N_deriv_global_kinpt(1,knode)
         Bu_kinpt(5,current_node_idx+1) = N_deriv_global_kinpt(3,knode)
         Bu_kinpt(5,current_node_idx+3) = N_deriv_global_kinpt(1,knode)
-        Bu_kinpt(6,current_node_idx+1) = N_deriv_global_kinpt(2,knode)
-        Bu_kinpt(6,current_node_idx+2) = N_deriv_global_kinpt(1,knode)
+        Bu_kinpt(6,current_node_idx+2) = N_deriv_global_kinpt(3,knode)
+        Bu_kinpt(6,current_node_idx+3) = N_deriv_global_kinpt(2,knode)
         
     end do
 
@@ -1034,7 +1034,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     u_current(1:ndim*nnode)  = u(start_u_idx:end_u_idx)
     du_current(1:ndim*nnode) = du(start_u_idx:end_u_idx, 1)
 
-    print *, "nnode", nnode
+    !print *, "nnode", nnode
     ! print *, 'u_current = '
     ! print *, u_current
     ! print *, 'du_current = '
@@ -1063,8 +1063,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
 
         ! print *, 'kinpt = ', kinpt
-        print *, 'coords = '
-        print *, coords
+        !print *, 'coords = '
+        !print *, coords
         ! print *, 'xjac = '
         ! print *, xjac
         ! print *, 'xjaci = '
@@ -1078,7 +1078,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! ! print *, "dvol = ", dvol
         ! ! print *, "xjaci = ", xjaci
         
-
         do knode=1, nnode
             do kdim=1, ndim
                 N_bar_deriv_global(kdim,knode) = N_bar_deriv_global(kdim,knode) &
@@ -1239,9 +1238,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         dstran = matmul(Bu_kinpt, du_current)
 
         ! dstran = dstran_bar
-        dstran(1) = dstran(1) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
-        dstran(2) = dstran(2) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
-        dstran(3) = dstran(3) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+        ! dstran(1) = dstran(1) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+        ! dstran(2) = dstran(2) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+        ! dstran(3) = dstran(3) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
 
 
         ! subroutine kstatevar(npt,nsvint,svars,statev,icopy)

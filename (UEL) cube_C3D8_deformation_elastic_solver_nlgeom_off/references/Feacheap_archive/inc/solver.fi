@@ -1,0 +1,1240 @@
+! solver.fi                                                  
+! Interface blocks for solver.f90
+
+interface
+subroutine asstif_cg(nelm, nops, nmpc, ifl, MAXCOR, MAXDOF, MAXSTN,  &
+     MAXCON, MAXVAR, MAXPRP, MAXSLO, MAXSUP, MAXEQ,  &
+     iep, icon, nodpn, x, utot, du, stnod, rfor,  &
+     eprop, svart, svaru, lstmpc, parmpc, maxpmc,  &
+     rmpc, drmpc, rhs, alow, aupp, diag, ieqs, mpceq, neq,&
+     eqpoin,eqtoa,MAXEPN,aur,auc,atop,ifail)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )         :: nelm                       
+  integer, intent( in )         :: nops                       
+  integer, intent( in )         :: nmpc                       
+  logical, intent( in )         :: ifl                        
+  integer, intent( in )         :: MAXCOR                     
+  integer, intent( in )         :: MAXDOF                     
+  integer, intent( in )         :: MAXSTN                     
+  integer, intent( in )         :: MAXCON                     
+  integer, intent( in )         :: MAXVAR                     
+  integer, intent( in )         :: MAXPRP                     
+  integer, intent( in )         :: MAXSLO                     
+  integer, intent( in )         :: MAXSUP                     
+  integer, intent( in )         :: MAXEQ                      
+  integer, intent( in )         :: MAXEPN                      
+  integer, intent( in )         :: maxpmc                     
+  integer, intent( in )         :: neq                        
+  integer, intent( inout)       :: ifail
+  integer, intent( inout )      :: atop
+  integer, intent( inout )      :: iep(7, nelm)               
+  integer, intent( in )         :: icon(MAXCON)               
+  integer, intent( inout )      :: nodpn(7, nops)             
+  integer, intent( in )         :: lstmpc(7, nmpc)            
+  integer, intent( in )         :: ieqs(MAXDOF)               
+  integer, intent( in )         :: mpceq(nmpc)                
+  real( prec ), intent( in )    :: x(MAXCOR)                     
+  real( prec ), intent( in )    :: utot(MAXDOF)                  
+  real( prec ), intent( in )    :: du(MAXDOF)                    
+  real( prec ), intent( in )    :: stnod(MAXSTN)                 
+  real( prec ), intent( out )   :: rfor(MAXDOF)                  
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( inout ) :: svart(MAXVAR)                 
+  real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+  real( prec ), intent( inout ) :: parmpc(maxpmc)             
+  real( prec ), intent( in )    :: rmpc(nmpc)                 
+  real( prec ), intent( in )    :: drmpc(nmpc)                
+  real( prec ), intent( inout ) :: rhs(MAXEQ)                 
+  real( prec ), intent( out )   :: alow(MAXSLO)               
+  real( prec ), intent( out )   :: aupp(MAXSUP)               
+  real( prec ), intent( out )   :: diag(MAXEQ)                
+  integer,      intent( inout ) :: eqpoin(MAXEQ)
+  integer,      intent( inout ) :: eqtoa(7,MAXEPN)
+  integer,      intent( inout ) :: aur(MAXSUP)
+  integer,      intent( inout ) :: auc(MAXSUP)
+
+  end subroutine asstif_cg
+end interface
+
+interface
+
+subroutine bcons_cg(ifl, nops, nelm, MAXCOR, MAXDOF, MAXCON, MAXSLO,  &
+     MAXSUP, MAXEQ, icon, iep, nodpn, x, utot, du,  &
+     eprop, MAXPRP, nfix, lstfix, dofval, umag, nfor,  &
+     lstfor, forval, fmag, ndload, lstlod,dlpars,MAXDPR, dlmag, rhs,  &
+     alow, aupp, diag, ieqs, neq,irow,icol,size)
+
+  use Types
+  use ParamIO
+  use Paramsol
+  use Globals, only: TIME,DTIME
+  implicit none
+
+  logical, intent( inout )      :: ifl                          
+  integer, intent( inout )      :: nops                         
+  integer, intent( inout )      :: nelm                         
+  integer, intent( in )         :: MAXCOR                       
+  integer, intent( in )         :: MAXDOF                       
+  integer, intent( in )         :: MAXCON                       
+  integer, intent( in )         :: MAXSLO                       
+  integer, intent( in )         :: MAXSUP                       
+  integer, intent( in )         :: MAXEQ                        
+  integer, intent( in )         :: MAXPRP
+  integer, intent( in )         :: MAXDPR                       
+  integer, intent( in )         :: nfix                         
+  integer, intent( in )         :: nfor                         
+  integer, intent( in )         :: ndload                       
+  integer, intent( inout )      :: neq                          
+  integer, intent( inout )      :: size
+  integer, intent( in )         :: icon(MAXCON)                 
+  integer, intent( inout )      :: iep(7, nelm)                 
+  integer, intent( in )         :: nodpn(7, nops)               
+  integer, intent( in )         :: lstfix(2, nfix)              
+  integer, intent( in )         :: lstfor(2, nfor)              
+  integer, intent( in )         :: lstlod(5, ndload)            
+  integer, intent( in )         :: ieqs(MAXDOF)                 
+  real( prec ), intent( in )    :: umag                         
+  real( prec ), intent( in )    :: fmag                         
+  real( prec ), intent( in )    :: dlmag                        
+  real( prec ), intent( in )    :: x(MAXCOR)                    
+  real( prec ), intent( inout ) :: utot(MAXDOF)                 
+  real( prec ), intent( in )    :: du(MAXDOF)                   
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                
+  real( prec ), intent( in )    :: dofval(nfix)                 
+  real( prec ), intent( in )    :: forval(nfor)
+  real( prec ), intent( in )    :: dlpars(MAXDPR)                 
+  real( prec ), intent( inout ) :: rhs(MAXEQ)                   
+  real( prec ), intent( inout ) :: alow(MAXSLO)                 
+  real( prec ), intent( inout ) :: aupp(size)                 
+  real( prec ), intent( inout ) :: diag(MAXEQ)                  
+  integer,      intent( inout ) :: irow(size)
+  integer,      intent( inout ) :: icol(size)
+
+  end subroutine bcons_cg
+end interface
+
+interface
+
+subroutine instif_cg(dunorm, cnorm,rnorm, nops, nmpc, ifl, MAXDOF, MAXSLO,  &
+     asize, nodpn, du, drmpc, rhs, alow,  &
+     aupp, diag, irow,icol,ieqs, mpceq, neq,ifail)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: nops                           
+  integer, intent( in )         :: nmpc                           
+  integer, intent( in )         :: MAXDOF                         
+  integer, intent( in )         :: MAXSLO                         
+  integer, intent( in )         :: asize
+  integer, intent( in )         :: neq                            
+  integer, intent( in )         :: nodpn(7, nops)                 
+  integer, intent( inout )      :: ieqs(MAXDOF)                   
+  integer, intent( inout )      :: mpceq(nmpc)                    
+  logical, intent( in )         :: ifl                            
+  real( prec ), intent( out )   :: dunorm                         
+  real( prec ), intent( out )   :: cnorm                          
+  real( prec ), intent( out )   :: rnorm                          
+  real( prec ), intent( inout ) :: du(MAXDOF)                     
+  real( prec ), intent( inout ) :: drmpc(nmpc)                    
+  real( prec ), intent( inout ) :: rhs(neq)                     
+  real( prec ), intent( inout ) :: alow(MAXSLO)                   
+  real( prec ), intent( inout ) :: aupp(asize)                   
+  real( prec ), intent( inout ) :: diag(neq)                    
+  integer, intent( in )         :: irow(asize)
+  integer, intent( in )         :: icol(asize)
+  integer, intent( inout )      :: ifail
+
+ end subroutine instif_cg
+end interface
+
+
+interface
+subroutine solv_cg(alow, aupp, diag, rhs,irow,icol,size,neq,sol,ifail)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: neq                      
+  integer, intent( in )         :: size
+  integer, intent( inout )      :: ifail
+  real( prec ), intent( inout ) :: alow(size)                  
+  real( prec ), intent( inout ) :: aupp(size)                  
+  real( prec ), intent( in )    :: diag(neq)                  
+  real( prec ), intent( inout ) :: rhs(neq)                   
+  real( prec ), intent( inout ) :: sol(neq)                   
+  integer, intent( in )         :: icol(size)
+  integer, intent( in )         :: irow(size)
+
+ end subroutine solv_cg
+end interface
+
+interface
+
+subroutine getindex(irow,icol,eqpoin,MAXEQ,eqtoa,MAXEPN,eqtoatop, &
+                                              aur,auc,MAXSUP,atop,index)
+
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )            :: irow
+  integer, intent( in )            :: icol
+  integer, intent( in )            :: MAXEQ
+  integer, intent( in )            :: MAXEPN
+  integer, intent( in )            :: MAXSUP
+  integer, intent( inout )         :: eqpoin(MAXEQ)
+  integer, intent( inout )         :: eqtoa(7,MAXEPN)
+  integer, intent( inout )         :: aur(MAXSUP)
+  integer, intent( inout )         :: auc(MAXSUP)
+  integer, intent( inout )         :: index
+  integer, intent( inout )         :: eqtoatop
+  integer, intent( inout )         :: atop
+
+  end subroutine getindex
+end interface
+
+interface
+  subroutine asstif(nelm, nops, nmpc, ifl, MAXCOR, MAXDOF, MAXSTN,  &
+       MAXCON, MAXVAR, MAXPRP, MAXSLO, MAXSUP, MAXEQ,  &
+       iep, icon, nodpn, x, utot, du, stnod, rfor,  &
+       eprop, svart, svaru, lstmpc, parmpc, maxpmc,  &
+       rmpc, drmpc, rhs, alow, aupp, diag, ieqs, mpceq, jpoin, neq,ifail)
+    use Types
+    use ParamIO
+    use Paramsol
+    implicit none
+    
+    integer, intent( in )         :: nelm                       
+    integer, intent( in )         :: nops                       
+    integer, intent( in )         :: nmpc                       
+    logical, intent( in )         :: ifl                        
+    integer, intent( in )         :: MAXCOR                     
+    integer, intent( in )         :: MAXDOF                     
+    integer, intent( in )         :: MAXSTN                     
+    integer, intent( in )         :: MAXCON                     
+    integer, intent( in )         :: MAXVAR                     
+    integer, intent( in )         :: MAXPRP                     
+    integer, intent( in )         :: MAXSLO                     
+    integer, intent( in )         :: MAXSUP                     
+    integer, intent( in )         :: MAXEQ                      
+    integer, intent( in )         :: maxpmc                     
+    integer, intent( in )         :: neq                        
+    integer, intent( inout )      :: ifail
+    integer, intent( inout )      :: iep(7, nelm)               
+    integer, intent( in )         :: icon(MAXCON)               
+    integer, intent( inout )      :: nodpn(7, nops)             
+    integer, intent( in )         :: lstmpc(7, nmpc)            
+    integer, intent( in )         :: ieqs(MAXDOF)               
+    integer, intent( in )         :: mpceq(nmpc)                
+    integer, intent( in )         :: jpoin(MAXEQ)               
+    real( prec ), intent( in )    :: x(MAXCOR)                     
+    real( prec ), intent( in )    :: utot(MAXDOF)                  
+    real( prec ), intent( in )    :: du(MAXDOF)                    
+    real( prec ), intent( in )    :: stnod(MAXSTN)                 
+    real( prec ), intent( out )   :: rfor(MAXDOF)                  
+    real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+    real( prec ), intent( inout ) :: svart(MAXVAR)                 
+    real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+    real( prec ), intent( inout ) :: parmpc(maxpmc)             
+    real( prec ), intent( in )    :: rmpc(nmpc)                 
+    real( prec ), intent( in )    :: drmpc(nmpc)                
+    real( prec ), intent( inout ) :: rhs(MAXEQ)                 
+    real( prec ), intent( out )   :: alow(MAXSLO)               
+    real( prec ), intent( out )   :: aupp(MAXSUP)               
+    real( prec ), intent( out )   :: diag(MAXEQ)                
+
+  end subroutine asstif
+end interface
+
+
+interface
+subroutine assresid(nelm, nops, nmpc, ifl, MAXCOR, MAXDOF, MAXSTN,  &
+     MAXCON, MAXVAR, MAXPRP, MAXSLO, MAXSUP, MAXEQ,  &
+     iep, icon, nodpn, x, utot, du, stnod, rfor,  &
+     eprop, svart, svaru, lstmpc, parmpc, maxpmc,  &
+     rmpc, drmpc, rhs, ieqs, mpceq, neq,ifail)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )         :: nelm                       
+  integer, intent( in )         :: nops                       
+  integer, intent( in )         :: nmpc                       
+  logical, intent( in )         :: ifl                        
+  integer, intent( in )         :: MAXCOR                     
+  integer, intent( in )         :: MAXDOF                     
+  integer, intent( in )         :: MAXSTN                     
+  integer, intent( in )         :: MAXCON                     
+  integer, intent( in )         :: MAXVAR                     
+  integer, intent( in )         :: MAXPRP                     
+  integer, intent( in )         :: MAXSLO                     
+  integer, intent( in )         :: MAXSUP                     
+  integer, intent( in )         :: MAXEQ                      
+  integer, intent( in )         :: maxpmc                     
+  integer, intent( in )         :: neq                        
+  integer, intent( inout)       :: ifail
+  integer, intent( inout )      :: iep(7, nelm)               
+  integer, intent( in )         :: icon(MAXCON)               
+  integer, intent( inout )      :: nodpn(7, nops)             
+  integer, intent( in )         :: lstmpc(7, nmpc)            
+  integer, intent( in )         :: ieqs(MAXDOF)               
+  integer, intent( in )         :: mpceq(nmpc)                
+  real( prec ), intent( in )    :: x(MAXCOR)                     
+  real( prec ), intent( in )    :: utot(MAXDOF)                  
+  real( prec ), intent( in )    :: du(MAXDOF)                    
+  real( prec ), intent( in )    :: stnod(MAXSTN)                 
+  real( prec ), intent( out )   :: rfor(MAXDOF)                  
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( inout ) :: svart(MAXVAR)                 
+  real( prec ), intent( inout ) :: svaru(MAXVAR)                 
+  real( prec ), intent( inout ) :: parmpc(maxpmc)             
+  real( prec ), intent( in )    :: rmpc(nmpc)                 
+  real( prec ), intent( in )    :: drmpc(nmpc)                
+  real( prec ), intent( inout ) :: rhs(MAXEQ)                 
+              
+  end subroutine assresid
+end interface
+
+
+
+interface
+  subroutine bcons(ifl, nops, nelm, MAXCOR, MAXDOF, MAXCON, MAXSLO,  &
+       MAXSUP, MAXEQ, icon, iep, nodpn, x, utot, du,  &
+       eprop, MAXPRP, nfix, lstfix, dofval, umag, nfor,  &
+       lstfor, forval, fmag, ndload, lstlod,dlpars,MAXDPR, dlmag, rhs,  &
+       alow, aupp, diag, ieqs, jpoin, neq)
+    use Types
+    use ParamIO
+    use Paramsol
+    implicit none
+    
+    logical, intent( inout )      :: ifl                          
+    integer, intent( inout )      :: nops                         
+    integer, intent( inout )      :: nelm                         
+    integer, intent( in )         :: MAXCOR                       
+    integer, intent( in )         :: MAXDOF                       
+    integer, intent( in )         :: MAXCON                       
+    integer, intent( in )         :: MAXSLO                       
+    integer, intent( in )         :: MAXSUP                       
+    integer, intent( in )         :: MAXEQ                        
+    integer, intent( in )         :: MAXPRP
+    integer, intent( in )         :: MAXDPR                         
+    integer, intent( in )         :: nfix                         
+    integer, intent( in )         :: nfor                         
+    integer, intent( in )         :: ndload                       
+    integer, intent( inout )      :: neq                          
+    integer, intent( in )         :: icon(MAXCON)                 
+    integer, intent( inout )      :: iep(7, nelm)                 
+    integer, intent( in )         :: nodpn(7, nops)               
+    integer, intent( in )         :: lstfix(2, nfix)              
+    integer, intent( in )         :: lstfor(2, nfor)              
+    integer, intent( in )         :: lstlod(5, ndload)            
+    integer, intent( in )         :: ieqs(MAXDOF)                 
+    integer, intent( inout )      :: jpoin(MAXEQ)                 
+    real( prec ), intent( in )    :: umag                         
+    real( prec ), intent( in )    :: fmag                         
+    real( prec ), intent( in )    :: dlmag                        
+    real( prec ), intent( in )    :: x(MAXCOR)                    
+    real( prec ), intent( inout ) :: utot(MAXDOF)                 
+    real( prec ), intent( in )    :: du(MAXDOF)                   
+    real( prec ), intent( inout ) :: eprop(MAXPRP)                
+    real( prec ), intent( in )    :: dofval(nfix)                 
+    real( prec ), intent( in )    :: forval(nfor)
+    real( prec ), intent( in )    :: dlpars(MAXDPR)                     
+    real( prec ), intent( inout ) :: rhs(MAXEQ)                   
+    real( prec ), intent( inout ) :: alow(MAXSLO)                 
+    real( prec ), intent( inout ) :: aupp(MAXSUP)                 
+    real( prec ), intent( inout ) :: diag(MAXEQ)                  
+
+  end subroutine bcons
+end interface
+
+interface
+  subroutine fixdof(idof, node, value, ifl, nops, MAXDOF, MAXSLO,  &
+       MAXSUP, MAXEQ, rhs, alow, aupp, diag, nodpn, ieqs, jpoin, neq)
+    use Types
+    implicit none
+    
+    integer, intent( inout )      :: idof                     
+    integer, intent( inout )      :: node                     
+    integer, intent( inout )      :: nops                     
+    integer, intent( in )         :: MAXDOF                   
+    integer, intent( in )         :: MAXSLO                   
+    integer, intent( in )         :: MAXSUP                   
+    integer, intent( in )         :: MAXEQ                    
+    integer, intent( in )         :: neq                      
+    integer, intent( in )         :: nodpn(7, nops)           
+    integer, intent( in )         :: ieqs(MAXDOF)             
+    integer, intent( in )         :: jpoin(MAXEQ)             
+    logical, intent( in )         :: ifl                      
+    real( prec ), intent( in )    :: value                    
+    real( prec ), intent( inout ) :: rhs(MAXEQ)               
+    real( prec ), intent( out )   :: alow(MAXSLO)             
+    real( prec ), intent( inout ) :: aupp(MAXSUP)             
+    real( prec ), intent( out )   :: diag(MAXEQ)              
+
+  end subroutine fixdof
+end interface
+
+
+interface
+subroutine modify_bcons(ifl, nops, nelm, MAXCOR, MAXDOF, MAXCON, MAXSLO,  &
+     MAXSUP, MAXEQ, icon, iep, nodpn, x, utot, du,  &
+     eprop, MAXPRP, nfix, lstfix, dofval, umag, nfor,  &
+     lstfor, forval, fmag, ndload, lstlod, dlpars,MAXDPR,dlmag, rhs,  &
+     alow, aupp, diag, ieqs, jpoin, neq)
+  use Types
+  use ParamIO
+  use Paramsol
+  use Globals, only: TIME,DTIME
+  implicit none
+
+  logical, intent( inout )      :: ifl                          
+  integer, intent( inout )      :: nops                         
+  integer, intent( inout )      :: nelm                         
+  integer, intent( in )         :: MAXCOR                       
+  integer, intent( in )         :: MAXDOF                       
+  integer, intent( in )         :: MAXCON                       
+  integer, intent( in )         :: MAXSLO                       
+  integer, intent( in )         :: MAXSUP                       
+  integer, intent( in )         :: MAXEQ                        
+  integer, intent( in )         :: MAXPRP
+  integer, intent( in )         :: MAXDPR                       
+  integer, intent( in )         :: nfix                         
+  integer, intent( in )         :: nfor                         
+  integer, intent( in )         :: ndload                       
+  integer, intent( inout )      :: neq                          
+  integer, intent( in )         :: icon(MAXCON)                 
+  integer, intent( inout )      :: iep(7, nelm)                 
+  integer, intent( in )         :: nodpn(7, nops)               
+  integer, intent( in )         :: lstfix(2, nfix)              
+  integer, intent( in )         :: lstfor(2, nfor)              
+  integer, intent( in )         :: lstlod(5, ndload)            
+  integer, intent( in )         :: ieqs(MAXDOF)                 
+  integer, intent( inout )      :: jpoin(MAXEQ)                 
+  real( prec ), intent( in )    :: umag                         
+  real( prec ), intent( in )    :: fmag                         
+  real( prec ), intent( in )    :: dlmag                        
+  real( prec ), intent( in )    :: x(MAXCOR)                    
+  real( prec ), intent( inout ) :: utot(MAXDOF)                 
+  real( prec ), intent( in )    :: du(MAXDOF)                   
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                
+  real( prec ), intent( in )    :: dofval(nfix)                 
+  real( prec ), intent( in )    :: forval(nfor)
+  real( prec ), intent( in )    :: dlpars(MAXDPR)                 
+  real( prec ), intent( inout ) :: rhs(MAXEQ)                   
+  real( prec ), intent( inout ) :: alow(MAXSLO)                 
+  real( prec ), intent( inout ) :: aupp(MAXSUP)                 
+  real( prec ), intent( inout ) :: diag(MAXEQ)                  
+
+end subroutine modify_bcons
+end interface
+
+
+
+interface
+  subroutine instif(dunorm, cnorm, rnorm, nops, nmpc, ifl, MAXDOF, MAXSLO,  &
+       MAXSUP, MAXEQ, nodpn, du, drmpc, rhs, alow,  &
+       aupp, diag, ieqs, mpceq, jpoin, neq)
+    use Types
+    implicit none
+    
+    integer, intent( in )         :: nops                           
+    integer, intent( in )         :: nmpc                           
+    integer, intent( in )         :: MAXDOF                         
+    integer, intent( in )         :: MAXSLO                         
+    integer, intent( in )         :: MAXSUP                         
+    integer, intent( in )         :: MAXEQ                          
+    integer, intent( in )         :: neq                            
+    integer, intent( in )         :: nodpn(7, nops)                 
+    integer, intent( inout )      :: ieqs(MAXDOF)                   
+    integer, intent( inout )      :: mpceq(nmpc)                    
+    integer, intent( inout )      :: jpoin(MAXEQ)                   
+    logical, intent( in )         :: ifl                            
+    real( prec ), intent( out )   :: dunorm                         
+    real( prec ), intent( out )   :: cnorm                          
+    real( prec ), intent( out )   :: rnorm                          
+    real( prec ), intent( inout ) :: du(MAXDOF)                     
+    real( prec ), intent( inout ) :: drmpc(nmpc)                    
+    real( prec ), intent( inout ) :: rhs(MAXEQ)                     
+    real( prec ), intent( inout ) :: alow(MAXSLO)                   
+    real( prec ), intent( inout ) :: aupp(MAXSUP)                   
+    real( prec ), intent( inout ) :: diag(MAXEQ)                    
+
+  end subroutine instif
+end interface
+
+interface
+  subroutine solv(alow, aupp, diag, rhs, jpoin, neq)
+    use Types
+    use ParamIO
+    implicit none
+    
+    integer, intent( in )         :: neq                      
+    integer, intent( in )         :: jpoin(1)                 
+    real( prec ), intent( inout ) :: alow(1)                  
+    real( prec ), intent( inout ) :: aupp(1)                  
+    real( prec ), intent( in )    :: diag(1)                  
+    real( prec ), intent( inout ) :: rhs(1)                   
+
+  end subroutine solv
+end interface
+
+interface
+  subroutine rantst(aupp, jh, ranval)
+    use Types
+    implicit none
+    
+    integer, intent( in )         :: jh
+    real( prec ), intent( out )   :: ranval
+    real( prec ), intent( inout ) :: aupp(jh)
+
+  end subroutine rantst
+end interface
+
+interface
+  subroutine tri(ifl, alow, aupp, diag, jpoin, neq)
+    use Types
+    use ParamIO
+    implicit none
+    
+    integer, intent( in )         :: neq                
+    integer, intent( in )         :: jpoin(1)           
+    logical, intent( in )         :: ifl                
+    real( prec ), intent( inout ) :: alow(1)            
+    real( prec ), intent( out )   :: aupp(1)            
+    real( prec ), intent( inout ) :: diag(1)            
+
+  end subroutine tri
+end interface
+
+interface
+  subroutine dredu(alow, aupp, diag, jh, ifl, dj)
+    use Types
+    implicit none
+    
+    integer, intent( in )         :: jh
+    logical, intent( in )         :: ifl
+    real( prec ), intent( inout ) :: alow(1)
+    real( prec ), intent( inout ) :: aupp(1)
+    real( prec ), intent( in )    :: diag(1)
+    real( prec ), intent( inout )   :: dj
+
+  end subroutine dredu
+end interface
+
+interface
+function dot(a, b, n)
+  use Types
+  implicit none
+
+  real( prec ), intent( in ) :: a(1)
+  real( prec ), intent( in ) :: b(1)
+  integer, intent( in )      :: n
+  real( prec )               :: dot
+
+  end function dot
+end interface
+interface
+  subroutine saxpb(a, b, x, n, c)
+    use Types
+    implicit none
+    
+    integer, intent( in )       :: n
+    real( prec ), intent( in )  :: x                      
+    real( prec ), intent( in )  :: a(1)                   
+    real( prec ), intent( in )  :: b(1)                   
+    real( prec ), intent( out ) :: c(1)
+    
+  end subroutine saxpb
+end interface
+
+interface
+  subroutine profil(nops, nelm, nmpc, MAXDOF, MAXCON, MAXEQ,MAXNND, MAXSUP,  &
+       MAXSLO, ifl,solvertype,icon, iep, numnod, nodpn, lstmpc, &
+       ieqs, mpceq, jpoin, neq)
+    use Types
+    use ParamIO
+    implicit none
+    
+    integer, intent( in )    :: nops                           
+    integer, intent( in )    :: nelm                           
+    integer, intent( in )    :: nmpc                           
+    integer, intent( in )    :: MAXDOF                         
+    integer, intent( in )    :: MAXCON                         
+    integer, intent( in )    :: MAXEQ
+    integer, intent( in )    :: MAXNND                          
+    integer, intent( in )    :: MAXSUP                         
+    integer, intent( in )    :: MAXSLO                         
+    integer, intent( in )    :: solvertype
+    integer, intent( out )   :: neq                            
+    integer, intent( in )    :: icon(MAXCON)                   
+    integer, intent( inout ) :: iep(7, nelm)                   
+    integer, intent( inout ) :: numnod(MAXNND)                   
+    integer, intent( in )    :: nodpn(7, nops)                 
+    integer, intent( in )    :: lstmpc(7, nmpc)                
+    integer, intent( out )   :: ieqs(MAXDOF)                   
+    integer, intent( out )   :: mpceq(nmpc)                    
+    integer, intent( inout ) :: jpoin(MAXEQ)                   
+    logical, intent( in )    :: ifl                            
+
+  end subroutine profil
+end interface
+interface
+subroutine instif_gmres(dunorm, cnorm,rnorm, nops, nmpc, ifl, MAXDOF, MAXSLO,  &
+     asize, nodpn, du, drmpc, rhs, alow,  &
+     aupp, diag, irow,icol,ieqs, mpceq, neq,ifail,work,ldstrt,lwork)
+  use Types
+  implicit none
+
+  integer, intent( in )         :: nops                           
+  integer, intent( in )         :: nmpc                           
+  integer, intent( in )         :: MAXDOF                         
+  integer, intent( in )         :: MAXSLO                         
+  integer, intent( in )         :: asize
+  integer, intent( in )         :: neq                            
+  integer, intent( in )         :: lwork
+  integer, intent( in )         :: ldstrt
+  integer, intent( in )         :: nodpn(7, nops)                 
+  integer, intent( inout )      :: ieqs(MAXDOF)                   
+  integer, intent( inout )      :: mpceq(nmpc)                    
+  logical, intent( in )         :: ifl                            
+  real( prec ), intent( out )   :: dunorm                         
+  real( prec ), intent( out )   :: cnorm                          
+  real( prec ), intent( out )   :: rnorm                          
+  real( prec ), intent( inout ) :: du(MAXDOF)                     
+  real( prec ), intent( inout ) :: drmpc(nmpc)                    
+  real( prec ), intent( inout ) :: rhs(neq)                     
+  real( prec ), intent( inout ) :: alow(MAXSLO)                   
+  real( prec ), intent( inout ) :: aupp(asize)                   
+  real( prec ), intent( inout ) :: diag(neq)                    
+  real( prec ), intent( inout ) :: work(lwork) 
+  integer, intent( in )         :: irow(asize)
+  integer, intent( in )         :: icol(asize)
+  integer, intent( inout )      :: ifail
+end subroutine instif_gmres
+end interface
+interface
+subroutine solv_gmres(alow, aupp, diag, rhs,irow,icol,size,neq,sol,ifail,work,ldstrt,lwork)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: neq                      
+  integer, intent( in )         :: size
+  integer, intent( inout )      :: ifail
+  integer, intent( in )         :: lwork
+  integer, intent( in )         :: ldstrt
+  real( prec ), intent( inout ) :: alow(size)                  
+  real( prec ), intent( inout ) :: aupp(size)                  
+  real( prec ), intent( in )    :: diag(neq)                  
+  real( prec ), intent( inout ) :: rhs(neq)                   
+  real( prec ), intent( inout ) :: sol(neq)
+  real( prec ), intent( inout ) :: work(lwork)                   
+  integer, intent( in )         :: icol(size)
+  integer, intent( in )         :: irow(size)
+end subroutine solv_gmres
+end interface
+
+
+
+interface
+subroutine drive_dgmres(n,nloc,m,lwork,work,irc,icntl,cntl,info,rinfo)
+  use Types
+  use ParamIO
+  implicit none
+       integer, intent(in) :: n
+       integer, intent(in) :: nloc
+       integer, intent(in) :: lwork
+       integer, intent(inout) :: icntl(*)
+       real(prec), intent(in) ::   cntl(*)
+
+       integer, intent(out) ::  info(*)
+       real(prec), intent(out) ::    rinfo(*)
+
+       integer, intent(inout) ::  m
+       integer, intent(inout) :: irc(*)
+       real(prec), intent(inout) :: work(*)
+
+end subroutine drive_dgmres
+end interface
+
+interface
+subroutine dgmres(n,m,b,x,H,w,r0,V,dot,yCurrent,xCurrent,rotSin,rotCos,irc,icntl,cntl,info,rinfo)
+  use Types
+  use ParamIO
+  implicit none
+
+        integer, intent(in) ::  n
+        integer, intent(in) ::  m
+        integer, intent(in) :: icntl(*)
+        real(prec), intent(in) :: b(*)
+        real(prec), intent(in) ::    cntl(*)
+!
+       integer, intent(out) ::  info(*)
+       real(prec), intent(out) ::    rinfo(*)
+!
+       integer, intent(inout) ::  irc(*)
+       real(prec), intent(inout) :: x(*)
+       real(prec), intent(inout) :: H(m+1,*)
+       real(prec), intent(inout) :: w(*)
+       real(prec), intent(inout) :: r0(*) 
+       real(prec), intent(inout) :: V(n,*)
+       real(prec), intent(inout) :: dot(*)
+       real(prec), intent(inout) :: yCurrent(*)  
+       real(prec), intent(inout) :: xCurrent(*)
+       real(prec), intent(inout) :: rotSin(*)
+       real(prec), intent(inout) :: rotCos(*)
+end subroutine dgmres
+end interface
+
+
+interface
+ subroutine daxpy(N,DA,DX,INCX,DY,INCY)
+  use Types
+  use ParamIO
+  implicit none
+
+  real( prec ), intent(in) ::  DA
+  integer, intent(in)      :: INCX
+  integer, intent(in)      :: INCY
+  integer, intent(in)      :: N
+
+  real( prec ), intent(in)  :: DX(*)
+  real( prec ), intent(out) :: DY(*)
+end subroutine daxpy
+end interface
+
+interface
+subroutine DCOPY(N,DX,INCX,DY,INCY)
+  use Types
+  use ParamIO
+  implicit none
+!    .. Scalar Arguments ..
+  integer, intent(in) ::  INCX
+  integer, intent(in) ::  INCY
+  integer, intent(in) ::  N
+!     ..
+!   .. Array Arguments ..
+  real(prec), intent(in)  :: DX(*)
+  real(prec), intent(out) :: DY(*)
+end subroutine dcopy
+end interface
+
+
+interface
+subroutine DGEMV(TRANS,M,N,ALPHA,A,LDA,X,INCX,BETA,Y,INCY)
+  use Types
+  use ParamIO
+  implicit none
+!
+  real(prec), intent(in) :: ALPHA
+  real(prec), intent(in) :: BETA
+  integer, intent(in) :: INCX
+  integer, intent(in) :: INCY
+  integer, intent(in) :: LDA
+  integer, intent(in) :: M
+  integer, intent(in) :: N
+  character*1 TRANS
+!
+  real(prec), intent(in) ::  A(LDA,*)
+  real(prec), intent(in) ::  X(*)
+  real(prec), intent(out) :: Y(*)
+end subroutine dgemv
+end interface
+
+interface
+function DNRM2(N,X,INCX)
+  use Types
+  use ParamIO
+  implicit none
+!
+      INTEGER, intent(in) :: INCX
+      integer, intent(in) :: N
+      real(prec), intent(in) :: X(*)
+      real (prec) :: dnrm2
+end function dnrm2
+end interface
+
+interface
+subroutine DROT(N,DX,INCX,DY,INCY,C,S)
+  use Types
+  use ParamIO
+  implicit none
+      real(prec), intent(in) :: C
+      real(prec), intent(in) :: S
+      integer, intent(in) :: INCX
+      integer, intent(in) :: INCY
+      integer, intent(in) :: N
+      real(prec), intent(inout) :: DX(*)
+      real(prec), intent(inout) :: DY(*)
+end subroutine drot
+end interface
+
+interface
+subroutine DROTG(DA,DB,C,S)
+  use Types
+  use ParamIO
+  implicit none
+  
+      real(prec), intent(inout) :: C
+      real(prec), intent(inout) :: DA
+      real(prec), intent(inout) :: DB
+      real(prec), intent(inout) ::S
+ end subroutine drotg
+end interface
+
+interface
+subroutine DTRSV(UPLO,TRANS,DIAG,N,A,LDA,X,INCX)
+  use Types
+  use ParamIO
+  implicit none
+  
+      INTEGER, intent(in) :: INCX
+      integer, intent(in) :: LDA
+      integer, intent(in) :: N
+      CHARACTER*1, intent(in) :: DIAG
+      character*1, intent(in) :: TRANS
+      character*1, intent(in) :: UPLO
+      real(prec), intent(in)  :: A(LDA,*)
+      real(prec), intent(inout) :: X(*)
+end subroutine dtrsv
+end interface
+
+interface
+FUNCTION LSAME(CA,CB)
+  use Types
+  use ParamIO
+  implicit none
+  
+      CHARACTER, intent(in) :: CA
+      character, intent(in) :: CB
+      logical :: lsame
+end function lsame
+end interface
+
+
+interface
+SUBROUTINE XERBLA( SRNAME, INFO )
+  use Types
+  use ParamIO
+  implicit none
+
+!     .. Scalar Arguments ..
+      CHARACTER*(*) ::      SRNAME
+      INTEGER ::            INFO
+end subroutine xerbla
+end interface
+
+
+
+interface
+  subroutine renum(nops, nelm, MAXCON, icon, iep, nmpc, lstmpc, numnod)
+    use Types
+    use ParamIO
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: nops                        
+    integer, intent( inout ) :: nelm                        
+    integer, intent( in )    :: MAXCON
+    integer, intent( in )    :: nmpc                         
+    integer, intent( inout ) :: icon(MAXCON)                
+    integer, intent( inout ) :: iep(7, nelm)
+    integer, intent( in )    :: lstmpc(7, nmpc)                  
+    integer, intent( inout ) :: numnod(*)                   
+
+  end subroutine renum
+end interface
+
+interface
+  subroutine adjgen(nops, nelm, MAXCON, icon, iep, ideg, iadj)
+    use Types
+    use ParamIO
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: nops                               
+    integer, intent( in )    :: nelm                               
+    integer, intent( in )    :: MAXCON                         
+    integer, intent( in )    :: icon(MAXCON)                       
+    integer, intent( inout ) :: iep(7, nelm)                       
+    integer, intent( out )   :: ideg(MAXNBW)                       
+    integer, intent( out )   :: iadj(MAXAD, MAXNBW) 
+
+  end subroutine adjgen
+end interface
+
+interface
+  subroutine diam(nops, ideg, iadj, nv, nlevv, nodlv, levlv, levwv,  &
+       iwvmax, nu, nlevu, nodlu, levlu, levwu, iwumax)
+    use Types
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: nops                                 
+    integer, intent( out )   :: nv                                   
+    integer, intent( out )   :: nlevv                                
+    integer, intent( inout ) :: iwvmax                               
+    integer, intent( out )   :: nu                                   
+    integer, intent( out )   :: nlevu                                
+    integer, intent( out )   :: iwumax                               
+    integer, intent( in )    :: ideg(MAXNBW)                         
+    integer, intent( inout ) :: iadj(MAXAD, MAXNBW)                  
+    integer, intent( out )   :: nodlv(MAXNBW)                        
+    integer, intent( inout ) :: levlv(MAXWID, MAXLEV)                
+    integer, intent( inout ) :: levwv(MAXLEV)                        
+    integer, intent( out )   :: nodlu(MAXNBW)                        
+    integer, intent( out )   :: levlu(MAXWID, MAXLEV)                
+    integer, intent( out )   :: levwu(MAXLEV)                        
+
+  end subroutine diam
+end interface
+
+interface
+  subroutine widmin(nops, ideg, iadj, nodlv, iwvmax, nlevu, nodlu,  &
+       iwumax, nodl, levl, levw, ipair)
+    use Types
+    use ParamIO
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: nops                                
+    integer, intent( inout ) :: iwvmax                              
+    integer, intent( in )    :: nlevu                               
+    integer, intent( inout ) :: iwumax                              
+    integer, intent( out )   :: ipair                               
+    integer, intent( in )    :: ideg(MAXNBW)                        
+    integer, intent( inout ) :: iadj(MAXAD, MAXNBW)                 
+    integer, intent( in )    :: nodlv(MAXNBW)                       
+    integer, intent( in )    :: nodlu(MAXNBW)                       
+    integer, intent( out )   :: nodl(MAXNBW)                        
+    integer, intent( out )   :: levl(MAXWID, MAXLEV)                
+    integer, intent( out )   :: levw(MAXLEV)                        
+
+  end subroutine widmin
+end interface
+
+interface
+  subroutine numgen(nops, ipair, nu, nv, levl, levw, nlev, ideg, iadj, numnod)
+    use Types
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: nops                                 
+    integer, intent( inout ) :: ipair                                
+    integer, intent( inout ) :: nu                                   
+    integer, intent( inout ) :: nv                                   
+    integer, intent( in )    :: nlev                                 
+    integer, intent( in )    :: levl(MAXWID, MAXLEV)                 
+    integer, intent( in )    :: levw(MAXLEV)                         
+    integer, intent( in )    :: ideg(MAXNBW)                         
+    integer, intent( inout ) :: iadj(MAXAD, MAXNBW)                  
+    integer, intent( inout ) :: numnod(*)                            
+
+  end subroutine numgen
+end interface
+
+interface
+  subroutine lowfnd(lev1, levw1, lev2, levw2, ideg, iadj, numnod,  &
+       list, ldeg, lcount)
+    use Types
+    use Parambw
+    implicit none
+    
+    integer, intent( in )    :: levw1                                
+    integer, intent( in )    :: levw2                                
+    integer, intent( out )   :: lcount                               
+    integer, intent( in )    :: lev1(MAXWID)                         
+    integer, intent( in )    :: lev2(MAXWID)                         
+    integer, intent( in )    :: ideg(MAXNBW)                         
+    integer, intent( in )    :: iadj(MAXAD, MAXNBW)                  
+    integer, intent( inout ) :: numnod(*)                            
+    integer, intent( out )   :: list(MAXWID)                         
+    integer, intent( out )   :: ldeg(MAXWID)                         
+
+  end subroutine lowfnd
+end interface
+
+interface
+  subroutine levgen(nops, nstrt, ideg, iadj, nodlev, levlst, levwid,  &
+       nlev, iwidth)
+    use Types
+    use ParamIO
+    use Parambw
+    implicit none
+    
+    integer, intent( in )  :: nops                                    
+    integer, intent( in )  :: nstrt                                   
+    integer, intent( out ) :: nlev                                    
+    integer, intent( out ) :: iwidth                                  
+    integer, intent( in )  :: ideg(MAXNBW)                            
+    integer, intent( in )  :: iadj(MAXAD, MAXNBW)                     
+    integer, intent( out ) :: nodlev(MAXNBW)                          
+    integer, intent( out ) :: levlst(MAXWID, MAXLEV)                  
+    integer, intent( out ) :: levwid(MAXLEV)                          
+
+  end subroutine levgen
+end interface
+
+interface
+  subroutine isort(n, in, index)
+    use Types
+    implicit none
+    
+    integer, intent( in )  :: n                         
+    integer, intent( in )  :: in(*)                     
+    integer, intent( out ) :: index(*)                  
+
+  end subroutine isort
+end interface
+
+interface
+subroutine assforc(nzone, izplmn, nelm, nops,  MAXCOR, MAXDOF, MAXSTN,  &
+     MAXCON, MAXVAR, MAXPRP, iep, icon, nodpn, x, utot, du, stnod,  &
+     density, eprop, svart, svaru, forc, neq)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )                    :: MAXCOR
+  integer, intent( in )                    :: MAXDOF
+  integer, intent( in )                    :: MAXSTN
+  integer, intent( in )                    :: MAXVAR
+  integer, intent( in )                    :: nzone
+  integer, intent( inout )                 :: nops
+  integer, intent( in )                    :: nelm
+  integer, intent( in )                    :: MAXCON
+  integer, intent( in )                    :: MAXPRP
+  integer, intent( in )                    :: neq
+  integer, intent( in )                    :: izplmn(2,nzone)
+  integer, intent( in )                    :: nodpn(7, nops)
+  integer, intent( in )                    :: icon(MAXCON)
+  integer, intent( inout )                 :: iep(7, nelm)
+  real( prec ), intent( in )               :: density(nzone)
+  real( prec ), intent( in )               :: x(MAXCOR)
+  real( prec ), intent( inout )            :: eprop(MAXPRP)
+  real( prec ), intent( in )               :: utot(MAXDOF)
+  real( prec ), intent( in )               :: du(MAXDOF)
+  real( prec ), intent( in )               :: stnod(MAXSTN) 
+  real( prec ), intent( inout )            :: svart(MAXVAR)                 
+  real( prec ), intent( inout )            :: svaru(MAXVAR) 
+  real( prec ), intent( out )              :: forc(neq)
+
+  end subroutine assforc
+end interface
+
+interface
+subroutine asslmass(nzone, izplmn, nelm, nops,  MAXCOR, MAXDOF, MAXSTN,  &
+     MAXCON, MAXVAR, MAXPRP, iep, icon, nodpn, x, utot, du, stnod,  &
+     density, eprop, svart, svaru, lmass, neq)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )                    :: MAXCOR
+  integer, intent( in )                    :: MAXDOF
+  integer, intent( in )                    :: MAXSTN
+  integer, intent( in )                    :: MAXVAR
+  integer, intent( in )                    :: nzone
+  integer, intent( inout )                 :: nops
+  integer, intent( in )                    :: nelm
+  integer, intent( in )                    :: MAXCON
+  integer, intent( in )                    :: MAXPRP
+  integer, intent( in )                    :: neq
+  integer, intent( in )                    :: izplmn(2,nzone)
+  integer, intent( in )                    :: nodpn(7, nops)
+  integer, intent( in )                    :: icon(MAXCON)
+  integer, intent( inout )                 :: iep(7, nelm)
+  real( prec ), intent( in )               :: density(nzone)
+  real( prec ), intent( in )               :: x(MAXCOR)
+  real( prec ), intent( inout )            :: eprop(MAXPRP)
+  real( prec ), intent( in )               :: utot(MAXDOF)
+  real( prec ), intent( in )               :: du(MAXDOF)
+  real( prec ), intent( in )               :: stnod(MAXSTN) 
+  real( prec ), intent( inout )            :: svart(MAXVAR)                 
+  real( prec ), intent( inout )            :: svaru(MAXVAR) 
+  real( prec ), intent( out )              :: lmass(neq)
+
+  end subroutine asslmass
+end interface
+
+interface
+
+subroutine bcons_explicit(nhist,MAXHST,histvals,MAXHVL,histpoin,&
+	 nbcnset,MAXNST,nsetbcpoin,nsetlst,MAXNSL, &
+	 nbclset,MAXLST,lsetbcpoin,lsetlst,MAXLSL, &
+     MAXDDF,ndofdef,dofdefpoin,MAXDVL,dofdefvals, &
+     MAXDLF,ndldef,dldefpoin,MAXDLV,dldefvals, &
+	 nops, nelm, MAXCOR, MAXDOF,  &
+     MAXCON, icon, &
+     iep,nodpn, x, utot, du, eprop, MAXPRP, forc)
+  use Types
+  use ParamIO
+  use Paramsol
+  use Globals, only : TIME, DTIME, BTEMP, BTINC
+  implicit none
+
+! 
+  integer, intent( in )                :: MAXHST
+  integer, intent( in )                :: MAXHVL                      
+  integer, intent( inout )             :: nhist
+               
+  integer, intent( inout )             :: histpoin(2,MAXHST)          
+  real( prec ), intent(inout)          :: histvals(MAXHVL)
+      
+
+!
+  integer, intent(in)                 :: MAXNST
+  integer, intent(in)                 :: MAXLST
+  integer, intent(in)                 :: MAXNSL
+  integer, intent(in)                 :: MAXLSL
+  integer, intent(in)                 :: nbcnset
+  integer, intent(in)                 :: nbclset
+  integer, intent(in)                 :: nsetbcpoin(2,MAXNST)
+  integer, intent(in)                 :: lsetbcpoin(2,MAXLST)
+  integer, intent(in)                 :: nsetlst(MAXNSL)
+  integer, intent(in)                 :: lsetlst(MAXNSL)
+  integer, intent(in)                 :: MAXDDF
+  integer, intent(in)                 :: ndofdef
+  integer, intent(in)                 :: dofdefpoin(3,MAXDDF)
+  integer, intent(in)                 :: MAXDVL
+  real (prec), intent(in)             :: dofdefvals(MAXDVL)
+  integer, intent(in)                 :: MAXDLF
+  integer, intent(in)                 :: ndldef
+  integer, intent(in)                 :: dldefpoin(5,MAXDLF)
+  integer, intent(in)                 :: MAXDLV
+  real (prec), intent(in)             :: dldefvals(MAXDLV)
+
+  integer, intent( inout )      :: nops                         
+  integer, intent( inout )      :: nelm                         
+  integer, intent( in )         :: MAXCOR                       
+  integer, intent( in )         :: MAXDOF                       
+  integer, intent( in )         :: MAXCON                                          
+  integer, intent( in )         :: MAXPRP
+  integer, intent( in )                    :: nodpn(7, nops)                      
+  integer, intent( in )         :: icon(MAXCON)                 
+  integer, intent( inout )      :: iep(7, nelm)                                   
+  real( prec ), intent( in )    :: x(MAXCOR)                    
+  real( prec ), intent( inout ) :: utot(MAXDOF)                 
+  real( prec ), intent( inout ) :: du(MAXDOF)                   
+  real( prec ), intent( inout ) :: eprop(MAXPRP)                 
+  real( prec ), intent( inout ) :: forc(MAXDOF)  
+
+  end subroutine bcons_explicit
+end interface
+
+
+interface
+subroutine setbcs_static(nhist,MAXHST,histvals,MAXHVL,histpoin,&
+	 nbcnset,MAXNST,nsetbcpoin,nsetlst,MAXNSL, &
+	 nbclset,MAXLST,lsetbcpoin,lsetlst,MAXLSL, &
+     MAXDDF,ndofdef,dofdefpoin,MAXDVL,dofdefvals, &
+     MAXDLF,ndldef,dldefpoin,MAXDLV,dldefvals, &
+     nfix,MAXFIX,lstfix,dofval, &
+	 nfor,MAXFOR,lstfor,forval, &
+	 ndload,MAXDLD,lstlod,dlprops,MAXDLPR, &
+	 utot,du,rfor,nodpn,MAXU,MAXNOD)
+  use Types
+  use ParamIO
+  use Globals, only : TIME, DTIME, BTEMP, BTINC
+  implicit none
+
+!
+! Data structures to store load histories
+! 
+  integer, intent( in )                :: MAXHST
+  integer, intent( in )                :: MAXHVL                      
+  integer, intent( inout )             :: nhist
+               
+  integer, intent( inout )             :: histpoin(2,MAXHST)          
+  real( prec ), intent(inout)          :: histvals(MAXHVL)
+      
+
+! Data structures to store lists of nodes, elements and BCs
+!
+!      MAXNST           Max no. node sets
+!      MAXLST           Max no. element sets
+!      MAXNSL           Max storage for node sets
+!      MAXLSL           Max storage for element sets
+!      nbcnset          No. node sets
+!      nbclset          No. element sets
+!      nsetbcpoin(1,i)      Nodes in ith set start at nsetlst(nsetbcpoin(1,i))
+!      nsetbcpoin(2,i)      No. nodes in ith set
+!      nsetlst          List of nodes in sets
+!      lsetlst          List of elements in sets
+!      MAXDDF           Max no. DOF definitions
+!      ndofdef          No. DOF definitions
+!      dofdefpoin(1,i)  Node set for DOF definition
+!      dofdefpoin(2,i)  >0 DOF no. for DOF definition
+!                       <0 DOF no. for force definition
+!      dofdefpoin(3,i)  >0 - take DOF value from dofdefvals(dofdefpoin(4,i))
+!                       <0 - compute DOF value by interpolating hist table -dofdefpoin(3,i)
+!      dofdefvals       list of DOF values
+!      MAXDLF           Max no. distributed load definitions
+!      ndldef           no. distributed load definitions
+!      dldefpoin(1,i)   Abs value specifies element set number.  If negative, tractions applied normal to element
+!      dldefpoin(2,i)   face number for distributed load definition.
+!                       Sign controls whether tractions are computed using user subroutine  
+!      dldefpoin(3,i)   >0 Take traction parameters or values from dldefvals(dldefpoin(3,i))
+!                       <0 - compute traction magnitude by interpolating hist table -dofdefpoin(3,i)
+!      dldefpoin(4,i)   No. parameters 
+!      dldefpoin(5,i)   Option 
+!
+!
+  integer, intent(in)                 :: MAXNST
+  integer, intent(in)                 :: MAXLST
+  integer, intent(in)                 :: MAXNSL
+  integer, intent(in)                 :: MAXLSL
+  integer, intent(in)                 :: nbcnset
+  integer, intent(in)                 :: nbclset
+  integer, intent(in)                 :: nsetbcpoin(2,MAXNST)
+  integer, intent(in)                 :: lsetbcpoin(2,MAXLST)
+  integer, intent(in)                 :: nsetlst(MAXNSL)
+  integer, intent(in)                 :: lsetlst(MAXNSL)
+  integer, intent(in)                 :: MAXDDF
+  integer, intent(in)                 :: ndofdef
+  integer, intent(in)                 :: dofdefpoin(3,MAXDDF)
+  integer, intent(in)                 :: MAXDVL
+  real (prec), intent(in)             :: dofdefvals(MAXDVL)
+  integer, intent(in)                 :: MAXDLF
+  integer, intent(in)                 :: ndldef
+  integer, intent(in)                 :: dldefpoin(5,MAXDLF)
+  integer, intent(in)                 :: MAXDLV
+  real (prec), intent(in)             :: dldefvals(MAXDLV)
+  
+  integer, intent(in)                 :: MAXU
+  integer, intent(in)                 :: MAXNOD
+  integer, intent(in)                 :: nodpn(7,MAXNOD)
+  
+  real ( prec ), intent (in)          :: utot(MAXU)
+  real ( prec ), intent (in)          :: du(MAXU)
+  real ( prec ), intent (in)          :: rfor(MAXU)
+!
+! BC data structures assigned in this routine
+!
+  integer, intent( in )               :: MAXFIX
+  integer, intent( in )               :: MAXFOR
+  integer, intent( in )               :: MAXDLD
+  integer, intent( in )               :: MAXDLPR
+  integer, intent( inout )            :: nfix
+  integer, intent( inout )            :: nfor
+  integer, intent( inout )            :: ndload
+  integer, intent( inout )            :: lstfix(2, MAXFIX)
+  integer, intent( inout )            :: lstfor(2, MAXFOR)
+  integer, intent( inout )            :: lstlod(5, MAXDLD)
+
+  real( prec ), intent( inout )       :: dofval(MAXFIX)
+  real( prec ), intent( inout )       :: forval(MAXFOR)
+  real( prec ), intent( inout )        :: dlprops(MAXDLPR)   
+
+
+end subroutine setbcs_static
+end interface

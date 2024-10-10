@@ -1,0 +1,202 @@
+! misc.f90                                                    
+! Interface blocks for misc.f90
+
+interface
+  subroutine update(nops, nelm, nodpn, iep, utot, du, MAXDOF, svart,  &
+       svaru, MAXVAR, nmpc, lstmpc, rmpc, drmpc, MAXMPC)
+    use Types
+    implicit none
+    
+    integer, intent( inout )    :: nops                          
+    integer, intent( inout )    :: nelm                          
+    integer, intent( in )       :: MAXDOF                        
+    integer, intent( in )       :: MAXVAR                        
+    integer, intent( inout )    :: nmpc                          
+    integer, intent( in )       :: MAXMPC                        
+    integer, intent( inout )    :: nodpn(7, nops)                
+    integer, intent( inout )    :: iep(7, nelm)                  
+    integer, intent( inout )    :: lstmpc(7, MAXMPC)             
+    real( prec ), intent( inout ) :: utot(MAXDOF)                  
+    real( prec ), intent( in )  :: du(MAXDOF)                    
+    real( prec ), intent( out ) :: svart(MAXVAR)                 
+    real( prec ), intent( in )  :: svaru(MAXVAR)                 
+    real( prec ), intent( inout ) :: rmpc(MAXMPC)                  
+    real( prec ), intent( in )  :: drmpc(MAXMPC)                 
+
+  end subroutine update
+end interface
+
+
+interface
+  subroutine prosta( lumpedprojection,nstat,  nops, nelm,izplmn,nzone, MAXCOR,  &
+       MAXDOF, MAXCON, MAXVAR, MAXPRP, iep, icon,  &
+       nodpn, x, utot, du, eprop, svart, svaru, stlump,  &
+       MAXLMP, lumpn, numnod, rhs, aupp, MAXSUP, diag, jpoin)
+    use Types
+    use ParamIO
+    use Paramsol
+    implicit none
+
+    logical, intent( in )         :: lumpedprojection
+    integer, intent( inout )      :: nstat                    
+    integer, intent( inout )      :: nops                     
+    integer, intent( in )         :: nelm
+    integer, intent( in )         :: nzone                 
+    integer, intent( in )         :: izplmn(2,nzone)
+    integer, intent( in )         :: MAXCOR                   
+    integer, intent( in )         :: MAXDOF                   
+    integer, intent( in )         :: MAXCON                   
+    integer, intent( in )         :: MAXVAR                   
+    integer, intent( in )         :: MAXPRP                   
+    integer, intent( in )         :: MAXLMP                   
+    integer, intent( in )         :: MAXSUP                   
+    integer, intent( inout )      :: iep(7, nelm)             
+    integer, intent( in )         :: icon(MAXCON)             
+    integer, intent( in )         :: nodpn(7, nops)           
+    integer, intent( out )        :: lumpn(2,nops,nzone)              
+    integer, intent( out )        :: numnod(nops)             
+    integer, intent( inout )      :: jpoin(nops)              
+    real( prec ), intent( in )    :: x(MAXCOR)                      
+    real( prec ), intent( in )    :: utot(MAXDOF)                   
+    real( prec ), intent( in )    :: du(MAXDOF)                     
+    real( prec ), intent( inout ) :: eprop(MAXPRP)                  
+    real( prec ), intent( inout ) :: svart(MAXVAR)                  
+    real( prec ), intent( inout ) :: svaru(MAXVAR)                  
+    real( prec ), intent( out )   :: stlump(MAXLMP)                 
+    real( prec ), intent( out )   :: rhs(nops)                
+    real( prec ), intent( inout ) :: aupp(MAXSUP)             
+    real( prec ), intent( inout ) :: diag(nops)               
+  
+  end subroutine prosta
+end interface
+
+interface
+  subroutine makproj(nlump, lmnlst, x, MAXCOR, nodpn, numnod, nops,  &
+       nelm, icon, MAXCON, iep, eprop, MAXPRP, aupp, MAXSUP, diag, jpoin, neq)
+    use Types
+    use ParamIO
+    use Paramsol
+    implicit none
+    
+    integer, intent( in )                    :: nlump
+    integer, intent( in )                    :: MAXCOR
+    integer, intent( inout )                 :: nops
+    integer, intent( in )                    :: nelm
+    integer, intent( in )                    :: MAXCON
+    integer, intent( in )                    :: MAXPRP
+    integer, intent( in )                    :: MAXSUP
+    integer, intent( in )                    :: neq
+    integer, intent( in )                    :: lmnlst(*)
+    integer, intent( in )                    :: nodpn(7, nops)
+    integer, intent( in )                    :: numnod(nops)
+    integer, intent( in )                    :: icon(MAXCON)
+    integer, intent( inout )                 :: iep(7, nelm)
+    integer, intent( out )                   :: jpoin(nops)
+    real( prec ), intent( in )               :: x(MAXCOR)
+    real( prec ), intent( inout )            :: eprop(MAXPRP)
+    real( prec ), intent( out )              :: aupp(MAXSUP)
+    real( prec ), intent( out )              :: diag(nops)
+  
+  end subroutine makproj
+end interface
+interface
+subroutine maklproj(x, MAXCOR, nodpn, numnod, nops,  &
+     nelm, icon, MAXCON, iep, eprop, MAXPRP, lproj)
+  use Types
+  use ParamIO
+  use Paramsol
+  implicit none
+
+  integer, intent( in )                    :: MAXCOR
+  integer, intent( inout )                 :: nops
+  integer, intent( in )                    :: nelm
+  integer, intent( in )                    :: MAXCON
+  integer, intent( in )                    :: MAXPRP
+  integer, intent( in )                    :: nodpn(7, nops)
+  integer, intent( inout )                 :: numnod(nops)
+  integer, intent( in )                    :: icon(MAXCON)
+  integer, intent( inout )                 :: iep(7, nelm)
+  real( prec ), intent( in )               :: x(MAXCOR)
+  real( prec ), intent( inout )            :: eprop(MAXPRP)
+  real( prec ), intent( out )              :: lproj(nops)
+  
+end subroutine maklproj
+end interface
+
+interface
+subroutine parse(strin, strpar, length, nstr, lenstr, ityp, iblnk)
+  use Types
+  implicit none
+
+  integer, intent( in )                    :: length
+  integer, intent( out )                   :: nstr
+  integer, intent( out )                   :: iblnk
+  integer, intent( out )                   :: lenstr(*)
+  integer, intent( out )                   :: ityp(*)
+  character ( len = 100 ), intent( inout )   :: strin
+  character ( len = 100 ), intent( inout )  :: strpar(length)
+
+
+end subroutine parse
+end interface
+
+
+interface
+subroutine adchar(strin, len, char, ipoin)
+  use Types
+  implicit none
+  
+  integer                              :: len
+  integer                              :: ipoin
+  character ( len = 1 )                :: char
+  character ( len = 100 )               :: strin
+
+
+end subroutine adchar
+end interface
+interface
+function iasc(strin, len, ipoin)
+  use Types
+  implicit none
+
+  integer, intent( in )                  :: len
+  integer, intent( in )                  :: ipoin
+  character ( len = 100 ), intent( in )   :: strin
+  integer                                :: iasc
+ 
+  
+end function iasc
+end interface
+
+interface
+function strcmp(wd1, wd2, length)
+  use Types
+  implicit none
+
+  integer, intent( in )                  :: length
+  character ( len = 100 )                :: wd1
+  character (len=length)                 :: wd2
+  logical                                :: strcmp
+ 
+end function strcmp
+end interface
+
+
+interface
+subroutine files(fname,rw, nfiles, iunfil, fillst, MAXFIL, iun)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )                   :: MAXFIL
+  integer, intent( in )                   :: rw
+  integer, intent( inout )                :: nfiles
+  integer, intent( out )                  :: iun
+  integer, intent( inout )                :: iunfil(MAXFIL)
+  character ( len = 100 ), intent( inout ) :: fname
+  character ( len = 100 ), intent( inout ) :: fillst(MAXFIL)
+
+
+end subroutine files
+
+end interface
