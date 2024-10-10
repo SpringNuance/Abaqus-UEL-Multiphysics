@@ -1,0 +1,2 @@
+python autoscript.py --input "cube_C3D8_deformation_elastic_srt_nlgeom_on" --subroutine "von_Mises_plasticity_UEL"
+abaqus job=cube_C3D8_deformation_elastic_srt_nlgeom_on_UEL user=von_Mises_plasticity_UEL cpus=1 mp_mode=threads -verbose 1 interactive

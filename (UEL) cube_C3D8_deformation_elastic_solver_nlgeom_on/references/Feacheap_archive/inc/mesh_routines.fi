@@ -1,0 +1,385 @@
+! mesh_routines.f90                                                    
+! Miscellaneous bookkeeping routines for searching and interpolating within a mesh
+
+interface
+subroutine lmnfnd_2d(x, lmntin, xmesh, nops, lquad, MAXQAD, xsq,  &
+     llpelm, llselm, MAXLLN, icon, MAXCON, iep, iadj,  &
+     nelm, acnod, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC, lmnbg, ifail)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: lmntin                        
+  integer, intent( inout )      :: nops                          
+  integer, intent( in )         :: MAXQAD                        
+  integer, intent( in )         :: MAXLLN                        
+  integer, intent( in )         :: MAXCON                        
+  integer, intent( inout )      :: nelm                          
+  integer, intent( in )         :: MAXLSX                        
+  integer, intent( in )         :: MAXSRC                        
+  integer, intent( out )        :: lmnbg                         
+  integer, intent( inout )      :: ifail                         
+  integer, intent( inout )      :: lquad(7, MAXQAD)              
+  integer, intent( in )         :: llpelm(nops)                  
+  integer, intent( in )         :: llselm(7, MAXLLN)             
+  integer, intent( inout )      :: icon(MAXCON)                  
+  integer, intent( in )         :: iep(7, nelm)                  
+  integer, intent( in )         :: iadj(6, nelm)                 
+  integer, intent( inout )      :: listn(MAXLSX)                 
+  integer, intent( inout )      :: lstsrc(MAXSRC)                
+  real( prec ), intent( inout ) :: x(2)                          
+  real( prec ), intent( in )    :: xmesh(2, nops)                
+  real( prec ), intent( in )    :: xsq(2, 2)                     
+  real( prec ), intent( inout ) :: distn(MAXLSX)                 
+  real( prec ), intent( inout ) :: xsrc(2, 2, MAXSRC)            
+  logical, intent( out )        :: acnod(nops)                   
+
+  end subroutine lmnfnd_2d
+end interface
+interface
+function nodfnd_2d(x, xmesh, nops, nqad, lquad, MAXQAD, xsq, nzone,  &
+     llpelm, llselm, MAXLLN, icon, MAXCON, iep, iadj,  &
+     nelm, acnod, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: nops                           
+  integer, intent( in )         :: MAXQAD
+  integer, intent( in )         :: nzone                          
+  integer, intent( in )         :: MAXLLN                         
+  integer, intent( in )         :: MAXCON                         
+  integer, intent( inout )      :: nelm                           
+  integer, intent( in )         :: MAXLSX                         
+  integer, intent( in )         :: MAXSRC                         
+  integer, intent( in )         :: nqad(nzone)                    
+  integer, intent( inout )      :: lquad(7, MAXQAD)               
+  integer, intent( inout )      :: llpelm(nops)                   
+  integer, intent( inout )      :: llselm(7, MAXLLN)              
+  integer, intent( inout )      :: icon(MAXCON)                   
+  integer, intent( in )         :: iep(7, nelm)                   
+  integer, intent( inout )      :: iadj(6, nelm)                  
+  integer, intent( inout )      :: listn(MAXLSX)                  
+  integer, intent( inout )      :: lstsrc(MAXSRC)                 
+  real( prec ), intent( inout ) :: x(2)                           
+  real( prec ), intent( in )    :: xmesh(2, nops)                 
+  real( prec ), intent( in )    :: xsq(2, 2, nzone)               
+  real( prec ), intent( inout ) :: distn(MAXLSX)                  
+  real( prec ), intent( inout ) :: xsrc(2, 2, MAXSRC)             
+  logical, intent( inout )      :: acnod(nops)                    
+  integer                       :: nodfnd_2d
+  
+  end function nodfnd_2d
+end interface
+
+
+interface
+subroutine lmnfnd_3d(x, lmntin, xmesh, nops, lquad, MAXQAD, xsq,  &
+     nod2lmn,MAXDEG, icon, MAXCON, iep, nbrlmn,  &
+     nelm, acnod, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC, lmnbg, ifail)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: lmntin                        
+  integer, intent( inout )      :: nops                          
+  integer, intent( in )         :: MAXQAD                        
+  integer, intent( in )         :: MAXDEG                     
+  integer, intent( in )         :: MAXCON                        
+  integer, intent( inout )      :: nelm                          
+  integer, intent( in )         :: MAXLSX                        
+  integer, intent( in )         :: MAXSRC                        
+  integer, intent( out )        :: lmnbg                         
+  integer, intent( inout )      :: ifail                         
+  integer, intent( inout )      :: lquad(7, MAXQAD)              
+  integer, intent( in )         :: nod2lmn(MAXDEG,nops)                               
+  integer, intent( inout )      :: icon(MAXCON)                  
+  integer, intent( in )         :: iep(7, nelm)                  
+  integer, intent( in )         :: nbrlmn(6, nelm)                 
+  integer, intent( inout )      :: listn(MAXLSX)                 
+  integer, intent( inout )      :: lstsrc(MAXSRC)                
+  real( prec ), intent( inout ) :: x(3)                          
+  real( prec ), intent( in )    :: xmesh(3, nops)                
+  real( prec ), intent( in )    :: xsq(3, 2)                     
+  real( prec ), intent( inout ) :: distn(MAXLSX)                 
+  real( prec ), intent( inout ) :: xsrc(3, 2, MAXSRC)            
+  logical, intent( inout )      :: acnod(nops)                   
+
+end subroutine lmnfnd_3d
+end interface
+
+interface
+function nodfnd_3d(x, xmesh, nops, nqad, lquad, MAXQAD, xsq, nzone,  &
+     llpelm, llselm, MAXLLN, icon, MAXCON, iep, iadj,  &
+     nelm, acnod, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( inout )      :: nops                           
+  integer, intent( in )         :: MAXQAD
+  integer, intent( in )         :: nzone                          
+  integer, intent( in )         :: MAXLLN                         
+  integer, intent( in )         :: MAXCON                         
+  integer, intent( inout )      :: nelm                           
+  integer, intent( in )         :: MAXLSX                         
+  integer, intent( in )         :: MAXSRC                         
+  integer, intent( in )         :: nqad(nzone)                    
+  integer, intent( inout )      :: lquad(7, MAXQAD)               
+  integer, intent( inout )      :: llpelm(nops)                   
+  integer, intent( inout )      :: llselm(7, MAXLLN)              
+  integer, intent( inout )      :: icon(MAXCON)                   
+  integer, intent( in )         :: iep(7, nelm)                   
+  integer, intent( inout )      :: iadj(6, nelm)                  
+  integer, intent( inout )      :: listn(MAXLSX)                  
+  integer, intent( inout )      :: lstsrc(MAXSRC)                 
+  real( prec ), intent( inout ) :: x(2)                           
+  real( prec ), intent( in )    :: xmesh(2, nops)                 
+  real( prec ), intent( in )    :: xsq(2, 2, nzone)               
+  real( prec ), intent( inout ) :: distn(MAXLSX)                  
+  real( prec ), intent( inout ) :: xsrc(2, 2, MAXSRC)             
+  logical, intent( inout )      :: acnod(nops)                    
+  integer                       :: nodfnd_3d
+  
+  end function nodfnd_3d
+end interface
+
+
+interface
+!========================SUBROUTINE ADQUAD_2d ===================
+subroutine adquad_2d(node, x, xmesh, maxx, nquad, lquad, MAXQAD, xsq)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: node                          
+  integer, intent( in )         :: maxx                          
+  integer, intent( inout )      :: nquad                         
+  integer, intent( in )         :: MAXQAD                        
+  integer, intent( inout )      :: lquad(7, MAXQAD)              
+  real( prec ), intent( inout ) :: x(2)                          
+  real( prec ), intent( in )    :: xmesh(2, maxx)                
+  real( prec ), intent( in )    :: xsq(2, 2)                     
+
+ 
+end subroutine adquad_2d
+end interface
+
+interface
+!========================SUBROUTINE QSCHRG ===================
+subroutine qschrg_2d(x, xreg, xmesh, acnod, maxx, lquad, MAXQAD, xsq,  &
+     npts, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: maxx                         
+  integer, intent( in )         :: MAXQAD                       
+  integer, intent( out )        :: npts                         
+  integer, intent( in )         :: MAXLSX                       
+  integer, intent( in )         :: MAXSRC                       
+  integer, intent( in )         :: lquad(7, MAXQAD)             
+  integer, intent( out )        :: listn(MAXLSX)                
+  integer, intent( out )        :: lstsrc(MAXSRC)               
+  real( prec ), intent( inout ) :: x(2)                         
+  real( prec ), intent( in )    :: xreg(2, 2)                   
+  real( prec ), intent( in )    :: xmesh(2, maxx)               
+  real( prec ), intent( in )    :: xsq(2, 2)                    
+  real( prec ), intent( out )   :: distn(MAXLSX)                
+  real( prec ), intent( out )   :: xsrc(2, 2, MAXSRC)           
+  logical, intent( in )         :: acnod(*)                     
+
+ 
+  
+end subroutine qschrg_2d
+end interface
+
+interface
+!==============================FUNCTION LAP0_2D ==============================
+function lap0_2d(xqlo1, xqlo2, xqup1, xqup2, xreg)
+  use Types
+  implicit none
+
+  real( prec ), intent( in )    :: xqlo1                      
+  real( prec ), intent( in )    :: xqlo2                      
+  real( prec ), intent( inout ) :: xqup1                      
+  real( prec ), intent( inout ) :: xqup2                      
+  real( prec ), intent( in )    :: xreg(2, 2)                 
+  logical                       :: lap0_2d
+
+
+
+end function lap0_2d
+end interface
+
+interface
+!==============================SUBROUTINE FNDNPT ===========================
+subroutine fndnpt_2d(x, xmesh, maxx, lquad, MAXQAD, xsq, npts, listn,  &
+     distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: maxx                         
+  integer, intent( in )         :: MAXQAD                       
+  integer, intent( out )        :: npts                         
+  integer, intent( in )         :: MAXLSX                       
+  integer, intent( in )         :: MAXSRC                       
+  integer, intent( in )         :: lquad(7, MAXQAD)             
+  integer, intent( out )        :: listn(MAXLSX)                
+  integer, intent( out )        :: lstsrc(MAXSRC)               
+  real( prec ), intent( inout ) :: x(2)                         
+  real( prec ), intent( in )    :: xmesh(2, maxx)               
+  real( prec ), intent( in )    :: xsq(2, 2)                    
+  real( prec ), intent( out )   :: distn(MAXLSX)                
+  real( prec ), intent( out )   :: xsrc(2, 2, MAXSRC)           
+
+
+  
+end subroutine fndnpt_2d
+end interface
+
+interface
+!========================SUBROUTINE ADQUAD_3d ===================
+subroutine adquad_3d(node, x, xmesh, maxx, nquad, lquad, MAXQAD, xsq)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: node                          
+  integer, intent( in )         :: maxx                          
+  integer, intent( inout )      :: nquad                         
+  integer, intent( in )         :: MAXQAD                        
+  integer, intent( inout )      :: lquad(11, MAXQAD)              
+  real( prec ), intent( inout ) :: x(3)                          
+  real( prec ), intent( in )    :: xmesh(3, maxx)                
+  real( prec ), intent( in )    :: xsq(3, 2)                     
+
+
+end subroutine adquad_3d
+end interface
+
+interface
+!========================SUBROUTINE QSCHRG ===================
+subroutine qschrg_3d(x, xreg, xmesh, acnod, maxx, lquad, MAXQAD, xsq,  &
+     npts, listn, distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: maxx                         
+  integer, intent( in )         :: MAXQAD                       
+  integer, intent( out )        :: npts                         
+  integer, intent( in )         :: MAXLSX                       
+  integer, intent( in )         :: MAXSRC                       
+  integer, intent( in )         :: lquad(11, MAXQAD)             
+  integer, intent( out )        :: listn(MAXLSX)                
+  integer, intent( out )        :: lstsrc(MAXSRC)               
+  real( prec ), intent( inout ) :: x(3)                         
+  real( prec ), intent( in )    :: xreg(3, 2)                   
+  real( prec ), intent( in )    :: xmesh(3, maxx)               
+  real( prec ), intent( in )    :: xsq(3, 2)                    
+  real( prec ), intent( out )   :: distn(MAXLSX)                
+  real( prec ), intent( out )   :: xsrc(3, 2, MAXSRC)           
+  logical, intent( in )         :: acnod(*)                     
+
+
+  
+end subroutine qschrg_3d
+end interface
+
+interface
+!==============================FUNCTION LAP0 ==============================
+function lap0_3d(xqlo1, xqlo2, xqlo3, xqup1, xqup2, xqup3, xreg)
+  use Types
+  implicit none
+
+  real( prec ), intent( in )    :: xqlo1                      
+  real( prec ), intent( in )    :: xqlo2                      
+  real( prec ), intent( in )    :: xqlo3
+  real( prec ), intent( inout ) :: xqup1                      
+  real( prec ), intent( inout ) :: xqup2                      
+  real( prec ), intent( inout ) :: xqup3 
+  real( prec ), intent( in )    :: xreg(3, 2)                 
+  logical                       :: lap0_3d
+
+ 
+end function lap0_3d
+end interface
+
+interface
+!==============================SUBROUTINE FNDNPT ===========================
+subroutine fndnpt_3d(x, xmesh, maxx, lquad, MAXQAD, xsq, npts, listn,  &
+     distn, MAXLSX, lstsrc, xsrc, MAXSRC)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )         :: maxx                         
+  integer, intent( in )         :: MAXQAD                       
+  integer, intent( out )        :: npts                         
+  integer, intent( in )         :: MAXLSX                       
+  integer, intent( in )         :: MAXSRC                       
+  integer, intent( in )         :: lquad(11,MAXQAD)             
+  integer, intent( out )        :: listn(MAXLSX)                
+  integer, intent( out )        :: lstsrc(MAXSRC)               
+  real( prec ), intent( inout ) :: x(3)                         
+  real( prec ), intent( in )    :: xmesh(3, maxx)               
+  real( prec ), intent( in )    :: xsq(3, 2)                    
+  real( prec ), intent( out )   :: distn(MAXLSX)                
+  real( prec ), intent( out )   :: xsrc(3, 2, MAXSRC)           
+
+ 
+  
+end subroutine fndnpt_3d
+end interface
+
+interface
+!====================SUBROUTINE SET_NOD2LMN ======================
+subroutine set_nod2lmn(nops, nelm,lmn_start, lmn_stop, MAXCON, icon, iep, ideg, nod2lmn,MAXDEG)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )    :: nops                               
+  integer, intent( in )    :: nelm
+  integer, intent( in )    :: lmn_start
+  integer, intent( in )    :: lmn_stop                               
+  integer, intent( in )    :: MAXCON 
+  integer, intent( in )    :: MAXDEG                            
+  integer, intent( in )    :: icon(MAXCON)                       
+  integer, intent( inout ) :: iep(7, nelm)                           
+  integer, intent( out )   :: ideg(nops)                       
+  integer, intent( out )   :: nod2lmn(MAXDEG,nops) 
+
+ 
+
+end subroutine set_nod2lmn
+end interface
+
+
+interface
+!====================SUBROUTINE SET_NBRLMN_3d ======================
+
+subroutine set_nbrlmn_3d(nops, nelm,lmn_start, lmn_stop, MAXCON, icon, iep, ideg, nod2lmn,MAXDEG,nbrlmn,MAXNBR)
+  use Types
+  use ParamIO
+  implicit none
+
+  integer, intent( in )    :: nops                               
+  integer, intent( in )    :: nelm
+  integer, intent( in )    :: lmn_start
+  integer, intent( in )    :: lmn_stop                               
+  integer, intent( in )    :: MAXCON
+  integer, intent( in )    :: MAXDEG
+  integer, intent( in )    :: MAXNBR                             
+  integer, intent( in )    :: icon(MAXCON)                       
+  integer, intent( in )    :: iep(7, nelm)                           
+  integer, intent( in )    :: ideg(nops)                       
+  integer, intent( in )    :: nod2lmn(MAXDEG,nops) 
+  integer, intent( out )   :: nbrlmn(MAXNBR,nelm)
+!  Function to compute neigbor list for elements in a 3D mesh.
+  
+ 
+  end subroutine set_nbrlmn_3d
+ end interface 

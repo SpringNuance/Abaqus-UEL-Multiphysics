@@ -1,0 +1,55 @@
+<Description>
+   standard.exe / rank 0 / thread 0  encountered a system exception 0xC0000005 (EXCEPTION_ACCESS_VIOLATION)
+</Description>
+
+<PriorErrors>
+1) Process terminated by external request (SIGTERM or SIGINT received).
+</PriorErrors>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   Increment | Attempt | Out1
+</Phase>
+
+<Callstack>
+  1)  ABQSMAEliLicenseModule.dll  eli_LicenseManager::DataLock            
+  2)  ABQSMAEliLicenseModule.dll  eli_HeartbeatTask::RunHeartbeat         
+  3)  ABQSMAAbuBasicUtils.dll     thr_ThreadPool::ThreadDriver            
+  4)  ucrtbase.dll                configthreadlocale                      
+  5)  KERNEL32.DLL                BaseThreadInitThunk                     
+  6)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          40 GB </Size>
+       <Used>          24 GB </Used>
+       <Free>          16 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_deformation_elastic_srt_nlgeom_on_UEL_30948 </current> <free>     21 GB </free>   <used>    454 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-von-Mises-plasticity\(UEL) cube_C3D8_deformation_elastic_solver_nlgeom_on </indir>   <free>     21 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-von-Mises-plasticity\(UEL) cube_C3D8_deformation_elastic_solver_nlgeom_on </outdir>  <free>     21 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_deformation_elastic_srt_nlgeom_on_UEL_30948 </tmpdir>  <free>     21 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     21 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_deformation_elastic_srt_nlgeom_on_UEL_30948\standard.exe </Executable>
+</Installation>
+

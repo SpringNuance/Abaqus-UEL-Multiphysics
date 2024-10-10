@@ -1,0 +1,48 @@
+Structural user element
+Elements tested
+T3D2
+
+Features tested
+User subroutine to define the element mass matrix, element operator matrix, and right-hand side vector.
+
+Problem description
+The finite element model for each test case consists of two separate but identical meshes of a simple truss. One mesh consists of five T3D2 elements, and the other consists of five equivalent user-defined elements.
+
+Four test cases are performed as described below.
+
+uellinea.inp
+In this problem a linear analysis is run that uses the data line input option to specify the stiffness and mass matrix of the user element. This means that the subroutine is not used, but rather the stiffness and mass matrix for the user element are tested. One end of the truss is constrained. In the first step a load is applied at the second end of the truss. In the second step the eigenfrequencies of the truss are calculated.
+
+uelnonli.inp
+The same problem is solved as in uellinea.inp, but the user subroutine is used. The problem is still linear, but there is no assumption of linearity in the user-defined element.
+
+uelriksx.inp
+In this job the load is applied gradually using the modified Riks method for proportional loading cases.
+
+ueldynam.inp
+In this case the load is applied instantaneously as the implicit dynamics procedure is used to calculate the results for the first 10 increments.
+
+Results and discussion
+The verification consists of comparing the results from the T3D2 models to the results obtained from the user element models, since they should be identical.
+
+Input files
+uellinea.inp
+Linear analysis with data line input option.
+
+uelnonli.inp
+Linear analysis with user subroutine.
+
+uelnonli.f
+User subroutine UEL used in uelnonli.inp.
+
+uelriksx.inp
+Analysis with RIKS procedure.
+
+uelriksx.f
+User subroutine UEL used in uelriksx.inp.
+
+ueldynam.inp
+Analysis with implicit dynamics.
+
+ueldynam.f
+User subroutine UEL used in ueldynam.inp.

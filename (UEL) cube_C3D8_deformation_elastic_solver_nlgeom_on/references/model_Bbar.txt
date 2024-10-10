@@ -1,0 +1,1007 @@
+#          Example 2D and 3D Linear elastic FEM code illustrating the Bbar method
+#            Currently coded to run either plane strain (2DOF) or general 3D but
+#            could easily be modified for axisymmetry or plane stress 2D analysis too.
+#
+#        Variables read from input file:
+#        nprops              No. material parameters
+#        props[i]    List of material parameters
+#        ndim              No. spatial coords (2 for 2D, 3 for 3D)
+#        ndof                No. degrees of freedom per node (2 for 2D, 3 for 3D)
+#                            (here ndof=ndim, but the program allows them to be different
+#                            to allow extension to plate & beam elements with C^1 continuity)
+#        nnode               No. nodes
+#        coords[i,j]         ith coord of jth node, for i=1..ndim; j=1..nnode
+#        nelem               No. elements
+#        maxnodes            Max no. nodes on any one element (used for array dimensioning)
+#        nnode[i]         No. nodes on the ith element
+#        jelem[i]          An integer identifier for the ith element.  Not used
+#                            in this code but could be used to switch on reduced integration,
+#                            etc.
+#        connect[i,j]        List of nodes on the jth element
+#        nfix                Total no. prescribed displacements
+#        fixnodes[i,j]       List of prescribed displacements at nodes
+#                            fixnodes[1,j] Node number
+#                            fixnodes[2,j] Displacement component number (1, 2 or 3)
+#                            fixnodes[3,j] Value of the displacement
+#        ndload              Total no. element faces subjected to tractions
+#        dloads[i,j]         List of element tractions
+#                            dloads[1,j] Element number
+#                            dloads[2,j] face number
+#                            dloads[3,j], dloads[4,j], dloads[5,j] Components of traction
+#                            (assumed uniform) 
+#
+#  To run the program you first need to set up an input file, as described in 
+#  the lecture notes.  Then change the fopen command below to point to the file.
+#  Also change the fopen command in the post-processing step (near the bottom of the
+#  program) to point to a suitable output file.  Then go to the top of the file and
+#  keep hitting return to make MAPLE execute each block of code.
+# 
+#
+
+#================= Material Stiffness ==================================
+#
+#    Computes elasticity tensor C_{ijkl} from shear modulus and Poissons ratio
+#    Currently coded either for plane strain, plane stress or general 3D.
+#
+materialstiffness := proc (ndof,ndim,strain,props)
+   local materialstiffness,mu,nu,C,i,j,k,l,planestrain:
+
+   mu := props[1]:
+   nu := props[2]:
+#  planestrain = 0 => plane stress, planestrain = 1 => plane strain
+   planestrain := props[3]:
+  
+   C := array(1..ndof,1..ndim,1..ndof,1..ndim):
+        
+   if (ndim = 3) then
+
+     for i from 1 to 3 do
+       for j from 1 to 3 do
+         for k from 1 to 3 do
+           for l from 1 to 3 do
+             C[i,j,k,l] := 0.0:
+             if (i=j and k=l) then C[i,j,k,l]:=C[i,j,k,l] + 2.*mu*nu/(1.-2.*nu): fi:
+             if (i=k and j=l) then C[i,j,k,l]:=C[i,j,k,l] + mu: fi:
+             if (i=l and j=k) then C[i,j,k,l]:=C[i,j,k,l] + mu: fi:
+            od:
+          od:
+        od:
+      od:
+    fi:
+
+    materialstiffness := C
+ end:
+
+#================= Material Stress ==================================
+#
+#   Computes stress sigma_{ij} given strain epsilon_{ij}
+#
+
+materialstress := proc (ndof,ndim,strain,props)
+   local materialstress,stress,C,i,j,k,l:
+
+   C := array[1..ndof,1..ndim,1..ndof,1..ndim]:
+   stress := array(1..ndof,1..ndim):
+
+   C := materialstiffness(ndof,ndim,strain,props):
+    
+   for i from 1 to ndof do
+     for j from 1 to ndim do
+        stress[i,j] := 0.:
+        for k from 1 to ndof do
+          for l from 1 to ndim do
+            stress[i,j] := stress[i,j] + C[i,j,k,l]*strain[k,l]:
+          od:
+        od:
+      od:
+    od:
+    materialstress := stress:
+  end:
+
+#
+#====================== No. integration points =============================
+#
+#   Defines the number of integration points to be used for
+#   each element type
+#
+ninpt := proc(ndim,nnode,jelem)
+   local ninpt,n;
+
+   if (ndim = 3) then
+     if (nnode = 8) then n := 8: fi:
+   fi:
+   ninpt := n:
+end:    
+#
+#====================== No. reduced integration points =============================
+#
+#   Defines the number of integration points to be used for
+#   each element type when reduced integration is used
+#
+numberofreducedintegrationpoints := proc(ndim,nnode,jelem)
+   local numberofreducedintegrationpoints,n;
+
+   if (ndim = 3) then
+     if (nnode = 8) then n := 1: fi:
+   fi:
+   numberofreducedintegrationpoints := n:
+end:    
+
+#
+#====================== INTEGRATION POINTS ==================================
+#
+#   Defines positions of integration points
+#
+integrationpoints := proc(ndim,nnode,ninpt,jelem)
+   local integrationpoints,xi,x1D,i,j,k,n:
+
+   xi := array(1..ndim,1..ninpt):
+
+#
+#   3D elements
+#
+   elif (ndim = 3) then
+
+    if ( nnode=8 or nnode=20 ) then
+        if (ninpt = 8) then
+         x1D := array(1..2,[-0.5773502692,0.5773502692]):
+         for k from 1 to 2 do
+           for j from 1 to 2 do
+             for i from 1 to 2 do
+               n := 4*(k-1) + 2*(j-1) + i:
+               xi[1,n] := x1D[i]:
+               xi[2,n] := x1D[j]:
+               xi[3,n] := x1D[k]:
+             od:
+           od:
+         od:
+    
+   fi:
+   integrationpoints := xi:
+ end:
+
+#
+#================= INTEGRATION WEIGHTS ==================================
+#
+#   Defines integration weights w_i
+#
+integrationweights := proc (ndim,nnode,ninpt,jelem)
+   local integrationweights,w,w1D,j,i,k,n:
+
+   w := array(1..ninpt):
+
+#
+#  3D elements
+#
+     if ( nnode=8 or nnode=20 ) then
+       if (ninpt = 8) then
+         w := [1.,1.,1.,1.,1.,1.,1.,1.]:
+   fi:
+   integrationweights := w:
+ end:
+
+#
+#================= SHAPE FUNCTIONS ==================================
+#
+#        Calculates shape functions for various element types
+#
+shapefunctions := proc (nnode,ndim,jelem,xi)
+   local shapefunctions,N,xi3,xi4:
+
+   N := array(1..nnode):
+
+   if (ndim=3) then
+
+
+     if (nnode = 8) then
+       N[1] := (1.-xi[1])*(1.-xi[2])*(1.-xi[3])/8.:
+       N[2] := (1.+xi[1])*(1.-xi[2])*(1.-xi[3])/8.:
+       N[3] := (1.+xi[1])*(1.+xi[2])*(1.-xi[3])/8.:
+       N[4] := (1.-xi[1])*(1.+xi[2])*(1.-xi[3])/8.:
+       N[5] := (1.-xi[1])*(1.-xi[2])*(1.+xi[3])/8.:
+       N[6] := (1.+xi[1])*(1.-xi[2])*(1.+xi[3])/8.:
+       N[7] := (1.+xi[1])*(1.+xi[2])*(1.+xi[3])/8.:
+       N[8] := (1.-xi[1])*(1.+xi[2])*(1.+xi[3])/8.:
+   fi:
+
+   shapefunctions := N:
+ end:
+
+#
+#================= SHAPE FUNCTION DERIVATIVES ======================
+#
+shapefunctionderivs := proc (nnode,ndim,jelem,xi)
+  local shapefunctionderivs,B_deriv_local,xi3,xi4:
+
+  B_deriv_local := array(sparse,1..nnode,1..ndim):
+#
+#    3D elements
+#
+   if (ndim=3) then
+     if (nnode = 8) then
+       B_deriv_local[1,1] := -(1.-xi[2])*(1.-xi[3])/8.:
+       B_deriv_local[1,2] := -(1.-xi[1])*(1.-xi[3])/8.:
+       B_deriv_local[1,3] := -(1.-xi[1])*(1.-xi[2])/8.:
+       B_deriv_local[2,1] := (1.-xi[2])*(1.-xi[3])/8.:
+       B_deriv_local[2,2] := -(1.+xi[1])*(1.-xi[3])/8.:
+       B_deriv_local[2,3] := -(1.+xi[1])*(1.-xi[2])/8.:
+       B_deriv_local[3,1] := (1.+xi[2])*(1.-xi[3])/8.:
+       B_deriv_local[3,2] := (1.+xi[1])*(1.-xi[3])/8.:
+       B_deriv_local[3,3] := -(1.+xi[1])*(1.+xi[2])/8.:
+       B_deriv_local[4,1] := -(1.+xi[2])*(1.-xi[3])/8.:
+       B_deriv_local[4,2] := (1.-xi[1])*(1.-xi[3])/8.:
+       B_deriv_local[4,3] := -(1.-xi[1])*(1.+xi[2])/8.:
+       B_deriv_local[5,1] := -(1.-xi[2])*(1.+xi[3])/8.:
+       B_deriv_local[5,2] := -(1.-xi[1])*(1.+xi[3])/8.:
+       B_deriv_local[5,3] := (1.-xi[1])*(1.-xi[2])/8.:
+       B_deriv_local[6,1] := (1.-xi[2])*(1.+xi[3])/8.:
+       B_deriv_local[6,2] := -(1.+xi[1])*(1.+xi[3])/8.:
+       B_deriv_local[6,3] := (1.+xi[1])*(1.-xi[2])/8.:
+       B_deriv_local[7,1] := (1.+xi[2])*(1.+xi[3])/8.:
+       B_deriv_local[7,2] := (1.+xi[1])*(1.+xi[3])/8.:
+       B_deriv_local[7,3] := (1.+xi[1])*(1.+xi[2])/8.:
+       B_deriv_local[8,1] := -(1.+xi[2])*(1.+xi[3])/8.:
+       B_deriv_local[8,2] := (1.-xi[1])*(1.+xi[3])/8.:
+       B_deriv_local[8,3] := (1.-xi[1])*(1.+xi[2])/8.:
+  
+   shapefunctionderivs := B_deriv_local:
+ end:
+
+#
+#================= ELEMENT STIFFNESS MATRIX ================================
+#
+elstif := proc (ndim,ndof,nnode,jelem,coord,props,displacement)
+   local elstif,ninpt,kinpt,xilist,xi,w,N,B_deriv_local,B_deriv_global,xjac,xjaci,djac,strain,ekk,omega,ddsdde,
+         Bvol,vol_el,amatrx,row,col,a,b,i,j,k,l: 
+#
+#  Assemble the element stiffness
+#
+#    Arguments:
+#
+#      ndim             No. coordinates (2 or 3 for 2D or 3D problem)
+#      ndof               No. degrees of freedom per node (often ndof = ndim)
+#      nnode           No. nodes on the element
+#      jelem            Element identifier (not used here - for future enhancements!)
+#      coords[i,a]        ith coord of ath node
+#      props      Material properties passed on to constitutive procedures
+#      displacement[i,a]  ith displacement component at ath node
+#
+#   Local variables
+#      ninpt            No. integration points
+#      xi[i,inpt]         ith local coord of integration point no. kinpt
+#      w[kinpt]           weight for integration point no. kinpt
+#      N[a]               Shape function associated with ath node on element
+#      Bvol[a,i]          Volumetric B matrix
+#      B_deriv_local[a,i]         Derivative of ath shape function wrt ith local coord
+#      B_deriv_global[a,i]          Derivative of ath shape function wrt ith global coord
+#      xjac[i,j]         Derivative of ith global coord wrt jth local coord
+#      xjaci[i,j]         Derivative of ith local coord wrt jth global coord
+#      det                Determinant of jacobian
+#      strain[i,j]        strain_ij components
+#      ddsdde[i,j,k,l]      Derivative of stress_ij with respect to strain_kl
+#      amatrx[row,col]       Rows and cols of element stiffness
+#
+#
+   ninpt := ninpt(ndim,nnode,jelem):
+   xilist := array(1..ndim,1..ninpt):
+   w := array(1..ninpt):
+   N := array(1..nnode):
+   B_deriv_local := array(1..nnode,1..ndim):
+   B_deriv_global := array(1..nnode,1..ndim):
+   xjac := array(1..ndim,1..ndim):
+   xjaci := array(1..ndim,1..ndim):
+   Bvol := array(sparse,1..nnode,1..ndim):
+   strain := array(1..ndof,1..ndim):
+   ddsdde := array(1..ndof,1..ndof,1..ndof,1..ndof):
+   amatrx := array(sparse,1..ndof*nnode,1..ndof*nnode):
+#
+#  Compute the volumetric B matrix by integrating over the element. 
+#
+#  Set up integration points and weights    
+#
+   xilist := integrationpoints(ndim,nnode,ninpt,jelem):
+   w := integrationweights(ndim,nnode,ninpt,jelem):
+#
+#  Loop over the integration points
+#
+   vol_el := 0:
+   
+   for kinpt from 1 to ninpt do
+
+#     Compute shape functions and derivatives wrt local coords
+#
+      for i from 1 to ndim do
+        xi[i] := xilist[i,kinpt]:
+      od:      
+      N := shapefunctions(nnode,ndim,jelem,xi):
+      B_deriv_local := shapefunctionderivs(nnode,ndim,jelem,xi):
+#
+#     Compute the jacobian matrix and its determinant
+#
+      for i from 1 to ndim do
+        for j from 1 to ndim do
+          xjac[i,j] := 0.:
+          for a from 1 to nnode do
+            xjac[i,j] := xjac[i,j] + coord[i,a]*B_deriv_local[a,j]:
+          od:
+        od:
+      od:
+
+      xjaci := inverse(xjac):
+      djac := det(xjac):
+#
+#     Convert shape function derivatives to derivatives wrt global coords
+#
+      for a from 1 to nnode do
+        for i from 1 to ndim do
+          B_deriv_global[a,i] := 0.:
+          for j from 1 to ndim do
+            B_deriv_global[a,i] := B_deriv_global[a,i] + B_deriv_local[a,j]*xjaci[j,i]:
+          od:
+        od:
+      od:
+#
+#     Compute the integrals over the volume
+#             
+      for a from 1 to nnode do
+        for i from 1 to ndof do
+          Bvol[a,i] := Bvol[a,i] + B_deriv_global[a,i]*w[kinpt]*djac:
+        od:
+      od:
+#     
+      vol_el := vol_el + w[kinpt]*djac:
+#
+    od:
+#
+    omega := 0:
+    for a from 1 to nnode do
+      for i from 1 to ndof do
+         Bvol[a,i] := Bvol[a,i]/(ndim*vol_el):
+         omega := omega + Bvol[a,i]*displacement[i,a]:
+      od:
+    od:
+
+#
+#  Compute the the stiffness
+#
+#  Loop over the integration points
+#
+   for kinpt from 1 to ninpt do
+
+#     Compute shape functions and derivatives wrt local coords
+#
+      for i from 1 to ndim do
+        xi[i] := xilist[i,kinpt]:
+      od:      
+      N := shapefunctions(nnode,ndim,jelem,xi):
+      B_deriv_local := shapefunctionderivs(nnode,ndim,jelem,xi):
+#
+#     Compute the jacobian matrix and its determinant
+#
+      for i from 1 to ndim do
+        for j from 1 to ndim do
+          xjac[i,j] := 0.:
+          for a from 1 to nnode do
+            xjac[i,j] := xjac[i,j] + coord[i,a]*B_deriv_local[a,j]:
+          od:
+        od:
+      od:
+
+      xjaci := inverse(xjac):
+      djac := det(xjac):
+#
+#     Convert shape function derivatives to derivatives wrt global coords
+#
+      for a from 1 to nnode do
+        for i from 1 to ndim do
+          B_deriv_global[a,i] := 0.:
+          for j from 1 to ndim do
+            B_deriv_global[a,i] := B_deriv_global[a,i] + B_deriv_local[a,j]*xjaci[j,i]:
+          od:
+        od:
+      od:
+#
+#     Compute the (infinitesimal) strain by differentiating displacements
+#     This step is not really necessary for linear elasticity calculations
+#     where stiffness is independent of strain.  It is included to allow
+#     extension to nonlinear materials later.
+#
+      ekk := 0:
+      for i from 1 to ndim do
+         for j from 1 to ndim do
+            strain[i,j] := 0.:
+            for a from 1 to nnode do
+              strain[i,j] := strain[i,j] 
+                         + 0.5*(displacement[i,a]*B_deriv_global[a,j]+displacement[j,a]*B_deriv_global[a,i]):
+            od:
+         od:
+         ekk := ekk + strain[i,i]:
+      od:
+      strain[1,1] := strain[1,1] - ekk/ndim + omega:
+      strain[2,2] := strain[2,2] - ekk/ndim + omega:
+      if (ndim = 3) then
+        strain[3,3] := strain[3,3] - ekk/ndim + omega:
+      fi:
+#
+#     Compute the material tangent stiffness (d stress/d strain)
+#     ds/de is just C_ijkl for linear elasticity - this notation is used
+#     to allow extension to nonlinear problems
+#
+      ddsdde := materialstiffness(ndof,ndim,strain,props):
+#
+#     Compute the element stiffness
+#             
+      for a from 1 to nnode do
+        for i from 1 to ndof do
+          for b from 1 to nnode do
+            for k from 1 to ndof do
+              row := ndof*(a-1)+i:
+              col := ndof*(b-1)+k:
+              for j from 1 to ndim do
+                for l from 1 to ndim do
+                  amatrx[col,row] := amatrx[col,row] +
+                                  ddsdde[i,j,k,l]*B_deriv_global[b,l]*B_deriv_global[a,j]*w[kinpt]*djac:
+                  amatrx[col,row] := amatrx[col,row] +
+                           ddsdde[j,j,k,l]*B_deriv_global[b,l]*(Bvol[a,i] - B_deriv_global[a,i]/ndim)*w[kinpt]*djac: 
+                  amatrx[col,row] := amatrx[col,row] +
+                           ddsdde[i,j,l,l]*B_deriv_global[a,j]*(Bvol[b,k] - B_deriv_global[b,k]/ndim)*w[kinpt]*djac:
+                  amatrx[col,row] := amatrx[col,row] +
+                           ddsdde[j,j,l,l]*(Bvol[b,k]-B_deriv_global[b,k]/ndim)*(Bvol[a,i] - B_deriv_global[a,i]/ndim)*w[kinpt]*djac:  
+                od:
+              od:
+            od:
+          od:
+        od:
+      od:
+    od:
+
+   elstif := amatrx:
+
+end:
+
+
+#====================== No. nodes on element faces ================
+#
+#   This procedure returns the number of nodes on each element face
+#   for various element types.  This info is needed for computing
+#   the surface integrals associated with the element traction vector
+#
+nfacenodes := proc (ndim,nnode,jelem,face)
+   local n,nfacenodes:
+
+  if (ndim = 3) then
+     elif (nnode = 8) then n := 4:
+   fi:
+   nfacenodes := n:
+ end:
+#======================= Lists of nodes on element faces =============
+#
+#    This procedure returns the list of nodes on an element face
+#    The nodes are ordered so that the element face forms either
+#    a 1D line element or a 2D surface element for 2D or 3D problems
+#
+facenodes := proc (ndim,nnode,jelem,face)
+   local facenodes,i3,i4,list:
+
+   i3 := array(1..3,[2,3,1]):
+   i4 := array(1..4,[2,3,4,1]): 
+
+   list := array(1..nfacenodes(ndim,nnode,face)):
+
+
+   if (ndim = 3) then
+     
+     if (nnode = 8) then
+       if   (face = 1) then list := [1,2,3,4]:
+       elif (face = 2) then list := [5,8,7,6]:
+       elif (face = 3) then list := [1,5,6,2]:
+       elif (face = 4) then list := [2,6,7,3]:
+       elif (face = 5) then list := [3,7,8,4]:
+       elif (face = 6) then list := [4,8,5,1]: fi:
+   fi:
+  facenodes := list:
+end:
+#
+#====================== ELEMENT DISTRIBUTED LOAD VECTOR ==============
+#
+eldload := proc (ndim,ndof,nfacenodes,jelem,coords,traction)
+  local eldload,xilist,xi,w,N,B_deriv_local,xjac,djac,r,ninpt,kinpt,i,j,a,row:
+
+  ninpt := ninpt(ndim-1,nfacenodes):
+  xilist := array(1..ndim-1,1..ninpt):
+  xi := array[1..ndim-1]:
+  w := array(1..ninpt):
+  N := array(1..nfacenodes):
+  B_deriv_local := array(1..nfacenodes,1..ndim-1):
+  xjac := array(1..ndim,1..ndim-1):
+  r := array(sparse,1..ndof*nfacenodes):
+   
+  xilist := integrationinpt(ndim-1,nfacenodes,ninpt):
+  w := integrationweights(ndim-1,nfacenodes,ninpt):
+
+  for kinpt from 1 to ninpt do
+
+    for i from 1 to ndim-1 do
+      xi[i] := xilist[i,kinpt]:
+    od:
+
+    N := shapefunctions(nfacenodes,ndim-1,jelem,xi):
+    B_deriv_local := shapefunctionderivs(nfacenodes,ndim-1,jelem,xi):
+#
+#     Compute the jacobian matrix and its determinant
+#
+    for i from 1 to ndim do
+      for j from 1 to ndim-1 do
+        xjac[i,j] := 0.:
+        for a from 1 to nfacenodes do
+          xjac[i,j] := xjac[i,j] + coords[i,a]*B_deriv_local[a,j]:
+        od:
+      od:
+    od:
+   if (ndim = 3) then
+      djac := sqrt( ((xjac[2,1]*xjac[3,2])-(xjac[2,2]*xjac[3,1]))^2
+          + ((xjac[1,1]*xjac[3,2])-(xjac[1,2]*xjac[3,1]))^2
+          + ((xjac[1,1]*xjac[2,2])-(xjac[1,2]*xjac[2,1]))^2 ):
+    fi:
+   for a from 1 to nfacenodes do
+      for i from 1 to ndof do
+        row := ndof*(a-1)+i:
+        r[row] := r[row] + N[a]*traction[i]*w[kinpt]*djac:
+      od:
+    od:
+  od:
+  eldload := r:
+end:
+#
+#====================== Assemble the global stiffness matrix =================
+#
+globalstiffness := proc (ndim,ndof,nnode,coords,nelem,maxnodes,jelem,nnode,connect,props,dofs)
+    local globalstiffness,Stif,lmndim,lmndof,amatrx,lmn,n,ident,a,i,k,b,rw,cl:
+#
+#   Assemble the global stiffness matrix
+#
+
+   Stif := array(sparse,1..ndof*nnode,1..ndof*nnode):
+   lmndim := array(1..ndim,1..maxnodes):
+   lmndof := array(1..ndof,1..maxnodes):
+   amatrx := array(1..ndof*maxnodes,1..ndof*maxnodes):
+#
+#   Loop over all the elements
+#
+   for lmn from 1 to nelem do
+#
+#   Extract coords of nodes, DOF for the current element
+#
+      for a from 1 to nnode[lmn] do
+        for i from 1 to ndim do
+          lmncoord[i,a] := coords[i,connect[a,lmn]]:
+        od:
+        for i from 1 to ndof do
+          lmndof[i,a] := dofs[ndof*(connect[a,lmn]-1)+i]:
+        od:
+      od:
+    n := nnode[lmn]:
+    ident := jelem[lmn]:
+    amatrx := elstif(ndim,ndof,n,ident,lmncoord,props,lmndof):
+#
+#   Add the current element stiffness to the global stiffness
+#
+    for a from 1 to nnode[lmn] do
+      for i from 1 to ndof do
+        for b from 1 to nnode[lmn] do
+          for k from 1 to ndof do
+            rw := ndof*(connect[a,lmn]-1)+i:
+            cl := ndof*(connect[b,lmn]-1)+k:
+            Stif[rw,cl] := Stif[rw,cl] + amatrx[ndof*(a-1)+i,ndof*(b-1)+k]:
+          od:
+        od:
+      od:
+    od:
+  od:
+  globalstiffness := Stif    
+end:
+#
+#===================== Assemble the global residual vector =============
+#
+globaltraction := proc(ndim,ndof,nnodes,ndload,coords,nnode,jelem,connect,dloads,dofs)
+    local globaltraction,load,lmn,face,nfnodes,nodelist,lmncoord,n,ident,i,lmndof,traction,
+          rel,r,a,rw:
+
+   r := array(sparse,1..ndof*nnodes):
+   traction := array(1..ndof):
+
+   for load from 1 to ndload do
+#
+#     Extract the coords of the nodes on the appropriate element face
+#
+      lmn := dloads[1,load]:
+      face := dloads[2,load]:
+      n := nnode[lmn]:
+      ident := jelem[lmn]:
+      nfnodes := nfacenodes(ndim,n,ident,face):
+      nodelist := array(1..nfnodes):     
+      nodelist := facenodes(ndim,n,ident,face):     
+      lmncoord := array(1..ndim,1..nfnodes):
+      for a from 1 to nfnodes do
+        for i from 1 to ndim do
+          lmncoord[i,a] := coords[i,connect[nodelist[a],dloads[1,load]]]:
+        od:
+        for i from 1 to ndof do
+          lmndof[i,a] := dofs[ndof*(connect[nodelist[a],dloads[1,load]]-1)+i]:
+        od:
+      od:
+#
+#    Compute the element load vector
+#
+     for i from 1 to ndof do
+       traction[i] := dloads[i+2,load]:
+     od:
+
+     rel := array(1..ndof*nfnodes):
+     rel := eldload(ndim,ndof,nfnodes,ident,lmncoord,traction):
+#
+#    Assemble the element load vector into global vector
+#
+     for a from 1 to nfnodes do
+       for i from 1 to ndof do
+         rw := (connect[nodelist[a],dloads[1,load]]-1)*ndof+i:
+         r[rw] := r[rw] + rel[(a-1)*ndof+i]:
+       od:
+     od:
+
+   od:
+   globaltraction := r:
+end:         
+#
+#============================ MAIN FEM ANALYSIS PROCEDURE ========================
+#
+#   dofs        Nodal displacements.  Let u_i^a be ith displacement component
+#               at jth node.  Then dofs contain (u_1^1, u_2^1, u_1^2, u_2^2....) for 2D
+#               and (u_1^1, u_2^1, u_3^1, u_1^2, u_2^2, u_3^2....) for 3D
+#
+#   K           Global stiffness matrix.  Stored as [K_1111 K_1112  K_1121  K_1122...
+#                                                    K_1211 K_1212  K_1221  K_1222...
+#                                                    K_2111 K_2112  K_2121  K_2122...]
+#               for 2D problem and similarly for 3D problem
+#   r           Force vector.  Currently only includes contribution from tractions
+#               acting on element faces (i.e. body forces are neglected)
+#
+  dofs := array(sparse,1..nnode*ndof):
+  K := array(sparse,1..nnode*ndof,1..nnode*ndof):
+  r := array(sparse,1..nnode*ndof):
+   
+  K := globalstiffness(ndim,ndof,nnode,coords,
+                 nelem,maxnodes,jelem,nnode,connect,props,dofs):
+
+  r := globaltraction(ndim,ndof,nnode,ndload,coords,nnode,jelem,connect,dloads,dofs):
+
+#
+#  Fix constrained nodes.  We should really do this in a way that preserves the symmetry of K
+#  but it's not worth it in MAPLE as there's no special purpose solver for symmetric matrices.
+#
+  for n from 1 to nfix do
+     rw := ndof*(fixnodes[1,n]-1) + fixnodes[2,n]:
+     for cl from 1 to ndof*nnode do:
+        K[rw,cl] := 0:
+     od:
+     K[rw,rw] := 1.:
+     r[rw] := fixnodes[3,n]:
+  od:
+#
+# Solve for the displacements
+#
+  dofs := linsolve(K,r):
+
+#================================= POST-PROCESSING =================================
+#
+# Create a plot of the deformed mesh
+#
+
+  defcoords := array(1..ndof,1..nnode): 
+  scale_factor := 1.0:
+  for i from 1 to nnode do
+    for j from 1 to ndof do
+       defcoords[j,i] := coords[j,i] + scale_factor*dofs[ndof*(i-1)+j]: 
+    od:
+ od:
+
+ if (ndof = 2) then
+   if (nnode[1] = 3) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+                  [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+                  [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]]],i=1..nelem):
+   elif (nnode[1] = 4) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]]],i=1..nelem):
+   elif (nnode[1] = 6) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+                  [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]],
+                  [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+                  [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]]],
+                  [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]]
+                  [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]]]],i=1..nelem):
+   elif (nnode[1] = 8) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+                  [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]]],
+                  [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+                  [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]]],
+                  [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]],
+                  [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]]],
+                  [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]],
+                  [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]]]],i=1..nelem):
+  fi:       
+  meshplots_deformed := [op(meshplots),PLOT(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),STYLE(LINE))]:
+  meshplots_deformed := [op(meshplots_deformed),PLOT(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),STYLE(POINT))]:
+
+elif (ndof = 3) then
+   if (nnode[1] = 4) then
+      elplot:=seq(
+           [[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]]],
+                          i=1..nelem):
+    elif (nnode[1] = 8 ) then
+      elplot:=seq(
+          [[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+            [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],
+            [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],
+            [defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+            [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],
+            [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],
+            [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],
+            [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],
+            [defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+            [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],
+            [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]]],
+                          i=1..nelem):
+    elif (nnode[1] = 10) then
+      elplot:=seq(
+          [[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+           [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],
+           [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+           [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],
+           [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+           [defcoords[1,connect[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],
+           [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+           [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],
+           [defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+           [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],
+           [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+           [defcoords[1,connect[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],
+           [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+           [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]]],
+                          i=1..nelem):
+
+    elif (nnode[1]=20) then
+      elplot:=seq(
+          [[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[9,i]],defcoords[2,connect[9,i]],defcoords[3,connect[9,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+            [defcoords[1,connect[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+            [defcoords[1,connect[11,i]],defcoords[2,connect[11,i]],defcoords[3,connect[11,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+            [defcoords[1,connect[20,i]],defcoords[2,connect[20,i]],defcoords[3,connect[20,i]]],
+            [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],
+            [defcoords[1,connect[16,i]],defcoords[2,connect[16,i]],defcoords[3,connect[16,i]]],
+            [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],
+            [defcoords[1,connect[17,i]],defcoords[2,connect[17,i]],defcoords[3,connect[17,i]]],
+            [defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[12,i]],defcoords[2,connect[12,i]],defcoords[3,connect[12,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]],defcoords[3,connect[4,i]]],
+            [defcoords[1,connect[20,i]],defcoords[2,connect[20,i]],defcoords[3,connect[20,i]]],
+            [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]],defcoords[3,connect[8,i]]],
+            [defcoords[1,connect[15,i]],defcoords[2,connect[15,i]],defcoords[3,connect[15,i]]],
+            [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],
+            [defcoords[1,connect[14,i]],defcoords[2,connect[14,i]],defcoords[3,connect[14,i]]],
+            [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],
+            [defcoords[1,connect[13,i]],defcoords[2,connect[13,i]],defcoords[3,connect[13,i]]],
+            [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]],defcoords[3,connect[5,i]]],
+            [defcoords[1,connect[17,i]],defcoords[2,connect[17,i]],defcoords[3,connect[17,i]]],
+            [defcoords[1,connect[1,i]],defcoords[2,connect[1,i]],defcoords[3,connect[1,i]]],
+            [defcoords[1,connect[9,i]],defcoords[2,connect[9,i]],defcoords[3,connect[9,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]],
+            [defcoords[1,connect[18,i]],defcoords[2,connect[18,i]],defcoords[3,connect[18,i]]],
+            [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]],defcoords[3,connect[6,i]]],
+            [defcoords[1,connect[14,i]],defcoords[2,connect[14,i]],defcoords[3,connect[14,i]]],
+            [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]],defcoords[3,connect[7,i]]],
+            [defcoords[1,connect[19,i]],defcoords[2,connect[19,i]],defcoords[3,connect[19,i]]], 
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]],defcoords[3,connect[3,i]]],
+            [defcoords[1,connect[10,i]],defcoords[2,connect[10,i]],defcoords[3,connect[10,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]],defcoords[3,connect[2,i]]]],
+                          i=1..nelem):
+
+      fi:
+   meshplots_deformed := [op(meshplots),PLOT3D(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,1,0,0),STYLE(LINE))]:
+     meshplots_deformed :=      [op(meshplots_deformed),PLOT3D(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,0,0,1),STYLE(POINT),SYMBOL(CIRCLE))]:
+fi:
+
+#      Print nodal displacements, element strains and stresses to a file
+   fprintf(outfile,`%s\n`,`Nodal Displacements:`):
+   if (ndof = 2) then
+     fprintf(outfile,`%s\n`,` Node      Coords         u1       u2`):
+     for i from 1 to nnode do
+      fprintf(outfile,`%3d %8.4f %8.4f %8.4f %8.4f\n`,
+                               i,coords[1,i],coords[2,i],dofs[2*i-1],dofs[2*i]):
+     od:
+   elif (ndof = 3) then
+     fprintf(outfile,`%s\n`,` Node            Coords            u1       u2       u3`):
+     for i from 1 to nnode do
+      fprintf(outfile,`%3d %8.4f %8.4f %8.4f %8.4f %8.4f %8.4f \n`,
+                    i,coords[1,i],coords[2,i],coords[3,i],dofs[3*i-2],dofs[3*i-1],dofs[3*i]):
+     od:
+   fi:
+
+   fprintf(outfile,`\n %s\n`,`Strains and Stresses`):
+
+
+   lmncoord := array(1..ndim,1..maxnodes):
+   displacements := array(1..ndof,1..maxnodes):
+
+#
+#   Loop over all the elements
+#
+   for lmn from 1 to nelem do
+
+    fprintf(outfile,`%s  %d\n`,` Element: `,lmn):
+    if (ndim = 2) then  
+    fprintf(outfile,`%s\n`,` int pt    Coords          e_11      e_22     e_12      s_11       s_22      s_12`):
+
+    elif (ndim = 3) then
+    fprintf(outfile,`%s\n`,` int pt         Coords            e_11      e_22     e_33      e_12       e_13      e_23      s_11      s_22      s_33      s_12      s_13      s_23`):
+    fi:
+#
+#   Extract coords of nodes, DOF for the current element
+#
+      for a from 1 to nnode[lmn] do
+        for i from 1 to ndim do
+          lmncoord[i,a] := coords[i,connect[a,lmn]]:
+        od:
+        for i from 1 to ndof do
+          displacements[i,a] := dofs[ndof*(connect[a,lmn]-1)+i]:
+        od:
+      od:
+      n := nnode[lmn]:
+      ident := jelem[lmn]:
+ 
+      ninpt := ninpt(ndim,n):
+      xilist := array(1..ndim,1..ninpt):
+      N := array(1..n):
+      B_deriv_local := array(1..n,1..ndim):
+      B_deriv_global := array(1..n,1..ndim):
+      xjac := array(1..ndim,1..ndim):
+      xjaci := array(1..ndim,1..ndim):
+      strain := array(1..ndof,1..ndim):
+      stress := array(1..ndof,1..ndim):
+      xi := array(1..ndim):
+      x := array(1..ndim):
+#
+#  Set up integration points 
+#
+      xilist := integrationpoints(ndim,n,ninpt):
+#
+#  Loop over the integration points
+#
+     for kinpt from 1 to ninpt do
+
+#     Compute shape functions and derivatives wrt local coords
+#
+       for i from 1 to ndim do
+         xi[i] := xilist[i,kinpt]:
+       od:
+       N := shapefunctions(n,ndim,ident,xi):      
+       B_deriv_local := shapefunctionderivs(n,ndim,ident,xi):
+#
+#     Compute the coords of the integration point
+#
+      for i from 1 to ndim do
+        x[i] := 0.:
+        for a from 1 to n do
+          x[i] := x[i] + lmncoord[i,a]*N[a]:
+        od:
+      od:
+#
+#     Compute the jacobian matrix and its determinant
+#
+      for i from 1 to ndim do
+        for j from 1 to ndim do
+          xjac[i,j] := 0.:
+          for a from 1 to n do
+            xjac[i,j] := xjac[i,j] + lmncoord[i,a]*B_deriv_local[a,j]:
+          od:
+        od:
+      od:
+
+      xjaci := inverse(xjac):
+#
+#     Convert shape function derivatives to derivatives wrt global coords
+#
+      for a from 1 to n do
+        for i from 1 to ndim do
+          B_deriv_global[a,i] := 0.:
+          for j from 1 to ndim do
+            B_deriv_global[a,i] := B_deriv_global[a,i] + B_deriv_local[a,j]*xjaci[j,i]:
+          od:
+        od:
+      od:
+#
+#     Compute the (infinitesimal) strain by differentiating displacements
+#
+      for i from 1 to ndim do
+         for j from 1 to ndim do
+            strain[i,j] := 0.:
+            for a from 1 to n do
+              strain[i,j] := strain[i,j] 
+                         + 0.5*(displacements[i,a]*B_deriv_global[a,j]+displacements[j,a]*B_deriv_global[a,i]):
+            od:
+         od:
+      od:
+
+      stress := materialstress(ndof,ndim,strain,props):
+
+      if (ndim = 2) then
+
+      fprintf(outfile,`%5d %7.4f %7.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f \n`,
+        kinpt,x[1],x[2],strain[1,1],strain[2,2],strain[1,2],stress[1,1],stress[2,2],stress[1,2]):
+
+
+      elif (ndim = 3) then
+
+      fprintf(outfile,`%5d %7.4f %7.4f %7.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f %9.4f \n`,
+              kinpt,x[1],x[2],x[3],
+              strain[1,1],strain[2,2],strain[3,3],strain[1,2],strain[1,3],strain[2,3],
+              stress[1,1],stress[2,2],stress[3,3],stress[1,2],stress[1,3],stress[2,3]):
+      fi:
+     od:
+   od:
+
+fclose(outfile):
+
+#  Congratulations!  If you made it this far the program worked!
+display(meshplots_deformed);
+
+# Compare the FEM solution with the exact solution
+a := coords[2,1]:
+b := coords[1,nnode]:
+p := 1.:
+E := 2*props[1]*(1+props[2]):
+nu := props[2]:
+ur := (1+nu)*a^2*b^2*p/(E*(b^2-a^2))*(1/r+(1-2*props[2])*r/b^2):
+u1 := subs(r=sqrt(x1^2+x2^2),ur)*x1/(sqrt(x1^2+x2^2)):
+u2 := subs(r=sqrt(x1^2+x2^2),ur)*x2/(sqrt(x1^2+x2^2)):
+  scale_factor := 1.:
+  for i from 1 to nnode do
+     defcoords[1,i] := coords[1,i] + scale_factor*subs({x1=coords[1,i],x2=coords[2,i]},u1):
+     defcoords[2,i] := coords[2,i] + scale_factor*subs({x1=coords[1,i],x2=coords[2,i]},u2): 
+  od:
+   if (nnode[1] = 4) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+            [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+            [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]],
+            [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]]],i=1..nelem):
+   elif (nnode[1] = 8) then
+     elplot:=seq([[defcoords[1,connect[1,i]],defcoords[2,connect[1,i]]],
+                  [defcoords[1,connect[5,i]],defcoords[2,connect[5,i]]],
+                  [defcoords[1,connect[2,i]],defcoords[2,connect[2,i]]],
+                  [defcoords[1,connect[6,i]],defcoords[2,connect[6,i]]],
+                  [defcoords[1,connect[3,i]],defcoords[2,connect[3,i]]],
+                  [defcoords[1,connect[7,i]],defcoords[2,connect[7,i]]],
+                  [defcoords[1,connect[4,i]],defcoords[2,connect[4,i]]],
+                  [defcoords[1,connect[8,i]],defcoords[2,connect[8,i]]]],i=1..nelem):
+  fi:
+  meshplots_deformed := [op(meshplots_deformed),PLOT(POLYGONS(elplot),SCALING(CONSTRAINED),COLOR(RGB,0,0,1),STYLE(LINE))]:
+
+
+# The exact solution is blue, the FEM solution is red.
+display(meshplots_deformed);
+

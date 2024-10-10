@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="8.10" ProjectIdGuid="{4E49EE46-B762-420B-952B-C159DB1C26D0}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" Command="$(TargetPath)">
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtSingleThreadedDebug" CompileOnly="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFLinkerTool" OutputFile="$(OUTDIR)/Console1.exe" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" ProgramDatabaseFile="$(OUTDIR)/Console1.pdb" SubSystem="subSystemConsole"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFResourceCompilerTool" ResourceOutputFileName="$(IntDir)/$(InputName).res"/></Configuration>
+		<Configuration Name="Release|Win32" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" MustRebuild="true" Command="$(TargetPath)">
+				<Tool Name="VFMidlTool" SwitchesHaveChanged="true" SuppressStartupBanner="true" HeaderFileName="$(InputName).h" TypeLibraryName="$(IntDir)/$(InputName).tlb"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFFortranCompilerTool" SwitchesHaveChanged="true" SuppressStartupBanner="true" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" CompileOnly="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFLinkerTool" SwitchesHaveChanged="true" MustRebuild="true" OutputFile="$(OUTDIR)/Console1.exe" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFResourceCompilerTool" SwitchesHaveChanged="true" ResourceOutputFileName="$(IntDir)/$(InputName).res"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath="..\src\el_linelast_3Dbasic.f90">
+			<FileConfiguration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool"/></FileConfiguration></File>
+		<File RelativePath="..\src\feacheap.f90"/>
+		<File RelativePath="..\src\Globals.f90"/>
+		<File RelativePath="..\src\misc.f90"/>
+		<File RelativePath="..\src\Parambw.f90"/>
+		<File RelativePath="..\src\ParamIO.f90"/>
+		<File RelativePath="..\src\Paramsol.f90"/>
+		<File RelativePath="..\src\solver.f90"/>
+		<File RelativePath="..\src\stiftest.f90"/>
+		<File RelativePath="..\src\timestep.f90"/>
+		<File RelativePath="..\src\Types.f90"/>
+		<File RelativePath="..\src\usrelem.f90"/>
+		<File RelativePath="..\src\usrprn.f90"/></Filter>
+		<Filter Name="Header Files" Filter="fi;fd">
+		<File RelativePath="..\inc\el_linelast_3Dbasic.fi"/>
+		<File RelativePath="..\inc\misc.fi"/>
+		<File RelativePath="..\inc\solver.fi"/>
+		<File RelativePath="..\inc\stiftest.fi"/>
+		<File RelativePath="..\inc\timestep.fi"/>
+		<File RelativePath="..\inc\usrelem.fi"/>
+		<File RelativePath="..\inc\usrmisc.fi"/>
+		<File RelativePath="..\inc\usrprn.fi"/></Filter>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/></Files>
+	<Globals/></VisualStudioProject>

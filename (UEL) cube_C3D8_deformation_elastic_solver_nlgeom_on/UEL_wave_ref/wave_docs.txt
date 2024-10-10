@@ -1,0 +1,30 @@
+Wave utility subroutines
+Features tested
+User subroutine to test the utility subroutines for fluid kinematic data in Abaqus/Aqua analyses.
+
+Problem description
+Warning:
+A dummy user element is used to call the utility subroutines for fluid kinematic data. The fluid kinematic data are requested at different points. Three test cases are performed.
+
+
+Results and discussion
+The verification consists of comparing the results returned by the utility subroutines with the results from the wave theory. The results from the wave theory are given in the input files as comment lines.
+
+Input files
+uelutwv1.inp
+Gets the velocities and accelerations from the utility subroutine GETWAVEVEL for a Stokes' wave at a few points.
+
+uelutwv1.f
+User subroutine UEL used in uelutwv1.inp.
+
+uelutwv2.inp
+Gets the velocities and accelerations from the utility subroutine GETWAVEVEL for an Airy wave at a few points.
+
+uelutwv2.f
+User subroutine UEL used in uelutwv2.inp.
+
+uelutwv3.inp
+Gets the steady current velocities and wind velocities from the utility subroutines GETCURRVEL and GETWINDVEL, respectively, for points below and above the still fluid surface.
+
+uelutwv3.f
+User subroutine UEL used in uelutwv3.inp.

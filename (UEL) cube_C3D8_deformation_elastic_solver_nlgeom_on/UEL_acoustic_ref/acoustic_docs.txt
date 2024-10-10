@@ -1,0 +1,152 @@
+
+This problem contains basic test cases for one or more Abaqus elements and features.
+
+Warning:
+User subroutine UEL provides the user with a very general option to interface with the code. With any use of this subroutine interface, extensive verification should be done to make sure that the results are correct.
+
+
+This page discusses:
+
+Structural user element
+Heat transfer user element
+Wave utility subroutines
+Acoustic user element
+ProductsAbaqus/Standard
+
+Structural user element
+Elements tested
+T3D2
+
+Features tested
+User subroutine to define the element mass matrix, element operator matrix, and right-hand side vector.
+
+Problem description
+The finite element model for each test case consists of two separate but identical meshes of a simple truss. One mesh consists of five T3D2 elements, and the other consists of five equivalent user-defined elements.
+
+Four test cases are performed as described below.
+
+uellinea.inp
+In this problem a linear analysis is run that uses the data line input option to specify the stiffness and mass matrix of the user element. This means that the subroutine is not used, but rather the stiffness and mass matrix for the user element are tested. One end of the truss is constrained. In the first step a load is applied at the second end of the truss. In the second step the eigenfrequencies of the truss are calculated.
+
+uelnonli.inp
+The same problem is solved as in uellinea.inp, but the user subroutine is used. The problem is still linear, but there is no assumption of linearity in the user-defined element.
+
+uelriksx.inp
+In this job the load is applied gradually using the modified Riks method for proportional loading cases.
+
+ueldynam.inp
+In this case the load is applied instantaneously as the implicit dynamics procedure is used to calculate the results for the first 10 increments.
+
+Results and discussion
+The verification consists of comparing the results from the T3D2 models to the results obtained from the user element models, since they should be identical.
+
+Input files
+uellinea.inp
+Linear analysis with data line input option.
+
+uelnonli.inp
+Linear analysis with user subroutine.
+
+uelnonli.f
+User subroutine UEL used in uelnonli.inp.
+
+uelriksx.inp
+Analysis with RIKS procedure.
+
+uelriksx.f
+User subroutine UEL used in uelriksx.inp.
+
+ueldynam.inp
+Analysis with implicit dynamics.
+
+ueldynam.f
+User subroutine UEL used in ueldynam.inp.
+
+
+Heat transfer user element
+Elements tested
+DC2D8
+
+Features tested
+User subroutine to define the element operator matrix and the right-hand side vector.
+
+Problem description
+The finite element model in each test case consists of two separate but identical meshes of a rectangular block. One mesh consists of two DC2D8 elements, and the other consists of two equivalent user-defined elements. The elements in each mesh have an irregular shape to ensure that the interpolation is consistent for the two element types.
+
+Two test cases are performed as described below.
+
+ueltran1.inp
+In this problem a transient analysis is performed in which a distributed flux is specified on the left-hand side of the domain and a convection film condition on the right-hand side of the domain. The top and bottom surfaces of the block are adiabatic. The analysis is run until a steady-state condition is satisfied.
+
+ueltran2.inp
+The problem outlined in ueltran1.inp is solved again, but in this case the thermal conductivity is temperature-dependent. In addition, the unsymmetric equation solver is invoked for user-defined elements with unsymmetric element matrices. For user element operator matrices to be identical to those of the DC2D8 elements, the additional unsymmetric contribution of the temperature-dependent thermal conductivity term must be included (see Uncoupled heat transfer analysis).
+
+Results and discussion
+The verification consists of comparing the results from the DC2D8 models to the results obtained from the user element models, since they should be identical.
+
+Input files
+ueltran1.inp
+Transient analysis.
+
+ueltran1.f
+User subroutine UEL used in ueltran1.inp.
+
+ueltran2.inp
+Transient analysis with temperature-dependent thermal conductivity.
+
+ueltran2.f
+User subroutine UEL used in ueltran2.inp.
+
+
+Wave utility subroutines
+Features tested
+User subroutine to test the utility subroutines for fluid kinematic data in Abaqus/Aqua analyses.
+
+Problem description
+Warning:
+A dummy user element is used to call the utility subroutines for fluid kinematic data. The fluid kinematic data are requested at different points. Three test cases are performed.
+
+
+Results and discussion
+The verification consists of comparing the results returned by the utility subroutines with the results from the wave theory. The results from the wave theory are given in the input files as comment lines.
+
+Input files
+uelutwv1.inp
+Gets the velocities and accelerations from the utility subroutine GETWAVEVEL for a Stokes' wave at a few points.
+
+uelutwv1.f
+User subroutine UEL used in uelutwv1.inp.
+
+uelutwv2.inp
+Gets the velocities and accelerations from the utility subroutine GETWAVEVEL for an Airy wave at a few points.
+
+uelutwv2.f
+User subroutine UEL used in uelutwv2.inp.
+
+uelutwv3.inp
+Gets the steady current velocities and wind velocities from the utility subroutines GETCURRVEL and GETWINDVEL, respectively, for points below and above the still fluid surface.
+
+uelutwv3.f
+User subroutine UEL used in uelutwv3.inp.
+
+
+Acoustic user element
+Elements tested
+AC3D8
+
+Features tested
+User subroutine UEL to define the element operator left-hand-side matrix and the right-hand-side vector.
+
+Problem description
+The model consists of one element. Two test cases are presented. In the first case, the element is implemented through user subroutine UEL. The second case is a transient dynamic analysis using the AC3D8 acoustic element.
+
+Results and discussion
+The verification consists of comparing the results from the AC3D8 element model to the results obtained from the user element model, since they should be identical.
+
+Input files
+acoustuserelemdyn.inp
+Transient dynamic analysis with user subroutine UEL.
+acoustuserelemdyn.f
+User subroutine UEL used in acoustuserelemdyn.inp.
+acoustuserelemdyn2.inp
+Transient dynamic analysis using the AC3D8 acoustic element.

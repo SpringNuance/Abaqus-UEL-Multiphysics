@@ -1,0 +1,112 @@
+*HEADING
+ TEST OF LINEAR USER ELEMENTS
+*NODE,NSET=PR
+1,
+6, 2.
+*NGEN,NSET=N1
+1,6
+*ELEMENT,TYPE=T3D2
+1,1,2
+*ELGEN,ELSET=TRUSS
+1,5
+*SOLID SECTION,ELSET=TRUSS,MATERIAL=S1
+0.002, 
+*MATERIAL,NAME=S1
+*ELASTIC
+2.1E11,0.3
+*DENSITY
+7200., 
+*NODE,NSET=PR
+101,
+106,2.
+*NGEN,NSET=N2
+101,106
+*USER ELEMENT,NODES=2,TYPE=U1001,LINEAR,UNSYMM
+1,2,3
+*MATRIX,TYPE=STIFFNESS
+ 1.05E9, 0.    , 0.    ,-1.05E9
+ 0.    , 0.
+**
+ 0.    , 0.    , 0.    , 0.
+ 0.    , 0.
+**
+ 0.    ,       , 0.0   , 0.
+ 0.    , 0.
+**
+-1.05E9, 0.    , 0.    , 1.05E9
+ 0.    , 0.
+**
+ 0.    , 0.    , 0.    , 0.
+ 0.    , 0.
+**
+ 0.    , 0.    , 0.    , 0.
+ 0.    , 0.0
+*MATRIX,TYPE=MASS
+ 2.88 , 0.   , 0.   , 0.
+ 0.   , 0. 
+**
+ 0.   , 2.88 , 0.   , 0.
+ 0.   , 0.
+**
+ 0.   , 0.   , 2.88 , 0.
+ 0.   , 0.
+**
+ 0.   , 0.   , 0.   , 2.88
+ 0.   , 0.
+**
+ 0.   , 0.   , 0.   , 0.
+ 2.88 , 0.
+**
+ 0.   , 0.   , 0.   , 0.
+ 0.   , 2.88
+*ELEMENT,TYPE=U1001
+101 , 101, 102
+*ELGEN,ELSET=UTRUSS
+101 , 5
+*UEL PROPERTY,ELSET=UTRUSS
+*BOUNDARY
+N1,2,3
+N2,2,3
+**
+*STEP,PERTURBATION
+*STATIC
+*BOUNDARY
+1,1
+101,1
+*CLOAD
+  6, 1, 5.
+106, 1, 5.
+*EL PRINT,ELSET=TRUSS,SUMMARY=NO
+S,E
+ELEN, 
+*EL FILE
+NFORC, 
+*ENERGY PRINT
+*ENERGY FILE
+*NODE FILE,NSET=PR
+U,RF
+*END STEP
+**
+*STEP,PERTURBATION
+Frequency extraction for truss elements only
+*FREQUENCY, eigensolver=lanczos, SIM=NO
+6, , 
+*BOUNDARY
+N2,1
+1,1
+*NODE PRINT,SUMMARY=NO
+U,RF
+*MODAL FILE
+*END STEP
+**
+*STEP,PERTURBATION
+Frequency extraction for user elements only
+*FREQUENCY, eigensolver=lanczos, SIM=NO
+6, , 
+*BOUNDARY
+N1,1
+101,1
+*NODE PRINT,SUMMARY=NO
+U,RF
+*MODAL FILE
+*END STEP

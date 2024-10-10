@@ -1,0 +1,41 @@
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Model(name='cube_C3D8_deformation_elastic_srt_nlgeom_on', objectToCopy=
+    mdb.models['cube_C3D8_deformation_elastic_srt_nlgeom_off'])
+mdb.models['cube_C3D8_deformation_elastic_srt_nlgeom_on'].steps['step1_tensile'].setValues(
+    nlgeom=ON)
+# Save by nguyenb5 on 2024_10_10-16.29.48; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model=
+    'cube_C3D8_deformation_elastic_srt_nlgeom_on', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name=
+    'cube_C3D8_deformation_elastic_srt_nlgeom_on', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, resultsFormat=
+    ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=0, 
+    waitMinutes=0)
+# Save by nguyenb5 on 2024_10_10-18.04.47; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702

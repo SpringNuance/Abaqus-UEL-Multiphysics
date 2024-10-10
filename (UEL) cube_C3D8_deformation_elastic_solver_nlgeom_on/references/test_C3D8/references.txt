@@ -1,0 +1,11 @@
+C3D8 element in Abaqus used selective reduced integration (SRI)
+
+https://www.researchgate.net/post/Stiffness-matrix-of-abaqus-element-c3d8-and-by-my-8-noded-isoparametric-element-is-not-matching-can-anyone-help
+
+https://www.reddit.com/r/fea/comments/1dqhrmu/are_abaqus_results_for_c3d8_wrong/
+
+https://www.researchgate.net/post/Can_anyone_help_me_to_get_the_element_stiffness_matrix_in_abaqus
+
+https://www.researchgate.net/post/About_B-Bar_method_in_Abaqus
+
+https://abaqus.yahoogroups.narkive.com/ZbvlCyZg/element-types-of-ansys
