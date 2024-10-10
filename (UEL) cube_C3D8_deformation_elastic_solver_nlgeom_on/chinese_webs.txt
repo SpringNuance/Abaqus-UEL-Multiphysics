@@ -28,7 +28,7 @@ Chapter 6: Stiffness Matrix of General Beam Elements.
 
 https://www.jishulink.com/content/post/403932
 
-Chapter 7: Stiffness matrix of C3D8 hexahedral elements.
+Chapter 7: Stiffness matrix of C3D8R hexahedral elements.
 
 https://www.jishulink.com/content/post/430177
 
