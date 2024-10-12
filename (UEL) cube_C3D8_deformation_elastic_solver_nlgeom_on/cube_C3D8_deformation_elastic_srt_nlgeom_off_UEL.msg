@@ -1,1 +1,0 @@
-*** Error: Abaqus Error: Command line option "input" must have a value.

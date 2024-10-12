@@ -112,11 +112,11 @@ Chapter 26: Writing a Linear VUMAT Step By Step.
 
 https://www.jishulink.com/content/post/1266640
 
-CHAPTER XXVII: Strain Calculated and Displayed by Abaqus.
+CHAPTER 27: Strain Calculated and Displayed by Abaqus.
 
 https://www.jishulink.com/content/post/1273788
 
-CHAPTER XXVIII: T.L. and U.L. Description Methods for Geometric Nonlinearity
+CHAPTER 28: T.L. and U.L. Description Methods for Geometric Nonlinearity
 
 https://www.jishulink.com/content/post/1282956
 
@@ -172,7 +172,7 @@ https://www.jishulink.com/post/1888000
 
 ======== Phase 5 ========
 
-Article 41: Summary of the fourth stage of practical experience in independent CAE development
+Chapter 41: Summary of the fourth stage of practical experience in independent CAE development
 
 https://www.jishulink.com/post/1905963
 

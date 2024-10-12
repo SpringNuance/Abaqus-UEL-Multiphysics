@@ -3,6 +3,8 @@
 !          mechanical loading and hydrogen diffusion 
 !          Mechanical model: standard Hooke's law elasticity 
 !                            isotropic Von Mises plasticity
+!          Mass (hydrogen) transport model: Fick's law of diffusion
+!          Damage model: phase field damage model based on Griffith's theory
 !          by Nguyen Xuan Binh
 !          binh.nguyen@aalto.fi
 !          July 2024, Abaqus 2023
@@ -29,6 +31,25 @@
 ! using division and exponentiation as much as possible
 ! Specifically, replace division by multiplying with its constant inverse
 ! Replace squares by multiplication with itself
+
+subroutine pause(seconds)
+    ! Pauses the program execution for the specified number of seconds.
+    integer, intent(in) :: seconds
+    integer :: start_time, end_time, rate
+
+    ! Get the system clock rate (ticks per second)
+    call system_clock(count_rate = rate)
+
+    ! Get the current time in clock ticks
+    call system_clock(start_time)
+
+    ! Loop until the required time has passed
+    do
+        call system_clock(end_time)
+        if ((end_time - start_time) >= seconds * rate) exit
+    end do
+end subroutine pause
+
 
 module precision
     use iso_fortran_env
@@ -361,17 +382,6 @@ subroutine kjacobian(ndim,nnode,mcrd,coords,N_deriv_local_kinpt, &
         end do
     end do
 
-    ! do idim=1,ndim
-    !     do jdim=1,ndim
-    !         xjac(idim, jdim)=0.d0
-    !         do knode=1,nnode
-    !             xjac(idim,jdim)=xjac(idim,jdim) + &
-    !                 N_deriv_local_kinpt(jdim,knode) * coords(idim,knode)
-    !         end do
-    !     end do
-    ! end do
-
-
     djac = xjac(1,1) * xjac(2,2) * xjac(3,3) + xjac(2,1) * xjac(3,2) * xjac(1,3) &
          + xjac(3,1) * xjac(2,3) * xjac(1,2) - xjac(3,1) * xjac(2,2) * xjac(1,3) &
          - xjac(2,1) * xjac(1,2) * xjac(3,3) - xjac(1,1) * xjac(2,3) * xjac(3,2)
@@ -568,8 +578,8 @@ subroutine UMAT_von_Mises(props,nprops,ddsdde,stress,stran,dstran, &
         ddsdde(i,i) = mu
     end do 
 
-    ! call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
-    ! call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
+    call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
+    call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
 
     !    Calculate predictor stress and elastic strain
     stress = stress + matmul(ddsdde,dstran)
@@ -691,15 +701,11 @@ subroutine UMAT_von_Mises(props,nprops,ddsdde,stress,stran,dstran, &
     statev(deqplas_idx) = deqplas
     statev(sig_vonMises_idx) = sig_vonMises
     statev(sig_H_idx) = sig_H
-
     
 return
 end
 
-
-
-! This is isotropic von Mises plasticity model
-
+! This is isotropic elastic model
 
 subroutine UMAT_elastic(props,nprops,ddsdde,stress,stran,dstran, &
                           ntens,ndi,nshr,statev)
@@ -754,8 +760,8 @@ subroutine UMAT_elastic(props,nprops,ddsdde,stress,stran,dstran, &
         ddsdde(i,i) = mu
     end do 
 
-    ! call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
-    ! call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
+    call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
+    call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
 
     !    Calculate predictor stress and elastic strain
     stress = stress + matmul(ddsdde,dstran)
@@ -786,6 +792,7 @@ subroutine UMAT_elastic(props,nprops,ddsdde,stress,stran,dstran, &
     
 return
 end
+
 
 !***********************************************************************
 
@@ -836,6 +843,136 @@ return
 end
 
 
+subroutine calc_u_grad(u_grad, N_deriv_global_kinpt, u_values, ndim, nnode)
+    
+    use precision
+    real(kind=dp), dimension(ndim, ndim) :: u_grad  ! Gradient of displacement tensor
+    real(kind=dp), dimension(ndim, nnode) :: N_deriv_global_kinpt  ! Shape function derivatives (global)
+    real(kind=dp), dimension(ndim, nnode) :: u_values  ! Displacement vector (e.g., u_prev or du_current)
+    
+    integer :: idim, jdim, knode
+    integer :: u_index
+
+    ! Initialize the displacement gradient tensor to zero
+    u_grad = 0.0d0
+
+    ! Compute the displacement gradient (u_grad)
+    do knode = 1, nnode
+        do idim = 1, ndim 
+            do jdim = 1, ndim
+                u_grad(idim, jdim) = u_grad(idim, jdim) + N_deriv_global_kinpt(jdim, knode) * u_values(idim, knode)
+            end do
+        end do
+    end do
+
+return
+end
+
+subroutine calc_matrix_log(matrix, log_matrix, ndim)
+    use precision
+    
+    integer :: ndim
+    real(kind=dp) :: matrix(ndim, ndim)
+    real(kind=dp) :: log_matrix(ndim, ndim)
+    real(kind=dp) :: eigen_vectors(ndim, ndim), eigen_values(ndim)
+    real(kind=dp) :: temp_matrix(ndim, ndim)
+    real(kind=dp) :: work(3*ndim-1)
+    integer :: info, lwork, i, j
+
+    ! 1. Perform eigenvalue decomposition using LAPACK
+    ! Use dsyev for symmetric matrix eigenvalue decomposition (you can use dgeev for non-symmetric)
+
+! subroutine dsyev	(JOBZ, UPLO, N, A, LDA, W, WORK, LWORK, INFO)	
+
+! [in]	JOBZ	
+!           JOBZ is CHARACTER*1
+!           = 'N':  Compute eigenvalues only;
+!           = 'V':  Compute eigenvalues and eigenvectors.
+! [in]	UPLO	
+!           UPLO is CHARACTER*1
+!           = 'U':  Upper triangle of A is stored;
+!           = 'L':  Lower triangle of A is stored.
+! [in]	N	
+!           N is INTEGER
+!           The order of the matrix A.  N >= 0.
+! [in,out]	A	
+!           A is DOUBLE PRECISION array, dimension (LDA, N)
+!           On entry, the symmetric matrix A.  If UPLO = 'U', the
+!           leading N-by-N upper triangular part of A contains the
+!           upper triangular part of the matrix A.  If UPLO = 'L',
+!           the leading N-by-N lower triangular part of A contains
+!           the lower triangular part of the matrix A.
+!           On exit, if JOBZ = 'V', then if INFO = 0, A contains the
+!           orthonormal eigenvectors of the matrix A.
+!           If JOBZ = 'N', then on exit the lower triangle (if UPLO='L')
+!           or the upper triangle (if UPLO='U') of A, including the
+!           diagonal, is destroyed.
+! [in]	LDA
+!           LDA is INTEGER
+!           The leading dimension of the array A.  LDA >= max(1,N).
+! [out]	W
+!           W is DOUBLE PRECISION array, dimension (N)
+!           If INFO = 0, the eigenvalues in ascending order.
+! [out]	WORK	
+!           WORK is DOUBLE PRECISION array, dimension (MAX(1,LWORK))
+!           On exit, if INFO = 0, WORK(1) returns the optimal LWORK.
+! [in]	LWORK	
+!           LWORK is INTEGER
+!           The length of the array WORK.  LWORK >= max(1,3*N-1).
+!           For optimal efficiency, LWORK >= (NB+2)*N,
+!           where NB is the blocksize for DSYTRD returned by ILAENV.
+
+!           If LWORK = -1, then a workspace query is assumed; the routine
+!           only calculates the optimal size of the WORK array, returns
+!           this value as the first entry of the WORK array, and no error
+!           message related to LWORK is issued by XERBLA.
+! [out]	INFO	
+!           INFO is INTEGER
+!           = 0:  successful exit
+!           < 0:  if INFO = -i, the i-th argument had an illegal value
+!           > 0:  if INFO = i, the algorithm failed to converge; i
+!                 off-diagonal elements of an intermediate tridiagonal
+!                 form did not converge to zero.
+
+    ! Initialize log_matrix
+    log_matrix = 0.0d0
+
+    ! 1. Perform eigenvalue decomposition using LAPACK dsyev
+    ! Copy matrix to eigen_vectors because dsyev will overwrite it
+    eigen_vectors = matrix
+
+    ! Call dsyev to compute the eigenvalues and eigenvectors
+    call dsyev('V', 'U', ndim, eigen_vectors, ndim, eigen_values, work, size(work), info)
+
+    if (info /= 0) then
+        print *, 'Error: DSYEV failed with INFO = ', info
+        return
+    end if
+
+    ! 2. Compute the logarithm of the eigenvalues
+    do i = 1, ndim
+        if (eigen_values(i) <= 0.0d0) then
+            print *, 'Error: Eigenvalue less than or equal to zero, cannot compute log'
+            return
+        else
+            eigen_values(i) = log(eigen_values(i))
+        end if
+    end do
+
+    ! 3. Reconstruct the logarithm of the matrix using V * log(Λ) * V^T
+    ! Construct the diagonal matrix from the log eigenvalues
+    temp_matrix = 0.0d0
+    do i = 1, ndim
+        temp_matrix(i, i) = eigen_values(i)
+    end do
+
+    ! log_matrix = V * log(Λ) * V^T
+    log_matrix = matmul(eigen_vectors, matmul(temp_matrix, transpose(eigen_vectors)))
+
+return
+end
+
+
 
 !***********************************************************************
 
@@ -866,7 +1003,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     integer, parameter :: end_u_idx = 24 ! = ndim * nnode
     
     ! The following data is not part of UEL, defined by the user    
-    real(kind=dp), dimension(ndim * nnode) :: u_current, du_current, u_prev
+    real(kind=dp), dimension(mcrd,nnode) :: updated_coords     ! For updated Lagrangian formulation when NLGEOM=ON
+    real(kind=dp), dimension(ndim,nnode) :: u_current, du_current, u_prev
     
     real(kind=dp), dimension(nnode) :: N_shape_node_to_kinpt    ! Shape function that interpolates from nodal points to integration points
                                                                     ! The extra 1 dimension is for matrix multiplication, otherwise it would be a vector
@@ -876,9 +1014,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                                                     ! This is the collection of vectors with spatial derivatives of N_shape_nodal_to_int
                                                                     ! Each column is the vector B_i in Emilio et al.     
     real(kind=dp), dimension(ndim,nnode) :: N_bar_deriv_global      ! Normalized derivatives of N_shape_nodal_to_int with respect to global coordinates
-    real(kind=dp), dimension(ndim,nnode) :: N_deriv_global_center
     real(kind=dp), dimension(ndim,ndim) :: xjac, xjaci, xjac_bar              ! Jacobian and its inverse 
-
+    real(kind=dp), dimension(ndim,ndim) :: identity                  ! Identity matrix 
+    real(kind=dp), dimension(ndim,ndim) :: F_grad, dF_grad                    ! Deformation gradient F
+    real(kind=dp), dimension(ndim,ndim) :: u_grad, du_grad                    ! Displacement gradient u
+    real(kind=dp), dimension(ndim,ndim) :: C_Cauchy, dC_Cauchy                    ! Right Cauchy-Green tensor C
+    real(kind=dp), dimension(ndim,ndim) :: log_C_Cauchy, dlog_C_Cauchy                ! Logarithm of the right Cauchy-Green tensor C
+    real(kind=dp), dimension(ndim,ndim) :: eps_H, deps_H                     ! Hencky strain tensor (true strain)
+    real(kind=dp), dimension(ndim,ndim) :: eps_Green, deps_Green                 ! Green-Lagrange strain tensor (engineering strain)
     real(kind=dp), dimension(ntens,ndim * nnode) :: Bu_kinpt         ! Strain-displacement matrix (B matrix)
     real(kind=dp), dimension(ntens,ndim * nnode) :: Bu_vol_kinpt          ! Volumetric strain-displacement matrix (B matrix)
     real(kind=dp), dimension(ntens,ndim * nnode) :: Bu_dev_kinpt          ! Deviatoric strain-displacement matrix (B matrix)
@@ -895,7 +1038,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ntens) :: stran_current, stran_prev, dstran                       ! Incremental strain vector of the current element jelem
     real(kind=dp), dimension(ntens) :: eelas                        ! Elastic strain vector of the current element jelem
     real(kind=dp), dimension(ntens) :: eplas                        ! Plastic strain vector of the current element jelem
-    real(kind=dp), dimension(ntens) :: flow                         ! plastic flow direction for the von Mises plasticity model
 
     real(kind=dp), dimension(nsvint) :: statev                      ! Local state variables of the current element jelem for integration points at (+-1/sqrt(3.0))
 
@@ -913,31 +1055,44 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! ! see (General and Perturbation Procedures).
     ! ! https://help.3ds.com/2023/english/dssimulia_established/SIMACAEANLRefMap/simaanl-c-linearnonlinear.htm?contextscope=all
     
-    ! print *, 'LFLAGS(3) = ', lflags(3) ! Value is 1
-    ! ! Normal implicit time incrementation procedure. 
-    ! ! User subroutine UEL must define the residual vector in RHS and the Jacobian matrix in AMATRX.
-    ! print *, 'LFLAGS(4) = ', lflags(4) ! Value is 0
-    ! ! The step is a general step.
-    ! print *, 'LFLAGS(5) = ', lflags(5) ! Value is 1
-    ! ! The current approximations were found by extrapolation from the previous increment.
-    ! print *, 'LFLAGS(6) = ', lflags(6) ! Value is 1
-    ! print *, 'LFLAGS(7) = ', lflags(7) ! Value is 0
-
+    ! Note: coords in UEL is always fixed, which is the initial coordinates of the element jelem
+    
 !   initialising
     do k1=1,ndofel
         rhs(k1,1)=0.d0
     end do
     amatrx=0.d0
-    
-    ! Extract from the variable u and du
-    u_current(1:ndim*nnode)  = u(start_u_idx:end_u_idx)
-    du_current(1:ndim*nnode) = du(start_u_idx:end_u_idx, 1)
-    u_prev = u_current - du_current
 
+    identity = 0.0d0
+    do kdim=1,ndim
+        identity(kdim,kdim)=1.d0
+    end do
+
+    ! Extract from the variable u and du
+    do kdim=1,ndim
+        do knode=1,nnode
+            disp_index = ndim * knode - ndim + kdim
+            u_current(kdim,knode) = u(disp_index)
+            du_current(kdim,knode) = du(disp_index, 1)
+            u_prev(kdim,knode) = u_current(kdim,knode) - du_current(kdim,knode)
+        end do
+    end do
+
+    ! Current coordinates of the element jelem
+    ! It will be used to calculate N_deriv_global_kinpt for updated Lagrangian formulation
+    updated_coords = coords + u_current
+
+    ! print *, 'kinc = ', kinc
+    ! print *, 'coords = '
+    ! print *, coords
     ! print *, 'u_current = '
     ! print *, u_current
     ! print *, 'du_current = '
-    ! print *,du_current
+    ! print *, du_current
+    ! print *, 'u_prev = '
+    ! print *, u_prev
+
+    ! call pause(180)
     
     N_bar_deriv_global(1:ndim,1:nnode) = 0.0d0
     elem_vol = 0.0d0
@@ -948,8 +1103,15 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
          
         N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode) 
 
-        call kjacobian(ndim,nnode,mcrd,coords,N_deriv_local_kinpt, &
-                        xjac,xjaci,djac)
+        if (lflags(2) == 0) then ! NLGEOM off
+            ! Use original coordinates for total Lagrangian formulation
+            call kjacobian(ndim,nnode,mcrd,coords,N_deriv_local_kinpt, &
+                            xjac,xjaci,djac)
+        else if (lflags(2) == 1) then ! NLGEOM on
+            ! Use updated coordinates for updated Lagrangian formulation
+            call kjacobian(ndim,nnode,mcrd,updated_coords,N_deriv_local_kinpt, &
+                            xjac,xjaci,djac)
+        end if
 
         dvol = weight(kinpt) * djac 
         N_deriv_global_kinpt = matmul(xjaci,N_deriv_local_kinpt)
@@ -959,7 +1121,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         elem_vol = elem_vol + dvol
         
     end do
-    
 
     N_bar_deriv_global = N_bar_deriv_global / elem_vol
 
@@ -968,8 +1129,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     do knode=1, nnode
         do kdim=1, ndim
-            omega_stran = omega_stran + N_bar_deriv_global(kdim,knode) * u_prev(ndim * knode - ndim + kdim)
-            omega_dstran = omega_dstran + N_bar_deriv_global(kdim,knode) * du_current(ndim * knode - ndim + kdim)
+            omega_stran = omega_stran + N_bar_deriv_global(kdim,knode) * u_prev(kdim,knode)
+            omega_dstran = omega_dstran + N_bar_deriv_global(kdim,knode) * du_current(kdim,knode)
         end do
     end do
 
@@ -982,68 +1143,221 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         N_shape_node_to_kinpt(1:nnode) = all_N_shape_node_to_kinpt(kinpt,1:nnode)
         N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode) 
 
-        !   Compute djac and N_deriv_global_kinpt
-        call kjacobian(ndim,nnode,mcrd,coords,N_deriv_local_kinpt, &
-                       xjac,xjaci,djac)
+        if (lflags(2) == 0) then ! NLGEOM off
+            ! Use original coordinates for total Lagrangian formulation
+            call kjacobian(ndim,nnode,mcrd,coords,N_deriv_local_kinpt, &
+                            xjac,xjaci,djac)
+        else if (lflags(2) == 1) then ! NLGEOM on
+            ! Use updated coordinates for updated Lagrangian formulation
+            call kjacobian(ndim,nnode,mcrd,updated_coords,N_deriv_local_kinpt, &
+                            xjac,xjaci,djac)
+        end if
 
         !   Differential volume at the integration point
         dvol = weight(kinpt) * djac   
 
         N_deriv_global_kinpt = matmul(xjaci,N_deriv_local_kinpt)
-       
-        ekk_stran = 0.0d0
-        ekk_dstran = 0.0d0
 
-        ! Compute strain components
+        ! Small-displacement analysis (infinitesimal strain theory) when nlgeom=off
         
-        stran_tensor = 0.0d0
-        dstran_tensor = 0.0d0
-        
-        do idim = 1, ndim
-            do jdim = 1, ndim
-                do knode = 1, nnode
-                    u_current_index_idim = ndim * knode - ndim + idim
-                    u_current_index_jdim = ndim * knode - ndim + jdim
+        if (lflags(2) == 0) then 
+            
+            ekk_stran = 0.0d0
+            ekk_dstran = 0.0d0
 
-                    stran_tensor(idim, jdim) = stran_tensor(idim, jdim) + &
-                        0.5d0 * (u_prev(u_current_index_idim) * N_deriv_global_kinpt(jdim, knode) + &
-                                u_prev(u_current_index_jdim) * N_deriv_global_kinpt(idim, knode))
-                    dstran_tensor(idim, jdim) = dstran_tensor(idim, jdim) + &
-                        0.5d0 * (du_current(u_current_index_idim) * N_deriv_global_kinpt(jdim, knode) + &
-                                du_current(u_current_index_jdim) * N_deriv_global_kinpt(idim, knode))
+            ! Compute strain components
+            
+            stran_tensor = 0.0d0
+            dstran_tensor = 0.0d0
+            
+            do idim = 1, ndim
+                do jdim = 1, ndim
+                    do knode = 1, nnode
+                        stran_tensor(idim, jdim) = stran_tensor(idim, jdim) + &
+                            0.5d0 * (u_prev(idim,knode) * N_deriv_global_kinpt(jdim, knode) + &
+                                    u_prev(jdim,knode) * N_deriv_global_kinpt(idim, knode))
+                        dstran_tensor(idim, jdim) = dstran_tensor(idim, jdim) + &
+                            0.5d0 * (du_current(idim,knode) * N_deriv_global_kinpt(jdim, knode) + &
+                                    du_current(jdim,knode) * N_deriv_global_kinpt(idim, knode))
+                    end do
+                end do
+                ekk_stran = ekk_stran + stran_tensor(idim, idim)
+                ekk_dstran = ekk_dstran + dstran_tensor(idim, idim)
+            end do
+
+            ! 3.0d0 is ndim but in double precision
+            stran_tensor(1,1) = stran_tensor(1,1) - ekk_stran/3.0d0 + omega_stran/3.0d0
+            stran_tensor(2,2) = stran_tensor(2,2) - ekk_stran/3.0d0 + omega_stran/3.0d0
+            stran_tensor(3,3) = stran_tensor(3,3) - ekk_stran/3.0d0 + omega_stran/3.0d0
+            
+            dstran_tensor(1,1) = dstran_tensor(1,1) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+            dstran_tensor(2,2) = dstran_tensor(2,2) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+            dstran_tensor(3,3) = dstran_tensor(3,3) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+
+            stran_bar(1) = stran_tensor(1,1)
+            stran_bar(2) = stran_tensor(2,2)
+            stran_bar(3) = stran_tensor(3,3)
+            stran_bar(4) = stran_tensor(1,2)
+            stran_bar(5) = stran_tensor(1,3)
+            stran_bar(6) = stran_tensor(2,3)
+
+            dstran_bar(1) = dstran_tensor(1,1)
+            dstran_bar(2) = dstran_tensor(2,2)
+            dstran_bar(3) = dstran_tensor(3,3)
+            dstran_bar(4) = dstran_tensor(1,2)
+            dstran_bar(5) = dstran_tensor(1,3)
+            dstran_bar(6) = dstran_tensor(2,3)
+
+            ! stran_prev = matmul(Bu_bar, u_prev)
+            ! dstran = matmul(Bu_bar, du_current)
+
+            stran_prev = stran_bar
+            dstran = dstran_bar
+            stran_current = stran_prev + dstran
+
+        else if (lflags(2) == 1) then
+            ! print *, "hello"
+            ! Large-displacement analysis (nonlinear geometric effects included in the step when nlgeom=on)
+            ! call calc_u_grad(u_grad, N_deriv_global_kinpt, u_prev, ndim, nnode)
+            ! call calc_u_grad(du_grad, N_deriv_global_kinpt, du_current, ndim, nnode)
+
+            call calc_u_grad(u_grad, N_bar_deriv_global, u_prev, ndim, nnode)
+            call calc_u_grad(du_grad, N_bar_deriv_global, du_current, ndim, nnode)
+            
+            F_grad = identity + u_grad
+            dF_grad = identity + du_grad
+
+            ! eps_Green = 0.5d0 * (matmul(transpose(F_grad), F_grad) - identity)
+            ! deps_Green = 0.5d0 * (matmul(transpose(dF_grad), dF_grad) - identity)
+
+            ! stran_prev(1) = eps_Green(1,1)
+            ! stran_prev(2) = eps_Green(2,2)
+            ! stran_prev(3) = eps_Green(3,3)
+            ! stran_prev(4) = eps_Green(1,2)
+            ! stran_prev(5) = eps_Green(1,3)
+            ! stran_prev(6) = eps_Green(2,3)
+
+            ! dstran(1) = deps_Green(1,1)
+            ! dstran(2) = deps_Green(2,2)
+            ! dstran(3) = deps_Green(3,3)
+            ! dstran(4) = deps_Green(1,2)
+            ! dstran(5) = deps_Green(1,3)
+            ! dstran(6) = deps_Green(2,3)
+
+            ! ekk_stran = stran_prev(1) + stran_prev(2) + stran_prev(3)
+            ! stran_prev(1) = stran_prev(1) - omega_stran/3.0d0 + ekk_stran/3.0d0
+            ! stran_prev(2) = stran_prev(2) - omega_stran/3.0d0 + ekk_stran/3.0d0
+            ! stran_prev(3) = stran_prev(3) - omega_stran/3.0d0 + ekk_stran/3.0d0
+
+            ! ekk_dstran = dstran(1) + dstran(2) + dstran(3)
+            ! dstran(1) = dstran(1) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+            ! dstran(2) = dstran(2) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+            ! dstran(3) = dstran(3) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+            
+            ! ====================================================
+            C_Cauchy = matmul(transpose(F_grad), F_grad)
+            dC_Cauchy = matmul(transpose(dF_grad), dF_grad)
+
+            call calc_matrix_log(C_Cauchy, log_C_Cauchy, ndim)
+            call calc_matrix_log(dC_Cauchy, dlog_C_Cauchy, ndim)
+
+            do i = 1, ndim
+                do j = 1, ndim
+                    eps_H(i,j) = 0.5d0 * log_C_Cauchy(i,j)
+                    deps_H(i,j) = 0.5d0 * dlog_C_Cauchy(i,j)
                 end do
             end do
-            ekk_stran = ekk_stran + stran_tensor(idim, idim)
-            ekk_dstran = ekk_dstran + dstran_tensor(idim, idim)
-        end do
 
-        ! 3.0d0 is ndim but in double precision
-        stran_tensor(1,1) = stran_tensor(1,1) - ekk_stran/3.0d0 + omega_stran/3.0d0
-        stran_tensor(2,2) = stran_tensor(2,2) - ekk_stran/3.0d0 + omega_stran/3.0d0
-        stran_tensor(3,3) = stran_tensor(3,3) - ekk_stran/3.0d0 + omega_stran/3.0d0
-        
-        dstran_tensor(1,1) = dstran_tensor(1,1) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
-        dstran_tensor(2,2) = dstran_tensor(2,2) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
-        dstran_tensor(3,3) = dstran_tensor(3,3) - ekk_dstran/3.0d0 + omega_dstran/3.0d0
+            stran_prev(1) = eps_H(1,1)
+            stran_prev(2) = eps_H(2,2)
+            stran_prev(3) = eps_H(3,3)
+            stran_prev(4) = eps_H(1,2)
+            stran_prev(5) = eps_H(1,3)
+            stran_prev(6) = eps_H(2,3)
 
-        ! print *, 'stran_tensor = '
-        ! print *, stran_tensor
-        ! print *, 'dstran_tensor = '
-        ! print *, dstran_tensor
+            dstran(1) = deps_H(1,1)
+            dstran(2) = deps_H(2,2)
+            dstran(3) = deps_H(3,3)
+            dstran(4) = deps_H(1,2)
+            dstran(5) = deps_H(1,3)
+            dstran(6) = deps_H(2,3)
 
-        stran_bar(1) = stran_tensor(1,1)
-        stran_bar(2) = stran_tensor(2,2)
-        stran_bar(3) = stran_tensor(3,3)
-        stran_bar(4) = stran_tensor(1,2)
-        stran_bar(5) = stran_tensor(1,3)
-        stran_bar(6) = stran_tensor(2,3)
+            ! ekk_stran = stran_prev(1) + stran_prev(2) + stran_prev(3)
+            ! stran_prev(1) = stran_prev(1) - omega_stran/3.0d0 + ekk_stran/3.0d0
+            ! stran_prev(2) = stran_prev(2) - omega_stran/3.0d0 + ekk_stran/3.0d0
+            ! stran_prev(3) = stran_prev(3) - omega_stran/3.0d0 + ekk_stran/3.0d0
 
-        dstran_bar(1) = dstran_tensor(1,1)
-        dstran_bar(2) = dstran_tensor(2,2)
-        dstran_bar(3) = dstran_tensor(3,3)
-        dstran_bar(4) = dstran_tensor(1,2)
-        dstran_bar(5) = dstran_tensor(1,3)
-        dstran_bar(6) = dstran_tensor(2,3)
+            ! ekk_dstran = dstran(1) + dstran(2) + dstran(3)
+            ! dstran(1) = dstran(1) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+            ! dstran(2) = dstran(2) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+            ! dstran(3) = dstran(3) - omega_dstran/3.0d0 + ekk_dstran/3.0d0
+
+            stran_current = stran_prev + dstran
+
+            ! print *, "stran_current_old = "
+            ! print *, stran_current
+
+            ! call calc_u_grad(u_grad, N_bar_deriv_global, u_current, ndim, nnode)
+            ! F_grad = identity + u_grad
+
+            ! C_Cauchy = matmul(transpose(F_grad), F_grad)
+            
+            ! call calc_matrix_log(C_Cauchy, log_C_Cauchy, ndim)
+            
+            ! do i = 1, ndim
+            !     do j = 1, ndim
+            !         eps_H(i,j) = 0.5d0 * log_C_Cauchy(i,j)
+            !     end do
+            ! end do
+
+            ! stran_current(1) = eps_H(1,1)
+            ! stran_current(2) = eps_H(2,2)
+            ! stran_current(3) = eps_H(3,3)
+            ! stran_current(4) = eps_H(1,2)
+            ! stran_current(5) = eps_H(1,3)
+            ! stran_current(6) = eps_H(2,3)
+
+            ! print *, "stran_current_new = "
+            ! print *, stran_current
+
+            ! call pause(1)
+
+            ! print *, "u_current = "
+            ! print *, u_current
+            ! print *, "u_prev = "
+            ! print *, u_prev
+            ! print *, "du_current = "
+            ! print *, du_current
+            ! print *, "u_grad = "
+            ! print *, u_grad
+            ! print *, "du_grad = "
+            ! print *, du_grad
+            ! print *, "F_grad = "
+            ! print *, F_grad
+            ! print *, "dF_grad = "
+            ! print *, dF_grad
+            ! print *, "C_Cauchy = "
+            ! print *, C_Cauchy
+            ! print *, "dC_Cauchy = "
+            ! print *, dC_Cauchy
+            ! print *, "log_C_Cauchy = "
+            ! print *, log_C_Cauchy
+            ! print *, "dlog_C_Cauchy = "
+            ! print *, dlog_C_Cauchy
+            ! print *, "eps_H = "
+            ! print *, eps_H
+            ! print *, "deps_H = "
+            ! print *, deps_H
+            ! print *, "stran_prev = "
+            ! print *, stran_prev
+            ! print *, "dstran = "
+            ! print *, dstran
+            ! print *, "stran_current = "
+            ! print *, stran_current
+
+            !call pause(2)  ! Pause for 5 seconds
+
+        end if
 
         !   Calculate strain displacement B-matrix
         call kbmatrix_full(N_deriv_global_kinpt,ntens,nnode,ndim,Bu_kinpt)     
@@ -1052,50 +1366,17 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
         Bu_bar = Bu_kinpt - Bu_vol_kinpt + Bu_bar_vol
 
-        ! print *, 'N_deriv_global_kinpt = '
-        ! print *, N_deriv_global_kinpt
-        ! print *, 'N_bar_deriv_global = '
-        ! print *, N_bar_deriv_global
-        ! print *, 'Bu_kinpt = '
-        ! print *, Bu_kinpt
-        ! print *, 'Bu_vol_kinpt = '
-        ! print *, Bu_vol_kinpt
-        ! print *, 'Bu_bar_vol = '
-        ! print *, Bu_bar_vol
-        ! print *, 'Bu_bar = '
-        ! print *, Bu_bar
-
-
         !   ====================================================
         !   Calculate deformation field (stress and strain, etc)
         !   ====================================================
-        
-        ! stran_prev = matmul(Bu_bar, u_prev)
-        ! dstran = matmul(Bu_bar, du_current)
-
-        stran_prev = stran_bar
-        dstran = dstran_bar
-
-
-        stran_current = stran_prev + dstran
-
-        ! subroutine kstatevar(npt,nsvint,svars,statev,icopy)
-        
+                
         ! Extract stress and stran
         
         stress = statev(sig_start_idx : sig_end_idx)
-        !stran = statev(stran_start_idx : stran_end_idx)
-
-        ! print *, 'stran = ', stran
-        ! print *, 'dstran = ', dstran
         
         ! Call the von Mises plasticity model
         call UMAT_elastic(props,nprops,ddsdde,stress,stran_prev,dstran, &
                           ntens,ndi,nshr,statev)
-
-        ! Update stran
-        ! stran = stran + dstran
-        ! stress = matmul(ddsdde,stran_current)
 
         ! Update the state variables
         ! eelas, eplas, eqplas, deqplas, sig_vonMises, sig_H are already updated in statev in UMAT_von_Mises
@@ -1122,7 +1403,15 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                (matmul(matmul(transpose(Bu_bar),ddsdde),Bu_bar))
             
         rhs(start_u_idx:end_u_idx,1) = rhs(start_u_idx:end_u_idx,1) - &
-            dvol * (matmul(transpose(Bu_bar),stress))            
+            dvol * (matmul(transpose(Bu_bar),stress))        
+
+        ! amatrx(start_u_idx:end_u_idx,start_u_idx:end_u_idx) = &
+        !     amatrx(start_u_idx:end_u_idx,start_u_idx:end_u_idx) + dvol * &
+        !                        (matmul(matmul(transpose(Bu_kinpt),ddsdde),Bu_kinpt))
+            
+        ! rhs(start_u_idx:end_u_idx,1) = rhs(start_u_idx:end_u_idx,1) - &
+        !     dvol * (matmul(transpose(Bu_kinpt),stress))     
+
 
         !   Transfer data from statev to dummy mesh for visualization
         
