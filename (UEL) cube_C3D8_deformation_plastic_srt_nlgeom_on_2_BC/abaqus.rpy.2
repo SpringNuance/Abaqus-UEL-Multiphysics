@@ -1,0 +1,293 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Sun Oct 13 20:08:13 2024
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+#: Warning: Permission was denied for "abaqus.rpy"; "abaqus.rpy.2" will be used for this session's replay file.
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=103.244789123535, 
+    height=119.284721374512)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(
+    name='cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00160892, 
+    farPlane=0.00513081, width=0.00425685, height=0.00181857, 
+    viewOffsetX=2.27397e-05, viewOffsetY=0.000168944)
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00165044, 
+    farPlane=0.00508929, width=0.00382484, height=0.00163401, 
+    viewOffsetX=0.000334229, viewOffsetY=0.000160435)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00161415, 
+    farPlane=0.00512558, width=0.0037714, height=0.00161118, 
+    viewOffsetX=0.000197003, viewOffsetY=0.000169175)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00221789, 
+    farPlane=0.00490027, width=0.00518202, height=0.00221381, cameraPosition=(
+    0.00319163, 0.000503871, 0.00161736), cameraUpVector=(-0.284821, 0.876892, 
+    -0.387217), cameraTarget=(-0.000109353, 0.000144179, 8.14363e-05), 
+    viewOffsetX=0.000270688, viewOffsetY=0.000232453)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00155389, 
+    farPlane=0.00548135, width=0.00363062, height=0.00155104, cameraPosition=(
+    0.00183179, 0.00341304, 0.000750546), cameraUpVector=(-0.43386, 0.0574629, 
+    -0.899146), cameraTarget=(-0.000125859, 0.000382192, 0.00014516), 
+    viewOffsetX=0.000189649, viewOffsetY=0.000162861)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00161731, 
+    farPlane=0.00513945, width=0.0037788, height=0.00161435, cameraPosition=(
+    0.00152285, 0.00277248, 0.00200584), cameraUpVector=(-0.565359, 0.397649, 
+    -0.722665), cameraTarget=(-3.86217e-05, 9.27036e-05, 6.53378e-05), 
+    viewOffsetX=0.000197389, viewOffsetY=0.000169508)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00167501, 
+    farPlane=0.00512997, width=0.00391361, height=0.00167194, cameraPosition=(
+    0.00205476, 0.0022227, 0.00211768), cameraUpVector=(-0.541121, 0.574824, 
+    -0.613812), cameraTarget=(-8.63362e-05, 0.000107525, 3.7606e-05), 
+    viewOffsetX=0.000204431, viewOffsetY=0.000175555)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR28_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00175181, 
+    farPlane=0.00501257, width=0.00409306, height=0.0017486, cameraPosition=(
+    0.0021837, 0.0015271, 0.00239436), cameraUpVector=(-0.492127, 0.733351, 
+    -0.46905), cameraTarget=(-0.000119271, 7.96856e-05, -5.23259e-05), 
+    viewOffsetX=0.000213804, viewOffsetY=0.000183604)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00158999, 
+    farPlane=0.00526979, width=0.00371496, height=0.00158707, cameraPosition=(
+    0.00158292, 0.00323824, 0.00136653), cameraUpVector=(-0.672595, 0.214675, 
+    -0.708189), cameraTarget=(3.46358e-05, 0.000144215, 0.000177084), 
+    viewOffsetX=0.000194054, viewOffsetY=0.000166644)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00168837, 
+    farPlane=0.00509369, width=0.00394482, height=0.00168527, cameraPosition=(
+    0.00204778, 0.00206093, 0.00223654), cameraUpVector=(-0.574, 0.604325, 
+    -0.552553), cameraTarget=(-5.75551e-05, 5.18926e-05, 1.92653e-05), 
+    viewOffsetX=0.000206061, viewOffsetY=0.000176955)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00156787, 
+    farPlane=0.00520538, width=0.00366327, height=0.00156499, cameraPosition=(
+    0.00124923, 0.00314834, 0.00171355), cameraUpVector=(-0.0264682, 0.182892, 
+    -0.982777), cameraTarget=(-0.000280814, 0.000309659, -1.44009e-05), 
+    viewOffsetX=0.000191354, viewOffsetY=0.000164325)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00150961, 
+    farPlane=0.00488552, width=0.00352715, height=0.00150684, cameraPosition=(
+    -0.00235246, 0.00263574, 0.000465197), cameraUpVector=(0.301358, 
+    -0.0039101, -0.953503), cameraTarget=(9.46215e-05, -3.8605e-05, 
+    -2.94122e-05), viewOffsetX=0.000184244, viewOffsetY=0.000158219)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00165415, 
+    farPlane=0.00450761, width=0.00386485, height=0.00165111, cameraPosition=(
+    0.000643078, 0.00123419, 0.00293579), cameraUpVector=(-0.288707, 0.788752, 
+    -0.542695), cameraTarget=(-0.000313811, 0.000123721, -0.000416254), 
+    viewOffsetX=0.000201884, viewOffsetY=0.000173367)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00158278, 
+    farPlane=0.00475241, width=0.0036981, height=0.00157987, cameraPosition=(
+    0.00220041, 0.0013506, 0.0021352), cameraUpVector=(-0.534747, 0.77274, 
+    -0.341934), cameraTarget=(-0.000424996, 0.00012377, -9.79889e-05), 
+    viewOffsetX=0.000193173, viewOffsetY=0.000165887)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00146736, 
+    farPlane=0.00499055, width=0.00342842, height=0.00146466, cameraPosition=(
+    0.00171889, 0.00263394, 0.00173623), cameraUpVector=(-0.630162, 0.439776, 
+    -0.639916), cameraTarget=(-0.000317434, 8.34277e-05, 8.29641e-05), 
+    viewOffsetX=0.000179086, viewOffsetY=0.00015379)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00147808, 
+    farPlane=0.00497983, width=0.00346762, height=0.0014814, 
+    viewOffsetX=0.000258961, viewOffsetY=5.91396e-05)
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00162105, 
+    farPlane=0.00511868, width=0.00378753, height=0.00161807, 
+    viewOffsetX=0.000213796, viewOffsetY=7.91482e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR28_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(width=0.00407986, 
+    height=0.00174296, viewOffsetX=0.000245362, viewOffsetY=6.69878e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.001414, 
+    farPlane=0.00500603, width=0.00351465, height=0.0015015, cameraPosition=(
+    0.0010462, 0.00338699, 0.000956109), cameraUpVector=(-0.396386, 0.0166137, 
+    -0.917933), cameraTarget=(-6.4733e-06, 1.0244e-05, 2.10212e-05), 
+    viewOffsetX=0.00021137, viewOffsetY=5.77076e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00124729, 
+    farPlane=0.00460101, width=0.00310026, height=0.00132447, cameraPosition=(
+    -0.000114907, 0.00235685, 0.00233596), cameraUpVector=(-0.798599, -0.10808, 
+    -0.59208), cameraTarget=(0.000532282, -0.00028096, -0.000115167), 
+    viewOffsetX=0.000186449, viewOffsetY=5.09037e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00151306, 
+    farPlane=0.00479526, width=0.00376085, height=0.00160668, cameraPosition=(
+    0.00158519, 0.00316633, 0.000892627), cameraUpVector=(-0.995358, 0.0412581, 
+    -0.0869525), cameraTarget=(0.000263884, -0.000208283, 0.000391585), 
+    viewOffsetX=0.000226177, viewOffsetY=6.17501e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00115043, 
+    farPlane=0.00470594, width=0.00285949, height=0.00122161, cameraPosition=(
+    -0.000466698, 0.00309562, -0.00142171), cameraUpVector=(-0.761401, 
+    -0.396709, 0.512729), cameraTarget=(0.000744342, 0.000281118, 0.000577508), 
+    viewOffsetX=0.00017197, viewOffsetY=4.69506e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00172638, 
+    farPlane=0.00474875, width=0.00429107, height=0.0018332, cameraPosition=(
+    0.00271964, 0.00218078, -0.000680892), cameraUpVector=(-0.839748, 0.504069, 
+    -0.201837), cameraTarget=(-0.000161181, 0.00029769, 0.000559968), 
+    viewOffsetX=0.000258065, viewOffsetY=7.0456e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00158004, 
+    farPlane=0.00484339, width=0.00392732, height=0.0016778, cameraPosition=(
+    0.00220011, 0.00146991, 0.00217157), cameraUpVector=(-0.261019, 0.720698, 
+    -0.642233), cameraTarget=(-0.000578456, 0.00030581, 9.56751e-05), 
+    viewOffsetX=0.000236189, viewOffsetY=6.44836e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00132009, 
+    farPlane=0.00491583, width=0.0032812, height=0.00140177, cameraPosition=(
+    0.000540773, 0.00322235, 0.00148859), cameraUpVector=(-0.573605, 0.109897, 
+    -0.811726), cameraTarget=(-0.000362107, -7.19913e-05, 0.000178244), 
+    viewOffsetX=0.000197331, viewOffsetY=5.38748e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00144285, 
+    farPlane=0.00482047, width=0.00358632, height=0.00153212, cameraPosition=(
+    0.00116983, 0.00325859, 0.00101884), cameraUpVector=(-0.7241, 0.112149, 
+    -0.680516), cameraTarget=(-0.000372174, 1.26342e-05, 0.000332651), 
+    viewOffsetX=0.000215681, viewOffsetY=5.88847e-05)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.000914313, 
+    farPlane=0.00488663, width=0.00231568, height=0.000989282, 
+    viewOffsetX=0.000185431, viewOffsetY=1.47715e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00114861, 
+    farPlane=0.00489046, width=0.00290908, height=0.00124279, cameraPosition=(
+    0.00287523, 0.00110515, 0.00208052), cameraUpVector=(-0.693906, 0.718681, 
+    -0.044647), cameraTarget=(3.60282e-05, -6.29206e-05, 9.06842e-05), 
+    viewOffsetX=0.000232949, viewOffsetY=1.85567e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00142886, 
+    farPlane=0.00505029, width=0.00361888, height=0.00154602, cameraPosition=(
+    0.00328565, 0.00197602, 0.000785134), cameraUpVector=(-0.788764, 0.613447, 
+    -0.0391634), cameraTarget=(0.000218482, 2.08687e-06, 0.000500594), 
+    viewOffsetX=0.000289787, viewOffsetY=2.30844e-05)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity/(UEL) cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC/cube_C3D8_deformation_plastic_srt_nlgeom_on_2_BC_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00165725, 
+    farPlane=0.00508247, width=0.00348623, height=0.00148935, 
+    viewOffsetX=0.000297419, viewOffsetY=0.000113186)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR28_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )

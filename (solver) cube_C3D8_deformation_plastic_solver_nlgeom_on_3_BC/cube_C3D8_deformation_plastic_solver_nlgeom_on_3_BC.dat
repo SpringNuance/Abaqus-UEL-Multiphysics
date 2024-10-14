@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 13-Oct-2024   Time 12:24:34
+   Abaqus 2023.HF4                                  Date 13-Oct-2024   Time 13:37:31
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -77,25 +77,20 @@
    ***************************
 
 
-  *userelement, nodes=8, type=U1, properties=208, variables=240, coordinates=3
   *Heading
-  *Element, type=U1
   *Element, type=C3D8
   *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
-  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
-  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION
   *Elset, elset=ASSEMBLY_TOP_SIDE
   *Elset, elset=ASSEMBLY_WHOLE_CUBE_ELEMENT
   *Elset, elset=ASSEMBLY_XSYMM_SIDE
   *Elset, elset=ASSEMBLY_YSYMM_SIDE
   *Elset, elset=ASSEMBLY_ZSYMM_SIDE
-  *material, name=USER_SUBROUTINE
+  *material, name=VON_MISES
   *density
-  *depvar
-  *usermaterial, constants=1
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=USER_SUBROUTINE
-  *userelement, nodes=8, type=U1, properties=208, variables=240, coordinates=3
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=USER_SUBROUTINE
+  *elastic
+  *plastic
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=VON_MISES
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=VON_MISES
   *boundary, amplitude=LOADING
   *boundary
   *boundary
@@ -104,7 +99,6 @@
   *boundary
   *boundary
   *boundary
-  *uelproperty, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
   *output, field, numberinterval=100
   *output, history, frequency=0
   *elementoutput, directions=YES
@@ -136,9 +130,8 @@
              INCREMENT ALLOWED IN THE STEP. IN ADDITION, THE NUMBER OF 
              INCREMENTS REQUIRED TO COMPLETE THE STEP WILL IN GENERAL INCREASE.
 
- ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
-
- ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+ ***WARNING: THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S 
+             OUTPUT
   *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
   *static
   *boundary, amplitude=LOADING
@@ -152,7 +145,7 @@
                             P R O B L E M   S I Z E
 
 
-          NUMBER OF ELEMENTS IS                                     2
+          NUMBER OF ELEMENTS IS                                     1
           NUMBER OF NODES IS                                        8
           NUMBER OF NODES DEFINED BY THE USER                       8
           TOTAL NUMBER OF VARIABLES IN THE MODEL                   24
@@ -167,12 +160,12 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =     0.10    
-       SYSTEM TIME (SEC)    =     0.10    
-       TOTAL CPU TIME (SEC) =     0.20    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
        WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 13-Oct-2024   Time 12:24:35
+   Abaqus 2023.HF4                                  Date 13-Oct-2024   Time 13:37:32
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -238,12 +231,12 @@
 
 
                               ANALYSIS COMPLETE
-                              WITH      3 WARNING MESSAGES ON THE DAT FILE
+                              WITH      2 WARNING MESSAGES ON THE DAT FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      1.1    
-       SYSTEM TIME (SEC)    =     0.70    
-       TOTAL CPU TIME (SEC) =      1.8    
-       WALLCLOCK TIME (SEC) =            3
+       USER TIME (SEC)      =     0.50    
+       SYSTEM TIME (SEC)    =     0.50    
+       TOTAL CPU TIME (SEC) =      1.0    
+       WALLCLOCK TIME (SEC) =            2

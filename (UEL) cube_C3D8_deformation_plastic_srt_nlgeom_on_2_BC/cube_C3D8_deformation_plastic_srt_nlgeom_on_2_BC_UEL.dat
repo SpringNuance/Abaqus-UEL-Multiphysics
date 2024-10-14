@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 10-Oct-2024   Time 12:17:32
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 14:24:09
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -77,20 +77,25 @@
    ***************************
 
 
+  *userelement, nodes=8, type=U1, properties=208, variables=240, coordinates=3
   *Heading
+  *Element, type=U1
   *Element, type=C3D8
   *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION
   *Elset, elset=ASSEMBLY_TOP_SIDE
   *Elset, elset=ASSEMBLY_WHOLE_CUBE_ELEMENT
   *Elset, elset=ASSEMBLY_XSYMM_SIDE
   *Elset, elset=ASSEMBLY_YSYMM_SIDE
   *Elset, elset=ASSEMBLY_ZSYMM_SIDE
-  *material, name=VON_MISES
+  *material, name=USER_SUBROUTINE
   *density
-  *elastic
-  *plastic
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=VON_MISES
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=VON_MISES
+  *depvar
+  *usermaterial, constants=1
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=USER_SUBROUTINE
+  *userelement, nodes=8, type=U1, properties=208, variables=240, coordinates=3
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=USER_SUBROUTINE
   *boundary, amplitude=LOADING
   *boundary
   *boundary
@@ -99,6 +104,7 @@
   *boundary
   *boundary
   *boundary
+  *uelproperty, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
   *output, field, numberinterval=100
   *output, history, frequency=0
   *elementoutput, directions=YES
@@ -108,11 +114,11 @@
   *output, field, numberinterval=100
   *output, history, frequency=0
   *elementoutput, directions=YES
-  *Step, name=step1_tensile, nlgeom=NO, amplitude=STEP, inc=1000000
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
   *output, field, numberinterval=100
   *output, history, frequency=0
-  *Step, name=step1_tensile, nlgeom=NO, amplitude=STEP, inc=1000000
-  *Step, name=step1_tensile, nlgeom=NO, amplitude=STEP, inc=1000000
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
   *static
   *boundary, amplitude=LOADING
   *boundary
@@ -130,9 +136,10 @@
              INCREMENT ALLOWED IN THE STEP. IN ADDITION, THE NUMBER OF 
              INCREMENTS REQUIRED TO COMPLETE THE STEP WILL IN GENERAL INCREASE.
 
- ***WARNING: THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S 
-             OUTPUT
-  *Step, name=step1_tensile, nlgeom=NO, amplitude=STEP, inc=1000000
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *Step, name=step1_tensile, nlgeom=YES, amplitude=STEP, inc=1000000
   *static
   *boundary, amplitude=LOADING
   *boundary
@@ -145,7 +152,7 @@
                             P R O B L E M   S I Z E
 
 
-          NUMBER OF ELEMENTS IS                                     1
+          NUMBER OF ELEMENTS IS                                     2
           NUMBER OF NODES IS                                        8
           NUMBER OF NODES DEFINED BY THE USER                       8
           TOTAL NUMBER OF VARIABLES IN THE MODEL                   24
@@ -159,13 +166,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.20    
+       USER TIME (SEC)      =     0.10    
        SYSTEM TIME (SEC)    =      0.0    
-       TOTAL CPU TIME (SEC) =     0.20    
+       TOTAL CPU TIME (SEC) =     0.10    
        WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 10-Oct-2024   Time 12:17:38
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 14:24:14
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -184,6 +191,8 @@
           THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
 
      LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+
+          LARGE DISPLACEMENT THEORY WILL BE USED
   
                    M E M O R Y   E S T I M A T E
   
@@ -229,12 +238,12 @@
 
 
                               ANALYSIS COMPLETE
-                              WITH      2 WARNING MESSAGES ON THE DAT FILE
+                              WITH      3 WARNING MESSAGES ON THE DAT FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.40    
-       SYSTEM TIME (SEC)    =     0.40    
-       TOTAL CPU TIME (SEC) =     0.80    
-       WALLCLOCK TIME (SEC) =            2
+       USER TIME (SEC)      =     0.90    
+       SYSTEM TIME (SEC)    =     0.60    
+       TOTAL CPU TIME (SEC) =      1.5    
+       WALLCLOCK TIME (SEC) =            4
