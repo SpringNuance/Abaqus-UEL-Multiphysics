@@ -1,0 +1,2 @@
+python autoscript.py --input "cube_C3D8T_with_diffusion_transient_srt_nlgeom_on" --subroutine "deformation_diffusion_UEL"
+abaqus job=cube_C3D8T_with_diffusion_transient_srt_nlgeom_on_UEL user=deformation_diffusion_UEL cpus=1 mp_mode=threads -verbose 1 interactive

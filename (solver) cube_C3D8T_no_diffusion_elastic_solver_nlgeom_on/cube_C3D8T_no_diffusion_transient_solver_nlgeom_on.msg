@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 12-Oct-2024   Time 19:35:47
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:58:08
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -71,8 +71,6 @@
 
      THE MAXIMUM NUMBER OF INCREMENTS IN THIS STEP IS                   10000
 
-          LARGE DISPLACEMENT THEORY WILL BE USED
-
           UNSYMMETRIC MATRIX STORAGE AND SOLUTION WILL BE USED
 
      LINEAR EXTRAPOLATION WILL BE USED
@@ -97,46 +95,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  6ms
+        SOLVER ELAPSED TIME:  4ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                       174.       TIME AVG. FORCE        174.    
- LARGEST SCALED RESIDUAL FORCE       1.98       AT NODE          3   DOF  1
+ AVERAGE FORCE                       175.       TIME AVG. FORCE        175.    
+ LARGEST SCALED RESIDUAL FORCE      7.615E-14   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE       1.98    
+  CORRESPONDING RESIDUAL FORCE      7.615E-14
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO DISP.        1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  32
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                       173.       TIME AVG. FORCE        173.    
- LARGEST SCALED RESIDUAL FORCE     -1.477E-05   AT NODE          4   DOF  1
-   INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.477E-05
- LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
-   INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.937E-08   AT NODE          2   DOF  3
-   INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -144,8 +116,8 @@
  ALL CORRECTION TO TEMP.    ARE ZERO
           THERE IS ZERO HEAT FLUX EVERYWHERE
 
- ITERATION SUMMARY FOR THE INCREMENT:   2 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  2 ARE EQUILIBRIUM ITERATIONS.
+ ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
+   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
 
  TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED  1.000E-02
  STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
@@ -158,20 +130,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.027E+03   TIME AVG. FORCE        600.    
- LARGEST SCALED RESIDUAL FORCE     -2.171E-04   AT NODE          2   DOF  1
+ AVERAGE FORCE                      1.050E+03   TIME AVG. FORCE        613.    
+ LARGEST SCALED RESIDUAL FORCE      6.714E-14   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.171E-04
+  CORRESPONDING RESIDUAL FORCE      6.714E-14
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.812E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        6.073E-21   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -198,15 +170,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.525E+03   TIME AVG. FORCE        908.    
- LARGEST SCALED RESIDUAL FORCE     -2.101E-04   AT NODE          2   DOF  1
+ AVERAGE FORCE                      1.575E+03   TIME AVG. FORCE        933.    
+ LARGEST SCALED RESIDUAL FORCE      8.013E-14   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.101E-04
+  CORRESPONDING RESIDUAL FORCE      8.013E-14
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.726E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        4.866E-21   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -233,15 +205,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.011E+03   TIME AVG. FORCE       1.184E+03
- LARGEST SCALED RESIDUAL FORCE     -2.035E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      2.100E+03   TIME AVG. FORCE       1.225E+03
+ LARGEST SCALED RESIDUAL FORCE     -1.435E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.035E-04
+  CORRESPONDING RESIDUAL FORCE     -1.435E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.644E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -6.418E-21   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -268,15 +240,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.488E+03   TIME AVG. FORCE       1.445E+03
- LARGEST SCALED RESIDUAL FORCE     -1.971E-04   AT NODE          2   DOF  1
+ AVERAGE FORCE                      2.625E+03   TIME AVG. FORCE       1.505E+03
+ LARGEST SCALED RESIDUAL FORCE      1.857E-13   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.971E-04
+  CORRESPONDING RESIDUAL FORCE      1.857E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.564E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.444E-21   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -303,15 +275,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.954E+03   TIME AVG. FORCE       1.696E+03
- LARGEST SCALED RESIDUAL FORCE     -1.909E-04   AT NODE          4   DOF  1
+ AVERAGE FORCE                      3.150E+03   TIME AVG. FORCE       1.779E+03
+ LARGEST SCALED RESIDUAL FORCE     -1.026E-13   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.909E-04
+  CORRESPONDING RESIDUAL FORCE     -1.026E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.486E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        7.223E-21   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -338,15 +310,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      3.411E+03   TIME AVG. FORCE       1.941E+03
- LARGEST SCALED RESIDUAL FORCE     -1.850E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      3.675E+03   TIME AVG. FORCE       2.050E+03
+ LARGEST SCALED RESIDUAL FORCE      1.621E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.850E-04
+  CORRESPONDING RESIDUAL FORCE      1.621E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.411E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -9.057E-21   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -373,15 +345,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      3.858E+03   TIME AVG. FORCE       2.181E+03
- LARGEST SCALED RESIDUAL FORCE     -1.793E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.200E+03   TIME AVG. FORCE       2.319E+03
+ LARGEST SCALED RESIDUAL FORCE      2.600E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.793E-04
+  CORRESPONDING RESIDUAL FORCE      2.600E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.338E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.101E-20   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -408,15 +380,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      4.296E+03   TIME AVG. FORCE       2.416E+03
- LARGEST SCALED RESIDUAL FORCE     -1.739E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.725E+03   TIME AVG. FORCE       2.586E+03
+ LARGEST SCALED RESIDUAL FORCE      3.082E-13   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.739E-04
+  CORRESPONDING RESIDUAL FORCE      3.082E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.267E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        2.169E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -443,15 +415,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      4.726E+03   TIME AVG. FORCE       2.647E+03
- LARGEST SCALED RESIDUAL FORCE     -1.687E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      5.250E+03   TIME AVG. FORCE       2.853E+03
+ LARGEST SCALED RESIDUAL FORCE     -2.205E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.687E-04
+  CORRESPONDING RESIDUAL FORCE     -2.205E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.199E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        2.711E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -473,20 +445,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      5.146E+03   TIME AVG. FORCE       2.874E+03
- LARGEST SCALED RESIDUAL FORCE     -1.636E-04   AT NODE          4   DOF  1
+ AVERAGE FORCE                      5.775E+03   TIME AVG. FORCE       3.118E+03
+ LARGEST SCALED RESIDUAL FORCE     -2.897E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.636E-04
+  CORRESPONDING RESIDUAL FORCE     -2.897E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.132E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.497E-20   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -513,15 +485,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      5.559E+03   TIME AVG. FORCE       3.098E+03
- LARGEST SCALED RESIDUAL FORCE     -1.588E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      6.300E+03   TIME AVG. FORCE       3.383E+03
+ LARGEST SCALED RESIDUAL FORCE     -2.725E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.588E-04
+  CORRESPONDING RESIDUAL FORCE     -2.725E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.068E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.692E-20   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -548,15 +520,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      5.963E+03   TIME AVG. FORCE       3.318E+03
- LARGEST SCALED RESIDUAL FORCE     -1.542E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      6.825E+03   TIME AVG. FORCE       3.648E+03
+ LARGEST SCALED RESIDUAL FORCE     -6.281E-13   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.542E-04
+  CORRESPONDING RESIDUAL FORCE     -6.281E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.005E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.625E-20   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -583,15 +555,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      6.359E+03   TIME AVG. FORCE       3.535E+03
- LARGEST SCALED RESIDUAL FORCE     -1.497E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      7.350E+03   TIME AVG. FORCE       3.913E+03
+ LARGEST SCALED RESIDUAL FORCE      3.365E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.497E-04
+  CORRESPONDING RESIDUAL FORCE      3.365E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.944E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        2.346E-20   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -618,15 +590,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      6.747E+03   TIME AVG. FORCE       3.749E+03
- LARGEST SCALED RESIDUAL FORCE     -1.454E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      7.875E+03   TIME AVG. FORCE       4.177E+03
+ LARGEST SCALED RESIDUAL FORCE     -8.443E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.454E-04
+  CORRESPONDING RESIDUAL FORCE     -8.443E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.885E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        3.459E-20   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -653,15 +625,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      7.128E+03   TIME AVG. FORCE       3.961E+03
- LARGEST SCALED RESIDUAL FORCE     -1.412E-04   AT NODE          2   DOF  1
+ AVERAGE FORCE                      8.400E+03   TIME AVG. FORCE       4.441E+03
+ LARGEST SCALED RESIDUAL FORCE     -6.725E-13   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.412E-04
+  CORRESPONDING RESIDUAL FORCE     -6.725E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.828E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        5.421E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -688,15 +660,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      7.502E+03   TIME AVG. FORCE       4.169E+03
- LARGEST SCALED RESIDUAL FORCE     -1.372E-04   AT NODE          4   DOF  1
+ AVERAGE FORCE                      8.925E+03   TIME AVG. FORCE       4.704E+03
+ LARGEST SCALED RESIDUAL FORCE      3.570E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.372E-04
+  CORRESPONDING RESIDUAL FORCE      3.570E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.772E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.711E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -723,15 +695,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      7.868E+03   TIME AVG. FORCE       4.374E+03
- LARGEST SCALED RESIDUAL FORCE     -1.334E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      9.450E+03   TIME AVG. FORCE       4.968E+03
+ LARGEST SCALED RESIDUAL FORCE      4.594E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.334E-04
+  CORRESPONDING RESIDUAL FORCE      4.594E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.718E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.711E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -758,15 +730,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      8.227E+03   TIME AVG. FORCE       4.577E+03
- LARGEST SCALED RESIDUAL FORCE     -1.297E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      9.975E+03   TIME AVG. FORCE       5.232E+03
+ LARGEST SCALED RESIDUAL FORCE      6.924E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.297E-04
+  CORRESPONDING RESIDUAL FORCE      6.924E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.665E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        5.421E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -793,15 +765,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      8.580E+03   TIME AVG. FORCE       4.777E+03
- LARGEST SCALED RESIDUAL FORCE     -1.261E-04   AT NODE          3   DOF  1
+ AVERAGE FORCE                      1.050E+04   TIME AVG. FORCE       5.495E+03
+ LARGEST SCALED RESIDUAL FORCE      5.180E-13   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.261E-04
+  CORRESPONDING RESIDUAL FORCE      5.180E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.614E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        3.463E-20   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -828,15 +800,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      8.926E+03   TIME AVG. FORCE       4.975E+03
- LARGEST SCALED RESIDUAL FORCE     -1.227E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.103E+04   TIME AVG. FORCE       5.758E+03
+ LARGEST SCALED RESIDUAL FORCE      1.164E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.227E-04
+  CORRESPONDING RESIDUAL FORCE      1.164E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.564E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        4.278E-20   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -863,15 +835,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      9.265E+03   TIME AVG. FORCE       5.170E+03
- LARGEST SCALED RESIDUAL FORCE     -1.194E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.155E+04   TIME AVG. FORCE       6.022E+03
+ LARGEST SCALED RESIDUAL FORCE     -5.927E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.194E-04
+  CORRESPONDING RESIDUAL FORCE     -5.927E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.516E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.448E-20   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -898,15 +870,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      9.599E+03   TIME AVG. FORCE       5.362E+03
- LARGEST SCALED RESIDUAL FORCE     -1.161E-04   AT NODE          4   DOF  1
+ AVERAGE FORCE                      1.208E+04   TIME AVG. FORCE       6.285E+03
+ LARGEST SCALED RESIDUAL FORCE      3.508E-13   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.161E-04
+  CORRESPONDING RESIDUAL FORCE      3.508E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.469E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        3.978E-20   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -933,15 +905,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      9.926E+03   TIME AVG. FORCE       5.553E+03
- LARGEST SCALED RESIDUAL FORCE     -1.130E-04   AT NODE          2   DOF  1
+ AVERAGE FORCE                      1.260E+04   TIME AVG. FORCE       6.548E+03
+ LARGEST SCALED RESIDUAL FORCE     -3.646E-13   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.130E-04
+  CORRESPONDING RESIDUAL FORCE     -3.646E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.423E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.488E-20   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -968,15 +940,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.025E+04   TIME AVG. FORCE       5.740E+03
- LARGEST SCALED RESIDUAL FORCE     -1.101E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.313E+04   TIME AVG. FORCE       6.811E+03
+ LARGEST SCALED RESIDUAL FORCE      5.524E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.101E-04
+  CORRESPONDING RESIDUAL FORCE      5.524E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.378E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.955E-20   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1003,15 +975,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.056E+04   TIME AVG. FORCE       5.926E+03
- LARGEST SCALED RESIDUAL FORCE     -1.072E-04   AT NODE          4   DOF  1
+ AVERAGE FORCE                      1.365E+04   TIME AVG. FORCE       7.074E+03
+ LARGEST SCALED RESIDUAL FORCE     -4.885E-13   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.072E-04
+  CORRESPONDING RESIDUAL FORCE     -4.885E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.334E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.284E-20   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1033,20 +1005,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.087E+04   TIME AVG. FORCE       6.109E+03
- LARGEST SCALED RESIDUAL FORCE     -1.044E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.418E+04   TIME AVG. FORCE       7.337E+03
+ LARGEST SCALED RESIDUAL FORCE      1.321E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.044E-04
+  CORRESPONDING RESIDUAL FORCE      1.321E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.292E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        6.455E-20   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1073,15 +1045,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.118E+04   TIME AVG. FORCE       6.290E+03
- LARGEST SCALED RESIDUAL FORCE     -1.017E-04   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.470E+04   TIME AVG. FORCE       7.600E+03
+ LARGEST SCALED RESIDUAL FORCE     -8.745E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -1.017E-04
+  CORRESPONDING RESIDUAL FORCE     -8.745E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.251E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.107E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1103,20 +1075,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.147E+04   TIME AVG. FORCE       6.469E+03
- LARGEST SCALED RESIDUAL FORCE     -9.908E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.523E+04   TIME AVG. FORCE       7.863E+03
+ LARGEST SCALED RESIDUAL FORCE      7.945E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -9.908E-05
+  CORRESPONDING RESIDUAL FORCE      7.945E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.211E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.009E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1138,20 +1110,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.177E+04   TIME AVG. FORCE       6.645E+03
- LARGEST SCALED RESIDUAL FORCE     -9.656E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      1.575E+04   TIME AVG. FORCE       8.126E+03
+ LARGEST SCALED RESIDUAL FORCE     -6.451E-13   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -9.656E-05
+  CORRESPONDING RESIDUAL FORCE     -6.451E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.171E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.089E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1173,20 +1145,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.206E+04   TIME AVG. FORCE       6.820E+03
- LARGEST SCALED RESIDUAL FORCE     -9.412E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      1.628E+04   TIME AVG. FORCE       8.389E+03
+ LARGEST SCALED RESIDUAL FORCE      7.804E-13   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -9.412E-05
+  CORRESPONDING RESIDUAL FORCE      7.804E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.133E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -7.024E-20   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1208,20 +1180,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.234E+04   TIME AVG. FORCE       6.992E+03
- LARGEST SCALED RESIDUAL FORCE     -9.176E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      1.680E+04   TIME AVG. FORCE       8.652E+03
+ LARGEST SCALED RESIDUAL FORCE     -1.296E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -9.176E-05
+  CORRESPONDING RESIDUAL FORCE     -1.296E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.096E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -9.105E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1248,15 +1220,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.262E+04   TIME AVG. FORCE       7.163E+03
- LARGEST SCALED RESIDUAL FORCE     -8.948E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      1.733E+04   TIME AVG. FORCE       8.914E+03
+ LARGEST SCALED RESIDUAL FORCE      1.292E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -8.948E-05
+  CORRESPONDING RESIDUAL FORCE      1.292E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.059E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.099E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1283,15 +1255,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.289E+04   TIME AVG. FORCE       7.331E+03
- LARGEST SCALED RESIDUAL FORCE     -8.727E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.785E+04   TIME AVG. FORCE       9.177E+03
+ LARGEST SCALED RESIDUAL FORCE     -7.508E-13   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -8.727E-05
+  CORRESPONDING RESIDUAL FORCE     -7.508E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.024E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -6.162E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1318,15 +1290,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.316E+04   TIME AVG. FORCE       7.498E+03
- LARGEST SCALED RESIDUAL FORCE     -8.514E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      1.838E+04   TIME AVG. FORCE       9.440E+03
+ LARGEST SCALED RESIDUAL FORCE      1.312E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -8.514E-05
+  CORRESPONDING RESIDUAL FORCE      1.312E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.989E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.421E-20   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1353,15 +1325,15 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.342E+04   TIME AVG. FORCE       7.662E+03
- LARGEST SCALED RESIDUAL FORCE     -8.307E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      1.890E+04   TIME AVG. FORCE       9.703E+03
+ LARGEST SCALED RESIDUAL FORCE      8.256E-13   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -8.307E-05
+  CORRESPONDING RESIDUAL FORCE      8.256E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.956E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        4.951E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1383,20 +1355,20 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.368E+04   TIME AVG. FORCE       7.825E+03
- LARGEST SCALED RESIDUAL FORCE     -8.106E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      1.943E+04   TIME AVG. FORCE       9.966E+03
+ LARGEST SCALED RESIDUAL FORCE      1.060E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -8.106E-05
+  CORRESPONDING RESIDUAL FORCE      1.060E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.923E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -9.941E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-          THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
+          THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
  ALL HEAT FLUX RESIDUALS ARE ZERO
@@ -1423,13 +1395,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.394E+04   TIME AVG. FORCE       7.986E+03
- LARGEST SCALED RESIDUAL FORCE     -7.912E-05   AT NODE          6   DOF  3
+ AVERAGE FORCE                      1.995E+04   TIME AVG. FORCE       1.023E+04
+ LARGEST SCALED RESIDUAL FORCE      8.383E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.912E-05
+  CORRESPONDING RESIDUAL FORCE      8.383E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.891E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.271E-19   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1458,13 +1430,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.419E+04   TIME AVG. FORCE       8.145E+03
- LARGEST SCALED RESIDUAL FORCE     -7.724E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.048E+04   TIME AVG. FORCE       1.049E+04
+ LARGEST SCALED RESIDUAL FORCE     -7.610E-13   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.724E-05
+  CORRESPONDING RESIDUAL FORCE     -7.610E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.859E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.317E-19   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1493,13 +1465,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.444E+04   TIME AVG. FORCE       8.302E+03
- LARGEST SCALED RESIDUAL FORCE     -7.542E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      2.100E+04   TIME AVG. FORCE       1.075E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.681E-12   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.542E-05
+  CORRESPONDING RESIDUAL FORCE     -1.681E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.829E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.153E-19   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1528,13 +1500,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.468E+04   TIME AVG. FORCE       8.458E+03
- LARGEST SCALED RESIDUAL FORCE     -7.365E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      2.153E+04   TIME AVG. FORCE       1.102E+04
+ LARGEST SCALED RESIDUAL FORCE      1.659E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.365E-05
+  CORRESPONDING RESIDUAL FORCE      1.659E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.799E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.395E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1563,13 +1535,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.492E+04   TIME AVG. FORCE       8.612E+03
- LARGEST SCALED RESIDUAL FORCE     -7.193E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.205E+04   TIME AVG. FORCE       1.128E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.080E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.193E-05
+  CORRESPONDING RESIDUAL FORCE     -1.080E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.770E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.645E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1598,13 +1570,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.515E+04   TIME AVG. FORCE       8.764E+03
- LARGEST SCALED RESIDUAL FORCE     -7.027E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      2.258E+04   TIME AVG. FORCE       1.154E+04
+ LARGEST SCALED RESIDUAL FORCE      7.129E-13   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -7.027E-05
+  CORRESPONDING RESIDUAL FORCE      7.129E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.741E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.245E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1633,13 +1605,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.538E+04   TIME AVG. FORCE       8.914E+03
- LARGEST SCALED RESIDUAL FORCE     -6.866E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.310E+04   TIME AVG. FORCE       1.180E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.503E-12   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.866E-05
+  CORRESPONDING RESIDUAL FORCE     -1.503E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.713E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        8.033E-20   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1668,13 +1640,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.561E+04   TIME AVG. FORCE       9.063E+03
- LARGEST SCALED RESIDUAL FORCE     -6.709E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      2.363E+04   TIME AVG. FORCE       1.207E+04
+ LARGEST SCALED RESIDUAL FORCE      1.054E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.709E-05
+  CORRESPONDING RESIDUAL FORCE      1.054E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.686E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.121E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1703,13 +1675,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.583E+04   TIME AVG. FORCE       9.210E+03
- LARGEST SCALED RESIDUAL FORCE     -6.557E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      2.415E+04   TIME AVG. FORCE       1.233E+04
+ LARGEST SCALED RESIDUAL FORCE      7.808E-13   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.557E-05
+  CORRESPONDING RESIDUAL FORCE      7.808E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.659E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.102E-19   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1738,13 +1710,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.605E+04   TIME AVG. FORCE       9.356E+03
- LARGEST SCALED RESIDUAL FORCE     -6.410E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      2.468E+04   TIME AVG. FORCE       1.259E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.676E-12   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.410E-05
+  CORRESPONDING RESIDUAL FORCE     -1.676E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.633E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.182E-19   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1773,13 +1745,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.627E+04   TIME AVG. FORCE       9.500E+03
- LARGEST SCALED RESIDUAL FORCE     -6.267E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      2.520E+04   TIME AVG. FORCE       1.286E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.488E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.267E-05
+  CORRESPONDING RESIDUAL FORCE     -1.488E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.608E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.381E-19   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1808,13 +1780,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.648E+04   TIME AVG. FORCE       9.642E+03
- LARGEST SCALED RESIDUAL FORCE     -6.128E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.573E+04   TIME AVG. FORCE       1.312E+04
+ LARGEST SCALED RESIDUAL FORCE      1.153E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -6.128E-05
+  CORRESPONDING RESIDUAL FORCE      1.153E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.583E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        8.735E-20   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1843,13 +1815,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.669E+04   TIME AVG. FORCE       9.783E+03
- LARGEST SCALED RESIDUAL FORCE     -5.993E-05   AT NODE          6   DOF  3
+ AVERAGE FORCE                      2.625E+04   TIME AVG. FORCE       1.338E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.168E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.993E-05
+  CORRESPONDING RESIDUAL FORCE     -2.168E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.559E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        8.187E-20   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1878,13 +1850,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.690E+04   TIME AVG. FORCE       9.922E+03
- LARGEST SCALED RESIDUAL FORCE     -5.862E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      2.678E+04   TIME AVG. FORCE       1.364E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.211E-12   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.862E-05
+  CORRESPONDING RESIDUAL FORCE     -1.211E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.535E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.188E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1913,13 +1885,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.710E+04   TIME AVG. FORCE       1.006E+04
- LARGEST SCALED RESIDUAL FORCE     -5.734E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.730E+04   TIME AVG. FORCE       1.391E+04
+ LARGEST SCALED RESIDUAL FORCE     -5.631E-13   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.734E-05
+  CORRESPONDING RESIDUAL FORCE     -5.631E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.512E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.922E-20   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1948,13 +1920,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.730E+04   TIME AVG. FORCE       1.020E+04
- LARGEST SCALED RESIDUAL FORCE     -5.610E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      2.783E+04   TIME AVG. FORCE       1.417E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.480E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.610E-05
+  CORRESPONDING RESIDUAL FORCE     -1.480E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.489E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        7.168E-20   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1983,13 +1955,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.749E+04   TIME AVG. FORCE       1.033E+04
- LARGEST SCALED RESIDUAL FORCE     -5.490E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.835E+04   TIME AVG. FORCE       1.443E+04
+ LARGEST SCALED RESIDUAL FORCE      1.081E-12   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.490E-05
+  CORRESPONDING RESIDUAL FORCE      1.081E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.467E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2018,13 +1990,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.769E+04   TIME AVG. FORCE       1.047E+04
- LARGEST SCALED RESIDUAL FORCE     -5.373E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      2.888E+04   TIME AVG. FORCE       1.469E+04
+ LARGEST SCALED RESIDUAL FORCE      7.228E-13   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.373E-05
+  CORRESPONDING RESIDUAL FORCE      7.228E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.445E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2053,13 +2025,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.788E+04   TIME AVG. FORCE       1.060E+04
- LARGEST SCALED RESIDUAL FORCE     -5.259E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      2.940E+04   TIME AVG. FORCE       1.496E+04
+ LARGEST SCALED RESIDUAL FORCE     -8.292E-13   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.259E-05
+  CORRESPONDING RESIDUAL FORCE     -8.292E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.423E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.568E-20   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2088,13 +2060,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.807E+04   TIME AVG. FORCE       1.073E+04
- LARGEST SCALED RESIDUAL FORCE     -5.148E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      2.993E+04   TIME AVG. FORCE       1.522E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.359E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.148E-05
+  CORRESPONDING RESIDUAL FORCE     -1.359E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.402E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2118,18 +2090,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.825E+04   TIME AVG. FORCE       1.086E+04
- LARGEST SCALED RESIDUAL FORCE     -5.041E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      3.045E+04   TIME AVG. FORCE       1.548E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.480E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -5.041E-05
+  CORRESPONDING RESIDUAL FORCE     -2.480E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.382E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2153,18 +2125,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.843E+04   TIME AVG. FORCE       1.099E+04
- LARGEST SCALED RESIDUAL FORCE     -4.936E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      3.098E+04   TIME AVG. FORCE       1.574E+04
+ LARGEST SCALED RESIDUAL FORCE      7.489E-13   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.936E-05
+  CORRESPONDING RESIDUAL FORCE      7.489E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.362E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.307E-20   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2188,18 +2160,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.861E+04   TIME AVG. FORCE       1.111E+04
- LARGEST SCALED RESIDUAL FORCE     -4.834E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      3.150E+04   TIME AVG. FORCE       1.601E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.378E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.834E-05
+  CORRESPONDING RESIDUAL FORCE     -1.378E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.342E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2223,18 +2195,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.879E+04   TIME AVG. FORCE       1.124E+04
- LARGEST SCALED RESIDUAL FORCE     -4.735E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      3.203E+04   TIME AVG. FORCE       1.627E+04
+ LARGEST SCALED RESIDUAL FORCE      5.612E-13   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.735E-05
+  CORRESPONDING RESIDUAL FORCE      5.612E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.323E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2258,18 +2230,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.896E+04   TIME AVG. FORCE       1.136E+04
- LARGEST SCALED RESIDUAL FORCE     -4.638E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      3.255E+04   TIME AVG. FORCE       1.653E+04
+ LARGEST SCALED RESIDUAL FORCE     -9.122E-13   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.638E-05
+  CORRESPONDING RESIDUAL FORCE     -9.122E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.304E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -6.208E-20   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2298,13 +2270,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.913E+04   TIME AVG. FORCE       1.149E+04
- LARGEST SCALED RESIDUAL FORCE     -4.544E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      3.308E+04   TIME AVG. FORCE       1.679E+04
+ LARGEST SCALED RESIDUAL FORCE     -8.914E-13   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.544E-05
+  CORRESPONDING RESIDUAL FORCE     -8.914E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.286E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -4.727E-20   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2333,13 +2305,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.930E+04   TIME AVG. FORCE       1.161E+04
- LARGEST SCALED RESIDUAL FORCE     -4.452E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      3.360E+04   TIME AVG. FORCE       1.706E+04
+ LARGEST SCALED RESIDUAL FORCE      9.960E-13   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.452E-05
+  CORRESPONDING RESIDUAL FORCE      9.960E-13
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.268E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        5.103E-20   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2368,13 +2340,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.947E+04   TIME AVG. FORCE       1.173E+04
- LARGEST SCALED RESIDUAL FORCE     -4.363E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      3.413E+04   TIME AVG. FORCE       1.732E+04
+ LARGEST SCALED RESIDUAL FORCE      1.343E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.363E-05
+  CORRESPONDING RESIDUAL FORCE      1.343E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.250E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        8.630E-20   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2403,13 +2375,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.963E+04   TIME AVG. FORCE       1.185E+04
- LARGEST SCALED RESIDUAL FORCE     -4.276E-05   AT NODE          1   DOF  3
+ AVERAGE FORCE                      3.465E+04   TIME AVG. FORCE       1.758E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.028E-12   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.276E-05
+  CORRESPONDING RESIDUAL FORCE     -2.028E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.233E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2433,18 +2405,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.979E+04   TIME AVG. FORCE       1.197E+04
- LARGEST SCALED RESIDUAL FORCE     -4.192E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      3.518E+04   TIME AVG. FORCE       1.784E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.879E-12   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.192E-05
+  CORRESPONDING RESIDUAL FORCE     -1.879E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.216E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.256E-19   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2473,13 +2445,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      1.995E+04   TIME AVG. FORCE       1.209E+04
- LARGEST SCALED RESIDUAL FORCE     -4.109E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      3.570E+04   TIME AVG. FORCE       1.811E+04
+ LARGEST SCALED RESIDUAL FORCE      2.007E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.109E-05
+  CORRESPONDING RESIDUAL FORCE      2.007E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.199E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.306E-19   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2508,13 +2480,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.011E+04   TIME AVG. FORCE       1.220E+04
- LARGEST SCALED RESIDUAL FORCE     -4.029E-05   AT NODE          6   DOF  3
+ AVERAGE FORCE                      3.623E+04   TIME AVG. FORCE       1.837E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.460E-12   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -4.029E-05
+  CORRESPONDING RESIDUAL FORCE     -1.460E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.183E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.614E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2543,13 +2515,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.026E+04   TIME AVG. FORCE       1.232E+04
- LARGEST SCALED RESIDUAL FORCE     -3.951E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      3.675E+04   TIME AVG. FORCE       1.863E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.432E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.951E-05
+  CORRESPONDING RESIDUAL FORCE     -1.432E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.167E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.738E-19   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2578,13 +2550,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.041E+04   TIME AVG. FORCE       1.243E+04
- LARGEST SCALED RESIDUAL FORCE     -3.874E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      3.728E+04   TIME AVG. FORCE       1.890E+04
+ LARGEST SCALED RESIDUAL FORCE      1.950E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.874E-05
+  CORRESPONDING RESIDUAL FORCE      1.950E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.151E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.271E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2608,18 +2580,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.056E+04   TIME AVG. FORCE       1.255E+04
- LARGEST SCALED RESIDUAL FORCE     -3.800E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      3.780E+04   TIME AVG. FORCE       1.916E+04
+ LARGEST SCALED RESIDUAL FORCE      1.469E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.800E-05
+  CORRESPONDING RESIDUAL FORCE      1.469E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.135E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.953E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2643,18 +2615,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.071E+04   TIME AVG. FORCE       1.266E+04
- LARGEST SCALED RESIDUAL FORCE     -3.727E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      3.833E+04   TIME AVG. FORCE       1.942E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.561E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.727E-05
+  CORRESPONDING RESIDUAL FORCE     -2.561E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.120E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.278E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2683,13 +2655,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.086E+04   TIME AVG. FORCE       1.277E+04
- LARGEST SCALED RESIDUAL FORCE     -3.656E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      3.885E+04   TIME AVG. FORCE       1.968E+04
+ LARGEST SCALED RESIDUAL FORCE      1.926E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.656E-05
+  CORRESPONDING RESIDUAL FORCE      1.926E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.106E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.004E-19   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2718,13 +2690,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.100E+04   TIME AVG. FORCE       1.288E+04
- LARGEST SCALED RESIDUAL FORCE     -3.587E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      3.938E+04   TIME AVG. FORCE       1.995E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.675E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.587E-05
+  CORRESPONDING RESIDUAL FORCE     -1.675E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.091E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.059E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2753,13 +2725,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.114E+04   TIME AVG. FORCE       1.299E+04
- LARGEST SCALED RESIDUAL FORCE     -3.520E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      3.990E+04   TIME AVG. FORCE       2.021E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.843E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.520E-05
+  CORRESPONDING RESIDUAL FORCE     -1.843E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.077E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        8.602E-20   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2788,13 +2760,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.128E+04   TIME AVG. FORCE       1.309E+04
- LARGEST SCALED RESIDUAL FORCE     -3.454E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      4.043E+04   TIME AVG. FORCE       2.047E+04
+ LARGEST SCALED RESIDUAL FORCE      2.939E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.454E-05
+  CORRESPONDING RESIDUAL FORCE      2.939E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.063E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.365E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2823,13 +2795,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.142E+04   TIME AVG. FORCE       1.320E+04
- LARGEST SCALED RESIDUAL FORCE     -3.390E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      4.095E+04   TIME AVG. FORCE       2.073E+04
+ LARGEST SCALED RESIDUAL FORCE      1.187E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.390E-05
+  CORRESPONDING RESIDUAL FORCE      1.187E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.049E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.328E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2858,13 +2830,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.155E+04   TIME AVG. FORCE       1.331E+04
- LARGEST SCALED RESIDUAL FORCE     -3.328E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      4.148E+04   TIME AVG. FORCE       2.100E+04
+ LARGEST SCALED RESIDUAL FORCE      2.212E-12   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.328E-05
+  CORRESPONDING RESIDUAL FORCE      2.212E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.035E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2893,13 +2865,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.169E+04   TIME AVG. FORCE       1.341E+04
- LARGEST SCALED RESIDUAL FORCE     -3.267E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      4.200E+04   TIME AVG. FORCE       2.126E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.034E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.267E-05
+  CORRESPONDING RESIDUAL FORCE     -1.034E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.022E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.565E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2928,13 +2900,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.182E+04   TIME AVG. FORCE       1.351E+04
- LARGEST SCALED RESIDUAL FORCE     -3.207E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      4.253E+04   TIME AVG. FORCE       2.152E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.352E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.207E-05
+  CORRESPONDING RESIDUAL FORCE     -1.352E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.009E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.120E-19   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2963,13 +2935,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.195E+04   TIME AVG. FORCE       1.362E+04
- LARGEST SCALED RESIDUAL FORCE     -3.149E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.305E+04   TIME AVG. FORCE       2.178E+04
+ LARGEST SCALED RESIDUAL FORCE      1.984E-12   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.149E-05
+  CORRESPONDING RESIDUAL FORCE      1.984E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.963E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.202E-19   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2998,13 +2970,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.208E+04   TIME AVG. FORCE       1.372E+04
- LARGEST SCALED RESIDUAL FORCE     -3.092E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      4.358E+04   TIME AVG. FORCE       2.205E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.907E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.092E-05
+  CORRESPONDING RESIDUAL FORCE     -1.907E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.838E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.655E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3028,18 +3000,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.220E+04   TIME AVG. FORCE       1.382E+04
- LARGEST SCALED RESIDUAL FORCE     -3.036E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.410E+04   TIME AVG. FORCE       2.231E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.798E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -3.036E-05
+  CORRESPONDING RESIDUAL FORCE     -1.798E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.715E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.372E-19   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3063,18 +3035,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.233E+04   TIME AVG. FORCE       1.392E+04
- LARGEST SCALED RESIDUAL FORCE     -2.982E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      4.463E+04   TIME AVG. FORCE       2.257E+04
+ LARGEST SCALED RESIDUAL FORCE      2.682E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.982E-05
+  CORRESPONDING RESIDUAL FORCE      2.682E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.594E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.755E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3103,13 +3075,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.245E+04   TIME AVG. FORCE       1.402E+04
- LARGEST SCALED RESIDUAL FORCE     -2.929E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      4.515E+04   TIME AVG. FORCE       2.283E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.903E-12   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.929E-05
+  CORRESPONDING RESIDUAL FORCE     -1.903E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.475E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -2.403E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3138,13 +3110,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.257E+04   TIME AVG. FORCE       1.412E+04
- LARGEST SCALED RESIDUAL FORCE     -2.877E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.568E+04   TIME AVG. FORCE       2.310E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.138E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.877E-05
+  CORRESPONDING RESIDUAL FORCE     -2.138E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.358E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.834E-19   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3173,13 +3145,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.269E+04   TIME AVG. FORCE       1.422E+04
- LARGEST SCALED RESIDUAL FORCE     -2.827E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      4.620E+04   TIME AVG. FORCE       2.336E+04
+ LARGEST SCALED RESIDUAL FORCE     -1.794E-12   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.827E-05
+  CORRESPONDING RESIDUAL FORCE     -1.794E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.243E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.965E-19   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3208,13 +3180,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.281E+04   TIME AVG. FORCE       1.431E+04
- LARGEST SCALED RESIDUAL FORCE     -2.777E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.673E+04   TIME AVG. FORCE       2.362E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.210E-12   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.777E-05
+  CORRESPONDING RESIDUAL FORCE     -2.210E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.131E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.176E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3243,13 +3215,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.293E+04   TIME AVG. FORCE       1.441E+04
- LARGEST SCALED RESIDUAL FORCE     -2.729E-05   AT NODE          6   DOF  3
+ AVERAGE FORCE                      4.725E+04   TIME AVG. FORCE       2.388E+04
+ LARGEST SCALED RESIDUAL FORCE      1.730E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.729E-05
+  CORRESPONDING RESIDUAL FORCE      1.730E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.020E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.       -5.785E-20   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3278,13 +3250,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.304E+04   TIME AVG. FORCE       1.450E+04
- LARGEST SCALED RESIDUAL FORCE     -2.682E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.778E+04   TIME AVG. FORCE       2.415E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.223E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.682E-05
+  CORRESPONDING RESIDUAL FORCE     -2.223E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.911E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.648E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3313,13 +3285,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.315E+04   TIME AVG. FORCE       1.460E+04
- LARGEST SCALED RESIDUAL FORCE     -2.636E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.830E+04   TIME AVG. FORCE       2.441E+04
+ LARGEST SCALED RESIDUAL FORCE      1.152E-12   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.636E-05
+  CORRESPONDING RESIDUAL FORCE      1.152E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.804E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.440E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3348,13 +3320,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.327E+04   TIME AVG. FORCE       1.469E+04
- LARGEST SCALED RESIDUAL FORCE     -2.591E-05   AT NODE          1   DOF  1
+ AVERAGE FORCE                      4.883E+04   TIME AVG. FORCE       2.467E+04
+ LARGEST SCALED RESIDUAL FORCE     -3.659E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.591E-05
+  CORRESPONDING RESIDUAL FORCE     -3.659E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.699E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.555E-19   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3378,18 +3350,18 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.338E+04   TIME AVG. FORCE       1.478E+04
- LARGEST SCALED RESIDUAL FORCE     -2.546E-05   AT NODE          6   DOF  3
+ AVERAGE FORCE                      4.935E+04   TIME AVG. FORCE       2.493E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.506E-12   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.546E-05
+  CORRESPONDING RESIDUAL FORCE     -2.506E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.596E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.225E-19   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3418,13 +3390,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.349E+04   TIME AVG. FORCE       1.487E+04
- LARGEST SCALED RESIDUAL FORCE     -2.503E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      4.988E+04   TIME AVG. FORCE       2.520E+04
+ LARGEST SCALED RESIDUAL FORCE      3.209E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.503E-05
+  CORRESPONDING RESIDUAL FORCE      3.209E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.494E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.084E-19   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3453,13 +3425,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.359E+04   TIME AVG. FORCE       1.497E+04
- LARGEST SCALED RESIDUAL FORCE     -2.461E-05   AT NODE          4   DOF  1
+ AVERAGE FORCE                      5.040E+04   TIME AVG. FORCE       2.546E+04
+ LARGEST SCALED RESIDUAL FORCE      1.460E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.461E-05
+  CORRESPONDING RESIDUAL FORCE      1.460E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.394E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.440E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3488,13 +3460,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.370E+04   TIME AVG. FORCE       1.506E+04
- LARGEST SCALED RESIDUAL FORCE     -2.420E-05   AT NODE          2   DOF  1
+ AVERAGE FORCE                      5.093E+04   TIME AVG. FORCE       2.572E+04
+ LARGEST SCALED RESIDUAL FORCE     -4.549E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.420E-05
+  CORRESPONDING RESIDUAL FORCE     -4.549E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.296E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.713E-19   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3523,13 +3495,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.380E+04   TIME AVG. FORCE       1.514E+04
- LARGEST SCALED RESIDUAL FORCE     -2.379E-05   AT NODE          3   DOF  1
+ AVERAGE FORCE                      5.145E+04   TIME AVG. FORCE       2.598E+04
+ LARGEST SCALED RESIDUAL FORCE      5.959E-12   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.379E-05
+  CORRESPONDING RESIDUAL FORCE      5.959E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.200E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.       -3.488E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3558,13 +3530,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.391E+04   TIME AVG. FORCE       1.523E+04
- LARGEST SCALED RESIDUAL FORCE     -2.340E-05   AT NODE          5   DOF  3
+ AVERAGE FORCE                      5.198E+04   TIME AVG. FORCE       2.625E+04
+ LARGEST SCALED RESIDUAL FORCE     -2.450E-12   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.340E-05
+  CORRESPONDING RESIDUAL FORCE     -2.450E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.105E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        3.964E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3593,13 +3565,13 @@
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
- AVERAGE FORCE                      2.401E+04   TIME AVG. FORCE       1.532E+04
- LARGEST SCALED RESIDUAL FORCE     -2.301E-05   AT NODE          2   DOF  3
+ AVERAGE FORCE                      5.250E+04   TIME AVG. FORCE       2.651E+04
+ LARGEST SCALED RESIDUAL FORCE     -3.056E-12   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
-  CORRESPONDING RESIDUAL FORCE     -2.301E-05
+  CORRESPONDING RESIDUAL FORCE     -3.056E-12
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.011E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.       -1.471E-19   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3623,9 +3595,9 @@
      ANALYSIS SUMMARY:
      TOTAL OF        100  INCREMENTS
                        0  CUTBACKS IN AUTOMATIC INCREMENTATION
-                     101  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
-                     101  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
-                     101  INVOLVE MATRIX DECOMPOSITION, INCLUDING
+                     100  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
+                     100  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
+                       1  INVOLVE MATRIX DECOMPOSITION, INCLUDING
                        0  DECOMPOSITION(S) OF THE MASS MATRIX
                        1  REORDERING OF EQUATIONS TO MINIMIZE WAVEFRONT
                        0  ADDITIONAL RESIDUAL EVALUATIONS FOR LINE SEARCHES
@@ -3642,5 +3614,5 @@
        USER TIME (SEC)      =     0.50    
        SYSTEM TIME (SEC)    =     0.30    
        TOTAL CPU TIME (SEC) =     0.80    
-       WALLCLOCK TIME (SEC) =            1
+       WALLCLOCK TIME (SEC) =            2
        MEMORY PEAK (GB)     =            0

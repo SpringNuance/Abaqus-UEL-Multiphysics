@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:57:06
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 20:44:03
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -67,6 +67,10 @@
    *******************************************************
 
 
+ ***WARNING: Line #44 has been truncated.
+
+ ***WARNING: Line #47 has been truncated.
+
      END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
    ***********************************************************
 
@@ -77,9 +81,13 @@
    ***************************
 
 
+  *userelement, nodes=8, type=U1, properties=240, variables=288, coordinates=3
   *Heading
-  *Element, type=C3D8T
+  *Element, type=U1
+  *Element, type=C3D8
   *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION
   *Elset, elset=ASSEMBLY_BOTTOM_SIDE
   *Elset, elset=ASSEMBLY_TOP_SIDE
   *Elset, elset=ASSEMBLY_WHOLE_CUBE
@@ -89,17 +97,18 @@
   *Elset, elset=ASSEMBLY_ZSYMM_SIDE
   *coupledtemperature-displacement, creep=NONE, deltmx=100
   *material, name=HYDROGEN_SUBROUTINE
-  *conductivity
   *density
-  *elastic
+  *depvar
   *specificheat
 
  ***WARNING: THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING 
              INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE 
              *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE 
              ASSUMED.
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=HYDROGEN_SUBROUTINE
-  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=HYDROGEN_SUBROUTINE
+  *usermaterial, constants=1
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=HYDROGEN_SUBROUTINE
+  *userelement, nodes=8, type=U1, properties=240, variables=288, coordinates=3
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=HYDROGEN_SUBROUTINE
   *boundary
   *boundary
   *boundary, amplitude=LOADING
@@ -110,6 +119,7 @@
   *boundary, amplitude=LOADING
   *boundary
   *boundary
+  *uelproperty, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
   *output, field, numberinterval=100
   *output, history, frequency=0
   *elementoutput, directions=YES
@@ -143,8 +153,9 @@
              INSTEAD OF AT THE TIME POINTS. IN ADDITION, THE NUMBER OF 
              INCREMENTS REQUIRED TO COMPLETE THE STEP WILL IN GENERAL INCREASE.
 
- ***WARNING: THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S 
-             OUTPUT
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
   *boundary
   *Step, name=Step-1, nlgeom=YES, inc=10000
   *coupledtemperature-displacement, creep=NONE, deltmx=100
@@ -159,7 +170,7 @@
                             P R O B L E M   S I Z E
 
 
-          NUMBER OF ELEMENTS IS                                     1
+          NUMBER OF ELEMENTS IS                                     2
           NUMBER OF NODES IS                                        8
           NUMBER OF NODES DEFINED BY THE USER                       8
           TOTAL NUMBER OF VARIABLES IN THE MODEL                   32
@@ -176,10 +187,10 @@
        USER TIME (SEC)      =     0.10    
        SYSTEM TIME (SEC)    =      0.0    
        TOTAL CPU TIME (SEC) =     0.10    
-       WALLCLOCK TIME (SEC) =            1
+       WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:57:12
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 20:44:08
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -215,7 +226,7 @@
               OPERATIONS           REQUIRED          MINIMIZE I/O
              PER ITERATION           (MB)               (MB)
   
-     1          2.19E+04               17                 24
+     1          1.47E+04               17                 24
   
  NOTE:
       (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
@@ -253,13 +264,12 @@
 
 
                               ANALYSIS COMPLETE
-                              WITH      3 WARNING MESSAGES ON THE DAT FILE
-                              AND     101 WARNING MESSAGES ON THE MSG FILE
+                              WITH      6 WARNING MESSAGES ON THE DAT FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.60    
-       SYSTEM TIME (SEC)    =     0.30    
-       TOTAL CPU TIME (SEC) =     0.90    
-       WALLCLOCK TIME (SEC) =            2
+       USER TIME (SEC)      =      1.1    
+       SYSTEM TIME (SEC)    =     0.70    
+       TOTAL CPU TIME (SEC) =      1.8    
+       WALLCLOCK TIME (SEC) =            5

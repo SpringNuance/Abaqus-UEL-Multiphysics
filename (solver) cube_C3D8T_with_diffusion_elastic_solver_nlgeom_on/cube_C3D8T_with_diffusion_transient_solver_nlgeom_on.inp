@@ -71,7 +71,7 @@
 *Conductivity
  1e-05,
 *Density
-7900.,
+1.,
 *Elastic
  2.1e+11, 0.3
 *Specific Heat

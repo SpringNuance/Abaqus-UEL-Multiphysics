@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 12-Oct-2024   Time 21:52:24
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:57:57
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -170,12 +170,12 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =     0.10    
-       SYSTEM TIME (SEC)    =      0.0    
-       TOTAL CPU TIME (SEC) =     0.10    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.20    
        WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 12-Oct-2024   Time 21:52:29
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:58:02
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -243,11 +243,12 @@
 
                               ANALYSIS COMPLETE
                               WITH      3 WARNING MESSAGES ON THE DAT FILE
+                              AND     100 WARNING MESSAGES ON THE MSG FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.40    
-       SYSTEM TIME (SEC)    =     0.40    
-       TOTAL CPU TIME (SEC) =     0.80    
+       USER TIME (SEC)      =     0.70    
+       SYSTEM TIME (SEC)    =     0.30    
+       TOTAL CPU TIME (SEC) =      1.0    
        WALLCLOCK TIME (SEC) =            2

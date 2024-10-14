@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 12-Oct-2024   Time 19:35:41
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:58:02
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -117,11 +117,11 @@
   *output, field, numberinterval=100
   *output, history, frequency=0
   *elementoutput, directions=YES
-  *Step, name=Step-1, nlgeom=YES, inc=10000
+  *Step, name=Step-1, nlgeom=NO, inc=10000
   *output, field, numberinterval=100
   *output, history, frequency=0
-  *Step, name=Step-1, nlgeom=YES, inc=10000
-  *Step, name=Step-1, nlgeom=YES, inc=10000
+  *Step, name=Step-1, nlgeom=NO, inc=10000
+  *Step, name=Step-1, nlgeom=NO, inc=10000
   *coupledtemperature-displacement, creep=NONE
   *boundary, amplitude=LOADING
   *boundary
@@ -139,7 +139,7 @@
  ***WARNING: THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S 
              OUTPUT
   *boundary
-  *Step, name=Step-1, nlgeom=YES, inc=10000
+  *Step, name=Step-1, nlgeom=NO, inc=10000
   *coupledtemperature-displacement, creep=NONE
   *boundary, amplitude=LOADING
   *boundary
@@ -166,12 +166,12 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =     0.10    
-       SYSTEM TIME (SEC)    =     0.10    
-       TOTAL CPU TIME (SEC) =     0.20    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
        WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 12-Oct-2024   Time 19:35:47
+   Abaqus 2023.HF4                                  Date 14-Oct-2024   Time 15:58:08
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -191,8 +191,6 @@
           THE RATE DEPENDENCY WILL BE CONSIDERED IN THIS STEP
 
           CREEP AND SWELLING EFFECTS WILL BE IGNORED.
-
-          LARGE DISPLACEMENT THEORY WILL BE USED
 
           UNSYMMETRIC MATRIX STORAGE AND SOLUTION WILL BE USED
   
@@ -248,4 +246,4 @@
        USER TIME (SEC)      =     0.50    
        SYSTEM TIME (SEC)    =     0.30    
        TOTAL CPU TIME (SEC) =     0.80    
-       WALLCLOCK TIME (SEC) =            1
+       WALLCLOCK TIME (SEC) =            2

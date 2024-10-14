@@ -69,9 +69,9 @@
 ** 
 *Material, name=hydrogen_subroutine
 *Conductivity
-1.,
+ 1e-05,
 *Density
-7900.,
+1.,
 *Elastic
  2.1e+11, 0.3
 *Specific Heat
@@ -86,7 +86,7 @@ xsymm_side, XSYMM
 ** 
 ** STEP: Step-1
 ** 
-*Step, name=Step-1, nlgeom=YES, inc=10000
+*Step, name=Step-1, nlgeom=NO, inc=10000
 *Coupled Temperature-displacement, creep=none
 1., 100., 
 ** 
