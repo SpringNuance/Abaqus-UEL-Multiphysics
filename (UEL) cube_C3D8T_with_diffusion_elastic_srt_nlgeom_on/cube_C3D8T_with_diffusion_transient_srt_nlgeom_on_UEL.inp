@@ -16,7 +16,7 @@
 7, 4.74974504e-11, 0.00100000005,           0.
 8, 4.74974504e-11,           0.,           0.
 *************************************************
-*User element, nodes=8, type=U1, properties=240, coordinates=3, variables=288
+*User element, nodes=8, type=U1, properties=248, coordinates=3, variables=288
 1, 2, 3
 1, 11
 *************************************************
@@ -37,15 +37,18 @@
 **
 ** HYDROGEN DIFFUSION PROPERTIES
 **
-8.31446e0, 300.0e0, 2e-06, 3.07e-10, 3, 1, 602213999999999969067008, 85180000000000005161544056832
-** Universal gas constant - R (N*m)/(mol*K), Temperature - T (K), Partial molar volume - VH (m^3/mol), Diffusion coefficient - DL (m^2/s)
-** mode_trap (1 - no trap I 2 - kumnick, krom | 3 - sofronis, dadfarnia), crystal_structure (1 - BCC | 2 - FCC), Avogadro's constant - avogadro (1/mol), Number of solvent metal atoms per unit volume - NL (1/m^3)
-1.0e0, 1.0e0, 1.0e0, 0.0d0, 84639999999999991611392, 846400000000000043352326144,  -20.2e+3, -58.6e+3
-** Number of interstitial sites per trap site (dislocations) - alpha_dis (dimless), Number of interstitial sites per trap site (grain boundaries) - alpha_gb (dimless), Number of interstitial sites per trap site (carbides) - alpha_carb (dimless), Number of trap type of dislocations - NT_dis (1/m^3)
-** Number of trap type of grain boundaries - NT_gb (1/m^3), Number of trap type of carbides - NT_carb (1/m^3), Binding energy of hydrogen to dislocations - WB_dis (N*m/mol), Binding energy of hydrogen to grain boundaries - WB_gb (N*m/mol)
--11.5e+3, 6.0e0, 1.0e0, 2.866e-10, 3.571e-10, 2.0e+16, 1.0e+10 , 0.0
-** Binding energy of hydrogen to carbides - WB_carb (N*m/mol), Number of hydrogen atoms that can reside in each BCC lattice site - beta_BCC (dimless), Number of hydrogen atoms that can reside in each FCC lattice site - beta_FCC (dimless), Lattice parameter for BCC - a_lattice_BCC (m)
-** Lattice parameter for FCC - a_lattice_FCC (m), gamma fitting parameter in Dadfarnia et al. - gamma (1/m^2), Dislocation density for the annealed material in Dadfarnia et al. - rho_d0 (1/m^2), none
+1, 1, 8.31446e0, 300.0e0, 2e-06, 3.07e-10, 3, 1
+** Density for diffusion problem - rho_diff (kg/m^3), Specific heat for diffusion problem - cp (N*m/m^3), Universal gas constant - R (N*m)/(mol*K), Temperature - T (K)
+** Partial molar volume - VH (m^3/mol), Diffusion coefficient - DL (m^2/s), mode_trap (1 - no trap I 2 - kumnick, krom | 3 - sofronis, dadfarnia), crystal_structure (1 - BCC | 2 - FCC)
+602213999999999969067008, 85180000000000005161544056832, 1.0e0, 1.0e0, 1.0e0, 0.0d0, 84639999999999991611392, 846400000000000043352326144
+** Avogadro's constant - avogadro (1/mol), Number of solvent metal atoms per unit volume - NL (1/m^3), Number of interstitial sites per trap site (dislocations) - alpha_dis (dimless), Number of interstitial sites per trap site (grain boundaries) - alpha_gb (dimless)
+** Number of interstitial sites per trap site (carbides) - alpha_carb (dimless), Number of trap type of dislocations - NT_dis (1/m^3), Number of trap type of grain boundaries - NT_gb (1/m^3), Number of trap type of carbides - NT_carb (1/m^3)
+ -20.2e+3, -58.6e+3, -11.5e+3, 6.0e0, 1.0e0, 2.866e-10, 3.571e-10, 2.0e+16
+** Binding energy of hydrogen to dislocations - WB_dis (N*m/mol), Binding energy of hydrogen to grain boundaries - WB_gb (N*m/mol), Binding energy of hydrogen to carbides - WB_carb (N*m/mol), Number of hydrogen atoms that can reside in each BCC lattice site - beta_BCC (dimless)
+** Number of hydrogen atoms that can reside in each FCC lattice site - beta_FCC (dimless), Lattice parameter for BCC - a_lattice_BCC (m), Lattice parameter for FCC - a_lattice_FCC (m), gamma fitting parameter in Dadfarnia et al. - gamma (1/m^2)
+1.0e+10 , 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+** Dislocation density for the annealed material in Dadfarnia et al. - rho_d0 (1/m^2), none, none, none
+** none, none, none, none
 **
 ** ======================
 **
@@ -221,8 +224,8 @@ zsymm_side, ZSYMM
 **
 *Output, field, number interval=100
 *Node Output
-RF, U
+RF, U, NT, RFL
 *Element Output, directions=YES
-SDV,
+SDV, HFL, TEMP
 *Output, history, frequency=0
 *End Step

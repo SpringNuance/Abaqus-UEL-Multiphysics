@@ -90,6 +90,9 @@ module common_block
     real(kind=dp), parameter :: conversion_wtppm_to_molfrac = 55.4105d-6 ! molfrac 
     ! Inverse of conversion_wtppm_to_mol
     real(kind=dp), parameter :: conversion_wtppm_to_mol = 7.838545801d0 ! mol
+    ! In hydrogen diffusion analogy to heat transfer, density and specific heat are 1
+    real(kind=dp), parameter :: density_hydro = 1.0d0
+    real(kind=dp), parameter :: specific_heat_hydro = 1.0d0
 
     real(kind=dp), parameter :: pi = 3.14159d0 ! dimless
     real(kind=dp), parameter :: inv_pi = 1.0d0 / 3.14159d0 ! dimless
@@ -433,7 +436,7 @@ end
 
 ! This is isotropic von Mises plasticity model
 
-subroutine UMAT_von_Mises(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+subroutine UMAT_von_Mises(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                             ndi,nshr,ntens,ndim,nstatv,props,nprops,drot, &
                             dfgrd0,dfgrd1,noel,npt,jstep,kinc)
 
@@ -644,7 +647,7 @@ end
 
 ! This is isotropic elastic model
 
-subroutine UMAT_elastic(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+subroutine UMAT_elastic(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                             ndi,nshr,ntens,ndim,nstatv,props,nprops,drot, &
                             dfgrd0,dfgrd1,noel,npt,jstep,kinc)
 
@@ -812,30 +815,34 @@ end
 
 !***********************************************************************
 
-subroutine UMATHT_diffusion(u_diff,dudt_diff,dudg_diff,flux_diff,dfdt_diff,dfdg_diff, &
-                              temp_diff,dtemp_diff,dtemdx_diff,time,dtime,ndim, &
-                              statev,nstatv,props,nprops,noel,npt,kstep,kinc)
+subroutine UMATHT_diffusion(u_heat_old,u_heat_new,dudt_heat,dudg_heat, &
+                            flux_heat,dfdt_heat,dfdg_heat, &
+                            temp_kinpt_old,dtemp_kinpt,dtemdx_kinpt_new,time,dtime,ndim, &
+                            statev,nstatv,props,nprops,noel,npt,kstep,kinc)
 !   
     use precision
     include 'aba_param.inc'
 !   ntgrd is exactly the same as ndim in deformation field
-    real(kind=dp), dimension(ndim) :: dudg_diff,flux_diff,dfdt_diff,dtemdx_diff
-    real(kind=dp), dimension(ndim,ndim) :: dfdg_diff
+    real(kind=dp), dimension(ndim) :: dudg_heat,flux_heat,dfdt_heat,dtemdx_kinpt_new
+    real(kind=dp), dimension(ndim,ndim) :: dfdg_heat
     real(kind=dp), dimension(nstatv) :: statev
     real(kind=dp), dimension(nprops) :: props
     real(kind=dp), dimension(2) :: time
 
     conductivity = 1.0d-5
-    specific_heat = 1.0d0
+    cp_heat = 1.0d0
 
-    dudt_diff = specific_heat
-    du_diff = dudt_diff * dtemp_diff
-    u_diff = u_diff + du_diff
+    dudt_heat = cp_heat
+    du_heat = dudt_heat * dtemp_kinpt
+    u_heat_new = u_heat_old + du_heat
+    
+    dudg_heat = 0.0d0
+    dfdg_heat = 0.0d0
 
     do kdim=1, ndim
-        flux_diff(kdim) = - conductivity * dtemdx_diff(kdim)
-        dfdt_diff(kdim) = 0.0d0
-        dfdg_diff(kdim,kdim) = - conductivity
+        flux_heat(kdim) = - conductivity * dtemdx_kinpt_new(kdim)
+        dfdt_heat(kdim) = 0.0d0
+        dfdg_heat(kdim,kdim) = - conductivity
     end do
 
 return
@@ -861,7 +868,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     ! Degree of freedom order for u, du, v, a
     ! ux_node1, uy_node1, uz_node1, ..., ux_nnode, uy_nnode, uz_nnode
-    ! Then CL_node1, CL_node2, ..., CL_nnode, then phi_node1, phi_node2, ..., phi_nnode
+    ! Then temp_node1, temp_node2, ..., temp_nnode, then phi_node1, phi_node2, ..., phi_nnode
 
     integer, parameter :: ndim = 3 ! Number of spatial dimensions
     integer, parameter :: ntens = 6 ! Number of stress-strain components
@@ -873,8 +880,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! The starting and ending index of the dof in u, du, v, a
     integer, parameter :: start_u_idx = 1
     integer, parameter :: end_u_idx = 24 ! = ndim * nnode
-    integer, parameter :: start_CL_idx = 25
-    integer, parameter :: end_CL_idx = 32
+    integer, parameter :: start_temp_idx = 25
+    integer, parameter :: end_temp_idx = 32
     integer, parameter :: start_phi_idx = 33
     integer, parameter :: end_phi_idx = 40
 
@@ -886,16 +893,16 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! TENSORS COMMON TO ALL FIELDS (DEFORMATION, DIFFUSION, DAMAGE)
     ! ==============================================================
 
-    real(kind=dp), dimension(mcrd,nnode) :: coords_current, coords_prev, coords_initial
+    real(kind=dp), dimension(mcrd,nnode) :: coords_new, coords_old, coords_initial
     real(kind=dp), dimension(nnode) :: N_shape_node_to_kinpt                 
     real(kind=dp), dimension(ninpt) :: N_shape_int_to_knode         
     real(kind=dp), dimension(ndim,nnode) :: N_deriv_local_kinpt           
-    real(kind=dp), dimension(ndim,nnode) :: N_deriv_global_kinpt_current      
-    real(kind=dp), dimension(ndim,nnode) :: N_deriv_global_kinpt_prev      
-    real(kind=dp), dimension(ndim,nnode) :: N_bar_deriv_global_current     
-    real(kind=dp), dimension(ndim,nnode) :: N_bar_deriv_global_prev    
-    real(kind=dp), dimension(ndim,ndim) :: xjac_current, xjaci_current
-    real(kind=dp), dimension(ndim,ndim) :: xjac_prev, xjaci_prev
+    real(kind=dp), dimension(ndim,nnode) :: N_deriv_global_kinpt_new      
+    real(kind=dp), dimension(ndim,nnode) :: N_deriv_global_kinpt_old      
+    real(kind=dp), dimension(ndim,nnode) :: N_bar_deriv_global_new     
+    real(kind=dp), dimension(ndim,nnode) :: N_bar_deriv_global_old    
+    real(kind=dp), dimension(ndim,ndim) :: xjac_new, xjaci_new
+    real(kind=dp), dimension(ndim,ndim) :: xjac_old, xjaci_old
     real(kind=dp), dimension(ndim,ndim) :: identity
     real(kind=dp), dimension(nstatv) :: statev
 
@@ -903,57 +910,67 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! TENSORS DEFINED FOR THE DEFORMATION FIELD: UX, UY, UZ
     ! =======================================================
 
-    real(kind=dp), dimension(ndim,nnode) :: u_current, du_current, u_prev
-    real(kind=dp), dimension(ndim*nnode) :: u_current_flat, du_current_flat, u_prev_flat
+    ! Defined at nodal points
+    real(kind=dp), dimension(ndim,nnode) :: u_node_new, du_node_new, u_node_old
+    real(kind=dp), dimension(ndim*nnode) :: u_node_new_flat, du_node_new_flat, u_node_old_flat
 
-    real(kind=dp), dimension(ndim,ndim) :: F_grad_current, F_grad_prev, F_grad_inv_prev, dF_grad    
-    real(kind=dp), dimension(ndim,ndim) :: F_grad_bar_current, F_grad_bar_prev, F_grad_bar_inv_prev, dF_grad_bar            
-    real(kind=dp), dimension(ndim,ndim) :: u_grad_current, u_grad_prev, du_grad               
-    real(kind=dp), dimension(ndim,ndim) :: C_right_Cauchy_current, C_right_Cauchy_prev              
-    real(kind=dp), dimension(ndim,ndim) :: b_left_Cauchy_current, b_left_Cauchy_prev              
-    real(kind=dp), dimension(ndim,ndim) :: U_right_stretch_current, U_right_stretch_prev              
-    real(kind=dp), dimension(ndim,ndim) :: U_right_stretch_inv_current, U_right_stretch_inv_prev            
-    real(kind=dp), dimension(ndim,ndim) :: v_left_stretch_current, v_left_stretch_prev               
-    real(kind=dp), dimension(ndim,ndim) :: v_left_stretch_inv_current, v_left_stretch_inv_prev             
-    real(kind=dp), dimension(ndim,ndim) :: R_right_rotation_current, R_right_rotation_prev, R_right_rotation_inv_prev
+    real(kind=dp), dimension(ndim,ndim) :: F_grad_new, F_grad_old, F_grad_inv_old, dF_grad    
+    real(kind=dp), dimension(ndim,ndim) :: F_grad_bar_new, F_grad_bar_old, F_grad_bar_inv_old, dF_grad_bar            
+    real(kind=dp), dimension(ndim,ndim) :: u_grad_new, u_grad_old, du_grad               
+    real(kind=dp), dimension(ndim,ndim) :: C_right_Cauchy_new, C_right_Cauchy_old              
+    real(kind=dp), dimension(ndim,ndim) :: b_left_Cauchy_new, b_left_Cauchy_old              
+    real(kind=dp), dimension(ndim,ndim) :: U_right_stretch_new, U_right_stretch_old              
+    real(kind=dp), dimension(ndim,ndim) :: U_right_stretch_inv_new, U_right_stretch_inv_old            
+    real(kind=dp), dimension(ndim,ndim) :: v_left_stretch_new, v_left_stretch_old               
+    real(kind=dp), dimension(ndim,ndim) :: v_left_stretch_inv_new, v_left_stretch_inv_old             
+    real(kind=dp), dimension(ndim,ndim) :: R_right_rotation_new, R_right_rotation_old, R_right_rotation_inv_old
     real(kind=dp), dimension(ndim,ndim) :: dR_right_rotation, dR_right_rotation_inv               
-    real(kind=dp), dimension(ndim,ndim) :: R_left_rotation_current, R_left_rotation_prev, R_left_rotation_inv_prev
+    real(kind=dp), dimension(ndim,ndim) :: R_left_rotation_new, R_left_rotation_old, R_left_rotation_inv_old
     real(kind=dp), dimension(ndim,ndim) :: dR_left_rotation, dR_left_rotation_inv               
-    real(kind=dp), dimension(ndim,ndim) :: eps_Hencky_current, eps_Hencky_prev, deps_Hencky                     
-    real(kind=dp), dimension(ndim,ndim) :: eps_Green_current, eps_Green_prev, deps_Green              
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_kinpt_current, Bu_kinpt_prev        
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kinpt_current, Bu_vol_kinpt_prev
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_current, Bu_bar_prev         
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_vol_current, Bu_bar_vol_prev          
+    real(kind=dp), dimension(ndim,ndim) :: eps_Hencky_new, eps_Hencky_old, deps_Hencky                     
+    real(kind=dp), dimension(ndim,ndim) :: eps_Green_new, eps_Green_old, deps_Green              
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_kinpt_new, Bu_kinpt_old        
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kinpt_new, Bu_vol_kinpt_old
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_new, Bu_bar_old         
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_vol_new, Bu_bar_vol_old          
 
     real(kind=dp), dimension(ntens,ntens) :: ddsdde
-    real(kind=dp), dimension(ntens) :: stress 
-    real(kind=dp), dimension(ndim, ndim) :: stran_tensor_current, stran_tensor_prev
-    real(kind=dp), dimension(ntens) :: stran_current, stran_prev, dstran                     
-    real(kind=dp), dimension(ntens) :: eelas, eplas                       
-
+    real(kind=dp), dimension(ntens) :: stress, eelas, eplas
+    real(kind=dp), dimension(ndim, ndim) :: stran_tensor_new, stran_tensor_old, dstran_tensor ! Full tensor notation 
+    real(kind=dp), dimension(ntens) :: stran_new, stran_old, dstran                           ! Voigt notation
+                   
     ! =====================================================================!
     ! TENSORS DEFINED FOR THE DIFFUSION FIELD: CL (hydrogen concentration) !
     ! =====================================================================!
 
-    real(kind=dp), dimension(nnode) :: CL_current, dCL_current, CL_prev
+    ! Defined at nodal points
+    real(kind=dp), dimension(nnode) :: temp_node_new, dtemp_node, temp_node_old
 
-    real(kind=dp), dimension(ndim) :: dudg_diff, flux_diff, dfdt_diff, dtemdx_diff
-    real(kind=dp), dimension(ndim,ndim) :: dfdg_diff
+    ! Defined at each integration point
+    real(kind=dp) :: temp_kinpt_new, dtemp_kinpt, temp_kinpt_old
+    real(kind=dp), dimension(ndim) :: dtemdx_kinpt_new
 
-    real(kind=dp), dimension(nnode,nnode)  :: M_conc_capacity       ! Concentration capacity matrix (for hydrogen diffusion)
-    real(kind=dp), dimension(nnode,nnode) :: K_diffusitivity        ! Diffusitivity matrix (for hydrogen diffusion)
+    real(kind=dp) :: u_heat_new, u_heat_old, dudt_heat, du_heat, dr_heat
+    real(kind=dp), dimension(ndim) :: dudg_heat, flux_heat, dfdt_heat
+    real(kind=dp), dimension(ndim,ndim) :: dfdg_heat
+
     real(kind=dp), dimension(nnode) :: sig_H_knode                 
     real(kind=dp), dimension(nnode) :: softened_sig_H_knode      
     real(kind=dp), dimension(nnode,nnode) :: softened_sig_H_kinpt
     real(kind=dp), dimension(ndim,nnode) :: softened_grad_sig_kinpt
 
+    real(kind=dp), dimension(nnode,nnode)  :: M_capacitance, K_conductivity
+    real(kind=dp), dimension(nnode,nnode) :: dudt_contribution, dudg_contribution, dfdt_contribution, dfdg_contribution
+    real(kind=dp), dimension(nnode) :: f_node_heat, dudt_heat_contribution, dr_heat_contribution, flux_contribution
+
+    
 
     ! =============================================== !
     ! TENSORS DEFINED FOR THE PHASE FIELD DAMAGE: phi !
     ! =============================================== !
-
-    real(kind=dp), dimension(nnode) :: phi_current, dphi_current, phi_prev
+    
+    ! Defined at nodal points
+    real(kind=dp), dimension(nnode) :: phi_node_new, dphi_node, phi_node_old
 
     ! Declaring all props as real(kind=dp) for consistency
 
@@ -989,128 +1006,125 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     do kdim=1,ndim
         do knode=1,nnode
             disp_index = ndim * knode - ndim + kdim
-            u_current(kdim,knode) = u(disp_index)
-            du_current(kdim,knode) = du(disp_index, 1)
-            u_prev(kdim,knode) = u_current(kdim,knode) - du_current(kdim,knode)
+            u_node_new(kdim,knode) = u(disp_index)
+            du_node_new(kdim,knode) = du(disp_index, 1)
+            u_node_old(kdim,knode) = u_node_new(kdim,knode) - du_node_new(kdim,knode)
         end do
     end do
 
-    u_current_flat(1:ndim*nnode) = u(start_u_idx:end_u_idx)
-    du_current_flat(1:ndim*nnode) = du(start_u_idx:end_u_idx, 1)
-    u_prev_flat(1:ndim*nnode) = u_current_flat - du_current_flat
+    u_node_new_flat(1:ndim*nnode) = u(start_u_idx:end_u_idx)
+    du_node_new_flat(1:ndim*nnode) = du(start_u_idx:end_u_idx, 1)
+    u_node_old_flat(1:ndim*nnode) = u_node_new_flat - du_node_new_flat
     
-    ! For diffusion field
 
-    CL_current(1:nnode) = u(start_CL_idx:end_CL_idx)
-    dCL_current(1:nnode) = du(start_CL_idx:end_CL_idx, 1)
-    CL_prev(1:nnode) = CL_current(1:nnode) - dCL_current(1:nnode)
 
     ! For damage field
 
-    ! phi_current(1:nnode) = u(start_phi_idx:end_phi_idx)
-    ! dphi_current(1:nnode) = du(start_phi_idx:end_phi_idx, 1)
-    ! phi_prev(1:nnode) = phi_current(1:nnode) - dphi_current(1:nnode)
+    ! phi_node_new(1:nnode) = u(start_phi_idx:end_phi_idx)
+    ! dphi_node(1:nnode) = du(start_phi_idx:end_phi_idx, 1)
+    ! phi_node_old(1:nnode) = phi_node_new(1:nnode) - dphi_node(1:nnode)
 
     ! Current coordinates of the element jelem
-    ! It will be used to calculate N_deriv_global_kinpt_current for updated Lagrangian formulation
+    ! It will be used to calculate N_deriv_global_kinpt_new for updated Lagrangian formulation
+    
     coords_initial = coords
 
     if (lflags(2) == 0) then ! NLGEOM off
         ! Use original coordinates for total Lagrangian formulation
-        coords_current = coords_initial
-        coords_prev = coords_initial
+        coords_new = coords_initial
+        coords_old = coords_initial
     else if (lflags(2) == 1) then ! NLGEOM on
         ! Use updated coordinates for updated Lagrangian formulation
-        coords_current = coords_initial + u_current
-        coords_prev = coords_initial + u_prev
+        coords_new = coords_initial + u_node_new
+        coords_old = coords_initial + u_node_old
     end if
     
     
-    N_bar_deriv_global_current = 0.0d0
-    N_bar_deriv_global_prev = 0.0d0
-    elem_vol_current = 0.0d0
-    elem_vol_prev = 0.0d0
+    N_bar_deriv_global_new = 0.0d0
+    N_bar_deriv_global_old = 0.0d0
+    elem_vol_new = 0.0d0
+    elem_vol_old = 0.0d0
 
     ! Average volumetric strain
-    omega_hencky_stran_current = 0.0d0
-    omega_hencky_stran_prev = 0.0d0
+    omega_hencky_stran_new = 0.0d0
+    omega_hencky_stran_old = 0.0d0
 
-    djac_current_bar = 0.0d0
-    djac_prev_bar = 0.0d0 
+    djac_bar_new = 0.0d0
+    djac_bar_old = 0.0d0 
 
     do kinpt=1, ninpt
          
         N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode) 
 
-        call kjacobian(ndim,nnode,mcrd,coords_current,N_deriv_local_kinpt, &
-                        xjac_current,xjaci_current,djac_current)
-        call kjacobian(ndim,nnode,mcrd,coords_prev,N_deriv_local_kinpt, &
-                        xjac_prev,xjaci_prev,djac_prev)
+        call kjacobian(ndim,nnode,mcrd,coords_new,N_deriv_local_kinpt, &
+                        xjac_new,xjaci_new,djac_new)
+        call kjacobian(ndim,nnode,mcrd,coords_old,N_deriv_local_kinpt, &
+                        xjac_old,xjaci_old,djac_old)
 
-        dvol_current = weight(kinpt) * djac_current
-        dvol_prev = weight(kinpt) * djac_prev
+        dvol_new = weight(kinpt) * djac_new
+        dvol_old = weight(kinpt) * djac_old
 
-        N_deriv_global_kinpt_current = matmul(xjaci_current,N_deriv_local_kinpt)
-        N_deriv_global_kinpt_prev = matmul(xjaci_prev,N_deriv_local_kinpt)
+        N_deriv_global_kinpt_new = matmul(xjaci_new,N_deriv_local_kinpt)
+        N_deriv_global_kinpt_old = matmul(xjaci_old,N_deriv_local_kinpt)
 
-        N_bar_deriv_global_current = N_bar_deriv_global_current + N_deriv_global_kinpt_current * dvol_current
-        N_bar_deriv_global_prev = N_bar_deriv_global_prev + N_deriv_global_kinpt_prev * dvol_prev
+        N_bar_deriv_global_new = N_bar_deriv_global_new + N_deriv_global_kinpt_new * dvol_new
+        N_bar_deriv_global_old = N_bar_deriv_global_old + N_deriv_global_kinpt_old * dvol_old
         
-        elem_vol_current = elem_vol_current + dvol_current
-        elem_vol_prev = elem_vol_prev + dvol_prev
+        elem_vol_new = elem_vol_new + dvol_new
+        elem_vol_old = elem_vol_old + dvol_old
 
-        djac_current_bar = djac_current_bar + djac_current * dvol_current
-        djac_prev_bar = djac_prev_bar + djac_prev * dvol_prev
+        djac_bar_new = djac_bar_new + djac_new * dvol_new
+        djac_bar_old = djac_bar_old + djac_old * dvol_old
 
         ! Assembling hencky volumetric strain
 
         if (lflags(2) == 1) then 
 
-            call calc_u_grad(u_grad_current, N_deriv_global_kinpt_current, u_current, ndim, nnode)
-            call calc_u_grad(u_grad_prev, N_deriv_global_kinpt_prev, u_prev, ndim, nnode)
+            call calc_u_grad(u_grad_new, N_deriv_global_kinpt_new, u_node_new, ndim, nnode)
+            call calc_u_grad(u_grad_old, N_deriv_global_kinpt_old, u_node_old, ndim, nnode)
 
-            F_grad_current = identity + u_grad_current
-            F_grad_prev = identity + u_grad_prev
-            call calc_matrix_inv(F_grad_prev, F_grad_inv_prev, ndim)
-            dF_grad = matmul(F_grad_current, F_grad_inv_prev)
+            F_grad_new = identity + u_grad_new
+            F_grad_old = identity + u_grad_old
+            call calc_matrix_inv(F_grad_old, F_grad_inv_old, ndim)
+            dF_grad = matmul(F_grad_new, F_grad_inv_old)
 
-            C_right_Cauchy_current = matmul(transpose(F_grad_current), F_grad_current)
-            C_right_Cauchy_prev = matmul(transpose(F_grad_prev), F_grad_prev)
+            C_right_Cauchy_new = matmul(transpose(F_grad_new), F_grad_new)
+            C_right_Cauchy_old = matmul(transpose(F_grad_old), F_grad_old)
 
-            call calc_matrix_sqrt(C_right_Cauchy_current, U_right_stretch_current, ndim)
-            call calc_matrix_sqrt(C_right_Cauchy_prev, U_right_stretch_prev, ndim)
+            call calc_matrix_sqrt(C_right_Cauchy_new, U_right_stretch_new, ndim)
+            call calc_matrix_sqrt(C_right_Cauchy_old, U_right_stretch_old, ndim)
 
-            call calc_matrix_inv(U_right_stretch_current, U_right_stretch_inv_current, ndim)
-            call calc_matrix_inv(U_right_stretch_prev, U_right_stretch_inv_prev, ndim)
+            call calc_matrix_inv(U_right_stretch_new, U_right_stretch_inv_new, ndim)
+            call calc_matrix_inv(U_right_stretch_old, U_right_stretch_inv_old, ndim)
 
-            R_right_rotation_current = matmul(F_grad_current, U_right_stretch_inv_current)
-            R_right_rotation_prev = matmul(F_grad_prev, U_right_stretch_inv_prev)
-            call calc_matrix_inv(R_right_rotation_prev, R_right_rotation_inv_prev, ndim)
+            R_right_rotation_new = matmul(F_grad_new, U_right_stretch_inv_new)
+            R_right_rotation_old = matmul(F_grad_old, U_right_stretch_inv_old)
+            call calc_matrix_inv(R_right_rotation_old, R_right_rotation_inv_old, ndim)
 
-            dR_right_rotation = matmul(R_right_rotation_current, R_right_rotation_inv_prev)
+            dR_right_rotation = matmul(R_right_rotation_new, R_right_rotation_inv_old)
             call calc_matrix_inv(dR_right_rotation, dR_right_rotation_inv, ndim)
             du_grad = matmul(dR_right_rotation_inv, dF_grad)
             
-            call calc_matrix_log(U_right_stretch_current, eps_Hencky_current, ndim)
-            call calc_matrix_log(U_right_stretch_prev, eps_Hencky_prev, ndim)
+            call calc_matrix_log(U_right_stretch_new, eps_Hencky_new, ndim)
+            call calc_matrix_log(U_right_stretch_old, eps_Hencky_old, ndim)
             call calc_matrix_log(du_grad, deps_Hencky, ndim)
 
-            omega_hencky_stran_current = omega_hencky_stran_current + dvol_current * &
-                    (eps_Hencky_current(1,1) + eps_Hencky_current(2,2) + eps_Hencky_current(3,3))
-            omega_hencky_stran_prev = omega_hencky_stran_prev + dvol_prev * &
-                    (eps_Hencky_prev(1,1) + eps_Hencky_prev(2,2) + eps_Hencky_prev(3,3))
+            omega_hencky_stran_new = omega_hencky_stran_new + dvol_new * &
+                    (eps_Hencky_new(1,1) + eps_Hencky_new(2,2) + eps_Hencky_new(3,3))
+            omega_hencky_stran_old = omega_hencky_stran_old + dvol_old * &
+                    (eps_Hencky_old(1,1) + eps_Hencky_old(2,2) + eps_Hencky_old(3,3))
         end if
 
     end do
 
-    N_bar_deriv_global_current = N_bar_deriv_global_current / elem_vol_current
-    N_bar_deriv_global_prev = N_bar_deriv_global_prev / elem_vol_prev
+    N_bar_deriv_global_new = N_bar_deriv_global_new / elem_vol_new
+    N_bar_deriv_global_old = N_bar_deriv_global_old / elem_vol_old
 
-    omega_hencky_stran_current = omega_hencky_stran_current / elem_vol_current
-    omega_hencky_stran_prev = omega_hencky_stran_prev / elem_vol_prev
+    omega_hencky_stran_new = omega_hencky_stran_new / elem_vol_new
+    omega_hencky_stran_old = omega_hencky_stran_old / elem_vol_old
 
-    djac_current_bar = djac_current_bar / elem_vol_current
-    djac_prev_bar = djac_prev_bar / elem_vol_prev
+    djac_bar_new = djac_bar_new / elem_vol_new
+    djac_bar_old = djac_bar_old / elem_vol_old
 
     do kinpt=1,ninpt
         !   Transfer data from svars to statev for current integration point
@@ -1127,123 +1141,123 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode) 
 
         ! Use updated coordinates for updated Lagrangian formulation
-        call kjacobian(ndim,nnode,mcrd,coords_current,N_deriv_local_kinpt, &
-                        xjac_current,xjaci_current,djac_current) 
-        call kjacobian(ndim,nnode,mcrd,coords_prev,N_deriv_local_kinpt, &
-                        xjac_prev,xjaci_prev,djac_prev)
+        call kjacobian(ndim,nnode,mcrd,coords_new,N_deriv_local_kinpt, &
+                        xjac_new,xjaci_new,djac_new) 
+        call kjacobian(ndim,nnode,mcrd,coords_old,N_deriv_local_kinpt, &
+                        xjac_old,xjaci_old,djac_old)
 
         !   Differential volume at the integration point
-        dvol_current = weight(kinpt) * djac_current
-        dvol_prev = weight(kinpt) * djac_prev  
+        dvol_new = weight(kinpt) * djac_new
+        dvol_old = weight(kinpt) * djac_old  
 
-        N_deriv_global_kinpt_current = matmul(xjaci_current,N_deriv_local_kinpt)
-        N_deriv_global_kinpt_prev = matmul(xjaci_prev,N_deriv_local_kinpt)
+        N_deriv_global_kinpt_new = matmul(xjaci_new,N_deriv_local_kinpt)
+        N_deriv_global_kinpt_old = matmul(xjaci_old,N_deriv_local_kinpt)
 
         !   Calculate strain displacement B-matrix
-        call kbmatrix_full(N_deriv_global_kinpt_current,ntens,nnode,ndim,Bu_kinpt_current)     
-        call kbmatrix_vol(N_deriv_global_kinpt_current,ntens,nnode,ndim,Bu_vol_kinpt_current)
-        call kbmatrix_vol(N_bar_deriv_global_current,ntens,nnode,ndim,Bu_bar_vol_current)
+        call kbmatrix_full(N_deriv_global_kinpt_new,ntens,nnode,ndim,Bu_kinpt_new)     
+        call kbmatrix_vol(N_deriv_global_kinpt_new,ntens,nnode,ndim,Bu_vol_kinpt_new)
+        call kbmatrix_vol(N_bar_deriv_global_new,ntens,nnode,ndim,Bu_bar_vol_new)
 
-        call kbmatrix_full(N_deriv_global_kinpt_prev,ntens,nnode,ndim,Bu_kinpt_prev)
-        call kbmatrix_vol(N_deriv_global_kinpt_prev,ntens,nnode,ndim,Bu_vol_kinpt_prev)
-        call kbmatrix_vol(N_bar_deriv_global_prev,ntens,nnode,ndim,Bu_bar_vol_prev)
+        call kbmatrix_full(N_deriv_global_kinpt_old,ntens,nnode,ndim,Bu_kinpt_old)
+        call kbmatrix_vol(N_deriv_global_kinpt_old,ntens,nnode,ndim,Bu_vol_kinpt_old)
+        call kbmatrix_vol(N_bar_deriv_global_old,ntens,nnode,ndim,Bu_bar_vol_old)
         
-        Bu_bar_current = Bu_kinpt_current - Bu_vol_kinpt_current + Bu_bar_vol_current
-        Bu_bar_prev = Bu_kinpt_prev - Bu_vol_kinpt_prev + Bu_bar_vol_prev
+        Bu_bar_new = Bu_kinpt_new - Bu_vol_kinpt_new + Bu_bar_vol_new
+        Bu_bar_old = Bu_kinpt_old - Bu_vol_kinpt_old + Bu_bar_vol_old
 
         if (lflags(2) == 0) then 
             
             ! Small-displacement analysis (infinitesimal strain theory) when NLGEOM=OFF
 
-            ! stran_prev = matmul(Bu_bar_current, u_prev_flat)
-            ! dstran = matmul(Bu_bar_current, du_current_flat)
-            ! stran_current = stran_prev + dstran
+            ! stran_old = matmul(Bu_bar_new, u_node_old_flat)
+            ! dstran = matmul(Bu_bar_new, du_node_new_flat)
+            ! stran_new = stran_old + dstran
 
-            omega_stran_current = 0.0d0
-            omega_stran_prev = 0.0d0
+            omega_stran_new = 0.0d0
+            omega_stran_old = 0.0d0
 
             do knode=1, nnode
                 do kdim=1, ndim
-                    omega_stran_current = omega_stran_current + N_bar_deriv_global_current(kdim,knode) * u_current(kdim,knode)
-                    omega_stran_prev = omega_stran_prev + N_bar_deriv_global_prev(kdim,knode) * coords_initial(kdim,knode)
+                    omega_stran_new = omega_stran_new + N_bar_deriv_global_new(kdim,knode) * u_node_new(kdim,knode)
+                    omega_stran_old = omega_stran_old + N_bar_deriv_global_old(kdim,knode) * coords_initial(kdim,knode)
                 end do
             end do
 
             ! Compute strain components
             
-            stran_tensor_current= 0.0d0
-            stran_tensor_prev = 0.0d0
+            stran_tensor_new= 0.0d0
+            stran_tensor_old = 0.0d0
             
             do idim = 1, ndim
                 do jdim = 1, ndim
                     do knode = 1, nnode
-                        stran_tensor_current(idim, jdim) = stran_tensor_current(idim, jdim) + &
-                            0.5d0 * (u_current(idim,knode) * N_deriv_global_kinpt_current(jdim, knode) + &
-                                    u_current(jdim,knode) * N_deriv_global_kinpt_current(idim, knode))
-                        stran_tensor_prev(idim, jdim) = stran_tensor_prev(idim, jdim) + &
-                            0.5d0 * (du_current(idim,knode) * N_deriv_global_kinpt_prev(jdim, knode) + &
-                                    du_current(jdim,knode) * N_deriv_global_kinpt_prev(idim, knode))
+                        stran_tensor_new(idim, jdim) = stran_tensor_new(idim, jdim) + &
+                            0.5d0 * (u_node_new(idim,knode) * N_deriv_global_kinpt_new(jdim, knode) + &
+                                    u_node_new(jdim,knode) * N_deriv_global_kinpt_new(idim, knode))
+                        stran_tensor_old(idim, jdim) = stran_tensor_old(idim, jdim) + &
+                            0.5d0 * (du_node_new(idim,knode) * N_deriv_global_kinpt_old(jdim, knode) + &
+                                    du_node_new(jdim,knode) * N_deriv_global_kinpt_old(idim, knode))
                     end do
                 end do
             end do
 
-            ekk_stran_current = stran_tensor_current(1,1) + stran_tensor_current(2,2) + stran_tensor_current(3,3)
-            ekk_stran_prev = stran_tensor_prev(1,1) + stran_tensor_prev(2,2) + stran_tensor_prev(3,3)
+            ekk_stran_new = stran_tensor_new(1,1) + stran_tensor_new(2,2) + stran_tensor_new(3,3)
+            ekk_stran_old = stran_tensor_old(1,1) + stran_tensor_old(2,2) + stran_tensor_old(3,3)
             
             ! 3.0d0 is ndim but in double precision
-            stran_tensor_current(1,1) = stran_tensor_current(1,1) - ekk_stran_current/3.0d0 + omega_stran_current/3.0d0
-            stran_tensor_current(2,2) = stran_tensor_current(2,2) - ekk_stran_current/3.0d0 + omega_stran_current/3.0d0
-            stran_tensor_current(3,3) = stran_tensor_current(3,3) - ekk_stran_current/3.0d0 + omega_stran_current/3.0d0
+            stran_tensor_new(1,1) = stran_tensor_new(1,1) - ekk_stran_new/3.0d0 + omega_stran_new/3.0d0
+            stran_tensor_new(2,2) = stran_tensor_new(2,2) - ekk_stran_new/3.0d0 + omega_stran_new/3.0d0
+            stran_tensor_new(3,3) = stran_tensor_new(3,3) - ekk_stran_new/3.0d0 + omega_stran_new/3.0d0
             
-            stran_tensor_prev(1,1) = stran_tensor_prev(1,1) - ekk_stran_prev/3.0d0 + omega_dstran/3.0d0
-            stran_tensor_prev(2,2) = stran_tensor_prev(2,2) - ekk_stran_prev/3.0d0 + omega_dstran/3.0d0
-            stran_tensor_prev(3,3) = stran_tensor_prev(3,3) - ekk_stran_prev/3.0d0 + omega_dstran/3.0d0
+            stran_tensor_old(1,1) = stran_tensor_old(1,1) - ekk_stran_old/3.0d0 + omega_dstran/3.0d0
+            stran_tensor_old(2,2) = stran_tensor_old(2,2) - ekk_stran_old/3.0d0 + omega_dstran/3.0d0
+            stran_tensor_old(3,3) = stran_tensor_old(3,3) - ekk_stran_old/3.0d0 + omega_dstran/3.0d0
 
-            stran_current(1) = stran_tensor_current(1,1)
-            stran_current(2) = stran_tensor_current(2,2)
-            stran_current(3) = stran_tensor_current(3,3)
-            stran_current(4) = stran_tensor_current(1,2) + stran_tensor_current(2,1)
-            stran_current(5) = stran_tensor_current(1,3) + stran_tensor_current(3,1)
-            stran_current(6) = stran_tensor_current(2,3) + stran_tensor_current(3,2)
+            stran_new(1) = stran_tensor_new(1,1)
+            stran_new(2) = stran_tensor_new(2,2)
+            stran_new(3) = stran_tensor_new(3,3)
+            stran_new(4) = stran_tensor_new(1,2) + stran_tensor_new(2,1)
+            stran_new(5) = stran_tensor_new(1,3) + stran_tensor_new(3,1)
+            stran_new(6) = stran_tensor_new(2,3) + stran_tensor_new(3,2)
 
-            stran_prev(1) = stran_tensor_prev(1,1)
-            stran_prev(2) = stran_tensor_prev(2,2)
-            stran_prev(3) = stran_tensor_prev(3,3)
-            stran_prev(4) = stran_tensor_prev(1,2) + stran_tensor_prev(2,1)
-            stran_prev(5) = stran_tensor_prev(1,3) + stran_tensor_prev(3,1)
-            stran_prev(6) = stran_tensor_prev(2,3) + stran_tensor_prev(3,2)
+            stran_old(1) = stran_tensor_old(1,1)
+            stran_old(2) = stran_tensor_old(2,2)
+            stran_old(3) = stran_tensor_old(3,3)
+            stran_old(4) = stran_tensor_old(1,2) + stran_tensor_old(2,1)
+            stran_old(5) = stran_tensor_old(1,3) + stran_tensor_old(3,1)
+            stran_old(6) = stran_tensor_old(2,3) + stran_tensor_old(3,2)
 
-            dstran = stran_current - stran_prev
+            dstran = stran_new - stran_old
 
             ! ====================================================
             ! GREEN-LAGRANGE STRAIN (for small displacement analysis)
             ! It is probably not used by Abaqus for large displacement analysis
             ! ====================================================
 
-            ! call calc_u_grad(u_grad_current, N_deriv_global_kinpt_current, u_current, ndim, nnode)
-            ! call calc_u_grad(u_grad_prev, N_deriv_global_kinpt_prev, u_prev, ndim, nnode)
+            ! call calc_u_grad(u_grad_new, N_deriv_global_kinpt_new, u_node_new, ndim, nnode)
+            ! call calc_u_grad(u_grad_old, N_deriv_global_kinpt_old, u_node_old, ndim, nnode)
             
-            ! F_grad_current = identity + u_grad_current
-            ! F_grad_prev = identity + u_grad_prev
+            ! F_grad_new = identity + u_grad_new
+            ! F_grad_old = identity + u_grad_old
 
-            ! eps_Green_current = 0.5d0 * (matmul(transpose(F_grad_current), F_grad_current) - identity)
-            ! eps_Green_prev = 0.5d0 * (matmul(transpose(F_grad_prev), F_grad_prev) - identity)
+            ! eps_Green_new = 0.5d0 * (matmul(transpose(F_grad_new), F_grad_new) - identity)
+            ! eps_Green_old = 0.5d0 * (matmul(transpose(F_grad_old), F_grad_old) - identity)
 
-            ! stran_current(1) = eps_Green_current(1,1)
-            ! stran_current(2) = eps_Green_current(2,2)
-            ! stran_current(3) = eps_Green_current(3,3)
-            ! stran_current(4) = eps_Green_current(1,2) + eps_Green_current(2,1)
-            ! stran_current(5) = eps_Green_current(1,3) + eps_Green_current(3,1)
-            ! stran_current(6) = eps_Green_current(2,3) + eps_Green_current(3,2)
+            ! stran_new(1) = eps_Green_new(1,1)
+            ! stran_new(2) = eps_Green_new(2,2)
+            ! stran_new(3) = eps_Green_new(3,3)
+            ! stran_new(4) = eps_Green_new(1,2) + eps_Green_new(2,1)
+            ! stran_new(5) = eps_Green_new(1,3) + eps_Green_new(3,1)
+            ! stran_new(6) = eps_Green_new(2,3) + eps_Green_new(3,2)
 
-            ! stran_prev(1) = eps_Green_prev(1,1)
-            ! stran_prev(2) = eps_Green_prev(2,2)
-            ! stran_prev(3) = eps_Green_prev(3,3)
-            ! stran_prev(4) = eps_Green_prev(1,2) + eps_Green_prev(2,1)
-            ! stran_prev(5) = eps_Green_prev(1,3) + eps_Green_prev(3,1)
-            ! stran_prev(6) = eps_Green_prev(2,3) + eps_Green_prev(3,2)
+            ! stran_old(1) = eps_Green_old(1,1)
+            ! stran_old(2) = eps_Green_old(2,2)
+            ! stran_old(3) = eps_Green_old(3,3)
+            ! stran_old(4) = eps_Green_old(1,2) + eps_Green_old(2,1)
+            ! stran_old(5) = eps_Green_old(1,3) + eps_Green_old(3,1)
+            ! stran_old(6) = eps_Green_old(2,3) + eps_Green_old(3,2)
 
-            ! dstran = stran_current - stran_prev
+            ! dstran = stran_new - stran_old
 
         else if (lflags(2) == 1) then
             
@@ -1259,91 +1273,89 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             ! Right version (polar decomposition - Material)
             ! ====================================================
             
-            call calc_u_grad(u_grad_current, N_deriv_global_kinpt_current, u_current, ndim, nnode)
-            call calc_u_grad(u_grad_prev, N_deriv_global_kinpt_prev, u_prev, ndim, nnode)
+            call calc_u_grad(u_grad_new, N_deriv_global_kinpt_new, u_node_new, ndim, nnode)
+            call calc_u_grad(u_grad_old, N_deriv_global_kinpt_old, u_node_old, ndim, nnode)
 
-            F_grad_current = identity + u_grad_current
-            F_grad_prev = identity + u_grad_prev
+            F_grad_new = identity + u_grad_new
+            F_grad_old = identity + u_grad_old
 
-            F_grad_bar_current = F_grad_current * (djac_current_bar / djac_current) ** third
-            F_grad_bar_prev = F_grad_prev * (djac_prev_bar / djac_prev) ** third
+            F_grad_bar_new = F_grad_new * (djac_bar_new / djac_new) ** third
+            F_grad_bar_old = F_grad_old * (djac_bar_old / djac_old) ** third
 
-            call calc_matrix_inv(F_grad_prev, F_grad_inv_prev, ndim)
-            dF_grad_bar = matmul(F_grad_bar_current, F_grad_inv_prev)
+            call calc_matrix_inv(F_grad_old, F_grad_inv_old, ndim)
+            dF_grad_bar = matmul(F_grad_bar_new, F_grad_inv_old)
 
-            C_right_Cauchy_current = matmul(transpose(F_grad_bar_current), F_grad_bar_current)
-            C_right_Cauchy_prev = matmul(transpose(F_grad_bar_prev), F_grad_bar_prev)
+            C_right_Cauchy_new = matmul(transpose(F_grad_bar_new), F_grad_bar_new)
+            C_right_Cauchy_old = matmul(transpose(F_grad_bar_old), F_grad_bar_old)
 
-            call calc_matrix_sqrt(C_right_Cauchy_current, U_right_stretch_current, ndim)
-            call calc_matrix_sqrt(C_right_Cauchy_prev, U_right_stretch_prev, ndim)
+            call calc_matrix_sqrt(C_right_Cauchy_new, U_right_stretch_new, ndim)
+            call calc_matrix_sqrt(C_right_Cauchy_old, U_right_stretch_old, ndim)
 
-            call calc_matrix_inv(U_right_stretch_current, U_right_stretch_inv_current, ndim)
-            call calc_matrix_inv(U_right_stretch_prev, U_right_stretch_inv_prev, ndim)
+            call calc_matrix_inv(U_right_stretch_new, U_right_stretch_inv_new, ndim)
+            call calc_matrix_inv(U_right_stretch_old, U_right_stretch_inv_old, ndim)
 
-            R_right_rotation_current = matmul(F_grad_bar_current, U_right_stretch_inv_current)
-            R_right_rotation_prev = matmul(F_grad_bar_prev, U_right_stretch_inv_prev)
-            call calc_matrix_inv(R_right_rotation_prev, R_right_rotation_inv_prev, ndim)
+            R_right_rotation_new = matmul(F_grad_bar_new, U_right_stretch_inv_new)
+            R_right_rotation_old = matmul(F_grad_bar_old, U_right_stretch_inv_old)
+            call calc_matrix_inv(R_right_rotation_old, R_right_rotation_inv_old, ndim)
 
-            dR_right_rotation = matmul(R_right_rotation_current, R_right_rotation_inv_prev)
+            dR_right_rotation = matmul(R_right_rotation_new, R_right_rotation_inv_old)
             call calc_matrix_inv(dR_right_rotation, dR_right_rotation_inv, ndim)
             du_grad = matmul(dR_right_rotation_inv, dF_grad_bar)
             
-            call calc_matrix_log(U_right_stretch_current, eps_Hencky_current, ndim)
-            call calc_matrix_log(U_right_stretch_prev, eps_Hencky_prev, ndim)
+            call calc_matrix_log(U_right_stretch_new, eps_Hencky_new, ndim)
+            call calc_matrix_log(U_right_stretch_old, eps_Hencky_old, ndim)
             call calc_matrix_log(du_grad, deps_Hencky, ndim)
 
+            ! call calc_matrix_inv(F_grad_old, F_grad_inv_old, ndim)
+            ! dF_grad = matmul(F_grad_new, F_grad_inv_old)
 
+            ! C_right_Cauchy_new = matmul(transpose(F_grad_new), F_grad_new)
+            ! C_right_Cauchy_old = matmul(transpose(F_grad_old), F_grad_old)
 
-            ! call calc_matrix_inv(F_grad_prev, F_grad_inv_prev, ndim)
-            ! dF_grad = matmul(F_grad_current, F_grad_inv_prev)
+            ! call calc_matrix_sqrt(C_right_Cauchy_new, U_right_stretch_new, ndim)
+            ! call calc_matrix_sqrt(C_right_Cauchy_old, U_right_stretch_old, ndim)
 
-            ! C_right_Cauchy_current = matmul(transpose(F_grad_current), F_grad_current)
-            ! C_right_Cauchy_prev = matmul(transpose(F_grad_prev), F_grad_prev)
+            ! call calc_matrix_inv(U_right_stretch_new, U_right_stretch_inv_new, ndim)
+            ! call calc_matrix_inv(U_right_stretch_old, U_right_stretch_inv_old, ndim)
 
-            ! call calc_matrix_sqrt(C_right_Cauchy_current, U_right_stretch_current, ndim)
-            ! call calc_matrix_sqrt(C_right_Cauchy_prev, U_right_stretch_prev, ndim)
+            ! R_right_rotation_new = matmul(F_grad_new, U_right_stretch_inv_new)
+            ! R_right_rotation_old = matmul(F_grad_old, U_right_stretch_inv_old)
+            ! call calc_matrix_inv(R_right_rotation_old, R_right_rotation_inv_old, ndim)
 
-            ! call calc_matrix_inv(U_right_stretch_current, U_right_stretch_inv_current, ndim)
-            ! call calc_matrix_inv(U_right_stretch_prev, U_right_stretch_inv_prev, ndim)
-
-            ! R_right_rotation_current = matmul(F_grad_current, U_right_stretch_inv_current)
-            ! R_right_rotation_prev = matmul(F_grad_prev, U_right_stretch_inv_prev)
-            ! call calc_matrix_inv(R_right_rotation_prev, R_right_rotation_inv_prev, ndim)
-
-            ! dR_right_rotation = matmul(R_right_rotation_current, R_right_rotation_inv_prev)
+            ! dR_right_rotation = matmul(R_right_rotation_new, R_right_rotation_inv_old)
             ! call calc_matrix_inv(dR_right_rotation, dR_right_rotation_inv, ndim)
             ! du_grad = matmul(dR_right_rotation_inv, dF_grad)
             
-            ! call calc_matrix_log(U_right_stretch_current, eps_Hencky_current, ndim)
-            ! call calc_matrix_log(U_right_stretch_prev, eps_Hencky_prev, ndim)
+            ! call calc_matrix_log(U_right_stretch_new, eps_Hencky_new, ndim)
+            ! call calc_matrix_log(U_right_stretch_old, eps_Hencky_old, ndim)
             ! call calc_matrix_log(du_grad, deps_Hencky, ndim)
 
-            stran_current(1) = eps_Hencky_current(1,1)
-            stran_current(2) = eps_Hencky_current(2,2)
-            stran_current(3) = eps_Hencky_current(3,3)
-            stran_current(4) = eps_Hencky_current(1,2) + eps_Hencky_current(2,1)
-            stran_current(5) = eps_Hencky_current(1,3) + eps_Hencky_current(3,1)
-            stran_current(6) = eps_Hencky_current(2,3) + eps_Hencky_current(3,2)
+            stran_new(1) = eps_Hencky_new(1,1)
+            stran_new(2) = eps_Hencky_new(2,2)
+            stran_new(3) = eps_Hencky_new(3,3)
+            stran_new(4) = eps_Hencky_new(1,2) + eps_Hencky_new(2,1)
+            stran_new(5) = eps_Hencky_new(1,3) + eps_Hencky_new(3,1)
+            stran_new(6) = eps_Hencky_new(2,3) + eps_Hencky_new(3,2)
 
-            stran_prev(1) = eps_Hencky_prev(1,1)
-            stran_prev(2) = eps_Hencky_prev(2,2)
-            stran_prev(3) = eps_Hencky_prev(3,3)
-            stran_prev(4) = eps_Hencky_prev(1,2) + eps_Hencky_prev(2,1)
-            stran_prev(5) = eps_Hencky_prev(1,3) + eps_Hencky_prev(3,1)
-            stran_prev(6) = eps_Hencky_prev(2,3) + eps_Hencky_prev(3,2)
+            stran_old(1) = eps_Hencky_old(1,1)
+            stran_old(2) = eps_Hencky_old(2,2)
+            stran_old(3) = eps_Hencky_old(3,3)
+            stran_old(4) = eps_Hencky_old(1,2) + eps_Hencky_old(2,1)
+            stran_old(5) = eps_Hencky_old(1,3) + eps_Hencky_old(3,1)
+            stran_old(6) = eps_Hencky_old(2,3) + eps_Hencky_old(3,2)
             
             ! Replace volumetric strain with average volumetric strain
 
-            ! ekk_stran_current = stran_current(1) + stran_current(2) + stran_current(3)
-            ! ekk_stran_prev = stran_prev(1) + stran_prev(2) + stran_prev(3)
+            ! ekk_stran_new = stran_new(1) + stran_new(2) + stran_new(3)
+            ! ekk_stran_old = stran_old(1) + stran_old(2) + stran_old(3)
 
-            ! stran_current(1) = stran_current(1) - ekk_stran_current/3.0d0 + omega_hencky_stran_current/3.0d0
-            ! stran_current(2) = stran_current(2) - ekk_stran_current/3.0d0 + omega_hencky_stran_current/3.0d0
-            ! stran_current(3) = stran_current(3) - ekk_stran_current/3.0d0 + omega_hencky_stran_current/3.0d0
+            ! stran_new(1) = stran_new(1) - ekk_stran_new/3.0d0 + omega_hencky_stran_new/3.0d0
+            ! stran_new(2) = stran_new(2) - ekk_stran_new/3.0d0 + omega_hencky_stran_new/3.0d0
+            ! stran_new(3) = stran_new(3) - ekk_stran_new/3.0d0 + omega_hencky_stran_new/3.0d0
 
-            ! stran_prev(1) = stran_prev(1) - ekk_stran_prev/3.0d0 + omega_hencky_stran_prev/3.0d0
-            ! stran_prev(2) = stran_prev(2) - ekk_stran_prev/3.0d0 + omega_hencky_stran_prev/3.0d0
-            ! stran_prev(3) = stran_prev(3) - ekk_stran_prev/3.0d0 + omega_hencky_stran_prev/3.0d0
+            ! stran_old(1) = stran_old(1) - ekk_stran_old/3.0d0 + omega_hencky_stran_old/3.0d0
+            ! stran_old(2) = stran_old(2) - ekk_stran_old/3.0d0 + omega_hencky_stran_old/3.0d0
+            ! stran_old(3) = stran_old(3) - ekk_stran_old/3.0d0 + omega_hencky_stran_old/3.0d0
 
             ! dstran(1) = deps_Hencky(1,1)
             ! dstran(2) = deps_Hencky(2,2)
@@ -1354,56 +1366,56 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
             ! or 
 
-            dstran = stran_current - stran_prev
+            dstran = stran_new - stran_old
 
             ! ====================================================
             ! Left version (polar decomposition - Spatial)
             ! ====================================================
 
-            ! call calc_u_grad(u_grad_current, N_deriv_global_kinpt_current, u_current, ndim, nnode)
-            ! call calc_u_grad(u_grad_prev, N_deriv_global_kinpt_prev, u_prev, ndim, nnode)
+            ! call calc_u_grad(u_grad_new, N_deriv_global_kinpt_new, u_node_new, ndim, nnode)
+            ! call calc_u_grad(u_grad_old, N_deriv_global_kinpt_old, u_node_old, ndim, nnode)
 
-            ! F_grad_current = identity + u_grad_current
-            ! F_grad_prev = identity + u_grad_prev
-            ! call calc_matrix_inv(F_grad_prev, F_grad_inv_prev, ndim)
-            ! dF_grad = matmul(F_grad_current, F_grad_inv_prev)
+            ! F_grad_new = identity + u_grad_new
+            ! F_grad_old = identity + u_grad_old
+            ! call calc_matrix_inv(F_grad_old, F_grad_inv_old, ndim)
+            ! dF_grad = matmul(F_grad_new, F_grad_inv_old)
 
-            ! b_left_Cauchy_current = matmul(F_grad_current, transpose(F_grad_current))
-            ! b_left_Cauchy_prev = matmul(F_grad_prev, transpose(F_grad_prev))
+            ! b_left_Cauchy_new = matmul(F_grad_new, transpose(F_grad_new))
+            ! b_left_Cauchy_old = matmul(F_grad_old, transpose(F_grad_old))
 
-            ! call calc_matrix_sqrt(b_left_Cauchy_current, v_left_stretch_current, ndim)
-            ! call calc_matrix_sqrt(b_left_Cauchy_prev, v_left_stretch_prev, ndim)
+            ! call calc_matrix_sqrt(b_left_Cauchy_new, v_left_stretch_new, ndim)
+            ! call calc_matrix_sqrt(b_left_Cauchy_old, v_left_stretch_old, ndim)
 
-            ! call calc_matrix_inv(v_left_stretch_current, v_left_stretch_inv_current, ndim)
-            ! call calc_matrix_inv(v_left_stretch_prev, v_left_stretch_inv_prev, ndim)
+            ! call calc_matrix_inv(v_left_stretch_new, v_left_stretch_inv_new, ndim)
+            ! call calc_matrix_inv(v_left_stretch_old, v_left_stretch_inv_old, ndim)
 
-            ! R_left_rotation_current = matmul(v_left_stretch_inv_current, F_grad_current)
-            ! R_left_rotation_prev = matmul(v_left_stretch_inv_prev, F_grad_prev)
+            ! R_left_rotation_new = matmul(v_left_stretch_inv_new, F_grad_new)
+            ! R_left_rotation_old = matmul(v_left_stretch_inv_old, F_grad_old)
             ! ! Since R is orthogonal, R^T = R^-1
-            ! call calc_matrix_inv(R_left_rotation_prev, R_left_rotation_inv_prev, ndim)
-            ! dR_left_rotation = matmul(R_left_rotation_current, R_left_rotation_inv_prev)
+            ! call calc_matrix_inv(R_left_rotation_old, R_left_rotation_inv_old, ndim)
+            ! dR_left_rotation = matmul(R_left_rotation_new, R_left_rotation_inv_old)
 
             ! call calc_matrix_inv(dR_left_rotation, dR_left_rotation_inv, ndim)
             ! du_grad = matmul(dR_left_rotation_inv, dF_grad)
 
 
-            ! call calc_matrix_log(v_left_stretch_current, eps_Hencky_current, ndim)
-            ! call calc_matrix_log(v_left_stretch_prev, eps_Hencky_prev, ndim)
+            ! call calc_matrix_log(v_left_stretch_new, eps_Hencky_new, ndim)
+            ! call calc_matrix_log(v_left_stretch_old, eps_Hencky_old, ndim)
             ! call calc_matrix_log(du_grad, deps_Hencky, ndim)
 
-            ! stran_current(1) = eps_Hencky_current(1,1)
-            ! stran_current(2) = eps_Hencky_current(2,2)
-            ! stran_current(3) = eps_Hencky_current(3,3)
-            ! stran_current(4) = eps_Hencky_current(1,2) + eps_Hencky_current(2,1)
-            ! stran_current(5) = eps_Hencky_current(1,3) + eps_Hencky_current(3,1)
-            ! stran_current(6) = eps_Hencky_current(2,3) + eps_Hencky_current(3,2)
+            ! stran_new(1) = eps_Hencky_new(1,1)
+            ! stran_new(2) = eps_Hencky_new(2,2)
+            ! stran_new(3) = eps_Hencky_new(3,3)
+            ! stran_new(4) = eps_Hencky_new(1,2) + eps_Hencky_new(2,1)
+            ! stran_new(5) = eps_Hencky_new(1,3) + eps_Hencky_new(3,1)
+            ! stran_new(6) = eps_Hencky_new(2,3) + eps_Hencky_new(3,2)
 
-            ! stran_prev(1) = eps_Hencky_prev(1,1)
-            ! stran_prev(2) = eps_Hencky_prev(2,2)
-            ! stran_prev(3) = eps_Hencky_prev(3,3)
-            ! stran_prev(4) = eps_Hencky_prev(1,2) + eps_Hencky_prev(2,1)
-            ! stran_prev(5) = eps_Hencky_prev(1,3) + eps_Hencky_prev(3,1)
-            ! stran_prev(6) = eps_Hencky_prev(2,3) + eps_Hencky_prev(3,2)
+            ! stran_old(1) = eps_Hencky_old(1,1)
+            ! stran_old(2) = eps_Hencky_old(2,2)
+            ! stran_old(3) = eps_Hencky_old(3,3)
+            ! stran_old(4) = eps_Hencky_old(1,2) + eps_Hencky_old(2,1)
+            ! stran_old(5) = eps_Hencky_old(1,3) + eps_Hencky_old(3,1)
+            ! stran_old(6) = eps_Hencky_old(2,3) + eps_Hencky_old(3,2)
             
             ! ! dstran(1) = deps_Hencky(1,1)
             ! ! dstran(2) = deps_Hencky(2,2)
@@ -1412,7 +1424,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             ! ! dstran(5) = deps_Hencky(1,3) + deps_Hencky(3,1)
             ! ! dstran(6) = deps_Hencky(2,3) + deps_Hencky(3,2)
             
-            ! dstran = stran_current - stran_prev
+            ! dstran = stran_new - stran_old
 
         end if
 
@@ -1424,11 +1436,11 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
         if (lflags(2) == 0) then
             if (UMAT_choice == 1) then
-                call UMAT_elastic(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+                call UMAT_elastic(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                                   ndi,nshr,ntens,ndim,nstatv,props,nprops,identity, &
                                   identity,identity,jelem,kinpt,kstep,kinc)
             else if (UMAT_choice == 2) then
-                call UMAT_von_Mises(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+                call UMAT_von_Mises(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                                     ndi,nshr,ntens,ndim,nstatv,props,nprops,identity, &
                                     identity,identity,jelem,kinpt,kstep,kinc)
             end if
@@ -1436,17 +1448,17 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         else if (lflags(2) == 1) then
             
             if (UMAT_choice == 1) then
-                call UMAT_elastic(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+                call UMAT_elastic(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                                   ndi,nshr,ntens,ndim,nstatv,props,nprops,dR_right_rotation, &
-                                  F_grad_prev,F_grad_current,jelem,kinpt,kstep,kinc)
+                                  F_grad_old,F_grad_new,jelem,kinpt,kstep,kinc)
             
             else if (UMAT_choice == 2) then
-                call UMAT_von_Mises(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+                call UMAT_von_Mises(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                                     ndi,nshr,ntens,ndim,nstatv,props,nprops,dR_right_rotation, &
-                                    F_grad_prev,F_grad_current,jelem,kinpt,kstep,kinc)
-                !  call UMAT_von_Mises(stress,statev,ddsdde,stran_prev,dstran,time,dtime, &
+                                    F_grad_old,F_grad_new,jelem,kinpt,kstep,kinc)
+                !  call UMAT_von_Mises(stress,statev,ddsdde,stran_old,dstran,time,dtime, &
                 !                 ndi,nshr,ntens,ndim,nstatv,props,nprops,dR_left_rotation, &
-                !                 F_grad_prev,F_grad_current,jelem,kinpt,kstep,kinc)
+                !                 F_grad_old,F_grad_new,jelem,kinpt,kstep,kinc)
             end if
            
         end if
@@ -1454,7 +1466,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! Update the state variables
         ! eelas, eplas, eqplas, deqplas, sig_vonMises, sig_H are already updated in statev in UMAT_von_Mises
         statev(sig_start_idx : sig_end_idx) = stress
-        statev(stran_start_idx : stran_end_idx) = stran_current
+        statev(stran_start_idx : stran_end_idx) = stran_new
         
         call calc_stress_invariants(stress, ntens, invariant_p, invariant_q, invariant_r)
         call calc_triaxiality(invariant_p, invariant_q, triaxiality)
@@ -1464,72 +1476,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         statev(triax_idx) = triaxiality
         statev(lode_idx) = lode_norm
         
-        ! ================================================================== !
-        !                                                                    !
-        !                    SOLVING THE DIFFUSION FIELD                     !
-        !                                                                    !
-        ! ================================================================== !
-        
-        ! Variables to be defined
-        ! u_diff: Internal thermal energy per unit mass, U, at the end of increment. 
-        !         This variable is passed in as the value at the start of the increment 
-        !         and must be updated to its value at the end of the increment.
-        ! dudt_diff: Variation of internal thermal energy per unit mass with respect to temperature, 
-        !         ∂U/∂θ, evaluated at the end of the increment.
-        ! dudg_diff(ndim): Variation of internal thermal energy per unit mass with respect to the 
-        !           spatial gradients of temperature, ∂U/∂(∂θ/∂x), evaluated at the end of the increment.
-        !           The size of this array depends on ndim and it is typically zero in classical heat transfer analysis.
-        ! flux_diff(ndim): Heat flux vector at the end of the increment. 
-        !            This variable is passed in with the values at the beginning of the increment and 
-        !            must be updated to the values at the end of the increment.
-        ! dfdt(ndim): Variation of the heat flux vector with respect to temperature, 
-        !        ∂q/∂θ, evaluated at the end of the increment.
-        ! dfdg(ndim,ndim): Variation of the heat flux vector with respect to the spatial gradients of temperature,
-        !        ∂f/∂(∂θ/∂x), evaluated at the end of the increment.
 
-        ! Variables Passed in for Information
-        ! temp_diff: Temperature at the start of the increment.
-        ! dtemp_diff: Increment of temperature.
-        ! dtemdx_diff: Current values of the spatial gradients of temperature, ∂θ/∂x.
-
-
-        ! u_diff is at the beginning of the increment (current hydrogen concentration)
-        u_diff = 0.0d0
-        temp_diff = 0.0d0
-        dtemp_diff = 0.0d0
-        dtemdx_diff = 0.0d0
-
-        N_shape_node_to_kinpt(1:nnode) = all_N_shape_node_to_kinpt(kinpt,1:nnode)
-        N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode) 
-
-        call kjacobian(ndim,nnode,mcrd,coords_current,N_deriv_local_kinpt, &
-                        xjac_current,xjaci_current,djac_current)
-        
-        N_deriv_global_kinpt_current = matmul(xjaci_current,N_deriv_local_kinpt)
-
-        ! Loop over the nodes to interpolate values using shape functions
-        do knode = 1, nnode
-            ! Calculate u_diff (internal energy = hydrogen concentration)
-            u_diff = u_diff + N_shape_node_to_kinpt(knode) * CL_prev(knode)
-            
-            ! Calculate temp_diff (hydrogen concentration at previous step)
-            temp_diff = temp_diff + N_shape_node_to_kinpt(knode) * CL_prev(knode)
-
-            ! Calculate spatial gradient of concentration (temperature gradient)
-            do kdim = 1, ndim
-                dtemdx_diff(kdim) = dtemdx_diff(kdim) + N_deriv_global_kinpt_current(kdim, knode) * CL_current(knode)
-            end do
-        end do
-
-        ! Calculate the increment in concentration (dtemp_diff)
-        dtemp_diff = u_diff - temp_diff
-
-
-        call UMATHT_diffusion(u_diff,dudt_diff,dudg_diff,flux_diff,dfdt_diff,dfdg_diff, &
-                              temp_diff,dtemp_diff,dtemdx_diff,time,dtime,ndim, &
-                              statev,nstatv,props,nprops,jelem,kinpt,kstep,kinc)
-
-        temp_diff = CL_prev
         ! ********************************************!
         ! DISPLACEMENT CONTRIBUTION TO amatrx AND rhs !
         ! ********************************************!
@@ -1538,35 +1485,156 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! 8 nodes x 3 displacement dofs ux, uy, uz = 24
 
         amatrx(start_u_idx:end_u_idx,start_u_idx:end_u_idx) = &
-            amatrx(start_u_idx:end_u_idx,start_u_idx:end_u_idx) + dvol_current * &
-                               (matmul(matmul(transpose(Bu_bar_current),ddsdde),Bu_bar_current))
+            amatrx(start_u_idx:end_u_idx,start_u_idx:end_u_idx) + dvol_new * &
+                               (matmul(matmul(transpose(Bu_bar_new),ddsdde),Bu_bar_new))
             
         rhs(start_u_idx:end_u_idx,1) = rhs(start_u_idx:end_u_idx,1) - &
-            dvol_current * (matmul(transpose(Bu_bar_current),stress))        
+            dvol_new * (matmul(transpose(Bu_bar_new),stress))    
+        
 
+        ! ================================================================== !
+        !                                                                    !
+        !                    SOLVING THE DIFFUSION FIELD                     !
+        !                                                                    !
+        ! ================================================================== !
+        
+        ! Variables to be defined
+        ! u_heat_new: Internal thermal energy per unit mass, U, at the end of increment. 
+        !         This variable is passed in as the value at the start of the increment (u_heat_old)
+        !         and must be updated to its value at the end of the increment.
+        ! dudt_heat: Variation of internal thermal energy per unit mass with respect to temperature, 
+        !         ∂U/∂θ, evaluated at the end of the increment.
+        ! dudg_heat(ndim): Variation of internal thermal energy per unit mass with respect to the 
+        !           spatial gradients of temperature, ∂U/∂(∂θ/∂x), evaluated at the end of the increment.
+        !           The size of this array depends on ndim and it is typically zero in classical heat transfer analysis.
+        ! flux_heat(ndim): Heat flux vector at the end of the increment. 
+        !            This variable is passed in with the values at the beginning of the increment and 
+        !            must be updated to the values at the end of the increment.
+        ! dfdt(ndim): Variation of the heat flux vector with respect to temperature, 
+        !        ∂q/∂θ, evaluated at the end of the increment.
+        ! dfdg(ndim,ndim): Variation of the heat flux vector with respect to the spatial gradients of temperature,
+        !        ∂f/∂(∂θ/∂x), evaluated at the end of the increment.
 
+        ! Variables passed in for Information
+        ! temp_kinpt_old: Temperature at the start of the increment.
+        ! dtemp_kinpt: Increment of temperature.
+        ! dtemdx_kinpt_new: Current values of the spatial gradients of temperature, ∂θ/∂x.
+        ! u_heat_old is at the beginning of the increment
+      
+        ! For diffusion field
 
+        temp_node_new(1:nnode) = u(start_temp_idx:end_temp_idx)
+        dtemp_node(1:nnode) = du(start_temp_idx:end_temp_idx, 1)
+        temp_node_old(1:nnode) = temp_node_new(1:nnode) - dtemp_node(1:nnode)
+
+        rho_heat = props(before_hydro_props_idx + 1) ! It must be 1 if hydrogen diffusion analogy is used
+        cp_heat = props(before_hydro_props_idx + 2) ! It must be 1 if hydrogen diffusion analogy is used
+
+        N_shape_node_to_kinpt(1:nnode) = all_N_shape_node_to_kinpt(kinpt,1:nnode)
+        N_deriv_local_kinpt(1:ndim,1:nnode) = all_N_deriv_local_kinpt(kinpt,1:ndim,1:nnode)
+
+        call kjacobian(ndim,nnode,mcrd,coords_new,N_deriv_local_kinpt, &
+                        xjac_new,xjaci_new,djac_new)
+
+        dvol_new = weight(kinpt) * djac_new
+        
+        N_deriv_global_kinpt_new = matmul(xjaci_new,N_deriv_local_kinpt)
+
+        ! temp_kinpt_old, dtemp_kinpt, dtemdx_kinpt_new, u_heat are all defined at integration points
+
+        temp_kinpt_old = dot_product(N_shape_node_to_kinpt, temp_node_old)
+        temp_kinpt_new = dot_product(N_shape_node_to_kinpt, temp_node_new)
+        dtemp_kinpt = dot_product(N_shape_node_to_kinpt, temp_node_new - temp_node_old)
+        
+        ! The internal energy of ideal gas
+        u_heat_old = cp_heat * temp_kinpt_old
+
+        dtemdx_kinpt_new = matmul(N_deriv_global_kinpt_new, temp_node_new)
+
+        call UMATHT_diffusion(u_heat_old,u_heat_new,dudt_heat,dudg_heat,flux_heat,dfdt_heat,dfdg_heat, &
+                              temp_kinpt_old,dtemp_kinpt,dtemdx_kinpt_new,time,dtime,ndim, &
+                              statev,nstatv,props,nprops,jelem,kinpt,kstep,kinc)
+
+        ! In our equation, we have du_heat = u_heat_new - u_heat_old
+        ! Then we also have the remaining value, which is dr_heat = du_heat - dudt_heat
+        
+        du_heat = u_heat_new - u_heat_old
+        dr_heat = du_heat - dudt_heat
+
+        ! (nnode, nnode) = (nnode, ndim) @ (ndim, 1) @ (1, nnode)
+        dfdt_contribution    = - matmul( &
+                                        matmul(transpose(N_deriv_global_kinpt_new), & 
+                                        reshape(dfdt_heat, (/ndim, 1/))), & 
+                                        reshape(N_shape_node_to_kinpt, (/1, nnode/)) &
+                                        )
+
+        ! (nnode, nnode) = (nnode, ndim) @ (ndim, ndim) @ (ndim, nnode)
+        dfdg_contribution    = - matmul(matmul(transpose(N_deriv_global_kinpt_new), dfdg_heat), N_deriv_global_kinpt_new)
+        
+        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
+        dudt_contribution    = + matmul(&
+                                        reshape(N_shape_node_to_kinpt * dudt_heat, (/nnode, 1/)), &
+                                        reshape(N_shape_node_to_kinpt, (/1, nnode/)) &
+                                        )
+        
+        ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
+        dudg_contribution    = + matmul(matmul( &
+                                        reshape(N_shape_node_to_kinpt, (/nnode, 1/)), &
+                                        reshape(dudg_heat, (/1, ndim/)) &
+                                        ), N_deriv_global_kinpt_new)
+
+        ! (nnode) = (nnode) * scalar : (nnode)
+        dudt_heat_contribution = + N_shape_node_to_kinpt * dudt_heat * (dtemp_node/dtime)
+        
+        ! (nnode) = (nnode) * scalar : (nnode)
+        dr_heat_contribution   = + N_shape_node_to_kinpt * dr_heat * temp_node_new
+        
+        ! (nnode) = (nnode, ndim) @ (ndim)
+        flux_contribution      = + matmul(transpose(N_deriv_global_kinpt_new), flux_heat)
+        
+        M_capacitance = dudt_contribution + dudg_contribution
+        
+        K_conductivity = dfdt_contribution + dfdg_contribution
+        
+        f_node_heat = dudt_heat_contribution + dr_heat_contribution + flux_contribution
+        
+        ! Galerkin representation of the transient heat transfer equation
+        ! K_conductivity * dtemp_node_new + M_capacitance * dtemp_node_new/dtemp = f_node_heat
+        ! => (K_conductivity * M_capacitance /dtime) * dtemp_node_new = f_node_heat
 
         ! **************************************************!
         ! HYDROGEN DIFFUSION CONTRIBUTION TO amatrx AND rhs !
         ! **************************************************!
 
         ! 3D case
-        ! 8 nodes x 1 hydrogen concentration dof = 8
+        ! 8 nodes x 1 heat concentration dof = 8
 
-        M_conc_capacity = matmul(transpose(shape_node_to_int),shape_node_to_int)/DL
-        BB = matmul(transpose(B_deriv_global),B_deriv_global)
-
-        K_diffusitivity = BB - VH/(R*T) * matmul(BB,matmul((sig_H_node * softened_factor),shape_node_to_int))
-
-        amatrx(start_CL_idx:end_CL_idx,start_CL_idx:end_CL_idx) = &
-            amatrx(start_CL_idx:end_CL_idx,start_CL_idx:end_CL_idx) &
-            +dvol * (M_conc_capacity/dtime+K_diffusitivity)
+        amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+            + dvol_new * (K_conductivity + M_capacitance/dtime)
             
-        rhs(start_CL_idx:end_CL_idx,1) = rhs(start_CL_idx:end_CL_idx,1) - &
-            dvol * (matmul(K_diffusitivity,CL_prev)+ &
-            matmul(M_conc_capacity,dCL_prev)/dtime)
+        rhs(start_temp_idx:end_temp_idx,1) = rhs(start_temp_idx:end_temp_idx,1) &
+            - dvol_new * f_node_heat
+        
+        ! M_capacitance = matmul(transpose(N_shape_node_to_kinpt),N_shape_node_to_kinpt)/DL
+        ! BB = matmul(transpose(B_deriv_global),B_deriv_global)
 
+        ! K_conductivity = BB - VH/(R*T) * matmul(BB,matmul((sig_H_node * softened_factor),N_shape_node_to_kinpt))
+
+        ! K_heat_sum = K_conductivity + K_convectivity
+        ! f_boundary_heat_flux = 0.0d0
+        ! f_heat_flux = 0.0d0
+        ! f_heat_sum = f_heat_source + f_boundary_heat_flux + f_heat_flux
+
+        ! amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+        !     +dvol * (M_capacitance/dtime + K_conductivity)
+            
+        ! rhs(start_temp_idx:end_temp_idx,1) = rhs(start_temp_idx:end_temp_idx,1) - &
+        !     dvol * (matmul(K_conductivity,temp_node_new) + &
+        !             matmul(M_capacitance,dtemp_node)/dtime)
+        
+        
 
         ! ================================================================== !
         !                                                                    !
@@ -1576,6 +1644,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         !   Transfer data from statev to svars
         !   This stage basically updates the state variables for the current element in UEL
+        
         call kstatevar(kinpt,nstatv,svars,statev,0)
         
         !   Transfer data from statev to dummy mesh for visualization

@@ -113,8 +113,8 @@ zsymm_side, ZSYMM
 ** 
 *Output, field, number interval=100
 *Node Output
-RF, U
+RF, U, NT, RFL
 *Element Output, directions=YES
-SDV, 
+SDV, HFL, TEMP
 *Output, history, frequency=0
 *End Step

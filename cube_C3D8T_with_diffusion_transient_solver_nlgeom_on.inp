@@ -69,13 +69,13 @@
 ** 
 *Material, name=hydrogen_subroutine
 *Conductivity
- 1e-05,
+ 1e-08,
 *Density
-1.,
+7900.,
 *Elastic
  2.1e+11, 0.3
 *Specific Heat
-1.,
+5.,
 ** 
 ** BOUNDARY CONDITIONS
 ** 
@@ -97,7 +97,7 @@ xsymm_side, XSYMM
 top_side, 11, 11, 1.
 ** Name: top_disp Type: Displacement/Rotation
 *Boundary, amplitude=loading
-top_side, 2, 2, 0.001
+top_side, 2, 2
 ** Name: ysymm Type: Symmetry/Antisymmetry/Encastre
 *Boundary
 ysymm_side, YSYMM

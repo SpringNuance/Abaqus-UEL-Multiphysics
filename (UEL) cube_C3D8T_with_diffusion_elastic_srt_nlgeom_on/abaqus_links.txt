@@ -1,0 +1,4 @@
+https://help.3ds.com/2024/English/DSSIMULIA_Established/SIMACAESUBRefMap/simasub-c-umatht.htm?contextscope=all&id=4bfd3e9172424309be76f3121de9a7cf
+https://help.3ds.com/2024/english/dssimulia_established/simacaeanlrefmap/simaanl-c-heattransfer.htm?contextscope=all&highlight=heat+transfer&id=cab049e45fdc4bd4a87c31a1008193cf&analyticsContext=search-result&analyticsSearch=heat%20transfer&myapp=false
+https://help.3ds.com/2024/english/dssimulia_established/simacaeverrefmap/simaver-c-heattransload.htm?contextscope=all&highlight=heat+transfer&id=a6a825ba114f49b5beb2179cd3678aac&analyticsContext=search-result&analyticsSearch=heat%20transfer&myapp=false
+https://help.3ds.com/2024/english/dssimulia_established/simacaekeyrefmap/simakey-r-heattransfer.htm?contextscope=all&highlight=transient+uncoupled&id=bbd9f3dcecec437683a5aac15ccafae9&analyticsContext=search-result&analyticsSearch=transient%20uncoupled&myapp=false
