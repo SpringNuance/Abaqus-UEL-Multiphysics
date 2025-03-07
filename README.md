@@ -6,6 +6,5 @@ There are five case studies
 2) Case 2: *ELASTIC, NLGEOM is turned on
 3) Case 3: *PLASTIC (isotropic), NLGEOM is turned off
 4) Case 4: *PLASTIC (isotropic), NLGEOM is turned on
-5) Case 5: transient diffusion using pure heat transfer DC3D8 element
 
-These case studies returns the exact result as the default solver in Abaqus using element C3D8
+These case studies returns the exact result as the default solver in Abaqus using element C3D8 only with NLGEOM is off. For NLGEOM is on, the result still does not match with Abaqus's results
