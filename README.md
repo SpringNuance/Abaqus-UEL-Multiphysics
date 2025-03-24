@@ -20,4 +20,4 @@ There are 12 case studies
 11) Case 11: Transient heat transfer (only conduction), 4 node BC
 12) Case 12: Transient heat transfer (only conduction), 1 node BC
 
-These case studies should supposedly returns near exact result as the default solver in Abaqus using element C3D8. 
+These case studies should supposedly returns near exact result as the default solver in Abaqus using element C3D8/C3D8T
