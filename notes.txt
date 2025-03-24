@@ -1,0 +1,45 @@
+
+CAE Assistant <caeassistantgroup@gmail.com>
+
+Dear ,
+
+I hope you're doing well.
+
+I've provided answers to your questions about the product. I hope you find them helpful. Let me know if you have any other questions—I'm happy to help.
+
+1. NLGEOM=YES in Abaqus means large strain/ deformation model for solid elements (like hyperelastic or hyperelastic-viscoelastic/ viscoplastic models) typically used for polymers or crystal plasticity finite element analyses. For UEL codes, using the keyword "NLGEOM=YES" does not do anything since the element is coded by the user. 
+
+This work only focuses on small deformation linear elastic elements so the effect of "NLGEOM=YES" is unavailable. Even without it, you can extend the UEL code for nonlinear small deformation materials like metal or soil plasticity by changing the UMAT part of the code.
+
+Large deformation (finite strain) finite element model requires separate formulation and programming, which is an involved process. If you are interested, we can provide you our hyperelastic finite element code as an addition to the small deformation linear elastic UEL. Similar to the small deformation case, you can extend it for other inelastic materials undergoing large deformation.
+
+
+2. For visualization, I recommend using default Abaqus elements as dummy elements with insignificant material stiffness overlaid on top of the USER ELEMENTS. Using those built-in Abaqus elements, it is possible to apply PRESSURE, FORCE load boundary conditions. 
+
+This is a quasi-static / static formulation, not dynamic, so we could not apply velocity boundary conditions. Additionally, it is a continuum solid model in 2D and 3D, so rotation boundary conditions are not an option either. Those are applied to structural elements like BEAM, PLATE, SHELL, etc.
+
+
+3. There are elements equivalent to C3D8 and C3D8R in the UEL. 
+
+If you just want to model small deformation solid continuum, this should be sufficient - only the material part needs to be changed.
+
+If you want a user programmed finite deformation element for specific materials, I would recommend obtaining the HYPERELASTIC UEL as an extension to the main code. you can add other material models to the base code.
+
+Best Regards 
+Cae assistant training team 
+
+
+
+Dear CAE Assistant,
+
+Thank you for your detailed response. For most of the information that you have discussed, I think I am aware of them from many research papers and example source code of Abaqus on UEL. 
+
+I agree with everything you have mentioned, except regarding this point, "you can extend the UEL code for nonlinear small deformation materials like metal or soil plasticity by changing the UMAT part of the code", I think that I may not totally agree, because NLGEOM=ON means updated lagrangian formulation, which should be updated during the element formulation inside UEL, and UMAT cannot deal with NLGEOM=ON. If I am wrong, I hope you could correct me.
+
+And for load BC, if I guess correctly, when we use a dummy element and apply load over their surface, Abaqus will compute the force acting on the nodal points, which then can be passed into nodal points that makes up user elements in UEL. This is the premise for your approach, is it true?
+
+Overall, would you be kind to confirm that if I bought this course, I can be taught about the replication of a unit cube C3D8/C3D8R when NLGEOM=ON? When I mean replication, I mean all fields must be nearly numerically equal to the results produced by Abaqus (stress field, strain field, reaction force, displacement, von Mises). For example, matching only stresses but not strain will be problematic. Replication should be consistent for different BC types, such as only Xsymm, or all 3 Xsymm, Ysymm, Zsymm. 
+
+I hope to hear some confirmation from you about this feature
+
+With best regards, Binh
