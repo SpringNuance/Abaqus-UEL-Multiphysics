@@ -4,7 +4,7 @@ The work is currently being updated and many things are messy.
 
 The UEL code is trying to conform to the interface of UMAT and UMATHT subroutines as closely as possible
 
-BC conditions must only be Dirichlet type. This UEL has not supported Neumann type BC yet
+BC conditions must only be Dirichlet type (displacement or nodal temperature). This UEL has not supported Neumann type BC (traction or flux)
 
 There are 12 case studies
 1) Case 1: *ELASTIC, NLGEOM is turned off, no symmetry BC
