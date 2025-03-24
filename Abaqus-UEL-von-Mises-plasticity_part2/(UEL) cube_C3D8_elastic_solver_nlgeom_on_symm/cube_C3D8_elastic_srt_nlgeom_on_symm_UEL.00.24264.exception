@@ -1,0 +1,56 @@
+<Description>
+   ABAQUS/standard rank 0 encountered a SEGMENTATION FAULT
+
+</Description>
+
+<Context>
+   INITIAL STRESS
+</Context>
+
+<Phase>
+   std | Exec | Substep | std_Elmas_driver | std_elmas
+</Phase>
+
+<Callstack>
+  1)  standardU.dll               uel                                     
+  2)  ABQSMAStaCore.dll           eusero                                  
+  3)  ABQSMAStaCore.dll           euserm                                  
+  4)  ABQSMAStaCore.dll           std_elmase                              
+  5)  ABQSMAStaCore.dll           std_elmase1                             
+  6)  ABQSMAStaCore.dll           elmas                                   
+  7)  ABQSMAStaCore.dll           std_elmas_driver                        
+  8)  ABQSMAStaCore.dll           substep                                 
+  9)  ABQSMAStaCore.dll           exec                                    
+ 10)  ABQSMAStaCore.dll           std_main                                
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          32 GB </Size>
+       <Used>          27 GB </Used>
+       <Free>           5 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_elastic_srt_nlgeom_on_symm_UEL_17852 </current> <free>     48 GB </free>   <used>    426 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-von-Mises-plasticity_part2\(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm </indir>   <free>     48 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-von-Mises-plasticity_part2\(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm </outdir>  <free>     48 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_elastic_srt_nlgeom_on_symm_UEL_17852 </tmpdir>  <free>     48 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     48 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_cube_C3D8_elastic_srt_nlgeom_on_symm_UEL_17852\standard.exe </Executable>
+</Installation>
+

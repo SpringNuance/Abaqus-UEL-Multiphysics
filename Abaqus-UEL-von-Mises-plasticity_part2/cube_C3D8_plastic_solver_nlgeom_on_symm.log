@@ -1,0 +1,22 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB cube_C3D8_plastic_solver_nlgeom_on_symm
+Abaqus 2023.HF4
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
+<75 out of 100 licenses remain available>.
+Begin Analysis Input File Processor
+23/03/2025 21:48:20
+Run pre.exe
+23/03/2025 21:48:26
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+23/03/2025 21:48:26
+Run standard.exe
+23/03/2025 21:48:35
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+23/03/2025 21:48:36
+Run SMASimUtility.exe
+23/03/2025 21:48:36
+End SIM Wrap-up
+Abaqus JOB cube_C3D8_plastic_solver_nlgeom_on_symm COMPLETED

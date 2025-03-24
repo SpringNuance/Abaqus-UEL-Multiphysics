@@ -1,0 +1,107 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Sat Mar 22 21:18:23 2025
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=167.296875, 
+    height=122.412033081055)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(name='cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00246065, 
+    farPlane=0.00483333, width=0.00305877, height=0.00147895, 
+    viewOffsetX=0.000177379, viewOffsetY=-6.607e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR8_STRAN22', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR9_STRAN33', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR10_STRAN12', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR11_STRAN13', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR12_STRAN23', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    SYMBOLS_ON_DEF, ))
+#* VisError: The output database 
+#* C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) 
+#* cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb 
+#* disk file has changed.
+#* 
+#* The current plot operation has been canceled, re-open the file to view the 
+#* results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00247734, 
+    farPlane=0.00481664, width=0.00327609, height=0.00158403, 
+    viewOffsetX=0.000269231, viewOffsetY=-3.66493e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR8_STRAN22', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR9_STRAN33', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR10_STRAN12', outputPosition=INTEGRATION_POINT, )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203348, 
+    farPlane=0.00492123, width=0.00399697, height=0.00193258, 
+    viewOffsetX=0.000584665, viewOffsetY=0.000242844)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF3'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR28_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )

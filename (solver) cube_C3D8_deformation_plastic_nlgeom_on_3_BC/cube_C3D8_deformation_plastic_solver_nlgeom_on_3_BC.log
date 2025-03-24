@@ -1,0 +1,22 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB cube_C3D8_deformation_plastic_solver_nlgeom_on_3_BC
+Abaqus 2023.HF4
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
+<90 out of 100 licenses remain available>.
+Begin Analysis Input File Processor
+2024-10-13 1:37:30 PM
+Run pre.exe
+2024-10-13 1:37:32 PM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+2024-10-13 1:37:32 PM
+Run standard.exe
+2024-10-13 1:37:37 PM
+End Abaqus/Standard Analysis
+Begin SIM Wrap-up
+2024-10-13 1:37:39 PM
+Run SMASimUtility.exe
+2024-10-13 1:37:39 PM
+End SIM Wrap-up
+Abaqus JOB cube_C3D8_deformation_plastic_solver_nlgeom_on_3_BC COMPLETED

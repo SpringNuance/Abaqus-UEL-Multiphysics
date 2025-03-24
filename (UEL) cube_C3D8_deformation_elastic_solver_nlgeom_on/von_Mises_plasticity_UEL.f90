@@ -67,19 +67,7 @@ module common_block
 
     integer, parameter :: total_elems = 1 ! Storing the actual number of elements
     integer, parameter :: total_nodes = 8 ! Storing the actual number of nodes
-
-    real(kind=dp), parameter :: pi = 3.14159d0 ! dimless
-    real(kind=dp), parameter :: inv_pi = 1.0d0 / 3.14159d0 ! dimless
-    real(kind=dp), parameter :: half = 1.0d0 / 2.0d0 ! dimless
-    real(kind=dp), parameter :: third = 1.0d0 / 3.0d0 ! dimless
-    real(kind=dp), parameter :: fourth = 1.0d0 / 4.0d0 ! dimless
-    real(kind=dp), parameter :: sixth = 1.0d0 / 6.0d0 ! dimless
-    real(kind=dp), parameter :: three_half = 3.0d0 / 2.0d0 ! dimless
-    real(kind=dp), parameter :: sqrt_three_half = dsqrt(3.0d0 / 2.0d0) ! dimless
-    real(kind=dp), parameter :: two_third = 2.0d0 / 3.0d0 ! dimless
-    real(kind=dp), parameter :: sqrt_two_third = dsqrt(2.0d0 / 3.0d0) ! dimless
-    real(kind=dp), parameter :: nine_half = 9.0d0 / 2.0d0 ! dimless
-
+    
     integer, parameter :: before_mech_props_idx = 0 ! Index of the first mechanical property in props
     integer, parameter :: before_flow_props_idx = 8 ! Index of the first flow curve data in props
     

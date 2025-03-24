@@ -1,0 +1,87 @@
+interface
+ subroutine staticstep(tprops,ntprops,converged,nit,dunorm,cnorm,rnorm,&
+                      dtnew,dtopt,cutback,continue_stepping,prin)
+
+  use Types
+  use ParamIO  
+  use Globals, only : TIME, DTIME, n_total_steps, state_print_steps, &
+                      usr_print_steps, n_state_prints, n_usr_prints
+  implicit none
+
+    integer, intent( in )         :: ntprops
+    integer, intent( in )         :: nit
+
+    real( prec ), intent( in )    :: tprops(ntprops)
+    real( prec ), intent( in )    :: dunorm(nit)
+    real( prec ), intent( in )    :: cnorm(nit)    
+    real( prec ), intent( in )    :: rnorm(nit)    
+
+    real( prec ), intent( out )   :: dtnew
+    real( prec ), intent( inout)  :: dtopt
+
+    logical, intent(in )          :: converged
+    logical, intent(inout )       :: cutback
+    logical, intent(inout )       :: continue_stepping
+    logical, intent(inout )       :: prin(4)
+
+  end subroutine staticstep
+end interface
+
+interface
+
+subroutine convergencecheck(nit,dunorm,cnorm,rnorm,tolrnc,maxitn,&
+                      iterate,converged)
+
+  use Types
+  use ParamIO  
+
+  implicit none
+
+  integer,  intent( inout  )       :: nit
+  integer,  intent(  in  )       :: maxitn
+  real( prec ), intent( in )     :: dunorm(nit)
+  real( prec ), intent( in )     :: cnorm(nit)
+  real( prec ), intent( in )     :: rnorm(nit)
+  real( prec ), intent( in )     :: tolrnc
+
+  logical, intent( out )         :: iterate
+  logical, intent( out )         :: converged
+
+  end subroutine convergencecheck
+end interface
+
+
+
+interface
+
+ subroutine global_load_history(lprops,nlprops,time,umag,dlmag,fmag)
+
+  use Types
+  use ParamIO  
+  use Globals, only : BTEMP, BTINC,n_total_steps
+
+  implicit none
+
+    integer, intent( in )         :: nlprops
+    real( prec ), intent( in )    :: lprops(nlprops)
+    real( prec ), intent( in )    :: time
+    real( prec ), intent( out )   :: umag,dlmag,fmag
+
+  end subroutine global_load_history
+
+end interface
+
+interface
+  subroutine loadval(history,nhist,time,value)
+
+   use TYPES
+   use PARAMIO
+
+   integer,  intent( in )         :: nhist
+
+   real( prec ), intent( in )     :: history(2,nhist)
+   real( prec ), intent( in )     :: time
+   real( prec ), intent( inout )  :: value
+
+  end subroutine loadval
+end interface

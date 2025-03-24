@@ -1,0 +1,255 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/Viewer Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Sun Mar 23 12:06:32 2025
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=167.296875, 
+    height=122.412033081055)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from viewerModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+o2 = session.openOdb(name='cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].setValues(displayedObject=o2)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    SYMBOLS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00204428, 
+    farPlane=0.00504185, width=0.00324421, height=0.00160058, 
+    viewOffsetX=0.000133774, viewOffsetY=0.000304141)
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF3'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00199028, 
+    farPlane=0.00509586, width=0.00357459, height=0.00176358, 
+    viewOffsetX=0.000171302, viewOffsetY=0.000293338)
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='U', outputPosition=NODAL, vectorQuantity=RESULTANT, )
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U2'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.viewports['Viewport: 1'].odbDisplay.setSymbolVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), 
+    vectorQuantity=VECTOR_COMPONENT, )
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00189513, 
+    farPlane=0.00505957, width=0.00336033, height=0.00165787, 
+    viewOffsetX=0.000304404, viewOffsetY=0.000212394)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(COMPONENT, 'U3'), )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00170702, 
+    farPlane=0.00515183, width=0.00399889, height=0.00197291, 
+    viewOffsetX=0.000289528, viewOffsetY=0.000193203)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00176643, 
+    farPlane=0.00509331, width=0.00355924, height=0.001756, 
+    viewOffsetX=0.000299553, viewOffsetY=0.000235439)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00183999, 
+    farPlane=0.0050613, width=0.00327591, height=0.00161622, 
+    viewOffsetX=0.000246048, viewOffsetY=0.000207103)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00188234, 
+    farPlane=0.00501905, width=0.00312461, height=0.00154157, 
+    viewOffsetX=0.00017803, viewOffsetY=0.000168403)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00194434, 
+    farPlane=0.00501036, width=0.00304629, height=0.00150293, 
+    viewOffsetX=1.13383e-05, viewOffsetY=0.000261946)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0018484, 
+    farPlane=0.00510631, width=0.0036941, height=0.00182254, 
+    viewOffsetX=0.000400924, viewOffsetY=0.000252464)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00185612, 
+    farPlane=0.00509859, width=0.00396246, height=0.00195494, 
+    viewOffsetX=7.30784e-05, viewOffsetY=0.000208533)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF3'), )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-von-Mises-plasticity_part2/(UEL) cube_C3D8_elastic_solver_nlgeom_on_symm/cube_C3D8_elastic_srt_nlgeom_on_symm_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          6
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
