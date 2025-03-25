@@ -1,0 +1,207 @@
+1
+
+   Abaqus 2023.HF4                                  Date 25-Mar-2025   Time 22:07:09
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2026
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***WARNING: Line #90 has been truncated.
+
+ ***WARNING: Line #93 has been truncated.
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *userelement, nodes=8, type=U1, properties=256, variables=400, coordinates=3
+  *Heading
+  *Element, type=U1
+  *Element, type=C3D8
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION
+  *Elset, elset=ASSEMBLY_TOP_SIDE
+  *Elset, elset=ASSEMBLY_WHOLE_CUBE_ELEMENT
+  *Elset, elset=ASSEMBLY_XSYMM_SIDE
+  *Elset, elset=ASSEMBLY_YSYMM_SIDE
+  *Elset, elset=ASSEMBLY_ZSYMM_SIDE
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *material, name=THERMOMECHANICAL
+  *density
+  *depvar
+  *usermaterial, constants=1, type=THERMAL
+  *usermaterial, constants=1, type=MECHANICAL
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=THERMOMECHANICAL
+  *userelement, nodes=8, type=U1, properties=256, variables=400, coordinates=3
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_VISUALIZATION, material=THERMOMECHANICAL
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *uelproperty, elset=ASSEMBLY_CUBE_ASSEMBLY_SOLID
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *output, field
+  *output, history, frequency=0
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *nodeoutput
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *boundary
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     2
+          NUMBER OF NODES IS                                        8
+          NUMBER OF NODES DEFINED BY THE USER                       8
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   32
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      0.0    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =      0.0    
+       WALLCLOCK TIME (SEC) =            1
+1
+
+   Abaqus 2023.HF4                                  Date 25-Mar-2025   Time 22:07:14
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     C O U P L E D - T E M P E R A T U R E - D I S P L A C E M E N T   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            100.    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-03
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+          CREEP AND SWELLING EFFECTS ARE OMITTED IN THIS STEP
+
+     THE SIZE OF THE TIME INCREMENT IS CONTROLLED BY -
+          THE TEMPERATURE CHANGE PER INCREMENT NOT EXCEEDING            100.    
+          THE RATE DEPENDENCY WILL BE CONSIDERED IN THIS STEP
+
+          CREEP AND SWELLING EFFECTS WILL BE IGNORED.
+
+          LARGE DISPLACEMENT THEORY WILL BE USED
+
+          UNSYMMETRIC MATRIX STORAGE AND SOLUTION WILL BE USED

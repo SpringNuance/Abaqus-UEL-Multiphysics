@@ -1,1 +1,0 @@
-abaqus mtxasm job=cube_C3D8_diffusionTHERM1 text

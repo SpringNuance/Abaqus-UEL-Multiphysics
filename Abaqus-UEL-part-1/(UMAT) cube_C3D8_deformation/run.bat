@@ -1,1 +1,0 @@
-abaqus job=cube_C3D8_deformation input=cube_C3D8_deformation.inp user=isotropic_von_mises cpus=1 mp_mode=threads -verbose 1 interactive

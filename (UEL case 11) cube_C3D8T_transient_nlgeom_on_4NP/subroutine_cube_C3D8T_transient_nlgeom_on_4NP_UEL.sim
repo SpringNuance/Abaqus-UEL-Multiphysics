@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- COPYRIGHT DASSAULT SYSTEMES 2009 -->
+<manifest>
+    <focusFile fileBinary="subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.simdir\subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.1.SMAFocus"/>
+    <publishIndex value="1"/>
+    <bulkFile bulkid="1" fileBinary="subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.3.SMABulk"/>
+</manifest>

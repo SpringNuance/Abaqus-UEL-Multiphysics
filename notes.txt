@@ -43,3 +43,10 @@ Overall, would you be kind to confirm that if I bought this course, I can be tau
 I hope to hear some confirmation from you about this feature
 
 With best regards, Binh
+
+    ! print *, 'LFLAGS(1) = ', lflags(1) ! Value is 1
+    ! Static analysis
+    ! print *, 'LFLAGS(2) = ', lflags(2) ! Value is 1
+    ! ! Large-displacement analysis (nonlinear geometric effects included in the step)
+    ! ! see (General and Perturbation Procedures).
+    ! ! https://help.3ds.com/2023/english/dssimulia_established/SIMACAEANLRefMap/simaanl-c-linearnonlinear.htm?contextscope=all
