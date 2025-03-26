@@ -1,0 +1,41 @@
+<Description>
+   ABAQUS/ABQvwrK rank 0 received the ABORT signal
+
+</Description>
+
+<Context>
+   CAE
+</Context>
+
+<Callstack>
+  1)  ucrtbase.dll                abort                                   
+  2)  ucrtbase.dll                terminate                               
+  3)  VCRUNTIME140_1.dll        unknown                                 
+</Callstack>
+
+<Memory>
+   <Current>            0 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>              0 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          7 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          32 GB </Size>
+       <Used>          16 GB </Used>
+       <Free>          15 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP </current> <free>     44 GB </free>   <used>    431 GB </used> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     44 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+</Installation>
+

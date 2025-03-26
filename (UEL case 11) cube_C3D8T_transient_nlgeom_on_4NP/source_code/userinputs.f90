@@ -57,9 +57,9 @@ module userinputs
     
     integer, parameter :: u_heat_idx = 37 ! Index of the Internal thermal energy per unit mass in statev
     integer, parameter :: temp_idx = 38 ! Index of the temperature in statev
-    integer, parameter :: temp_grad_X_idx = 39 ! Index of the temperature gradient in X direction in statev
-    integer, parameter :: temp_grad_Y_idx = 40 ! Index of the temperature gradient in Y direction in statev
-    integer, parameter :: temp_grad_Z_idx = 41 ! Index of the temperature gradient in Z direction in statev
+    integer, parameter :: flux_heat_X_idx = 39 ! Index of the temperature gradient in X direction in statev
+    integer, parameter :: flux_heat_Y_idx = 40 ! Index of the temperature gradient in Y direction in statev
+    integer, parameter :: flux_heat_Z_idx = 41 ! Index of the temperature gradient in Z direction in statev
 
     ! ===================================
     ! SDV indices of mass diffusion field 
@@ -79,6 +79,14 @@ module userinputs
     integer, parameter :: phi_damage_idx = 48 ! Index of the phase field damage in statev
     integer, parameter :: history_idx = 49 ! Index of the history variable in statev
     integer, parameter :: Gc_idx = 50 ! Index of the critical release energy rate in statev
+
+    integer, parameter :: ninpt = 8 ! Number of integration points
+    integer, parameter :: nnode = 8 ! Number of nodal points
+    integer, parameter :: nmax_elems = 20 ! Maximum number of elements that a nodal point can have
+    integer, parameter :: ndim = 3 ! Number of spatial dimensions
+    integer, parameter :: ntens_UMAT = 6 ! Number of stress components
+    integer, parameter :: ndi_UMAT = 3 ! Number of direct stress components
+    integer, parameter :: nshr_UMAT = 3 ! Number of shear stress components
 
     save
 

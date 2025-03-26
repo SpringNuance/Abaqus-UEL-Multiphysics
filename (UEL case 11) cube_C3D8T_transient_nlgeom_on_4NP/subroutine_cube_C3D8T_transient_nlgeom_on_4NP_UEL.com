@@ -14,7 +14,7 @@ options = {
     'biorid':OFF,
     'cavityTypes':[],
     'cavparallel':OFF,
-    'compile_fortran':['ifort', '/c', '/fpp', '/extend-source', '/DABQ_WIN86_64', '/DABQ_FORTRAN', '/iface:cref', '/recursive', '/Qauto', '/align:array64byte', '/Qpc64', '/Qprec-div', '/Qprec-sqrt', '/Qfma-', '/fp:precise', '/Qimf-arch-consistency:true', '/Qfp-speculation:safe', '/Qprotect-parens', '/Qfp-stack-check', '/reentrancy:threaded', '/QxSSE3', '/QaxAVX', '/include:%I', '/include:C:\\SIMULIA\\EstProducts\\2023', '%P', '/names:lowercase', '/Qmkl:sequential', '-mkl=sequential'],
+    'compile_fortran':['ifort', '/c', '/fpp', '/extend-source', '/DABQ_WIN86_64', '/DABQ_FORTRAN', '/iface:cref', '/recursive', '/Qauto', '/align:array64byte', '/Qpc64', '/Qprec-div', '/Qprec-sqrt', '/Qfma-', '/fp:precise', '/Qimf-arch-consistency:true', '/Qfp-speculation:safe', '/Qprotect-parens', '/Qfp-stack-check', '/reentrancy:threaded', '/QxSSE3', '/QaxAVX', '/include:%I', '/include:C:\\SIMULIA\\EstProducts\\2023', '%P', '/names:lowercase', '/Qmkl:sequential'],
     'complexFrequency':OFF,
     'contact':OFF,
     'cosimulation':OFF,

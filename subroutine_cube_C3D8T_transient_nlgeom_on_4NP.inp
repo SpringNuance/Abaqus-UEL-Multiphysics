@@ -56,6 +56,8 @@
 *Elset, elset=zsymm_side, instance=cube_assembly
  1,
 *End Assembly
+*Amplitude, name=constant
+             0.,              1.,            100.,              1.
 *Amplitude, name=loading
              0.,              0.,            100.,              1.
 ** 
@@ -81,7 +83,7 @@
 ** BOUNDARY CONDITIONS
 ** 
 ** Name: heat_transfer Type: Temperature
-*Boundary
+*Boundary, amplitude=constant
 four_NP, 11, 11, 100.
 ** Name: top_disp Type: Displacement/Rotation
 *Boundary, amplitude=loading

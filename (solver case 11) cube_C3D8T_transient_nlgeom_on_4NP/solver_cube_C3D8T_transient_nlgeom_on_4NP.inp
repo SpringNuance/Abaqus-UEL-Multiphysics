@@ -104,8 +104,8 @@ zsymm_side, ZSYMM
 ** 
 *Output, field
 *Node Output
-NT, RF, U
+NT, RF, RFL, U
 *Element Output, directions=YES
-LE, S, TEMP
+HFL, LE, S, TEMP
 *Output, history, frequency=0
 *End Step

@@ -1,0 +1,50 @@
+<Description>
+   ABAQUS/pre rank 0 received the INTERRUPT signal
+
+</Description>
+
+<Context>
+   PRE
+</Context>
+
+<Phase>
+   pre
+</Phase>
+
+<Callstack>
+  1)  ucrtbase.dll                perror                                  
+  2)  KERNELBASE.dll              CtrlRoutine                             
+  3)  KERNEL32.DLL                BaseThreadInitThunk                     
+  4)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            0 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             10 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          1 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          31 GB </Size>
+       <Used>          20 GB </Used>
+       <Free>          10 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP_13968 </current> <free>     45 GB </free>   <used>    429 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP\test_UMATHT </indir>   <free>     45 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP\test_UMATHT </outdir>  <free>     45 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP_13968 </tmpdir>  <free>     45 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     45 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4  </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\SIMULIA\EstProducts\2023\win_b64\code\bin\pre.exe </Executable>
+</Installation>
+

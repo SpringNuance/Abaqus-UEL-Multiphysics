@@ -147,6 +147,8 @@
 *Elset, elset=zsymm_side, instance=cube_assembly
 1,
 *End Assembly
+*Amplitude, name=constant
+0.,              1.,            100.,              1.
 *Amplitude, name=loading
 0.,              0.,            100.,              1.
 **
@@ -195,9 +197,9 @@
 36, AR36_lode, AR36_lode
 37, AR37_u_heat, AR37_u_heat
 38, AR38_temp, AR38_temp
-39, AR39_temp_grad_X, AR39_temp_grad_X
-40, AR40_temp_grad_Y, AR40_temp_grad_Y
-41, AR41_temp_grad_Z, AR41_temp_grad_Z
+39, AR39_flux_heat_X, AR39_flux_heat_X
+40, AR40_flux_heat_Y, AR40_flux_heat_Y
+41, AR41_flux_heat_Z, AR41_flux_heat_Z
 42, AR42_CL_mol, AR42_CL_mol
 43, AR43_CT_mol, AR43_CT_mol
 44, AR44_C_mol, AR44_C_mol
@@ -222,7 +224,7 @@
 ** BOUNDARY CONDITIONS
 **
 ** Name: heat_transfer Type: Temperature
-*Boundary
+*Boundary, amplitude=constant
 four_NP, 11, 11, 100.
 ** Name: top_disp Type: Displacement/Rotation
 *Boundary, amplitude=loading
@@ -245,8 +247,8 @@ zsymm_side, ZSYMM
 **
 *Output, field
 *Node Output
-RF, U
+RF, U, NT
 *Element Output, directions=YES
-SDV,
+SDV, HFL
 *Output, history, frequency=0
 *End Step

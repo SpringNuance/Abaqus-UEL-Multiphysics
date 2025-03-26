@@ -1,0 +1,1 @@
+abaqus job=UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP user="source_code/UMAT_UMATHT_multiphysics" cpus=1 mp_mode=threads -verbose 1 interactive ask_delete=off

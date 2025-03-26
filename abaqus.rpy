@@ -2,7 +2,7 @@
 #
 # Abaqus/CAE Release 2023.HF4 replay file
 # Internal Version: 2023_07_21-20.45.57 RELr425 183702
-# Run by nguyenb5 on Tue Mar 25 15:40:28 2025
+# Run by nguyenb5 on Wed Mar 26 21:15:21 2025
 #
 
 # from driverUtils import executeOnCaeGraphicsStartup
@@ -10,7 +10,7 @@
 #: Executing "onCaeGraphicsStartup()" in the site directory ...
 from abaqus import *
 from abaqusConstants import *
-session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=193.276031494141, 
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=215.22395324707, 
     height=185.628463745117)
 session.viewports['Viewport: 1'].makeCurrent()
 session.viewports['Viewport: 1'].maximize()
@@ -24,543 +24,1781 @@ session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
     referenceRepresentation=ON)
 p = mdb.models['solver_cube_C3D8T_transient_nlgeom_off_1NP'].parts['cube']
 session.viewports['Viewport: 1'].setValues(displayedObject=p)
+#--- Recover file: 'cube_test.rec' ---
+# -*- coding: mbcs -*- 
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('S', 'LE', 'U', 'RF', 'NT', 'TEMP', 'HFL'))
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP'].submit(
+    consistencyChecking=OFF)
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STARTED, {
+    'phase': BATCHPRE_PHASE, 'clientHost': 'L23-0203', 'handle': 0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(WARNING, {
+    'phase': BATCHPRE_PHASE, 
+    'message': 'THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE ASSUMED.', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FILE, {
+    'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\LocalUserData\\User-data\\nguyenb5\\Abaqus-UEL-Multiphysics\\solver_cube_C3D8T_transient_nlgeom_off_4NP.odb', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(COMPLETED, {
+    'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STARTED, {
+    'phase': STANDARD_PHASE, 'clientHost': 'L23-0203', 'handle': 27388, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STEP, {
+    'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(
+    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'memory': 24.0})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(
+    PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 'physical_memory': 16017.0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(MINIMUM_MEMORY, 
+    {'minimum_memory': 17.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 1, 
+    'stepTime': 1.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 2, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 2, 
+    'stepTime': 2.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 3, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 3, 
+    'stepTime': 3.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 4, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 4, 
+    'stepTime': 4.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 5, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 5, 
+    'stepTime': 5.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 6, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 6, 
+    'stepTime': 6.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 7, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 7, 
+    'stepTime': 7.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 8, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 8.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 8, 
+    'stepTime': 8.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 9, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 9.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 9, 
+    'stepTime': 9.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 10, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 10.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 10, 
+    'stepTime': 10.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 11, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 11.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 11, 
+    'stepTime': 11.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 12, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 12.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 12, 
+    'stepTime': 12.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 13, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 13.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 13, 
+    'stepTime': 13.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 14, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 14.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 14, 
+    'stepTime': 14.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 15, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 15.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 15, 
+    'stepTime': 15.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 16, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 16.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 16, 
+    'stepTime': 16.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 17, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 17.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 17, 
+    'stepTime': 17.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 18, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 18.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 18, 
+    'stepTime': 18.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 19, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 19.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 19, 
+    'stepTime': 19.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 20, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 20.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 20, 
+    'stepTime': 20.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 21, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 21.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 21, 
+    'stepTime': 21.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 22, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 22.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 22, 
+    'stepTime': 22.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 23, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 23.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 23, 
+    'stepTime': 23.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 24, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 24.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 24, 
+    'stepTime': 24.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 25, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 25.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 25, 
+    'stepTime': 25.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 26, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 26.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 26, 
+    'stepTime': 26.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 27, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 27.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 27, 
+    'stepTime': 27.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 28, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 28.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 28, 
+    'stepTime': 28.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 29, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 29.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 29, 
+    'stepTime': 29.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 30, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 30.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 30, 
+    'stepTime': 30.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 31, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 31.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 31, 
+    'stepTime': 31.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 32, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 32.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 32, 
+    'stepTime': 32.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 33, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 33.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 33, 
+    'stepTime': 33.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 34, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 34.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 34, 
+    'stepTime': 34.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 35, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 35.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 35, 
+    'stepTime': 35.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 36, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 36.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 36, 
+    'stepTime': 36.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 37, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 37.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 37, 
+    'stepTime': 37.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 38, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 38.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 38, 
+    'stepTime': 38.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 39, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 39.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 39, 
+    'stepTime': 39.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 40, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 40.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 40, 
+    'stepTime': 40.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 41, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 41.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 41, 
+    'stepTime': 41.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 42, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 42.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 42, 
+    'stepTime': 42.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 43, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 43.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 43, 
+    'stepTime': 43.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 44, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 44.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 44, 
+    'stepTime': 44.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 45, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 45.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 45, 
+    'stepTime': 45.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 46, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 46.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 46, 
+    'stepTime': 46.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 47, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 47.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 47, 
+    'stepTime': 47.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 48, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 48.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 48, 
+    'stepTime': 48.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 49, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 49.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 49, 
+    'stepTime': 49.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 50, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 50.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 50, 
+    'stepTime': 50.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 51, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 51.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 51, 
+    'stepTime': 51.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 52, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 52.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 52, 
+    'stepTime': 52.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 53, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 53.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 53, 
+    'stepTime': 53.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 54, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 54.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 54, 
+    'stepTime': 54.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 55, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 55.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 55, 
+    'stepTime': 55.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 56, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 56.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 56, 
+    'stepTime': 56.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 57, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 57.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 57, 
+    'stepTime': 57.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 58, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 58.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 58, 
+    'stepTime': 58.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 59, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 59.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 59, 
+    'stepTime': 59.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 60, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 60.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 60, 
+    'stepTime': 60.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 61, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 61.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 61, 
+    'stepTime': 61.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 62, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 62.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 62, 
+    'stepTime': 62.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 63, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 63.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 63, 
+    'stepTime': 63.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 64, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 64.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 64, 
+    'stepTime': 64.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 65, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 65.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 65, 
+    'stepTime': 65.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 66, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 66.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 66, 
+    'stepTime': 66.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 67, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 67.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 67, 
+    'stepTime': 67.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 68, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 68.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 68, 
+    'stepTime': 68.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 69, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 69.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 69, 
+    'stepTime': 69.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 70, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 70.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 70, 
+    'stepTime': 70.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 71, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 71.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 71, 
+    'stepTime': 71.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 72, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 72.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 72, 
+    'stepTime': 72.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 73, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 73.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 73, 
+    'stepTime': 73.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 74, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 74.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 74, 
+    'stepTime': 74.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 75, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 75.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 75, 
+    'stepTime': 75.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 76, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 76.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 76, 
+    'stepTime': 76.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 77, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 77.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 77, 
+    'stepTime': 77.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 78, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 78.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 78, 
+    'stepTime': 78.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 79, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 79.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 79, 
+    'stepTime': 79.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 80, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 80.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 80, 
+    'stepTime': 80.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 81, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 81.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 81, 
+    'stepTime': 81.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 82, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 82.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 82, 
+    'stepTime': 82.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 83, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 83.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 83, 
+    'stepTime': 83.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 84, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 84.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 84, 
+    'stepTime': 84.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 85, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 85.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 85, 
+    'stepTime': 85.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 86, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 86.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 86, 
+    'stepTime': 86.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 87, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 87.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 87, 
+    'stepTime': 87.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 88, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 88.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 88, 
+    'stepTime': 88.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 89, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 89.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 89, 
+    'stepTime': 89.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 90, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 90.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 90, 
+    'stepTime': 90.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 91, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 91.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 91, 
+    'stepTime': 91.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 92, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 92.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 92, 
+    'stepTime': 92.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 93, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 93.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 93, 
+    'stepTime': 93.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 94, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 94.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 94, 
+    'stepTime': 94.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 95, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 95.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 95, 
+    'stepTime': 95.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 96, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 96.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 96, 
+    'stepTime': 96.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 97, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 97.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 97, 
+    'stepTime': 97.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 98, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 98.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 98, 
+    'stepTime': 98.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 99, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 99.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 99, 
+    'stepTime': 99.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 100, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
+    'totalTime': 100.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 100, 
+    'stepTime': 100.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(END_STEP, {
+    'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(COMPLETED, {
+    'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(JOB_COMPLETED, 
+    {'time': 'Wed Mar 26 18:06:43 2025', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP'].submit(
+    consistencyChecking=OFF)
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STARTED, {
+    'phase': BATCHPRE_PHASE, 'clientHost': 'L23-0203', 'handle': 0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(WARNING, {
+    'phase': BATCHPRE_PHASE, 
+    'message': 'THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE ASSUMED.', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FILE, {
+    'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\LocalUserData\\User-data\\nguyenb5\\Abaqus-UEL-Multiphysics\\solver_cube_C3D8T_transient_nlgeom_on_4NP.odb', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(COMPLETED, {
+    'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STARTED, {
+    'phase': STANDARD_PHASE, 'clientHost': 'L23-0203', 'handle': 27840, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STEP, {
+    'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(MEMORY_ESTIMATE, 
+    {'phase': STANDARD_PHASE, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'memory': 24.0})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(PHYSICAL_MEMORY, 
+    {'phase': STANDARD_PHASE, 'physical_memory': 16017.0, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(MINIMUM_MEMORY, 
+    {'minimum_memory': 17.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 1, 
+    'stepTime': 1.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 2, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 2, 
+    'stepTime': 2.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 3, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 3, 
+    'stepTime': 3.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 4, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 4, 
+    'stepTime': 4.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 5, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 5, 
+    'stepTime': 5.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 6, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 6, 
+    'stepTime': 6.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 7, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 7, 
+    'stepTime': 7.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 8, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 8.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 8, 
+    'stepTime': 8.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 9, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 9.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 9, 
+    'stepTime': 9.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 10, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 10.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 10, 
+    'stepTime': 10.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 11, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 11.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 11, 
+    'stepTime': 11.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 12, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 12.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 12, 
+    'stepTime': 12.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 13, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 13.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 13, 
+    'stepTime': 13.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 14, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 14.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 14, 
+    'stepTime': 14.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 15, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 15.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 15, 
+    'stepTime': 15.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 16, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 16.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 16, 
+    'stepTime': 16.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 17, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 17.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 17, 
+    'stepTime': 17.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 18, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 18.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 18, 
+    'stepTime': 18.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 19, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 19.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 19, 
+    'stepTime': 19.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 20, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 20.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 20, 
+    'stepTime': 20.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 21, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 21.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 21, 
+    'stepTime': 21.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 22, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 22.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 22, 
+    'stepTime': 22.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 23, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 23.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 23, 
+    'stepTime': 23.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 24, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 24.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 24, 
+    'stepTime': 24.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 25, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 25.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 25, 
+    'stepTime': 25.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 26, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 26.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 26, 
+    'stepTime': 26.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 27, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 27.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 27, 
+    'stepTime': 27.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 28, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 28.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 28, 
+    'stepTime': 28.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 29, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 29.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 29, 
+    'stepTime': 29.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 30, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 30.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 30, 
+    'stepTime': 30.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 31, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 31.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 31, 
+    'stepTime': 31.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 32, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 32.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 32, 
+    'stepTime': 32.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 33, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 33.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 33, 
+    'stepTime': 33.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 34, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 34.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 34, 
+    'stepTime': 34.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 35, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 35.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 35, 
+    'stepTime': 35.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 36, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 36.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 36, 
+    'stepTime': 36.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 37, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 37.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 37, 
+    'stepTime': 37.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 38, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 38.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 38, 
+    'stepTime': 38.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 39, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 39.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 39, 
+    'stepTime': 39.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 40, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 40.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 40, 
+    'stepTime': 40.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 41, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 41.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 41, 
+    'stepTime': 41.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 42, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 42.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 42, 
+    'stepTime': 42.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 43, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 43.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 43, 
+    'stepTime': 43.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 44, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 44.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 44, 
+    'stepTime': 44.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 45, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 45.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 45, 
+    'stepTime': 45.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 46, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 46.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 46, 
+    'stepTime': 46.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 47, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 47.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 47, 
+    'stepTime': 47.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 48, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 48.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 48, 
+    'stepTime': 48.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 49, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 49.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 49, 
+    'stepTime': 49.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 50, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 50.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 50, 
+    'stepTime': 50.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 51, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 51.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 51, 
+    'stepTime': 51.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 52, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 52.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 52, 
+    'stepTime': 52.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 53, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 53.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 53, 
+    'stepTime': 53.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 54, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 54.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 54, 
+    'stepTime': 54.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 55, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 55.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 55, 
+    'stepTime': 55.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 56, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 56.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 56, 
+    'stepTime': 56.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 57, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 57.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 57, 
+    'stepTime': 57.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 58, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 58.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 58, 
+    'stepTime': 58.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 59, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 59.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 59, 
+    'stepTime': 59.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 60, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 60.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 60, 
+    'stepTime': 60.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 61, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 61.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 61, 
+    'stepTime': 61.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 62, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 62.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 62, 
+    'stepTime': 62.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 63, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 63.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 63, 
+    'stepTime': 63.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 64, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 64.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 64, 
+    'stepTime': 64.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 65, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 65.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 65, 
+    'stepTime': 65.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 66, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 66.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 66, 
+    'stepTime': 66.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 67, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 67.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 67, 
+    'stepTime': 67.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 68, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 68.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 68, 
+    'stepTime': 68.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 69, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 69.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 69, 
+    'stepTime': 69.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 70, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 70.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 70, 
+    'stepTime': 70.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 71, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 71.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 71, 
+    'stepTime': 71.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 72, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 72.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 72, 
+    'stepTime': 72.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 73, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 73.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 73, 
+    'stepTime': 73.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 74, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 74.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 74, 
+    'stepTime': 74.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 75, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 75.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 75, 
+    'stepTime': 75.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 76, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 76.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 76, 
+    'stepTime': 76.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 77, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 77.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 77, 
+    'stepTime': 77.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 78, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 78.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 78, 
+    'stepTime': 78.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 79, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 79.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 79, 
+    'stepTime': 79.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 80, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 80.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 80, 
+    'stepTime': 80.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 81, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 81.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 81, 
+    'stepTime': 81.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 82, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 82.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 82, 
+    'stepTime': 82.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 83, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 83.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 83, 
+    'stepTime': 83.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 84, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 84.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 84, 
+    'stepTime': 84.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 85, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 85.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 85, 
+    'stepTime': 85.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 86, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 86.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 86, 
+    'stepTime': 86.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 87, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 87.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 87, 
+    'stepTime': 87.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 88, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 88.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 88, 
+    'stepTime': 88.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 89, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 89.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 89, 
+    'stepTime': 89.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 90, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 90.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 90, 
+    'stepTime': 90.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 91, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 91.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 91, 
+    'stepTime': 91.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 92, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 92.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 92, 
+    'stepTime': 92.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 93, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 93.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 93, 
+    'stepTime': 93.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 94, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 94.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 94, 
+    'stepTime': 94.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 95, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 95.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 95, 
+    'stepTime': 95.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 96, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 96.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 96, 
+    'stepTime': 96.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 97, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 97.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 97, 
+    'stepTime': 97.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 98, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 98.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 98, 
+    'stepTime': 98.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 99, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 99.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 99, 
+    'stepTime': 99.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 100, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
+    'totalTime': 100.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 100, 
+    'stepTime': 100.0, 'step': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(END_STEP, {
+    'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(COMPLETED, {
+    'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(JOB_COMPLETED, {
+    'time': 'Wed Mar 26 18:08:27 2025', 
+    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
+#--- End of Recover file ------
+p1 = mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
+mdb.Model(name='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy', 
+    objectToCopy=mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'])
+#: The model "UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy" has been created.
+p = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+mdb.models.changeKey(
+    fromName='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy', 
+    toName='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP')
+p = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
 session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
     engineeringFeatures=ON)
 session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
     referenceRepresentation=OFF)
-p1 = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
-session.viewports['Viewport: 1'].setValues(displayedObject=p1)
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00232929, 
-    farPlane=0.00498779, width=0.00227266, height=0.0014, 
-    viewOffsetX=0.000193851, viewOffsetY=-7.72047e-06)
-session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
-    engineeringFeatures=OFF, mesh=ON)
-session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
-    meshTechnique=ON)
-session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
-    engineeringFeatures=ON, mesh=OFF)
-session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
-    meshTechnique=OFF)
-mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].UserMaterial(
-    mechanicalConstants=(0.0, ))
+del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].conductivity
+del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].elastic
+del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].specificHeat
+mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].Depvar(
+    )
+mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].UserMaterial(
+    type=THERMOMECHANICAL, mechanicalConstants=(0.0, ), thermalConstants=(0.0, 
+    ))
 mdb.save()
 #: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
-session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
-    engineeringFeatures=OFF, mesh=ON)
-session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
-    meshTechnique=ON)
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00227708, 
-    farPlane=0.00504, width=0.0025144, height=0.00155585, 
-    viewOffsetX=0.000367612, viewOffsetY=1.88358e-05)
-elemType1 = mesh.ElemType(elemCode=C3D8, elemLibrary=STANDARD, 
-    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
-elemType2 = mesh.ElemType(elemCode=C3D6, elemLibrary=STANDARD)
-elemType3 = mesh.ElemType(elemCode=C3D4, elemLibrary=STANDARD)
-p = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
-c = p.cells
-cells = c.getSequenceFromMask(mask=('[#1 ]', ), )
-pickedRegions =(cells, )
-p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2, 
-    elemType3))
-mdb.save()
-#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
-a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
-a.regenerate()
+a = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
 session.viewports['Viewport: 1'].setValues(displayedObject=a)
 session.viewports['Viewport: 1'].assemblyDisplay.setValues(
     optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
-mdb.jobs['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].writeInput(
+mdb.Job(name='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP', 
+    model='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP', description='', 
+    type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, queue=None, 
+    memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.jobs['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].writeInput(
     consistencyChecking=OFF)
-#: The job input file has been written to "subroutine_cube_C3D8T_transient_nlgeom_on_4NP.inp".
-session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
-    engineeringFeatures=ON, mesh=OFF)
-session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
-    meshTechnique=OFF)
-p1 = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
-session.viewports['Viewport: 1'].setValues(displayedObject=p1)
-mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].userMaterial.setValues(
-    type=THERMOMECHANICAL, thermalConstants=(0.0, ))
-mdb.save()
-#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
-session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=OFF, 
-    engineeringFeatures=OFF, mesh=ON)
-session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
-    meshTechnique=ON)
-elemType1 = mesh.ElemType(elemCode=C3D8T, elemLibrary=STANDARD, 
-    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
-elemType2 = mesh.ElemType(elemCode=C3D6T, elemLibrary=STANDARD)
-elemType3 = mesh.ElemType(elemCode=C3D4T, elemLibrary=STANDARD)
-p = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
-c = p.cells
-cells = c.getSequenceFromMask(mask=('[#1 ]', ), )
-pickedRegions =(cells, )
-p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2, 
-    elemType3))
-mdb.save()
-#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
+#: The job input file has been written to "UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP.inp".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='step1_thermomechanical')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON)
+mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('S', 'LE', 'U', 'RF', 'NT', 'TEMP', 'HFL', 'RFL'))
 a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
-a.regenerate()
 session.viewports['Viewport: 1'].setValues(displayedObject=a)
-mdb.jobs['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].writeInput(
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='step1_thermomechanical')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
+mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('RF', 'SDV', 'U', 'S', 'LE', 'TEMP', 'NT', 'HFL', 'RFL'))
+a = mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('HFL', 'LE', 'NT', 'RF', 'S', 'TEMP', 'U', 'RFL'))
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP'].submit(
     consistencyChecking=OFF)
-#: The job input file has been written to "subroutine_cube_C3D8T_transient_nlgeom_on_4NP.inp".
-session.viewports['Viewport: 1'].setValues(displayedObject=None)
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       7
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00184802, 
-    farPlane=0.0051085, width=0.00297008, height=0.00182962, 
-    viewOffsetX=0.000256182, viewOffsetY=0.000255691)
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='NT11', outputPosition=NODAL, )
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-#: Warning: The selected Primary Variable is not available in the current frame for any elements in the current display group.
-#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
-#: 
-#: The current plot operation has been canceled, re-open the file to view the results
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0018728, 
-    farPlane=0.00508372, width=0.00284088, height=0.00175003, 
-    viewOffsetX=0.000168258, viewOffsetY=0.000135214)
-o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
-session.viewports['Viewport: 1'].setValues(displayedObject=o7)
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00182115, 
-    farPlane=0.00513537, width=0.00311372, height=0.00191811, 
-    viewOffsetX=0.00024928, viewOffsetY=0.00015737)
-o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb']
-session.viewports['Viewport: 1'].setValues(displayedObject=o7)
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00220407, 
-    farPlane=0.005113, width=0.00327699, height=0.00181986, 
-    viewOffsetX=0.000280036, viewOffsetY=-5.00858e-05)
-session.Viewport(name='Viewport: 2', origin=(5.375, 61.8761558532715), 
-    width=191.932281494141, height=118.391204833984)
-session.viewports['Viewport: 2'].makeCurrent()
-session.viewports['Viewport: 2'].maximize()
-session.viewports['Viewport: 1'].restore()
-session.viewports['Viewport: 2'].restore()
-session.viewports['Viewport: 1'].setValues(origin=(0.0, 61.8761520385742), 
-    width=111.307289123535, height=123.752311706543)
-session.viewports['Viewport: 2'].setValues(origin=(111.307289123535, 
-    61.8761520385742), width=111.307289123535, height=123.752311706543)
-session.viewports['Viewport: 2'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].makeCurrent()
-session. linkedViewportCommands.setValues(linkViewports=True)
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(width=0.00203599, 
-    height=0.00216416, viewOffsetX=0.000128554, viewOffsetY=-3.06272e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00203599, 
-    height=0.00216416, viewOffsetX=0.000128554, viewOffsetY=-3.06272e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00289539, 
-    height=0.00307767, viewOffsetX=0.000105321, viewOffsetY=-2.54645e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00289539, 
-    height=0.00307767, viewOffsetX=0.000105321, viewOffsetY=-2.54645e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00254281, 
-    height=0.00270289, viewOffsetX=2.50724e-05, viewOffsetY=-2.7421e-06)
-session.viewports['Viewport: 2'].view.setValues(width=0.00254281, 
-    height=0.00270289, viewOffsetX=2.50724e-05, viewOffsetY=-2.7421e-06)
-session.viewports['Viewport: 1'].view.setValues(width=0.00293966, 
-    height=0.00312473, viewOffsetX=-4.82675e-05, viewOffsetY=2.39325e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00293966, 
-    height=0.00312473, viewOffsetX=-4.82675e-05, viewOffsetY=2.39325e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00284646, 
-    height=0.00302565, viewOffsetX=-0.000118806, viewOffsetY=5.02909e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00284646, 
-    height=0.00302565, viewOffsetX=-0.000118806, viewOffsetY=5.02909e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00309831, 
-    height=0.00329337, viewOffsetX=-0.000173664, viewOffsetY=6.87798e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00309831, 
-    height=0.00329337, viewOffsetX=-0.000173664, viewOffsetY=6.87798e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00309436, 
-    height=0.00328917, viewOffsetX=-0.000215075, viewOffsetY=8.1872e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00309436, 
-    height=0.00328917, viewOffsetX=-0.000215075, viewOffsetY=8.1872e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00291168, 
-    height=0.00309498, viewOffsetX=-0.000210524, viewOffsetY=0.000108791)
-session.viewports['Viewport: 2'].view.setValues(width=0.00291168, 
-    height=0.00309498, viewOffsetX=-0.000210524, viewOffsetY=0.000108791)
-session.viewports['Viewport: 1'].view.setValues(width=0.00286626, 
-    height=0.0030467, viewOffsetX=-0.000215773, viewOffsetY=0.000140346)
-session.viewports['Viewport: 2'].view.setValues(width=0.00286626, 
-    height=0.0030467, viewOffsetX=-0.000215773, viewOffsetY=0.000140346)
-session.viewports['Viewport: 1'].view.setValues(width=0.0027245, 
-    height=0.00289602, viewOffsetX=-0.000213729, viewOffsetY=0.00016703)
-session.viewports['Viewport: 2'].view.setValues(width=0.0027245, 
-    height=0.00289602, viewOffsetX=-0.000213729, viewOffsetY=0.00016703)
-session.viewports['Viewport: 1'].view.setValues(width=0.00264967, 
-    height=0.00281648, viewOffsetX=-0.000216785, viewOffsetY=0.000197232)
-session.viewports['Viewport: 2'].view.setValues(width=0.00264967, 
-    height=0.00281648, viewOffsetX=-0.000216785, viewOffsetY=0.000197232)
-session.viewports['Viewport: 2'].makeCurrent()
-odb = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
-session.viewports['Viewport: 2'].setValues(displayedObject=odb)
-session.viewports['Viewport: 2'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(width=0.00286858, 
-    height=0.00304917, viewOffsetX=-0.000198171, viewOffsetY=0.000260464)
-session.viewports['Viewport: 2'].view.setValues(width=0.00100992, 
-    height=0.0010735, viewOffsetX=7.90104e-06, viewOffsetY=2.10357e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00289676, 
-    height=0.00307913, viewOffsetX=-0.00016652, viewOffsetY=0.000303663)
-session.viewports['Viewport: 2'].view.setValues(width=0.00103881, 
-    height=0.0011042, viewOffsetX=1.53824e-05, viewOffsetY=4.05721e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00306044, 
-    height=0.00325311, viewOffsetX=-0.000143692, viewOffsetY=0.0003593)
-session.viewports['Viewport: 2'].view.setValues(width=0.00109975, 
-    height=0.00116898, viewOffsetX=2.30986e-05, viewOffsetY=6.11196e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.0031247, 
-    height=0.00332141, viewOffsetX=-0.000116541, viewOffsetY=0.000403774)
-session.viewports['Viewport: 2'].view.setValues(width=0.00115791, 
-    height=0.00123081, viewOffsetX=3.07785e-05, viewOffsetY=8.23322e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.0032694, 
-    height=0.00347522, viewOffsetX=-9.22658e-05, viewOffsetY=0.000457991)
-session.viewports['Viewport: 2'].view.setValues(width=0.0012196, 
-    height=0.00129638, viewOffsetX=3.88125e-05, viewOffsetY=0.000104221)
-session.viewports['Viewport: 1'].view.setValues(width=0.00334692, 
-    height=0.00355763, viewOffsetX=-6.59009e-05, viewOffsetY=0.00050303)
-session.viewports['Viewport: 2'].view.setValues(width=0.00128365, 
-    height=0.00136447, viewOffsetX=4.71773e-05, viewOffsetY=0.000127011)
-session.viewports['Viewport: 1'].view.setValues(width=0.0034858, 
-    height=0.00370525, viewOffsetX=-9.73711e-05, viewOffsetY=0.000496538)
-session.viewports['Viewport: 2'].view.setValues(width=0.00135036, 
-    height=0.00143537, viewOffsetX=3.39239e-05, viewOffsetY=0.00012717)
-session.viewports['Viewport: 1'].view.setValues(width=0.00356584, 
-    height=0.00379032, viewOffsetX=-0.000128117, viewOffsetY=0.000481625)
-session.viewports['Viewport: 2'].view.setValues(width=0.00141967, 
-    height=0.00150905, viewOffsetX=1.97951e-05, viewOffsetY=0.000127334)
-session.viewports['Viewport: 1'].view.setValues(width=0.0037061, 
-    height=0.00393942, viewOffsetX=-0.000161467, viewOffsetY=0.000474862)
-session.viewports['Viewport: 2'].view.setValues(width=0.00149164, 
-    height=0.00158554, viewOffsetX=4.94048e-06, viewOffsetY=0.000127502)
-session.viewports['Viewport: 1'].view.setValues(width=0.00377982, 
-    height=0.00401778, viewOffsetX=-0.00019182, viewOffsetY=0.000459662)
-session.viewports['Viewport: 2'].view.setValues(width=0.00156624, 
-    height=0.00166484, viewOffsetX=-1.04645e-05, viewOffsetY=0.000127675)
-session.viewports['Viewport: 1'].view.setValues(width=0.00393004, 
-    height=0.00417745, viewOffsetX=-0.000225971, viewOffsetY=0.000453842)
-session.viewports['Viewport: 2'].view.setValues(width=0.00164349, 
-    height=0.00174696, viewOffsetX=-2.64192e-05, viewOffsetY=0.000127853)
-session.viewports['Viewport: 1'].view.setValues(width=0.00398352, 
-    height=0.0042343, viewOffsetX=-0.000254811, viewOffsetY=0.000440983)
-session.viewports['Viewport: 2'].view.setValues(width=0.00172336, 
-    height=0.00183186, viewOffsetX=-4.3133e-05, viewOffsetY=0.000129728)
-session.viewports['Viewport: 1'].view.setValues(width=0.00444688, 
-    height=0.00472683, viewOffsetX=-0.000262917, viewOffsetY=0.00051244)
-session.viewports['Viewport: 2'].view.setValues(width=0.00192896, 
-    height=0.00205039, viewOffsetX=-4.79513e-05, viewOffsetY=0.000162151)
-session.viewports['Viewport: 1'].view.setValues(width=0.00399474, 
-    height=0.00424623, viewOffsetX=-0.000214385, viewOffsetY=0.000472726)
-session.viewports['Viewport: 2'].view.setValues(width=0.00197154, 
-    height=0.00209566, viewOffsetX=-4.23044e-05, viewOffsetY=0.000175532)
-session.viewports['Viewport: 1'].view.setValues(width=0.00501372, 
-    height=0.00532936, viewOffsetX=-0.000232233, viewOffsetY=0.000609771)
-session.viewports['Viewport: 2'].view.setValues(width=0.00207964, 
-    height=0.00221056, viewOffsetX=-3.33631e-05, viewOffsetY=0.000195641)
-session.viewports['Viewport: 1'].view.setValues(width=0.00350203, 
-    height=0.0037225, viewOffsetX=-0.000131985, viewOffsetY=0.000436727)
-session.viewports['Viewport: 2'].view.setValues(width=0.00216446, 
-    height=0.00230072, viewOffsetX=-1.99737e-05, viewOffsetY=0.000213879)
-session.viewports['Viewport: 1'].view.setValues(width=0.00584628, 
-    height=0.00621433, viewOffsetX=-0.00019034, viewOffsetY=0.000722492)
-session.viewports['Viewport: 2'].view.setValues(width=0.00199924, 
-    height=0.00212511, viewOffsetX=-4.55961e-06, viewOffsetY=0.000191998)
-session.viewports['Viewport: 1'].view.setValues(width=0.00177198, 
-    height=0.00188353, viewOffsetX=-4.80193e-05, viewOffsetY=0.000216862)
-session.viewports['Viewport: 2'].view.setValues(width=0.00194401, 
-    height=0.00206639, viewOffsetX=9.93413e-06, viewOffsetY=0.000180948)
-session.viewports['Viewport: 1'].view.setValues(width=0.00774884, 
-    height=0.00823667, viewOffsetX=-0.000164993, viewOffsetY=0.000938462)
-session.viewports['Viewport: 2'].view.setValues(width=0.00184771, 
-    height=0.00196403, viewOffsetX=2.39697e-05, viewOffsetY=0.000166174)
-session.viewports['Viewport: 2'].view.setValues(session.views['Iso'])
-session.viewports['Viewport: 1'].view.setValues(width=0.00175212, 
-    height=0.00186243, viewOffsetX=4.64114e-06, viewOffsetY=4.62915e-06)
-session.viewports['Viewport: 2'].view.setValues(width=0.00175212, 
-    height=0.00186243, viewOffsetX=4.64114e-06, viewOffsetY=4.62915e-06)
-session.viewports['Viewport: 1'].view.setValues(width=0.00166066, 
-    height=0.00176521, viewOffsetX=7.92002e-06, viewOffsetY=8.10363e-06)
-session.viewports['Viewport: 2'].view.setValues(width=0.00166066, 
-    height=0.00176521, viewOffsetX=7.92002e-06, viewOffsetY=8.10363e-06)
-session.viewports['Viewport: 1'].view.setValues(width=0.00178524, 
-    height=0.00189763, viewOffsetX=1.07496e-06, viewOffsetY=6.32413e-06)
-session.viewports['Viewport: 2'].view.setValues(width=0.00178524, 
-    height=0.00189763, viewOffsetX=1.07496e-06, viewOffsetY=6.32414e-06)
-session.viewports['Viewport: 1'].view.setValues(width=0.00187227, 
-    height=0.00199014, viewOffsetX=-1.19731e-05, viewOffsetY=1.37516e-07)
-session.viewports['Viewport: 2'].view.setValues(width=0.00187227, 
-    height=0.00199014, viewOffsetX=-1.19731e-05, viewOffsetY=1.37516e-07)
-session.viewports['Viewport: 1'].view.setValues(width=0.00197176, 
-    height=0.0020959, viewOffsetX=-2.80075e-05, viewOffsetY=-6.76942e-06)
-session.viewports['Viewport: 2'].view.setValues(width=0.00197176, 
-    height=0.0020959, viewOffsetX=-2.80075e-05, viewOffsetY=-6.76943e-06)
-session.viewports['Viewport: 1'].view.setValues(width=0.00207328, 
-    height=0.00220381, viewOffsetX=-5.02886e-05, viewOffsetY=-1.70093e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00207328, 
-    height=0.00220381, viewOffsetX=-5.02886e-05, viewOffsetY=-1.70093e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.0021792, 
-    height=0.0023164, viewOffsetX=-8.04278e-05, viewOffsetY=-3.0329e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.0021792, 
-    height=0.0023164, viewOffsetX=-8.04278e-05, viewOffsetY=-3.0329e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00244505, 
-    height=0.00259897, viewOffsetX=-0.000153214, viewOffsetY=-5.909e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00244505, 
-    height=0.00259897, viewOffsetX=-0.000153214, viewOffsetY=-5.909e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00268913, 
-    height=0.00285842, viewOffsetX=-0.000244036, viewOffsetY=-8.52787e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00268913, 
-    height=0.00285843, viewOffsetX=-0.000244036, viewOffsetY=-8.52787e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00277352, 
-    height=0.00294813, viewOffsetX=-0.00028802, viewOffsetY=-9.61403e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00277352, 
-    height=0.00294813, viewOffsetX=-0.00028802, viewOffsetY=-9.61403e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00257875, 
-    height=0.0027411, viewOffsetX=-0.000269509, viewOffsetY=-2.54799e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00257875, 
-    height=0.0027411, viewOffsetX=-0.000269509, viewOffsetY=-2.54799e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00248555, 
-    height=0.00264203, viewOffsetX=-0.000260549, viewOffsetY=3.96722e-05)
-session.viewports['Viewport: 2'].view.setValues(width=0.00248555, 
-    height=0.00264203, viewOffsetX=-0.000260549, viewOffsetY=3.96722e-05)
-session.viewports['Viewport: 1'].view.setValues(width=0.00236409, 
-    height=0.00251292, viewOffsetX=-0.000254804, viewOffsetY=0.00011107)
-session.viewports['Viewport: 2'].view.setValues(width=0.00236409, 
-    height=0.00251292, viewOffsetX=-0.000254804, viewOffsetY=0.00011107)
-session.viewports['Viewport: 1'].view.setValues(width=0.00225614, 
-    height=0.00239818, viewOffsetX=-0.000250263, viewOffsetY=0.000180454)
-session.viewports['Viewport: 2'].view.setValues(width=0.00225614, 
-    height=0.00239818, viewOffsetX=-0.000250263, viewOffsetY=0.000180454)
-session.viewports['Viewport: 2'].odbDisplay.setPrimaryVariable(
-    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
-    'Magnitude'), )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=0 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=1 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=2 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=3 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=4 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=5 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=6 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=7 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=8 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=9 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=10 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=11 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=12 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=13 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=14 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=15 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=16 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=17 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=18 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=19 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
-session.viewports['Viewport: 2'].odbDisplay.setFrame(step=0, frame=20 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
-session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb'].close(
-    )
-session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb'].close(
-    )
-#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
-#: 
-#: The current plot operation has been canceled, re-open the file to view the results
-#* KeyError: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL 
-#* case 11) 
-#* cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-session.viewports['Viewport: 1'].makeCurrent()
-del session.viewports['Viewport: 2']
-session.viewports['Viewport: 1'].maximize()
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
-#: 
-#: The current plot operation has been canceled, re-open the file to view the results
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00179668, 
-    farPlane=0.00515984, width=0.00387216, height=0.00215038, 
-    viewOffsetX=0.000249623, viewOffsetY=0.000164611)
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0016317, 
-    farPlane=0.00510802, width=0.0033056, height=0.00183575, 
-    viewOffsetX=0.000247181, viewOffsetY=0.000121428)
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
-#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
-#: 
-#: The current plot operation has been canceled, re-open the file to view the results
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR34_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00210296, 
-    farPlane=0.00485356, width=0.00398394, height=0.00222398, 
-    viewOffsetX=0.000259794, viewOffsetY=7.72596e-05)
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00208264, 
-    farPlane=0.00487388, width=0.00394545, height=0.0022025, 
-    viewOffsetX=0.000346284, viewOffsetY=0.000129763)
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
-    'Magnitude'), )
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR8_STRAN22', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
-    'Magnitude'), )
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    UNDEFORMED, ))
-#* VisError: The output database 
-#* C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) 
-#* cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb 
-#* disk file has changed.
-#* 
-#* The current plot operation has been canceled, re-open the file to view the 
-#* results
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR34_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
-#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
-#: 
-#: The current plot operation has been canceled, re-open the file to view the results
-o1 = session.openOdb(
-    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
-session.viewports['Viewport: 1'].setValues(displayedObject=o1)
-#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
-#: Number of Assemblies:         1
-#: Number of Assembly instances: 0
-#: Number of Part instances:     1
-#: Number of Meshes:             1
-#: Number of Element Sets:       9
-#: Number of Node Sets:          7
-#: Number of Steps:              1
-session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
-    CONTOURS_ON_DEF, ))
-session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00244554, 
-    farPlane=0.00486683, width=0.00384804, height=0.00214812, 
-    viewOffsetX=0.000298091, viewOffsetY=-1.43215e-05)
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR37_U_HEAT', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
-    variableLabel='SDV_AR38_TEMP', outputPosition=INTEGRATION_POINT, )
-session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+#: The job input file "solver_cube_C3D8T_transient_nlgeom_on_4NP.inp" has been submitted for analysis.
+#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP: Analysis Input File Processor completed successfully.
+#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP: Abaqus/Standard completed successfully.
+#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP completed successfully. 
 mdb.save()
 #: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".

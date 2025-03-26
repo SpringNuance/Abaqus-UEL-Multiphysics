@@ -25,3 +25,13 @@ Nonlinear geometry can also change diffusion just because of evolving geometry, 
 These case studies should supposedly returns near exact result as the default solver in Abaqus using element C3D8/C3D8T
 
 
+Some resources on the net
+
+Galerkin FEM for Heat Transfer
+http://bluebox.ippt.pan.pl/~tzielins/doc/ICMM_TGZielinski_HeatTransferFEM.Slides.pdf
+
+FEM formulation for mass (hydrogen) diffusion through UMATHT subroutine (SINTEF)
+https://sintef.brage.unit.no/sintef-xmlui/handle/11250/2720882
+
+Hydrogen transport near a blunting crack tip
+https://www.sciencedirect.com/science/article/pii/S0022509698000647

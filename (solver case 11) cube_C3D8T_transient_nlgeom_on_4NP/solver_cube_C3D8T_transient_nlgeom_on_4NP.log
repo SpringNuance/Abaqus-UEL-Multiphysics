@@ -3,20 +3,20 @@ Abaqus JOB solver_cube_C3D8T_transient_nlgeom_on_4NP
 Abaqus 2023.HF4
 Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
-<68 out of 100 licenses remain available>.
+<63 out of 100 licenses remain available>.
 Begin Analysis Input File Processor
-24/03/2025 18:02:25
+26/03/2025 21:52:50
 Run pre.exe
-24/03/2025 18:02:31
+26/03/2025 21:52:56
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-24/03/2025 18:02:31
+26/03/2025 21:52:56
 Run standard.exe
-24/03/2025 18:02:40
+26/03/2025 21:53:05
 End Abaqus/Standard Analysis
 Begin SIM Wrap-up
-24/03/2025 18:02:42
+26/03/2025 21:53:06
 Run SMASimUtility.exe
-24/03/2025 18:02:42
+26/03/2025 21:53:06
 End SIM Wrap-up
 Abaqus JOB solver_cube_C3D8T_transient_nlgeom_on_4NP COMPLETED
