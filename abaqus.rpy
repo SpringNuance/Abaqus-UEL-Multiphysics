@@ -2,7 +2,7 @@
 #
 # Abaqus/CAE Release 2023.HF4 replay file
 # Internal Version: 2023_07_21-20.45.57 RELr425 183702
-# Run by nguyenb5 on Wed Mar 26 21:15:21 2025
+# Run by nguyenb5 on Mon Mar 31 14:40:50 2025
 #
 
 # from driverUtils import executeOnCaeGraphicsStartup
@@ -10,8 +10,8 @@
 #: Executing "onCaeGraphicsStartup()" in the site directory ...
 from abaqus import *
 from abaqusConstants import *
-session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=215.22395324707, 
-    height=185.628463745117)
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=193.947906494141, 
+    height=142.73957824707)
 session.viewports['Viewport: 1'].makeCurrent()
 session.viewports['Viewport: 1'].maximize()
 from caeModules import *
@@ -22,1783 +22,2707 @@ openMdb('cube_test.cae')
 session.viewports['Viewport: 1'].setValues(displayedObject=None)
 session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
     referenceRepresentation=ON)
-p = mdb.models['solver_cube_C3D8T_transient_nlgeom_off_1NP'].parts['cube']
-session.viewports['Viewport: 1'].setValues(displayedObject=p)
-#--- Recover file: 'cube_test.rec' ---
-# -*- coding: mbcs -*- 
-from part import *
-from material import *
-from section import *
-from assembly import *
-from step import *
-from interaction import *
-from load import *
-from mesh import *
-from optimization import *
-from job import *
-from sketch import *
-from visualization import *
-from connectorBehavior import *
-mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
-    variables=('S', 'LE', 'U', 'RF', 'NT', 'TEMP', 'HFL'))
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP'].submit(
-    consistencyChecking=OFF)
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STARTED, {
-    'phase': BATCHPRE_PHASE, 'clientHost': 'L23-0203', 'handle': 0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(WARNING, {
-    'phase': BATCHPRE_PHASE, 
-    'message': 'THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE ASSUMED.', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FILE, {
-    'phase': BATCHPRE_PHASE, 
-    'file': 'C:\\LocalUserData\\User-data\\nguyenb5\\Abaqus-UEL-Multiphysics\\solver_cube_C3D8T_transient_nlgeom_off_4NP.odb', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(COMPLETED, {
-    'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STARTED, {
-    'phase': STANDARD_PHASE, 'clientHost': 'L23-0203', 'handle': 27388, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STEP, {
-    'phase': STANDARD_PHASE, 'stepId': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(
-    MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'memory': 24.0})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(
-    PHYSICAL_MEMORY, {'phase': STANDARD_PHASE, 'physical_memory': 16017.0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(MINIMUM_MEMORY, 
-    {'minimum_memory': 17.0, 'phase': STANDARD_PHASE, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 1, 
-    'stepTime': 1.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 2, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 2, 
-    'stepTime': 2.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 3, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 3, 
-    'stepTime': 3.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 4, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 4, 
-    'stepTime': 4.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 5, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 5, 
-    'stepTime': 5.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 6, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 6, 
-    'stepTime': 6.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 7, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 7, 
-    'stepTime': 7.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 8, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 8.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 8, 
-    'stepTime': 8.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 9, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 9.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 9, 
-    'stepTime': 9.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 10, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 10.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 10, 
-    'stepTime': 10.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 11, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 11.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 11, 
-    'stepTime': 11.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 12, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 12.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 12, 
-    'stepTime': 12.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 13, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 13.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 13, 
-    'stepTime': 13.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 14, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 14.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 14, 
-    'stepTime': 14.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 15, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 15.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 15, 
-    'stepTime': 15.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 16, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 16.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 16, 
-    'stepTime': 16.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 17, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 17.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 17, 
-    'stepTime': 17.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 18, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 18.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 18, 
-    'stepTime': 18.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 19, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 19.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 19, 
-    'stepTime': 19.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 20, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 20.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 20, 
-    'stepTime': 20.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 21, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 21.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 21, 
-    'stepTime': 21.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 22, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 22.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 22, 
-    'stepTime': 22.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 23, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 23.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 23, 
-    'stepTime': 23.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 24, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 24.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 24, 
-    'stepTime': 24.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 25, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 25.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 25, 
-    'stepTime': 25.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 26, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 26.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 26, 
-    'stepTime': 26.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 27, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 27.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 27, 
-    'stepTime': 27.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 28, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 28.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 28, 
-    'stepTime': 28.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 29, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 29.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 29, 
-    'stepTime': 29.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 30, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 30.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 30, 
-    'stepTime': 30.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 31, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 31.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 31, 
-    'stepTime': 31.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 32, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 32.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 32, 
-    'stepTime': 32.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 33, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 33.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 33, 
-    'stepTime': 33.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 34, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 34.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 34, 
-    'stepTime': 34.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 35, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 35.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 35, 
-    'stepTime': 35.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 36, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 36.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 36, 
-    'stepTime': 36.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 37, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 37.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 37, 
-    'stepTime': 37.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 38, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 38.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 38, 
-    'stepTime': 38.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 39, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 39.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 39, 
-    'stepTime': 39.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 40, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 40.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 40, 
-    'stepTime': 40.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 41, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 41.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 41, 
-    'stepTime': 41.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 42, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 42.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 42, 
-    'stepTime': 42.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 43, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 43.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 43, 
-    'stepTime': 43.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 44, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 44.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 44, 
-    'stepTime': 44.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 45, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 45.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 45, 
-    'stepTime': 45.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 46, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 46.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 46, 
-    'stepTime': 46.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 47, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 47.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 47, 
-    'stepTime': 47.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 48, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 48.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 48, 
-    'stepTime': 48.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 49, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 49.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 49, 
-    'stepTime': 49.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 50, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 50.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 50, 
-    'stepTime': 50.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 51, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 51.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 51, 
-    'stepTime': 51.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 52, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 52.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 52, 
-    'stepTime': 52.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 53, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 53.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 53, 
-    'stepTime': 53.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 54, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 54.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 54, 
-    'stepTime': 54.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 55, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 55.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 55, 
-    'stepTime': 55.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 56, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 56.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 56, 
-    'stepTime': 56.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 57, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 57.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 57, 
-    'stepTime': 57.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 58, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 58.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 58, 
-    'stepTime': 58.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 59, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 59.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 59, 
-    'stepTime': 59.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 60, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 60.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 60, 
-    'stepTime': 60.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 61, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 61.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 61, 
-    'stepTime': 61.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 62, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 62.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 62, 
-    'stepTime': 62.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 63, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 63.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 63, 
-    'stepTime': 63.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 64, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 64.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 64, 
-    'stepTime': 64.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 65, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 65.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 65, 
-    'stepTime': 65.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 66, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 66.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 66, 
-    'stepTime': 66.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 67, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 67.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 67, 
-    'stepTime': 67.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 68, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 68.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 68, 
-    'stepTime': 68.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 69, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 69.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 69, 
-    'stepTime': 69.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 70, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 70.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 70, 
-    'stepTime': 70.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 71, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 71.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 71, 
-    'stepTime': 71.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 72, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 72.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 72, 
-    'stepTime': 72.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 73, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 73.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 73, 
-    'stepTime': 73.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 74, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 74.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 74, 
-    'stepTime': 74.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 75, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 75.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 75, 
-    'stepTime': 75.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 76, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 76.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 76, 
-    'stepTime': 76.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 77, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 77.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 77, 
-    'stepTime': 77.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 78, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 78.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 78, 
-    'stepTime': 78.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 79, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 79.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 79, 
-    'stepTime': 79.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 80, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 80.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 80, 
-    'stepTime': 80.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 81, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 81.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 81, 
-    'stepTime': 81.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 82, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 82.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 82, 
-    'stepTime': 82.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 83, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 83.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 83, 
-    'stepTime': 83.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 84, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 84.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 84, 
-    'stepTime': 84.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 85, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 85.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 85, 
-    'stepTime': 85.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 86, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 86.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 86, 
-    'stepTime': 86.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 87, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 87.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 87, 
-    'stepTime': 87.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 88, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 88.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 88, 
-    'stepTime': 88.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 89, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 89.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 89, 
-    'stepTime': 89.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 90, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 90.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 90, 
-    'stepTime': 90.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 91, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 91.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 91, 
-    'stepTime': 91.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 92, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 92.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 92, 
-    'stepTime': 92.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 93, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 93.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 93, 
-    'stepTime': 93.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 94, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 94.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 94, 
-    'stepTime': 94.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 95, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 95.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 95, 
-    'stepTime': 95.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 96, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 96.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 96, 
-    'stepTime': 96.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 97, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 97.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 97, 
-    'stepTime': 97.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 98, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 98.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 98, 
-    'stepTime': 98.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 99, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 99.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 99, 
-    'stepTime': 99.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 100, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(STATUS, {
-    'totalTime': 100.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 100, 
-    'stepTime': 100.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(END_STEP, {
-    'phase': STANDARD_PHASE, 'stepId': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(COMPLETED, {
-    'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']._Message(JOB_COMPLETED, 
-    {'time': 'Wed Mar 26 18:06:43 2025', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_off_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP'].submit(
-    consistencyChecking=OFF)
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STARTED, {
-    'phase': BATCHPRE_PHASE, 'clientHost': 'L23-0203', 'handle': 0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(WARNING, {
-    'phase': BATCHPRE_PHASE, 
-    'message': 'THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE ASSUMED.', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FILE, {
-    'phase': BATCHPRE_PHASE, 
-    'file': 'C:\\LocalUserData\\User-data\\nguyenb5\\Abaqus-UEL-Multiphysics\\solver_cube_C3D8T_transient_nlgeom_on_4NP.odb', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(COMPLETED, {
-    'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STARTED, {
-    'phase': STANDARD_PHASE, 'clientHost': 'L23-0203', 'handle': 27840, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STEP, {
-    'phase': STANDARD_PHASE, 'stepId': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(MEMORY_ESTIMATE, 
-    {'phase': STANDARD_PHASE, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'memory': 24.0})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(PHYSICAL_MEMORY, 
-    {'phase': STANDARD_PHASE, 'physical_memory': 16017.0, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(MINIMUM_MEMORY, 
-    {'minimum_memory': 17.0, 'phase': STANDARD_PHASE, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 1.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 1, 
-    'stepTime': 1.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 2, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 2.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 2, 
-    'stepTime': 2.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 3, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 3.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 3, 
-    'stepTime': 3.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 4, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 4.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 4, 
-    'stepTime': 4.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 5, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 5.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 5, 
-    'stepTime': 5.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 6, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 6.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 6, 
-    'stepTime': 6.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 7, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 7.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 7, 
-    'stepTime': 7.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 8, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 8.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 8, 
-    'stepTime': 8.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 9, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 9.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 9, 
-    'stepTime': 9.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 10, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 10.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 10, 
-    'stepTime': 10.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 11, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 11.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 11, 
-    'stepTime': 11.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 12, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 12.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 12, 
-    'stepTime': 12.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 13, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 13.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 13, 
-    'stepTime': 13.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 14, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 14.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 14, 
-    'stepTime': 14.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 15, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 15.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 15, 
-    'stepTime': 15.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 16, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 16.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 16, 
-    'stepTime': 16.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 17, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 17.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 17, 
-    'stepTime': 17.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 18, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 18.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 18, 
-    'stepTime': 18.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 19, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 19.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 19, 
-    'stepTime': 19.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 20, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 20.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 20, 
-    'stepTime': 20.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 21, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 21.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 21, 
-    'stepTime': 21.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 22, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 22.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 22, 
-    'stepTime': 22.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 23, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 23.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 23, 
-    'stepTime': 23.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 24, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 24.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 24, 
-    'stepTime': 24.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 25, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 25.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 25, 
-    'stepTime': 25.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 26, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 26.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 26, 
-    'stepTime': 26.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 27, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 27.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 27, 
-    'stepTime': 27.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 28, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 28.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 28, 
-    'stepTime': 28.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 29, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 29.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 29, 
-    'stepTime': 29.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 30, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 30.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 30, 
-    'stepTime': 30.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 31, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 31.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 31, 
-    'stepTime': 31.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 32, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 32.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 32, 
-    'stepTime': 32.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 33, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 33.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 33, 
-    'stepTime': 33.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 34, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 34.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 34, 
-    'stepTime': 34.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 35, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 35.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 35, 
-    'stepTime': 35.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 36, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 36.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 36, 
-    'stepTime': 36.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 37, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 37.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 37, 
-    'stepTime': 37.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 38, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 38.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 38, 
-    'stepTime': 38.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 39, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 39.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 39, 
-    'stepTime': 39.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 40, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 40.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 40, 
-    'stepTime': 40.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 41, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 41.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 41, 
-    'stepTime': 41.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 42, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 42.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 42, 
-    'stepTime': 42.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 43, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 43.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 43, 
-    'stepTime': 43.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 44, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 44.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 44, 
-    'stepTime': 44.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 45, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 45.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 45, 
-    'stepTime': 45.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 46, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 46.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 46, 
-    'stepTime': 46.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 47, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 47.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 47, 
-    'stepTime': 47.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 48, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 48.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 48, 
-    'stepTime': 48.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 49, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 49.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 49, 
-    'stepTime': 49.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 50, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 50.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 50, 
-    'stepTime': 50.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 51, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 51.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 51, 
-    'stepTime': 51.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 52, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 52.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 52, 
-    'stepTime': 52.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 53, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 53.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 53, 
-    'stepTime': 53.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 54, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 54.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 54, 
-    'stepTime': 54.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 55, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 55.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 55, 
-    'stepTime': 55.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 56, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 56.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 56, 
-    'stepTime': 56.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 57, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 57.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 57, 
-    'stepTime': 57.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 58, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 58.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 58, 
-    'stepTime': 58.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 59, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 59.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 59, 
-    'stepTime': 59.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 60, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 60.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 60, 
-    'stepTime': 60.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 61, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 61.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 61, 
-    'stepTime': 61.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 62, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 62.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 62, 
-    'stepTime': 62.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 63, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 63.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 63, 
-    'stepTime': 63.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 64, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 64.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 64, 
-    'stepTime': 64.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 65, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 65.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 65, 
-    'stepTime': 65.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 66, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 66.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 66, 
-    'stepTime': 66.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 67, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 67.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 67, 
-    'stepTime': 67.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 68, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 68.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 68, 
-    'stepTime': 68.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 69, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 69.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 69, 
-    'stepTime': 69.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 70, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 70.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 70, 
-    'stepTime': 70.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 71, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 71.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 71, 
-    'stepTime': 71.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 72, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 72.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 72, 
-    'stepTime': 72.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 73, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 73.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 73, 
-    'stepTime': 73.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 74, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 74.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 74, 
-    'stepTime': 74.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 75, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 75.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 75, 
-    'stepTime': 75.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 76, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 76.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 76, 
-    'stepTime': 76.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 77, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 77.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 77, 
-    'stepTime': 77.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 78, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 78.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 78, 
-    'stepTime': 78.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 79, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 79.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 79, 
-    'stepTime': 79.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 80, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 80.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 80, 
-    'stepTime': 80.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 81, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 81.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 81, 
-    'stepTime': 81.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 82, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 82.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 82, 
-    'stepTime': 82.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 83, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 83.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 83, 
-    'stepTime': 83.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 84, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 84.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 84, 
-    'stepTime': 84.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 85, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 85.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 85, 
-    'stepTime': 85.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 86, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 86.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 86, 
-    'stepTime': 86.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 87, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 87.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 87, 
-    'stepTime': 87.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 88, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 88.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 88, 
-    'stepTime': 88.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 89, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 89.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 89, 
-    'stepTime': 89.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 90, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 90.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 90, 
-    'stepTime': 90.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 91, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 91.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 91, 
-    'stepTime': 91.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 92, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 92.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 92, 
-    'stepTime': 92.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 93, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 93.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 93, 
-    'stepTime': 93.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 94, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 94.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 94, 
-    'stepTime': 94.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 95, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 95.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 95, 
-    'stepTime': 95.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 96, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 96.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 96, 
-    'stepTime': 96.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 97, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 97.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 97, 
-    'stepTime': 97.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 98, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 98.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 98, 
-    'stepTime': 98.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 99, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 99.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 99, 
-    'stepTime': 99.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(ODB_FRAME, {
-    'phase': STANDARD_PHASE, 'step': 0, 'frame': 100, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(STATUS, {
-    'totalTime': 100.0, 'attempts': 1, 'timeIncrement': 1.0, 'increment': 100, 
-    'stepTime': 100.0, 'step': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP', 'severe': 0, 
-    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(END_STEP, {
-    'phase': STANDARD_PHASE, 'stepId': 1, 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(COMPLETED, {
-    'phase': STANDARD_PHASE, 'message': 'Analysis phase complete', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']._Message(JOB_COMPLETED, {
-    'time': 'Wed Mar 26 18:08:27 2025', 
-    'jobName': 'solver_cube_C3D8T_transient_nlgeom_on_4NP'})
-#--- End of Recover file ------
-p1 = mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
-session.viewports['Viewport: 1'].setValues(displayedObject=p1)
-mdb.Model(name='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy', 
-    objectToCopy=mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'])
-#: The model "UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy" has been created.
-p = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy'].parts['cube']
-session.viewports['Viewport: 1'].setValues(displayedObject=p)
-mdb.models.changeKey(
-    fromName='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP-Copy', 
-    toName='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP')
 p = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
 session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0020903, 
+    farPlane=0.00486622, width=0.00408774, height=0.00198773, 
+    viewOffsetX=0.000654118, viewOffsetY=5.29763e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR38_TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR37_U_HEAT', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR39_FLUX_HEAT_X', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR40_FLUX_HEAT_Y', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR41_FLUX_HEAT_Z', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR49_HISTORY', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR50_GC', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='U', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00201488, 
+    farPlane=0.00494164, width=0.00447756, height=0.00217729, 
+    viewOffsetX=0.000686505, viewOffsetY=0.000149711)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR38_TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR45_THETA_L', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR37_U_HEAT', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=60 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=59 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=58 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=57 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=56 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=55 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=54 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=53 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+#: 
+#: Node: CUBE_ASSEMBLY.2
+#:                                         1             2             3        Magnitude
+#: Base coordinates:                  5.00000e-04, -5.00000e-04,  5.00000e-04,      -      
+#: Scale:                             1.00000e+00,  1.00000e+00,  1.00000e+00,      -      
+#: Deformed coordinates (unscaled):   4.05932e-04, -5.00000e-04,  4.05932e-04,      -      
+#: Deformed coordinates (scaled):     4.05932e-04, -5.00000e-04,  4.05932e-04,      -      
+#: Displacement (unscaled):          -9.40681e-05,  3.68581e-34, -9.40681e-05,  1.33032e-04
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00248326, 
+    farPlane=0.00483378, width=0.00326532, height=0.00158781, 
+    viewOffsetX=0.000169151, viewOffsetY=-0.000122818)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    SYMBOLS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0020773, 
+    farPlane=0.00487922, width=0.00372351, height=0.00181723, 
+    viewOffsetX=0.000513365, viewOffsetY=0.00016103)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00199483, 
+    farPlane=0.00496169, width=0.00457982, height=0.00223514, 
+    viewOffsetX=0.0010326, viewOffsetY=5.68724e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=50 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00225109, 
+    farPlane=0.00490207, width=0.00403503, height=0.00196926, 
+    viewOffsetX=0.000703562, viewOffsetY=9.09908e-05)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00197663, 
+    farPlane=0.00497989, width=0.00491002, height=0.0023963, 
+    viewOffsetX=0.00078401, viewOffsetY=-6.45217e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00204271, 
+    farPlane=0.00491381, width=0.00416081, height=0.00203065, 
+    viewOffsetX=0.000822954, viewOffsetY=0.000167279)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00199138, 
+    farPlane=0.00496514, width=0.00462824, height=0.00225878, 
+    viewOffsetX=0.000483835, viewOffsetY=0.000134761)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       7
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00209696, 
+    farPlane=0.00485956, width=0.00398239, height=0.00194357, 
+    viewOffsetX=0.00068556, viewOffsetY=0.000249125)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR38_TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00209459, 
+    farPlane=0.00486193, width=0.00401049, height=0.00195729, 
+    viewOffsetX=0.000610341, viewOffsetY=0.000202828)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203646, 
+    farPlane=0.00492006, width=0.00469451, height=0.00229112, 
+    viewOffsetX=0.000788169, viewOffsetY=0.000215619)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00204309, 
+    farPlane=0.00491343, width=0.00416159, height=0.00203103, 
+    viewOffsetX=0.000748239, viewOffsetY=0.00022628)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=50 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=53 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=54 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=55 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RFL11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00206264, 
+    farPlane=0.00489388, width=0.00394932, height=0.00192744, 
+    viewOffsetX=0.000635188, viewOffsetY=0.000258441)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203664, 
+    farPlane=0.00491988, width=0.00414845, height=0.00202462, 
+    viewOffsetX=0.000685109, viewOffsetY=0.000202707)
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
 session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
     engineeringFeatures=ON)
 session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
     referenceRepresentation=OFF)
-del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].conductivity
-del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].elastic
-del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].specificHeat
-mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].Depvar(
-    )
-mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].materials['thermomechanical'].UserMaterial(
-    type=THERMOMECHANICAL, mechanicalConstants=(0.0, ), thermalConstants=(0.0, 
-    ))
-mdb.save()
-#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
-a = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
-session.viewports['Viewport: 1'].setValues(displayedObject=a)
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(
-    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
-mdb.Job(name='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP', 
-    model='UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP', description='', 
-    type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, queue=None, 
-    memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
-    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
-    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
-    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
-    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
-mdb.jobs['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].writeInput(
-    consistencyChecking=OFF)
-#: The job input file has been written to "UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP.inp".
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(
-    step='step1_thermomechanical')
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(
-    adaptiveMeshConstraints=ON)
-mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
-    variables=('S', 'LE', 'U', 'RF', 'NT', 'TEMP', 'HFL', 'RFL'))
+p1 = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
 a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
 session.viewports['Viewport: 1'].setValues(displayedObject=a)
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
-    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
 session.viewports['Viewport: 1'].assemblyDisplay.setValues(
     step='step1_thermomechanical')
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
-    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
-mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
-    variables=('RF', 'SDV', 'U', 'S', 'LE', 'TEMP', 'NT', 'HFL', 'RFL'))
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=ON, optimizationTasks=OFF, 
+    geometricRestrictions=OFF, stopConditions=OFF)
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=50 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=53 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=54 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=55 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=56 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=57 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=58 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=59 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=60 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1.74999, 
+    farPlane=3.49997, width=0.00242638, height=0.00118418, cameraPosition=(
+    2.02053, 2.02047, 2.02053), viewOffsetX=0.000244633, 
+    viewOffsetY=-7.00706e-05)
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
 a = mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
 session.viewports['Viewport: 1'].setValues(displayedObject=a)
-mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].fieldOutputRequests['F-Output-1'].setValues(
-    variables=('HFL', 'LE', 'NT', 'RF', 'S', 'TEMP', 'U', 'RFL'))
-mdb.save()
-#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
-session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, 
     adaptiveMeshConstraints=OFF)
-mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP'].submit(
-    consistencyChecking=OFF)
-#: The job input file "solver_cube_C3D8T_transient_nlgeom_on_4NP.inp" has been submitted for analysis.
-#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP: Analysis Input File Processor completed successfully.
-#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP: Abaqus/Standard completed successfully.
-#: Job solver_cube_C3D8T_transient_nlgeom_on_4NP completed successfully. 
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+p1 = mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports[session.currentViewportName].odbDisplay.setFrame(
+    step='step1_thermomechanical', frame=1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR6_SIG23', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR8_STRAN22', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR7_STRAN11', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR13_EELAS11', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RFL11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR44_C_MOL', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR39_FLUX_HEAT_X', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR40_FLUX_HEAT_Y', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR41_FLUX_HEAT_Z', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR42_CL_MOL', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR37_U_HEAT', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR38_TEMP', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00207522, 
+    farPlane=0.0048813, width=0.003735, height=0.00182283, 
+    viewOffsetX=0.000734308, viewOffsetY=0.000216863)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       7
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=50 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=53 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=54 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=55 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=56 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=57 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=58 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=59 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=60 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00205687, 
+    farPlane=0.00489965, width=0.00393827, height=0.00192204, 
+    viewOffsetX=0.000806148, viewOffsetY=0.000197241)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00267251, 
+    farPlane=0.00458442, width=0.000634904, height=0.00030986, 
+    viewOffsetX=0.000106381, viewOffsetY=-0.000488944)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports[session.currentViewportName].odbDisplay.setFrame(
+    step='step1_thermomechanical', frame=27)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00245239, 
+    farPlane=0.0047887, width=0.00314788, height=0.0015363, 
+    viewOffsetX=0.00050407, viewOffsetY=-0.000225399)
+session.viewports[session.currentViewportName].odbDisplay.setFrame(
+    step='step1_thermomechanical', frame=100)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00201296, 
+    farPlane=0.00494356, width=0.00450935, height=0.00220075, 
+    viewOffsetX=0.000780865, viewOffsetY=5.10851e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00254436, 
+    farPlane=0.00473923, width=0.00254832, height=0.00124369, 
+    viewOffsetX=-1.01766e-05, viewOffsetY=-0.000241041)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00205687, 
+    farPlane=0.00489965, width=0.00393827, height=0.00192204, 
+    viewOffsetX=0.000755477, viewOffsetY=0.000207229)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00205553, 
+    farPlane=0.00490099, width=0.00445416, height=0.00217382, 
+    viewOffsetX=0.000857622, viewOffsetY=0.00013882)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb'].close(
+    )
+odb = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0020153, 
+    farPlane=0.00494122, width=0.00436701, height=0.00213128, 
+    viewOffsetX=0.000838138, viewOffsetY=0.000126029)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00208147, 
+    farPlane=0.00487505, width=0.00374625, height=0.00182833, 
+    viewOffsetX=0.000613392, viewOffsetY=0.000152967)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#* OdbError: Cannot open file 
+#* C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) 
+#* cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb. 
+#* ***ERROR: "C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL 
+#* case 11) 
+#* cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb" 
+#*  is not an Abaqus database file.
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00205553, 
+    farPlane=0.00490099, width=0.0039357, height=0.00192079, 
+    viewOffsetX=0.000725106, viewOffsetY=0.000178599)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='NT11', outputPosition=NODAL, )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203668, 
+    farPlane=0.00491984, width=0.00414852, height=0.00202465, 
+    viewOffsetX=0.00077341, viewOffsetY=0.000147731)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203668, 
+    farPlane=0.00491984, width=0.00414852, height=0.00202465, 
+    viewOffsetX=0.000833219, viewOffsetY=0.000140405)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(width=0.00424178, 
+    height=0.00207017, viewOffsetX=0.000812473, viewOffsetY=0.000189282)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(width=0.00424178, 
+    height=0.00207017, viewOffsetX=0.000812606, viewOffsetY=0.00017657)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=27 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=28 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=29 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=30 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=31 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=32 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=33 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=34 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=35 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=36 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=37 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=38 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=39 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=40 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=41 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=42 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=43 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=44 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=45 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=46 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=47 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=48 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=49 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=50 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=51 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=52 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=53 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=54 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=55 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=56 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=57 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=58 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=59 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=60 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports[session.currentViewportName].odbDisplay.setFrame(
+    step='step1_thermomechanical', frame=100)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR39_FLUX_HEAT_X', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_AR40_FLUX_HEAT_Y', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=99 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=98 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=97 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=96 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=95 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=94 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=93 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=92 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=91 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=90 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=89 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=88 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=87 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=86 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=85 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=84 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=83 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=82 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=81 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=80 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=79 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=78 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=77 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=76 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=75 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=74 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=73 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=72 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=71 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=70 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=69 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=68 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=67 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=66 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=65 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=60 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=61 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=62 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=63 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=64 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=100 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='HFL', outputPosition=INTEGRATION_POINT, refinement=(
+    INVARIANT, 'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(
+    plotState=CONTOURS_ON_DEF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00206494, 
+    farPlane=0.00489158, width=0.00392158, height=0.00191389, 
+    viewOffsetX=0.000855756, viewOffsetY=0.000188944)
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL case 11) cube_C3D8T_transient_nlgeom_on_4NP/subroutine_cube_C3D8T_transient_nlgeom_on_4NP_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          7
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00203668, 
+    farPlane=0.00491984, width=0.00414852, height=0.00202465, 
+    viewOffsetX=0.000812789, viewOffsetY=0.000199505)
 mdb.save()
 #: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".

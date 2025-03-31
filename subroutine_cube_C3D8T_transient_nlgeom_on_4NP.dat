@@ -1,0 +1,180 @@
+1
+
+   Abaqus 2023.HF4                                  Date 29-Mar-2025   Time 20:21:52
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2026
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Element, type=C3D8T
+  *Elset, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_TOP_SIDE
+  *Elset, elset=ASSEMBLY_WHOLE_CUBE_ELEMENT
+  *Elset, elset=ASSEMBLY_XSYMM_SIDE
+  *Elset, elset=ASSEMBLY_YSYMM_SIDE
+  *Elset, elset=ASSEMBLY_ZSYMM_SIDE
+  *physicalconstants, absolutezero=0
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *material, name=THERMOMECHANICAL
+  *density
+  *depvar
+
+ ***ERROR: THE NUMBER OF SOLUTION-DEPENDENT STATE VARIABLES CAN NOT BE SET 
+           EQUAL TO ZERO.
+ LINE IMAGE: 0,
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+  *usermaterial, constants=1, type=THERMAL
+  *usermaterial, constants=1, type=MECHANICAL
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=THERMOMECHANICAL
+  *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=THERMOMECHANICAL
+  *boundary, amplitude=CONSTANT
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *boundary, amplitude=CONSTANT
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *output, field
+  *output, history, frequency=0
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *boundary, amplitude=CONSTANT
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *nodeoutput
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE C3D8T
+  *Step, name=step1_thermomechanical, nlgeom=YES
+  *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *boundary, amplitude=CONSTANT
+  *boundary, amplitude=LOADING
+  *boundary
+  *boundary
+  *boundary
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     1
+          NUMBER OF NODES IS                                        8
+          NUMBER OF NODES DEFINED BY THE USER                       8
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   32
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     1 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.20    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.20    
+       WALLCLOCK TIME (SEC) =            0

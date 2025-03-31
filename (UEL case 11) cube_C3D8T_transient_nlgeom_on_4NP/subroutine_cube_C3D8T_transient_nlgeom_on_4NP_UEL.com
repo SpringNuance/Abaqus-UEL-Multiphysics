@@ -117,7 +117,7 @@ options = {
     'tracer':OFF,
     'transientSensitivity':OFF,
     'unfold_param':OFF,
-    'unsymm':OFF,
+    'unsymm':ON,
     'user':'source_code/UEL_multiphysics.f90',
     'verbose':1,
     'visco':OFF,

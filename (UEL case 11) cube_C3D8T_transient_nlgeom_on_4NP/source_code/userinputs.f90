@@ -1,12 +1,13 @@
 module userinputs
     use precision
     implicit none
+    
     ! THESE TWO VALUES ARE HARD-CODED
     ! YOU MUST CHANGE IT TO THE ACTUAL NUMBER OF ELEMENTS IN .INP FILE
 
     integer, parameter :: total_elems = 1 ! Storing the actual number of elements
     integer, parameter :: total_nodes = 8 ! Storing the actual number of nodes
-    integer, parameter :: nsvint = 50 ! Number of state variables at integration points
+    integer, parameter :: nstatev = 50 ! Number of state variables at integration points
     
     ! =========================================
     ! Start and end indices of each field props 

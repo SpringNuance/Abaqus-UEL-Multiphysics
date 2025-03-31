@@ -1,0 +1,18 @@
+Analysis initiated from SIMULIA established products
+Abaqus JOB subroutine_cube_C3D8T_transient_nlgeom_on_4NP
+Abaqus 2023.HF4
+Abaqus License Manager checked out the following licenses:
+Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
+<71 out of 100 licenses remain available>.
+Begin Analysis Input File Processor
+29/03/2025 20:21:47
+Run pre.exe
+29/03/2025 20:21:57
+Abaqus Error: Analysis Input File Processor exited with an error - Please see the 
+subroutine_cube_C3D8T_transient_nlgeom_on_4NP.dat file for possible error messages if the file exists.
+Begin SIM Wrap-up
+29/03/2025 20:21:59
+Run SMASimUtility.exe
+29/03/2025 20:21:59
+End SIM Wrap-up
+Abaqus/Analysis exited with errors

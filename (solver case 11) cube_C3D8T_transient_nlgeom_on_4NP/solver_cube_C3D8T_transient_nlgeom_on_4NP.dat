@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 26-Mar-2025   Time 21:52:55
+   Abaqus 2023.HF4                                  Date 31-Mar-2025   Time 19:07:30
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -121,8 +121,10 @@
   *output, field
   *output, history, frequency=0
   *Step, name=step1_thermomechanical, nlgeom=YES
+  *solutiontechnique, type=SEPARATED
   *Step, name=step1_thermomechanical, nlgeom=YES
   *coupledtemperature-displacement, creep=NONE, deltmx=100
+  *solutiontechnique, type=SEPARATED
   *boundary
   *boundary, amplitude=LOADING
   *boundary
@@ -162,12 +164,12 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =     0.10    
-       SYSTEM TIME (SEC)    =      0.0    
-       TOTAL CPU TIME (SEC) =     0.10    
-       WALLCLOCK TIME (SEC) =            0
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.20    
+       WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 26-Mar-2025   Time 21:53:01
+   Abaqus 2023.HF4                                  Date 31-Mar-2025   Time 19:07:36
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -194,8 +196,6 @@
           CREEP AND SWELLING EFFECTS WILL BE IGNORED.
 
           LARGE DISPLACEMENT THEORY WILL BE USED
-
-          UNSYMMETRIC MATRIX STORAGE AND SOLUTION WILL BE USED
   
                    M E M O R Y   E S T I M A T E
   
@@ -203,7 +203,7 @@
               OPERATIONS           REQUIRED          MINIMIZE I/O
              PER ITERATION           (MB)               (MB)
   
-     1          2.19E+04               17                 24
+     1          4.90E+03               20                 27
   
  NOTE:
       (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
@@ -246,7 +246,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.60    
-       SYSTEM TIME (SEC)    =     0.40    
-       TOTAL CPU TIME (SEC) =      1.0    
+       USER TIME (SEC)      =      1.1    
+       SYSTEM TIME (SEC)    =     0.60    
+       TOTAL CPU TIME (SEC) =      1.7    
        WALLCLOCK TIME (SEC) =            2

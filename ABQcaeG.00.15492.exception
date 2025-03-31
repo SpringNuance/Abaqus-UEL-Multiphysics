@@ -1,0 +1,39 @@
+<Description>
+   ABAQUS/ABQcaeG rank 0 received the ABORT signal
+
+</Description>
+
+<Context>
+   ABQcaeG
+</Context>
+
+<Callstack>
+  1)  ucrtbase.dll                abort                                   
+  2)  ucrtbase.dll                terminate                               
+  3)  VCRUNTIME140_1.dll        unknown                                 
+</Callstack>
+
+<Memory>
+   <Current>            0 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>              0 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          1 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          37 GB </Size>
+       <Used>          30 GB </Used>
+       <Free>           7 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics </current> <free>     40 GB </free>   <used>    434 GB </used> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     40 GB </free>
+</Directories>
+
+<Installation>
+</Installation>
+

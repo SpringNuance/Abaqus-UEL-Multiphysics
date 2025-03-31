@@ -77,6 +77,7 @@
 *Step, name=step1_thermomechanical, nlgeom=YES
 *Coupled Temperature-displacement, creep=none, deltmx=100.
 1., 100., 0.001, 1.
+*SOLUTION TECHNIQUE, TYPE=SEPARATED
 ** 
 ** BOUNDARY CONDITIONS
 ** 

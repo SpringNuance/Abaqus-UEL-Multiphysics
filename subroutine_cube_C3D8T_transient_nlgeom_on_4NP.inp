@@ -72,6 +72,16 @@
 0.,
 *User Material, constants=1, type=MECHANICAL
 0.,
+** 
+** PHYSICAL CONSTANTS
+** 
+*Physical Constants, absolute zero=0.
+** 
+** PREDEFINED FIELDS
+** 
+** Name: Predefined Field-1   Type: Temperature
+*Initial Conditions, type=TEMPERATURE
+cube_assembly.Set-4, 0.
 ** ----------------------------------------------------------------
 ** 
 ** STEP: step1_thermomechanical
@@ -106,8 +116,8 @@ zsymm_side, ZSYMM
 ** 
 *Output, field
 *Node Output
-RF, U
+NT, RF, RFL, U
 *Element Output, directions=YES
-SDV, 
+HFL, LE, S, SDV, TEMP
 *Output, history, frequency=0
 *End Step
