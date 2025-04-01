@@ -14,10 +14,11 @@
 !       - Isotropic von Mises plasticity
 !
 !   ▸ Thermal field:
+!       - Steady-state heat conduction
 !       - Transient heat conduction
 !
 !   ▸ Mass diffusion field (hydrogen):
-!       - Fick's Second Law with Oriani's theory
+!       - Transient Fick's second law hydrogen diffusion with Oriani's equilibrium theory
 !
 !   ▸ Damage field:
 !       - Phase-field damage model based on Griffith's thermodynamics
@@ -30,31 +31,6 @@
 !
 !===========================================================================
 
-
-!***********************************************************************
-
-! To ensure that the code are optimized, we should avoid
-! using division and exponentiation as much as possible
-! Specifically, replace division by multiplying with its constant inverse
-! Replace squares by multiplication with itself
-
-subroutine pause(seconds)
-    ! Pauses the program execution for the specified number of seconds.
-    integer, intent(in) :: seconds
-    integer :: start_time, end_time, rate
-
-    ! Get the system clock rate (ticks per second)
-    call system_clock(count_rate = rate)
-
-    ! Get the current time in clock ticks
-    call system_clock(start_time)
-
-    ! Loop until the required time has passed
-    do
-        call system_clock(end_time)
-        if ((end_time - start_time) >= seconds * rate) exit
-    end do
-end subroutine pause
 
 module precision
     use iso_fortran_env
@@ -79,17 +55,17 @@ module common_block
     real(kind=dp) :: user_vars(100000, nstatev, ninpt)
 
     ! This stores the IP coordinates at previous increment
-    real(kind=dp) :: coords_all_inpts(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
+    real(kind=dp) :: coords_all_IPs(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
 
     ! This stores the nodal coordinates at previous increment
-    real(kind=dp) :: coords_all_nodes(total_nodes, ndim) ! (total_nodes, ndim)
+    real(kind=dp) :: coords_all_NPs(total_nodes, ndim) ! (total_nodes, ndim)
 
     ! First dim: number of elements in the mesh
     ! Second dim: number of nodes in the element
     ! Since all elements must have 8 nodes, it does not need to be padded
     ! The nodes are also in their correct order as well from knode to 1 to 8
     
-    integer :: elems_to_nodes_matrix(total_elems, nnode) ! 8 is nnode
+    integer :: elems_to_NPs_matrix(total_elems, nnode) ! 8 is nnode
 
     ! First dim: number of nodes on the mesh
     ! Second dim: maximum number of elements that contains the node in the first dim
@@ -104,54 +80,59 @@ module common_block
     !          In element 30, node 7 is at position 3
     !          In element 40, node 7 is at position 5
 
-    ! Then nodes_to_elems_matrix(7, 1, 1) = 10
-    !      nodes_to_elems_matrix(7, 1, 2) = 1
-    !      nodes_to_elems_matrix(7, 2, 1) = 20
-    !      nodes_to_elems_matrix(7, 2, 2) = 6
-    !      nodes_to_elems_matrix(7, 3, 1) = 30
-    !      nodes_to_elems_matrix(7, 3, 2) = 3
-    !      nodes_to_elems_matrix(7, 4, 1) = 40
-    !      nodes_to_elems_matrix(7, 4, 2) = 5
-    !      nodes_to_elems_matrix(7, 5:8, 1:2) = 0
+    ! Then NPs_to_elems_matrix(7, 1, 1) = 10
+    !      NPs_to_elems_matrix(7, 1, 2) = 1
+    !      NPs_to_elems_matrix(7, 2, 1) = 20
+    !      NPs_to_elems_matrix(7, 2, 2) = 6
+    !      NPs_to_elems_matrix(7, 3, 1) = 30
+    !      NPs_to_elems_matrix(7, 3, 2) = 3
+    !      NPs_to_elems_matrix(7, 4, 1) = 40
+    !      NPs_to_elems_matrix(7, 4, 2) = 5
+    !      NPs_to_elems_matrix(7, 5:8, 1:2) = 0
 
-    integer :: nodes_to_elems_matrix(total_nodes, nmax_elems, 2) ! nmax_elems = 20
+    integer :: NPs_to_elems_matrix(total_nodes, nmax_elems, 2) ! nmax_elems = 20
 
-    integer :: num_elems_of_nodes_matrix(total_nodes) ! Number of elements that contain the node
+    integer :: nelems_of_NPs_matrix(total_nodes) ! Number of elements that contain the node
     
-    real(kind=dp) :: all_N_shape_IP_to_kNP(nnode, ninpt) ! (nnode, ninpt)
-    real(kind=dp) :: all_N_shape_NP_to_kIP(ninpt, nnode) ! (ninpt, nnode)
-    real(kind=dp) :: all_N_grad_NP_to_kIP_local(ninpt, ndim, nnode)  ! (ninpt, ndim, nnode)
-    real(kind=dp) :: all_N_grad_NP_to_kNP_local(nnode, ndim, nnode)
+    real(kind=dp) :: all_N_shape_IP_extra_to_kNP_extra(nnode, ninpt)
+    real(kind=dp) :: all_N_shape_IP_inter_to_kIP_extra(ninpt, ninpt)
+    real(kind=dp) :: all_N_shape_IP_extra_to_kIP_inter(ninpt, ninpt)
+    real(kind=dp) :: all_N_shape_NP_inter_to_kIP_inter(ninpt, nnode) 
+    real(kind=dp) :: all_N_shape_NP_inter_to_kIP_extra(ninpt, nnode) 
+    
+    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_inter_local(ninpt, ndim, nnode) 
+    real(kind=dp) :: all_N_grad_NP_inter_to_kNP_inter_local(nnode, ndim, nnode)
+    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_extra_local(ninpt, ndim, nnode)
   ! (nnode, ndim, nnode)
 
     ! This stores the determinant of Jacobian matrix of all nodes based on coordinates of the previous increment
-    real(kind=dp) :: djac_all_elems_at_nodes(total_elems, nnode) ! (total_elems, nnode)
+    real(kind=dp) :: djac_all_elems_at_NPs(total_elems, nnode) ! (total_elems, nnode)
 
     ! This matrix keeps tract of all sig_H and eqplas at IPs for all elements as computed from UMAT
-    real(kind=dp) :: sig_H_all_elems_at_inpts(total_elems, ninpt) ! (total_elems, ninpt)
-    real(kind=dp) :: eqplas_all_elems_at_inpts(total_elems, ninpt) ! (total_elems, ninpt)
-    real(kind=dp) :: temp_all_elems_at_inpts(total_elems, ninpt) ! (total_elems, ninpt)
+    real(kind=dp) :: sig_H_all_elems_at_IPs(total_elems, ninpt) ! (total_elems, ninpt)
+    real(kind=dp) :: eqplas_all_elems_at_IPs(total_elems, ninpt) ! (total_elems, ninpt)
+    real(kind=dp) :: temp_all_elems_at_IPs(total_elems, ninpt) ! (total_elems, ninpt)
 
     ! This matrix keeps track of extrapolated sig_H and eqplas from IP onto nodal points for all elements
-    real(kind=dp) :: sig_H_all_elems_at_nodes(total_elems, nnode) ! (total_elems, nnode)
-    real(kind=dp) :: eqplas_all_elems_at_nodes(total_elems, nnode) ! (total_elems, nnode)
-    real(kind=dp) :: temp_all_elems_at_nodes(total_elems, nnode) ! (total_elems, nnode)
+    real(kind=dp) :: sig_H_all_elems_at_NPs(total_elems, nnode) ! (total_elems, nnode)
+    real(kind=dp) :: eqplas_all_elems_at_NPs(total_elems, nnode) ! (total_elems, nnode)
+    real(kind=dp) :: temp_all_elems_at_NPs(total_elems, nnode) ! (total_elems, nnode)
 
-    ! This matrix keeps track of the gradient of sig_H and eqplas from IP onto nodal points for all elements
+    ! This matrix keeps track of the gradient of SDVs from IP onto nodal points for all elements
     ! Gradient of sig_H is needed for hydrogen diffusion model
     ! Gradient of eqplas is needed for strain gradient plasticity model
 
-    real(kind=dp) :: sig_H_grad_all_elems_at_inpts(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
-    real(kind=dp) :: eqplas_grad_all_elems_at_inpts(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
-    real(kind=dp) :: temp_grad_all_elems_at_inpts(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
+    real(kind=dp) :: sig_H_grad_all_elems_at_IPs(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
+    real(kind=dp) :: eqplas_grad_all_elems_at_IPs(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
+    real(kind=dp) :: temp_grad_all_elems_at_IPs(total_elems, ninpt, ndim) ! (total_elems, ninpt, ndim)
 
-    ! Finally, this matrix keeps track of the average sig_H and eqplas at each node from the elements
+    ! Finally, this matrix keeps track of the average SDVs at each node from the elements
     ! that contain the node. The average is weighted based on change of volume 
     ! (determinant of Jacobian matrix)
 
-    real(kind=dp) :: sig_H_at_nodes(total_nodes) ! (total_nodes)
-    real(kind=dp) :: eqplas_at_nodes(total_nodes) ! (total_nodes, ndim)
-    real(kind=dp) :: temp_at_nodes(total_nodes) ! (total_nodes)
+    real(kind=dp) :: sig_H_at_NPs(total_nodes) ! (total_nodes)
+    real(kind=dp) :: eqplas_at_NPs(total_nodes) ! (total_nodes)
+    real(kind=dp) :: temp_at_NPs(total_nodes) ! (total_nodes)
 
     save
     ! The save command is very important. 
@@ -159,10 +140,6 @@ module common_block
     ! without resetting them to zero every time the subroutine is called
 
 end module
-
-! Selective reduced integration for C3D8 element
-! Deviatoric strain displacement matrix at integration points 1 to 8 (+- 1/sqrt(3))
-! Volumetric strain displacement matrix at integration point 0 (0.0, 0.0, 0.0)
 
 !*****************************************************************
 !  8-node     8---------------7
@@ -185,132 +162,157 @@ end module
 module iso_module
 
     use precision
-    real(kind=dp), parameter :: coord_inter = 1.0d0
-    real(kind=dp), parameter :: int_inter = 1.0d0 / sqrt(3.0d0)
-    real(kind=dp), parameter :: coord_extra = sqrt(3.0d0)
-    real(kind=dp), parameter :: int_extra = 1.0d0
+    real(kind=dp), parameter :: NP_inter = 1.0d0
+    real(kind=dp), parameter :: IP_inter = 1.0d0 / sqrt(3.0d0)
+    real(kind=dp), parameter :: NP_extra = sqrt(3.0d0)
+    real(kind=dp), parameter :: IP_extra = 1.0d0
     
-    ! weight is the integration point weight for their shape function contribution
-    real(kind=dp), parameter :: weight(8) = [1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0]
-    
-    ! Interpolating coordinates (nodal to int)
-    ! Isoparametric coordinates for nodal points in hexahedral 3D element
-    real(kind=dp), parameter :: xi_nodal_inter(8)   = [ -coord_inter,  coord_inter,  coord_inter, -coord_inter, &
-                                                         -coord_inter,  coord_inter,  coord_inter, -coord_inter ]
-    real(kind=dp), parameter :: eta_nodal_inter(8)  = [ -coord_inter, -coord_inter,  coord_inter,  coord_inter, &
-                                                         -coord_inter, -coord_inter,  coord_inter,  coord_inter ]
-    real(kind=dp), parameter :: zeta_nodal_inter(8) = [ -coord_inter, -coord_inter, -coord_inter, -coord_inter, &
-                                                          coord_inter,  coord_inter,  coord_inter,  coord_inter ]
+    ! weight_kIP is the integration point weight for their shape function contribution
+    real(kind=dp), parameter :: weight_kIP(8) = [1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0]
 
-    ! Isoparametric coordinates for integration points in hexahedral 3D element
-    real(kind=dp), parameter :: xi_int_inter(8)   = [ -int_inter,  int_inter, -int_inter,  int_inter, &
-                                                       -int_inter,  int_inter, -int_inter,  int_inter ]
-    real(kind=dp), parameter :: eta_int_inter(8)  = [ -int_inter, -int_inter,  int_inter,  int_inter, &
-                                                       -int_inter, -int_inter,  int_inter,  int_inter ]
-    real(kind=dp), parameter :: zeta_int_inter(8) = [ -int_inter, -int_inter, -int_inter, -int_inter, &
-                                                        int_inter,  int_inter,  int_inter,  int_inter ]
+    ! Isoparametric coordinates for NP for interpolation from NP to IP
+    real(kind=dp), parameter :: xi_NP_inter(8)   = [ -NP_inter,  NP_inter,  NP_inter, -NP_inter, &
+                                                     -NP_inter,  NP_inter,  NP_inter, -NP_inter ]
+    real(kind=dp), parameter :: eta_NP_inter(8)  = [ -NP_inter, -NP_inter,  NP_inter,  NP_inter, &
+                                                     -NP_inter, -NP_inter,  NP_inter,  NP_inter ]
+    real(kind=dp), parameter :: zeta_NP_inter(8) = [ -NP_inter, -NP_inter, -NP_inter, -NP_inter, &
+                                                      NP_inter,  NP_inter,  NP_inter,  NP_inter ]
 
-    ! Extrapolating coordinates (int to nodal)
-    real(kind=dp), parameter :: xi_nodal_extra(8)   = [ -coord_extra,  coord_extra,  coord_extra, -coord_extra, &
-                                                         -coord_extra,  coord_extra,  coord_extra, -coord_extra ]
-    real(kind=dp), parameter :: eta_nodal_extra(8)  = [ -coord_extra, -coord_extra,  coord_extra,  coord_extra, &
-                                                         -coord_extra, -coord_extra,  coord_extra,  coord_extra ]
-    real(kind=dp), parameter :: zeta_nodal_extra(8) = [ -coord_extra, -coord_extra, -coord_extra, -coord_extra, &
-                                                          coord_extra,  coord_extra,  coord_extra,  coord_extra ]
+    ! Isoparametric coordinates for IP for interpolation from NP to IP
+    real(kind=dp), parameter :: xi_IP_inter(8)   = [ -IP_inter,  IP_inter, -IP_inter,  IP_inter, &
+                                                     -IP_inter,  IP_inter, -IP_inter,  IP_inter ]
+    real(kind=dp), parameter :: eta_IP_inter(8)  = [ -IP_inter, -IP_inter,  IP_inter,  IP_inter, &
+                                                     -IP_inter, -IP_inter,  IP_inter,  IP_inter ]
+    real(kind=dp), parameter :: zeta_IP_inter(8) = [ -IP_inter, -IP_inter, -IP_inter, -IP_inter, &
+                                                      IP_inter,  IP_inter,  IP_inter,  IP_inter ]
 
-    real(kind=dp), parameter :: xi_int_extra(8)   = [ -int_extra,  int_extra, -int_extra,  int_extra, &
-                                                       -int_extra,  int_extra, -int_extra,  int_extra ]
-    real(kind=dp), parameter :: eta_int_extra(8)  = [ -int_extra, -int_extra,  int_extra,  int_extra, &
-                                                       -int_extra, -int_extra,  int_extra,  int_extra ]
-    real(kind=dp), parameter :: zeta_int_extra(8) = [ -int_extra, -int_extra, -int_extra, -int_extra, &
-                                                        int_extra,  int_extra,  int_extra,  int_extra ]
+    ! Isoparametric coordinates for NP for extrapolation from IP to NP
+    real(kind=dp), parameter :: xi_NP_extra(8)   = [ -NP_extra,  NP_extra,  NP_extra, -NP_extra, &
+                                                     -NP_extra,  NP_extra,  NP_extra, -NP_extra ]
+    real(kind=dp), parameter :: eta_NP_extra(8)  = [ -NP_extra, -NP_extra,  NP_extra,  NP_extra, &
+                                                     -NP_extra, -NP_extra,  NP_extra,  NP_extra ]
+    real(kind=dp), parameter :: zeta_NP_extra(8) = [ -NP_extra, -NP_extra, -NP_extra, -NP_extra, &
+                                                      NP_extra,  NP_extra,  NP_extra,  NP_extra ]
+    ! Isoparametric coordinates for IP for extrapolation from IP to NP
+    real(kind=dp), parameter :: xi_IP_extra(8)   = [ -IP_extra,  IP_extra, -IP_extra,  IP_extra, &
+                                                     -IP_extra,  IP_extra, -IP_extra,  IP_extra ]
+    real(kind=dp), parameter :: eta_IP_extra(8)  = [ -IP_extra, -IP_extra,  IP_extra,  IP_extra, &
+                                                     -IP_extra, -IP_extra,  IP_extra,  IP_extra ]
+    real(kind=dp), parameter :: zeta_IP_extra(8) = [ -IP_extra, -IP_extra, -IP_extra, -IP_extra, &
+                                                      IP_extra,  IP_extra,  IP_extra,  IP_extra ]
 
 end module iso_module
 
 
-subroutine calc_N_shape_IP_to_kNP(xi_node, eta_node, zeta_node, N_shape_IP_to_kNP)
-    ! Calculate the shape function at the nodal points
-    ! xi_node, eta_node, zeta_node: Isoparametric coordinates of the nodal points
-
-    use precision
-    real(kind=dp), dimension(8) :: N_shape_IP_to_kNP ! ninpt
-    real(kind=dp) :: xi_node, eta_node, zeta_node
-
-    !   shape functions
-    N_shape_IP_to_kNP(1) = 0.125d0 * (1.0d0 - xi_node) * (1.0d0 - eta_node) * (1.0d0 - zeta_node)
-    N_shape_IP_to_kNP(2) = 0.125d0 * (1.0d0 + xi_node) * (1.0d0 - eta_node) * (1.0d0 - zeta_node)
-    N_shape_IP_to_kNP(3) = 0.125d0 * (1.0d0 - xi_node) * (1.0d0 + eta_node) * (1.0d0 - zeta_node)
-    N_shape_IP_to_kNP(4) = 0.125d0 * (1.0d0 + xi_node) * (1.0d0 + eta_node) * (1.0d0 - zeta_node)
-    N_shape_IP_to_kNP(5) = 0.125d0 * (1.0d0 - xi_node) * (1.0d0 - eta_node) * (1.0d0 + zeta_node)
-    N_shape_IP_to_kNP(6) = 0.125d0 * (1.0d0 + xi_node) * (1.0d0 - eta_node) * (1.0d0 + zeta_node)
-    N_shape_IP_to_kNP(7) = 0.125d0 * (1.0d0 - xi_node) * (1.0d0 + eta_node) * (1.0d0 + zeta_node)
-    N_shape_IP_to_kNP(8) = 0.125d0 * (1.0d0 + xi_node) * (1.0d0 + eta_node) * (1.0d0 + zeta_node)
-
-return
-end
-
-subroutine calc_N_shape_NP_to_kIP(xi_int, eta_int, zeta_int, N_shape_NP_to_kIP)
+subroutine calc_N_shape_NP_inter_to_coords(xi_coords, eta_coords, zeta_coords, &
+                                        N_shape_NP_inter_to_coords)
     ! Calculate the shape function at the integration points
-    ! xi_int, eta_int, zeta_int: Isoparametric coordinates of the integration points
+    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the integration points
 
     use precision
-    real(kind=dp), dimension(8) :: N_shape_NP_to_kIP ! nnode
-    real(kind=dp) :: xi_int, eta_int, zeta_int
+    real(kind=dp), dimension(8) :: N_shape_NP_inter_to_coords ! nnode
+    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
+    real(kind=dp), parameter :: NP_inter = 1.0d0
 
     !   shape functions
-    N_shape_NP_to_kIP(1)=0.125d0 * (1.0d0 - xi_int) * (1.0d0 - eta_int) * (1.0d0 - zeta_int)
-    N_shape_NP_to_kIP(2)=0.125d0 * (1.0d0 + xi_int) * (1.0d0 - eta_int) * (1.0d0 - zeta_int)
-    N_shape_NP_to_kIP(3)=0.125d0 * (1.0d0 + xi_int) * (1.0d0 + eta_int) * (1.0d0 - zeta_int)
-    N_shape_NP_to_kIP(4)=0.125d0 * (1.0d0 - xi_int) * (1.0d0 + eta_int) * (1.0d0 - zeta_int)
-    N_shape_NP_to_kIP(5)=0.125d0 * (1.0d0 - xi_int) * (1.0d0 - eta_int) * (1.0d0 + zeta_int)
-    N_shape_NP_to_kIP(6)=0.125d0 * (1.0d0 + xi_int) * (1.0d0 - eta_int) * (1.0d0 + zeta_int)
-    N_shape_NP_to_kIP(7)=0.125d0 * (1.0d0 + xi_int) * (1.0d0 + eta_int) * (1.0d0 + zeta_int)
-    N_shape_NP_to_kIP(8)=0.125d0 * (1.0d0 - xi_int) * (1.0d0 + eta_int) * (1.0d0 + zeta_int)
+    N_shape_NP_inter_to_coords(1)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(2)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(3)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(4)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(5)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(6)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(7)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(8)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
 
-return
 end
 
-subroutine calc_N_grad_NP_to_kIP_local(xi_int, eta_int, zeta_int, N_grad_NP_to_kIP_local)
-    ! Calculate the shape function derivative at the integration points
-    ! Basically derivatives of calc_N_shape_NP_to_kIP
-    ! N_grad_NP_to_kIP_local: (ninpt, ndim, nnode)
-    ! xi_int, eta_int, zeta_int: Isoparametric coordinates of the integration points
+subroutine calc_N_shape_IP_inter_to_coords(xi_coords, eta_coords, zeta_coords, &
+                                           N_shape_IP_inter_to_coords)
 
     use precision
-    real(kind=dp), dimension(3, 8) :: N_grad_NP_to_kIP_local ! (ndim, nnode)
-    real(kind=dp) :: xi_int, eta_int, zeta_int
+    real(kind=dp), intent(out) :: N_shape_IP_inter_to_coords(8)
+    real(kind=dp), intent(in)  :: xi_coords, eta_coords, zeta_coords
+    
+    real(kind=dp), parameter :: IP_inter = 1.0d0 / sqrt(3.0d0)
+    ! Shape functions for a C3D8 element at the given xi/eta/zeta
+    N_shape_IP_inter_to_coords(1) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(2) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(3) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(4) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(5) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(6) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(7) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
+    N_shape_IP_inter_to_coords(8) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
 
-    !   derivative d(Ni)/d(xi_int)
-    N_grad_NP_to_kIP_local(1, 1) = -0.125d0 * (1.0d0 - eta_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(1, 2) =  0.125d0 * (1.0d0 - eta_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(1, 3) =  0.125d0 * (1.0d0 + eta_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(1, 4) = -0.125d0 * (1.0d0 + eta_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(1, 5) = -0.125d0 * (1.0d0 - eta_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(1, 6) =  0.125d0 * (1.0d0 - eta_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(1, 7) =  0.125d0 * (1.0d0 + eta_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(1, 8) = -0.125d0 * (1.0d0 + eta_int) * (1.0d0 + zeta_int)
+end
 
-    !     derivative d(Ni)/d(eta_int)
-    N_grad_NP_to_kIP_local(2, 1) = -0.125d0 * (1.0d0 - xi_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(2, 2) = -0.125d0 * (1.0d0 + xi_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(2, 3) =  0.125d0 * (1.0d0 + xi_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(2, 4) =  0.125d0 * (1.0d0 - xi_int) * (1.0d0 - zeta_int)
-    N_grad_NP_to_kIP_local(2, 5) = -0.125d0 * (1.0d0 - xi_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(2, 6) = -0.125d0 * (1.0d0 + xi_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(2, 7) =  0.125d0 * (1.0d0 + xi_int) * (1.0d0 + zeta_int)
-    N_grad_NP_to_kIP_local(2, 8) =  0.125d0 * (1.0d0 - xi_int) * (1.0d0 + zeta_int)
 
-    !     derivative d(Ni)/d(zeta_int)
-    N_grad_NP_to_kIP_local(3, 1) = -0.125d0 * (1.0d0 - xi_int) * (1.0d0 - eta_int)
-    N_grad_NP_to_kIP_local(3, 2) = -0.125d0 * (1.0d0 + xi_int) * (1.0d0 - eta_int)
-    N_grad_NP_to_kIP_local(3, 3) = -0.125d0 * (1.0d0 + xi_int) * (1.0d0 + eta_int)
-    N_grad_NP_to_kIP_local(3, 4) = -0.125d0 * (1.0d0 - xi_int) * (1.0d0 + eta_int)
-    N_grad_NP_to_kIP_local(3, 5) =  0.125d0 * (1.0d0 - xi_int) * (1.0d0 - eta_int)
-    N_grad_NP_to_kIP_local(3, 6) =  0.125d0 * (1.0d0 + xi_int) * (1.0d0 - eta_int)
-    N_grad_NP_to_kIP_local(3, 7) =  0.125d0 * (1.0d0 + xi_int) * (1.0d0 + eta_int)
-    N_grad_NP_to_kIP_local(3, 8) =  0.125d0 * (1.0d0 - xi_int) * (1.0d0 + eta_int)
 
-return
+
+subroutine calc_N_shape_IP_extra_to_coords(xi_coords, eta_coords, zeta_coords, &
+                                            N_shape_IP_extra_to_coords)
+    ! Calculate the shape function at the nodal points
+    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the nodal points
+
+    use precision
+    real(kind=dp), dimension(8) :: N_shape_IP_extra_to_coords ! ninpt
+    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
+    real(kind=dp), parameter :: IP_extra = 1.0d0
+    
+    !   shape functions
+    N_shape_IP_extra_to_coords(1) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(2) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(3) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(4) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(5) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(6) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(7) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(8) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
+
+end
+
+
+subroutine calc_N_grad_NP_inter_to_coords_local(xi_coords, eta_coords, zeta_coords, N_grad_NP_inter_to_kIP_inter_local)
+    ! Calculate the shape function derivative at the integration points
+    ! Basically derivatives of calc_N_shape_NP_inter_to_coords
+    ! N_grad_NP_inter_to_kIP_inter_local: (ninpt, ndim, nnode)
+    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the integration points
+
+    use precision
+    real(kind=dp), dimension(3, 8) :: N_grad_NP_inter_to_kIP_inter_local ! (ndim, nnode)
+    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
+    real(kind=dp), parameter :: NP_inter = 1.0d0
+
+    !   derivative d(Ni)/d(xi_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 1) = -0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 2) =  0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 3) =  0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 4) = -0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 5) = -0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 6) =  0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 7) =  0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(1, 8) = -0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+
+    !     derivative d(Ni)/d(eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 1) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 2) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 3) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 4) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 5) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 6) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 7) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(2, 8) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
+
+    !     derivative d(Ni)/d(zeta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 1) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 2) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 3) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 4) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 5) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 6) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 7) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
+    N_grad_NP_inter_to_kIP_inter_local(3, 8) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
+
 end
 
 
@@ -320,13 +322,8 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
     use precision
     use common_block
     use iso_module
-    use iso_c_binding
 
     include 'aba_param.inc' 
-    
-    ! !DEC$ NOFREEFORM
-    ! #include <SMAAspUserSubroutines.hdr>
-    ! !DEC$ FREEFORM
 
     dimension time(2)
     
@@ -335,39 +332,71 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
 
     character(len=256) :: line, outdir, aelread, aelwrite, andread, andwrite, anelwrite
     
-    real(kind=dp), dimension(ninpt) :: N_shape_IP_to_kNP
-    real(kind=dp), dimension(nnode) :: N_shape_NP_to_kIP
-    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_to_kIP_local
-
+    real(kind=dp), dimension(ninpt) :: N_shape_IP_extra_to_kNP_extra
+    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_inter
+    real(kind=dp), dimension(ninpt) :: N_shape_IP_inter_to_kIP_extra
+    real(kind=dp), dimension(ninpt) :: N_shape_IP_extra_to_kIP_inter
+    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_extra ! Only for capacitance matrix in heat transfer
+    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_inter_local
+    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kNP_inter_local
+    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_extra_local
 
     ! LOP=0 indicates that the subroutine is being called at the start of the analysis.
     if (lop == 0) then 
-        call mutexInit(1)
 
+        call mutexInit(1)
         call mutexLock(1)
         
-        do inode = 1, nnode
-            xi_node = xi_nodal_extra(inode)
-            eta_node = eta_nodal_extra(inode)
-            zeta_node = zeta_nodal_extra(inode)
+        do knode = 1, nnode
+            xi_NP_inter_coord = xi_NP_inter(knode)
+            eta_NP_inter_coord = eta_NP_inter(knode)
+            zeta_NP_inter_coord = zeta_NP_inter(knode)
 
-            call calc_N_shape_IP_to_kNP(xi_node, eta_node, zeta_node, N_shape_IP_to_kNP)
-            all_N_shape_IP_to_kNP(inode, 1:ninpt) = N_shape_IP_to_kNP
+            xi_NP_extra_coord = xi_NP_extra(knode)
+            eta_NP_extra_coord = eta_NP_extra(knode)
+            zeta_NP_extra_coord = zeta_NP_extra(knode)
+
+            call calc_N_shape_IP_extra_to_coords(xi_NP_extra_coord, eta_NP_extra_coord, zeta_NP_extra_coord, &
+                                                N_shape_IP_extra_to_kNP_extra)
+            all_N_shape_IP_extra_to_kNP_extra(knode, 1:ninpt) = N_shape_IP_extra_to_kNP_extra
 
         end do      
 
         do kinpt = 1, ninpt
 
         !   determine (g,h,r)
-            xi_int = xi_int_inter(kinpt)
-            eta_int = eta_int_inter(kinpt)
-            zeta_int = zeta_int_inter(kinpt)
+            xi_IP_inter_coord = xi_IP_inter(kinpt)
+            eta_IP_inter_coord = eta_IP_inter(kinpt)
+            zeta_IP_inter_coord = zeta_IP_inter(kinpt)
 
-            call calc_N_shape_NP_to_kIP(xi_int, eta_int, zeta_int, N_shape_NP_to_kIP)
-            all_N_shape_NP_to_kIP(kinpt, 1:nnode) = N_shape_NP_to_kIP(1:nnode)
+            xi_IP_extra_coord = xi_IP_extra(kinpt)
+            eta_IP_extra_coord = eta_IP_extra(kinpt)
+            zeta_IP_extra_coord = zeta_IP_extra(kinpt)
 
-            call calc_N_grad_NP_to_kIP_local(xi_int, eta_int, zeta_int, N_grad_NP_to_kIP_local)
-            all_N_grad_NP_to_kIP_local(kinpt,1:ndim,1:nnode) = N_grad_NP_to_kIP_local(1:ndim,1:nnode)
+            call calc_N_shape_NP_inter_to_coords(xi_IP_inter_coord, eta_IP_inter_coord, zeta_IP_inter_coord, &
+                                                    N_shape_NP_inter_to_kIP_inter)
+            all_N_shape_NP_inter_to_kIP_inter(kinpt, 1:nnode) = N_shape_NP_inter_to_kIP_inter(1:nnode)
+
+            call calc_N_shape_NP_inter_to_coords(xi_IP_extra_coord, eta_IP_extra_coord, zeta_IP_extra_coord, &
+                                                    N_shape_NP_inter_to_kIP_extra)
+            all_N_shape_NP_inter_to_kIP_extra(kinpt, 1:nnode) = N_shape_NP_inter_to_kIP_extra(1:nnode)
+            
+            call calc_N_grad_NP_inter_to_coords_local(xi_IP_inter_coord, eta_IP_inter_coord, zeta_IP_inter_coord, &
+                                                    N_grad_NP_inter_to_kIP_inter_local)
+            all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) = N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode)
+
+            call calc_N_grad_NP_inter_to_coords_local(xi_IP_extra_coord, eta_IP_extra_coord, zeta_IP_extra_coord, &
+                                                    N_grad_NP_inter_to_kIP_extra_local)
+            all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:ndim,1:nnode) = N_grad_NP_inter_to_kIP_extra_local(1:ndim,1:nnode)
+        
+        
+            call calc_N_shape_IP_inter_to_coords(xi_IP_extra_coord, eta_IP_extra_coord, zeta_IP_extra_coord, &
+                                                    N_shape_IP_inter_to_kIP_extra)
+            all_N_shape_IP_inter_to_kIP_extra(kinpt, 1:ninpt) = N_shape_IP_inter_to_kIP_extra
+
+            call calc_N_shape_IP_extra_to_coords(xi_IP_inter_coord, eta_IP_inter_coord, zeta_IP_inter_coord, &
+                                                    N_shape_IP_extra_to_kIP_inter)
+            all_N_shape_IP_extra_to_kIP_inter(kinpt, 1:ninpt) = N_shape_IP_extra_to_kIP_inter
 
         end do
 
@@ -376,102 +405,124 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
         
     end if
 
-return
 end
 
 ! Bbar technique
 
-subroutine kbmatrix_full(N_grad_NP_to_kIP_global,ntens,nnode,ndim,Bu_kIP)
+subroutine kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global,ntens,nnode,ndim,Bu_kIP_inter)
     !   Full strain displacement matrix
     !   Notation, strain tensor: e11, e22, e33, e12, e13, e23
     use precision
     include 'aba_param.inc'
 
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_to_kIP_global
-    real(kind=dp), dimension(ntens, ndim * nnode) :: Bu_kIP
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global
+    real(kind=dp), dimension(ntens, ndim * nnode) :: Bu_kIP_inter
     integer :: current_node_idx
     
-    Bu_kIP = 0.0d0
+    Bu_kIP_inter = 0.0d0
     
     do knode=1,nnode
         current_node_idx = ndim * knode - ndim
         ! Normal components
-        Bu_kIP(1,current_node_idx+1) = N_grad_NP_to_kIP_global(1,knode)
-        Bu_kIP(2,current_node_idx+2) = N_grad_NP_to_kIP_global(2,knode)
-        Bu_kIP(3,current_node_idx+3) = N_grad_NP_to_kIP_global(3,knode)
+        Bu_kIP_inter(1,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(1,knode)
+        Bu_kIP_inter(2,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(2,knode)
+        Bu_kIP_inter(3,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(3,knode)
         ! Shear components
-        Bu_kIP(4,current_node_idx+1) = N_grad_NP_to_kIP_global(2,knode)
-        Bu_kIP(4,current_node_idx+2) = N_grad_NP_to_kIP_global(1,knode)
-        Bu_kIP(5,current_node_idx+1) = N_grad_NP_to_kIP_global(3,knode)
-        Bu_kIP(5,current_node_idx+3) = N_grad_NP_to_kIP_global(1,knode)
-        Bu_kIP(6,current_node_idx+2) = N_grad_NP_to_kIP_global(3,knode)
-        Bu_kIP(6,current_node_idx+3) = N_grad_NP_to_kIP_global(2,knode)
+        Bu_kIP_inter(4,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(2,knode)
+        Bu_kIP_inter(4,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(1,knode)
+        Bu_kIP_inter(5,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(3,knode)
+        Bu_kIP_inter(5,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(1,knode)
+        Bu_kIP_inter(6,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(3,knode)
+        Bu_kIP_inter(6,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(2,knode)
         
     end do
 
-return
 end
 
 
-subroutine kbmatrix_vol(N_grad_NP_to_kIP_global,ntens,nnode,ndim,Bu_vol_kIP)
+subroutine kbmatrix_vol(N_grad_NP_inter_to_kIP_inter_global,ntens,nnode,ndim,Bu_vol_kIP_inter)
 
     !   Volumetric strain displacement matrix
     !   Notation, strain tensor: e11, e22, e33, e12, e13, e23
     use precision
     include 'aba_param.inc'
 
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_to_kIP_global
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kIP
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kIP_inter
     integer :: current_node_idx
     
-    Bu_vol_kIP = 0.0d0
+    Bu_vol_kIP_inter = 0.0d0
     
     ! Loop through each node
     do knode = 1, nnode
         ! Normal strain components in e11, e22, e33
         current_node_idx = ndim * knode - ndim
-        Bu_vol_kIP(1,current_node_idx+1) = N_grad_NP_to_kIP_global(1, knode)
-        Bu_vol_kIP(1,current_node_idx+2) = N_grad_NP_to_kIP_global(2, knode)
-        Bu_vol_kIP(1,current_node_idx+3) = N_grad_NP_to_kIP_global(3, knode)
-        Bu_vol_kIP(2,current_node_idx+1) = N_grad_NP_to_kIP_global(1, knode)
-        Bu_vol_kIP(2,current_node_idx+2) = N_grad_NP_to_kIP_global(2, knode)
-        Bu_vol_kIP(2,current_node_idx+3) = N_grad_NP_to_kIP_global(3, knode)
-        Bu_vol_kIP(3,current_node_idx+1) = N_grad_NP_to_kIP_global(1, knode)
-        Bu_vol_kIP(3,current_node_idx+2) = N_grad_NP_to_kIP_global(2, knode)
-        Bu_vol_kIP(3,current_node_idx+3) = N_grad_NP_to_kIP_global(3, knode)
+        Bu_vol_kIP_inter(1,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(1, knode)
+        Bu_vol_kIP_inter(1,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(2, knode)
+        Bu_vol_kIP_inter(1,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(3, knode)
+        Bu_vol_kIP_inter(2,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(1, knode)
+        Bu_vol_kIP_inter(2,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(2, knode)
+        Bu_vol_kIP_inter(2,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(3, knode)
+        Bu_vol_kIP_inter(3,current_node_idx+1) = N_grad_NP_inter_to_kIP_inter_global(1, knode)
+        Bu_vol_kIP_inter(3,current_node_idx+2) = N_grad_NP_inter_to_kIP_inter_global(2, knode)
+        Bu_vol_kIP_inter(3,current_node_idx+3) = N_grad_NP_inter_to_kIP_inter_global(3, knode)
         
         ! Shear strain components in e12, e13, e23
         ! No contribution, all are zero
     end do
     
-    Bu_vol_kIP = Bu_vol_kIP / 3.0d0
+    Bu_vol_kIP_inter = Bu_vol_kIP_inter / 3.0d0
 
-return
 end
 
 
-subroutine kstatevar(kinpt,nstatev,svars,statev,icopy)
+subroutine move_between_statev_and_svars(kinpt,statev,nstatev,svars,nsvars,icopy)
 
 !   Transfer data to/from element-level state variable array from/to
 !   material-point level state variable array.
 
+    use precision
     include 'aba_param.inc'
 
-    dimension svars(*),statev(*)
+    real(kind=dp), dimension(nsvars) :: svars
+    real(kind=dp), dimension(nstatev) :: statev
 
     isvinc = (kinpt-1) * nstatev     ! integration point increment
 
     if (icopy == 1) then ! Prepare arrays for entry into umat
-        do i=1, nstatev
-            statev(i) = svars(i+isvinc)
+        do kstatev=1, nstatev
+            statev(kstatev) = svars(kstatev+isvinc)
         end do
     else ! Update element state variables upon return from umat
-        do i = 1, nstatev
-            svars(i+isvinc) = statev(i)
+        do kstatev = 1, nstatev
+            svars(kstatev+isvinc) = statev(kstatev)
         end do
     end if
+end
 
-return
+subroutine move_between_single_statev_at_all_IPs_and_svars(ninpt,statev_idx,single_statev,nstatev,svars,nsvars,icopy)
+
+    use precision
+    include 'aba_param.inc'
+
+    real(kind=dp), dimension(nsvars) :: svars
+    real(kind=dp), dimension(ninpt) :: single_statev
+    integer :: statev_idx
+
+    integer :: kinpt, isvinc
+
+    do kinpt = 1, ninpt
+        isvinc = (kinpt - 1) * nstatev
+
+        if (icopy == 1) then
+            ! Copy from svars → single statev component
+            single_statev(kinpt) = svars(isvinc + statev_idx)
+        else
+            ! Copy from single component back into svars
+            svars(isvinc + statev_idx) = single_statev(kinpt)
+        end if
+    end do
+
 end
 
 
@@ -657,7 +708,7 @@ subroutine UMAT_isotropic_von_Mises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt,
     statev(sig_H_idx) = sig_H
     statev(triax_idx) = 0.0 ! Lazy to calculate
     statev(lode_idx) = 0.0
-return
+
 end
 
 ! This is isotropic elastic model
@@ -753,8 +804,6 @@ subroutine UMAT_elastic(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, &
     statev(triax_idx) = 0.0 ! Lazy to calculate
     statev(lode_idx) = 0.0
     
-
-return
 end
 
 
@@ -864,11 +913,11 @@ subroutine UFIELD(field, kfield, nsecpt, kstep, kinc, time, node, &
     call mutexInit(3)
     call mutexLock(3)
 
-    ! Assign the current nodal coordinates to coords_all_nodes
+    ! Assign the current nodal coordinates to coords_all_NPs
 
-    coords_all_nodes(node, 1) = coords(1)
-    coords_all_nodes(node, 2) = coords(2)
-    coords_all_nodes(node, 3) = coords(3)
+    coords_all_NPs(node, 1) = coords(1)
+    coords_all_NPs(node, 2) = coords(2)
+    coords_all_NPs(node, 3) = coords(3)
 
     ! Unlock Mutex #5
     call mutexUnlock(3)
@@ -924,17 +973,23 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(nstatev) :: statev                      
     real(kind=dp), dimension(ndim,ndim) :: identity   
     ! Shape function that interpolates from nodal points to integration points
-    real(kind=dp), dimension(nnode) :: N_shape_NP_to_kIP, PHIX, PHIY, PHIZ 
+    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_inter, PHIX, PHIY, PHIZ 
+    real(kind=dp), dimension(ninpt) :: N_shape_IP_inter_to_kIP_extra
+    real(kind=dp), dimension(ninpt) :: N_shape_IP_extra_to_kIP_inter
     ! Shape function that extrapolates from integration points to nodal points
-    real(kind=dp), dimension(ninpt) :: N_shape_IP_to_kNP         
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_to_kIP_local          
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_to_kIP_global_t
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_to_kIP_global_tm1          
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_bar_global_t
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_bar_global_tm1
+    
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_local          
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global_t
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global_tm1          
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_bar_global_t
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_bar_global_tm1
+    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_extra 
+    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_extra_local
+    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_extra_global_t
     ! Predefined fields 
     real(kind=dp), dimension(ninpt,npredf) :: predef_IPs_t, predef_IPs_tm1, dpred_IPs
     real(kind=dp), dimension(npredf) :: predef_kIP_t, predef_kIP_tm1, dpred_kIP 
+    real(kind=dp), dimension(nnode,nnode) :: test_nnode_by_nnode
 
     ! =====================================================
     ! TENSORS DEFINED FOR THE DEFORMATION FIELD: UX, UY, UZ
@@ -947,9 +1002,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim,ndim) :: ux_grad_t, ux_grad_tm1, dux_grad          
 
     ! Strain-displacement matrix (B matrix)            
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_kIP_t, Bu_kIP_tm1    
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_kIP_inter_t, Bu_kIP_inter_tm1    
     ! Volumetric strain-displacement matrix (B matrix)     
-    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kIP_t, Bu_vol_kIP_tm1          
+    real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_vol_kIP_inter_t, Bu_vol_kIP_inter_tm1          
     real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_t, Bu_bar_tm1
     real(kind=dp), dimension(ntens,ndim*nnode) :: Bu_bar_vol_t, Bu_bar_vol_tm1
 
@@ -995,13 +1050,19 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp) :: temp_kIP_t, dtemp_kIP, temp_kIP_tm1
     real(kind=dp), dimension(ndim) :: temp_grad_kIP_t
 
-    real(kind=dp) :: u_heat_kIP_t, u_heat_kIP_tm1, dudt_heat_kIP_t, du_heat_kIP, ru_heat_kIP
+    real(kind=dp) :: u_heat_kIP_inter_t, u_heat_kIP_inter_tm1, dudt_heat_kIP_t, du_heat_kIP, ru_heat_kIP
     real(kind=dp), dimension(ndim) :: dudg_heat_kIP_t, flux_heat_kIP, flux_heat_kIP_t, flux_heat_kIP_tm1, dfdt_heat_kIP_t
     real(kind=dp), dimension(ndim,ndim) :: dfdg_heat_kIP_t
 
+    ! For lump internal energy rate
+    real(kind=dp), dimension(ninpt) :: u_heat_all_IPs_inter_t, u_heat_all_IPs_extra_t
+    real(kind=dp), dimension(ninpt) :: u_heat_all_IPs_inter_tm1, u_heat_all_IPs_extra_tm1
+    real(kind=dp), dimension(ninpt) :: dudt_heat_all_IPs_inter_t, dudt_heat_all_IPs_extra_t
+    real(kind=dp), dimension(ninpt, ndim) :: dudg_heat_all_IPs_inter_t, dudg_heat_all_IPs_extra_t
+
     real(kind=dp), dimension(nnode,nnode)  :: K_heat_conductivity_kIP_t, K_dfdt_heat_term_kIP_t, K_dfdg_heat_term_kIP_t, K_ru_heat_term_kIP_t
-    real(kind=dp), dimension(nnode,nnode) :: M_heat_capacity_kIP_t, M_dudt_heat_term_kIP_t, M_dudg_heat_term_kIP_t
-    real(kind=dp), dimension(nnode) :: F_heat_rhs_kIP_t, F_ru_heat_term_kIP, F_dudt_heat_term_kIP_t, F_flux_heat_term_kIP_t, F_du_heat_term_kIP_t
+    real(kind=dp), dimension(nnode,nnode) :: M_heat_capacitance_kIP_t, M_dudt_heat_term_kIP_t, M_dudg_heat_term_kIP_t
+    real(kind=dp), dimension(nnode) :: F_heat_rhs_kIP_t, F_ru_heat_term_kIP, F_du_heat_term_kIP_t, F_flux_heat_term_kIP_t
 
     ! ==================================================================================== !
     ! TENSORS DEFINED FOR THE MASS DIFFUSION FIELD: CL_mol (Lattice hydrogen concentration !
@@ -1018,7 +1079,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim) :: dudg_mass, flux_mass, dfdt_mass
     real(kind=dp), dimension(ndim,ndim) :: dfdg_mass
 
-    real(kind=dp), dimension(nnode,nnode)  :: M_mass_capacity, K_mass_diffusitivity
+    real(kind=dp), dimension(nnode,nnode)  :: M_mass_capacitance, K_mass_diffusitivity
     real(kind=dp), dimension(nnode,nnode) :: dudt_mass_term, dudg_mass_term, dfdt_mass_term, dfdg_mass_term
     real(kind=dp), dimension(nnode) :: f_node_mass, dr_mass_term, flux_mass_term
 
@@ -1085,15 +1146,15 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     dtemp_NPs(1:nnode) = du(start_temp_idx:end_temp_idx, nrhs)
     temp_NPs_tm1(1:nnode) = temp_NPs_t - dtemp_NPs
 
-    ! ! Force them to be positive
-    ! temp_NPs_t = max(temp_NPs_t, 0.0d0)
-    ! temp_NPs_tm1 = max(temp_NPs_tm1, 0.0d0)
+    ! Force them to be positive
+    temp_NPs_t = max(temp_NPs_t, 0.0d0)
+    temp_NPs_tm1 = max(temp_NPs_tm1, 0.0d0)
 
-    ! do knode=1,nnode
-    !     if (temp_NPs_t(knode) == 0.0d0 .and. temp_NPs_tm1(knode) == 0.0d0) then
-    !         dtemp_NPs(knode) = 0.0d0
-    !     end if
-    ! end do
+    do knode=1,nnode
+        if (temp_NPs_t(knode) == 0.0d0 .and. temp_NPs_tm1(knode) == 0.0d0) then
+            dtemp_NPs(knode) = 0.0d0
+        end if
+    end do
 
     ! write(7,*) 'temp_NPs_t', temp_NPs_t(1:nnode)
     ! write(7,*) 'dtemp_NPs', dtemp_NPs(1:nnode)
@@ -1110,7 +1171,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! end if
 
     ! Current coordinates of the element jelem
-    ! It will be used to calculate N_grad_NP_to_kIP_global_t for updated Lagrangian formulation
+    ! It will be used to calculate N_grad_NP_inter_to_kIP_inter_global_t for updated Lagrangian formulation
     coords_kelem_NPs_0 = coords
 
     if (lflags(2) == 0) then ! NLGEOM off
@@ -1126,14 +1187,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! Calculate coordinates at all IPs
 
     do kinpt = 1, ninpt
-        N_shape_NP_to_kIP(1:nnode) = all_N_shape_NP_to_kIP(kinpt,1:nnode)
+        N_shape_NP_inter_to_kIP_inter(1:nnode) = all_N_shape_NP_inter_to_kIP_inter(kinpt,1:nnode)
 
         do kdim = 1, ndim
-            coords_kelem_IPs_t(kdim, kinpt) = dot_product(N_shape_NP_to_kIP, &
+            coords_kelem_IPs_t(kdim, kinpt) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                           coords_kelem_NPs_t(kdim, 1:nnode))
-            coords_kelem_IPs_tm1(kdim, kinpt) = dot_product(N_shape_NP_to_kIP, &
+            coords_kelem_IPs_tm1(kdim, kinpt) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                             coords_kelem_NPs_tm1(kdim, 1:nnode))
-            coords_kelem_IPs_0(kdim, kinpt) = dot_product(N_shape_NP_to_kIP, &
+            coords_kelem_IPs_0(kdim, kinpt) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                           coords_kelem_NPs_0(kdim, 1:nnode))
         end do
     end do
@@ -1146,12 +1207,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     do kinpt = 1, ninpt
         do kpredf = 1, npredf 
-            N_shape_NP_to_kIP(1:nnode) = all_N_shape_NP_to_kIP(kinpt,1:nnode)
-            predef_IPs_t(kinpt, 1:npredf) = dot_product(N_shape_NP_to_kIP, &
+            N_shape_NP_inter_to_kIP_inter(1:nnode) = all_N_shape_NP_inter_to_kIP_inter(kinpt,1:nnode)
+            predef_IPs_t(kinpt, 1:npredf) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                         predef(1,kpredf,1:nnode))
-            dpred_IPs(kinpt, 1:npredf) = dot_product(N_shape_NP_to_kIP, &
+            dpred_IPs(kinpt, 1:npredf) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                         predef(2,kpredf,1:nnode))
-            predef_IPs_tm1(kinpt, 1:npredf) = dot_product(N_shape_NP_to_kIP, &
+            predef_IPs_tm1(kinpt, 1:npredf) = dot_product(N_shape_NP_inter_to_kIP_inter, &
                                                         predef(1,kpredf,1:nnode)-predef(2,kpredf,1:nnode))
         end do
     end do
@@ -1170,8 +1231,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     !                                                                    !
     ! ================================================================== !
         
-    N_grad_NP_bar_global_t(1:ndim,1:nnode) = 0.0d0
-    N_grad_NP_bar_global_tm1(1:ndim,1:nnode) = 0.0d0
+    N_grad_NP_inter_bar_global_t(1:ndim,1:nnode) = 0.0d0
+    N_grad_NP_inter_bar_global_tm1(1:ndim,1:nnode) = 0.0d0
     djac_bar_t = 0.0d0
     djac_bar_tm1 = 0.0d0
     elem_vol_t = 0.0d0
@@ -1179,33 +1240,38 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     do kinpt=1, ninpt
 
-        N_grad_NP_to_kIP_local(1:ndim,1:nnode) = all_N_grad_NP_to_kIP_local(kinpt,1:ndim,1:nnode) 
+        N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) 
 
-        xjac_tm1 = matmul(N_grad_NP_to_kIP_local, transpose(coords_kelem_NPs_tm1))
+        xjac_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
         call calc_matrix_inv(xjac_tm1, xjac_inv_tm1, djac_tm1, ndim)
 
-        dvol_tm1 = weight(kinpt) * djac_tm1
-        N_grad_NP_to_kIP_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_to_kIP_local)
-        N_grad_NP_bar_global_tm1 = N_grad_NP_bar_global_tm1 + N_grad_NP_to_kIP_global_tm1 * dvol_tm1
+        dvol_tm1 = weight_kIP(kinpt) * djac_tm1
+        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_bar_global_tm1 = N_grad_NP_inter_bar_global_tm1 + N_grad_NP_inter_to_kIP_inter_global_tm1 * dvol_tm1
         djac_bar_tm1 = djac_bar_tm1 + djac_tm1 * dvol_tm1
         elem_vol_tm1 = elem_vol_tm1 + dvol_tm1
 
-        xjac_t = matmul(N_grad_NP_to_kIP_local, transpose(coords_kelem_NPs_t))
+        xjac_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
         call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
 
-        dvol_t = weight(kinpt) * djac_t
-        N_grad_NP_to_kIP_global_t = matmul(xjac_inv_t,N_grad_NP_to_kIP_local)
-        N_grad_NP_bar_global_t = N_grad_NP_bar_global_t + N_grad_NP_to_kIP_global_t * dvol_t
+        dvol_t = weight_kIP(kinpt) * djac_t
+        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_t,N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t + N_grad_NP_inter_to_kIP_inter_global_t * dvol_t
         djac_bar_t = djac_bar_t + djac_t * dvol_t
         elem_vol_t = elem_vol_t + dvol_t
 
     end do
 
-    N_grad_NP_bar_global_tm1 = N_grad_NP_bar_global_tm1 / elem_vol_tm1
+    N_grad_NP_inter_bar_global_tm1 = N_grad_NP_inter_bar_global_tm1 / elem_vol_tm1
     djac_bar_tm1 = djac_bar_tm1 / elem_vol_tm1
-    N_grad_NP_bar_global_t = N_grad_NP_bar_global_t / elem_vol_t
+    N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t / elem_vol_t
     djac_bar_t = djac_bar_t / elem_vol_t
 
+    ! Extracting u_heat from svars
+
+    call move_between_single_statev_at_all_IPs_and_svars(ninpt,u_heat_idx,u_heat_all_IPs_inter_tm1, &
+                                                        nstatev,svars,nsvars,1)
+                                                   
     ! ================================================================== !
     ! STARTING THE LOOP OVER ALL INTEGRATION POINTS FOR ALL FIELDS       !
     ! ================================================================== !
@@ -1221,37 +1287,37 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         dpred_kIP = dpred_IPs(kinpt,1:npredf)
 
         !   Transfer statev from UEL svars to statev for current integration point
-        call kstatevar(kinpt,nstatev,svars,statev,1)
+        call move_between_statev_and_svars(kinpt,statev,nstatev,svars,nsvars,1)
 
-        !   Compute N_shape_NP_to_kIP and N_grad_NP_to_kIP_local
-        N_shape_NP_to_kIP(1:nnode) = all_N_shape_NP_to_kIP(kinpt,1:nnode)
-        N_grad_NP_to_kIP_local(1:ndim,1:nnode) = all_N_grad_NP_to_kIP_local(kinpt,1:ndim,1:nnode) 
+        !   Compute N_shape_NP_inter_to_kIP_inter and N_grad_NP_inter_to_kIP_inter_local
+        N_shape_NP_inter_to_kIP_inter(1:nnode) = all_N_shape_NP_inter_to_kIP_inter(kinpt,1:nnode)
+        N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) 
 
-        xjac_t = matmul(N_grad_NP_to_kIP_local, transpose(coords_kelem_NPs_t))
+        xjac_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
         call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
 
-        dvol_t = weight(kinpt) * djac_t
-        N_grad_NP_to_kIP_global_t = matmul(xjac_inv_t,N_grad_NP_to_kIP_local)
+        dvol_t = weight_kIP(kinpt) * djac_t
+        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_t,N_grad_NP_inter_to_kIP_inter_local)
 
         !   Calculate strain displacement B-matrix
-        call kbmatrix_full(N_grad_NP_to_kIP_global_t,ntens,nnode,ndim,Bu_kIP_t)  
-        call kbmatrix_vol(N_grad_NP_to_kIP_global_t,ntens,nnode,ndim,Bu_vol_kIP_t)
-        call kbmatrix_vol(N_grad_NP_bar_global_t,ntens,nnode,ndim,Bu_bar_vol_t)
+        call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_t,ntens,nnode,ndim,Bu_kIP_inter_t)  
+        call kbmatrix_vol(N_grad_NP_inter_to_kIP_inter_global_t,ntens,nnode,ndim,Bu_vol_kIP_inter_t)
+        call kbmatrix_vol(N_grad_NP_inter_bar_global_t,ntens,nnode,ndim,Bu_bar_vol_t)
 
-        Bu_bar_t = Bu_kIP_t - Bu_vol_kIP_t + Bu_bar_vol_t
+        Bu_bar_t = Bu_kIP_inter_t - Bu_vol_kIP_inter_t + Bu_bar_vol_t
 
-        xjac_tm1 = matmul(N_grad_NP_to_kIP_local, transpose(coords_kelem_NPs_tm1))
+        xjac_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
         call calc_matrix_inv(xjac_tm1, xjac_inv_tm1, djac_tm1, ndim)
 
-        dvol_tm1 = weight(kinpt) * djac_tm1
-        N_grad_NP_to_kIP_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_to_kIP_local)
+        dvol_tm1 = weight_kIP(kinpt) * djac_tm1
+        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_inter_to_kIP_inter_local)
 
         !   Calculate strain displacement B-matrix
-        call kbmatrix_full(N_grad_NP_to_kIP_global_tm1,ntens,nnode,ndim,Bu_kIP_tm1)
-        call kbmatrix_vol(N_grad_NP_to_kIP_global_tm1,ntens,nnode,ndim,Bu_vol_kIP_tm1)
-        call kbmatrix_vol(N_grad_NP_bar_global_tm1,ntens,nnode,ndim,Bu_bar_vol_tm1)
+        call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_tm1,ntens,nnode,ndim,Bu_kIP_inter_tm1)
+        call kbmatrix_vol(N_grad_NP_inter_to_kIP_inter_global_tm1,ntens,nnode,ndim,Bu_vol_kIP_inter_tm1)
+        call kbmatrix_vol(N_grad_NP_inter_bar_global_tm1,ntens,nnode,ndim,Bu_bar_vol_tm1)
 
-        Bu_bar_tm1 = Bu_kIP_tm1 - Bu_vol_kIP_tm1 + Bu_bar_vol_tm1
+        Bu_bar_tm1 = Bu_kIP_inter_tm1 - Bu_vol_kIP_inter_tm1 + Bu_bar_vol_tm1
 
         if (lflags(2) == 0) then 
 
@@ -1269,9 +1335,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             ! Large-displacement analysis (nlgeom=on)
             ! =======================================
 
-            ux_grad_t = matmul(ux_t, transpose(N_grad_NP_to_kIP_global_t))
-            ux_grad_tm1 = matmul(ux_tm1, transpose(N_grad_NP_to_kIP_global_tm1))
-            dux_grad = matmul(dux, transpose(N_grad_NP_to_kIP_global_tm1))
+            ux_grad_t = matmul(ux_t, transpose(N_grad_NP_inter_to_kIP_inter_global_t))
+            ux_grad_tm1 = matmul(ux_tm1, transpose(N_grad_NP_inter_to_kIP_inter_global_tm1))
+            dux_grad = matmul(dux, transpose(N_grad_NP_inter_to_kIP_inter_global_tm1))
 
             F_grad_t = identity + ux_grad_t
             F_grad_tm1 = identity + ux_grad_tm1
@@ -1393,10 +1459,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! temp_kIP_tm1, dtemp_kIP, temp_grad_kIP_t, u_heat_kIP are all defined at integration points
 
-        temp_kIP_tm1 = dot_product(N_shape_NP_to_kIP, temp_NPs_tm1)
-        temp_kIP_t = dot_product(N_shape_NP_to_kIP, temp_NPs_t)
+        temp_kIP_tm1 = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_tm1)
+        temp_kIP_t = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_t)
         dtemp_kIP = temp_kIP_t - temp_kIP_tm1
-        temp_grad_kIP_t = matmul(N_grad_NP_to_kIP_global_t, temp_NPs_t)
+        temp_grad_kIP_t = matmul(N_grad_NP_inter_to_kIP_inter_global_t, temp_NPs_t)
         
         rho_heat = props(start_temp_props_idx)
         cp_heat = props(start_temp_props_idx+1)
@@ -1430,6 +1496,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                   nprops_UMATHT_heat_transfer,coords_kelem_kIP_t, &
                                   pnewdt,jelem,kinpt,layer,kspt,kstep,kinc)
 
+        u_heat_all_IPs_inter_t(kinpt) = u_heat_kIP_t
+        dudt_heat_all_IPs_inter_t(kinpt) = dudt_heat_kIP_t
+        dudg_heat_all_IPs_inter_t(kinpt,1:ndim) = dudg_heat_kIP_t(1:ndim)
+
         ! UMATHT_heat_transfer(u,dudt,dudg,flux,dfdt,dfdg, &
         !     statev,temp,dtemp,dtemdx,time,dtime,predef,dpred, &
         !     cmname,ntgrd,nstatv,props,nprops,coords,pnewdt, &
@@ -1449,6 +1519,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         statev(flux_heat_Y_idx) = flux_heat_kIP_t(2)
         statev(flux_heat_Z_idx) = flux_heat_kIP_t(3)
 
+        
+
         du_heat_kIP = u_heat_kIP_t - u_heat_kIP_tm1
         
         ! Matrix multiplication is associative 
@@ -1457,55 +1529,56 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, 1) @ (1, nnode)
         K_dfdt_heat_term_kIP_t    = - matmul( &
-                                        transpose(N_grad_NP_to_kIP_global_t), & 
+                                        transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
                                         matmul(reshape(dfdt_heat_kIP_t, [ndim, 1]), & 
-                                        reshape(N_shape_NP_to_kIP, [1, nnode])) &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode])) &
                                         )
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, ndim) @ (ndim, nnode)
-        K_dfdg_heat_term_kIP_t    = - matmul(transpose(N_grad_NP_to_kIP_global_t), & 
-                                             matmul(dfdg_heat_kIP_t, N_grad_NP_to_kIP_global_t))
+        K_dfdg_heat_term_kIP_t    = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
+                                             matmul(dfdg_heat_kIP_t, N_grad_NP_inter_to_kIP_inter_global_t))
 
         K_heat_conductivity_kIP_t = K_dfdt_heat_term_kIP_t + K_dfdg_heat_term_kIP_t 
 
-        ! These terms dudt and dudg are for the M_heat_capacity_kIP_t matrix
+        ! These terms dudt and dudg are for the M_heat_capacitance_kIP_t matrix
+
+        ! This code is valid only for quadratic elements
 
         ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
         M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
-                                        reshape(N_shape_NP_to_kIP, [nnode, 1]), &
-                                        reshape(N_shape_NP_to_kIP, [1, nnode]) &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
                                         ) 
         
         ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
         M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
-                                        reshape(N_shape_NP_to_kIP, [nnode, 1]), &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
                                         matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
-                                               N_grad_NP_to_kIP_global_t))
+                                               N_grad_NP_inter_to_kIP_inter_global_t))
         
-        M_heat_capacity_kIP_t = M_dudt_heat_term_kIP_t + M_dudg_heat_term_kIP_t
-
-        ! ! (nnode) = (nnode) * scalar * scalar
-        ! F_dudt_heat_term_kIP_t = + N_shape_NP_to_kIP * rho_heat * dudt_heat_kIP_t * dtemp_kIP / dtime
-
-        if (kinc == 1) then 
-            F_dudt_heat_term_kIP_t = + N_shape_NP_to_kIP * rho_heat * du_heat_kIP / 1.0d0
-        else
-            F_dudt_heat_term_kIP_t = + N_shape_NP_to_kIP * rho_heat * du_heat_kIP / dtime
-        end if
-        ! F_dudg_heat_term_kIP_t = + N_shape_NP_to_kIP * rho_heat * matmul(dudg_heat_kIP_t, N_grad_NP_to_kIP_global_t)
-
-        ! ! (nnode) = (nnode, ndim) @ (ndim)
-        F_flux_heat_term_kIP_t  = - matmul(transpose(N_grad_NP_to_kIP_global_t), flux_heat_kIP_t)
         
-        ! F_heat_rhs_kIP_t = F_dudt_heat_term_kIP_t + F_ru_heat_term_kIP + F_flux_heat_term_kIP_t
-        F_heat_rhs_kIP_t = F_flux_heat_term_kIP_t + F_dudt_heat_term_kIP_t
-        ! F_heat_rhs_kIP_t = F_flux_heat_term_kIP_t
-
-        ! F_heat_rhs_kIP_t = + matmul(K_heat_conductivity_kIP_t, temp_NPs_t) &
-        !                    + matmul(M_heat_capacity_kIP_t, dtemp_NPs/dtime)! &
-                           !- F_flux_heat_term_kIP_t ! + F_dudt_heat_term_kIP_t !+ F_ru_heat_term_kIP
+        ! ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
+        ! M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
+        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
+        !                                 ) 
         
-        ! F_heat_rhs_kIP_t = F_dudt_heat_term_kIP_t + F_flux_heat_term_kIP_t
+        ! ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
+        ! M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
+        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+        !                                 matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
+        !                                        N_grad_NP_inter_to_kIP_extra_global_t))
+
+        M_heat_capacitance_kIP_t = M_dudt_heat_term_kIP_t + M_dudg_heat_term_kIP_t
+
+        ! (nnode) = (nnode) * scalar * scalar
+
+        F_du_heat_term_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_heat * du_heat_kIP 
+
+        ! (nnode) = (nnode, ndim) @ (ndim)
+        F_flux_heat_term_kIP_t  = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), flux_heat_kIP_t)
+        
+        F_heat_rhs_kIP_t = F_flux_heat_term_kIP_t + F_du_heat_term_kIP_t
 
         ! *****************************************!
         ! DIFFUSION CONTRIBUTION TO amatrx AND rhs !
@@ -1525,112 +1598,11 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         else
             amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
                 amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                + dvol_t * (K_heat_conductivity_kIP_t + M_heat_capacity_kIP_t/dtime)
+                + dvol_t * K_heat_conductivity_kIP_t + dvol_t * M_heat_capacitance_kIP_t/dtime
                 
             rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                - dvol_t * F_heat_rhs_kIP_t
+                - dvol_t * F_flux_heat_term_kIP_t - dvol_t * F_du_heat_term_kIP_t/dtime
         end if
-
-    !       LOOP OVER NODES
-
-        ! !   Compute N_shape_NP_to_kIP and N_grad_NP_to_kIP_local
-        ! N_shape_NP_to_kIP(1:nnode) = all_N_shape_NP_to_kIP(kinpt,1:nnode)
-        ! N_grad_NP_to_kIP_local(1:ndim,1:nnode) = all_N_grad_NP_to_kIP_local(kinpt,1:ndim,1:nnode) 
-
-        ! xjac_t = matmul(N_grad_NP_to_kIP_local, transpose(coords_kelem_NPs_t))
-        ! call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
-
-        ! dvol_t = weight(kinpt) * djac_t
-        ! N_grad_NP_to_kIP_global_t = matmul(xjac_inv_t,N_grad_NP_to_kIP_local)
-
-        ! PHIX = N_grad_NP_to_kIP_global_t(1, 1:nnode)
-        ! PHIY = N_grad_NP_to_kIP_global_t(2, 1:nnode)
-        ! PHIZ = N_grad_NP_to_kIP_global_t(3, 1:nnode)
-
-      	! DTDX=0.0d0
-      	! DTDY=0.0d0
-        ! DTDZ=0.0d0
-        ! T = 0.0d0
-        ! TOLD=0.0d0
-      	
-        ! DO I=1,8
-        !    DTDX=temp_NPs_t(I)*PHIX(I)+DTDX
-        !    DTDY=temp_NPs_t(I)*PHIY(I)+DTDY
-        !    DTDZ=temp_NPs_t(I)*PHIZ(I)+DTDZ
-        !    T = temp_NPs_t(I)*N_shape_NP_to_kIP(I)+T
-        !    TOLD=(temp_NPs_t(I)-dtemp_NPs(I))*N_shape_NP_to_kIP(I)+TOLD
-        ! END DO
-        ! DTDT=(T-TOLD)/dtime
-
-        ! if (kinc >= 2) then
-        !     DO KI=1,8
-        !         rhs(KI+ndim*nnode,NRHS) = rhs(KI+ndim*nnode,NRHS) - &
-        !                         dvol_t*(N_shape_NP_to_kIP(KI)*rho_heat*cp_heat*DTDT + &
-        !                         conductivity*(PHIX(KI)*DTDX + PHIY(KI)*DTDY + PHIZ(KI) * DTDZ))
-
-        !         DO KJ=1,8
-        !             amatrx(KI+ndim*nnode,KJ+ndim*nnode)= amatrx(KI+ndim*nnode,KJ+ndim*nnode) + &
-        !                             dvol_t*(N_shape_NP_to_kIP(KI)*N_shape_NP_to_kIP(KJ)*rho_heat* &
-        !                             cp_heat/dtime + conductivity*(PHIX(KI)*PHIX(KJ) + PHIY(KI)* &
-        !                             PHIY(KJ) + PHIZ(KI)*PHIZ(KJ)))
-        !         end do
-        !     end do
-        ! end if
-
-        ! if (kinc == 1) then
-        !     print *, 'kinc = ', kinc
-        !     print *, 'kinpt = ', kinpt
-        !     print *, 'temp_NPs_t = '
-        !     print *, temp_NPs_t
-        !     print *, 'temp_NPs_tm1 = '
-        !     print *, temp_NPs_tm1
-        !     print *, 'dtemp_NPs = '
-        !     print *, dtemp_NPs
-        !     print *, 'temp_kIP_t = ', temp_kIP_t
-        !     print *, 'dtemp_kIP = ', dtemp_kIP
-        !     print *, 'temp_kIP_tm1 = ', temp_kIP_tm1
-        !     print *, 'temp_grad_kIP_t = '
-        !     print *, temp_grad_kIP_t
-        !     print *, 'u_heat_kIP_t = ', u_heat_kIP_t
-        !     print *, 'u_heat_kIP_tm1 = ', u_heat_kIP_tm1
-        !     print *, 'dudt_heat_kIP_t = ', dudt_heat_kIP_t
-        !     print *, 'dudg_heat_kIP_t = ' 
-        !     print *, dudg_heat_kIP_t
-        !     print *, 'flux_heat_kIP_t = '
-        !     print *, flux_heat_kIP_t
-        !     print *, 'dfdt_heat_kIP_t = '
-        !     print *, dfdt_heat_kIP_t
-        !     print *, 'dfdg_heat_kIP_t = '
-        !     print *, dfdg_heat_kIP_t
-        !     print *, 'K_heat_conductivity_kIP_t = '
-        !     print *, K_heat_conductivity_kIP_t
-        !     print *, 'M_heat_capacity_kIP_t = '
-        !     print *, M_heat_capacity_kIP_t
-        !     print *, 'F_heat_rhs_kIP_t = '
-        !     print *, F_heat_rhs_kIP_t
-        !     call pause(2)
-        ! end if
-
-        ! ! Emilio code
-        ! rho_heat = props(start_temp_props_idx)
-        ! cp_heat = props(start_temp_props_idx + 1)
-        ! conductivity = props(start_temp_props_idx + 2)
-        
-        ! ! xm = matmul(transpose(dN),dN)/D
-        ! M_heat_capacity_kIP_t = + matmul( &
-        !     reshape(N_shape_NP_to_kIP, [nnode, 1]) * rho_heat * cp_heat, &
-        !     reshape(N_shape_NP_to_kIP, [1, nnode]) &
-        !     ) 
-        ! ! BB = matmul(transpose(bC),bC)
-        ! ! xk=BB-Vh/(R*T)*matmul(BB,matmul((SHa*((1.d0-phin)**2+xkap)),dN))
-            
-        ! amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-        !     + dvol_t * (K_heat_conductivity_kIP_t + M_heat_capacity_kIP_t/dtime)
-            
-        ! rhs(start_temp_idx:end_temp_idx,1) = rhs(start_temp_idx:end_temp_idx,1) &
-        !     -dvol_t * (matmul(K_heat_conductivity_kIP_t,u(start_temp_idx:end_temp_idx)) + &
-        !      matmul(M_heat_capacity_kIP_t,du(start_temp_idx:end_temp_idx,1))/dtime)
 
         ! ================================================================== !
         !                                                                    !
@@ -1641,7 +1613,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         !   Transfer data from statev to svars
         !   This stage basically updates the state variables for the current element in UEL
         
-        call kstatevar(kinpt,nstatev,svars,statev,0)
+        call move_between_statev_and_svars(kinpt,statev,nstatev,svars,nsvars,0)
         
         !   Transfer data from statev to dummy mesh for visualization
         
@@ -1649,12 +1621,69 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
     end do       ! end loop on material integration points
 
-    if (kinc == 1) then
-        print *, 'rhs(start_temp_idx:end_temp_idx,nrhs) = '
-        print *, rhs(start_temp_idx:end_temp_idx,nrhs)
-        print *, 'amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = '
-        print *, amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx)
-    end if
+    ! Finish up the heat equatiion for heat capacitance term M and the internal heat rate rhs term
+    
+    do kinpt = 1, ninpt
+        N_shape_NP_inter_to_kIP_extra(1:nnode) = all_N_shape_NP_inter_to_kIP_extra(kinpt,1:nnode)
+        N_grad_NP_inter_to_kIP_extra_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:ndim,1:nnode) 
+        N_shape_IP_inter_to_kIP_extra(1:ninpt) = all_N_shape_IP_inter_to_kIP_extra(kinpt,1:ninpt)
+        N_shape_IP_extra_to_kIP_inter(1:ninpt) = all_N_shape_IP_extra_to_kIP_inter(kinpt,1:ninpt)
+
+        xjac_t = matmul(N_grad_NP_inter_to_kIP_extra_local, transpose(coords_kelem_NPs_t))
+        call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
+
+        N_grad_NP_inter_to_kIP_extra_global_t = matmul(xjac_inv_t, N_grad_NP_inter_to_kIP_extra_local)
+        dvol_t_extra = weight_kIP(kinpt) * djac_t
+
+        u_heat_kIP_inter_tm1 = u_heat_all_IPs_inter_tm1(kinpt)
+        u_heat_kIP_extra_tm1 = dot_product(N_shape_IP_inter_to_kIP_extra, u_heat_all_IPs_inter_tm1)
+        u_heat_kIP_inter_t = u_heat_all_IPs_inter_t(kinpt)
+        u_heat_kIP_extra_t = dot_product(N_shape_IP_inter_to_kIP_extra, u_heat_all_IPs_inter_t)
+        
+        dudt_heat_kIP_inter_t = dudt_heat_all_IPs_inter_t(kinpt)
+        dudt_heat_kIP_extra_t = dot_product(N_shape_IP_inter_to_kIP_extra, dudt_heat_all_IPs_inter_t)
+
+
+        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
+        M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_extra_t * matmul( &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
+                                        ) 
+        
+        ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
+        M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+                                        matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
+                                               N_grad_NP_inter_to_kIP_extra_global_t))
+
+        M_heat_capacitance_kIP_t = M_dudt_heat_term_kIP_t + M_dudg_heat_term_kIP_t
+
+        F_du_heat_term_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_heat * du_heat_kIP 
+
+        ! if (kinc <= 1) then
+        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+        !         + dvol_t * 0.0d0
+                
+        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+        !         - dvol_t * 0.0d0
+        ! else
+        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+        !         + dvol_t * M_heat_capacitance_kIP_t/dtime
+                
+        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+        !         - dvol_t * F_du_heat_term_kIP_t/dtime
+        ! end if
+    end do
+
+
+    ! if (kinc == 1) then
+    !     print *, 'rhs(start_temp_idx:end_temp_idx,nrhs) = '
+    !     print *, rhs(start_temp_idx:end_temp_idx,nrhs)
+    !     print *, 'amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = '
+    !     print *, amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx)
+    ! end if
 return
 end
     

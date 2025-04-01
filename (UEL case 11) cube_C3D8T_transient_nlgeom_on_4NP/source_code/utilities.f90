@@ -1,3 +1,22 @@
+subroutine pause(seconds)
+    ! Pauses the program execution for the specified number of seconds.
+    integer, intent(in) :: seconds
+    integer :: start_time, end_time, rate
+
+    ! Get the system clock rate (ticks per second)
+    call system_clock(count_rate = rate)
+
+    ! Get the current time in clock ticks
+    call system_clock(start_time)
+
+    ! Loop until the required time has passed
+    do
+        call system_clock(end_time)
+        if ((end_time - start_time) >= seconds * rate) exit
+    end do
+end
+
+
 subroutine calc_matrix_log(matrix, log_matrix, ndim)
     use precision
     

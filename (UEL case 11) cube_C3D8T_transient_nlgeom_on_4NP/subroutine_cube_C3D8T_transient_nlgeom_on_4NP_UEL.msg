@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 31-Mar-2025   Time 22:13:40
+   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 22:15:49
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -98,8 +98,6 @@
 
           PRINT OF INCREMENT NUMBER, TIME, ETC., EVERY    1  INCREMENTS
 
-          THE SEPARATED SOLUTION TECHNIQUE WILL BE USED
-
      THE MAXIMUM NUMBER OF INCREMENTS IN THIS STEP IS                     100
 
           LARGE DISPLACEMENT THEORY WILL BE USED
@@ -123,25 +121,18 @@
 
   INCREMENT     1 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  28
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
+        NUMBER OF FLOPS:      1.467e+04
         SOLVER ELAPSED TIME:  3ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  4
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      4.800e+01
-        SOLVER ELAPSED TIME:  2ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                       174.       TIME AVG. FORCE        174.    
- LARGEST SCALED RESIDUAL FORCE       1.97       AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE       1.97       AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE       1.97    
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -158,30 +149,23 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  28
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  4
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      4.800e+01
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      1.467e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
 
 
  AVERAGE FORCE                       173.       TIME AVG. FORCE        173.    
- LARGEST SCALED RESIDUAL FORCE      1.915E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.915E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.915E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.935E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.935E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -189,7 +173,7 @@
  ALL HEAT FLUX RESIDUALS ARE ZERO
  LARGEST INCREMENT OF TEMP.          100.       AT NODE          1   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.        1.421E-14   AT NODE          1   DOF 11
+ LARGEST CORRECTION TO TEMP.         0.00       AT NODE          1   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THERE IS ZERO HEAT FLUX EVERYWHERE
 
@@ -204,18 +188,11 @@
 
   INCREMENT     2 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -227,14 +204,14 @@
   CORRESPONDING RESIDUAL FORCE      7.527E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.812E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        3.812E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  9.000E-05   TIME AVG. HEAT FLUX   9.000E-05
- LARGEST RESIDUAL HEAT FLUX         4.303E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.800E-04   TIME AVG. HEAT FLUX   1.800E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.219E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.904       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.904       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.        -100.       AT NODE          1   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -251,37 +228,30 @@
 
   INCREMENT     3 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.525E+03   TIME AVG. FORCE        908.    
- LARGEST SCALED RESIDUAL FORCE      7.286E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      7.286E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      7.286E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.727E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        3.727E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.513E-04   TIME AVG. HEAT FLUX   2.207E-04
- LARGEST RESIDUAL HEAT FLUX        -6.963E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  3.513E-04   TIME AVG. HEAT FLUX   2.657E-04
+ LARGEST RESIDUAL HEAT FLUX         4.608E-19   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.879       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.879       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -2.534E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -298,35 +268,28 @@
 
   INCREMENT     4 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.011E+03   TIME AVG. FORCE       1.184E+03
- LARGEST SCALED RESIDUAL FORCE      7.054E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      7.054E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      7.054E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.644E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        3.644E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.429E-04   TIME AVG. HEAT FLUX   2.614E-04
- LARGEST RESIDUAL HEAT FLUX         1.464E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  3.429E-04   TIME AVG. HEAT FLUX   2.914E-04
+ LARGEST RESIDUAL HEAT FLUX         2.157E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.855       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -345,25 +308,18 @@
 
   INCREMENT     5 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.488E+03   TIME AVG. FORCE       1.445E+03
- LARGEST SCALED RESIDUAL FORCE      6.832E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      6.832E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      6.832E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -372,12 +328,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.348E-04   TIME AVG. HEAT FLUX   2.798E-04
- LARGEST RESIDUAL HEAT FLUX        -1.362E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  3.348E-04   TIME AVG. HEAT FLUX   3.023E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.606E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.831       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.831       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.336E-02   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.336E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -392,25 +348,18 @@
 
   INCREMENT     6 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.954E+03   TIME AVG. FORCE       1.696E+03
- LARGEST SCALED RESIDUAL FORCE      6.618E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      6.618E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      6.618E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -419,12 +368,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.270E-04   TIME AVG. HEAT FLUX   2.892E-04
- LARGEST RESIDUAL HEAT FLUX         8.403E-19   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  3.270E-04   TIME AVG. HEAT FLUX   3.072E-04
+ LARGEST RESIDUAL HEAT FLUX         2.412E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.809       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.809       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.244E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.244E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -439,39 +388,32 @@
 
   INCREMENT     7 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.411E+03   TIME AVG. FORCE       1.941E+03
- LARGEST SCALED RESIDUAL FORCE      6.414E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      6.414E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      6.414E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.411E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        3.411E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.195E-04   TIME AVG. HEAT FLUX   2.942E-04
- LARGEST RESIDUAL HEAT FLUX        -1.601E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  3.195E-04   TIME AVG. HEAT FLUX   3.093E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.924E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.787       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.157E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.157E-02   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -486,39 +428,32 @@
 
   INCREMENT     8 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.858E+03   TIME AVG. FORCE       2.181E+03
- LARGEST SCALED RESIDUAL FORCE      6.217E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      6.217E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      6.217E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.338E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        3.338E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.122E-04   TIME AVG. HEAT FLUX   2.968E-04
- LARGEST RESIDUAL HEAT FLUX        -3.473E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  3.122E-04   TIME AVG. HEAT FLUX   3.097E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.484E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.766       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.766       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.075E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.075E-02   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -533,39 +468,32 @@
 
   INCREMENT     9 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      4.296E+03   TIME AVG. FORCE       2.416E+03
- LARGEST SCALED RESIDUAL FORCE      6.029E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      6.029E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      6.029E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.267E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        3.267E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  3.052E-04   TIME AVG. HEAT FLUX   2.979E-04
- LARGEST RESIDUAL HEAT FLUX        -2.455E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  3.052E-04   TIME AVG. HEAT FLUX   3.091E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.716E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.747       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.747       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.996E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.996E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -580,19 +508,12 @@
 
   INCREMENT    10 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -607,10 +528,10 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.984E-04   TIME AVG. HEAT FLUX   2.979E-04
- LARGEST RESIDUAL HEAT FLUX         3.278E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.984E-04   TIME AVG. HEAT FLUX   3.079E-04
+ LARGEST RESIDUAL HEAT FLUX        -7.454E-19   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.727       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.727       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.922E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -627,25 +548,18 @@
 
   INCREMENT    11 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      5.146E+03   TIME AVG. FORCE       2.874E+03
- LARGEST SCALED RESIDUAL FORCE      5.673E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      5.673E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      5.673E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -654,12 +568,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.919E-04   TIME AVG. HEAT FLUX   2.973E-04
- LARGEST RESIDUAL HEAT FLUX         1.015E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.919E-04   TIME AVG. HEAT FLUX   3.063E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.674E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.709       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.851E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.851E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -674,25 +588,18 @@
 
   INCREMENT    12 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      5.559E+03   TIME AVG. FORCE       3.098E+03
- LARGEST SCALED RESIDUAL FORCE      5.506E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      5.506E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      5.506E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -701,12 +608,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.856E-04   TIME AVG. HEAT FLUX   2.963E-04
- LARGEST RESIDUAL HEAT FLUX         6.031E-19   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  2.856E-04   TIME AVG. HEAT FLUX   3.044E-04
+ LARGEST RESIDUAL HEAT FLUX         1.504E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.691       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.691       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.783E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.783E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -721,18 +628,11 @@
 
   INCREMENT    13 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -744,16 +644,16 @@
   CORRESPONDING RESIDUAL FORCE      5.345E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        3.005E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        3.005E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.795E-04   TIME AVG. HEAT FLUX   2.949E-04
- LARGEST RESIDUAL HEAT FLUX         7.323E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.795E-04   TIME AVG. HEAT FLUX   3.024E-04
+ LARGEST RESIDUAL HEAT FLUX         1.247E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.674       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.674       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.718E-02   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.718E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -768,25 +668,18 @@
 
   INCREMENT    14 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      6.359E+03   TIME AVG. FORCE       3.535E+03
- LARGEST SCALED RESIDUAL FORCE      5.190E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      5.190E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      5.190E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -795,12 +688,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.736E-04   TIME AVG. HEAT FLUX   2.932E-04
- LARGEST RESIDUAL HEAT FLUX        -2.129E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.736E-04   TIME AVG. HEAT FLUX   3.001E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.477E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.657       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.657       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.657E-02   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.657E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -815,18 +708,11 @@
 
   INCREMENT    15 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -842,12 +728,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.678E-04   TIME AVG. HEAT FLUX   2.914E-04
- LARGEST RESIDUAL HEAT FLUX         8.801E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.678E-04   TIME AVG. HEAT FLUX   2.978E-04
+ LARGEST RESIDUAL HEAT FLUX        -7.183E-19   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.641       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.641       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.598E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.598E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -862,39 +748,32 @@
 
   INCREMENT    16 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      7.128E+03   TIME AVG. FORCE       3.961E+03
- LARGEST SCALED RESIDUAL FORCE      4.897E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      4.897E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.897E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.828E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.828E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.623E-04   TIME AVG. HEAT FLUX   2.895E-04
- LARGEST RESIDUAL HEAT FLUX        -1.111E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.623E-04   TIME AVG. HEAT FLUX   2.955E-04
+ LARGEST RESIDUAL HEAT FLUX         1.647E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.626       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.626       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.542E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.542E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -909,37 +788,30 @@
 
   INCREMENT    17 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      7.502E+03   TIME AVG. FORCE       4.169E+03
- LARGEST SCALED RESIDUAL FORCE      4.758E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      4.758E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.758E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.772E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        2.772E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.569E-04   TIME AVG. HEAT FLUX   2.874E-04
- LARGEST RESIDUAL HEAT FLUX        -4.760E-19   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  2.569E-04   TIME AVG. HEAT FLUX   2.931E-04
+ LARGEST RESIDUAL HEAT FLUX         2.196E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.611       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.611       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.489E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -956,19 +828,12 @@
 
   INCREMENT    18 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -979,16 +844,16 @@
   CORRESPONDING RESIDUAL FORCE      4.625E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.718E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.718E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
- AVERAGE HEAT FLUX                  2.518E-04   TIME AVG. HEAT FLUX   2.853E-04
- LARGEST RESIDUAL HEAT FLUX        -1.265E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.518E-04   TIME AVG. HEAT FLUX   2.906E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.332E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.597       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.438E-02   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.438E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1003,37 +868,30 @@
 
   INCREMENT    19 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      8.227E+03   TIME AVG. FORCE       4.577E+03
- LARGEST SCALED RESIDUAL FORCE      4.496E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      4.496E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.496E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.665E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.665E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.467E-04   TIME AVG. HEAT FLUX   2.832E-04
- LARGEST RESIDUAL HEAT FLUX         9.758E-19   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  2.467E-04   TIME AVG. HEAT FLUX   2.882E-04
+ LARGEST RESIDUAL HEAT FLUX         1.498E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.583       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.583       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.389E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -1050,37 +908,30 @@
 
   INCREMENT    20 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      8.580E+03   TIME AVG. FORCE       4.777E+03
- LARGEST SCALED RESIDUAL FORCE      4.372E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      4.372E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.372E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.614E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        2.614E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.418E-04   TIME AVG. HEAT FLUX   2.810E-04
- LARGEST RESIDUAL HEAT FLUX        -1.008E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  2.418E-04   TIME AVG. HEAT FLUX   2.858E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.094E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.569       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.569       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.342E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -1097,39 +948,32 @@
 
   INCREMENT    21 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      8.926E+03   TIME AVG. FORCE       4.975E+03
- LARGEST SCALED RESIDUAL FORCE      4.253E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      4.253E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.253E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.564E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.564E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.371E-04   TIME AVG. HEAT FLUX   2.788E-04
- LARGEST RESIDUAL HEAT FLUX         7.894E-19   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.371E-04   TIME AVG. HEAT FLUX   2.833E-04
+ LARGEST RESIDUAL HEAT FLUX        -9.080E-19   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.556       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.556       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.298E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.298E-02   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1144,39 +988,32 @@
 
   INCREMENT    22 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      9.266E+03   TIME AVG. FORCE       5.170E+03
- LARGEST SCALED RESIDUAL FORCE      4.138E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      4.138E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.138E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.516E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        2.516E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.325E-04   TIME AVG. HEAT FLUX   2.766E-04
- LARGEST RESIDUAL HEAT FLUX        -2.045E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.325E-04   TIME AVG. HEAT FLUX   2.809E-04
+ LARGEST RESIDUAL HEAT FLUX         2.206E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.544       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.544       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.255E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.255E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1191,39 +1028,32 @@
 
   INCREMENT    23 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      9.599E+03   TIME AVG. FORCE       5.363E+03
- LARGEST SCALED RESIDUAL FORCE      4.027E-05   AT NODE          1   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      4.027E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      4.027E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.469E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.469E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.281E-04   TIME AVG. HEAT FLUX   2.744E-04
- LARGEST RESIDUAL HEAT FLUX        -1.283E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.281E-04   TIME AVG. HEAT FLUX   2.785E-04
+ LARGEST RESIDUAL HEAT FLUX         2.198E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.532       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.532       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.214E-02   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.214E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1238,25 +1068,18 @@
 
   INCREMENT    24 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      9.926E+03   TIME AVG. FORCE       5.553E+03
- LARGEST SCALED RESIDUAL FORCE      3.919E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.919E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.919E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1265,12 +1088,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.238E-04   TIME AVG. HEAT FLUX   2.722E-04
- LARGEST RESIDUAL HEAT FLUX        -1.130E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.238E-04   TIME AVG. HEAT FLUX   2.761E-04
+ LARGEST RESIDUAL HEAT FLUX         1.230E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.520       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.520       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.175E-02   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.175E-02   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1285,37 +1108,30 @@
 
   INCREMENT    25 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.025E+04   TIME AVG. FORCE       5.740E+03
- LARGEST SCALED RESIDUAL FORCE      3.815E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.815E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.815E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.378E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.378E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.196E-04   TIME AVG. HEAT FLUX   2.700E-04
- LARGEST RESIDUAL HEAT FLUX        -2.460E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  2.196E-04   TIME AVG. HEAT FLUX   2.738E-04
+ LARGEST RESIDUAL HEAT FLUX         1.758E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.508       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.508       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.137E-02   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -1332,19 +1148,12 @@
 
   INCREMENT    26 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1355,16 +1164,16 @@
   CORRESPONDING RESIDUAL FORCE      3.715E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.334E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.334E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.155E-04   TIME AVG. HEAT FLUX   2.678E-04
- LARGEST RESIDUAL HEAT FLUX         2.550E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.155E-04   TIME AVG. HEAT FLUX   2.714E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.841E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.497       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.497       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.101E-02   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.101E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1379,25 +1188,18 @@
 
   INCREMENT    27 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.087E+04   TIME AVG. FORCE       6.109E+03
- LARGEST SCALED RESIDUAL FORCE      3.619E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.619E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.619E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1406,12 +1208,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.116E-04   TIME AVG. HEAT FLUX   2.657E-04
- LARGEST RESIDUAL HEAT FLUX         8.216E-19   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  2.116E-04   TIME AVG. HEAT FLUX   2.691E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.264E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.487       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.487       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.067E-02   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.067E-02   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1426,18 +1228,11 @@
 
   INCREMENT    28 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -1449,16 +1244,16 @@
   CORRESPONDING RESIDUAL FORCE      3.525E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.251E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.251E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.077E-04   TIME AVG. HEAT FLUX   2.635E-04
- LARGEST RESIDUAL HEAT FLUX         1.462E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  2.077E-04   TIME AVG. HEAT FLUX   2.669E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.955E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.476       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.476       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.034E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.034E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1473,25 +1268,18 @@
 
   INCREMENT    29 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.147E+04   TIME AVG. FORCE       6.469E+03
- LARGEST SCALED RESIDUAL FORCE      3.435E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      3.435E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.435E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1500,12 +1288,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.040E-04   TIME AVG. HEAT FLUX   2.614E-04
- LARGEST RESIDUAL HEAT FLUX        -4.405E-19   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.040E-04   TIME AVG. HEAT FLUX   2.646E-04
+ LARGEST RESIDUAL HEAT FLUX         2.382E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.466       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.466       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.002E-02   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.002E-02   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1520,39 +1308,32 @@
 
   INCREMENT    30 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.177E+04   TIME AVG. FORCE       6.645E+03
- LARGEST SCALED RESIDUAL FORCE      3.347E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.347E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.347E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.171E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.171E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.003E-04   TIME AVG. HEAT FLUX   2.593E-04
- LARGEST RESIDUAL HEAT FLUX         2.059E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.003E-04   TIME AVG. HEAT FLUX   2.624E-04
+ LARGEST RESIDUAL HEAT FLUX         1.044E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.457       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.457       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -9.713E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -9.713E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1567,37 +1348,30 @@
 
   INCREMENT    31 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.206E+04   TIME AVG. FORCE       6.820E+03
- LARGEST SCALED RESIDUAL FORCE      3.263E-05   AT NODE          1   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      3.263E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.263E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.133E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        2.133E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.968E-04   TIME AVG. HEAT FLUX   2.572E-04
- LARGEST RESIDUAL HEAT FLUX         1.569E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.968E-04   TIME AVG. HEAT FLUX   2.602E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.402E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.447       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.447       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -9.420E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -1614,39 +1388,32 @@
 
   INCREMENT    32 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.234E+04   TIME AVG. FORCE       6.992E+03
- LARGEST SCALED RESIDUAL FORCE      3.181E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      3.181E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.181E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        2.096E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        2.096E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.934E-04   TIME AVG. HEAT FLUX   2.552E-04
- LARGEST RESIDUAL HEAT FLUX        -2.848E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.934E-04   TIME AVG. HEAT FLUX   2.581E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.277E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.438       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.438       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -9.138E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -9.138E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1661,25 +1428,18 @@
 
   INCREMENT    33 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.262E+04   TIME AVG. FORCE       7.163E+03
- LARGEST SCALED RESIDUAL FORCE      3.102E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.102E-05   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.102E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1688,12 +1448,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.900E-04   TIME AVG. HEAT FLUX   2.531E-04
- LARGEST RESIDUAL HEAT FLUX        -2.224E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.900E-04   TIME AVG. HEAT FLUX   2.559E-04
+ LARGEST RESIDUAL HEAT FLUX         1.247E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.429       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.429       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -8.867E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -8.867E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1708,25 +1468,18 @@
 
   INCREMENT    34 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.289E+04   TIME AVG. FORCE       7.331E+03
- LARGEST SCALED RESIDUAL FORCE      3.026E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      3.026E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      3.026E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1735,12 +1488,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.868E-04   TIME AVG. HEAT FLUX   2.511E-04
- LARGEST RESIDUAL HEAT FLUX        -5.438E-19   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.868E-04   TIME AVG. HEAT FLUX   2.538E-04
+ LARGEST RESIDUAL HEAT FLUX        -5.455E-19   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.421       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.421       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -8.607E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -8.607E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1755,25 +1508,18 @@
 
   INCREMENT    35 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.316E+04   TIME AVG. FORCE       7.498E+03
- LARGEST SCALED RESIDUAL FORCE      2.952E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.952E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.952E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1782,12 +1528,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.836E-04   TIME AVG. HEAT FLUX   2.491E-04
- LARGEST RESIDUAL HEAT FLUX        -8.254E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.836E-04   TIME AVG. HEAT FLUX   2.518E-04
+ LARGEST RESIDUAL HEAT FLUX         2.477E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.412       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -8.356E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -8.356E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1802,25 +1548,18 @@
 
   INCREMENT    36 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.342E+04   TIME AVG. FORCE       7.662E+03
- LARGEST SCALED RESIDUAL FORCE      2.880E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.880E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.880E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -1829,12 +1568,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.805E-04   TIME AVG. HEAT FLUX   2.472E-04
- LARGEST RESIDUAL HEAT FLUX        -1.767E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.805E-04   TIME AVG. HEAT FLUX   2.497E-04
+ LARGEST RESIDUAL HEAT FLUX         2.725E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.404       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -8.115E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -8.115E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1849,37 +1588,30 @@
 
   INCREMENT    37 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.368E+04   TIME AVG. FORCE       7.825E+03
- LARGEST SCALED RESIDUAL FORCE      2.810E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.810E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.810E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.923E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.923E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.775E-04   TIME AVG. HEAT FLUX   2.452E-04
- LARGEST RESIDUAL HEAT FLUX        -3.864E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.775E-04   TIME AVG. HEAT FLUX   2.477E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.148E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.396       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.396       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -7.883E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -1896,39 +1628,32 @@
 
   INCREMENT    38 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.394E+04   TIME AVG. FORCE       7.986E+03
- LARGEST SCALED RESIDUAL FORCE      2.743E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.743E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.743E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.891E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.891E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.746E-04   TIME AVG. HEAT FLUX   2.433E-04
- LARGEST RESIDUAL HEAT FLUX        -1.584E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.746E-04   TIME AVG. HEAT FLUX   2.458E-04
+ LARGEST RESIDUAL HEAT FLUX         1.626E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.389       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.389       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -7.660E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -7.660E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1943,19 +1668,12 @@
 
   INCREMENT    39 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1970,12 +1688,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.718E-04   TIME AVG. HEAT FLUX   2.414E-04
- LARGEST RESIDUAL HEAT FLUX        -4.654E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.718E-04   TIME AVG. HEAT FLUX   2.438E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.874E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.381       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -7.445E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -7.445E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -1990,37 +1708,30 @@
 
   INCREMENT    40 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.444E+04   TIME AVG. FORCE       8.302E+03
- LARGEST SCALED RESIDUAL FORCE      2.615E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.615E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.615E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.829E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.829E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.690E-04   TIME AVG. HEAT FLUX   2.396E-04
- LARGEST RESIDUAL HEAT FLUX        -3.156E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.690E-04   TIME AVG. HEAT FLUX   2.419E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.822E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.374       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.374       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -7.237E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2037,39 +1748,32 @@
 
   INCREMENT    41 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.468E+04   TIME AVG. FORCE       8.458E+03
- LARGEST SCALED RESIDUAL FORCE      2.553E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.553E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.553E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.799E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.799E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.663E-04   TIME AVG. HEAT FLUX   2.377E-04
- LARGEST RESIDUAL HEAT FLUX        -2.819E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  1.663E-04   TIME AVG. HEAT FLUX   2.400E-04
+ LARGEST RESIDUAL HEAT FLUX         9.724E-19   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.367       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.367       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -7.037E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -7.037E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2084,39 +1788,32 @@
 
   INCREMENT    42 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.492E+04   TIME AVG. FORCE       8.612E+03
- LARGEST SCALED RESIDUAL FORCE      2.494E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      2.494E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.494E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.770E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.770E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.636E-04   TIME AVG. HEAT FLUX   2.359E-04
- LARGEST RESIDUAL HEAT FLUX         2.756E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.636E-04   TIME AVG. HEAT FLUX   2.381E-04
+ LARGEST RESIDUAL HEAT FLUX         1.477E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.360       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -6.845E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -6.845E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2131,37 +1828,30 @@
 
   INCREMENT    43 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.515E+04   TIME AVG. FORCE       8.764E+03
- LARGEST SCALED RESIDUAL FORCE      2.436E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.436E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.436E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.741E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.741E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.611E-04   TIME AVG. HEAT FLUX   2.342E-04
- LARGEST RESIDUAL HEAT FLUX        -2.751E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.611E-04   TIME AVG. HEAT FLUX   2.363E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.050E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.353       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.353       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -6.659E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2178,25 +1868,18 @@
 
   INCREMENT    44 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.538E+04   TIME AVG. FORCE       8.914E+03
- LARGEST SCALED RESIDUAL FORCE      2.380E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      2.380E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.380E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -2205,8 +1888,8 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.586E-04   TIME AVG. HEAT FLUX   2.324E-04
- LARGEST RESIDUAL HEAT FLUX         4.537E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.586E-04   TIME AVG. HEAT FLUX   2.345E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.708E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.347       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2225,39 +1908,32 @@
 
   INCREMENT    45 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.561E+04   TIME AVG. FORCE       9.063E+03
- LARGEST SCALED RESIDUAL FORCE      2.326E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.326E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.326E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.686E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.686E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.561E-04   TIME AVG. HEAT FLUX   2.307E-04
- LARGEST RESIDUAL HEAT FLUX        -2.652E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.561E-04   TIME AVG. HEAT FLUX   2.327E-04
+ LARGEST RESIDUAL HEAT FLUX         2.799E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.341       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.341       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -6.307E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -6.307E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2272,37 +1948,30 @@
 
   INCREMENT    46 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  3ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.583E+04   TIME AVG. FORCE       9.210E+03
- LARGEST SCALED RESIDUAL FORCE      2.273E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.273E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.273E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.659E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.659E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.537E-04   TIME AVG. HEAT FLUX   2.290E-04
- LARGEST RESIDUAL HEAT FLUX        -1.351E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.537E-04   TIME AVG. HEAT FLUX   2.310E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.635E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.334       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.334       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -6.140E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2319,35 +1988,28 @@
 
   INCREMENT    47 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.605E+04   TIME AVG. FORCE       9.356E+03
- LARGEST SCALED RESIDUAL FORCE      2.222E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.222E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.222E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.633E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.633E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.514E-04   TIME AVG. HEAT FLUX   2.273E-04
- LARGEST RESIDUAL HEAT FLUX        -2.712E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.514E-04   TIME AVG. HEAT FLUX   2.292E-04
+ LARGEST RESIDUAL HEAT FLUX        -6.234E-19   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.329       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2366,19 +2028,12 @@
 
   INCREMENT    48 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2389,16 +2044,16 @@
   CORRESPONDING RESIDUAL FORCE      2.173E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.608E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.608E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.491E-04   TIME AVG. HEAT FLUX   2.256E-04
- LARGEST RESIDUAL HEAT FLUX         4.077E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.491E-04   TIME AVG. HEAT FLUX   2.275E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.691E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.323       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -5.823E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -5.823E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2413,25 +2068,18 @@
 
   INCREMENT    49 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.648E+04   TIME AVG. FORCE       9.642E+03
- LARGEST SCALED RESIDUAL FORCE      2.124E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.124E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.124E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -2440,10 +2088,10 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.469E-04   TIME AVG. HEAT FLUX   2.240E-04
- LARGEST RESIDUAL HEAT FLUX         5.623E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.469E-04   TIME AVG. HEAT FLUX   2.258E-04
+ LARGEST RESIDUAL HEAT FLUX         2.711E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.317       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.317       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -5.672E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -2460,39 +2108,32 @@
 
   INCREMENT    50 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.669E+04   TIME AVG. FORCE       9.783E+03
- LARGEST SCALED RESIDUAL FORCE      2.078E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      2.078E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.078E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.559E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.559E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.447E-04   TIME AVG. HEAT FLUX   2.223E-04
- LARGEST RESIDUAL HEAT FLUX        -1.191E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.447E-04   TIME AVG. HEAT FLUX   2.242E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.970E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.311       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.311       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -5.527E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -5.527E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2507,25 +2148,18 @@
 
   INCREMENT    51 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.690E+04   TIME AVG. FORCE       9.923E+03
- LARGEST SCALED RESIDUAL FORCE      2.032E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      2.032E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      2.032E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -2534,12 +2168,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.426E-04   TIME AVG. HEAT FLUX   2.208E-04
- LARGEST RESIDUAL HEAT FLUX         4.006E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.426E-04   TIME AVG. HEAT FLUX   2.226E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.794E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.306       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.306       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -5.386E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -5.386E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2554,25 +2188,18 @@
 
   INCREMENT    52 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.710E+04   TIME AVG. FORCE       1.006E+04
- LARGEST SCALED RESIDUAL FORCE      1.988E-05   AT NODE          1   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.988E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.988E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -2581,12 +2208,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.405E-04   TIME AVG. HEAT FLUX   2.192E-04
- LARGEST RESIDUAL HEAT FLUX         2.971E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.405E-04   TIME AVG. HEAT FLUX   2.209E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.785E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.301       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.301       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -5.250E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -5.250E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2601,39 +2228,32 @@
 
   INCREMENT    53 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.730E+04   TIME AVG. FORCE       1.020E+04
- LARGEST SCALED RESIDUAL FORCE      1.945E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.945E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.945E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.489E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.489E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.385E-04   TIME AVG. HEAT FLUX   2.176E-04
- LARGEST RESIDUAL HEAT FLUX        -1.789E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  1.385E-04   TIME AVG. HEAT FLUX   2.194E-04
+ LARGEST RESIDUAL HEAT FLUX         4.274E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.296       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.296       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -5.119E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -5.119E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2648,39 +2268,32 @@
 
   INCREMENT    54 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.749E+04   TIME AVG. FORCE       1.033E+04
- LARGEST SCALED RESIDUAL FORCE      1.903E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.903E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.903E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.467E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.467E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.365E-04   TIME AVG. HEAT FLUX   2.161E-04
- LARGEST RESIDUAL HEAT FLUX         1.508E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.365E-04   TIME AVG. HEAT FLUX   2.178E-04
+ LARGEST RESIDUAL HEAT FLUX         3.259E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.291       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.291       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.992E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.992E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2695,39 +2308,32 @@
 
   INCREMENT    55 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.769E+04   TIME AVG. FORCE       1.047E+04
- LARGEST SCALED RESIDUAL FORCE      1.863E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.863E-05   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.863E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.445E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.445E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.346E-04   TIME AVG. HEAT FLUX   2.146E-04
- LARGEST RESIDUAL HEAT FLUX        -2.708E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.346E-04   TIME AVG. HEAT FLUX   2.163E-04
+ LARGEST RESIDUAL HEAT FLUX         1.994E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.286       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.286       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.869E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.869E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2742,39 +2348,32 @@
 
   INCREMENT    56 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.788E+04   TIME AVG. FORCE       1.060E+04
- LARGEST SCALED RESIDUAL FORCE      1.823E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.823E-05   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.823E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.423E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.423E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.327E-04   TIME AVG. HEAT FLUX   2.131E-04
- LARGEST RESIDUAL HEAT FLUX        -2.976E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.327E-04   TIME AVG. HEAT FLUX   2.147E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.725E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.281       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.281       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.750E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.750E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2789,18 +2388,11 @@
 
   INCREMENT    57 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -2816,12 +2408,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.308E-04   TIME AVG. HEAT FLUX   2.116E-04
- LARGEST RESIDUAL HEAT FLUX         2.869E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.308E-04   TIME AVG. HEAT FLUX   2.132E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.953E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.276       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.276       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.635E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.635E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2836,39 +2428,32 @@
 
   INCREMENT    58 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.825E+04   TIME AVG. FORCE       1.086E+04
- LARGEST SCALED RESIDUAL FORCE      1.747E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.747E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.747E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.382E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.382E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.290E-04   TIME AVG. HEAT FLUX   2.102E-04
- LARGEST RESIDUAL HEAT FLUX        -4.111E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.290E-04   TIME AVG. HEAT FLUX   2.118E-04
+ LARGEST RESIDUAL HEAT FLUX         5.370E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.272       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.272       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.523E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.523E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2883,39 +2468,32 @@
 
   INCREMENT    59 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.843E+04   TIME AVG. FORCE       1.099E+04
- LARGEST SCALED RESIDUAL FORCE      1.711E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.711E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.711E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.362E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.362E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.272E-04   TIME AVG. HEAT FLUX   2.087E-04
- LARGEST RESIDUAL HEAT FLUX        -2.024E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.272E-04   TIME AVG. HEAT FLUX   2.103E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.996E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.268       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.268       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.415E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.415E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2930,39 +2508,32 @@
 
   INCREMENT    60 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.861E+04   TIME AVG. FORCE       1.111E+04
- LARGEST SCALED RESIDUAL FORCE      1.676E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.676E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.676E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.342E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.342E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.255E-04   TIME AVG. HEAT FLUX   2.073E-04
- LARGEST RESIDUAL HEAT FLUX        -2.975E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  1.255E-04   TIME AVG. HEAT FLUX   2.089E-04
+ LARGEST RESIDUAL HEAT FLUX         3.856E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.263       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.310E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.310E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -2977,37 +2548,30 @@
 
   INCREMENT    61 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.879E+04   TIME AVG. FORCE       1.124E+04
- LARGEST SCALED RESIDUAL FORCE      1.641E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.641E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.641E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.323E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.323E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.238E-04   TIME AVG. HEAT FLUX   2.059E-04
- LARGEST RESIDUAL HEAT FLUX         3.552E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.238E-04   TIME AVG. HEAT FLUX   2.074E-04
+ LARGEST RESIDUAL HEAT FLUX         3.068E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.259       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.259       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -4.208E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3024,39 +2588,32 @@
 
   INCREMENT    62 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.896E+04   TIME AVG. FORCE       1.136E+04
- LARGEST SCALED RESIDUAL FORCE      1.608E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.608E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.608E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.304E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.304E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.221E-04   TIME AVG. HEAT FLUX   2.046E-04
- LARGEST RESIDUAL HEAT FLUX        -2.094E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  1.221E-04   TIME AVG. HEAT FLUX   2.060E-04
+ LARGEST RESIDUAL HEAT FLUX        -6.649E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.255       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.255       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.110E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.110E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3071,39 +2628,32 @@
 
   INCREMENT    63 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.913E+04   TIME AVG. FORCE       1.149E+04
- LARGEST SCALED RESIDUAL FORCE      1.575E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.575E-05   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.575E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.286E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.286E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.205E-04   TIME AVG. HEAT FLUX   2.032E-04
- LARGEST RESIDUAL HEAT FLUX         4.086E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.205E-04   TIME AVG. HEAT FLUX   2.047E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.868E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.251       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.251       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -4.015E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -4.015E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3118,39 +2668,32 @@
 
   INCREMENT    64 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.930E+04   TIME AVG. FORCE       1.161E+04
- LARGEST SCALED RESIDUAL FORCE      1.544E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.544E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.544E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.268E-08   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        1.268E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.189E-04   TIME AVG. HEAT FLUX   2.019E-04
- LARGEST RESIDUAL HEAT FLUX        -1.768E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.189E-04   TIME AVG. HEAT FLUX   2.033E-04
+ LARGEST RESIDUAL HEAT FLUX         2.585E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.247       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.247       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.922E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.922E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3165,39 +2708,32 @@
 
   INCREMENT    65 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.947E+04   TIME AVG. FORCE       1.173E+04
- LARGEST SCALED RESIDUAL FORCE      1.513E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.513E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.513E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.250E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.250E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.173E-04   TIME AVG. HEAT FLUX   2.006E-04
- LARGEST RESIDUAL HEAT FLUX        -5.531E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.173E-04   TIME AVG. HEAT FLUX   2.020E-04
+ LARGEST RESIDUAL HEAT FLUX         2.115E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.243       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.243       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.832E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.832E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3212,35 +2748,28 @@
 
   INCREMENT    66 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.963E+04   TIME AVG. FORCE       1.185E+04
- LARGEST SCALED RESIDUAL FORCE      1.483E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.483E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.483E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.233E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.233E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.158E-04   TIME AVG. HEAT FLUX   1.992E-04
- LARGEST RESIDUAL HEAT FLUX         1.999E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  1.158E-04   TIME AVG. HEAT FLUX   2.006E-04
+ LARGEST RESIDUAL HEAT FLUX         1.836E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.239       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3259,19 +2788,12 @@
 
   INCREMENT    67 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3282,14 +2804,14 @@
   CORRESPONDING RESIDUAL FORCE      1.453E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.216E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.216E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.143E-04   TIME AVG. HEAT FLUX   1.980E-04
- LARGEST RESIDUAL HEAT FLUX        -5.710E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.143E-04   TIME AVG. HEAT FLUX   1.993E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.967E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.236       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.236       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -3.661E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3306,19 +2828,12 @@
 
   INCREMENT    68 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3329,16 +2844,16 @@
   CORRESPONDING RESIDUAL FORCE      1.425E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.199E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.199E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.129E-04   TIME AVG. HEAT FLUX   1.967E-04
- LARGEST RESIDUAL HEAT FLUX         9.891E-19   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.129E-04   TIME AVG. HEAT FLUX   1.980E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.565E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.232       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.579E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.579E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3353,35 +2868,28 @@
 
   INCREMENT    69 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.011E+04   TIME AVG. FORCE       1.220E+04
- LARGEST SCALED RESIDUAL FORCE      1.397E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.397E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.397E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.183E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.183E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.114E-04   TIME AVG. HEAT FLUX   1.954E-04
- LARGEST RESIDUAL HEAT FLUX         2.637E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.114E-04   TIME AVG. HEAT FLUX   1.968E-04
+ LARGEST RESIDUAL HEAT FLUX         2.973E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.229       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3400,35 +2908,28 @@
 
   INCREMENT    70 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.026E+04   TIME AVG. FORCE       1.232E+04
- LARGEST SCALED RESIDUAL FORCE      1.370E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.370E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.370E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.167E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.167E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.100E-04   TIME AVG. HEAT FLUX   1.942E-04
- LARGEST RESIDUAL HEAT FLUX        -1.657E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.100E-04   TIME AVG. HEAT FLUX   1.955E-04
+ LARGEST RESIDUAL HEAT FLUX         1.504E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.225       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3447,37 +2948,30 @@
 
   INCREMENT    71 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.041E+04   TIME AVG. FORCE       1.243E+04
- LARGEST SCALED RESIDUAL FORCE      1.343E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.343E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.343E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.151E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.151E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.086E-04   TIME AVG. HEAT FLUX   1.930E-04
- LARGEST RESIDUAL HEAT FLUX        -4.355E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  1.086E-04   TIME AVG. HEAT FLUX   1.943E-04
+ LARGEST RESIDUAL HEAT FLUX         1.287E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.222       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.222       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -3.347E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3494,39 +2988,32 @@
 
   INCREMENT    72 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.056E+04   TIME AVG. FORCE       1.255E+04
- LARGEST SCALED RESIDUAL FORCE      1.317E-05   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.317E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.317E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.135E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.135E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.073E-04   TIME AVG. HEAT FLUX   1.918E-04
- LARGEST RESIDUAL HEAT FLUX         1.830E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.073E-04   TIME AVG. HEAT FLUX   1.930E-04
+ LARGEST RESIDUAL HEAT FLUX         1.591E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.219       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.219       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.274E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.274E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3541,39 +3028,32 @@
 
   INCREMENT    73 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.071E+04   TIME AVG. FORCE       1.266E+04
- LARGEST SCALED RESIDUAL FORCE      1.292E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.292E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.292E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.120E-08   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        1.120E-08   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.059E-04   TIME AVG. HEAT FLUX   1.906E-04
- LARGEST RESIDUAL HEAT FLUX        -4.069E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.059E-04   TIME AVG. HEAT FLUX   1.918E-04
+ LARGEST RESIDUAL HEAT FLUX        -4.528E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.215       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.203E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.203E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3588,35 +3068,28 @@
 
   INCREMENT    74 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.086E+04   TIME AVG. FORCE       1.277E+04
- LARGEST SCALED RESIDUAL FORCE      1.268E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.268E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.268E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.106E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.106E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.046E-04   TIME AVG. HEAT FLUX   1.894E-04
- LARGEST RESIDUAL HEAT FLUX         1.869E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.046E-04   TIME AVG. HEAT FLUX   1.906E-04
+ LARGEST RESIDUAL HEAT FLUX         2.331E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.212       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3635,37 +3108,30 @@
 
   INCREMENT    75 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.100E+04   TIME AVG. FORCE       1.288E+04
- LARGEST SCALED RESIDUAL FORCE      1.244E-05   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.244E-05   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.244E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.091E-08   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        1.091E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.034E-04   TIME AVG. HEAT FLUX   1.882E-04
- LARGEST RESIDUAL HEAT FLUX        -3.198E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  1.034E-04   TIME AVG. HEAT FLUX   1.895E-04
+ LARGEST RESIDUAL HEAT FLUX        -2.416E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.209       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.209       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -3.068E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3682,37 +3148,30 @@
 
   INCREMENT    76 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.114E+04   TIME AVG. FORCE       1.299E+04
- LARGEST SCALED RESIDUAL FORCE      1.220E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.220E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.220E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.077E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.077E-08   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.021E-04   TIME AVG. HEAT FLUX   1.871E-04
- LARGEST RESIDUAL HEAT FLUX         2.428E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.021E-04   TIME AVG. HEAT FLUX   1.883E-04
+ LARGEST RESIDUAL HEAT FLUX        -5.953E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.206       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.206       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -3.003E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -3729,18 +3188,11 @@
 
   INCREMENT    77 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -3752,16 +3204,16 @@
   CORRESPONDING RESIDUAL FORCE      1.198E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.063E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.063E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.009E-04   TIME AVG. HEAT FLUX   1.860E-04
- LARGEST RESIDUAL HEAT FLUX         3.021E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  1.009E-04   TIME AVG. HEAT FLUX   1.871E-04
+ LARGEST RESIDUAL HEAT FLUX         4.256E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.203       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.203       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.939E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.939E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3776,25 +3228,18 @@
 
   INCREMENT    78 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.142E+04   TIME AVG. FORCE       1.320E+04
- LARGEST SCALED RESIDUAL FORCE      1.175E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.175E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.175E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -3803,12 +3248,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.969E-05   TIME AVG. HEAT FLUX   1.848E-04
- LARGEST RESIDUAL HEAT FLUX         5.051E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  9.969E-05   TIME AVG. HEAT FLUX   1.860E-04
+ LARGEST RESIDUAL HEAT FLUX         3.480E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.200       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.200       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.878E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.878E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3823,39 +3268,32 @@
 
   INCREMENT    79 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.155E+04   TIME AVG. FORCE       1.331E+04
- LARGEST SCALED RESIDUAL FORCE      1.154E-05   AT NODE          5   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.154E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.154E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.035E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.035E-08   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.851E-05   TIME AVG. HEAT FLUX   1.837E-04
- LARGEST RESIDUAL HEAT FLUX        -2.181E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  9.851E-05   TIME AVG. HEAT FLUX   1.849E-04
+ LARGEST RESIDUAL HEAT FLUX         1.687E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.198       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.198       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.818E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.818E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3870,39 +3308,32 @@
 
   INCREMENT    80 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.169E+04   TIME AVG. FORCE       1.341E+04
- LARGEST SCALED RESIDUAL FORCE      1.132E-05   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.132E-05   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.132E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        1.022E-08   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        1.022E-08   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.735E-05   TIME AVG. HEAT FLUX   1.826E-04
- LARGEST RESIDUAL HEAT FLUX         1.692E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  9.735E-05   TIME AVG. HEAT FLUX   1.838E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.707E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.195       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.195       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.760E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.760E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3917,25 +3348,18 @@
 
   INCREMENT    81 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.182E+04   TIME AVG. FORCE       1.352E+04
- LARGEST SCALED RESIDUAL FORCE      1.112E-05   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      1.112E-05   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.112E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -3944,12 +3368,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.621E-05   TIME AVG. HEAT FLUX   1.816E-04
- LARGEST RESIDUAL HEAT FLUX        -3.930E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  9.621E-05   TIME AVG. HEAT FLUX   1.827E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.386E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.192       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.192       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.703E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.703E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -3964,25 +3388,18 @@
 
   INCREMENT    82 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.195E+04   TIME AVG. FORCE       1.362E+04
- LARGEST SCALED RESIDUAL FORCE      1.092E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.092E-05   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.092E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -3991,12 +3408,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.509E-05   TIME AVG. HEAT FLUX   1.805E-04
- LARGEST RESIDUAL HEAT FLUX         2.881E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  9.509E-05   TIME AVG. HEAT FLUX   1.816E-04
+ LARGEST RESIDUAL HEAT FLUX         2.652E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.189       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.189       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.648E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.648E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4011,39 +3428,32 @@
 
   INCREMENT    83 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.208E+04   TIME AVG. FORCE       1.372E+04
- LARGEST SCALED RESIDUAL FORCE      1.072E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.072E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.072E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.838E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        9.838E-09   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.400E-05   TIME AVG. HEAT FLUX   1.794E-04
- LARGEST RESIDUAL HEAT FLUX        -3.415E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  9.400E-05   TIME AVG. HEAT FLUX   1.805E-04
+ LARGEST RESIDUAL HEAT FLUX         2.556E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.187       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.187       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.595E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.595E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4058,39 +3468,32 @@
 
   INCREMENT    84 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.220E+04   TIME AVG. FORCE       1.382E+04
- LARGEST SCALED RESIDUAL FORCE      1.053E-05   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.053E-05   AT NODE          4   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.053E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.715E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        9.715E-09   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.292E-05   TIME AVG. HEAT FLUX   1.784E-04
- LARGEST RESIDUAL HEAT FLUX        -3.472E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  9.292E-05   TIME AVG. HEAT FLUX   1.795E-04
+ LARGEST RESIDUAL HEAT FLUX        -4.991E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.184       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.542E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.542E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4105,19 +3508,12 @@
 
   INCREMENT    85 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4128,16 +3524,16 @@
   CORRESPONDING RESIDUAL FORCE      1.034E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.594E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        9.594E-09   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.186E-05   TIME AVG. HEAT FLUX   1.774E-04
- LARGEST RESIDUAL HEAT FLUX         3.043E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  9.186E-05   TIME AVG. HEAT FLUX   1.784E-04
+ LARGEST RESIDUAL HEAT FLUX         4.235E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.182       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.182       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.492E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.492E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4152,25 +3548,18 @@
 
   INCREMENT    86 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.245E+04   TIME AVG. FORCE       1.402E+04
- LARGEST SCALED RESIDUAL FORCE      1.015E-05   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.015E-05   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      1.015E-05
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -4179,12 +3568,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.082E-05   TIME AVG. HEAT FLUX   1.763E-04
- LARGEST RESIDUAL HEAT FLUX         3.067E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  9.082E-05   TIME AVG. HEAT FLUX   1.774E-04
+ LARGEST RESIDUAL HEAT FLUX         4.676E-19   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.179       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.179       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.442E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.442E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4199,25 +3588,18 @@
 
   INCREMENT    87 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.257E+04   TIME AVG. FORCE       1.412E+04
- LARGEST SCALED RESIDUAL FORCE      9.975E-06   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      9.975E-06   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      9.975E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -4226,10 +3608,10 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.980E-05   TIME AVG. HEAT FLUX   1.753E-04
- LARGEST RESIDUAL HEAT FLUX        -1.443E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  8.980E-05   TIME AVG. HEAT FLUX   1.764E-04
+ LARGEST RESIDUAL HEAT FLUX         3.239E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.177       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.177       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -2.394E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -4246,37 +3628,30 @@
 
   INCREMENT    88 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.269E+04   TIME AVG. FORCE       1.422E+04
- LARGEST SCALED RESIDUAL FORCE      9.800E-06   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      9.800E-06   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      9.800E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.244E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        9.244E-09   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.880E-05   TIME AVG. HEAT FLUX   1.743E-04
- LARGEST RESIDUAL HEAT FLUX         4.805E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  8.880E-05   TIME AVG. HEAT FLUX   1.754E-04
+ LARGEST RESIDUAL HEAT FLUX        -4.265E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.175       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.175       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -2.347E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -4293,39 +3668,32 @@
 
   INCREMENT    89 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.281E+04   TIME AVG. FORCE       1.431E+04
- LARGEST SCALED RESIDUAL FORCE      9.628E-06   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      9.628E-06   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      9.628E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.131E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        9.131E-09   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.782E-05   TIME AVG. HEAT FLUX   1.734E-04
- LARGEST RESIDUAL HEAT FLUX         3.995E-18   AT NODE          6   DOF 11
+ AVERAGE HEAT FLUX                  8.782E-05   TIME AVG. HEAT FLUX   1.744E-04
+ LARGEST RESIDUAL HEAT FLUX         2.270E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.172       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.172       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.301E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.301E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4340,39 +3708,32 @@
 
   INCREMENT    90 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.293E+04   TIME AVG. FORCE       1.441E+04
- LARGEST SCALED RESIDUAL FORCE      9.461E-06   AT NODE          2   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      9.461E-06   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      9.461E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        9.020E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        9.020E-09   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.685E-05   TIME AVG. HEAT FLUX   1.724E-04
- LARGEST RESIDUAL HEAT FLUX        -2.954E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  8.685E-05   TIME AVG. HEAT FLUX   1.734E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.933E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.170       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.257E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.257E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4387,25 +3748,18 @@
 
   INCREMENT    91 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.304E+04   TIME AVG. FORCE       1.450E+04
- LARGEST SCALED RESIDUAL FORCE      9.297E-06   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      9.297E-06   AT NODE          1   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      9.297E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -4414,12 +3768,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.590E-05   TIME AVG. HEAT FLUX   1.714E-04
- LARGEST RESIDUAL HEAT FLUX         2.495E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  8.590E-05   TIME AVG. HEAT FLUX   1.724E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.540E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.168       AT NODE          8   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.168       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.213E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.213E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4434,18 +3788,11 @@
 
   INCREMENT    92 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
@@ -4457,16 +3804,16 @@
   CORRESPONDING RESIDUAL FORCE      9.137E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.804E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        8.804E-09   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.497E-05   TIME AVG. HEAT FLUX   1.705E-04
- LARGEST RESIDUAL HEAT FLUX         3.703E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  8.497E-05   TIME AVG. HEAT FLUX   1.715E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.638E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.166       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.166       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.171E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.171E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4481,25 +3828,18 @@
 
   INCREMENT    93 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.327E+04   TIME AVG. FORCE       1.469E+04
- LARGEST SCALED RESIDUAL FORCE      8.981E-06   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      8.981E-06   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.981E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -4508,12 +3848,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.405E-05   TIME AVG. HEAT FLUX   1.695E-04
- LARGEST RESIDUAL HEAT FLUX        -1.710E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  8.405E-05   TIME AVG. HEAT FLUX   1.705E-04
+ LARGEST RESIDUAL HEAT FLUX        -5.145E-18   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.164       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.130E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.130E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4528,39 +3868,32 @@
 
   INCREMENT    94 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.338E+04   TIME AVG. FORCE       1.478E+04
- LARGEST SCALED RESIDUAL FORCE      8.828E-06   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      8.828E-06   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.828E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.596E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        8.596E-09   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.315E-05   TIME AVG. HEAT FLUX   1.686E-04
- LARGEST RESIDUAL HEAT FLUX         3.065E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  8.315E-05   TIME AVG. HEAT FLUX   1.696E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.350E-18   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.161       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.161       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.089E-03   AT NODE          8   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.089E-03   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4575,39 +3908,32 @@
 
   INCREMENT    95 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  1ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.349E+04   TIME AVG. FORCE       1.487E+04
- LARGEST SCALED RESIDUAL FORCE      8.678E-06   AT NODE          1   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      8.678E-06   AT NODE          3   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.678E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.494E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        8.494E-09   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.226E-05   TIME AVG. HEAT FLUX   1.677E-04
- LARGEST RESIDUAL HEAT FLUX         1.768E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  8.226E-05   TIME AVG. HEAT FLUX   1.686E-04
+ LARGEST RESIDUAL HEAT FLUX         3.954E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.159       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.159       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.050E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.050E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4622,39 +3948,32 @@
 
   INCREMENT    96 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  1ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.359E+04   TIME AVG. FORCE       1.497E+04
- LARGEST SCALED RESIDUAL FORCE      8.532E-06   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      8.532E-06   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.532E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.394E-09   AT NODE          6   DOF  3
+ LARGEST CORRECTION TO DISP.        8.394E-09   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.139E-05   TIME AVG. HEAT FLUX   1.668E-04
- LARGEST RESIDUAL HEAT FLUX        -3.542E-18   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  8.139E-05   TIME AVG. HEAT FLUX   1.677E-04
+ LARGEST RESIDUAL HEAT FLUX        -4.882E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.157       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.157       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -2.012E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -2.012E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4669,39 +3988,32 @@
 
   INCREMENT    97 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.370E+04   TIME AVG. FORCE       1.506E+04
- LARGEST SCALED RESIDUAL FORCE      8.389E-06   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      8.389E-06   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.389E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.296E-09   AT NODE          5   DOF  3
+ LARGEST CORRECTION TO DISP.        8.296E-09   AT NODE          6   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.053E-05   TIME AVG. HEAT FLUX   1.659E-04
- LARGEST RESIDUAL HEAT FLUX         5.468E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  8.053E-05   TIME AVG. HEAT FLUX   1.668E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.293E-18   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.155       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.155       AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.974E-03   AT NODE          6   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.974E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4716,37 +4028,30 @@
 
   INCREMENT    98 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.380E+04   TIME AVG. FORCE       1.514E+04
- LARGEST SCALED RESIDUAL FORCE      8.249E-06   AT NODE          1   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      8.249E-06   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.249E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.200E-09   AT NODE          1   DOF  3
+ LARGEST CORRECTION TO DISP.        8.200E-09   AT NODE          5   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.969E-05   TIME AVG. HEAT FLUX   1.650E-04
- LARGEST RESIDUAL HEAT FLUX        -3.388E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  7.969E-05   TIME AVG. HEAT FLUX   1.659E-04
+ LARGEST RESIDUAL HEAT FLUX         1.865E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.154       AT NODE          2   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.154       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST CORRECTION TO TEMP.       -1.938E-03   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -4763,35 +4068,28 @@
 
   INCREMENT    99 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
+        NUMBER OF FLOPS:      2.189e+04
         SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.391E+04   TIME AVG. FORCE       1.523E+04
- LARGEST SCALED RESIDUAL FORCE      8.112E-06   AT NODE          6   DOF  3
+ LARGEST SCALED RESIDUAL FORCE      8.112E-06   AT NODE          2   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      8.112E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO DISP.        8.105E-09   AT NODE          2   DOF  3
+ LARGEST CORRECTION TO DISP.        8.105E-09   AT NODE          1   DOF  3
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.886E-05   TIME AVG. HEAT FLUX   1.641E-04
- LARGEST RESIDUAL HEAT FLUX         2.873E-18   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  7.886E-05   TIME AVG. HEAT FLUX   1.650E-04
+ LARGEST RESIDUAL HEAT FLUX         3.109E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.152       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -4810,25 +4108,18 @@
 
   INCREMENT   100 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
  
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
+	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
  	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  24
+        NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      9.248e+03
-        SOLVER ELAPSED TIME:  2ms
- 
-	UNSYMMETRIC DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  8
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.520e+02
-        SOLVER ELAPSED TIME:  2ms
+        NUMBER OF FLOPS:      2.189e+04
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.401E+04   TIME AVG. FORCE       1.532E+04
- LARGEST SCALED RESIDUAL FORCE      7.978E-06   AT NODE          3   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      7.978E-06   AT NODE          2   DOF  1
    INSTANCE: CUBE_ASSEMBLY                                                                   
   CORRESPONDING RESIDUAL FORCE      7.978E-06
  LARGEST INCREMENT OF DISP.         1.000E-05   AT NODE          1   DOF  2
@@ -4837,12 +4128,12 @@
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.805E-05   TIME AVG. HEAT FLUX   1.632E-04
- LARGEST RESIDUAL HEAT FLUX         2.169E-18   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  7.805E-05   TIME AVG. HEAT FLUX   1.642E-04
+ LARGEST RESIDUAL HEAT FLUX        -3.300E-18   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.150       AT NODE          6   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.150       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -1.868E-03   AT NODE          2   DOF 11
+ LARGEST CORRECTION TO TEMP.       -1.868E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -4863,13 +4154,13 @@
      TOTAL OF        100  INCREMENTS
                        0  CUTBACKS IN AUTOMATIC INCREMENTATION
                      101  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
-                     202  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
-                     202  INVOLVE MATRIX DECOMPOSITION, INCLUDING
+                     101  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
+                     101  INVOLVE MATRIX DECOMPOSITION, INCLUDING
                        0  DECOMPOSITION(S) OF THE MASS MATRIX
                        1  REORDERING OF EQUATIONS TO MINIMIZE WAVEFRONT
                        0  ADDITIONAL RESIDUAL EVALUATIONS FOR LINE SEARCHES
                        0  ADDITIONAL OPERATOR EVALUATIONS FOR LINE SEARCHES
-                       4  WARNING MESSAGES DURING USER INPUT PROCESSING
+                       5  WARNING MESSAGES DURING USER INPUT PROCESSING
                        0  WARNING MESSAGES DURING ANALYSIS
                        0  ANALYSIS WARNINGS ARE NUMERICAL PROBLEM MESSAGES
                        0  ANALYSIS WARNINGS ARE NEGATIVE EIGENVALUE MESSAGES
@@ -4878,8 +4169,8 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      1.6    
-       SYSTEM TIME (SEC)    =     0.90    
-       TOTAL CPU TIME (SEC) =      2.5    
+       USER TIME (SEC)      =     0.90    
+       SYSTEM TIME (SEC)    =     0.60    
+       TOTAL CPU TIME (SEC) =      1.5    
        WALLCLOCK TIME (SEC) =            5
        MEMORY PEAK (GB)     =            0

@@ -1,0 +1,9 @@
+**
+** ELEMENT NUMBER          1 STEP NUMBER        1 INCREMENT NUMBER        1
+** ELEMENT TYPE  DC3D8   
+*USER ELEMENT, NODES=         8, LINEAR
+** ELEMENT NODES
+**          3,          4,          2,          1,          7,          8,          6,          5
+         11
+** LOAD VECTOR FROM ELEMENT DISTRIBUTED LOADS.  LOAD CASE       1
+***CFLUX

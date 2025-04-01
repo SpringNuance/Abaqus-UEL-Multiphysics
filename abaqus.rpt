@@ -1,0 +1,167 @@
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:44:35 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: NT11
+
+Loc 1 : Integration point values
+
+Probe values reported at integration points
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+
+
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:44:56 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: NT11
+
+Probe values reported at nodes
+
+  Part Instance     Node ID            Orig. Coords                     Def. Coords          
+                                 X          Y          Z          X          Y          Z    
+-------------------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           5  -500.E-06   500.E-06   500.E-06  -500.E-06     2.E-03   312.E-06
+  CUBE_ASSEMBLY           7  -500.E-06   500.E-06  -500.E-06  -500.E-06     2.E-03  -500.E-06
+  CUBE_ASSEMBLY           1   500.E-06   500.E-06   500.E-06   312.E-06     2.E-03   312.E-06
+  CUBE_ASSEMBLY           2   500.E-06  -500.E-06   500.E-06   312.E-06  -500.E-06   312.E-06
+
+
+  Part Instance     Node ID  Attached elements       NT11
+----------------------------------------------------------
+  CUBE_ASSEMBLY           5          1       100.
+  CUBE_ASSEMBLY           7          1       100.
+  CUBE_ASSEMBLY           1          1       100.
+  CUBE_ASSEMBLY           2          1        30.
+
+
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:45:22 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: TEMP
+
+Loc 1 : Integration point values
+
+Probe values reported at integration points
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+
+
+  Part Instance  Element ID        Type   Int. Pt.       TEMP
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T          1       100.
+  CUBE_ASSEMBLY           1       C3D8T          2        30.
+  CUBE_ASSEMBLY           1       C3D8T          3       100.
+  CUBE_ASSEMBLY           1       C3D8T          4        30.
+  CUBE_ASSEMBLY           1       C3D8T          5       100.
+  CUBE_ASSEMBLY           1       C3D8T          6        30.
+  CUBE_ASSEMBLY           1       C3D8T          7       100.
+  CUBE_ASSEMBLY           1       C3D8T          8        30.
+
+
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:45:30 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: TEMP
+
+Loc 1 : Element nodal values
+
+Probe values reported at element nodes
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+
+
+  Part Instance  Element ID        Type       Node       TEMP
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T          1       126.
+  CUBE_ASSEMBLY           1       C3D8T          2         4.
+  CUBE_ASSEMBLY           1       C3D8T          3         4.
+  CUBE_ASSEMBLY           1       C3D8T          4       126.
+  CUBE_ASSEMBLY           1       C3D8T          5       126.
+  CUBE_ASSEMBLY           1       C3D8T          6         4.
+  CUBE_ASSEMBLY           1       C3D8T          7         4.
+  CUBE_ASSEMBLY           1       C3D8T          8       126.
+
+
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:48:28 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: TEMP
+
+Loc 1 : Integration point values
+
+Probe values reported at integration points
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+
+
+  Part Instance  Element ID        Type   Int. Pt.       TEMP
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T          1       100.
+  CUBE_ASSEMBLY           1       C3D8T          2        30.
+  CUBE_ASSEMBLY           1       C3D8T          3       100.
+  CUBE_ASSEMBLY           1       C3D8T          4        30.
+  CUBE_ASSEMBLY           1       C3D8T          5       100.
+  CUBE_ASSEMBLY           1       C3D8T          6        30.
+  CUBE_ASSEMBLY           1       C3D8T          7       100.
+  CUBE_ASSEMBLY           1       C3D8T          8        30.
+
+
+********************************************************************************
+Probe Values Report, written on Tue Apr  1 11:48:32 2025
+
+Source
+-------
+
+   ODB: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(solver case 11) cube_C3D8T_transient_nlgeom_on_4NP/solver_cube_C3D8T_transient_nlgeom_on_4NP.odb
+   Step: step1_thermomechanical
+   Frame: Increment    100: Step Time =    100.0
+   Variable: NT11
+
+Loc 1 : Integration point values
+
+Probe values reported at integration points
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+  CUBE_ASSEMBLY           1       C3D8T           3           4           2           1           7           8           6           5
+
+

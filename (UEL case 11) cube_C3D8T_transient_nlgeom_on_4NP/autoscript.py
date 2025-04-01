@@ -271,7 +271,7 @@ def return_depvar(depvar_excel_path):
 def return_user_element(total_num_properties, ndim, nnodes, nsvars):
     USER_ELEMENT = [
         "*************************************************",
-    f"*User element, nodes={nnodes}, type=U1, properties={total_num_properties}, coordinates={ndim}, variables={nsvars}",
+    f"*User element, nodes={nnodes}, type=U1, properties={total_num_properties}, coordinates={ndim}, variables={nsvars}, unsymm",
         "1, 2, 3",
         "1, 11",
         # "1, 12",
@@ -469,6 +469,24 @@ def main():
     # find the index of the *Depvar section
     depvar_index = [i for i, line in enumerate(flines_new) if '*DEPVAR' in line.upper()][0]
     flines_new = flines_new[:depvar_index] + DEPVAR + flines_new[depvar_index+2:]
+
+    # Adding the global stiffness matrix section as a separate step
+    # global_stiffness_step = [
+    #     "** Output Global Stiffness Matrix",
+    #     "*Step, name=Global_Stiffness_Matrix",
+    #     "*MATRIX GENERATE, STIFFNESS",
+    #     "*MATRIX OUTPUT, STIFFNESS, FORMAT=MATRIX INPUT",
+    #     "*End Step",
+    #     "*STEP, name=Test",
+    #     "*STATIC",
+    #     "*FILE FORMAT, ASCII",
+    #     "*ELEMENT MATRIX OUTPUT, ELSET=cube_assembly.Set-4, FILE NAME=Stiffness, FREQUENCY=1, OUTPUT FILE=USER DEFINED, STIFFNESS=YES",
+    #     "*END STEP"
+    # ]
+
+    # add it at the end of the file
+    flines_new = flines_new + global_stiffness_step
+
     
     with open(combined_UEL_inp_path, 'w') as fid:
         for line in flines_new:

@@ -106,7 +106,7 @@
 1.0e-3, 405.0e3, 1.0e-7, 0.89e0, 30000.0e0, 0.0, 0.0, 0.0
 **
 *******************************************************
-*ELEMENT, TYPE=C3D8T, ELSET=VISUALIZATION
+*ELEMENT, TYPE=C3D8, ELSET=VISUALIZATION
 11, 3, 4, 2, 1, 7, 8, 6, 5
 *Nset, nset=Set-4, generate
 1,  8,  1
@@ -213,13 +213,13 @@
 0.,
 *User Material, constants=1, type=MECHANICAL
 0.,
-** 
+**
 ** PHYSICAL CONSTANTS
-** 
+**
 **Physical Constants, absolute zero=0.
-** 
+**
 ** PREDEFINED FIELDS
-** 
+**
 ** Name: Predefined Field-1   Type: Temperature
 *Initial Conditions, type=TEMPERATURE
 cube_assembly.Set-4, 0.
@@ -230,7 +230,6 @@ cube_assembly.Set-4, 0.
 *Step, name=step1_thermomechanical, nlgeom=YES, UNSYMM=YES
 *Coupled Temperature-displacement, creep=none, deltmx=100.
 1., 100., 0.001, 1.
-*SOLUTION TECHNIQUE, TYPE=SEPARATED
 **
 ** BOUNDARY CONDITIONS
 **
@@ -258,8 +257,8 @@ zsymm_side, ZSYMM
 **
 *Output, field
 *Node Output
-RF, U, NT, RFL
+RF, U, NT
 *Element Output, directions=YES
-SDV
+SDV, HFL
 *Output, history, frequency=0
 *End Step
