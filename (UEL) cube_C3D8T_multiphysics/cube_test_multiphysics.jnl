@@ -1,0 +1,110 @@
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_off_1NP']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_off_4NP']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_on_1NP']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP_fix']
+del mdb.models['solver_cube_C3D8T_transient_nlgeom_on_4NP_heat_transfer']
+del mdb.models['solver_cube_C3D8_elastic_nlgeom_off_nosymm']
+del mdb.models['solver_cube_C3D8_elastic_nlgeom_off_symm']
+del mdb.models['solver_cube_C3D8_elastic_nlgeom_on_nosymm']
+del mdb.models['solver_cube_C3D8_elastic_nlgeom_on_symm']
+del mdb.models['solver_cube_C3D8_plastic_nlgeom_off_nosymm']
+del mdb.models['solver_cube_C3D8_plastic_nlgeom_off_symm']
+del mdb.models['solver_cube_C3D8_plastic_nlgeom_on_nosymm']
+del mdb.models['solver_cube_C3D8_plastic_nlgeom_on_symm']
+del mdb.models['solver_cube_Q3D8']
+del mdb.models['subroutine_cube_C3D8T_transient_nlgeom_off_4NP']
+del mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.models['subroutine_cube_C3D8_elastic_nlgeom_off_nosymm']
+del mdb.models['subroutine_cube_C3D8_elastic_nlgeom_off_symm']
+del mdb.models['subroutine_cube_C3D8_elastic_nlgeom_on_nosymm']
+del mdb.models['subroutine_cube_C3D8_elastic_nlgeom_on_symm']
+del mdb.jobs['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_1NP']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_off_4NP']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_1NP']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP_fix']
+del mdb.jobs['solver_cube_C3D8T_transient_nlgeom_on_4NP_heat_transfer']
+del mdb.jobs['solver_cube_C3D8_elastic_nlgeom_off_nosymm']
+del mdb.jobs['solver_cube_C3D8_elastic_nlgeom_off_symm']
+del mdb.jobs['solver_cube_C3D8_elastic_nlgeom_on_nosymm']
+del mdb.jobs['solver_cube_C3D8_elastic_nlgeom_on_symm']
+del mdb.jobs['solver_cube_C3D8_plastic_nlgeom_off_nosymm']
+del mdb.jobs['solver_cube_C3D8_plastic_nlgeom_off_symm']
+del mdb.jobs['solver_cube_C3D8_plastic_nlgeom_on_nosymm']
+del mdb.jobs['solver_cube_C3D8_plastic_nlgeom_on_symm']
+del mdb.jobs['subroutine_cube_C3D8T_transient_nlgeom_on_4NP']
+del mdb.jobs['subroutine_cube_C3D8T_transient_nlgom_off_4NP']
+del mdb.jobs['subroutine_cube_C3D8_elastic_nlgeom_off_nosymm']
+del mdb.jobs['subroutine_cube_C3D8_elastic_nlgeom_off_symm']
+del mdb.jobs['subroutine_cube_C3D8_elastic_nlgeom_on_nosymm']
+del mdb.jobs['subroutine_cube_C3D8_elastic_nlgeom_on_symm']
+# Save by nguyenb5 on 2025_04_03-12.16.54; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName=
+    'C:/LocalUserData/User-data/nguyenb5/00 Example fracture test/damage_model_3D.cae')
+mdb.copyAuxMdbModel(fromName='plate_3D_hydrogen', toName='plate_3D_hydrogen')
+mdb.closeAuxMdb()
+del mdb.models['subroutine_multiphysics'].boundaryConditions['mech_xsymm']
+mdb.models['subroutine_multiphysics'].DisplacementBC(amplitude=UNSET, 
+    createStepName='step1_multiphysics', distributionType=UNIFORM, fieldName=''
+    , fixed=OFF, localCsys=None, name='mech_xsymm', region=
+    mdb.models['subroutine_multiphysics'].rootAssembly.sets['xsymm_side'], u1=
+    0.0, u2=UNSET, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['subroutine_multiphysics'].boundaryConditions.delete(('mech_ysymm', 
+    'mech_zsymm'))
+mdb.models['subroutine_multiphysics'].DisplacementBC(amplitude=UNSET, 
+    createStepName='step1_multiphysics', distributionType=UNIFORM, fieldName=''
+    , fixed=OFF, localCsys=None, name='mech_ysymm', region=
+    mdb.models['subroutine_multiphysics'].rootAssembly.sets['ysymm_side'], u1=
+    UNSET, u2=0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['subroutine_multiphysics'].DisplacementBC(amplitude=UNSET, 
+    createStepName='step1_multiphysics', distributionType=UNIFORM, fieldName=''
+    , fixed=OFF, localCsys=None, name='mech_zsymm', region=
+    mdb.models['subroutine_multiphysics'].rootAssembly.sets['zsymm_side'], u1=
+    UNSET, u2=UNSET, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+# Save by nguyenb5 on 2025_04_03-12.51.03; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['subroutine_multiphysics'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('NT', 'RF', 'SDV', 'U', 'RFL'))
+# Save by nguyenb5 on 2025_04_03-16.20.32; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2025_04_03-22.11.04; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702

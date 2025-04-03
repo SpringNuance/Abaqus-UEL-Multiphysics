@@ -70,11 +70,17 @@
  2.1e+11, 0.3
 *Specific Heat
 400.,
+** 
+** PREDEFINED FIELDS
+** 
+** Name: Predefined Field-1   Type: Temperature
+*Initial Conditions, type=TEMPERATURE
+top_side, 100.
 ** ----------------------------------------------------------------
 ** 
 ** STEP: step1_thermomechanical
 ** 
-*Step, name=step1_thermomechanical, nlgeom=YES
+*Step, name=step1_thermomechanical, nlgeom=YES, inc=10000
 *Coupled Temperature-displacement, creep=none, deltmx=100.
 1., 100., 0.001, 1.
 ** 

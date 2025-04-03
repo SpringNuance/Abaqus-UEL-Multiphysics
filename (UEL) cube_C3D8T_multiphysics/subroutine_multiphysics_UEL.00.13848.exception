@@ -1,0 +1,153 @@
+<Description>
+   ABAQUS/standard rank 0 received the INTERRUPT signal
+
+</Description>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   std
+</Phase>
+
+<Callstack>
+  1)  ucrtbase.dll                perror                                  
+  2)  KERNELBASE.dll              CtrlRoutine                             
+  3)  KERNEL32.DLL                BaseThreadInitThunk                     
+  4)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          40 GB </Size>
+       <Used>          33 GB </Used>
+       <Free>           6 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </current> <free>     40 GB </free>   <used>    434 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </indir>   <free>     40 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </outdir>  <free>     40 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </tmpdir>  <free>     40 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     40 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4  </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540\standard.exe </Executable>
+</Installation>
+
+<Description>
+   standard.exe / rank 0 / thread 0  encountered a system exception 0xC0000005 (EXCEPTION_ACCESS_VIOLATION)
+</Description>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   std
+</Phase>
+
+<Callstack>
+  1)  ABQSMABasAlloc.dll          dlfree                                  
+  2)  ABQSMAAbuBasicUtils.dll     thr_CondVar::~thr_CondVar               
+  3)  ABQSMAAbuBasicUtils.dll     secureShellCommand                      
+  4)  ABQSMAAbuBasicUtils.dll     thr_ThreadPool::~thr_ThreadPool         
+  5)  ABQSMAAbuBasicUtils.dll     thr_GlobalSingletonBase<thr_ThreadPool>::Finalize
+  6)  ABQSMAAbuBasicUtils.dll     thr_ErrorInThread                       
+  7)  ucrtbase.dll                perror                                  
+  8)  KERNELBASE.dll              CtrlRoutine                             
+  9)  KERNEL32.DLL                BaseThreadInitThunk                     
+ 10)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          40 GB </Size>
+       <Used>          33 GB </Used>
+       <Free>           6 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </current> <free>     40 GB </free>   <used>    434 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </indir>   <free>     40 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </outdir>  <free>     40 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </tmpdir>  <free>     40 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     40 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4  </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540\standard.exe </Executable>
+</Installation>
+
+<Description>
+   standard.exe / rank 0 / thread 0  encountered a system exception 0xC0000005 (EXCEPTION_ACCESS_VIOLATION)
+</Description>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   std
+</Phase>
+
+<Callstack>
+  1)  ucrtbase.dll                abort                                   
+  2)  ABQSMABasAlloc.dll          dlfree                                  
+  3)  ABQSMAMsgCommModules.dll    RtlUnwindEx                             
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          40 GB </Size>
+       <Used>          33 GB </Used>
+       <Free>           6 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </current> <free>     40 GB </free>   <used>    434 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </indir>   <free>     40 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </outdir>  <free>     40 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540 </tmpdir>  <free>     40 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     40 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4  </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_subroutine_multiphysics_UEL_5540\standard.exe </Executable>
+</Installation>
+

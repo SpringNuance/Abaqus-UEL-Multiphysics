@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 22:15:44
+   Abaqus 2023.HF4                                  Date 02-Apr-2025   Time 16:27:45
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -126,11 +126,11 @@
   *output, field
   *output, history, frequency=0
   *elementoutput, directions=YES
-  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES, inc=10000
   *output, field
   *output, history, frequency=0
-  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES
-  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES, inc=10000
+  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES, inc=10000
   *coupledtemperature-displacement, creep=NONE, deltmx=100
   *boundary, amplitude=CONSTANT
   *boundary, amplitude=LOADING
@@ -148,7 +148,7 @@
  ***WARNING: OUTPUT REQUEST HFL IS NOT AVAILABLE FOR ELEMENT TYPE C3D8
 
  ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
-  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, unsymm=YES, inc=10000
   *coupledtemperature-displacement, creep=NONE, deltmx=100
   *boundary, amplitude=CONSTANT
   *boundary, amplitude=LOADING
@@ -182,7 +182,7 @@
        WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 22:15:49
+   Abaqus 2023.HF4                                  Date 02-Apr-2025   Time 16:27:51
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -218,7 +218,7 @@
               OPERATIONS           REQUIRED          MINIMIZE I/O
              PER ITERATION           (MB)               (MB)
   
-     1          1.47E+04               17                 24
+     1          2.19E+04               17                 24
   
  NOTE:
       (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
@@ -261,7 +261,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.90    
-       SYSTEM TIME (SEC)    =     0.60    
-       TOTAL CPU TIME (SEC) =      1.5    
-       WALLCLOCK TIME (SEC) =            5
+       USER TIME (SEC)      =      2.7    
+       SYSTEM TIME (SEC)    =      2.0    
+       TOTAL CPU TIME (SEC) =      4.7    
+       WALLCLOCK TIME (SEC) =            9

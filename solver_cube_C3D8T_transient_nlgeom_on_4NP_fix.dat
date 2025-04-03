@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 12:34:06
+   Abaqus 2023.HF4                                  Date 02-Apr-2025   Time 14:02:50
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -96,8 +96,10 @@
              INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE 
              *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE 
              ASSUMED.
+  *initialconditions, type=TEMPERATURE
   *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=THERMOMECHANICAL
   *solidsection, elset=ASSEMBLY_CUBE_ASSEMBLY_SET-4, material=THERMOMECHANICAL
+  *initialconditions, type=TEMPERATURE
   *boundary
   *boundary
   *boundary
@@ -109,17 +111,19 @@
   *output, field
   *output, history, frequency=0
   *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
   *output, field
   *output, history, frequency=0
   *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
   *output, field
   *output, history, frequency=0
   *elementoutput, directions=YES
-  *Step, name=step1_thermomechanical, nlgeom=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, inc=10000
   *output, field
   *output, history, frequency=0
-  *Step, name=step1_thermomechanical, nlgeom=YES
-  *Step, name=step1_thermomechanical, nlgeom=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, inc=10000
+  *Step, name=step1_thermomechanical, nlgeom=YES, inc=10000
   *coupledtemperature-displacement, creep=NONE, deltmx=100
   *boundary
   *boundary
@@ -130,7 +134,7 @@
   *elementoutput, directions=YES
   *output, history, frequency=0
   *endstep
-  *Step, name=step1_thermomechanical, nlgeom=YES
+  *Step, name=step1_thermomechanical, nlgeom=YES, inc=10000
   *coupledtemperature-displacement, creep=NONE, deltmx=100
   *boundary
   *boundary
@@ -157,13 +161,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.20    
-       SYSTEM TIME (SEC)    =      0.0    
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =     0.10    
        TOTAL CPU TIME (SEC) =     0.20    
        WALLCLOCK TIME (SEC) =            0
 1
 
-   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 12:34:12
+   Abaqus 2023.HF4                                  Date 02-Apr-2025   Time 14:02:56
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -242,7 +246,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.80    
-       SYSTEM TIME (SEC)    =      1.0    
-       TOTAL CPU TIME (SEC) =      1.8    
-       WALLCLOCK TIME (SEC) =            3
+       USER TIME (SEC)      =     0.70    
+       SYSTEM TIME (SEC)    =     0.50    
+       TOTAL CPU TIME (SEC) =      1.2    
+       WALLCLOCK TIME (SEC) =            2

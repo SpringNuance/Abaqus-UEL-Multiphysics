@@ -366,19 +366,44 @@ def main():
     output_simulation_path = os.getcwd()
     combined_original_inp_path = os.path.join(os.getcwd(), f"{inp_file_name}.inp")
     combined_UEL_inp_path = os.path.join(os.getcwd(), f"{inp_file_name}_UEL.inp")
-
-    ########################################
-    # STEP 0: Deleting previous sim files  #
-    ########################################
+    ##############################
+    # STEP 0: Deleting lck file  #
+    ##############################
 
     # Delete all files ending in .lck in output_simulation_path
     for file in os.listdir(output_simulation_path):
         if file.endswith(".lck"):
             os.remove(os.path.join(output_simulation_path, file))
 
-    ###########################################
-    # STEP 1: Modifying normal inp to UEL inp #
-    ###########################################
+    #################################################
+    # STEP 1: Modifying normal inp to processed inp #
+    #################################################
+
+    # Write this to the start of the input file
+
+    unit_convention = [
+        "**************** UNITS: SI (m) ****************",
+        "**",
+        "** Length: m",
+        "** Time: s",
+        "** Force: N",
+        "** Stress: Pa",
+        "** Mass: kg = (N*s^2)/m",
+        "** Density: kg/m^3",
+        "**",
+        "************************************************"
+    ]
+
+    # Read the original file content
+    with open(combined_original_inp_path, 'r') as fid:
+        flines = fid.readlines()  # Read file as a list of lines
+    flines = [line.strip() for line in flines]  # Remove trailing and newline symbols
+
+    # Insert unit convention at the beginning
+    flines = unit_convention + flines  # Add newline for spacing
+
+    # time.sleep(180)
+
 
     properties_path_excel = f"processing_input/properties.xlsx"
     flow_curve_excel_path = f"processing_input/flow_curve.xlsx"

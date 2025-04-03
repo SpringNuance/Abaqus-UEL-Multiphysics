@@ -1,0 +1,112 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Wed Apr  2 17:32:47 2025
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=192.38020324707, 
+    height=142.73957824707)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('cube_test.cae')
+#: The model database "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['UMAT_UMATHT_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00249892, 
+    farPlane=0.00481816, width=0.00348988, height=0.00170677, 
+    viewOffsetX=0.000398603, viewOffsetY=-3.8761e-05)
+a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON, 
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+e1 = a.instances['cube_assembly'].elements
+elements1 = e1.getSequenceFromMask(mask=('[#1 ]', ), )
+a.Set(elements=elements1, name='ALLE')
+#: The set 'ALLE' has been created (1 element).
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00251591, 
+    farPlane=0.00480117, width=0.00328933, height=0.00160869, 
+    viewOffsetX=0.000385294, viewOffsetY=-6.8259e-06)
+a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+n1 = a.instances['cube_assembly'].nodes
+nodes1 = n1.getSequenceFromMask(mask=('[#ff ]', ), )
+a.Set(nodes=nodes1, name='ALLN')
+#: The set 'ALLN' has been created (8 nodes).
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    step='step1_thermomechanical')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF, 
+    adaptiveMeshConstraints=ON)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].steps.changeKey(
+    fromName='step1_thermomechanical', toName='step1_multiphysics')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, adaptiveMeshConstraints=OFF)
+a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+region = a.sets['ALLN']
+mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].Field(
+    name='UFIELD', createStepName='step1_multiphysics', region=region, 
+    distributionType=USER_DEFINED, fieldVariableNum=1)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON, mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+p1 = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].parts['cube']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0025159, 
+    farPlane=0.00480118, width=0.00291252, height=0.00142143, 
+    viewOffsetX=9.91784e-05, viewOffsetY=-4.77259e-05)
+mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].materials.changeKey(
+    fromName='thermomechanical', toName='multiphysics')
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\cube_test.cae".
+a = mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF, adaptiveMeshConstraints=ON)
+mdb.Model(name='suborutine_multiphysics', 
+    objectToCopy=mdb.models['subroutine_cube_C3D8T_transient_nlgeom_on_4NP'])
+#: The model "suborutine_multiphysics" has been created.
+a = mdb.models['suborutine_multiphysics'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    adaptiveMeshConstraints=OFF)
+mdb.Job(name='subroutine_multiphysics', model='suborutine_multiphysics', 
+    description='', type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, 
+    queue=None, memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON)
+a = mdb.models['suborutine_multiphysics'].rootAssembly
+region = a.sets['top_side']
+mdb.models['suborutine_multiphysics'].predefinedFields['heat_top_side'].setValues(
+    region=region)
+a = mdb.models['suborutine_multiphysics'].rootAssembly
+region = a.sets['bottom_side']
+mdb.models['suborutine_multiphysics'].predefinedFields['heat_bottom_side'].setValues(
+    region=region)

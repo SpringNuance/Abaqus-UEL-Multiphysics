@@ -19,15 +19,16 @@
 !
 !   ▸ Mass diffusion field (hydrogen):
 !       - Transient Fick's second law hydrogen diffusion with Oriani's equilibrium theory
+!       - Its steady state version (usually of no major interest to research)
 !
 !   ▸ Damage field:
-!       - Phase-field damage model based on Griffith's thermodynamics
+!       - Phase-field damage model based on Griffith's thermodynamics (attributed to Emilio's code)
 !
 !   Structure:
 !       Each field is implemented independently but solved in a monolithic
-!       framework for tightly coupled multiphysics interaction.
+!       framework for weak coupling multiphysics interaction.
 !
-!   Inspiration: Emilio Martinez (for modular field architecture)
+!   Inspiration: Emilio Martinez and Abaqus's documentations
 !
 !===========================================================================
 
@@ -234,6 +235,7 @@ subroutine calc_N_shape_IP_inter_to_coords(xi_coords, eta_coords, zeta_coords, &
     real(kind=dp), intent(in)  :: xi_coords, eta_coords, zeta_coords
     
     real(kind=dp), parameter :: IP_inter = 1.0d0 / sqrt(3.0d0)
+
     ! Shape functions for a C3D8 element at the given xi/eta/zeta
     N_shape_IP_inter_to_coords(1) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
     N_shape_IP_inter_to_coords(2) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
@@ -360,11 +362,10 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
                                                 N_shape_IP_extra_to_kNP_extra)
             all_N_shape_IP_extra_to_kNP_extra(knode, 1:ninpt) = N_shape_IP_extra_to_kNP_extra
 
-        end do      
+        end do
 
         do kinpt = 1, ninpt
 
-        !   determine (g,h,r)
             xi_IP_inter_coord = xi_IP_inter(kinpt)
             eta_IP_inter_coord = eta_IP_inter(kinpt)
             zeta_IP_inter_coord = zeta_IP_inter(kinpt)
@@ -372,6 +373,10 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
             xi_IP_extra_coord = xi_IP_extra(kinpt)
             eta_IP_extra_coord = eta_IP_extra(kinpt)
             zeta_IP_extra_coord = zeta_IP_extra(kinpt)
+
+            xi_IP_extra_extra_coord = xi_IP_extra_extra * sqrt(3.0d0)
+            eta_IP_extra_extra_coord = eta_IP_extra_extra * sqrt(3.0d0)
+            zeta_IP_extra_extra_coord = zeta_IP_extra_extra * sqrt(3.0d0)
 
             call calc_N_shape_NP_inter_to_coords(xi_IP_inter_coord, eta_IP_inter_coord, zeta_IP_inter_coord, &
                                                     N_shape_NP_inter_to_kIP_inter)
@@ -390,9 +395,13 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
             all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:ndim,1:nnode) = N_grad_NP_inter_to_kIP_extra_local(1:ndim,1:nnode)
         
         
-            call calc_N_shape_IP_inter_to_coords(xi_IP_extra_coord, eta_IP_extra_coord, zeta_IP_extra_coord, &
+            call calc_N_shape_IP_extra_to_coords(xi_IP_extra_extra_coord, eta_IP_extra_extra_coord, zeta_IP_extra_extra_coord, &
                                                     N_shape_IP_inter_to_kIP_extra)
             all_N_shape_IP_inter_to_kIP_extra(kinpt, 1:ninpt) = N_shape_IP_inter_to_kIP_extra
+
+            ! call calc_N_shape_IP_inter_to_coords(xi_IP_extra_coord, eta_IP_extra_coord, zeta_IP_extra_coord, &
+            !                                         N_shape_IP_inter_to_kIP_extra)
+            ! all_N_shape_IP_inter_to_kIP_extra(kinpt, 1:ninpt) = N_shape_IP_inter_to_kIP_extra
 
             call calc_N_shape_IP_extra_to_coords(xi_IP_inter_coord, eta_IP_inter_coord, zeta_IP_inter_coord, &
                                                     N_shape_IP_extra_to_kIP_inter)
@@ -892,6 +901,21 @@ subroutine UMATHT_heat_transfer(u,dudt,dudg,flux,dfdt,dfdg, &
 end
 
 
+subroutine HETVAL_heat_transfer(cmname,temp,dtemp,time,dtime,statev, &
+    r,drdt,predef,dpred)
+
+    use precision
+    use common_block
+    include 'aba_param.inc'
+
+    character(len=80) :: cmname
+
+    dimension statev(*),predef(*),time(2),dpred(*)
+
+    r = 0.0d0
+    drdt = 0.0d0
+end
+
 ! *****************************************************************
 ! UFIELD reads current nodal coordinates for all NPs
 ! *****************************************************************
@@ -968,7 +992,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim,nnode) :: coords_kelem_NPs_t, coords_kelem_NPs_tm1, coords_kelem_NPs_0
     real(kind=dp), dimension(ndim,ninpt) :: coords_kelem_IPs_t, coords_kelem_IPs_tm1, coords_kelem_IPs_0
     real(kind=dp), dimension(ndim) :: coords_kelem_kIP_t, coords_kelem_kIP_tm1
-    real(kind=dp), dimension(ndim,ndim) :: xjac_t, xjac_inv_t, xjac_tm1, xjac_inv_tm1
+    real(kind=dp), dimension(ndim,ndim) :: xjac_inter_t, xjac_inv_inter_t
+    real(kind=dp), dimension(ndim,ndim) :: xjac_inter_tm1, xjac_inv_inter_tm1
+    real(kind=dp), dimension(ndim,ndim) :: xjac_extra_t, xjac_inv_extra_t
     ! Local state variables of the current element jelem for integration points
     real(kind=dp), dimension(nstatev) :: statev                      
     real(kind=dp), dimension(ndim,ndim) :: identity   
@@ -1050,19 +1076,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp) :: temp_kIP_t, dtemp_kIP, temp_kIP_tm1
     real(kind=dp), dimension(ndim) :: temp_grad_kIP_t
 
-    real(kind=dp) :: u_heat_kIP_inter_t, u_heat_kIP_inter_tm1, dudt_heat_kIP_t, du_heat_kIP, ru_heat_kIP
-    real(kind=dp), dimension(ndim) :: dudg_heat_kIP_t, flux_heat_kIP, flux_heat_kIP_t, flux_heat_kIP_tm1, dfdt_heat_kIP_t
+    real(kind=dp) :: u_heat_kIP_t, u_heat_kIP_tm1, dudt_heat_kIP_t, du_heat_kIP, r_heat_kIP_t, drdt_heat_kIP
+    real(kind=dp), dimension(ndim) :: dudg_heat_kIP_t, dudg_heat_kIP_inter_t, dudg_heat_kIP_extra_t
+    real(kind=dp), dimension(ndim) :: flux_heat_kIP, flux_heat_kIP_t, flux_heat_kIP_tm1, dfdt_heat_kIP_t
     real(kind=dp), dimension(ndim,ndim) :: dfdg_heat_kIP_t
 
-    ! For lump internal energy rate
-    real(kind=dp), dimension(ninpt) :: u_heat_all_IPs_inter_t, u_heat_all_IPs_extra_t
-    real(kind=dp), dimension(ninpt) :: u_heat_all_IPs_inter_tm1, u_heat_all_IPs_extra_tm1
-    real(kind=dp), dimension(ninpt) :: dudt_heat_all_IPs_inter_t, dudt_heat_all_IPs_extra_t
-    real(kind=dp), dimension(ninpt, ndim) :: dudg_heat_all_IPs_inter_t, dudg_heat_all_IPs_extra_t
-
-    real(kind=dp), dimension(nnode,nnode)  :: K_heat_conductivity_kIP_t, K_dfdt_heat_term_kIP_t, K_dfdg_heat_term_kIP_t, K_ru_heat_term_kIP_t
-    real(kind=dp), dimension(nnode,nnode) :: M_heat_capacitance_kIP_t, M_dudt_heat_term_kIP_t, M_dudg_heat_term_kIP_t
-    real(kind=dp), dimension(nnode) :: F_heat_rhs_kIP_t, F_ru_heat_term_kIP, F_du_heat_term_kIP_t, F_flux_heat_term_kIP_t
+    real(kind=dp), dimension(nnode,nnode)  :: K_heat_kIP_t, K_heat_dfdt_kIP_t, K_heat_dfdg_kIP_t, K_heat_drdt_kIP_t
+    real(kind=dp), dimension(nnode,nnode) :: M_heat_kIP_t, M_heat_dudt_kIP_t, M_heat_dudg_kIP_t
+    real(kind=dp), dimension(nnode) :: F_heat_kIP_t, F_heat_du_kIP_t, F_heat_flux_kIP_t, F_heat_r_kIP_t
 
     ! ==================================================================================== !
     ! TENSORS DEFINED FOR THE MASS DIFFUSION FIELD: CL_mol (Lattice hydrogen concentration !
@@ -1242,23 +1263,23 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) 
 
-        xjac_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
-        call calc_matrix_inv(xjac_tm1, xjac_inv_tm1, djac_tm1, ndim)
+        xjac_inter_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
+        call calc_matrix_inv(xjac_inter_tm1, xjac_inv_inter_tm1, djac_inter_tm1, ndim)
 
-        dvol_tm1 = weight_kIP(kinpt) * djac_tm1
-        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_inter_to_kIP_inter_local)
-        N_grad_NP_inter_bar_global_tm1 = N_grad_NP_inter_bar_global_tm1 + N_grad_NP_inter_to_kIP_inter_global_tm1 * dvol_tm1
-        djac_bar_tm1 = djac_bar_tm1 + djac_tm1 * dvol_tm1
-        elem_vol_tm1 = elem_vol_tm1 + dvol_tm1
+        dvol_inter_tm1 = weight_kIP(kinpt) * djac_inter_tm1
+        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_inter_tm1,N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_bar_global_tm1 = N_grad_NP_inter_bar_global_tm1 + N_grad_NP_inter_to_kIP_inter_global_tm1 * dvol_inter_tm1
+        djac_bar_tm1 = djac_bar_tm1 + djac_inter_tm1 * dvol_inter_tm1
+        elem_vol_tm1 = elem_vol_tm1 + dvol_inter_tm1
 
-        xjac_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
-        call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
+        xjac_inter_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
+        call calc_matrix_inv(xjac_inter_t, xjac_inv_inter_t, djac_inter_t, ndim)
 
-        dvol_t = weight_kIP(kinpt) * djac_t
-        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_t,N_grad_NP_inter_to_kIP_inter_local)
-        N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t + N_grad_NP_inter_to_kIP_inter_global_t * dvol_t
-        djac_bar_t = djac_bar_t + djac_t * dvol_t
-        elem_vol_t = elem_vol_t + dvol_t
+        dvol_inter_t = weight_kIP(kinpt) * djac_inter_t
+        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_inter_t,N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t + N_grad_NP_inter_to_kIP_inter_global_t * dvol_inter_t
+        djac_bar_t = djac_bar_t + djac_inter_t * dvol_inter_t
+        elem_vol_t = elem_vol_t + dvol_inter_t
 
     end do
 
@@ -1266,11 +1287,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     djac_bar_tm1 = djac_bar_tm1 / elem_vol_tm1
     N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t / elem_vol_t
     djac_bar_t = djac_bar_t / elem_vol_t
-
-    ! Extracting u_heat from svars
-
-    call move_between_single_statev_at_all_IPs_and_svars(ninpt,u_heat_idx,u_heat_all_IPs_inter_tm1, &
-                                                        nstatev,svars,nsvars,1)
                                                    
     ! ================================================================== !
     ! STARTING THE LOOP OVER ALL INTEGRATION POINTS FOR ALL FIELDS       !
@@ -1293,11 +1309,11 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         N_shape_NP_inter_to_kIP_inter(1:nnode) = all_N_shape_NP_inter_to_kIP_inter(kinpt,1:nnode)
         N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) 
 
-        xjac_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
-        call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
+        xjac_inter_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
+        call calc_matrix_inv(xjac_inter_t, xjac_inv_inter_t, djac_inter_t, ndim)
 
-        dvol_t = weight_kIP(kinpt) * djac_t
-        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_t,N_grad_NP_inter_to_kIP_inter_local)
+        dvol_inter_t = weight_kIP(kinpt) * djac_inter_t
+        N_grad_NP_inter_to_kIP_inter_global_t = matmul(xjac_inv_inter_t,N_grad_NP_inter_to_kIP_inter_local)
 
         !   Calculate strain displacement B-matrix
         call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_t,ntens,nnode,ndim,Bu_kIP_inter_t)  
@@ -1306,11 +1322,11 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         Bu_bar_t = Bu_kIP_inter_t - Bu_vol_kIP_inter_t + Bu_bar_vol_t
 
-        xjac_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
-        call calc_matrix_inv(xjac_tm1, xjac_inv_tm1, djac_tm1, ndim)
+        xjac_inter_tm1 = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_tm1))
+        call calc_matrix_inv(xjac_inter_tm1, xjac_inv_inter_tm1, djac_inter_tm1, ndim)
 
-        dvol_tm1 = weight_kIP(kinpt) * djac_tm1
-        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_tm1,N_grad_NP_inter_to_kIP_inter_local)
+        dvol_inter_tm1 = weight_kIP(kinpt) * djac_inter_tm1
+        N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_inter_tm1,N_grad_NP_inter_to_kIP_inter_local)
 
         !   Calculate strain displacement B-matrix
         call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_tm1,ntens,nnode,ndim,Bu_kIP_inter_tm1)
@@ -1343,9 +1359,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             F_grad_tm1 = identity + ux_grad_tm1
             dF_grad = identity + dux_grad
 
-            F_grad_bar_t = F_grad_t * (djac_bar_t / djac_t) ** (1.0d0/3.0d0)
-            F_grad_bar_tm1 = F_grad_tm1 * (djac_bar_tm1 / djac_tm1) ** (1.0d0/3.0d0)
-            dF_grad_bar = dF_grad * (djac_bar_t / djac_t) ** (1.0d0/3.0d0)
+            F_grad_bar_t = F_grad_t * (djac_bar_t / djac_inter_t) ** (1.0d0/3.0d0)
+            F_grad_bar_tm1 = F_grad_tm1 * (djac_bar_tm1 / djac_inter_tm1) ** (1.0d0/3.0d0)
+            dF_grad_bar = dF_grad * (djac_bar_t / djac_inter_t) ** (1.0d0/3.0d0)
             
             call calc_matrix_inv(F_grad_bar_tm1, F_grad_bar_inv_tm1, determinant, ndim)
             
@@ -1422,18 +1438,19 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! 8 nodes x 3 displacement dofs ux, uy, uz = 24
 
         amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
-            amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_t * &
+            amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
                                (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
             
         rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-            dvol_t * (matmul(transpose(Bu_bar_t),stress))        
-
+            dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+        
         ! ================================================================== !
         !                                                                    !
-        !                    SOLVING THE DIFFUSION FIELD                     !
+        !                    SOLVING THE HEAT TRANSFER FIELD                 !
         !                                                                    !
         ! ================================================================== !
         
+        ! From UMATHT subroutine
         ! Variables to be defined
         ! u_heat_kIP: Internal thermal energy per unit mass, U, at the end of increment. 
         !         This variable is passed in as the value at the start of the increment (u_heat_kIP_tm1)
@@ -1451,7 +1468,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! dfdg_heat_kIP_t(ndim,ndim): Variation of the heat flux vector with respect to the spatial gradients of temperature,
         !        ∂f/∂(∂θ/∂x), evaluated at the end of the increment.
 
-        ! Variables passed in for Information
+        ! Variables passed in for information
         ! temp_kIP_tm1: Temperature at the start of the increment.
         ! dtemp_kIP: Increment of temperature.
         ! temp_grad_kIP_t: Current values of the spatial gradients of temperature, ∂θ/∂x.
@@ -1459,20 +1476,30 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! temp_kIP_tm1, dtemp_kIP, temp_grad_kIP_t, u_heat_kIP are all defined at integration points
 
+        ! From HETVAL subroutine
+        ! Variables to be defined
+        ! r_heat_kIP_t: Heat flux (thermal energy per time per volume: JT−1L−3), at this material calculation point.
+        ! drdt_heat_kIP_t: Variation of heat flux with respect to temperature, ∂r/∂θ. 
+        ! This variable is nonzero only if the heat flux depends on temperature. It is needed to define a correct Jacobian matrix.
+        
+        ! Variables passed in for information
+        ! temp_kIP_t: Temperature at the end of the increment.
+        ! dtemp_kIP: Increment of temperature.
+        
+        N_shape_NP_inter_to_kIP_extra(1:nnode) = all_N_shape_NP_inter_to_kIP_extra(kinpt,1:nnode)
+        N_grad_NP_inter_to_kIP_extra_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:ndim,1:nnode) 
+
+        xjac_extra_t = matmul(N_grad_NP_inter_to_kIP_extra_local, transpose(coords_kelem_NPs_t))
+        call calc_matrix_inv(xjac_extra_t, xjac_inv_extra_t, djac_extra_t, ndim)
+
+        N_grad_NP_inter_to_kIP_extra_global_t = matmul(xjac_inv_extra_t, N_grad_NP_inter_to_kIP_extra_local)
+        
         temp_kIP_tm1 = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_tm1)
         temp_kIP_t = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_t)
         dtemp_kIP = temp_kIP_t - temp_kIP_tm1
         temp_grad_kIP_t = matmul(N_grad_NP_inter_to_kIP_inter_global_t, temp_NPs_t)
         
         rho_heat = props(start_temp_props_idx)
-        cp_heat = props(start_temp_props_idx+1)
-        conductivity = props(start_temp_props_idx+2)
-        
-        ! print *, 'temp_kIP_tm1 = ', temp_kIP_tm1
-        ! print *, 'temp_kIP_t = ', temp_kIP_t
-        ! print *, 'dtemp_kIP = ', dtemp_kIP
-        ! print *, 'temp_grad_kIP_t = ', temp_grad_kIP_t
-        ! print *, 'rho_heat = ', rho_heat
 
         ! The internal energy per unit mass
         u_heat_kIP = statev(u_heat_idx)
@@ -1496,18 +1523,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                   nprops_UMATHT_heat_transfer,coords_kelem_kIP_t, &
                                   pnewdt,jelem,kinpt,layer,kspt,kstep,kinc)
 
-        u_heat_all_IPs_inter_t(kinpt) = u_heat_kIP_t
-        dudt_heat_all_IPs_inter_t(kinpt) = dudt_heat_kIP_t
-        dudg_heat_all_IPs_inter_t(kinpt,1:ndim) = dudg_heat_kIP_t(1:ndim)
+        call HETVAL_heat_transfer(cmname,temp_kIP_t,dtemp,time,dtime, &
+                                  statev,r_heat_kIP_t,drdt_heat_kIP_t,predef_kIP_tm1,dpred_kIP)
 
-        ! UMATHT_heat_transfer(u,dudt,dudg,flux,dfdt,dfdg, &
-        !     statev,temp,dtemp,dtemdx,time,dtime,predef,dpred, &
-        !     cmname,ntgrd,nstatv,props,nprops,coords,pnewdt, &
-        !     noel,npt,layer,kspt,kstep,kinc)
-
-        ! In our equation, we have du_heat_kIP = u_heat_kIP_t - u_heat_kIP_tm1
-        ! Then we also have the remaining value, which is ru_heat_kIP = du_heat_kIP - dudt_heat_kIP_t
-        
         u_heat_kIP_t = u_heat_kIP ! u_heat_kIP is updated as u_heat_kIP_t
         statev(u_heat_idx) = u_heat_kIP
 
@@ -1518,67 +1536,78 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         statev(flux_heat_X_idx) = flux_heat_kIP_t(1)
         statev(flux_heat_Y_idx) = flux_heat_kIP_t(2)
         statev(flux_heat_Z_idx) = flux_heat_kIP_t(3)
-
         
-
         du_heat_kIP = u_heat_kIP_t - u_heat_kIP_tm1
-        
+
         ! Matrix multiplication is associative 
         
-        ! These terms dfdt and dfdg are for the K_heat_conductivity_kIP_t matrix
+        ! These terms dfdt and dfdg are for the K_heat_kIP_t matrix
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, 1) @ (1, nnode)
-        K_dfdt_heat_term_kIP_t    = - matmul( &
+        K_heat_dfdt_kIP_t    = - matmul( &
                                         transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
                                         matmul(reshape(dfdt_heat_kIP_t, [ndim, 1]), & 
                                         reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode])) &
                                         )
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, ndim) @ (ndim, nnode)
-        K_dfdg_heat_term_kIP_t    = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
+        K_heat_dfdg_kIP_t   = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
                                              matmul(dfdg_heat_kIP_t, N_grad_NP_inter_to_kIP_inter_global_t))
 
-        K_heat_conductivity_kIP_t = K_dfdt_heat_term_kIP_t + K_dfdg_heat_term_kIP_t 
-
-        ! These terms dudt and dudg are for the M_heat_capacitance_kIP_t matrix
-
-        ! This code is valid only for quadratic elements
-
-        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
-        M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
+        ! (nnode, nnode) = (nnode, ndim) @ scalar @ (ndim, nnode)
+        K_heat_drdt_kIP_t    = - drdt_heat_kIP_t * matmul( &
                                         reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
                                         reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
                                         ) 
-        
-        ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
-        M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
-                                        reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
-                                        matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
-                                               N_grad_NP_inter_to_kIP_inter_global_t))
-        
-        
-        ! ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
-        ! M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
-        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
-        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
+
+        K_heat_kIP_t = K_heat_dfdt_kIP_t + K_heat_dfdg_kIP_t + K_heat_drdt_kIP_t
+
+        ! These terms dudt and dudg are for the M_heat_kIP_t matrix
+
+        ! This code is valid for quadratic elements
+
+        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
+        ! M_heat_dudt_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
+        !                                 reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
+        !                                 reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
         !                                 ) 
         
         ! ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
-        ! M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
-        !                                 reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+        ! M_heat_dudg_kIP_t    = + rho_heat * matmul( &
+        !                                 reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
         !                                 matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
-        !                                        N_grad_NP_inter_to_kIP_extra_global_t))
+        !                                        N_grad_NP_inter_to_kIP_inter_global_t))
 
-        M_heat_capacitance_kIP_t = M_dudt_heat_term_kIP_t + M_dudg_heat_term_kIP_t
+        ! This code is valid for quadratic elements
 
-        ! (nnode) = (nnode) * scalar * scalar
-
-        F_du_heat_term_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_heat * du_heat_kIP 
+        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
+        M_heat_dudt_kIP_t    = + rho_heat * dudt_heat_kIP_t * matmul( &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
+                                        ) 
+        
+        ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
+        M_heat_dudg_kIP_t    = + rho_heat * matmul( &
+                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
+                                        matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
+                                               N_grad_NP_inter_to_kIP_extra_global_t))
+        
+        M_heat_kIP_t = M_heat_dudt_kIP_t + M_heat_dudg_kIP_t
 
         ! (nnode) = (nnode, ndim) @ (ndim)
-        F_flux_heat_term_kIP_t  = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), flux_heat_kIP_t)
-        
-        F_heat_rhs_kIP_t = F_flux_heat_term_kIP_t + F_du_heat_term_kIP_t
+        F_heat_flux_kIP_t  = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), flux_heat_kIP_t)
+
+        ! (nnode) = (nnode) * scalar
+        F_heat_r_kIP_t = - N_shape_NP_inter_to_kIP_inter * r_heat_kIP_t
+
+        ! (nnode) = (nnode) * scalar * scalar
+        ! This code is valid for quadratic elements
+
+        ! F_heat_du_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_heat * du_heat_kIP 
+
+        ! This code is valid for linear elements
+
+        F_heat_du_kIP_t = + N_shape_NP_inter_to_kIP_extra * rho_heat * du_heat_kIP
 
         ! *****************************************!
         ! DIFFUSION CONTRIBUTION TO amatrx AND rhs !
@@ -1588,21 +1617,32 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! 8 nodes x 1 heat concentration dof = 8
         ! print *, 'dtime = ', dtime
 
-        if (kinc <= 1) then
-            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-                amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                + dvol_t * 0.0d0
-                
-            rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                - dvol_t * 0.0d0
-        else
-            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-                amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                + dvol_t * K_heat_conductivity_kIP_t + dvol_t * M_heat_capacitance_kIP_t/dtime
-                
-            rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                - dvol_t * F_flux_heat_term_kIP_t - dvol_t * F_du_heat_term_kIP_t/dtime
-        end if
+        ! Steady-State Heat Transfer Analysis has flags(1) = 31
+        ! Transient Heat Transfer Analysis has flags(1) = 32 or 33
+
+        ! Steady-State Fully Coupled Thermal-Stress Analysis has lflags(1) = 71
+        ! Transient Fully Coupled Thermal-Stress Analysis has lflags(1) = 72 or 73
+
+        ! In steady state analysis, the internal heat change and heat capacitance is zero
+        if (lflags(1) == 31 .or. lflags(1) == 71) then
+            M_heat_kIP_t = 0.0d0
+            F_heat_du_kIP_t = 0.0d0
+        end if 
+
+        amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+            + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
+            
+        rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+            - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
+
+
+        ! ================================================================== !
+        !                                                                    !
+        !               SOLVING THE HYDROGEN DIFFUSION FIELD                 !
+        !                                                                    !
+        ! ================================================================== !
+
 
         ! ================================================================== !
         !                                                                    !
@@ -1621,69 +1661,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
     end do       ! end loop on material integration points
 
-    ! Finish up the heat equatiion for heat capacitance term M and the internal heat rate rhs term
-    
-    do kinpt = 1, ninpt
-        N_shape_NP_inter_to_kIP_extra(1:nnode) = all_N_shape_NP_inter_to_kIP_extra(kinpt,1:nnode)
-        N_grad_NP_inter_to_kIP_extra_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:ndim,1:nnode) 
-        N_shape_IP_inter_to_kIP_extra(1:ninpt) = all_N_shape_IP_inter_to_kIP_extra(kinpt,1:ninpt)
-        N_shape_IP_extra_to_kIP_inter(1:ninpt) = all_N_shape_IP_extra_to_kIP_inter(kinpt,1:ninpt)
-
-        xjac_t = matmul(N_grad_NP_inter_to_kIP_extra_local, transpose(coords_kelem_NPs_t))
-        call calc_matrix_inv(xjac_t, xjac_inv_t, djac_t, ndim)
-
-        N_grad_NP_inter_to_kIP_extra_global_t = matmul(xjac_inv_t, N_grad_NP_inter_to_kIP_extra_local)
-        dvol_t_extra = weight_kIP(kinpt) * djac_t
-
-        u_heat_kIP_inter_tm1 = u_heat_all_IPs_inter_tm1(kinpt)
-        u_heat_kIP_extra_tm1 = dot_product(N_shape_IP_inter_to_kIP_extra, u_heat_all_IPs_inter_tm1)
-        u_heat_kIP_inter_t = u_heat_all_IPs_inter_t(kinpt)
-        u_heat_kIP_extra_t = dot_product(N_shape_IP_inter_to_kIP_extra, u_heat_all_IPs_inter_t)
-        
-        dudt_heat_kIP_inter_t = dudt_heat_all_IPs_inter_t(kinpt)
-        dudt_heat_kIP_extra_t = dot_product(N_shape_IP_inter_to_kIP_extra, dudt_heat_all_IPs_inter_t)
-
-
-        ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
-        M_dudt_heat_term_kIP_t    = + rho_heat * dudt_heat_kIP_extra_t * matmul( &
-                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
-                                        reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
-                                        ) 
-        
-        ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
-        M_dudg_heat_term_kIP_t    = + rho_heat * matmul( &
-                                        reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
-                                        matmul(reshape(dudg_heat_kIP_t, [1, ndim]), &
-                                               N_grad_NP_inter_to_kIP_extra_global_t))
-
-        M_heat_capacitance_kIP_t = M_dudt_heat_term_kIP_t + M_dudg_heat_term_kIP_t
-
-        F_du_heat_term_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_heat * du_heat_kIP 
-
-        ! if (kinc <= 1) then
-        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-        !         + dvol_t * 0.0d0
-                
-        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-        !         - dvol_t * 0.0d0
-        ! else
-        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-        !         + dvol_t * M_heat_capacitance_kIP_t/dtime
-                
-        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-        !         - dvol_t * F_du_heat_term_kIP_t/dtime
-        ! end if
-    end do
-
-
-    ! if (kinc == 1) then
-    !     print *, 'rhs(start_temp_idx:end_temp_idx,nrhs) = '
-    !     print *, rhs(start_temp_idx:end_temp_idx,nrhs)
-    !     print *, 'amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = '
-    !     print *, amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx)
-    ! end if
 return
 end
     

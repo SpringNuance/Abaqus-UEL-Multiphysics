@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 01-Apr-2025   Time 12:34:12
+   Abaqus 2023.HF4                                  Date 02-Apr-2025   Time 14:02:56
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -98,7 +98,7 @@
 
           PRINT OF INCREMENT NUMBER, TIME, ETC., EVERY    1  INCREMENTS
 
-     THE MAXIMUM NUMBER OF INCREMENTS IN THIS STEP IS                     100
+     THE MAXIMUM NUMBER OF INCREMENTS IN THIS STEP IS                   10000
 
           LARGE DISPLACEMENT THEORY WILL BE USED
 
@@ -126,7 +126,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  36ms
+        SOLVER ELAPSED TIME:  7ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -137,12 +137,12 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.987E-02   TIME AVG. HEAT FLUX   1.987E-02
- LARGEST RESIDUAL HEAT FLUX        -7.551E-20   AT NODE          8   DOF 11
+ AVERAGE HEAT FLUX                  2.484E-04   TIME AVG. HEAT FLUX   2.484E-04
+ LARGEST RESIDUAL HEAT FLUX        -1.297E-19   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.          100.       AT NODE          1   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.629       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.         100.       AT NODE          1   DOF 11
+ LARGEST CORRECTION TO TEMP.        0.629       AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -173,12 +173,12 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.234E-04   TIME AVG. HEAT FLUX   9.999E-03
- LARGEST RESIDUAL HEAT FLUX         2.137E-19   AT NODE          2   DOF 11
+ AVERAGE HEAT FLUX                  2.469E-04   TIME AVG. HEAT FLUX   2.476E-04
+ LARGEST RESIDUAL HEAT FLUX         4.124E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST INCREMENT OF TEMP.         0.625       AT NODE          4   DOF 11
+ LARGEST INCREMENT OF TEMP.         0.625       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.        -100.       AT NODE          1   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.956E-03   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -209,12 +209,12 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.227E-04   TIME AVG. HEAT FLUX   6.707E-03
+ AVERAGE HEAT FLUX                  2.453E-04   TIME AVG. HEAT FLUX   2.469E-04
  LARGEST RESIDUAL HEAT FLUX        -3.969E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.621       AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
- LARGEST CORRECTION TO TEMP.       -3.931E-03   AT NODE          4   DOF 11
+ LARGEST CORRECTION TO TEMP.       -3.931E-03   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
           THE HEAT FLUX EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
@@ -245,7 +245,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.219E-04   TIME AVG. HEAT FLUX   5.061E-03
+ AVERAGE HEAT FLUX                  2.438E-04   TIME AVG. HEAT FLUX   2.461E-04
  LARGEST RESIDUAL HEAT FLUX        -4.515E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.617       AT NODE          2   DOF 11
@@ -281,7 +281,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.211E-04   TIME AVG. HEAT FLUX   4.073E-03
+ AVERAGE HEAT FLUX                  2.422E-04   TIME AVG. HEAT FLUX   2.453E-04
  LARGEST RESIDUAL HEAT FLUX        -8.229E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.613       AT NODE          2   DOF 11
@@ -306,7 +306,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -317,7 +317,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.204E-04   TIME AVG. HEAT FLUX   3.414E-03
+ AVERAGE HEAT FLUX                  2.407E-04   TIME AVG. HEAT FLUX   2.446E-04
  LARGEST RESIDUAL HEAT FLUX        -5.518E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.609       AT NODE          2   DOF 11
@@ -353,7 +353,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.196E-04   TIME AVG. HEAT FLUX   2.943E-03
+ AVERAGE HEAT FLUX                  2.392E-04   TIME AVG. HEAT FLUX   2.438E-04
  LARGEST RESIDUAL HEAT FLUX         1.452E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.606       AT NODE          2   DOF 11
@@ -378,7 +378,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -389,8 +389,8 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.188E-04   TIME AVG. HEAT FLUX   2.590E-03
- LARGEST RESIDUAL HEAT FLUX        -7.311E-20   AT NODE          4   DOF 11
+ AVERAGE HEAT FLUX                  2.377E-04   TIME AVG. HEAT FLUX   2.430E-04
+ LARGEST RESIDUAL HEAT FLUX        -7.226E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.602       AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
@@ -425,7 +425,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.181E-04   TIME AVG. HEAT FLUX   2.316E-03
+ AVERAGE HEAT FLUX                  2.362E-04   TIME AVG. HEAT FLUX   2.423E-04
  LARGEST RESIDUAL HEAT FLUX        -6.679E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.598       AT NODE          6   DOF 11
@@ -461,7 +461,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.174E-04   TIME AVG. HEAT FLUX   2.096E-03
+ AVERAGE HEAT FLUX                  2.347E-04   TIME AVG. HEAT FLUX   2.415E-04
  LARGEST RESIDUAL HEAT FLUX         7.357E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.594       AT NODE          2   DOF 11
@@ -486,7 +486,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -497,7 +497,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.166E-04   TIME AVG. HEAT FLUX   1.916E-03
+ AVERAGE HEAT FLUX                  2.332E-04   TIME AVG. HEAT FLUX   2.408E-04
  LARGEST RESIDUAL HEAT FLUX         3.447E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.590       AT NODE          2   DOF 11
@@ -533,7 +533,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.159E-04   TIME AVG. HEAT FLUX   1.766E-03
+ AVERAGE HEAT FLUX                  2.318E-04   TIME AVG. HEAT FLUX   2.400E-04
  LARGEST RESIDUAL HEAT FLUX         5.226E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.587       AT NODE          8   DOF 11
@@ -569,7 +569,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.152E-04   TIME AVG. HEAT FLUX   1.639E-03
+ AVERAGE HEAT FLUX                  2.303E-04   TIME AVG. HEAT FLUX   2.393E-04
  LARGEST RESIDUAL HEAT FLUX        -4.685E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.583       AT NODE          6   DOF 11
@@ -605,7 +605,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.144E-04   TIME AVG. HEAT FLUX   1.530E-03
+ AVERAGE HEAT FLUX                  2.289E-04   TIME AVG. HEAT FLUX   2.385E-04
  LARGEST RESIDUAL HEAT FLUX         9.207E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.579       AT NODE          6   DOF 11
@@ -641,7 +641,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.137E-04   TIME AVG. HEAT FLUX   1.436E-03
+ AVERAGE HEAT FLUX                  2.274E-04   TIME AVG. HEAT FLUX   2.378E-04
  LARGEST RESIDUAL HEAT FLUX         9.584E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.576       AT NODE          2   DOF 11
@@ -666,7 +666,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -677,7 +677,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.130E-04   TIME AVG. HEAT FLUX   1.353E-03
+ AVERAGE HEAT FLUX                  2.260E-04   TIME AVG. HEAT FLUX   2.370E-04
  LARGEST RESIDUAL HEAT FLUX         4.463E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.572       AT NODE          2   DOF 11
@@ -713,7 +713,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.123E-04   TIME AVG. HEAT FLUX   1.280E-03
+ AVERAGE HEAT FLUX                  2.246E-04   TIME AVG. HEAT FLUX   2.363E-04
  LARGEST RESIDUAL HEAT FLUX         6.873E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.569       AT NODE          2   DOF 11
@@ -738,7 +738,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -749,7 +749,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.116E-04   TIME AVG. HEAT FLUX   1.215E-03
+ AVERAGE HEAT FLUX                  2.232E-04   TIME AVG. HEAT FLUX   2.356E-04
  LARGEST RESIDUAL HEAT FLUX        -8.105E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.565       AT NODE          2   DOF 11
@@ -785,7 +785,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.109E-04   TIME AVG. HEAT FLUX   1.157E-03
+ AVERAGE HEAT FLUX                  2.218E-04   TIME AVG. HEAT FLUX   2.349E-04
  LARGEST RESIDUAL HEAT FLUX         4.887E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.561       AT NODE          6   DOF 11
@@ -810,7 +810,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -821,7 +821,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.102E-04   TIME AVG. HEAT FLUX   1.105E-03
+ AVERAGE HEAT FLUX                  2.204E-04   TIME AVG. HEAT FLUX   2.341E-04
  LARGEST RESIDUAL HEAT FLUX         8.034E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.558       AT NODE          6   DOF 11
@@ -857,7 +857,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.095E-04   TIME AVG. HEAT FLUX   1.057E-03
+ AVERAGE HEAT FLUX                  2.190E-04   TIME AVG. HEAT FLUX   2.334E-04
  LARGEST RESIDUAL HEAT FLUX        -1.668E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.554       AT NODE          2   DOF 11
@@ -893,7 +893,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.176E-04   TIME AVG. HEAT FLUX   1.019E-03
+ AVERAGE HEAT FLUX                  2.176E-04   TIME AVG. HEAT FLUX   2.327E-04
  LARGEST RESIDUAL HEAT FLUX        -7.767E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.551       AT NODE          2   DOF 11
@@ -929,7 +929,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.162E-04   TIME AVG. HEAT FLUX   9.841E-04
+ AVERAGE HEAT FLUX                  2.162E-04   TIME AVG. HEAT FLUX   2.320E-04
  LARGEST RESIDUAL HEAT FLUX         7.819E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.547       AT NODE          6   DOF 11
@@ -965,7 +965,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.149E-04   TIME AVG. HEAT FLUX   9.521E-04
+ AVERAGE HEAT FLUX                  2.149E-04   TIME AVG. HEAT FLUX   2.313E-04
  LARGEST RESIDUAL HEAT FLUX        -8.327E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.544       AT NODE          2   DOF 11
@@ -1001,7 +1001,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.135E-04   TIME AVG. HEAT FLUX   9.225E-04
+ AVERAGE HEAT FLUX                  2.135E-04   TIME AVG. HEAT FLUX   2.306E-04
  LARGEST RESIDUAL HEAT FLUX        -2.130E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.541       AT NODE          2   DOF 11
@@ -1037,7 +1037,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.122E-04   TIME AVG. HEAT FLUX   8.952E-04
+ AVERAGE HEAT FLUX                  2.122E-04   TIME AVG. HEAT FLUX   2.298E-04
  LARGEST RESIDUAL HEAT FLUX        -4.717E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.537       AT NODE          2   DOF 11
@@ -1062,7 +1062,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1073,7 +1073,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.108E-04   TIME AVG. HEAT FLUX   8.699E-04
+ AVERAGE HEAT FLUX                  2.108E-04   TIME AVG. HEAT FLUX   2.291E-04
  LARGEST RESIDUAL HEAT FLUX         2.059E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.534       AT NODE          2   DOF 11
@@ -1109,7 +1109,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.095E-04   TIME AVG. HEAT FLUX   8.463E-04
+ AVERAGE HEAT FLUX                  2.095E-04   TIME AVG. HEAT FLUX   2.284E-04
  LARGEST RESIDUAL HEAT FLUX         4.717E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.530       AT NODE          2   DOF 11
@@ -1145,7 +1145,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.082E-04   TIME AVG. HEAT FLUX   8.243E-04
+ AVERAGE HEAT FLUX                  2.082E-04   TIME AVG. HEAT FLUX   2.277E-04
  LARGEST RESIDUAL HEAT FLUX        -1.668E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.527       AT NODE          2   DOF 11
@@ -1181,7 +1181,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.069E-04   TIME AVG. HEAT FLUX   8.037E-04
+ AVERAGE HEAT FLUX                  2.069E-04   TIME AVG. HEAT FLUX   2.270E-04
  LARGEST RESIDUAL HEAT FLUX         4.163E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.524       AT NODE          8   DOF 11
@@ -1217,7 +1217,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.056E-04   TIME AVG. HEAT FLUX   7.844E-04
+ AVERAGE HEAT FLUX                  2.056E-04   TIME AVG. HEAT FLUX   2.264E-04
  LARGEST RESIDUAL HEAT FLUX         3.014E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.520       AT NODE          6   DOF 11
@@ -1253,7 +1253,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.043E-04   TIME AVG. HEAT FLUX   7.663E-04
+ AVERAGE HEAT FLUX                  2.043E-04   TIME AVG. HEAT FLUX   2.257E-04
  LARGEST RESIDUAL HEAT FLUX         7.089E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.517       AT NODE          6   DOF 11
@@ -1289,7 +1289,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.030E-04   TIME AVG. HEAT FLUX   7.492E-04
+ AVERAGE HEAT FLUX                  2.030E-04   TIME AVG. HEAT FLUX   2.250E-04
  LARGEST RESIDUAL HEAT FLUX        -4.685E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.514       AT NODE          6   DOF 11
@@ -1314,7 +1314,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1325,7 +1325,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.017E-04   TIME AVG. HEAT FLUX   7.331E-04
+ AVERAGE HEAT FLUX                  2.017E-04   TIME AVG. HEAT FLUX   2.243E-04
  LARGEST RESIDUAL HEAT FLUX         7.640E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.511       AT NODE          2   DOF 11
@@ -1361,7 +1361,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  2.005E-04   TIME AVG. HEAT FLUX   7.179E-04
+ AVERAGE HEAT FLUX                  2.005E-04   TIME AVG. HEAT FLUX   2.236E-04
  LARGEST RESIDUAL HEAT FLUX        -8.034E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.508       AT NODE          6   DOF 11
@@ -1386,7 +1386,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1397,7 +1397,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.992E-04   TIME AVG. HEAT FLUX   7.035E-04
+ AVERAGE HEAT FLUX                  1.992E-04   TIME AVG. HEAT FLUX   2.229E-04
  LARGEST RESIDUAL HEAT FLUX        -1.095E-19   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.504       AT NODE          8   DOF 11
@@ -1422,7 +1422,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1433,7 +1433,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.980E-04   TIME AVG. HEAT FLUX   6.898E-04
+ AVERAGE HEAT FLUX                  1.980E-04   TIME AVG. HEAT FLUX   2.223E-04
  LARGEST RESIDUAL HEAT FLUX         9.852E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.501       AT NODE          8   DOF 11
@@ -1469,7 +1469,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.967E-04   TIME AVG. HEAT FLUX   6.768E-04
+ AVERAGE HEAT FLUX                  1.967E-04   TIME AVG. HEAT FLUX   2.216E-04
  LARGEST RESIDUAL HEAT FLUX        -5.607E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.498       AT NODE          6   DOF 11
@@ -1505,7 +1505,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.955E-04   TIME AVG. HEAT FLUX   6.645E-04
+ AVERAGE HEAT FLUX                  1.955E-04   TIME AVG. HEAT FLUX   2.209E-04
  LARGEST RESIDUAL HEAT FLUX         5.913E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.495       AT NODE          2   DOF 11
@@ -1541,7 +1541,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.942E-04   TIME AVG. HEAT FLUX   6.527E-04
+ AVERAGE HEAT FLUX                  1.942E-04   TIME AVG. HEAT FLUX   2.203E-04
  LARGEST RESIDUAL HEAT FLUX         5.268E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.492       AT NODE          2   DOF 11
@@ -1577,7 +1577,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.930E-04   TIME AVG. HEAT FLUX   6.415E-04
+ AVERAGE HEAT FLUX                  1.930E-04   TIME AVG. HEAT FLUX   2.196E-04
  LARGEST RESIDUAL HEAT FLUX        -5.913E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.489       AT NODE          6   DOF 11
@@ -1602,7 +1602,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1613,7 +1613,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.918E-04   TIME AVG. HEAT FLUX   6.308E-04
+ AVERAGE HEAT FLUX                  1.918E-04   TIME AVG. HEAT FLUX   2.189E-04
  LARGEST RESIDUAL HEAT FLUX        -2.421E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.486       AT NODE          6   DOF 11
@@ -1638,7 +1638,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1649,7 +1649,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.906E-04   TIME AVG. HEAT FLUX   6.206E-04
+ AVERAGE HEAT FLUX                  1.906E-04   TIME AVG. HEAT FLUX   2.183E-04
  LARGEST RESIDUAL HEAT FLUX        -5.235E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.483       AT NODE          8   DOF 11
@@ -1674,7 +1674,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1685,7 +1685,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.894E-04   TIME AVG. HEAT FLUX   6.108E-04
+ AVERAGE HEAT FLUX                  1.894E-04   TIME AVG. HEAT FLUX   2.176E-04
  LARGEST RESIDUAL HEAT FLUX         4.624E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.479       AT NODE          6   DOF 11
@@ -1710,7 +1710,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1721,7 +1721,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.882E-04   TIME AVG. HEAT FLUX   6.014E-04
+ AVERAGE HEAT FLUX                  1.882E-04   TIME AVG. HEAT FLUX   2.170E-04
  LARGEST RESIDUAL HEAT FLUX        -2.760E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.476       AT NODE          2   DOF 11
@@ -1746,7 +1746,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1757,7 +1757,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.870E-04   TIME AVG. HEAT FLUX   5.924E-04
+ AVERAGE HEAT FLUX                  1.870E-04   TIME AVG. HEAT FLUX   2.163E-04
  LARGEST RESIDUAL HEAT FLUX        -4.948E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.473       AT NODE          6   DOF 11
@@ -1782,7 +1782,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1793,7 +1793,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.858E-04   TIME AVG. HEAT FLUX   5.837E-04
+ AVERAGE HEAT FLUX                  1.858E-04   TIME AVG. HEAT FLUX   2.157E-04
  LARGEST RESIDUAL HEAT FLUX        -7.319E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.471       AT NODE          6   DOF 11
@@ -1818,7 +1818,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1829,7 +1829,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.847E-04   TIME AVG. HEAT FLUX   5.754E-04
+ AVERAGE HEAT FLUX                  1.847E-04   TIME AVG. HEAT FLUX   2.150E-04
  LARGEST RESIDUAL HEAT FLUX         6.427E-21   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.468       AT NODE          6   DOF 11
@@ -1865,7 +1865,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.835E-04   TIME AVG. HEAT FLUX   5.674E-04
+ AVERAGE HEAT FLUX                  1.835E-04   TIME AVG. HEAT FLUX   2.144E-04
  LARGEST RESIDUAL HEAT FLUX        -5.235E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.465       AT NODE          6   DOF 11
@@ -1901,7 +1901,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.824E-04   TIME AVG. HEAT FLUX   5.597E-04
+ AVERAGE HEAT FLUX                  1.824E-04   TIME AVG. HEAT FLUX   2.137E-04
  LARGEST RESIDUAL HEAT FLUX        -2.491E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.462       AT NODE          6   DOF 11
@@ -1937,7 +1937,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.812E-04   TIME AVG. HEAT FLUX   5.523E-04
+ AVERAGE HEAT FLUX                  1.812E-04   TIME AVG. HEAT FLUX   2.131E-04
  LARGEST RESIDUAL HEAT FLUX         3.880E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.459       AT NODE          2   DOF 11
@@ -1973,7 +1973,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.801E-04   TIME AVG. HEAT FLUX   5.451E-04
+ AVERAGE HEAT FLUX                  1.801E-04   TIME AVG. HEAT FLUX   2.125E-04
  LARGEST RESIDUAL HEAT FLUX         4.787E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.456       AT NODE          6   DOF 11
@@ -2009,7 +2009,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.789E-04   TIME AVG. HEAT FLUX   5.382E-04
+ AVERAGE HEAT FLUX                  1.789E-04   TIME AVG. HEAT FLUX   2.118E-04
  LARGEST RESIDUAL HEAT FLUX        -6.411E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.453       AT NODE          2   DOF 11
@@ -2045,7 +2045,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.778E-04   TIME AVG. HEAT FLUX   5.316E-04
+ AVERAGE HEAT FLUX                  1.778E-04   TIME AVG. HEAT FLUX   2.112E-04
  LARGEST RESIDUAL HEAT FLUX        -3.508E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.450       AT NODE          6   DOF 11
@@ -2081,7 +2081,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.767E-04   TIME AVG. HEAT FLUX   5.251E-04
+ AVERAGE HEAT FLUX                  1.767E-04   TIME AVG. HEAT FLUX   2.106E-04
  LARGEST RESIDUAL HEAT FLUX        -3.000E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.447       AT NODE          6   DOF 11
@@ -2106,7 +2106,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2117,7 +2117,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.756E-04   TIME AVG. HEAT FLUX   5.189E-04
+ AVERAGE HEAT FLUX                  1.756E-04   TIME AVG. HEAT FLUX   2.099E-04
  LARGEST RESIDUAL HEAT FLUX        -1.258E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.445       AT NODE          6   DOF 11
@@ -2142,7 +2142,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2153,7 +2153,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.745E-04   TIME AVG. HEAT FLUX   5.128E-04
+ AVERAGE HEAT FLUX                  1.745E-04   TIME AVG. HEAT FLUX   2.093E-04
  LARGEST RESIDUAL HEAT FLUX         5.913E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.442       AT NODE          6   DOF 11
@@ -2178,7 +2178,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2189,7 +2189,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.734E-04   TIME AVG. HEAT FLUX   5.070E-04
+ AVERAGE HEAT FLUX                  1.734E-04   TIME AVG. HEAT FLUX   2.087E-04
  LARGEST RESIDUAL HEAT FLUX        -9.076E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.439       AT NODE          6   DOF 11
@@ -2214,7 +2214,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2225,7 +2225,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.723E-04   TIME AVG. HEAT FLUX   5.013E-04
+ AVERAGE HEAT FLUX                  1.723E-04   TIME AVG. HEAT FLUX   2.081E-04
  LARGEST RESIDUAL HEAT FLUX         4.558E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.436       AT NODE          4   DOF 11
@@ -2261,7 +2261,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.712E-04   TIME AVG. HEAT FLUX   4.958E-04
+ AVERAGE HEAT FLUX                  1.712E-04   TIME AVG. HEAT FLUX   2.075E-04
  LARGEST RESIDUAL HEAT FLUX        -4.388E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.433       AT NODE          8   DOF 11
@@ -2297,7 +2297,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.701E-04   TIME AVG. HEAT FLUX   4.905E-04
+ AVERAGE HEAT FLUX                  1.701E-04   TIME AVG. HEAT FLUX   2.069E-04
  LARGEST RESIDUAL HEAT FLUX         5.630E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.431       AT NODE          8   DOF 11
@@ -2333,7 +2333,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.691E-04   TIME AVG. HEAT FLUX   4.853E-04
+ AVERAGE HEAT FLUX                  1.691E-04   TIME AVG. HEAT FLUX   2.062E-04
  LARGEST RESIDUAL HEAT FLUX        -3.508E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.428       AT NODE          6   DOF 11
@@ -2369,7 +2369,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.680E-04   TIME AVG. HEAT FLUX   4.802E-04
+ AVERAGE HEAT FLUX                  1.680E-04   TIME AVG. HEAT FLUX   2.056E-04
  LARGEST RESIDUAL HEAT FLUX        -5.066E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.425       AT NODE          6   DOF 11
@@ -2405,7 +2405,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.669E-04   TIME AVG. HEAT FLUX   4.753E-04
+ AVERAGE HEAT FLUX                  1.669E-04   TIME AVG. HEAT FLUX   2.050E-04
  LARGEST RESIDUAL HEAT FLUX         6.064E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.423       AT NODE          2   DOF 11
@@ -2430,7 +2430,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2441,7 +2441,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.659E-04   TIME AVG. HEAT FLUX   4.706E-04
+ AVERAGE HEAT FLUX                  1.659E-04   TIME AVG. HEAT FLUX   2.044E-04
  LARGEST RESIDUAL HEAT FLUX         3.179E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.420       AT NODE          8   DOF 11
@@ -2466,7 +2466,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2477,7 +2477,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.649E-04   TIME AVG. HEAT FLUX   4.659E-04
+ AVERAGE HEAT FLUX                  1.649E-04   TIME AVG. HEAT FLUX   2.038E-04
  LARGEST RESIDUAL HEAT FLUX        -7.438E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.417       AT NODE          8   DOF 11
@@ -2502,7 +2502,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2513,7 +2513,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.638E-04   TIME AVG. HEAT FLUX   4.614E-04
+ AVERAGE HEAT FLUX                  1.638E-04   TIME AVG. HEAT FLUX   2.032E-04
  LARGEST RESIDUAL HEAT FLUX         5.767E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.415       AT NODE          2   DOF 11
@@ -2538,7 +2538,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2549,7 +2549,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.628E-04   TIME AVG. HEAT FLUX   4.570E-04
+ AVERAGE HEAT FLUX                  1.628E-04   TIME AVG. HEAT FLUX   2.026E-04
  LARGEST RESIDUAL HEAT FLUX        -2.219E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.412       AT NODE          6   DOF 11
@@ -2585,7 +2585,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.618E-04   TIME AVG. HEAT FLUX   4.528E-04
+ AVERAGE HEAT FLUX                  1.618E-04   TIME AVG. HEAT FLUX   2.021E-04
  LARGEST RESIDUAL HEAT FLUX         5.235E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.410       AT NODE          8   DOF 11
@@ -2621,7 +2621,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.607E-04   TIME AVG. HEAT FLUX   4.486E-04
+ AVERAGE HEAT FLUX                  1.607E-04   TIME AVG. HEAT FLUX   2.015E-04
  LARGEST RESIDUAL HEAT FLUX        -2.906E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.407       AT NODE          8   DOF 11
@@ -2657,7 +2657,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.597E-04   TIME AVG. HEAT FLUX   4.445E-04
+ AVERAGE HEAT FLUX                  1.597E-04   TIME AVG. HEAT FLUX   2.009E-04
  LARGEST RESIDUAL HEAT FLUX        -3.372E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.404       AT NODE          8   DOF 11
@@ -2693,7 +2693,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.587E-04   TIME AVG. HEAT FLUX   4.406E-04
+ AVERAGE HEAT FLUX                  1.587E-04   TIME AVG. HEAT FLUX   2.003E-04
  LARGEST RESIDUAL HEAT FLUX         5.154E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.402       AT NODE          6   DOF 11
@@ -2729,7 +2729,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.577E-04   TIME AVG. HEAT FLUX   4.367E-04
+ AVERAGE HEAT FLUX                  1.577E-04   TIME AVG. HEAT FLUX   1.997E-04
  LARGEST RESIDUAL HEAT FLUX        -5.179E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.399       AT NODE          6   DOF 11
@@ -2765,7 +2765,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.567E-04   TIME AVG. HEAT FLUX   4.329E-04
+ AVERAGE HEAT FLUX                  1.567E-04   TIME AVG. HEAT FLUX   1.991E-04
  LARGEST RESIDUAL HEAT FLUX         5.913E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.397       AT NODE          6   DOF 11
@@ -2790,7 +2790,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  0ms
+        SOLVER ELAPSED TIME:  1ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2801,7 +2801,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.558E-04   TIME AVG. HEAT FLUX   4.292E-04
+ AVERAGE HEAT FLUX                  1.558E-04   TIME AVG. HEAT FLUX   1.985E-04
  LARGEST RESIDUAL HEAT FLUX         4.841E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.394       AT NODE          6   DOF 11
@@ -2837,7 +2837,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.548E-04   TIME AVG. HEAT FLUX   4.256E-04
+ AVERAGE HEAT FLUX                  1.548E-04   TIME AVG. HEAT FLUX   1.980E-04
  LARGEST RESIDUAL HEAT FLUX         4.742E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.392       AT NODE          6   DOF 11
@@ -2862,7 +2862,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2873,7 +2873,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.538E-04   TIME AVG. HEAT FLUX   4.221E-04
+ AVERAGE HEAT FLUX                  1.538E-04   TIME AVG. HEAT FLUX   1.974E-04
  LARGEST RESIDUAL HEAT FLUX        -3.438E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.389       AT NODE          8   DOF 11
@@ -2898,7 +2898,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2909,7 +2909,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.528E-04   TIME AVG. HEAT FLUX   4.186E-04
+ AVERAGE HEAT FLUX                  1.528E-04   TIME AVG. HEAT FLUX   1.968E-04
  LARGEST RESIDUAL HEAT FLUX         4.534E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.387       AT NODE          4   DOF 11
@@ -2945,7 +2945,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.519E-04   TIME AVG. HEAT FLUX   4.152E-04
+ AVERAGE HEAT FLUX                  1.519E-04   TIME AVG. HEAT FLUX   1.963E-04
  LARGEST RESIDUAL HEAT FLUX         2.332E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.384       AT NODE          8   DOF 11
@@ -2970,7 +2970,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2981,7 +2981,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.509E-04   TIME AVG. HEAT FLUX   4.119E-04
+ AVERAGE HEAT FLUX                  1.509E-04   TIME AVG. HEAT FLUX   1.957E-04
  LARGEST RESIDUAL HEAT FLUX        -2.280E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.382       AT NODE          6   DOF 11
@@ -3017,7 +3017,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.500E-04   TIME AVG. HEAT FLUX   4.087E-04
+ AVERAGE HEAT FLUX                  1.500E-04   TIME AVG. HEAT FLUX   1.951E-04
  LARGEST RESIDUAL HEAT FLUX        -2.977E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.380       AT NODE          8   DOF 11
@@ -3053,7 +3053,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.490E-04   TIME AVG. HEAT FLUX   4.055E-04
+ AVERAGE HEAT FLUX                  1.490E-04   TIME AVG. HEAT FLUX   1.946E-04
  LARGEST RESIDUAL HEAT FLUX         5.518E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.377       AT NODE          8   DOF 11
@@ -3089,7 +3089,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.481E-04   TIME AVG. HEAT FLUX   4.024E-04
+ AVERAGE HEAT FLUX                  1.481E-04   TIME AVG. HEAT FLUX   1.940E-04
  LARGEST RESIDUAL HEAT FLUX        -4.332E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.375       AT NODE          6   DOF 11
@@ -3125,7 +3125,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.472E-04   TIME AVG. HEAT FLUX   3.994E-04
+ AVERAGE HEAT FLUX                  1.472E-04   TIME AVG. HEAT FLUX   1.934E-04
  LARGEST RESIDUAL HEAT FLUX         4.558E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.373       AT NODE          6   DOF 11
@@ -3161,7 +3161,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.462E-04   TIME AVG. HEAT FLUX   3.964E-04
+ AVERAGE HEAT FLUX                  1.462E-04   TIME AVG. HEAT FLUX   1.929E-04
  LARGEST RESIDUAL HEAT FLUX         3.203E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.370       AT NODE          6   DOF 11
@@ -3186,7 +3186,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3197,7 +3197,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.453E-04   TIME AVG. HEAT FLUX   3.935E-04
+ AVERAGE HEAT FLUX                  1.453E-04   TIME AVG. HEAT FLUX   1.923E-04
  LARGEST RESIDUAL HEAT FLUX         4.082E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.368       AT NODE          6   DOF 11
@@ -3222,7 +3222,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3233,7 +3233,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.444E-04   TIME AVG. HEAT FLUX   3.906E-04
+ AVERAGE HEAT FLUX                  1.444E-04   TIME AVG. HEAT FLUX   1.918E-04
  LARGEST RESIDUAL HEAT FLUX         1.230E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.366       AT NODE          6   DOF 11
@@ -3269,7 +3269,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.435E-04   TIME AVG. HEAT FLUX   3.878E-04
+ AVERAGE HEAT FLUX                  1.435E-04   TIME AVG. HEAT FLUX   1.912E-04
  LARGEST RESIDUAL HEAT FLUX         1.306E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.363       AT NODE          6   DOF 11
@@ -3305,7 +3305,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.426E-04   TIME AVG. HEAT FLUX   3.851E-04
+ AVERAGE HEAT FLUX                  1.426E-04   TIME AVG. HEAT FLUX   1.907E-04
  LARGEST RESIDUAL HEAT FLUX         5.913E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.361       AT NODE          8   DOF 11
@@ -3341,7 +3341,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.417E-04   TIME AVG. HEAT FLUX   3.824E-04
+ AVERAGE HEAT FLUX                  1.417E-04   TIME AVG. HEAT FLUX   1.901E-04
  LARGEST RESIDUAL HEAT FLUX        -4.929E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.359       AT NODE          6   DOF 11
@@ -3377,7 +3377,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.408E-04   TIME AVG. HEAT FLUX   3.797E-04
+ AVERAGE HEAT FLUX                  1.408E-04   TIME AVG. HEAT FLUX   1.896E-04
  LARGEST RESIDUAL HEAT FLUX        -6.001E-20   AT NODE          6   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.356       AT NODE          6   DOF 11
@@ -3413,7 +3413,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.399E-04   TIME AVG. HEAT FLUX   3.771E-04
+ AVERAGE HEAT FLUX                  1.399E-04   TIME AVG. HEAT FLUX   1.891E-04
  LARGEST RESIDUAL HEAT FLUX        -4.454E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.354       AT NODE          8   DOF 11
@@ -3449,7 +3449,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.390E-04   TIME AVG. HEAT FLUX   3.745E-04
+ AVERAGE HEAT FLUX                  1.390E-04   TIME AVG. HEAT FLUX   1.885E-04
  LARGEST RESIDUAL HEAT FLUX         3.338E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.352       AT NODE          4   DOF 11
@@ -3474,7 +3474,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3485,7 +3485,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.382E-04   TIME AVG. HEAT FLUX   3.720E-04
+ AVERAGE HEAT FLUX                  1.382E-04   TIME AVG. HEAT FLUX   1.880E-04
  LARGEST RESIDUAL HEAT FLUX         4.694E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.350       AT NODE          6   DOF 11
@@ -3521,7 +3521,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.373E-04   TIME AVG. HEAT FLUX   3.696E-04
+ AVERAGE HEAT FLUX                  1.373E-04   TIME AVG. HEAT FLUX   1.875E-04
  LARGEST RESIDUAL HEAT FLUX        -3.965E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.348       AT NODE          4   DOF 11
@@ -3557,7 +3557,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.364E-04   TIME AVG. HEAT FLUX   3.671E-04
+ AVERAGE HEAT FLUX                  1.364E-04   TIME AVG. HEAT FLUX   1.869E-04
  LARGEST RESIDUAL HEAT FLUX        -2.977E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.345       AT NODE          4   DOF 11
@@ -3593,7 +3593,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.356E-04   TIME AVG. HEAT FLUX   3.647E-04
+ AVERAGE HEAT FLUX                  1.356E-04   TIME AVG. HEAT FLUX   1.864E-04
  LARGEST RESIDUAL HEAT FLUX         2.582E-20   AT NODE          4   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.343       AT NODE          6   DOF 11
@@ -3629,7 +3629,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.347E-04   TIME AVG. HEAT FLUX   3.624E-04
+ AVERAGE HEAT FLUX                  1.347E-04   TIME AVG. HEAT FLUX   1.859E-04
  LARGEST RESIDUAL HEAT FLUX         5.437E-20   AT NODE          8   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.341       AT NODE          4   DOF 11
@@ -3665,7 +3665,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.339E-04   TIME AVG. HEAT FLUX   3.601E-04
+ AVERAGE HEAT FLUX                  1.339E-04   TIME AVG. HEAT FLUX   1.853E-04
  LARGEST RESIDUAL HEAT FLUX         5.032E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.339       AT NODE          8   DOF 11
@@ -3690,7 +3690,7 @@
         NUMBER OF EQUATIONS:  32
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      2.189e+04
-        SOLVER ELAPSED TIME:  1ms
+        SOLVER ELAPSED TIME:  0ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3701,7 +3701,7 @@
  ALL CORRECTION TO DISP.    ARE ZERO
           THERE IS ZERO FORCE     EVERYWHERE
 
- AVERAGE HEAT FLUX                  1.330E-04   TIME AVG. HEAT FLUX   3.578E-04
+ AVERAGE HEAT FLUX                  1.330E-04   TIME AVG. HEAT FLUX   1.848E-04
  LARGEST RESIDUAL HEAT FLUX        -2.497E-20   AT NODE          2   DOF 11
    INSTANCE: CUBE_ASSEMBLY                                                                   
  LARGEST INCREMENT OF TEMP.         0.337       AT NODE          4   DOF 11
@@ -3742,8 +3742,8 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.80    
-       SYSTEM TIME (SEC)    =      1.0    
-       TOTAL CPU TIME (SEC) =      1.8    
-       WALLCLOCK TIME (SEC) =            3
+       USER TIME (SEC)      =     0.70    
+       SYSTEM TIME (SEC)    =     0.50    
+       TOTAL CPU TIME (SEC) =      1.2    
+       WALLCLOCK TIME (SEC) =            2
        MEMORY PEAK (GB)     =            0
