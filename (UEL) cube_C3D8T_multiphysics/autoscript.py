@@ -193,6 +193,32 @@ def return_UEL_property(description_properties_dict):
     props_indices["end_flow_props_idx"] = current_start + len(flow_curve_zipped) - 1
     current_start = current_start + flow_curve_num_properties
 
+    # For hydrogen diffusion properties
+    UEL_property.append("**")
+    UEL_property.append("** =============================")
+    UEL_property.append("**")
+    UEL_property.append("** HYDROGEN DIFFUSION PROPERTIES")
+    UEL_property.append("**")
+
+    for line_index in range(hydrogen_diffusion_prop_num_lines):
+        if line_index != hydrogen_diffusion_prop_num_lines - 1:
+            subset_properties = hydrogen_diffusion_properties_list[line_index*8:(line_index+1)*8]
+            subset_description = hydrogen_diffusion_description_list[line_index*8:(line_index+1)*8]
+            UEL_property.append("** " + ", ".join(subset_description[0:4]))
+            UEL_property.append("** " + ", ".join(subset_description[4:8]))
+            UEL_property.append(", ".join(subset_properties))
+            
+        else:
+            subset_properties = hydrogen_diffusion_properties_list[line_index*8:] + ["0.0"]*(8-len(hydrogen_diffusion_properties_list[line_index*8:]))
+            subset_description = hydrogen_diffusion_description_list[line_index*8:] + ["none"]*(8-len(hydrogen_diffusion_description_list[line_index*8:]))
+            UEL_property.append("** " + ", ".join(subset_description[0:4]))
+            UEL_property.append("** " + ", ".join(subset_description[4:8]))
+            UEL_property.append(", ".join(subset_properties))
+
+    props_indices["start_CL_mol_props_idx"] = current_start
+    props_indices["end_CL_mol_props_idx"] = current_start + len(hydrogen_diffusion_properties_list) - 1
+    current_start = current_start + hydrogen_diffusion_prop_num_properties
+    
     # For heat transfer properties
     UEL_property.append("**")
     UEL_property.append("** =============================")
@@ -217,32 +243,6 @@ def return_UEL_property(description_properties_dict):
     props_indices["start_temp_props_idx"] = current_start
     props_indices["end_temp_props_idx"] = current_start + len(heat_transfer_properties_list) - 1
     current_start = current_start + heat_transfer_prop_num_properties
-
-    # For hydrogen diffusion properties
-    UEL_property.append("**")
-    UEL_property.append("** =============================")
-    UEL_property.append("**")
-    UEL_property.append("** HYDROGEN DIFFUSION PROPERTIES")
-    UEL_property.append("**")
-
-    for line_index in range(hydrogen_diffusion_prop_num_lines):
-        if line_index != hydrogen_diffusion_prop_num_lines - 1:
-            subset_properties = hydrogen_diffusion_properties_list[line_index*8:(line_index+1)*8]
-            subset_description = hydrogen_diffusion_description_list[line_index*8:(line_index+1)*8]
-            UEL_property.append("** " + ", ".join(subset_description[0:4]))
-            UEL_property.append("** " + ", ".join(subset_description[4:8]))
-            UEL_property.append(", ".join(subset_properties))
-            
-        else:
-            subset_properties = hydrogen_diffusion_properties_list[line_index*8:] + ["0.0"]*(8-len(hydrogen_diffusion_properties_list[line_index*8:]))
-            subset_description = hydrogen_diffusion_description_list[line_index*8:] + ["none"]*(8-len(hydrogen_diffusion_description_list[line_index*8:]))
-            UEL_property.append("** " + ", ".join(subset_description[0:4]))
-            UEL_property.append("** " + ", ".join(subset_description[4:8]))
-            UEL_property.append(", ".join(subset_properties))
-
-    props_indices["start_hydro_props_idx"] = current_start
-    props_indices["end_hydro_props_idx"] = current_start + len(hydrogen_diffusion_properties_list) - 1
-    current_start = current_start + hydrogen_diffusion_prop_num_properties
 
     # For phase field properties 
     UEL_property.append("**")
@@ -327,8 +327,8 @@ def return_user_element(total_num_properties, nstatev):
     f"*User element, nodes={nnode}, type=U1, properties={total_num_properties}, coordinates={ndim}, variables={nsvars}",
         "1, 2, 3",
         "1, 11",
-        # "1, 12",
-        # "1, 13",
+        "1, 12",
+        "1, 13",
         "*************************************************"
     ]
     return USER_ELEMENT
@@ -490,10 +490,10 @@ def return_userinputs_fortran(total_elems, total_nodes, props_indices, SDV_names
     USERINPUTS.append(f"\tinteger, parameter :: end_mech_props_idx = {props_indices['end_mech_props_idx']}      ! Index of the last mechanical property in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: start_flow_props_idx = {props_indices['start_flow_props_idx']}    ! Index of the first flow curve data in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: end_flow_props_idx = {props_indices['end_flow_props_idx']}     ! Index of the last flow curve data in UEL props")
+    USERINPUTS.append(f"\tinteger, parameter :: start_CL_mol_props_idx = {props_indices['start_CL_mol_props_idx']}   ! Index of the first hydrogen diffusion in UEL props")
+    USERINPUTS.append(f"\tinteger, parameter :: end_CL_mol_props_idx = {props_indices['end_CL_mol_props_idx']}     ! Index of the last hydrogen diffusion in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: start_temp_props_idx = {props_indices['start_temp_props_idx']}   ! Index of the first temperature data in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: end_temp_props_idx = {props_indices['end_temp_props_idx']}     ! Index of the last temperature data in UEL props")
-    USERINPUTS.append(f"\tinteger, parameter :: start_hydro_props_idx = {props_indices['start_hydro_props_idx']}   ! Index of the first hydrogen diffusion in UEL props")
-    USERINPUTS.append(f"\tinteger, parameter :: end_hydro_props_idx = {props_indices['end_hydro_props_idx']}     ! Index of the last hydrogen diffusion in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: start_damage_props_idx = {props_indices['start_damage_props_idx']} ! Index of the first damage property in UEL props")
     USERINPUTS.append(f"\tinteger, parameter :: end_damage_props_idx = {props_indices['end_damage_props_idx']}   ! Index of the last damage property in UEL props")
 
@@ -569,20 +569,6 @@ def return_userinputs_fortran(total_elems, total_nodes, props_indices, SDV_names
 
     USERINPUTS.append("")
 
-    USERINPUTS.append("\t! ==================================")
-    USERINPUTS.append("\t! SDV indices of heat transfer field")
-    USERINPUTS.append("\t! ==================================")
-
-    USERINPUTS.append("")
-
-    sdv_data = [(idx, name, desc) for idx, name, field, desc in zipped if field == "heat_transfer"]
-    sdv_data.sort()
-
-    for idx, name, desc in sdv_data:
-        USERINPUTS.append(f"\tinteger, parameter :: {name}_idx = {idx} ! SDV index of {desc}")
-
-    USERINPUTS.append("")
-
     USERINPUTS.append("\t! =======================================")
     USERINPUTS.append("\t! SDV indices of hydrogen diffusion field")
     USERINPUTS.append("\t! =======================================")
@@ -590,6 +576,20 @@ def return_userinputs_fortran(total_elems, total_nodes, props_indices, SDV_names
     USERINPUTS.append("")
 
     sdv_data = [(idx, name, desc) for idx, name, field, desc in zipped if field == "hydrogen_diffusion"]
+    sdv_data.sort()
+
+    for idx, name, desc in sdv_data:
+        USERINPUTS.append(f"\tinteger, parameter :: {name}_idx = {idx} ! SDV index of {desc}")
+
+    USERINPUTS.append("")
+    
+    USERINPUTS.append("\t! ==================================")
+    USERINPUTS.append("\t! SDV indices of heat transfer field")
+    USERINPUTS.append("\t! ==================================")
+
+    USERINPUTS.append("")
+
+    sdv_data = [(idx, name, desc) for idx, name, field, desc in zipped if field == "heat_transfer"]
     sdv_data.sort()
 
     for idx, name, desc in sdv_data:

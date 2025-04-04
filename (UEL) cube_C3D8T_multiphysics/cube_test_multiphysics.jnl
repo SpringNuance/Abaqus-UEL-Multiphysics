@@ -108,3 +108,135 @@ mdb.models['subroutine_multiphysics'].fieldOutputRequests['F-Output-1'].setValue
     variables=('NT', 'RF', 'SDV', 'U', 'RFL'))
 # Save by nguyenb5 on 2025_04_03-16.20.32; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
 # Save by nguyenb5 on 2025_04_03-22.11.04; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+# Save by nguyenb5 on 2025_04_04-11.47.39; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openAuxMdb(pathName=
+    'C:/LocalUserData/User-data/nguyenb5/Hydrogen-Embrittlement-Subroutine-Aachen/elastic_plate_elements/elastic_plate.cae')
+mdb.copyAuxMdbModel(fromName='elastic_plate_3D_C3D8', toName=
+    'elastic_plate_3D_C3D8')
+mdb.closeAuxMdb()
+mdb.models.changeKey(fromName='elastic_plate_3D_C3D8', toName='elastic_plate')
+mdb.models['elastic_plate'].parts.changeKey(fromName='elastic-hold-plate', 
+    toName='elastic_plate')
+mdb.models['elastic_plate'].materials.changeKey(fromName='thermomechanical', 
+    toName='multiphysics')
+del mdb.models['elastic_plate'].materials['multiphysics'].userDefinedField
+del mdb.models['elastic_plate'].materials['multiphysics'].userOutputVariables
+mdb.models['elastic_plate'].sections['Section-1'].setValues(material=
+    'multiphysics', thickness=None)
+mdb.models['elastic_plate'].rootAssembly.regenerate()
+mdb.models['elastic_plate'].rootAssembly.features.changeKey(fromName=
+    'elastic-hold-plate-1', toName='elastic_plate_1')
+del mdb.models['elastic_plate'].rootAssembly.surfaces['Surf-1']
+mdb.models['elastic_plate'].rootAssembly.Set(name='ALLN', nodes=
+    mdb.models['elastic_plate'].rootAssembly.instances['elastic_plate_1'].nodes.getSequenceFromMask(
+    mask=('[#ffffffff:151 #f ]', ), ))
+mdb.models['elastic_plate'].rootAssembly.Set(elements=
+    mdb.models['elastic_plate'].rootAssembly.instances['elastic_plate_1'].elements.getSequenceFromMask(
+    mask=('[#ffffffff:94 #3ffff ]', ), ), name='ALLE')
+mdb.models['elastic_plate'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('NT', 'RF', 'S', 'SDV', 'U', 'RFL'))
+del mdb.models['elastic_plate'].loads['Load-1']
+mdb.models['elastic_plate'].boundaryConditions.delete(('Xsymm', 'Ysymm', 
+    'Zsymm'))
+mdb.models['elastic_plate'].predefinedFields.changeKey(fromName='Cbar_L', 
+    toName='CL_mol')
+mdb.models['elastic_plate'].predefinedFields.changeKey(fromName='CL_mol', 
+    toName='CL_mol_diffusion')
+mdb.models['elastic_plate'].DisplacementBC(amplitude=UNSET, createStepName=
+    'Step-1', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None
+    , name='BC-1', region=
+    mdb.models['elastic_plate'].rootAssembly.sets['xsymm_side'], u1=0.0, u2=
+    UNSET, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['elastic_plate'].boundaryConditions.changeKey(fromName='BC-1', 
+    toName='mech_xsymm')
+mdb.models['elastic_plate'].DisplacementBC(amplitude=UNSET, createStepName=
+    'Step-1', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None
+    , name='mech_ysymm', region=
+    mdb.models['elastic_plate'].rootAssembly.sets['ysymm_side'], u1=UNSET, u2=
+    0.0, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['elastic_plate'].DisplacementBC(amplitude=UNSET, createStepName=
+    'Step-1', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None
+    , name='mech_zsymm', region=
+    mdb.models['elastic_plate'].rootAssembly.sets['zsymm_side'], u1=UNSET, u2=
+    UNSET, u3=0.0, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['elastic_plate'].rootAssembly.Set(faces=
+    mdb.models['elastic_plate'].rootAssembly.instances['elastic_plate_1'].faces.getSequenceFromMask(
+    ('[#4004 ]', ), ), name='top_side')
+mdb.models['elastic_plate'].DisplacementBC(amplitude=UNSET, createStepName=
+    'Step-1', distributionType=UNIFORM, fieldName='', fixed=OFF, localCsys=None
+    , name='mech_top_disp', region=
+    mdb.models['elastic_plate'].rootAssembly.sets['top_side'], u1=UNSET, u2=
+    0.001, u3=UNSET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['elastic_plate'].TabularAmplitude(data=((0.0, 0.0), (1000000000.0, 
+    1.0)), name='ramp', smooth=SOLVER_DEFAULT, timeSpan=STEP)
+mdb.models['elastic_plate'].boundaryConditions['mech_top_disp'].setValues(
+    amplitude='ramp')
+mdb.models['elastic_plate'].boundaryConditions['mech_top_disp'].setValues(u2=
+    0.004)
+mdb.models['elastic_plate'].steps['Step-1'].suppress()
+mdb.models['elastic_plate'].steps['Step-1'].resume()
+mdb.Model(name='elastic_plate_2', objectToCopy=mdb.models['elastic_plate'])
+mdb.models.changeKey(fromName='elastic_plate', toName='elastic_plate_original')
+mdb.models.changeKey(fromName='elastic_plate_2', toName='elastic_plate')
+mdb.models['elastic_plate'].predefinedFields['CL_mol_diffusion'].setValues(
+    region=mdb.models['elastic_plate'].rootAssembly.sets['ALLN'])
+del mdb.models['elastic_plate'].steps['Step-1']
+mdb.models['elastic_plate'].CoupledThermalElectricalStructuralStep(deltmx=
+    10000.0, initialInc=1000000000.0, maxInc=1000000000.0, maxNumInc=1000000, 
+    minInc=10000.0, name='Step-1', nlgeom=ON, previous='Initial', timePeriod=
+    1000000000.0)
+del mdb.models['elastic_plate'].historyOutputRequests['H-Output-1']
+mdb.models['elastic_plate'].steps['Step-1'].setValues(initialInc=10000000.0, 
+    maxInc=10000000.0)
+mdb.models['elastic_plate'].fieldOutputRequests['F-Output-1'].setValues(
+    variables=('U', 'RF', 'NT', 'RFL', 'EPOT', 'RCHG', 'SDV'))
+mdb.models.changeKey(fromName='elastic_plate', toName='elastic_plate_electric')
+mdb.models.changeKey(fromName='elastic_plate_original', toName='elastic_plate')
+mdb.models['subroutine_multiphysics'].DisplacementBC(amplitude=UNSET, 
+    createStepName='Initial', distributionType=UNIFORM, fieldName='', 
+    localCsys=None, name='mech_initial', region=
+    mdb.models['subroutine_multiphysics'].rootAssembly.sets['top_side'], u1=
+    UNSET, u2=UNSET, u3=UNSET, ur1=SET, ur2=UNSET, ur3=UNSET)
+del mdb.models['subroutine_multiphysics'].boundaryConditions['mech_initial']
+mdb.models['elastic_plate'].PorePressure(distributionType=UNIFORM, name=
+    'Predefined Field-3', porePressure1=100.0, region=
+    mdb.models['elastic_plate'].rootAssembly.sets['ALLN'], variation=
+    CONSTANT_RATIO)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='elastic_plate', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='elastic_plate', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=1, queue=None, 
+    resultsFormat=ODB, scratch='', type=ANALYSIS, userSubroutine='', waitHours=
+    0, waitMinutes=0)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='elastic_plate', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='elastic_plate_electric', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=
+    1, queue=None, resultsFormat=ODB, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+del mdb.jobs['elastic_plate_electric']
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='elastic_plate_electric', 
+    modelPrint=OFF, multiprocessingMode=DEFAULT, name='elastic_plate_electric', 
+    nodalOutputPrecision=SINGLE, numCpus=1, numGPUs=0, numThreadsPerMpiProcess=
+    1, queue=None, resultsFormat=ODB, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['elastic_plate_electric'].materials['multiphysics'].ElectricalConductivity(
+    table=((1.0, ), ))
+# Save by nguyenb5 on 2025_04_04-17.08.53; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702

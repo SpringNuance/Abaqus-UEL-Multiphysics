@@ -68,7 +68,7 @@ options = {
     'moldflowFiles':[],
     'moldflowMaterial':OFF,
     'mp_mode':THREADS,
-    'mp_mode_requested':THREADS,
+    'mp_mode_requested':MPI,
     'multiphysics':OFF,
     'noDmpDirect':[],
     'noMultiHost':[],

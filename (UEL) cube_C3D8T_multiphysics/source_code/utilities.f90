@@ -276,6 +276,30 @@ subroutine calc_matrix_inv(matrix, matrix_inv, determinant, ndim)
 
 end
 
+subroutine sort_descending(input_values, sorted_values, n)
+    
+    use precision
+    integer, intent(in) :: n
+    real(kind=dp), dimension(n), intent(in) :: input_values
+    real(kind=dp), dimension(n), intent(out) :: sorted_values
+    integer :: i, j
+    real(kind=dp) :: temp
+
+    ! Copy input values to sorted values
+    sorted_values = input_values
+
+    ! Simple sorting (descending order) using bubble sort
+    do i = 1, n-1
+        do j = i+1, n
+            if (sorted_values(i) < sorted_values(j)) then
+                temp = sorted_values(i)
+                sorted_values(i) = sorted_values(j)
+                sorted_values(j) = temp
+            end if
+        end do
+    end do
+
+end
 
 subroutine test_matrix_subroutine()
     use precision

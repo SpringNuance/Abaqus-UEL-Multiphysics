@@ -12,7 +12,7 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
 
     use precision
     use common_block
-    !use ieee_arithmetic
+
     include 'aba_param.inc' 
 
     character*8 cmname
@@ -25,56 +25,25 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     real(kind=dp) :: syield, syiel0, sig_vonMises, sig_H, sig_P1, sig_P2, sig_P3, sig_Tresca
     real(kind=dp) :: effective_mu, effective_lambda, effective_hard    
 
-    real(kind=dp) :: eelas(ntens), eplas(ntens), flow(ntens), stress_copy(ntens)
-    real(kind=dp) :: hard(3), old_stress(ntens), old_eplas(ntens)
-    real(kind=dp) :: sig_principal_unsorted(ndim), sig_principal_sorted(ndim)
-    real(kind=dp) :: sig_principal_dir(ndim, ndim)
+    real(kind=dp), dimension(ntens) :: eelas, eplas, flow
+    real(kind=dp), dimension(3) :: hard
+    real(kind=dp), dimension(ndim) :: sig_principal_unsorted, sig_principal_sorted
+    real(kind=dp), dimension(ndim, ndim) :: sig_principal_dir
     real(kind=dp) :: invariant_p, invariant_q, invariant_r, triaxiality, lode_norm
-    real(kind=dp) :: sig_principal_1, sig_principal_2, sig_principal_3
     real(kind=dp), parameter :: toler = 1e-12
     real(kind=dp), parameter :: newton = 100
     integer :: k_newton
 
-    ! LOCAL ARRAYS
-    ! ----------------------------------------------------------------
-    ! EELAS - ELASTIC STRAINS
-    ! EPLAS - PLASTIC STRAINS
-    ! FLOW - DIRECTION OF PLASTIC FLOW
-    ! ----------------------------------------------------------------
-    
-    ! ----------------------------------------------------------------
-    ! UMAT FOR ISOTROPIC ELASTICITY AND ISOTROPIC MISES PLASTICITY
-    ! CANNOT BE USED FOR PLANE STRESS
-    ! ----------------------------------------------------------------
-    ! PROPS(before_mech_props_idx+1) - E
-    ! PROPS(before_mech_props_idx+2) - NU
-    ! PROPS(before_flow_props_idx+1:nprops) - SYIELD AN HARDENING DATA
-    ! props(before_flow_props_idx+1) - syiel0, 
-    ! props(before_flow_props_idx+2) - eqpl0, 
-    ! props(before_flow_props_idx+3) - syiel1, 
-    ! props(before_flow_props_idx+4) - eqpl1, ...
-    ! and props(nprops-1) - syield_N, props(nprops) - eqplas_N
-    ! CALLS UHARD FOR CURVE OF YIELD STRESS VS. PLASTIC STRAIN
-    ! ----------------------------------------------------------------
-
     ! material properties
 
-    ! print *, 'UMAT: noel = ', noel, 'npt = ', npt, 'kinc = ', kinc
     UMAT_model = props(1)  ! UMAT model number
     E = props(2)           ! Young's modulus 
     nu = props(3)          ! Poisson's ratio 
     
-    ! print *, 'E = ', E
-    ! print *, 'nu = ', nu
-    !eelas(1:ntens) = statev(eelas_start_idx:eelas_end_idx)
-    !eplas(1:ntens) = statev(eplas_start_idx:eplas_end_idx)
+    eelas(1:ntens) = statev(eelas_start_idx:eelas_end_idx)
+    eplas(1:ntens) = statev(eplas_start_idx:eplas_end_idx)
     eqplas = statev(eqplas_idx)
-    deqplas = 0.0d0
-    old_stress = stress
-    old_eplas = eplas
-
-    call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
-    call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
+    deqplas = statev(deqplas_idx)
 
     ! Lame's parameters
     mu = E/(2.0d0 * (1.0d0 + nu))  ! Shear modulus
@@ -96,9 +65,11 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
         ddsdde(i,i) = mu
     end do 
 
+    call rotsig(statev(eelas_start_idx), drot, eelas, 2, ndi, nshr)
+    call rotsig(statev(eplas_start_idx), drot, eplas, 2, ndi, nshr)
+
     !    Calculate predictor stress and elastic strain
     stress = stress + matmul(ddsdde,dstran)
-
     eelas = eelas + dstran
 
     ! Calculate equivalent von Mises stress
@@ -113,13 +84,13 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     ! get yield stress from the specified hardening curve
     ! nvalue equal to number of points on the hardening curve
     
-    nvalue = (nprops - before_flow_props_idx) / 2
+    nvalue = (end_flow_props_idx - start_flow_props_idx + 1) / 2
 
-    ! print *, 'nvalue = ', nvalue ! 100
-    ! print *, 'before_flow_props_idx = ', before_flow_props_idx ! 40
+    ! print *, 'nvalue = ', nvalue 
+    ! print *, 'start_flow_props_idx = ', start_flow_props_idx 
     
     call UHARD_vonMises(syiel0, hard, eqplas, &
-                                statev, nvalue, props(before_flow_props_idx + 1))
+                                statev, nvalue, props(start_flow_props_idx))
     
 
     ! Determine if active yielding
@@ -144,7 +115,7 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
             deqplas = deqplas + rhs / ((3.0d0 * mu) + hard(1))
 
             call UHARD_vonMises(syield, hard, eqplas + deqplas, &
-                        statev, nvalue, props(before_flow_props_idx + 1))
+                        statev, nvalue, props(start_flow_props_idx))
                                 
             if (abs(rhs) < toler * syiel0) exit
         end do
@@ -166,10 +137,6 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
 
         ! Calculate the plastic strain energy density
         ! psi_plas = deqplas * (syiel0 + syield) / 2.d0
-
-        do i=1,ntens
-            spd = spd + (stress(i)+old_stress(i)) * (eplas(i) - old_eplas(i))/2.0d0
-        end do
 
         ! Formulate the jacobian (material tangent)   
 
@@ -227,57 +194,35 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
 
     ! Update coords at integration points
 
-    coords_all_inpts(noel, npt, 1) = coords(1)
-    coords_all_inpts(noel, npt, 2) = coords(2)
-    coords_all_inpts(noel, npt, 3) = coords(3)
+    coords_all_IPs(noel, npt, 1) = coords(1)
+    coords_all_IPs(noel, npt, 2) = coords(2)
+    coords_all_IPs(noel, npt, 3) = coords(3)
 
     ! update state variables
+    ! stress and stran are updated in UEL
     
-    statev(sig_start_idx:sig_end_idx) = stress(1:ntens)
-    statev(stran_start_idx:stran_end_idx) = stran(1:ntens)
+    statev(eelas_start_idx:eelas_end_idx) = eelas
+    statev(eplas_start_idx:eplas_end_idx) = eplas
     statev(eqplas_idx) = eqplas
+    statev(eqplas_grad_X_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 1)
+    statev(eqplas_grad_Y_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 2)
+    statev(eqplas_grad_Z_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 3)
+    statev(deqplas_idx) = deqplas
     statev(sig_H_idx) = sig_H
-    statev(sig_H_grad_X_idx) = sig_H_grad_all_elems_at_inpts(noel, npt, 1)
-    statev(sig_H_grad_Y_idx) = sig_H_grad_all_elems_at_inpts(noel, npt, 2)
-    statev(sig_H_grad_Z_idx) = sig_H_grad_all_elems_at_inpts(noel, npt, 3)
+    statev(sig_H_grad_X_idx) = statev_grad_all_elems_at_IPs(sig_H_idx, noel, npt, 1)
+    statev(sig_H_grad_Y_idx) = statev_grad_all_elems_at_IPs(sig_H_idx, noel, npt, 2)
+    statev(sig_H_grad_Z_idx) = statev_grad_all_elems_at_IPs(sig_H_idx, noel, npt, 3)
     statev(sig_vonMises_idx) = sig_vonMises
     statev(sig_Tresca_idx) = sig_Tresca
     statev(sig_P1_idx) = sig_P1
     statev(sig_P2_idx) = sig_P2
     statev(sig_P3_idx) = sig_P3
-    statev(triax_idx) = triaxiality
+    statev(triax_idx) = triax
     statev(lode_idx) = lode_norm
 
-    ! Update the sig_H_all_elems_at_inpts (VERY IMPORTANT)
-    sig_H_all_elems_at_inpts(noel, npt) = sig_H
-
-    ! ! Now, we update the coupling terms between umat and umatht
-    ! dCT_mol_dCL_mol = statev(dCT_dCL_idx)
-    ! dCT_mol_deqplas = statev(dCT_deqplas_idx)
-
-    ! ! Only in a fully coupled thermal-stress or a coupled thermal-electrical-structural analysis
-    ! ! RPL
-    ! ! Volumetric heat generation per unit time at the end of the increment caused by mechanical working of the material.
-    ! rpl = 0.0d0
-
-    ! ! DDSDDT(NTENS)
-    ! ! Variation of the stress increments with respect to the temperature.
-    ! ddsddt = 0.0d0 ! Currently the model is still uncoupled
-    ! ! Hydrogen does not affect the stress field
-
-    ! ! DRPLDE(NTENS)
-    ! ! Variation of RPL with respect to the strain increments.
-    ! drplde = - dCT_mol_dCL_mol/dtime
-
-    ! ! DRPLDT
-    ! ! Variation of RPL with respect to the temperature.
-    ! drplde = - dCT_mol_deqplas/dtime
-
-    ! ! Finally, we multiply them by sfd
-    ! rpl = rpl * sfd
-    ! ddsddt = ddsddt * sfd
-    ! drplde = drplde * sfd
-    ! drpldt = drpldt * sfd
+    ! Update the statev_all_elems_at_IPs (VERY IMPORTANT)
+    statev_all_elems_at_IPs(sig_H_idx, noel, npt) = sig_H
+    statev_all_elems_at_IPs(eqplas_idx, noel, npt) = eqplas
 
 return
 end

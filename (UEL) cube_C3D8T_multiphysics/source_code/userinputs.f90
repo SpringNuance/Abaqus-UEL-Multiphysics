@@ -12,7 +12,7 @@ module userinputs
 	integer, parameter :: total_elems = 1 ! Storing the actual number of elements
 	integer, parameter :: max_elem_idx = 2 ! Maximum element index for UEL and VISUAL elements
 	integer, parameter :: total_nodes = 8 ! Storing the actual number of nodes
-	integer, parameter :: nstatev = 60 ! Number of state variables at integration points
+	integer, parameter :: nstatev = 70 ! Number of state variables at integration points
 
 	! Element information
 	character(len=256), parameter :: element_file_path = "/processing_input/elements_UEL.inc" ! Path to the element file
@@ -35,23 +35,24 @@ module userinputs
 	integer, parameter :: end_mech_props_idx = 11      ! Index of the last mechanical property in UEL props
 	integer, parameter :: start_flow_props_idx = 17    ! Index of the first flow curve data in UEL props
 	integer, parameter :: end_flow_props_idx = 216     ! Index of the last flow curve data in UEL props
-	integer, parameter :: start_temp_props_idx = 217   ! Index of the first temperature data in UEL props
-	integer, parameter :: end_temp_props_idx = 219     ! Index of the last temperature data in UEL props
-	integer, parameter :: start_hydro_props_idx = 225   ! Index of the first hydrogen diffusion in UEL props
-	integer, parameter :: end_hydro_props_idx = 262     ! Index of the last hydrogen diffusion in UEL props
+	integer, parameter :: start_CL_mol_props_idx = 217   ! Index of the first hydrogen diffusion in UEL props
+	integer, parameter :: end_CL_mol_props_idx = 254     ! Index of the last hydrogen diffusion in UEL props
+	integer, parameter :: start_temp_props_idx = 257   ! Index of the first temperature data in UEL props
+	integer, parameter :: end_temp_props_idx = 259     ! Index of the last temperature data in UEL props
 	integer, parameter :: start_damage_props_idx = 265 ! Index of the first damage property in UEL props
 	integer, parameter :: end_damage_props_idx = 269   ! Index of the last damage property in UEL props
 
 	! Output SDVs indices
-	integer, parameter :: nuvarm = 36 ! Number of chosen SDVs for output
-	integer, parameter :: uvarm_indices(36) = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, &
+	integer, parameter :: nuvarm = 46 ! Number of chosen SDVs for output
+	integer, parameter :: uvarm_indices(46) = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, &
 											   35, 36, 37, 38, 39, 40, 41, 42, 43, 44, &
 											   45, 46, 47, 48, 49, 50, 51, 52, 53, 54, &
-											   55, 56, 57, 58, 59, 60]
+											   55, 56, 57, 58, 59, 60, 61, 62, 63, 64, &
+											   65, 66, 67, 68, 69, 70]
 
 	! SDV required for gradient calculation
 	integer, parameter :: num_grad_SDVs = 3 ! Number of SDVs required for gradient calculation
-	integer, parameter :: grad_SDV_indices(3) = [25, 30, 42]
+	integer, parameter :: grad_SDV_indices(3) = [25, 30, 61]
 
 	! ===============================
 	! SDV indices of mechanical field
@@ -82,40 +83,50 @@ module userinputs
 	integer, parameter :: triax_idx = 39 ! SDV index of stress triaxiality (-)
 	integer, parameter :: lode_idx = 40 ! SDV index of normalized Lode angle (-)
 
-	! ==================================
-	! SDV indices of heat transfer field
-	! ==================================
-
-	integer, parameter :: u_heat_idx = 41 ! SDV index of internal energy per unit mass (J/kg)
-	integer, parameter :: temp_idx = 42 ! SDV index of temperature (K)
-	integer, parameter :: temp_grad_X_idx = 43 ! SDV index of temperature gradient in X direction (K/m)
-	integer, parameter :: temp_grad_Y_idx = 44 ! SDV index of temperature gradient in Y direction (K/m)
-	integer, parameter :: temp_grad_Z_idx = 45 ! SDV index of temperature gradient in Z direction (K/m)
-	integer, parameter :: flux_heat_X_idx = 46 ! SDV index of internal heat flux in X direction (J/(s*m^2))
-	integer, parameter :: flux_heat_Y_idx = 47 ! SDV index of internal heat flux in Y direction (J/(s*m^2))
-	integer, parameter :: flux_heat_Z_idx = 48 ! SDV index of internal heat flux in Z direction (J/(s*m^2))
-
 	! =======================================
 	! SDV indices of hydrogen diffusion field
 	! =======================================
 
-	integer, parameter :: C_mol_idx = 49 ! SDV index of total hydrogen concentration (mol/m^3)
-	integer, parameter :: CL_mol_idx = 50 ! SDV index of lattice hydrogen concentration (mol/m^3)
-	integer, parameter :: CT_mol_idx = 51 ! SDV index of total trap hydrogen concentration (mol/m^3)
-	integer, parameter :: CT_mol_dis_idx = 52 ! SDV index of dislocation trap hydrogen concentration (mol/m^3)
-	integer, parameter :: CT_mol_gb_idx = 53 ! SDV index of grain boundary trap hydrogen concentration (mol/m^3)
-	integer, parameter :: CT_mol_carb_idx = 54 ! SDV index of carbide trap hydrogen concentration (mol/m^3)
-	integer, parameter :: theta_L_idx = 55 ! SDV index of lattice site occupancy (-)
-	integer, parameter :: theta_T_dis_idx = 56 ! SDV index of dislocation trap site occupancy (-)
-	integer, parameter :: theta_coverage_idx = 57 ! SDV index of hydrogen surface coverage (Langmuir-type adsorption) (-)
+	integer, parameter :: C_mol_idx = 41 ! SDV index of total hydrogen concentration (mol/m^3)
+	integer, parameter :: CL_mol_idx = 42 ! SDV index of lattice hydrogen concentration (mol/m^3)
+	integer, parameter :: CT_mol_idx = 43 ! SDV index of total trap hydrogen concentration (mol/m^3)
+	integer, parameter :: NT_mol_dis_idx = 44 ! SDV index of dislocation trap density (mol/m^3)
+	integer, parameter :: CT_mol_dis_idx = 45 ! SDV index of dislocation trap hydrogen concentration (mol/m^3)
+	integer, parameter :: CT_mol_gb_idx = 46 ! SDV index of grain boundary trap hydrogen concentration (mol/m^3)
+	integer, parameter :: CT_mol_carb_idx = 47 ! SDV index of carbide trap hydrogen concentration (mol/m^3)
+	integer, parameter :: CT_mol_void_idx = 48 ! SDV index of vacancy/microvoid trap hydrogen concentration  (mol/m^3)
+	integer, parameter :: theta_L_idx = 49 ! SDV index of lattice site occupancy (-)
+	integer, parameter :: theta_T_dis_idx = 50 ! SDV index of dislocation trap site occupancy (-)
+	integer, parameter :: theta_T_gb_idx = 51 ! SDV index of grain boundaryn trap site occupancy (-)
+	integer, parameter :: theta_T_carb_idx = 52 ! SDV index of carbide trap site occupancy (-)
+	integer, parameter :: theta_T_void_idx = 53 ! SDV index of vacancy/microvoid trap site occupancy (-)
+	integer, parameter :: theta_coverage_idx = 54 ! SDV index of hydrogen surface coverage (Langmuir-type adsorption) (-)
+	integer, parameter :: k_HEDE_idx = 55 ! SDV index of factor decreasing cohesive strength (-)
+	integer, parameter :: flux_hydro_X_idx = 56 ! SDV index of hydrogen flux in X direction (mol/(s*m^2))
+	integer, parameter :: flux_hydro_Y_idx = 57 ! SDV index of hydrogen flux in Y direction (mol/(s*m^2))
+	integer, parameter :: flux_hydro_Z_idx = 58 ! SDV index of hydrogen flux in Z direction (mol/(s*m^2))
+	integer, parameter :: mu_potential_idx = 59 ! SDV index of hydrogen chemical potential (J/mol)
+
+	! ==================================
+	! SDV indices of heat transfer field
+	! ==================================
+
+	integer, parameter :: u_heat_idx = 60 ! SDV index of internal energy per unit mass (J/kg)
+	integer, parameter :: temp_idx = 61 ! SDV index of temperature (K)
+	integer, parameter :: temp_grad_X_idx = 62 ! SDV index of temperature gradient in X direction (K/m)
+	integer, parameter :: temp_grad_Y_idx = 63 ! SDV index of temperature gradient in Y direction (K/m)
+	integer, parameter :: temp_grad_Z_idx = 64 ! SDV index of temperature gradient in Z direction (K/m)
+	integer, parameter :: flux_heat_X_idx = 65 ! SDV index of internal heat flux in X direction (J/(s*m^2))
+	integer, parameter :: flux_heat_Y_idx = 66 ! SDV index of internal heat flux in Y direction (J/(s*m^2))
+	integer, parameter :: flux_heat_Z_idx = 67 ! SDV index of internal heat flux in Z direction (J/(s*m^2))
 
 	! =================================
 	! SDV indices of phase field damage
 	! =================================
 
-	integer, parameter :: phi_idx = 58 ! SDV index of phase field damage variable (-)
-	integer, parameter :: history_idx = 59 ! SDV index of history variable (-)
-	integer, parameter :: Gc_idx = 60 ! SDV index of critical energy release rate (J/m^2)
+	integer, parameter :: phi_idx = 68 ! SDV index of phase field damage variable (-)
+	integer, parameter :: history_idx = 69 ! SDV index of history variable (-)
+	integer, parameter :: Gc_idx = 70 ! SDV index of critical energy release rate (J/m^2)
 
 	save
 end module

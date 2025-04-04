@@ -129,7 +129,7 @@ ALLN
 ** 
 *Output, field
 *Node Output
-NT, RF, RFL, U
+NT, RF, RFL, U, EPOT,RCHG
 *Element Output, directions=YES
 SDV
 *Output, history, frequency=0

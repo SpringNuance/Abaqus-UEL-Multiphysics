@@ -24,9 +24,11 @@
 *INCLUDE, INPUT="processing_input/nodes.inc"
 **
 *************************************************
-*User element, nodes=8, type=U1, properties=264, coordinates=3, variables=480
+*User element, nodes=8, type=U1, properties=264, coordinates=3, variables=560
 1, 2, 3
 1, 11
+1, 12
+1, 13
 *************************************************
 **
 *INCLUDE, INPUT="processing_input/elements_UEL.inc"
@@ -86,14 +88,6 @@
 **
 ** =============================
 **
-** HEAT TRANSFER PROPERTIES
-**
-** Density - rho_temp (kg/m^3), Specific heat - cp_temp (N*m/(kg*K)), Conductivity - k_temp (N/(s*K)), none
-** none, none, none, none
-7900, 400, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0
-**
-** =============================
-**
 ** HYDROGEN DIFFUSION PROPERTIES
 **
 ** Equilibrium equation (1 - Oriani's equation | 2 - McNabb-Foster's equation), scaling_factor - SFD (dimless), crystal_structure (1 - BCC | 2 - FCC), Lattice parameter for BCC - a_lattice_BCC (m)
@@ -111,6 +105,14 @@
 ** Number of interstitial sites per trap site (trap type 4) - alpha_4 (dimless), Trap density (trap type 4) - NT_4 (1/m^3), Binding energy of hydrogens (trap type 4) - WB_4 (N*m/mol), Number of interstitial sites per trap site (trap type 5) - alpha_5 (dimless)
 ** Trap density (trap type 5) - NT_5 (1/m^3), Binding energy of hydrogens (trap type 5) - WB_5 (N*m/mol), none, none
 0, 0, 0, 0, 0, 0, 0.0, 0.0
+**
+** =============================
+**
+** HEAT TRANSFER PROPERTIES
+**
+** Density - rho_temp (kg/m^3), Specific heat - cp_temp (N*m/(kg*K)), Conductivity - k_temp (N/(s*K)), none
+** none, none, none, none
+7900, 400, 0.01, 0.0, 0.0, 0.0, 0.0, 0.0
 **
 ** ======================
 **
@@ -175,7 +177,7 @@
 *Density
 7900.,
 *Depvar       
-  36,      
+  46,      
 1, #25_eqplas, #25_eqplas
 2, #26_eqplas_grad_X, #26_eqplas_grad_X
 3, #27_eqplas_grad_Y, #27_eqplas_grad_Y
@@ -192,26 +194,36 @@
 14, #38_sig_P3, #38_sig_P3
 15, #39_triax, #39_triax
 16, #40_lode, #40_lode
-17, #41_u_heat, #41_u_heat
-18, #42_temp, #42_temp
-19, #43_temp_grad_X, #43_temp_grad_X
-20, #44_temp_grad_Y, #44_temp_grad_Y
-21, #45_temp_grad_Z, #45_temp_grad_Z
-22, #46_flux_heat_X, #46_flux_heat_X
-23, #47_flux_heat_Y, #47_flux_heat_Y
-24, #48_flux_heat_Z, #48_flux_heat_Z
-25, #49_C_mol, #49_C_mol
-26, #50_CL_mol, #50_CL_mol
-27, #51_CT_mol, #51_CT_mol
-28, #52_CT_mol_dis, #52_CT_mol_dis
-29, #53_CT_mol_gb, #53_CT_mol_gb
-30, #54_CT_mol_carb, #54_CT_mol_carb
-31, #55_theta_L, #55_theta_L
-32, #56_theta_T_dis, #56_theta_T_dis
-33, #57_theta_coverage, #57_theta_coverage
-34, #58_phi, #58_phi
-35, #59_history, #59_history
-36, #60_Gc, #60_Gc
+17, #41_C_mol, #41_C_mol
+18, #42_CL_mol, #42_CL_mol
+19, #43_CT_mol, #43_CT_mol
+20, #44_NT_mol_dis, #44_NT_mol_dis
+21, #45_CT_mol_dis, #45_CT_mol_dis
+22, #46_CT_mol_gb, #46_CT_mol_gb
+23, #47_CT_mol_carb, #47_CT_mol_carb
+24, #48_CT_mol_void, #48_CT_mol_void
+25, #49_theta_L, #49_theta_L
+26, #50_theta_T_dis, #50_theta_T_dis
+27, #51_theta_T_gb, #51_theta_T_gb
+28, #52_theta_T_carb, #52_theta_T_carb
+29, #53_theta_T_void, #53_theta_T_void
+30, #54_theta_coverage, #54_theta_coverage
+31, #55_k_HEDE, #55_k_HEDE
+32, #56_flux_hydro_X, #56_flux_hydro_X
+33, #57_flux_hydro_Y, #57_flux_hydro_Y
+34, #58_flux_hydro_Z, #58_flux_hydro_Z
+35, #59_mu_potential, #59_mu_potential
+36, #60_u_heat, #60_u_heat
+37, #61_temp, #61_temp
+38, #62_temp_grad_X, #62_temp_grad_X
+39, #63_temp_grad_Y, #63_temp_grad_Y
+40, #64_temp_grad_Z, #64_temp_grad_Z
+41, #65_flux_heat_X, #65_flux_heat_X
+42, #66_flux_heat_Y, #66_flux_heat_Y
+43, #67_flux_heat_Z, #67_flux_heat_Z
+44, #68_phi, #68_phi
+45, #69_history, #69_history
+46, #70_Gc, #70_Gc
 *User Material, constants=1, type=THERMAL
 0.,
 *User Material, constants=1, type=MECHANICAL
