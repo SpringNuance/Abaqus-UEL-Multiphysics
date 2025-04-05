@@ -105,6 +105,7 @@ subroutine UMAT_elastic(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, &
     statev(eqplas_grad_X_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 1)
     statev(eqplas_grad_Y_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 2)
     statev(eqplas_grad_Z_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 3)
+    statev(eqplas_rate_idx) = 0.0d0
     statev(deqplas_idx) = 0.0d0
     statev(sig_H_idx) = sig_H
     statev(sig_H_grad_X_idx) = statev_grad_all_elems_at_IPs(sig_H_idx, noel, npt, 1)

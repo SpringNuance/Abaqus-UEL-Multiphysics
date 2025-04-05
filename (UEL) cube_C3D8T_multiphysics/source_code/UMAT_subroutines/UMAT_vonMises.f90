@@ -21,11 +21,12 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
         time(2),predef(1),dpred(1),props(nprops),coords(3),drot(3,3), &
         dfgrd0(3,3),dfgrd1(3,3),jstep(4)
     
-    real(kind=dp) :: E, nu, lambda, mu, eqplas, deqplas, rhs 
+    real(kind=dp) :: E, nu, lambda, mu, eqplas, deqplas, rhs, eqplas_rate
     real(kind=dp) :: syield, syiel0, sig_vonMises, sig_H, sig_P1, sig_P2, sig_P3, sig_Tresca
     real(kind=dp) :: effective_mu, effective_lambda, effective_hard    
 
-    real(kind=dp), dimension(ntens) :: eelas, eplas, flow
+    real(kind=dp), dimension(ntens) :: eelas, eplas, eplas_rate, flow
+    real(kind=dp) :: eplas_rate(ntens)
     real(kind=dp), dimension(3) :: hard
     real(kind=dp), dimension(ndim) :: sig_principal_unsorted, sig_principal_sorted
     real(kind=dp), dimension(ndim, ndim) :: sig_principal_dir
@@ -192,6 +193,19 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
 
     sig_Tresca = (sig_P1 - sig_P3)/2.0d0
 
+    ! Compute plastic strain rate: component-wise division
+    eplas_rate(i) = eplas - statev(eplas_start_idx:eplas_end_idx) / dtime
+    eqplas_rate = ( &
+        (eplas_rate(1))**2.0d0 + &
+        (eplas_rate(2))**2.0d0 + &
+        (eplas_rate(3))**2.0d0 + &
+        2.0d0 * (eplas_rate(4))**2.0d0 + &
+        2.0d0 * (eplas_rate(5))**2.0d0 + &
+        2.0d0 * (eplas_rate(6))**2.0d0 )
+
+    eqplas_rate = sqrt(2.0d0/3.0d0 * eqplas_rate)
+
+
     ! Update coords at integration points
 
     coords_all_IPs(noel, npt, 1) = coords(1)
@@ -207,6 +221,7 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     statev(eqplas_grad_X_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 1)
     statev(eqplas_grad_Y_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 2)
     statev(eqplas_grad_Z_idx) = statev_grad_all_elems_at_IPs(eqplas_idx, noel, npt, 3)
+    statev(eqplas_rate_idx) = eqplas_rate
     statev(deqplas_idx) = deqplas
     statev(sig_H_idx) = sig_H
     statev(sig_H_grad_X_idx) = statev_grad_all_elems_at_IPs(sig_H_idx, noel, npt, 1)

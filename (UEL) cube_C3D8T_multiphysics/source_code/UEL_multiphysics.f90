@@ -314,7 +314,8 @@ include "UMAT_subroutines/UMAT_elastic.f90"
 include "UMAT_subroutines/UMAT_vonMises.f90"
 include "UMATHT_subroutines/UMATHT_heat_transfer.f90"
 include "HETVAL_subroutines/HETVAL_heat_transfer.f90"
-! include "UMATHT_subroutines/UMATHT_hydrogen_Oriani.f90"
+include "UMATHT_subroutines/UMATHT_hydrogen_Oriani.f90"
+include "HETVAL_subroutines/HETVAL_hydrogen_Oriani.f90"
 ! include "UMATHT_subroutines/UMATHT_hydrogen_McNabb_Foster.f90"
 
 ! *****************************************************************
@@ -358,8 +359,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     use precision
     use common_block
-    use iso_module
-    include 'aba_param.inc' !implicit real(a-h o-z)
+
+    include 'aba_param.inc' 
       
     dimension rhs(mlvarx,*),amatrx(ndofel,ndofel),props(*),svars(*), &
         energy(8),coords(mcrd,numnode),u(ndofel),du(mlvarx,*),v(ndofel), &
@@ -447,7 +448,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim,ndim) :: R_left_rot_t, R_left_rot_tm1, R_left_rot_inv_tm1
     real(kind=dp), dimension(ndim,ndim) :: dR_left_rot, dR_left_rot_inv                 
     
-    ! Logarithmic strain tensor eps_log
     real(kind=dp), dimension(ndim,ndim) :: eps_log_t, eps_log_tm1, deps_log, eps_log_t_rotated         
     real(kind=dp), dimension(ntensor) :: stress, ddsddt, drplde                       
     real(kind=dp), dimension(ntensor,ntensor) :: ddsdde                 ! Tangent stiffness matrix 
@@ -466,14 +466,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp) :: CL_mol_kIP_t, dCL_mol_kIP, CL_mol_kIP_tm1
     real(kind=dp), dimension(ndim) :: CL_mol_grad_kIP_t
 
-    real(kind=dp) :: CL_mol_kIP_t, C_mol_kIP_tm1, dC_mol_dCL_mol_kIP_t, dC_mol_kIP, r_hydro_kIP_t, drdt_hydro_kIP
+    real(kind=dp) :: CL_mol_kIP_t, C_pred_mol_kIP_tm1, dC_mol_dCL_mol_kIP_t, dC_mol_kIP, r_hydro_kIP_t, drdt_hydro_kIP
     real(kind=dp), dimension(ndim) :: dC_mol_dgrad_CL_mol_kIP_t, dudg_hydro_kIP_inter_t, dudg_hydro_kIP_extra_t
     real(kind=dp), dimension(ndim) :: flux_hydro_kIP, flux_hydro_kIP_t, flux_hydro_kIP_tm1, dflux_hydro_dCL_mol_kIP_t
     real(kind=dp), dimension(ndim,ndim) :: dflux_hydro_dgrad_CL_mol_kIP_t
 
-    real(kind=dp), dimension(nnode,nnode)  :: K_hydro_kIP_t, K_hydro_dfdt_kIP_t, K_hydro_dfdg_kIP_t, K_hydro_drdt_kIP_t
-    real(kind=dp), dimension(nnode,nnode) :: M_hydro_kIP_t, M_hydro_dudt_kIP_t, M_hydro_dudg_kIP_t
-    real(kind=dp), dimension(nnode) :: F_hydro_kIP_t, F_hydro_du_kIP_t, F_hydro_flux_kIP_t, F_hydro_r_kIP_t
+    real(kind=dp), dimension(nnode,nnode)  :: K_hydro_kIP_t, K_hydro_dfdCL_kIP_t, K_hydro_dfdgCL_kIP_t, K_hydro_ddCdCL_kIP_t
+    real(kind=dp), dimension(nnode,nnode) :: M_hydro_kIP_t, M_hydro_dCdCL_kIP_t, M_hydro_dCdgCL_kIP_t
+    real(kind=dp), dimension(nnode) :: F_hydro_kIP_t, F_hydro_dC_kIP_t, F_hydro_flux_kIP_t, F_hydro_r_kIP_t
 
     ! ==================================================!
     ! TENSORS DEFINED FOR THE HEAT TRASNFER FIELD: temp !
@@ -911,8 +911,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         rho_hydro = 1.0d0
 
-        C_mol_kIP = statev(C_mol_idx)
-        C_mol_kIP_tm1 = C_mol_kIP ! C_mol_kIP at tm1
+        C_pred_mol_kIP = statev(C_pred_mol_idx)
+        C_pred_mol_kIP_tm1 = C_pred_mol_kIP ! C_pred_mol_kIP at tm1
         
         flux_hydro_kIP(1) = statev(flux_hydro_X_idx)
         flux_hydro_kIP(2) = statev(flux_hydro_Y_idx)
@@ -930,8 +930,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! UMATHT_hydro_model = 2: McNabb Foster model
 
         if (UMATHT_hydro_model == 1) then
-            call UMATHT_hydro_Oriani(C_mol_kIP,dC_mol_dCL_mol_kIP_t,dC_mol_dgrad_CL_mol_kIP_t, &
+            call UMATHT_hydro_Oriani(C_pred_mol_kIP,dC_mol_dCL_mol_kIP_t,dC_mol_dgrad_CL_mol_kIP_t, &
                                     flux_hydro_kIP,dflux_hydro_dCL_mol_kIP_t,dflux_hydro_dgrad_CL_mol_kIP_t, &
+                                    ! New term introduced in UMATHT only for hydrogen diffusion model
+                                    ddC_mol_dCL_mol_kIP_t, &
                                     statev,CL_mol_kIP_tm1,dCL_mol_kIP,CL_mol_grad_kIP_t,time,dtime, &
                                     predef_kIP_tm1,dpred_kIP,cmname,ndim,nstatev, &
                                     props(start_CL_mol_props_idx:end_CL_mol_props_idx), &
@@ -939,12 +941,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                     pnewdt,jelem,kinpt,layer,kspt,kstep,kinc)
 
             call HETVAL_hydro_Oriani(cmname,CL_mol_kIP_t,dCL_mol,time,dtime, &
-                                    statev,r_hydro_kIP_t,drdt_hydro_kIP_t,predef_kIP_tm1,dpred_kIP)
+                                    statev,r_hydro_kIP_t,dr_hydro_dCL_mol_kIP_t,predef_kIP_tm1,dpred_kIP)
 
         end if
 
-        C_mol_kIP_t = C_mol_kIP ! C_mol_kIP is updated as C_mol_kIP_t
-        statev(u_hydro_idx) = C_mol_kIP
+        C_pred_mol_kIP_t = C_pred_mol_kIP ! C_mol_kIP is updated as C_mol_kIP_t
+        statev(C_pred_mol_idx) = C_pred_mol_kIP_t
 
         ! flux_hydro_kIP is updated as flux_hydro_kIP_t
         flux_hydro_kIP_t(1) = flux_hydro_kIP(1)
@@ -954,48 +956,51 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         statev(flux_hydro_Y_idx) = flux_hydro_kIP_t(2)
         statev(flux_hydro_Z_idx) = flux_hydro_kIP_t(3)
         
-        dC_mol_kIP = C_mol_kIP_t - C_mol_kIP_tm1
+        dC_mol_kIP = C_pred_mol_kIP_t - C_pred_mol_kIP_tm1
 
         ! Matrix multiplication is associative 
-        
-        ! These terms dfdt and dfdg are for the K_hydro_kIP_t matrix
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, 1) @ (1, nnode)
-        K_hydro_dfdt_kIP_t    = - matmul( &
+        K_hydro_dfdCL_kIP_t    = - matmul( &
                                         transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
                                         matmul(reshape(dflux_hydro_dCL_mol_kIP_t, [ndim, 1]), & 
                                         reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode])) &
                                         )
 
         ! (nnode, nnode) = (nnode, ndim) @ (ndim, ndim) @ (ndim, nnode)
-        K_hydro_dfdg_kIP_t   = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
+        K_hydro_dfdgCL_kIP_t   = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), & 
                                              matmul(dflux_hydro_dgrad_CL_mol_kIP_t, N_grad_NP_inter_to_kIP_inter_global_t))
 
         ! (nnode, nnode) = (nnode, ndim) @ scalar @ (ndim, nnode)
-        K_hydro_drdt_kIP_t    = - drdt_hydro_kIP_t * matmul( &
+        K_hydro_drdCL_kIP_t    = - dr_hydro_dCL_mol_kIP_t * matmul( &
                                         reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
                                         reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
                                         ) 
 
-        K_hydro_kIP_t = K_hydro_dfdt_kIP_t + K_hydro_dfdg_kIP_t + K_hydro_drdt_kIP_t
+        ! New term introduced in UMATHT only for hydrogen diffusion model
+        ! (nnode, nnode) = (nnode, ndim) @ (ndim, 1) @ (1, nnode)
 
-        ! These terms dudt and dudg are for the M_hydro_kIP_t matrix
+        K_hydro_ddCdCL_kIP_t = + ddC_mol_dCL_mol_kIP_t * matmul( &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [nnode, 1]), &
+                                        reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
+                                        ) 
 
-        ! This code is valid for quadratic elements
+        K_hydro_kIP_t = K_hydro_dfdCL_kIP_t + K_hydro_dfdgCL_kIP_t + K_hydro_drdCL_kIP_t + K_hydro_ddCdCL_kIP_t
+
 
         ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
-        M_hydro_dudt_kIP_t    = + rho_hydro * dC_mol_dCL_mol_kIP_t * matmul( &
+        M_hydro_dCdCL_kIP_t    = + rho_hydro * dC_mol_dCL_mol_kIP_t * matmul( &
                                         reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
                                         reshape(N_shape_NP_inter_to_kIP_extra, [1, nnode]) &
                                         ) 
         
         ! (nnode, nnode) = (nnode, 1) @ (1, ndim) @ (ndim, nnode)
-        M_hydro_dudg_kIP_t    = + rho_hydro * matmul( &
+        M_hydro_dCdgCL_kIP_t    = + rho_hydro * matmul( &
                                         reshape(N_shape_NP_inter_to_kIP_extra, [nnode, 1]), &
                                         matmul(reshape(dC_mol_dgrad_CL_mol_kIP_t, [1, ndim]), &
                                                N_grad_NP_inter_to_kIP_extra_global_t))
         
-        M_hydro_kIP_t = M_hydro_dudt_kIP_t + M_hydro_dudg_kIP_t
+        M_hydro_kIP_t = M_hydro_dCdCL_kIP_t + M_hydro_dCdgCL_kIP_t
 
         ! (nnode) = (nnode, ndim) @ (ndim)
         F_hydro_flux_kIP_t  = - matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), flux_hydro_kIP_t)
@@ -1004,13 +1009,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         F_hydro_r_kIP_t = - N_shape_NP_inter_to_kIP_inter * r_hydro_kIP_t
 
         ! (nnode) = (nnode) * scalar * scalar
-        ! This code is valid for quadratic elements
-
-        ! F_hydro_du_kIP_t = + N_shape_NP_inter_to_kIP_inter * rho_hydro * dC_mol_kIP 
-
-        ! This code is valid for linear elements
-
-        F_hydro_du_kIP_t = + N_shape_NP_inter_to_kIP_extra * rho_hydro * dC_mol_kIP
+        F_hydro_dC_kIP_t = + N_shape_NP_inter_to_kIP_extra * rho_hydro * dC_mol_kIP
 
         ! **************************************************!
         ! HYDROGEN DIFFUSION CONTRIBUTION TO amatrx AND rhs !
@@ -1025,18 +1024,19 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! In steady state analysis, the internal hydro change and hydro capacitance is zero
         if (lflags(1) == 31 .or. lflags(1) == 71) then
             M_hydro_kIP_t = 0.0d0
-            F_hydro_du_kIP_t = 0.0d0
+            F_hydro_dC_kIP_t = 0.0d0
         end if 
 
         ! BEWARE: AT THE FIRST INCREMENT, DTIME IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HYDROGEN TRANSFER FIELD
+
         if (kinc > 1) then
             amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
                 amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
                 + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
                 
             rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
-                - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_du_kIP_t/dtime)
+                - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
         end if
 
         ! ================================================================== !
@@ -1242,7 +1242,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! ================================================================== !
 
         !   Transfer data from statev to svars
-        !   This stage basically updates the state variables for the current element in UEL
+        !   This stage basically updates the state variables for the current IP 
         
         call move_between_statev_and_svars(kinpt,statev,nstatev,svars,nsvars,0)
         
@@ -1250,8 +1250,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
         user_vars(jelem,1:nstatev,kinpt) = statev(1:nstatev)
 
-
-        
     end do       ! end loop on material integration points
 
 return
@@ -1286,7 +1284,6 @@ subroutine UMAT(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, &
         original_SDV_idx = uvarm_indices(kuvarm)
         statev(kuvarm) = user_vars(noffset,original_SDV_idx,npt)
     end do
-    !statev(1:nstatv) = user_vars(noffset,1:nstatv,npt)
 
 return
 end

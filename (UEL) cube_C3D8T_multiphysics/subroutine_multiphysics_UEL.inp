@@ -24,7 +24,7 @@
 *INCLUDE, INPUT="processing_input/nodes.inc"
 **
 *************************************************
-*User element, nodes=8, type=U1, properties=264, coordinates=3, variables=560
+*User element, nodes=8, type=U1, properties=264, coordinates=3, variables=640
 1, 2, 3
 1, 11
 1, 12
@@ -91,20 +91,20 @@
 ** HYDROGEN DIFFUSION PROPERTIES
 **
 ** Equilibrium equation (1 - Oriani's equation | 2 - McNabb-Foster's equation), scaling_factor - SFD (dimless), crystal_structure (1 - BCC | 2 - FCC), Lattice parameter for BCC - a_lattice_BCC (m)
-** Lattice parameter for FCC - a_lattice_FCC (m), Number of hydrogen atoms that can reside in each BCC lattice site - beta_BCC (dimless), Number of hydrogen atoms that can reside in each FCC lattice site - beta_FCC (dimless), Universal gas constant - R (N*m)/(mol*K)
-1, 1.0e0, 2, 2.866e-10, 3.571e-10, 6.0e0, 1.0e0, 8.31446e0
-** Temperature mode (1 - constant | 2 - predefined field), Temperature - T (K), Partial molar volume - VH (m^3/mol), Coefficient formula (1 - directly using DL | 2 - using DL = DL0 * exp(-WB_L/RT))
+** Lattice parameter for FCC - a_lattice_FCC (m), Number of hydrogen atoms residing in each BCC lattice site - beta_BCC (dimless), Number of hydrogen atoms residing in each FCC lattice site - beta_FCC (dimless), Universal gas constant - R (N*m)/(mol*K)
+1, 1.0e0, 1, 2.866e-10, 3.65e-10, 6.0e0, 1.0e0, 8.31446e0
+** Temperature mode (1 - constant | 2 - predefined field | 3 - heat transfer), Temperature - temp (K), Partial molar volume - VH (m^3/mol), DL formula (1 - directly using DL | 2 - using DL = DL0 * exp(-WB_L/RT))
 ** Diffusion coefficient - DL (m^2/s), Pre-exponentiation factor for coefficient - DL0 (m^2/s), Activation energy for jumping between lattice sites - WB_L (N*m/mol) , Number of solvent metal atoms per unit volume - NL (1/m^3)
 1, 300.0e0, 2e-06, 1, 1.78e-10, 1.07964e-9, 5630, 8.518e+28
-** Avogadro's constant - avogadro (1/mol), Gibbs free energy difference between the decohering interface and the surrounding material - delta_g_b0 (N*m/mol), Initial total hydrogen concentration - C0_mol (mol/m^3), Initial chemical potential - mu0 (J/mol)
-** ntrap (0 - no traps | 1 - dislocation | 2 - 5 - more trap types), dis_trap_mode (1 - kumnick, krom | 2 - sofronis, dadfarnia), gamma fitting parameter in Dadfarnia et al. - gamma (1/m^2), Dislocation density for the annealed material in Dadfarnia et al. - rho_d0 (1/m^2)
-6.02214e+23, 30000.0e0, 20.0e0, 0.0e0, 2, 2, 2.0e+16, 1.0e+10 
-** Number of interstitial sites per trap site (dislocations) - alpha_1 (dimless), Binding energy of hydrogen to dislocations - WB_1 (N*m/mol), Number of interstitial sites per trap site (trap type 2) - alpha_2 (dimless), Number of traps (trap type 2) - NT_2 (1/m^3)
-** Binding energy of hydrogens (trap type 2) - WB_2 (N*m/mol), Number of interstitial sites per trap site (trap type 3) - alpha_3 (dimless), Trap density (trap type 3) - NT_3 (1/m^3), Binding energy of hydrogens (trap type 3) - WB_3 (N*m/mol)
-1.0e0,  -19.5737e+3, 1.0e0, 8.464e+22, -36.2524e+3, 0, 0, 0
-** Number of interstitial sites per trap site (trap type 4) - alpha_4 (dimless), Trap density (trap type 4) - NT_4 (1/m^3), Binding energy of hydrogens (trap type 4) - WB_4 (N*m/mol), Number of interstitial sites per trap site (trap type 5) - alpha_5 (dimless)
-** Trap density (trap type 5) - NT_5 (1/m^3), Binding energy of hydrogens (trap type 5) - WB_5 (N*m/mol), none, none
-0, 0, 0, 0, 0, 0, 0.0, 0.0
+** Avogadro's constant - avogadro (1/mol), Gibbs free energy difference between the decohering interface and the surrounding material - delta_g_b0 (N*m/mol), Initial total hydrogen concentration - C0_mol (mol/m^3), Initial chemical potential - mu_potential_0 (J/mol)
+** dis_trap_active (0 - inactive | 1 - active), gb_trap_active (0 - inactive | 1 - active), carb_trap_active (0 - inactive | 1 - active), void_trap_active (0 - inactive | 1 - active)
+6.02214e+23, 30000.0e0, 20.0e0, 0.0e0, 1, 1, 1, 1
+** dis_trap_mode (1 - kumnick, krom | 2 - sofronis, dadfarnia), gamma fitting parameter in Dadfarnia et al. - gamma (1/m^2), Dislocation density for the annealed material in Dadfarnia et al. - rho_d0 (1/m^2), Number of interstitial sites per trap site (dislocations) - alpha_dis (dimless)
+** Binding energy of hydrogen to dislocations - WB_dis (N*m/mol), Number of interstitial sites per trap site (grain boundary) - alpha_gb (dimless), Number of traps (grain boundary) - NT_gb (1/m^3), Binding energy of hydrogens (grain boundary) - WB_gb (N*m/mol)
+2, 2.0e+16, 1.0e+10 , 1.0e0,  -20e+3, 1.0e0, 8.464e+22, -30e+3
+** Number of interstitial sites per trap site (carbide) - alpha_carb (dimless), Trap density (carbides) - NT_carb (1/m^3), Binding energy of hydrogens (carbides) - WB_carb (N*m/mol), Number of interstitial sites per trap site (vacancies/microvoid) - alpha_void (dimless)
+** Trap density (vacancies/microvoid) - NT_void (1/m^3), Binding energy of hydrogens (vacancies/microvoid) - WB_void (N*m/mol), none, none
+1.0e0, 8.464e+22, -45e+3, 1.0e0, 1.0e+23, -60e+3, 0.0, 0.0
 **
 ** =============================
 **
@@ -177,53 +177,55 @@
 *Density
 7900.,
 *Depvar       
-  46,      
+  48,      
 1, #25_eqplas, #25_eqplas
 2, #26_eqplas_grad_X, #26_eqplas_grad_X
 3, #27_eqplas_grad_Y, #27_eqplas_grad_Y
 4, #28_eqplas_grad_Z, #28_eqplas_grad_Z
-5, #29_deqplas, #29_deqplas
-6, #30_sig_H, #30_sig_H
-7, #31_sig_H_grad_X, #31_sig_H_grad_X
-8, #32_sig_H_grad_Y, #32_sig_H_grad_Y
-9, #33_sig_H_grad_Z, #33_sig_H_grad_Z
-10, #34_sig_vonMises, #34_sig_vonMises
-11, #35_sig_Tresca, #35_sig_Tresca
-12, #36_sig_P1, #36_sig_P1
-13, #37_sig_P2, #37_sig_P2
-14, #38_sig_P3, #38_sig_P3
-15, #39_triax, #39_triax
-16, #40_lode, #40_lode
-17, #41_C_mol, #41_C_mol
-18, #42_CL_mol, #42_CL_mol
-19, #43_CT_mol, #43_CT_mol
-20, #44_NT_mol_dis, #44_NT_mol_dis
-21, #45_CT_mol_dis, #45_CT_mol_dis
-22, #46_CT_mol_gb, #46_CT_mol_gb
-23, #47_CT_mol_carb, #47_CT_mol_carb
-24, #48_CT_mol_void, #48_CT_mol_void
-25, #49_theta_L, #49_theta_L
-26, #50_theta_T_dis, #50_theta_T_dis
-27, #51_theta_T_gb, #51_theta_T_gb
-28, #52_theta_T_carb, #52_theta_T_carb
-29, #53_theta_T_void, #53_theta_T_void
-30, #54_theta_coverage, #54_theta_coverage
-31, #55_k_HEDE, #55_k_HEDE
-32, #56_flux_hydro_X, #56_flux_hydro_X
-33, #57_flux_hydro_Y, #57_flux_hydro_Y
-34, #58_flux_hydro_Z, #58_flux_hydro_Z
-35, #59_mu_potential, #59_mu_potential
-36, #60_u_heat, #60_u_heat
-37, #61_temp, #61_temp
-38, #62_temp_grad_X, #62_temp_grad_X
-39, #63_temp_grad_Y, #63_temp_grad_Y
-40, #64_temp_grad_Z, #64_temp_grad_Z
-41, #65_flux_heat_X, #65_flux_heat_X
-42, #66_flux_heat_Y, #66_flux_heat_Y
-43, #67_flux_heat_Z, #67_flux_heat_Z
-44, #68_phi, #68_phi
-45, #69_history, #69_history
-46, #70_Gc, #70_Gc
+5, #29_eqplas_rate, #29_eqplas_rate
+6, #30_deqplas, #30_deqplas
+7, #31_sig_H, #31_sig_H
+8, #32_sig_H_grad_X, #32_sig_H_grad_X
+9, #33_sig_H_grad_Y, #33_sig_H_grad_Y
+10, #34_sig_H_grad_Z, #34_sig_H_grad_Z
+11, #35_sig_vonMises, #35_sig_vonMises
+12, #36_sig_Tresca, #36_sig_Tresca
+13, #37_sig_P1, #37_sig_P1
+14, #38_sig_P2, #38_sig_P2
+15, #39_sig_P3, #39_sig_P3
+16, #40_triax, #40_triax
+17, #41_lode, #41_lode
+18, #42_C_pred_mol, #42_C_pred_mol
+19, #43_C_exact_mol, #43_C_exact_mol
+20, #44_CL_mol, #44_CL_mol
+21, #45_CT_mol, #45_CT_mol
+22, #46_NT_dis_mol, #46_NT_dis_mol
+23, #47_CT_dis_mol, #47_CT_dis_mol
+24, #48_CT_gb_mol, #48_CT_gb_mol
+25, #49_CT_carb_mol, #49_CT_carb_mol
+26, #50_CT_void_mol, #50_CT_void_mol
+27, #59_thetaL, #59_thetaL
+28, #60_thetaT_dis, #60_thetaT_dis
+29, #61_thetaT_gb, #61_thetaT_gb
+30, #62_thetaT_carb, #62_thetaT_carb
+31, #63_thetaT_void, #63_thetaT_void
+32, #64_theta_coverage, #64_theta_coverage
+33, #65_k_HEDE, #65_k_HEDE
+34, #66_flux_hydro_X, #66_flux_hydro_X
+35, #67_flux_hydro_Y, #67_flux_hydro_Y
+36, #68_flux_hydro_Z, #68_flux_hydro_Z
+37, #69_mu_potential, #69_mu_potential
+38, #70_u_heat, #70_u_heat
+39, #71_temp, #71_temp
+40, #72_temp_grad_X, #72_temp_grad_X
+41, #73_temp_grad_Y, #73_temp_grad_Y
+42, #74_temp_grad_Z, #74_temp_grad_Z
+43, #75_flux_heat_X, #75_flux_heat_X
+44, #76_flux_heat_Y, #76_flux_heat_Y
+45, #77_flux_heat_Z, #77_flux_heat_Z
+46, #78_phi, #78_phi
+47, #79_history, #79_history
+48, #80_Gc, #80_Gc
 *User Material, constants=1, type=THERMAL
 0.,
 *User Material, constants=1, type=MECHANICAL
