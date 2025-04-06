@@ -103,6 +103,21 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
         call build_elems_to_NPs_matrix() ! for elems_to_NPs_matrix
         call build_NPs_to_elems_matrix() ! for NPs_to_elems_matrix and nelems_of_NPs_matrix
 
+        ! print *, 'elems_to_NPs_matrix = '
+        ! do ielem = 1, 10
+        !     print *, elems_to_NPs_matrix(ielem, :)
+        ! end do
+        ! print *, 'NPs_to_elems_matrix = '
+        ! do inode = 1, 10
+        !     print *, NPs_to_elems_matrix (inode, :, :)
+        ! end do
+        ! print *, 'nelems_of_NPs_matrix = '
+        ! do inode = 1, 10
+        !     print *, nelems_of_NPs_matrix(inode)
+        ! end do
+
+        ! call pause(180)
+
         ! ========================================================
         ! CALCULATING SHAPE FUNCTIONS AND THE SHAPE FUNCTION GRADIENT
         ! W.R.T LOCAL COORDINATES. THESE VALUES NEVER CHANGE DURING THE ANALYSIS
@@ -178,37 +193,46 @@ subroutine UEXTERNALDB(lop,lrestart,time,dtime,kstep,kinc)
         ! ========================================================
 
         call calc_scalar_all_elems_at_NPs()
-        ! print *, 'statev_all_elems_at_NPs = '
-        ! print *, statev_all_elems_at_NPs
-        ! call pause(180)
 
-        ! print *, 'suceeeded calc_scalar_all_elems_at_nodes'
+        ! if (kinc == 2) then
+        !     print *, 'sig_H_all_elems_at_NPs = '
+        !     print *, statev_all_elems_at_NPs(sig_H_idx, 1:10, 1:nnode)
+        !     print *, 'suceeeded calc_scalar_all_elems_at_nodes'
+        !     call pause(180)
+        ! end if
 
+
+    
         ! ========================================================
         ! Populating djac_all_elems_at_nodes(total_elems, nnode)
         ! ========================================================
 
         call calc_djac_all_elems_at_NPs()
-        ! print *, 'djac_all_elems_at_nodes = '
-        ! print *, djac_all_elems_at_nodes
-        ! call pause(180)
 
-        ! print *, 'suceeeded calc_djac_all_elems_at_nodes'
+        ! if (kinc == 2) then
+        !     print *, 'djac_all_elems_at_NPs = '
+        !     print *, djac_all_elems_at_NPs(1:10, 1:nnode)
+        !     print *, 'suceeeded calc_djac_all_elems_at_nodes'
+        !     call pause(180)
+        ! end if
+
+        
 
         ! ========================================================
-        ! Populating sig_H_at_nodes(total_nodes)
-        !        and eqplas_at_nodes(total_nodes, ndim)
+        ! Populating statev_at_NPs(nstatev, total_nodes)
         ! Weighted average based on determinant of Jacobian
         ! ========================================================
 
         call calc_scalar_at_NPs()
 
-        ! print *, 'sig_H_at_nodes = '
-        ! print *, sig_H_at_nodes
+        ! if (kinc == 2) then
+        !     print *, 'sig_H_at_NPs = '
+        !     print *, statev_at_NPs(sig_H_idx, 1:100)
 
-        ! call pause(180)
+        !     call pause(180)
 
-        ! print *, 'suceeeded calc_scalar_at_nodes'
+        !     print *, 'suceeeded calc_scalar_at_nodes'
+        ! end if
         
         call mutexUnlock(1)
         
@@ -359,6 +383,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     use precision
     use common_block
+    use iso_module
 
     include 'aba_param.inc' 
       
@@ -382,26 +407,29 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! ==============================================================
 
     ! Note: coords in UEL is always fixed, which is the initial coordinates of the element jelem
-    real(kind=dp), dimension(ndim,nnode) :: coords_kelem_NPs_t, coords_kelem_NPs_tm1, coords_kelem_NPs_0
+    real(kind=dp), dimension(ndim,nnode) :: coords_kelem_NPs_t, coords_kelem_NPs_tm1, coords_kelem_NPs_0, coords_kelem_NPs_center
     real(kind=dp), dimension(ndim,ninpt) :: coords_kelem_IPs_t, coords_kelem_IPs_tm1, coords_kelem_IPs_0
     real(kind=dp), dimension(ndim) :: coords_kelem_kIP_t, coords_kelem_kIP_tm1
     real(kind=dp), dimension(ndim,ndim) :: xjac_inter_t, xjac_inv_inter_t
     real(kind=dp), dimension(ndim,ndim) :: xjac_inter_tm1, xjac_inv_inter_tm1
+    real(kind=dp), dimension(ndim,ndim) :: xjac_inter_center, xjac_inv_inter_center
     real(kind=dp), dimension(ndim,ndim) :: xjac_extra_t, xjac_inv_extra_t
     ! Local state variables of the current element jelem for integration points
     real(kind=dp), dimension(nstatev) :: statev                      
     real(kind=dp), dimension(ndim,ndim) :: identity   
     ! Shape function that interpolates from nodal points to integration points
-    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_inter, PHIX, PHIY, PHIZ 
+    real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_inter
     real(kind=dp), dimension(ninpt) :: N_shape_IP_inter_to_kIP_extra
     real(kind=dp), dimension(ninpt) :: N_shape_IP_extra_to_kIP_inter
     ! Shape function that extrapolates from integration points to nodal points
     
     real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_local          
     real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global_t
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global_tm1          
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_global_tm1  
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_KIP_inter_global_center       
     real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_bar_global_t
     real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_bar_global_tm1
+    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_bar_global_center
     real(kind=dp), dimension(nnode) :: N_shape_NP_inter_to_kIP_extra 
     real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_extra_local
     real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kIP_extra_global_t
@@ -414,11 +442,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ! TENSORS DEFINED FOR THE DEFORMATION FIELD: UX, UY, UZ
     ! =====================================================
 
-    real(kind=dp), dimension(ndim,nnode) :: ux_t, dux, ux_tm1
-    real(kind=dp), dimension(ndim*nnode) :: ux_flat_t, dux_flat, ux_flat_tm1
+    real(kind=dp), dimension(ndim,nnode) :: ux_t, dux, ux_tm1, ux_center, vx_t, ax_t
+    real(kind=dp), dimension(ndim*nnode) :: ux_flat_t, dux_flat, ux_flat_tm1, ux_flat_center, vx_flat_t, ax_flat_t
     
     ! Displacement gradient u
-    real(kind=dp), dimension(ndim,ndim) :: ux_grad_t, ux_grad_tm1, dux_grad          
+    real(kind=dp), dimension(ndim,ndim) :: ux_grad_t, ux_grad_tm1, dux_grad, ux_grad_center
+    real(kind=dp), dimension(ndim,ndim) :: dux_grad_bar_center, dux_grad_center_kIP, dux_grad_center_sym_kIP
 
     ! Strain-displacement matrix (B matrix)            
     real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_kIP_inter_t, Bu_kIP_inter_tm1    
@@ -466,12 +495,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp) :: CL_mol_kIP_t, dCL_mol_kIP, CL_mol_kIP_tm1
     real(kind=dp), dimension(ndim) :: CL_mol_grad_kIP_t
 
-    real(kind=dp) :: CL_mol_kIP_t, C_pred_mol_kIP_tm1, dC_mol_dCL_mol_kIP_t, dC_mol_kIP, r_hydro_kIP_t, drdt_hydro_kIP
+    real(kind=dp) :: C_pred_mol_kIP_tm1, dC_mol_dCL_mol_kIP_t, dC_mol_kIP, r_hydro_kIP_t, drdt_hydro_kIP
     real(kind=dp), dimension(ndim) :: dC_mol_dgrad_CL_mol_kIP_t, dudg_hydro_kIP_inter_t, dudg_hydro_kIP_extra_t
     real(kind=dp), dimension(ndim) :: flux_hydro_kIP, flux_hydro_kIP_t, flux_hydro_kIP_tm1, dflux_hydro_dCL_mol_kIP_t
     real(kind=dp), dimension(ndim,ndim) :: dflux_hydro_dgrad_CL_mol_kIP_t
 
-    real(kind=dp), dimension(nnode,nnode)  :: K_hydro_kIP_t, K_hydro_dfdCL_kIP_t, K_hydro_dfdgCL_kIP_t, K_hydro_ddCdCL_kIP_t
+    real(kind=dp), dimension(nnode,nnode)  :: K_hydro_kIP_t, K_hydro_dfdCL_kIP_t, K_hydro_dfdgCL_kIP_t, K_hydro_ddCdCL_kIP_t, K_hydro_drdCL_kIP_t
     real(kind=dp), dimension(nnode,nnode) :: M_hydro_kIP_t, M_hydro_dCdCL_kIP_t, M_hydro_dCdgCL_kIP_t
     real(kind=dp), dimension(nnode) :: F_hydro_kIP_t, F_hydro_dC_kIP_t, F_hydro_flux_kIP_t, F_hydro_r_kIP_t
 
@@ -552,6 +581,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             ux_t(kdim,knode) = u(disp_index)
             dux(kdim,knode) = du(disp_index, nrhs)
             ux_tm1(kdim,knode) = ux_t(kdim,knode) - dux(kdim,knode)
+            ux_center(kdim,knode) = 0.5d0 * (ux_t(kdim,knode) + ux_tm1(kdim,knode))
+            vx_t(kdim,knode) = v(disp_index)
+            ax_t(kdim,knode) = a(disp_index)
+            
         end do
     end do
 
@@ -559,6 +592,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     ux_flat_t(1:ndim*nnode) = u(start_ux_idx:end_ux_idx)
     dux_flat(1:ndim*nnode) = du(start_ux_idx:end_ux_idx, nrhs)
     ux_flat_tm1(1:ndim*nnode) = ux_flat_t - dux_flat
+    ux_flat_center(1:ndim*nnode) = 0.5d0 * (ux_flat_t + ux_flat_tm1)
+    vx_flat_t(1:ndim*nnode) = v(start_ux_idx:end_ux_idx)
+    ax_flat_t(1:ndim*nnode) = a(start_ux_idx:end_ux_idx)
 
     temp_NPs_t(1:nnode) = u(start_temp_idx:end_temp_idx)
     dtemp_NPs(1:nnode) = du(start_temp_idx:end_temp_idx, nrhs)
@@ -586,6 +622,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     phi_NPs_tm1(1:nnode) = phi_NPs_t - dphi_NPs
 
     ! Current coordinates of the element jelem
+
     ! It will be used to calculate N_grad_NP_inter_to_kIP_inter_global_t for updated Lagrangian formulation
     coords_kelem_NPs_0 = coords
 
@@ -593,10 +630,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! Use original coordinates for total Lagrangian formulation
         coords_kelem_NPs_tm1 = coords_kelem_NPs_0
         coords_kelem_NPs_t = coords_kelem_NPs_0
+        coords_kelem_NPs_center = coords_kelem_NPs_0
     else if (lflags(2) == 1) then ! NLGEOM on
         ! Use updated coordinates for updated Lagrangian formulation
         coords_kelem_NPs_tm1 = coords_kelem_NPs_0 + ux_tm1
         coords_kelem_NPs_t = coords_kelem_NPs_0 + ux_t
+        coords_kelem_NPs_center = coords_kelem_NPs_0 + ux_center
     end if
 
     ! Calculate coordinates at all IPs
@@ -640,6 +679,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     !                                                                    !
     ! ================================================================== !
 
+    ! print *, 'jelem = ', jelem
+
     do kinpt = 1, ninpt
         call calc_scalar_grad_kelem_at_kIP(jelem, kinpt)
     end do
@@ -652,10 +693,15 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         
     N_grad_NP_inter_bar_global_t(1:ndim,1:nnode) = 0.0d0
     N_grad_NP_inter_bar_global_tm1(1:ndim,1:nnode) = 0.0d0
+    N_grad_NP_inter_bar_global_center(1:ndim,1:nnode) = 0.0d0
     djac_bar_t = 0.0d0
     djac_bar_tm1 = 0.0d0
+    djac_bar_center = 0.0d0
     elem_vol_t = 0.0d0
     elem_vol_tm1 = 0.0d0
+    elem_vol_center = 0.0d0
+
+    dux_grad_bar_center = 0.0d0
 
     do kinpt=1, ninpt
 
@@ -679,17 +725,34 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         djac_bar_t = djac_bar_t + djac_inter_t * dvol_inter_t
         elem_vol_t = elem_vol_t + dvol_inter_t
 
+        xjac_inter_center = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_center))
+        call calc_matrix_inv(xjac_inter_center, xjac_inv_inter_center, djac_inter_center, ndim)
+        
+        dvol_inter_center = weight_kIP(kinpt) * djac_inter_center
+        N_grad_NP_inter_to_kIP_inter_global_center = matmul(xjac_inv_inter_center,N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_bar_global_center = N_grad_NP_inter_bar_global_center + N_grad_NP_inter_to_kIP_inter_global_center * dvol_inter_center
+        djac_bar_center = djac_bar_center + djac_inter_center * dvol_inter_center
+        elem_vol_center = elem_vol_center + dvol_inter_center
+
+        dux_grad_center_kIP = matmul(dux, transpose(N_grad_NP_inter_to_kIP_inter_global_center))
+
+        dux_grad_bar_center = dux_grad_bar_center + dux_grad_center_kIP * dvol_inter_center
+
     end do
 
     N_grad_NP_inter_bar_global_tm1 = N_grad_NP_inter_bar_global_tm1 / elem_vol_tm1
     djac_bar_tm1 = djac_bar_tm1 / elem_vol_tm1
     N_grad_NP_inter_bar_global_t = N_grad_NP_inter_bar_global_t / elem_vol_t
     djac_bar_t = djac_bar_t / elem_vol_t
-                                                   
+    N_grad_NP_inter_bar_global_center = N_grad_NP_inter_bar_global_center / elem_vol_center
+    djac_bar_center = djac_bar_center / elem_vol_center
+    
+    dux_grad_bar_center = dux_grad_bar_center / elem_vol_center
+
     ! ================================================================== !
     ! STARTING THE LOOP OVER ALL INTEGRATION POINTS FOR ALL FIELDS       !
     ! ================================================================== !
-
+    
     do kinpt=1,ninpt
 
         ! Extracting coordinates of the current integration point
@@ -725,13 +788,19 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         dvol_inter_tm1 = weight_kIP(kinpt) * djac_inter_tm1
         N_grad_NP_inter_to_kIP_inter_global_tm1 = matmul(xjac_inv_inter_tm1,N_grad_NP_inter_to_kIP_inter_local)
-
+        
         !   Calculate strain displacement B-matrix
         call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_tm1,ntensor,nnode,ndim,Bu_kIP_inter_tm1)
         call kbmatrix_vol(N_grad_NP_inter_to_kIP_inter_global_tm1,ntensor,nnode,ndim,Bu_vol_kIP_inter_tm1)
         call kbmatrix_vol(N_grad_NP_inter_bar_global_tm1,ntensor,nnode,ndim,Bu_bar_vol_tm1)
 
         Bu_bar_tm1 = Bu_kIP_inter_tm1 - Bu_vol_kIP_inter_tm1 + Bu_bar_vol_tm1
+
+        xjac_inter_center = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_center))
+        call calc_matrix_inv(xjac_inter_center, xjac_inv_inter_center, djac_inter_center, ndim)
+
+        dvol_inter_center = weight_kIP(kinpt) * djac_inter_center
+        N_grad_NP_inter_to_kIP_inter_global_center = matmul(xjac_inv_inter_center,N_grad_NP_inter_to_kIP_inter_local)
 
         if (lflags(2) == 0) then 
 
@@ -749,39 +818,22 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             ! Large-displacement analysis (nlgeom=on)
             ! =======================================
 
-            ux_grad_t = matmul(ux_t, transpose(N_grad_NP_inter_to_kIP_inter_global_t))
-            ux_grad_tm1 = matmul(ux_tm1, transpose(N_grad_NP_inter_to_kIP_inter_global_tm1))
-            dux_grad = matmul(dux, transpose(N_grad_NP_inter_to_kIP_inter_global_tm1))
+            dux_grad_center_kIP = matmul(dux, transpose(N_grad_NP_inter_to_kIP_inter_global_center))
+            call calc_matrix_sym(dux_grad_center_kIP, dux_grad_center_sym_kIP, ndim)
 
-            F_grad_t = identity + ux_grad_t
-            F_grad_tm1 = identity + ux_grad_tm1
-            dF_grad = identity + dux_grad
+            ! Compute trace of symmetric dux gradient
+            trace_dux_grad_bar_center = dux_grad_bar_center(1,1) + dux_grad_bar_center(2,2) + dux_grad_bar_center(3,3)
+            trace_dux_grad_center_kIP = dux_grad_center_kIP(1,1) + dux_grad_center_kIP(2,2) + dux_grad_center_kIP(3,3)
 
-            F_grad_bar_t = F_grad_t * (djac_bar_t / djac_inter_t) ** (1.0d0/3.0d0)
-            F_grad_bar_tm1 = F_grad_tm1 * (djac_bar_tm1 / djac_inter_tm1) ** (1.0d0/3.0d0)
-            dF_grad_bar = dF_grad * (djac_bar_t / djac_inter_t) ** (1.0d0/3.0d0)
-            
-            call calc_matrix_inv(F_grad_bar_tm1, F_grad_bar_inv_tm1, determinant, ndim)
-            
-            ! Perform polar decomposition to separate rotation and stretch ===
-            dB_Cauchy = matmul(dF_grad_bar, transpose(dF_grad_bar))
+            dstran_tensor = dux_grad_center_sym_kIP + (1.0d0/3.0d0) * identity * (trace_dux_grad_bar_center - trace_dux_grad_center_kIP)
 
-            ! Compute incremental stretch tensor (rotation-free)
-            call calc_matrix_sqrt(dB_Cauchy, dV_stretch, ndim)
-
-            ! Compute incremental rotation tensor explicitly
-            call calc_matrix_inv(dV_stretch, dV_stretch_inv, determinant, ndim)
-            dR_left_rot = matmul(dV_stretch_inv, dF_grad_bar)
-
-            ! Compute rotation-free incremental logarithmic strain
-            call calc_matrix_log(dV_stretch, deps_log, ndim)
-
-            dstran(1) = deps_log(1,1)
-            dstran(2) = deps_log(2,2)
-            dstran(3) = deps_log(3,3)
-            dstran(4) = deps_log(1,2) * 2.0d0
-            dstran(5) = deps_log(1,3) * 2.0d0
-            dstran(6) = deps_log(2,3) * 2.0d0
+            ! Convert to Voigt strain vector: dstran(6)
+            dstran(1) = dstran_tensor(1,1)
+            dstran(2) = dstran_tensor(2,2)
+            dstran(3) = dstran_tensor(3,3)
+            dstran(4) = dstran_tensor(1,2) * 2.0d0
+            dstran(5) = dstran_tensor(1,3) * 2.0d0
+            dstran(6) = dstran_tensor(2,3) * 2.0d0
 
         end if
 
@@ -827,6 +879,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         end if
 
+        ddsdde = 0.5d0 * (ddsdde + transpose(ddsdde))
+
         ! Update the state variables
         ! All other mechanical properties are already updated in statev in UMAT_von_Mises
         
@@ -839,12 +893,29 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! 8 nodes x 3 displacement dofs ux, uy, uz = 24
 
-        amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
-            amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
-                               (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
-            
-        rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-            dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+        if (lflags(2) == 0) then 
+
+            ! nlgeom=off
+            ! =======================================
+            amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
+                amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
+                                (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
+                
+            rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
+                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+
+        else if (lflags(2) == 1) then
+
+            ! nlgeom=on
+            ! =======================================
+            amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
+                amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
+                                (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
+                
+            rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
+                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+
+        end if
         
         ! ================================================================== !
         !                                                                    !
@@ -930,7 +1001,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! UMATHT_hydro_model = 2: McNabb Foster model
 
         if (UMATHT_hydro_model == 1) then
-            call UMATHT_hydro_Oriani(C_pred_mol_kIP,dC_mol_dCL_mol_kIP_t,dC_mol_dgrad_CL_mol_kIP_t, &
+            call UMATHT_hydrogen_Oriani(C_pred_mol_kIP,dC_mol_dCL_mol_kIP_t,dC_mol_dgrad_CL_mol_kIP_t, &
                                     flux_hydro_kIP,dflux_hydro_dCL_mol_kIP_t,dflux_hydro_dgrad_CL_mol_kIP_t, &
                                     ! New term introduced in UMATHT only for hydrogen diffusion model
                                     ddC_mol_dCL_mol_kIP_t, &
@@ -940,7 +1011,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                     nprops_UMATHT_hydro_transfer,coords_kelem_kIP_t, &
                                     pnewdt,jelem,kinpt,layer,kspt,kstep,kinc)
 
-            call HETVAL_hydro_Oriani(cmname,CL_mol_kIP_t,dCL_mol,time,dtime, &
+            call HETVAL_hydrogen_Oriani(cmname,CL_mol_kIP_t,dCL_mol,time,dtime, &
                                     statev,r_hydro_kIP_t,dr_hydro_dCL_mol_kIP_t,predef_kIP_tm1,dpred_kIP)
 
         end if
@@ -985,7 +1056,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                         reshape(N_shape_NP_inter_to_kIP_inter, [1, nnode]) &
                                         ) 
 
-        K_hydro_kIP_t = K_hydro_dfdCL_kIP_t + K_hydro_dfdgCL_kIP_t + K_hydro_drdCL_kIP_t + K_hydro_ddCdCL_kIP_t
+        K_hydro_kIP_t = K_hydro_dfdCL_kIP_t + K_hydro_dfdgCL_kIP_t + K_hydro_drdCL_kIP_t ! + K_hydro_ddCdCL_kIP_t
 
 
         ! (nnode, nnode) = (nnode, 1) @ (1, nnode)
@@ -1030,14 +1101,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! BEWARE: AT THE FIRST INCREMENT, DTIME IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HYDROGEN TRANSFER FIELD
 
-        if (kinc > 1) then
-            amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
-                amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
-                + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
-                
-            rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
-                - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
-        end if
+        ! amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
+        !     amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
+        !     + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
+            
+        ! rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
+        !     - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
 
         ! ================================================================== !
         !                                                                    !
@@ -1226,14 +1295,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! BEWARE: AT THE FIRST INCREMENT, THE TIME STEP IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HEAT TRANSFER FIELD
-        if (kinc > 1) then
-            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-                amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
+        ! if (kinc > 1) then
+        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+        !         + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
                 
-            rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
-        end if
+        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+        !         - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
+        ! end if
 
         ! ================================================================== !
         !                                                                    !

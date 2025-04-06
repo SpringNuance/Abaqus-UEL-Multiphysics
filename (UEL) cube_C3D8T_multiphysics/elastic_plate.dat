@@ -1,0 +1,230 @@
+1
+
+   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 19:09:58
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2026
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Element, type=C3D8T
+  *Elset, elset=ASSEMBLY_ELASTIC_PLATE_1_SET-1
+  *Elset, elset=ASSEMBLY_ALLE
+  *Elset, elset=ASSEMBLY_TOP_SIDE
+  *Elset, elset=ASSEMBLY_WHOLE_PART
+  *Elset, elset=ASSEMBLY_XSYMM_SIDE
+  *Elset, elset=ASSEMBLY_YSYMM_SIDE
+  *Elset, elset=ASSEMBLY_ZSYMM_SIDE
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *material, name=MULTIPHYSICS
+  *density
+  *depvar
+
+ ***ERROR: THE NUMBER OF SOLUTION-DEPENDENT STATE VARIABLES CAN NOT BE SET 
+           EQUAL TO ZERO.
+ LINE IMAGE: 0,
+ ***NOTE: DUE TO AN INPUT ERROR THE ANALYSIS PRE-PROCESSOR HAS BEEN UNABLE TO 
+          INTERPRET SOME DATA.  SUBSEQUENT ERRORS MAY BE CAUSED BY THIS OMISSION
+  *usermaterial, constants=1, type=THERMAL
+  *usermaterial, constants=1, type=MECHANICAL
+  *initialconditions, type=TEMPERATURE
+  *solidsection, elset=ASSEMBLY_ELASTIC_PLATE_1_SET-1, material=MULTIPHYSICS
+  *solidsection, elset=ASSEMBLY_ELASTIC_PLATE_1_SET-1, material=MULTIPHYSICS
+  *initialconditions, type=TEMPERATURE
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+
+ ***WARNING: THE OPTION *FIELD IS USED BUT THE OPTION *INITIAL 
+             CONDITIONS,TYPE=FIELD IS NOT. THE INITIAL FIELD VARIABLE VALUES 
+             ARE ASSUMED TO BE ZERO.
+  *field, variable=1, user
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  
+                               E L E M E N T   Q U A L I T Y  C H E C K S        
+  
+  
+ ***NOTES: DISTORTED ISOPARAMETRIC ELEMENTS: ANGLE BETWEEN ISOPARAMETRIC LINES 
+           IS LESS THAN 45 DEGREES OR GREATER THAN 135 DEGREES.
+  
+           TETRAHEDRAL QUALITY MEASURE: VOLUME OF TETRAHEDRON DIVIDED BY THE 
+           VOLUME OF EQUILATERAL TETRAHEDRON WITH SAME CIRCUMSPHERE RADIUS; 
+           0 FOR DEGENERATE TETRAHEDRON AND 1 FOR EQUILATERIAL TETRAHEDRON. IT 
+           IS RECOMMENDED THAT THE TETRAHEDRAL QUALITY MEASURE BE GREATER THAN 
+           0.02, THE MIN INTERIOR (DIHEDRAL) ANGLE BE GREATER THAN 10 DEGREES, 
+           AND THE MAX INTERIOR (DIHEDRAL) ANGLE BE LESS THAN 160 DEGREES. 
+  
+           MODIFIED TETRAHEDRAL QUALITY MEASURE: ANGLES BETWEEN THE TWO LINE 
+           SEGMENTS ON EACH EDGE; THE EDGES OF MODIFIED TETRAHEDRAL SHOULD BE 
+           AS STRAIGHT AS POSSIBLE. IT IS RECOMMENDED THAT THE ANGLE BETWEEN 
+           THE TWO LINE SEGMENTS ON EACH EDGE IS BETWEEN 160 AND 180 DEGREES. 
+  
+           TRIANGULAR QUALITY MEASURE: AREA OF TRIANGLE DIVIDED BY THE AREA OF 
+           EQUILATERAL TRIANGLE WITH SAME CIRCUMCIRCLE RADIUS; 0 FOR DEGENERATE 
+           TRIANGLE AND 1 FOR EQUILATERAL TRIANGLE. IT IS RECOMMENDED THAT THE
+           TRIANGULAR QUALITY MEASURE BE GREATER THAN 0.01, THE MIN INTERIOR 
+           ANGLE BE GREATER THAN 10 DEGREES, AND THE MAX INTERIOR ANGLE BE LESS 
+           THAN 160 DEGREES. 
+  
+           NODAL ADJUSTMENTS ARISING FROM CONTACT INTERACTIONS AND/OR TIE 
+           CONSTRAINTS CAN CAUSE SEVERE ELEMENT DISTORTION. IT MAY BE NECESSARY 
+           TO REMESH IN ORDER TO REDUCE THE AMOUNT OF ADJUSTMENT. 
+
+ ***WARNING: 2 elements are distorted. Either the isoparametric angles are out 
+             of the suggested limits or the triangular or tetrahedral quality 
+             measure is bad. The elements have been identified in element set 
+             WarnElemDistorted.
+  
+ --------------------------------------------------------------------------------
+ Distorted isoparametric elements
+  
+          Element           Min/max angle   Adjusted nodes 
+ ------------------------- ---------------- -------------- 
+        ELASTIC_PLATE_1.62          39.9977       NO       
+       ELASTIC_PLATE_1.220          39.5012       NO       
+  
+  
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *output, field
+  *output, history, frequency=0
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *nodeoutput
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE C3D8T
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *field, variable=1, user
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                  1509
+          NUMBER OF NODES IS                                     3216
+          NUMBER OF NODES DEFINED BY THE USER                    3216
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                12864
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+
+
+          THE PROGRAM HAS DISCOVERED     1 FATAL ERRORS
+
+               ** EXECUTION IS TERMINATED **
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
+       WALLCLOCK TIME (SEC) =            0

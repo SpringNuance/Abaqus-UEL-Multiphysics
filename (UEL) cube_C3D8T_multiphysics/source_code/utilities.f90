@@ -69,6 +69,15 @@ subroutine calc_matrix_log(matrix, log_matrix, ndim)
 return
 end
 
+subroutine calc_matrix_sym(matrix, matrix_sym, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: matrix, matrix_sym
+
+    matrix_sym = 0.5d0 * (matrix + transpose(matrix))
+end
+
+
 subroutine calc_matrix_sqrt(matrix, matrix_sqrt, ndim)
     use precision
     integer :: ndim

@@ -26,7 +26,6 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     real(kind=dp) :: effective_mu, effective_lambda, effective_hard    
 
     real(kind=dp), dimension(ntens) :: eelas, eplas, eplas_rate, flow
-    real(kind=dp) :: eplas_rate(ntens)
     real(kind=dp), dimension(3) :: hard
     real(kind=dp), dimension(ndim) :: sig_principal_unsorted, sig_principal_sorted
     real(kind=dp), dimension(ndim, ndim) :: sig_principal_dir
@@ -194,7 +193,7 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     sig_Tresca = (sig_P1 - sig_P3)/2.0d0
 
     ! Compute plastic strain rate: component-wise division
-    eplas_rate(i) = eplas - statev(eplas_start_idx:eplas_end_idx) / dtime
+    eplas_rate = eplas - statev(eplas_start_idx:eplas_end_idx) / dtime
     eqplas_rate = ( &
         (eplas_rate(1))**2.0d0 + &
         (eplas_rate(2))**2.0d0 + &

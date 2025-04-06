@@ -1,0 +1,299 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Sun Apr  6 10:40:57 2025
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=192.38020324707, 
+    height=165.971069335938)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('cube_test_multiphysics.cae')
+#: The model database "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.110743, 
+    farPlane=0.217527, width=0.10008, height=0.0559181, viewOffsetX=0.0126657, 
+    viewOffsetY=-0.000640227)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0999752, 
+    farPlane=0.187789, width=0.0903491, height=0.050481, cameraPosition=(
+    -0.102021, 0.014976, 0.0675757), cameraUpVector=(0.171541, 0.966955, 
+    -0.188603), cameraTarget=(0.0302942, 0.029349, -0.0284788), 
+    viewOffsetX=0.0114342, viewOffsetY=-0.000577975)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0920048, 
+    farPlane=0.198502, width=0.0831461, height=0.0464565, cameraPosition=(
+    -0.0811849, -0.0581983, 0.0478486), cameraUpVector=(-0.268719, 0.954534, 
+    0.129052), cameraTarget=(0.0278164, 0.0397926, -0.026022), 
+    viewOffsetX=0.0105226, viewOffsetY=-0.000531897)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.104088, 
+    farPlane=0.186418, width=0.0256518, height=0.0143325, 
+    viewOffsetX=0.00935464, viewOffsetY=-0.00727532)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.115832, 
+    farPlane=0.15722, width=0.0285461, height=0.0159496, cameraPosition=(
+    -0.0471463, 0.00510983, 0.115133), cameraUpVector=(-0.28115, 0.886281, 
+    -0.36805), cameraTarget=(0.0204503, 0.0268309, -0.0328508), 
+    viewOffsetX=0.0104101, viewOffsetY=-0.00809619)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.10671, 
+    farPlane=0.166342, width=0.0775196, height=0.0433127, 
+    viewOffsetX=0.00852244, viewOffsetY=-0.0039009)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p1 = mdb.models['elastic_plate'].parts['elastic_plate']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+p.features['Solid extrude-1'].setValues(depth=0.0005)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+p.regenerate()
+#: Warning: Failed to attach mesh to part geometry.
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+p.regenerate()
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.115372, 
+    farPlane=0.159032, width=0.0332794, height=0.018511, 
+    viewOffsetX=-0.00240435, viewOffsetY=-0.0120554)
+session.viewports['Viewport: 1'].partDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=ON)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.115507, 
+    farPlane=0.158897, width=0.0364937, height=0.0203902, 
+    viewOffsetX=-0.00420421, viewOffsetY=-0.0109189)
+session.viewports['Viewport: 1'].view.setValues(session.views['Iso'])
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.126944, 
+    farPlane=0.201281, width=0.0216779, height=0.0121122, 
+    viewOffsetX=-0.00768926, viewOffsetY=-0.00407737)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#9800102 #1 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=1, constraint=FIXED)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#8 ]', ), )
+p.generateMesh(regions=pickedRegions)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.147149, 
+    farPlane=0.199917, width=0.0251282, height=0.01404, cameraPosition=(
+    -0.061441, -0.0158565, 0.142994), cameraUpVector=(-0.659219, 0.121621, 
+    -0.74205), cameraTarget=(0.0167993, 0.035502, 0.00818445), 
+    viewOffsetX=-0.00891311, viewOffsetY=-0.00472634)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.140801, 
+    farPlane=0.206265, width=0.058152, height=0.0324914, 
+    viewOffsetX=-0.0131008, viewOffsetY=-0.00289177)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.130121, 
+    farPlane=0.229291, width=0.0537411, height=0.0300269, cameraPosition=(
+    -0.0752325, -0.115275, -0.0318507), cameraUpVector=(-0.518165, 0.824263, 
+    -0.228247), cameraTarget=(0.0123278, 0.0174154, 0.00888243), 
+    viewOffsetX=-0.0121071, viewOffsetY=-0.00267243)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.137682, 
+    farPlane=0.22173, width=0.0175495, height=0.0098055, 
+    viewOffsetX=-0.00582663, viewOffsetY=1.85652e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.138069, 
+    farPlane=0.223735, width=0.0175989, height=0.00983307, cameraPosition=(
+    -0.110482, -0.0884002, -0.0111566), cameraUpVector=(-0.305521, 0.897453, 
+    -0.318175), cameraTarget=(0.00968628, 0.0212115, 0.0106976), 
+    viewOffsetX=-0.00584301, viewOffsetY=1.86174e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.132978, 
+    farPlane=0.228826, width=0.046802, height=0.0261498, 
+    viewOffsetX=-0.00539495, viewOffsetY=-0.00226277)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.141865, 
+    farPlane=0.227299, width=0.0499297, height=0.0278974, cameraPosition=(
+    -0.118848, -0.0403755, 0.0906527), cameraUpVector=(-0.191289, 0.953867, 
+    -0.231402), cameraTarget=(0.0137156, 0.0266288, 0.0208662), 
+    viewOffsetX=-0.00575549, viewOffsetY=-0.00241399)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.161299, 
+    farPlane=0.216469, width=0.0567695, height=0.031719, cameraPosition=(
+    0.00828007, -0.0513918, 0.170183), cameraUpVector=(-0.158645, 0.981192, 
+    0.109976), cameraTarget=(0.0327802, 0.0244043, 0.0266996), 
+    viewOffsetX=-0.00654393, viewOffsetY=-0.00274468)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.167316, 
+    farPlane=0.21558, width=0.0588872, height=0.0329022, cameraPosition=(
+    0.107323, 0.0194396, 0.173871), cameraUpVector=(-0.437121, 0.895292, 
+    -0.0858929), cameraTarget=(0.0448047, 0.0355418, 0.02299), 
+    viewOffsetX=-0.00678804, viewOffsetY=-0.00284707)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.164635, 
+    farPlane=0.219693, width=0.0579435, height=0.0323749, cameraPosition=(
+    0.125493, 0.0592311, 0.162751), cameraUpVector=(-0.448406, 0.858563, 
+    -0.248598), cameraTarget=(0.0471902, 0.0406384, 0.0197272), 
+    viewOffsetX=-0.00667926, viewOffsetY=-0.00280144)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.164401, 
+    farPlane=0.219914, width=0.0578611, height=0.0323289, cameraPosition=(
+    0.110967, 0.0745466, 0.167399), cameraUpVector=(-0.407681, 0.833828, 
+    -0.372193), cameraTarget=(0.0454185, 0.0424888, 0.0204009), 
+    viewOffsetX=-0.00666976, viewOffsetY=-0.00279746)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#1 ]', ), )
+p.generateMesh(regions=pickedRegions)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.172619, 
+    farPlane=0.211695, width=0.0141101, height=0.00788376, 
+    viewOffsetX=-0.019517, viewOffsetY=0.0258577)
+session.viewports['Viewport: 1'].view.setValues(session.views['Iso'])
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.128399, 
+    farPlane=0.199825, width=0.0145045, height=0.00810414, 
+    viewOffsetX=0.0126649, viewOffsetY=-0.0192081)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+e = p.edges
+pickedEdges = e.getSequenceFromMask(mask=('[#20020008 ]', ), )
+p.seedEdgeByNumber(edges=pickedEdges, number=1, constraint=FIXED)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.118706, 
+    farPlane=0.209518, width=0.0689845, height=0.0385439, viewOffsetX=0.016804, 
+    viewOffsetY=-0.0110941)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#1 ]', ), )
+p.generateMesh(regions=pickedRegions)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#4 ]', ), )
+p.generateMesh(regions=pickedRegions)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.generateMesh(regions=pickedRegions)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#2 ]', ), )
+p.generateMesh(regions=pickedRegions, seedConstraintOverride=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.116575, 
+    farPlane=0.211649, width=0.0815647, height=0.0455729, 
+    viewOffsetX=0.0172202, viewOffsetY=-0.00795432)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+pickedRegions = c.getSequenceFromMask(mask=('[#1 ]', ), )
+p.generateMesh(regions=pickedRegions)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.109522, 
+    farPlane=0.218702, width=0.120114, height=0.0671117, viewOffsetX=0.0206863, 
+    viewOffsetY=-0.0016285)
+elemType1 = mesh.ElemType(elemCode=C3D8T, elemLibrary=STANDARD, 
+    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
+elemType2 = mesh.ElemType(elemCode=C3D6T, elemLibrary=STANDARD, 
+    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
+elemType3 = mesh.ElemType(elemCode=C3D4T, elemLibrary=STANDARD, 
+    secondOrderAccuracy=OFF, distortionControl=DEFAULT)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+c = p.cells
+cells = c.getSequenceFromMask(mask=('[#f ]', ), )
+pickedRegions =(cells, )
+p.setElementType(regions=pickedRegions, elemTypes=(elemType1, elemType2, 
+    elemType3))
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae".
+a = mdb.models['elastic_plate'].rootAssembly
+a.regenerate()
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=ON, bcs=ON, 
+    predefinedFields=ON, connectors=ON, optimizationTasks=OFF, 
+    geometricRestrictions=OFF, stopConditions=OFF)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.127491, 
+    farPlane=0.200734, width=0.0190675, height=0.0106059, 
+    viewOffsetX=0.0122972, viewOffsetY=0.0140898)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+a = mdb.models['elastic_plate'].rootAssembly
+region = a.sets['ALLN']
+mdb.models['elastic_plate'].predefinedFields['CL_mol_diffusion'].setValues(
+    region=region)
+del mdb.models['elastic_plate'].predefinedFields['Predefined Field-3']
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Step-1')
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.123456, 
+    farPlane=0.204768, width=0.0439076, height=0.0244227, 
+    viewOffsetX=0.0206692, viewOffsetY=0.0127081)
+a = mdb.models['elastic_plate'].rootAssembly
+region = a.sets['ALLN']
+mdb.models['elastic_plate'].predefinedFields['UFIELD'].setValues(region=region)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(step='Initial')
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.108528, 
+    farPlane=0.219697, width=0.126091, height=0.0701356, viewOffsetX=0.0142466, 
+    viewOffsetY=0.000228444)
+a = mdb.models['elastic_plate'].rootAssembly
+e1 = a.instances['elastic_plate_1'].elements
+elements1 = e1.getSequenceFromMask(mask=('[#ffffffff:47 #1f ]', ), )
+a.Set(elements=elements1, name='ALLE')
+#: The set 'ALLE' has been edited (1509 elements).
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+a = mdb.models['elastic_plate'].rootAssembly
+n1 = a.instances['elastic_plate_1'].nodes
+nodes1 = n1.getSequenceFromMask(mask=('[#ffffffff:100 #ffff ]', ), )
+a.Set(nodes=nodes1, name='ALLN')
+#: The set 'ALLN' has been edited (3216 nodes).
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.126697, 
+    farPlane=0.201528, width=0.0230009, height=0.0127938, 
+    viewOffsetX=0.0129854, viewOffsetY=0.0106089)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.126085, 
+    farPlane=0.20214, width=0.0293178, height=0.0163074, viewOffsetX=0.0152912, 
+    viewOffsetY=0.0102483)
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae".
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae".
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.118671, 
+    farPlane=0.209554, width=0.0703785, height=0.0391466, 
+    viewOffsetX=0.0140925, viewOffsetY=0.00904864)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.setValues(sectionAssignments=ON, 
+    engineeringFeatures=ON, mesh=OFF)
+session.viewports['Viewport: 1'].partDisplay.meshOptions.setValues(
+    meshTechnique=OFF)
+p1 = mdb.models['elastic_plate'].parts['elastic_plate']
+session.viewports['Viewport: 1'].setValues(displayedObject=p1)
+a = mdb.models['elastic_plate'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(loads=OFF, bcs=OFF, 
+    predefinedFields=OFF, connectors=OFF)
+mdb.jobs['elastic_plate'].writeInput(consistencyChecking=OFF)
+#: The job input file has been written to "elastic_plate.inp".
+a = mdb.models['plate_3D_hydrogen'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.models.changeKey(fromName='plate_3D_hydrogen', toName='notched_plate')
+a = mdb.models['notched_plate'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+a = mdb.models['subroutine_multiphysics'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.models.changeKey(fromName='subroutine_multiphysics', toName='cube_elastic')
+a = mdb.models['cube_elastic'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+del mdb.jobs['subroutine_multiphysics']
+mdb.models.changeKey(fromName='cube_elastic', toName='single_cube')
+a = mdb.models['single_cube'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+mdb.Job(name='notched_plate', model='notched_plate', description='', 
+    type=ANALYSIS, atTime=None, waitMinutes=0, waitHours=0, queue=None, 
+    memory=90, memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.Job(name='single_cube', model='single_cube', description='', type=ANALYSIS, 
+    atTime=None, waitMinutes=0, waitHours=0, queue=None, memory=90, 
+    memoryUnits=PERCENTAGE, getMemoryFromAnalysis=True, 
+    explicitPrecision=SINGLE, nodalOutputPrecision=SINGLE, echoPrint=OFF, 
+    modelPrint=OFF, contactPrint=OFF, historyPrint=OFF, userSubroutine='', 
+    scratch='', resultsFormat=ODB, numThreadsPerMpiProcess=1, 
+    multiprocessingMode=DEFAULT, numCpus=1, numGPUs=0)
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae".

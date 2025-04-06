@@ -1,0 +1,328 @@
+1
+
+   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 20:48:37
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine L23-0203 
+                          you are authorized to run
+                          Abaqus/Standard until 20-Feb-2026
+
+                          Your site id is: 200000000014764 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                     Abaqus 2023.HF4                     * 
+                *                                                         * 
+                *       BUILD ID: 2023_07_21-20.45.57 RELr425 183702      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2023.HF4 manuals                        * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+ ***WARNING: Line #98 has been truncated.
+
+ ***WARNING: Line #101 has been truncated.
+
+ ***WARNING: Line #102 has been truncated.
+
+ ***WARNING: Line #104 has been truncated.
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *userelement, nodes=8, type=U1, properties=264, variables=640, coordinates=3
+  *Heading
+  *Element, type=U1
+  *Element, type=C3D8
+  *Elset, elset=ASSEMBLY_ELASTIC_PLATE_1_SET-1
+  *Elset, elset=ASSEMBLY_ELASTIC_PLATE_1_SOLID
+  *Elset, elset=ASSEMBLY_ELASTIC_PLATE_1_VISUAL
+  *Elset, elset=ASSEMBLY_ALLE
+  *Elset, elset=ASSEMBLY_TOP_SIDE
+  *Elset, elset=ASSEMBLY_WHOLE_PART
+  *Elset, elset=ASSEMBLY_XSYMM_SIDE
+  *Elset, elset=ASSEMBLY_YSYMM_SIDE
+  *Elset, elset=ASSEMBLY_ZSYMM_SIDE
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *material, name=MULTIPHYSICS
+  *density
+  *depvar
+  *usermaterial, constants=1, type=THERMAL
+  *usermaterial, constants=1, type=MECHANICAL
+  *initialconditions, type=TEMPERATURE
+  *solidsection, elset=ASSEMBLY_ELASTIC_PLATE_1_VISUAL, material=MULTIPHYSICS
+  *userelement, nodes=8, type=U1, properties=264, variables=640, coordinates=3
+  *solidsection, elset=ASSEMBLY_ELASTIC_PLATE_1_VISUAL, material=MULTIPHYSICS
+  *initialconditions, type=TEMPERATURE
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *uelproperty, elset=ASSEMBLY_ELASTIC_PLATE_1_SOLID
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+
+ ***WARNING: THE OPTION *FIELD IS USED BUT THE OPTION *INITIAL 
+             CONDITIONS,TYPE=FIELD IS NOT. THE INITIAL FIELD VARIABLE VALUES 
+             ARE ASSUMED TO BE ZERO.
+  *field, variable=1, user
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  *initialconditions, type=TEMPERATURE
+  *output, field
+  *output, history, frequency=0
+  *elementoutput, directions=YES
+  
+                               E L E M E N T   Q U A L I T Y  C H E C K S        
+  
+  
+ ***NOTES: DISTORTED ISOPARAMETRIC ELEMENTS: ANGLE BETWEEN ISOPARAMETRIC LINES 
+           IS LESS THAN 45 DEGREES OR GREATER THAN 135 DEGREES.
+  
+           TETRAHEDRAL QUALITY MEASURE: VOLUME OF TETRAHEDRON DIVIDED BY THE 
+           VOLUME OF EQUILATERAL TETRAHEDRON WITH SAME CIRCUMSPHERE RADIUS; 
+           0 FOR DEGENERATE TETRAHEDRON AND 1 FOR EQUILATERIAL TETRAHEDRON. IT 
+           IS RECOMMENDED THAT THE TETRAHEDRAL QUALITY MEASURE BE GREATER THAN 
+           0.02, THE MIN INTERIOR (DIHEDRAL) ANGLE BE GREATER THAN 10 DEGREES, 
+           AND THE MAX INTERIOR (DIHEDRAL) ANGLE BE LESS THAN 160 DEGREES. 
+  
+           MODIFIED TETRAHEDRAL QUALITY MEASURE: ANGLES BETWEEN THE TWO LINE 
+           SEGMENTS ON EACH EDGE; THE EDGES OF MODIFIED TETRAHEDRAL SHOULD BE 
+           AS STRAIGHT AS POSSIBLE. IT IS RECOMMENDED THAT THE ANGLE BETWEEN 
+           THE TWO LINE SEGMENTS ON EACH EDGE IS BETWEEN 160 AND 180 DEGREES. 
+  
+           TRIANGULAR QUALITY MEASURE: AREA OF TRIANGLE DIVIDED BY THE AREA OF 
+           EQUILATERAL TRIANGLE WITH SAME CIRCUMCIRCLE RADIUS; 0 FOR DEGENERATE 
+           TRIANGLE AND 1 FOR EQUILATERAL TRIANGLE. IT IS RECOMMENDED THAT THE
+           TRIANGULAR QUALITY MEASURE BE GREATER THAN 0.01, THE MIN INTERIOR 
+           ANGLE BE GREATER THAN 10 DEGREES, AND THE MAX INTERIOR ANGLE BE LESS 
+           THAN 160 DEGREES. 
+  
+           NODAL ADJUSTMENTS ARISING FROM CONTACT INTERACTIONS AND/OR TIE 
+           CONSTRAINTS CAN CAUSE SEVERE ELEMENT DISTORTION. IT MAY BE NECESSARY 
+           TO REMESH IN ORDER TO REDUCE THE AMOUNT OF ADJUSTMENT. 
+
+ ***WARNING: 2 elements are distorted. Either the isoparametric angles are out 
+             of the suggested limits or the triangular or tetrahedral quality 
+             measure is bad. The elements have been identified in element set 
+             WarnElemDistorted.
+  
+ --------------------------------------------------------------------------------
+ Distorted isoparametric elements
+  
+          Element           Min/max angle   Adjusted nodes 
+ ------------------------- ---------------- -------------- 
+      ELASTIC_PLATE_1.1571          39.9977       NO       
+      ELASTIC_PLATE_1.1729          39.5012       NO       
+  
+  
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *output, field
+  *output, history, frequency=0
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *solvercontrols
+  *controls, parameters=FIELD, field=DISPLACEMENT
+  *controls, parameters=FIELD, field=TEMPERATURE
+  *controls, parameters=CONSTRAINTS
+  *controls, parameters=TIMEINCREMENTATION
+  *controls, parameters=LINESEARCH
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *output, field
+  *nodeoutput
+  *elementoutput, directions=YES
+  *output, history, frequency=0
+  *endstep
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *Step, name=Step-1, nlgeom=YES, inc=10000000
+  *coupledtemperature-displacement, creep=NONE, deltmx=100000
+  *boundary, amplitude=RAMP
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *field, variable=1, user
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                  3018
+          NUMBER OF NODES IS                                     3216
+          NUMBER OF NODES DEFINED BY THE USER                    3216
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                16080
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.20    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.20    
+       WALLCLOCK TIME (SEC) =            0
+1
+
+   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 20:48:42
+   For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     C O U P L E D - T E M P E R A T U R E - D I S P L A C E M E N T   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            100.    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-04
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+          CREEP AND SWELLING EFFECTS ARE OMITTED IN THIS STEP
+
+     THE SIZE OF THE TIME INCREMENT IS CONTROLLED BY -
+          THE TEMPERATURE CHANGE PER INCREMENT NOT EXCEEDING           1.000E+05
+          THE RATE DEPENDENCY WILL BE CONSIDERED IN THIS STEP
+
+          CREEP AND SWELLING EFFECTS WILL BE IGNORED.
+
+          LARGE DISPLACEMENT THEORY WILL BE USED
+
+          UNSYMMETRIC MATRIX STORAGE AND SOLUTION WILL BE USED
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          9.05E+08               22                 86
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      8 WARNING MESSAGES ON THE DAT FILE
+                              AND    8208 WARNING MESSAGES ON THE MSG FILE
+                                     8206 WARNINGS ARE FOR NUMERICAL PROBLEMS
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =      47.    
+       SYSTEM TIME (SEC)    =      4.8    
+       TOTAL CPU TIME (SEC) =      52.    
+       WALLCLOCK TIME (SEC) =           65

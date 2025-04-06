@@ -9,9 +9,9 @@ module userinputs
 	! YOU MUST CHANGE IT TO THE ACTUAL NUMBER OF ELEMENTS AND NODES IN .INP FILE
 	! YOU CAN USE PYTHON SCRIPTING TO CHANGE VALUES AS WELL
 
-	integer, parameter :: total_elems = 1 ! Storing the actual number of elements
-	integer, parameter :: max_elem_idx = 2 ! Maximum element index for UEL and VISUAL elements
-	integer, parameter :: total_nodes = 8 ! Storing the actual number of nodes
+	integer, parameter :: total_elems = 5086 ! Storing the actual number of elements
+	integer, parameter :: max_elem_idx = 10172 ! Maximum element index for UEL and VISUAL elements
+	integer, parameter :: total_nodes = 10354 ! Storing the actual number of nodes
 	integer, parameter :: nstatev = 80 ! Number of state variables at integration points
 
 	! Element information

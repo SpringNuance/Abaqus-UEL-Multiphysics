@@ -328,7 +328,6 @@ def return_user_element(total_num_properties, nstatev):
         "1, 2, 3",
         "1, 11",
         "1, 12",
-        "1, 13",
         "*************************************************"
     ]
     return USER_ELEMENT

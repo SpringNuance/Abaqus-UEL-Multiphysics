@@ -22,7 +22,6 @@ subroutine calc_scalar_all_elems_at_NPs()
                 N_shape_IP_extra_to_kNP_extra = all_N_shape_IP_extra_to_kNP_extra(knode, 1:ninpt)
 
                 ! Compute the statev at the NPs by extrapolating from the IPs
-                statev_all_elems_at_NPs(statev_idx, element_ID, knode) = 0.0d0
 
                 statev_all_elems_at_NPs(statev_idx, element_ID, knode) = dot_product( &
                     N_shape_IP_extra_to_kNP_extra, &
@@ -92,9 +91,11 @@ subroutine calc_scalar_at_NPs()
         do node_ID = 1, total_nodes
             nelems_of_kNP = nelems_of_NPs_matrix(node_ID)
 
+            ! print *, 'Node ID: ', node_ID, 'Number of elements: ', nelems_of_kNP
             !print *, 'Node ID: ', node_ID, 'Number of elements: ', nelems_of_kNP
             ! Initialize temporary variables for summing sig_H and djac
             
+            sum_djac = 0.0d0
             sum_statev_djac = 0.0d0
 
             ! Loop over all elements that contain the current node
@@ -114,8 +115,11 @@ subroutine calc_scalar_at_NPs()
                 sum_djac = sum_djac + djac_kNP
             end do
 
-            ! print *, 'sum_sig_H_djac = ', sum_sig_H_djac
-            ! print *, 'sum_djac = ', sum_djac
+            ! if (statev_idx == sig_H_idx) then
+            !     print *, 'sum_statev_djac = ', sum_statev_djac
+            !     print *, 'sum_djac = ', sum_djac
+            !     print *, 'sum_statev_djac / sum_djac = ', sum_statev_djac / sum_djac
+            ! end if
 
             ! Compute the weighted average of sig_H and eqplas for the current node
             if (sum_djac > 0.0d0) then
@@ -137,7 +141,7 @@ subroutine calc_scalar_grad_kelem_at_kIP(kelem, kinpt)
     integer :: kelem, knode, kinpt, node_ID, idim, jdim
     real(kind=dp), dimension(nnode) :: statev_kelem_all_NPs
     real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_local, N_grad_NP_inter_to_kIP_inter_global
-    real(kind=dp), dimension(ndim) :: statev_grad_kelem_at_kinpt
+    real(kind=dp), dimension(ndim) :: statev_grad_kelem_at_kIP
     real(kind=dp), dimension(nnode, ndim) :: coords_kelem_all_NPs
     real(kind=dp), dimension(ndim,ndim) :: xjac, xjac_inv
 
@@ -164,9 +168,9 @@ subroutine calc_scalar_grad_kelem_at_kIP(kelem, kinpt)
     !   Compute the derivatives of shape functions with respect to global coordinates
         N_grad_NP_inter_to_kIP_inter_global = matmul(xjac_inv, N_grad_NP_inter_to_kIP_inter_local)
 
-        statev_grad_kelem_at_kinpt = matmul(N_grad_NP_inter_to_kIP_inter_global, statev_kelem_all_NPs) 
+        statev_grad_kelem_at_kIP = matmul(N_grad_NP_inter_to_kIP_inter_global, statev_kelem_all_NPs) 
 
-        statev_grad_all_elems_at_IPs(statev_idx, kelem, kinpt, 1:ndim) = statev_grad_kelem_at_kinpt
+        statev_grad_all_elems_at_IPs(statev_idx, kelem, kinpt, 1:ndim) = statev_grad_kelem_at_kIP
     end do
 
 end
