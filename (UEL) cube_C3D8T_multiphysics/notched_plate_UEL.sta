@@ -1,4 +1,4 @@
- Abaqus/Standard 2023.HF4                  DATE 06-Apr-2025 TIME 22:13:29
+ Abaqus/Standard 2023.HF4                  DATE 07-Apr-2025 TIME 18:25:59
  SUMMARY OF JOB INFORMATION:
  STEP  INC ATT SEVERE EQUIL TOTAL  TOTAL      STEP       INC OF       DOF    IF
                DISCON ITERS ITERS  TIME/    TIME/LPF    TIME/LPF    MONITOR RIKS
@@ -18,10 +18,11 @@
    1    13   1     0     1     1  13.0       13.0       1.000     
    1    14   1     0     1     1  14.0       14.0       1.000     
    1    15   1     0     1     1  15.0       15.0       1.000     
-   1    16   1U    0     4     4  15.0       15.0       1.000     
-   1    16   2U    0     4     4  15.0       15.0       0.2500    
-   1    16   3U    0     4     4  15.0       15.0       0.06250   
-   1    16   4U    0     4     4  15.0       15.0       0.01562   
-   1    16   5U    0     4     4  15.0       15.0       0.01000   
+   1    16   1     0     1     1  16.0       16.0       1.000     
+   1    17   1U    0     4     4  16.0       16.0       1.000     
+   1    17   2U    0     4     4  16.0       16.0       0.2500    
+   1    17   3U    0     4     4  16.0       16.0       0.06250   
+   1    17   4U    0     4     4  16.0       16.0       0.01562   
+   1    17   5U    0     4     4  16.0       16.0       0.01000   
                           
  THE ANALYSIS HAS NOT BEEN COMPLETED

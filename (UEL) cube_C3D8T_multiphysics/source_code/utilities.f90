@@ -77,6 +77,75 @@ subroutine calc_matrix_sym(matrix, matrix_sym, ndim)
     matrix_sym = 0.5d0 * (matrix + transpose(matrix))
 end
 
+subroutine calc_matrix_asym(matrix, matrix_asym, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: matrix, matrix_asym
+
+    matrix_asym = 0.5d0 * (matrix - transpose(matrix))
+end
+
+subroutine stran_voigt_to_tensor(voigt, tensor, ntens, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: tensor
+    real(kind=dp), dimension(ntens) :: voigt
+
+    tensor(1,1) = voigt(1)
+    tensor(2,2) = voigt(2)
+    tensor(3,3) = voigt(3)
+    tensor(1,2) = 0.5d0 * voigt(4)
+    tensor(2,1) = 0.5d0 * voigt(4)
+    tensor(1,3) = 0.5d0 * voigt(5)
+    tensor(3,1) = 0.5d0 * voigt(5)
+    tensor(2,3) = 0.5d0 * voigt(6)
+    tensor(3,2) = 0.5d0 * voigt(6)
+end
+
+subroutine stran_tensor_to_voigt(voigt, tensor, ntens, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: tensor
+    real(kind=dp), dimension(ntens) :: voigt
+
+    voigt(1) = tensor(1,1)
+    voigt(2) = tensor(2,2)
+    voigt(3) = tensor(3,3)
+    voigt(4) = 2.0d0 * tensor(1,2)
+    voigt(5) = 2.0d0 * tensor(1,3)
+    voigt(6) = 2.0d0 * tensor(2,3)
+end
+
+subroutine stress_voigt_to_tensor(voigt, tensor, ntens, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: tensor
+    real(kind=dp), dimension(ntens) :: voigt
+
+    tensor(1,1) = voigt(1)
+    tensor(2,2) = voigt(2)
+    tensor(3,3) = voigt(3)
+    tensor(1,2) = voigt(4)
+    tensor(2,1) = voigt(4)
+    tensor(1,3) = voigt(5)
+    tensor(3,1) = voigt(5)
+    tensor(2,3) = voigt(6)
+    tensor(3,2) = voigt(6)
+end
+
+subroutine stress_tensor_to_voigt(voigt, tensor, ntens, ndim)
+    use precision
+    integer :: ndim
+    real(kind=dp), dimension(ndim, ndim) :: tensor
+    real(kind=dp), dimension(ntens) :: voigt
+
+    voigt(1) = tensor(1,1)
+    voigt(2) = tensor(2,2)
+    voigt(3) = tensor(3,3)
+    voigt(4) = tensor(1,2)
+    voigt(5) = tensor(1,3)
+    voigt(6) = tensor(2,3)
+end
 
 subroutine calc_matrix_sqrt(matrix, matrix_sqrt, ndim)
     use precision

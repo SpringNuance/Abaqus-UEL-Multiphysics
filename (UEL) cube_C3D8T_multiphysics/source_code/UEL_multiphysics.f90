@@ -450,11 +450,13 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim,ndim) :: dux_grad_bar_center, dux_grad_center_kIP, dux_grad_center_sym_kIP
 
     ! Strain-displacement matrix (B matrix)            
-    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_kIP_inter_t, Bu_kIP_inter_tm1    
+    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_kIP_inter_t, Bu_kIP_inter_tm1, Bu_kIP_inter_center
     ! Volumetric strain-displacement matrix (B matrix)     
-    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_vol_kIP_inter_t, Bu_vol_kIP_inter_tm1          
-    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_bar_t, Bu_bar_tm1
-    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_bar_vol_t, Bu_bar_vol_tm1
+    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_vol_kIP_inter_t, Bu_vol_kIP_inter_tm1, Bu_vol_kIP_inter_center   
+    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_bar_t, Bu_bar_tm1, Bu_bar_center
+    real(kind=dp), dimension(ntensor,ndim*nnode) :: Bu_bar_vol_t, Bu_bar_vol_tm1, Bu_bar_vol_center
+
+    real(kind=dp), dimension(ndim*nnode,ndim*nnode) :: K_material, K_geometry, K_velocity
 
     ! Deformation gradient F
     real(kind=dp), dimension(ndim,ndim) :: F_grad_t, F_grad_tm1, dF_grad, F_grad_inv_tm1      
@@ -475,14 +477,20 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(ndim,ndim) :: R_right_rot_t, R_right_rot_tm1, R_right_rot_inv_tm1
     real(kind=dp), dimension(ndim,ndim) :: dR_right_rot, dR_right_rot_inv            
     real(kind=dp), dimension(ndim,ndim) :: R_left_rot_t, R_left_rot_tm1, R_left_rot_inv_tm1
-    real(kind=dp), dimension(ndim,ndim) :: dR_left_rot, dR_left_rot_inv                 
+    real(kind=dp), dimension(ndim,ndim) :: dR_left_rot, dR_left_rot_inv     
+    real(kind=dp), dimension(ndim,ndim) :: dR_rotation, dR_rotation_term_1, dR_rotation_term_1_inv, dR_rotation_term_2
+
+    real(kind=dp), dimension(ndim,ndim) :: delta_W
     
     real(kind=dp), dimension(ndim,ndim) :: eps_log_t, eps_log_tm1, deps_log, eps_log_t_rotated         
-    real(kind=dp), dimension(ntensor) :: stress, ddsddt, drplde                       
-    real(kind=dp), dimension(ntensor,ntensor) :: ddsdde                 ! Tangent stiffness matrix 
+    
+    real(kind=dp), dimension(ntensor) :: stress, stress_t, stress_tm1, rotated_stress_tm1, rotated_stress_t
+    real(kind=dp), dimension(ndim, ndim) :: stress_tensor, stress_tensor_t, rotated_stress_tensor_t, stress_tensor_tm1, rotated_stress_tensor_tm1
+    real(kind=dp), dimension(ntensor,ntensor) :: ddsdde, ddsddt, drplde                 ! Tangent stiffness matrix 
 
-    real(kind=dp), dimension(ndim, ndim) :: stran_tensor_tm1, dstran_tensor
-    real(kind=dp), dimension(ntensor) :: stran_t, stran_tm1, dstran
+    real(kind=dp), dimension(ntensor) :: stran, stran_t, stran_tm1, dstran, rotated_stran_tm1, rotated_stran_t
+    real(kind=dp), dimension(ndim, ndim) :: stran_tensor, stran_tensor_t, stran_tensor_tm1, dstran_tensor, rotated_stran_tensor_tm1
+    
     real(kind=dp), dimension(ntensor) :: eelas                        ! Elastic strain vector of the current element jelem
     real(kind=dp), dimension(ntensor) :: eplas                        ! Plastic strain vector of the current element jelem
 
@@ -685,11 +693,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         call calc_scalar_grad_kelem_at_kIP(jelem, kinpt)
     end do
 
-    ! ================================================================== !
-    !                                                                    !
-    !                    SOLVING THE DEFORMATION FIELD                   !
-    !                                                                    !
-    ! ================================================================== !
+
         
     N_grad_NP_inter_bar_global_t(1:ndim,1:nnode) = 0.0d0
     N_grad_NP_inter_bar_global_tm1(1:ndim,1:nnode) = 0.0d0
@@ -770,6 +774,12 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         N_shape_NP_inter_to_kIP_inter(1:nnode) = all_N_shape_NP_inter_to_kIP_inter(kinpt,1:nnode)
         N_grad_NP_inter_to_kIP_inter_local(1:ndim,1:nnode) = all_N_grad_NP_inter_to_kIP_inter_local(kinpt,1:ndim,1:nnode) 
 
+        ! ================================================================== !
+        !                                                                    !
+        !                    SOLVING THE DEFORMATION FIELD                   !
+        !                                                                    !
+        ! ================================================================== !
+
         xjac_inter_t = matmul(N_grad_NP_inter_to_kIP_inter_local, transpose(coords_kelem_NPs_t))
         call calc_matrix_inv(xjac_inter_t, xjac_inv_inter_t, djac_inter_t, ndim)
 
@@ -802,6 +812,13 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         dvol_inter_center = weight_kIP(kinpt) * djac_inter_center
         N_grad_NP_inter_to_kIP_inter_global_center = matmul(xjac_inv_inter_center,N_grad_NP_inter_to_kIP_inter_local)
 
+        !   Calculate strain displacement B-matrix
+        call kbmatrix_full(N_grad_NP_inter_to_kIP_inter_global_center,ntensor,nnode,ndim,Bu_kIP_inter_center)
+        call kbmatrix_vol(N_grad_NP_inter_to_kIP_inter_global_center,ntensor,nnode,ndim,Bu_vol_kIP_inter_center)
+        call kbmatrix_vol(N_grad_NP_inter_bar_global_center,ntensor,nnode,ndim,Bu_bar_vol_center)
+
+        Bu_bar_center = Bu_kIP_inter_center - Bu_vol_kIP_inter_center + Bu_bar_vol_center
+
         if (lflags(2) == 0) then 
 
             ! Engineering/infinitesimal strain (nlgeom=off)
@@ -809,9 +826,13 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
             dstran = matmul(Bu_bar_t, dux_flat)
 
+            ! For deformation gradients to be passed into UMAT
+
             ! In linear geometry, displacement is considered very small, thus deformation gradient is identity
             F_grad_bar_tm1 = identity
             F_grad_bar_t = identity
+
+            dR_rotation = identity
             
         else if (lflags(2) == 1) then
 
@@ -835,16 +856,70 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             dstran(5) = dstran_tensor(1,3) * 2.0d0
             dstran(6) = dstran_tensor(2,3) * 2.0d0
 
+            ! For deformation gradients to be passed into UMAT
+
+            ux_grad_t = matmul(ux_t, transpose(N_grad_NP_inter_to_kIP_inter_global_t))
+            ux_grad_tm1 = matmul(ux_tm1, transpose(N_grad_NP_inter_to_kIP_inter_global_tm1))
+
+            F_grad_t = identity + ux_grad_t
+            F_grad_tm1 = identity + ux_grad_tm1
+
+            F_grad_bar_t = F_grad_t * (djac_bar_t / djac_inter_t) ** (1.0d0/3.0d0)
+            F_grad_bar_tm1 = F_grad_tm1 * (djac_bar_tm1 / djac_inter_tm1) ** (1.0d0/3.0d0)
+            
+            ! Rate of spin delta W
+            call calc_matrix_asym(dux_grad_center_kIP, delta_W, ndim)
+
+            dR_rotation_term_1 = identity - 0.5d0 * delta_W
+            dR_rotation_term_2 = identity + 0.5d0 * delta_W
+            call calc_matrix_inv(dR_rotation_term_1, dR_rotation_term_1_inv, det_dR_rotation_term_1, ndim)
+
+            dR_rotation = matmul(dR_rotation_term_1_inv, dR_rotation_term_2)
+
         end if
 
-        !   ====================================================
-        !   Calculate deformation field (stress and strain, etc)
-        !   ====================================================
+        !   ====================================================   !
+        !   Calculate deformation field (stress and strain, etc)   !
+        !   ====================================================   !
                 
-        stress = statev(sig_start_idx:sig_end_idx) ! stress at tm1
+        stress_tm1 = statev(sig_start_idx:sig_end_idx) ! stress at tm1
         stran_tm1 = statev(stran_start_idx:stran_end_idx) ! stran at tm1
-        stran_t = stran_tm1 + dstran
-        
+
+        if (lflags(2) == 0) then
+            
+            ! nlgeom=off
+            ! =======================================
+
+            ! No need to rotate stress and strain
+
+            stress = stress_tm1
+            stran = stran_tm1
+
+        else if (lflags(2) == 1) then
+            
+            ! nlgeom=on
+            ! =======================================
+
+            ! Rotating stress
+
+            ! ! Convert stress from Voigt to tensor
+            ! call stress_voigt_to_tensor(stress_tm1, stress_tensor_tm1, ntensor, ndim)
+
+            ! ! Rotate stress tensor: σ = Rᵀ ⋅ σᵣ ⋅ R
+            ! rotated_stress_tensor_tm1 = matmul(transpose(dR_rotation), matmul(stress_tensor_tm1, dR_rotation))
+
+            ! ! Convert back to Voigt form
+            ! call stress_tensor_to_voigt(stress_tm1, rotated_stress_tensor_tm1, ntensor, ndim)
+
+            ! stress = stress_tm1
+
+            call rotsig(stress_tm1(sig_start_idx),dR_rotation,rotated_stress_tm1,1,ndirect,nshear)
+            call rotsig(stran_tm1(stran_start_idx),dR_rotation,rotated_stran_tm1,2,ndirect,nshear)
+            stress = rotated_stress_tm1
+            stran = rotated_stran_tm1
+
+        end if
+
         UMAT_model = props(start_mech_props_idx)
         
         nprops_UMAT = end_flow_props_idx - start_mech_props_idx + 1
@@ -861,30 +936,36 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! ENERGY(7)	Electrostatic energy.
         ! ENERGY(8)	Incremental work done by loads applied within the user element.
 
+        ! Stress updated in UMAT is the corotational true Cauchy stress
+
         if (UMAT_model == 1) then
             call UMAT_elastic(stress,statev,ddsdde,energy(2),energy(4),energy(3),rpl,ddsddt, &
-                            drplde,drpldt,stran_tm1,dstran,time,dtime,temp,dtemp, &
+                            drplde,drpldt,stran,dstran,time,dtime,temp,dtemp, &
                             predef_kIP_tm1,dpred_kIP,cmname,ndirect,nshear,ntensor,nstatev, &
                             props(start_mech_props_idx:end_flow_props_idx), &
-                            nprops_UMAT,coords_kelem_kIP_t,dR_left_rot,pnewdt,celent, &
+                            nprops_UMAT,coords_kelem_kIP_t,dR_rotation,pnewdt,celent, &
                             F_grad_bar_tm1,F_grad_bar_t,jelem,kinpt,layer,kspt,kstep,kinc)
 
         else if (UMAT_model == 2) then
             call UMAT_isotropic_vonMises(stress,statev,ddsdde,energy(2),energy(4),energy(3),rpl,ddsddt, &
-                            drplde,drpldt,stran_tm1,dstran,time,dtime,temp,dtemp, &
+                            drplde,drpldt,stran,dstran,time,dtime,temp,dtemp, &
                             predef_kIP_tm1,dpred_kIP,cmname,ndirect,nshear,ntensor,nstatev, &
                             props(start_mech_props_idx:end_flow_props_idx), &
-                            nprops_UMAT,coords_kelem_kIP_t,dR_left_rot,pnewdt,celent, &
+                            nprops_UMAT,coords_kelem_kIP_t,dR_rotation,pnewdt,celent, &
                             F_grad_bar_tm1,F_grad_bar_t,jelem,kinpt,layer,kspt,kstep,kinc)
 
         end if
 
+        ! Abaqus will use only the symmetric part of DDSDDE
         ddsdde = 0.5d0 * (ddsdde + transpose(ddsdde))
+
+        stress_t = stress ! stress at t
+        stran_t = stran + dstran
 
         ! Update the state variables
         ! All other mechanical properties are already updated in statev in UMAT_von_Mises
         
-        statev(sig_start_idx : sig_end_idx) = stress ! stress at t
+        statev(sig_start_idx : sig_end_idx) = stress_t ! stress at t
         statev(stran_start_idx : stran_end_idx) = stran_t
 
         ! ********************************************!
@@ -902,18 +983,64 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                                 (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
                 
             rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))    
 
         else if (lflags(2) == 1) then
 
-            ! nlgeom=on
-            ! =======================================
+            ! ! nlgeom=on
+            ! ! =======================================
+            ! amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
+            !     amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
+            !                     (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
+                
+            ! rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
+            !     dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))    
+
+
+            K_material = matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t)
+
+            ! do kdim=1,ndim
+            !     do knode=1,nnode
+            !         disp_index = ndim * knode - ndim + kdim
+            !         N_grad_NP_inter_bar_global_flat_t(disp_index) = N_grad_NP_inter_bar_global_t(kdim, knode)
+            !     end do
+            ! end do
+
+            call stress_voigt_to_tensor(stress_t, stress_tensor_t, ntensor, ndim)
+
+            ! Initialize K_velocity to zero first
+            K_velocity = 0.0d0
+
+            do i = 1, nnode
+                do j = 1, nnode
+                    do m = 1, ndim
+                        do n = 1, ndim
+                            K_velocity((i-1)*ndim + m, (j-1)*ndim + n) = K_velocity((i-1)*ndim + m, (j-1)*ndim + n) + &
+                                stress_tensor_t(m,n) * N_grad_NP_inter_bar_global_t(m,i) * N_grad_NP_inter_bar_global_t(n,j)
+                        end do
+                    end do
+                end do
+            end do
+
+            ! Initialize K_geometry to zero first
+            K_geometry = 0.0d0
+
+            do ktens = 1, ntensor
+                do i = 1, ndim*nnode
+                    do j = 1, ndim*nnode
+                        K_geometry(i,j) = K_geometry(i,j) - 2.0d0 * stress_t(ktens) * Bu_bar_t(ktens,i) * Bu_bar_t(ktens,j)
+                    end do
+                end do
+            end do
+
+
             amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
                 amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
-                                (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
+                                (K_material + K_geometry + K_velocity)
                 
             rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress))    
+                dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))   
+
 
         end if
         
@@ -925,9 +1052,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! From UMATHT subroutine
         ! Variables to be defined
-        ! C_mol_kIP: Total hydrogen concentration at the end of increment. 
-        !         This variable is passed in as the value at the start of the increment (C_mol_kIP_tm1)
-        !         and must be updated to its value at the end of the increment (C_mol_kIP_t).
+        ! C_pred_mol_kIP: Total hydrogen concentration at the end of increment. 
+        !         This variable is passed in as the value at the start of the increment (C_pred_mol_kIP_tm1)
+        !         and must be updated to its value at the end of the increment (C_pred_mol_kIP_t).
         ! dC_mol_dCL_mol_kIP_t: Variation of total hydrogen concentration with respect to lattice hydrogen concentration, 
         !         ∂C_mol/∂CL_mol, evaluated at the end of the increment.
         ! dC_mol_dgrad_CL_mol_kIP_t(ndim): Variation of total hydrogen concentration with respect to the 

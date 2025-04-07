@@ -15429,3 +15429,1059 @@ mdb.jobs['notched_plate_default_solver']._Message(JOB_COMPLETED, {
     'time': 'Sun Apr  6 22:04:18 2025', 
     'jobName': 'notched_plate_default_solver'})
 # Save by nguyenb5 on 2025_04_06-22.17.55; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['notched_plate_default_solver'].submit(consistencyChecking=OFF)
+mdb.jobs['notched_plate_default_solver']._Message(STARTED, {
+    'phase': BATCHPRE_PHASE, 'clientHost': 'L23-0203', 'handle': 0, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(WARNING, {
+    'phase': BATCHPRE_PHASE, 
+    'message': 'THE ABSOLUTE ZERO TEMPERATURE HAS NOT BEEN SPECIFIED FOR COMPUTING INTERNAL THERMAL ENERGY USING THE ABSOLUTE ZERO PARAMETER ON THE *PHYSICAL CONSTANTS OPTION. A DEFAULT VALUE OF 0.0000 WILL BE ASSUMED.', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(WARNING, {
+    'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8T', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(WARNING, {
+    'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE UVARM HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8T', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FILE, {
+    'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\LocalUserData\\User-data\\nguyenb5\\Abaqus-UEL-Multiphysics\\(UEL) cube_C3D8T_multiphysics\\notched_plate_default_solver.odb', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(COMPLETED, {
+    'phase': BATCHPRE_PHASE, 'message': 'Analysis phase complete', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STARTED, {
+    'phase': STANDARD_PHASE, 'clientHost': 'L23-0203', 'handle': 18468, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STEP, {
+    'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 0, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(MEMORY_ESTIMATE, {
+    'phase': STANDARD_PHASE, 'jobName': 'notched_plate_default_solver', 
+    'memory': 255.0})
+mdb.jobs['notched_plate_default_solver']._Message(PHYSICAL_MEMORY, {
+    'phase': STANDARD_PHASE, 'physical_memory': 16017.0, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(MINIMUM_MEMORY, {
+    'minimum_memory': 31.0, 'phase': STANDARD_PHASE, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 1, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 1.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 2, 'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 2, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 2.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 2, 'stepTime': 2.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 3, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 3.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 3, 'stepTime': 3.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 4, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 4.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 4, 'stepTime': 4.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 5, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 5.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 5, 'stepTime': 5.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 6, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 6.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 6, 'stepTime': 6.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 7, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 7.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 7, 'stepTime': 7.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 8, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 8.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 8, 'stepTime': 8.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 9, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 9.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 9, 'stepTime': 9.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 10, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 10.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 10, 'stepTime': 10.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 11, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 11.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 11, 'stepTime': 11.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 12, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 12.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 12, 'stepTime': 12.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 13, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 13.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 13, 'stepTime': 13.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 14, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 14.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 14, 'stepTime': 14.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 15, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 15.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 15, 'stepTime': 15.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 16, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 16.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 16, 'stepTime': 16.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 17, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 17.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 17, 'stepTime': 17.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 18, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 18.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 18, 'stepTime': 18.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 19, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 19.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 19, 'stepTime': 19.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 20, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 20.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 20, 'stepTime': 20.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 21, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 21.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 21, 'stepTime': 21.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 22, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 22.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 22, 'stepTime': 22.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 23, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 23.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 23, 'stepTime': 23.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 24, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 24.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 24, 'stepTime': 24.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 25, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 25.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 25, 'stepTime': 25.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 26, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 26.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 26, 'stepTime': 26.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 27, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 27.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 27, 'stepTime': 27.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 28, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 28.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 28, 'stepTime': 28.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 29, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 29.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 29, 'stepTime': 29.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 30, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 30.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 30, 'stepTime': 30.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 31, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 31.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 31, 'stepTime': 31.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 32, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 32.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 32, 'stepTime': 32.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 33, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 33.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 33, 'stepTime': 33.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 34, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 34.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 34, 'stepTime': 34.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 35, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 35.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 35, 'stepTime': 35.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 36, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 36.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 36, 'stepTime': 36.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 37, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 37.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 37, 'stepTime': 37.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 38, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 38.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 38, 'stepTime': 38.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 39, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 39.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 39, 'stepTime': 39.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 40, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 40.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 40, 'stepTime': 40.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 41, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 41.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 41, 'stepTime': 41.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 42, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 42.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 42, 'stepTime': 42.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 43, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 43.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 43, 'stepTime': 43.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 44, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 44.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 44, 'stepTime': 44.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 45, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 45.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 45, 'stepTime': 45.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 46, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 46.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 46, 'stepTime': 46.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 47, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 47.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 47, 'stepTime': 47.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 48, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 48.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 48, 'stepTime': 48.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 49, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 49.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 49, 'stepTime': 49.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 50, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 50.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 50, 'stepTime': 50.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 51, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 51.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 51, 'stepTime': 51.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 52, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 52.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 52, 'stepTime': 52.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 53, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 53.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 53, 'stepTime': 53.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 54, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 54.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 54, 'stepTime': 54.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 55, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 55.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 55, 'stepTime': 55.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 56, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 56.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 56, 'stepTime': 56.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 57, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 57.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 57, 'stepTime': 57.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 58, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 58.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 58, 'stepTime': 58.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 59, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 59.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 59, 'stepTime': 59.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 60, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 60.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 60, 'stepTime': 60.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 61, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 61.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 61, 'stepTime': 61.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 62, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 62.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 62, 'stepTime': 62.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 63, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 63.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 63, 'stepTime': 63.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 64, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 64.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 64, 'stepTime': 64.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 65, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 65.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 65, 'stepTime': 65.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 66, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 66.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 66, 'stepTime': 66.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 67, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 67.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 67, 'stepTime': 67.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 68, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 68.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 68, 'stepTime': 68.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 69, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 69.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 69, 'stepTime': 69.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 70, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 70.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 70, 'stepTime': 70.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 71, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 71.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 71, 'stepTime': 71.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 72, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 72.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 72, 'stepTime': 72.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 73, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 73.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 73, 'stepTime': 73.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 74, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 74.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 74, 'stepTime': 74.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 75, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 75.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 75, 'stepTime': 75.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 76, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 76.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 76, 'stepTime': 76.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 77, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 77.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 77, 'stepTime': 77.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 78, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 78.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 78, 'stepTime': 78.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 79, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 79.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 79, 'stepTime': 79.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 80, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 80.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 80, 'stepTime': 80.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 81, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 81.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 81, 'stepTime': 81.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 82, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 82.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 82, 'stepTime': 82.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 83, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 83.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 83, 'stepTime': 83.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 84, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 84.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 84, 'stepTime': 84.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 85, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 85.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 85, 'stepTime': 85.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 86, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 86.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 86, 'stepTime': 86.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 87, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 87.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 87, 'stepTime': 87.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 88, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 88.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 88, 'stepTime': 88.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 89, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 89.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 89, 'stepTime': 89.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 90, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 90.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 90, 'stepTime': 90.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 91, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 91.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 91, 'stepTime': 91.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 92, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 92.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 92, 'stepTime': 92.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 93, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 93.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 93, 'stepTime': 93.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 94, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 94.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 94, 'stepTime': 94.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 95, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 95.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 95, 'stepTime': 95.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 96, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 96.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 96, 'stepTime': 96.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 97, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 97.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 97, 'stepTime': 97.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 98, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 98.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 98, 'stepTime': 98.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 99, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 99.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 99, 'stepTime': 99.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 100, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 100.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 100, 'stepTime': 100.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 101, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 101.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 101, 'stepTime': 101.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 102, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 102.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 102, 'stepTime': 102.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 103, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 103.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 103, 'stepTime': 103.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 104, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 104.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 104, 'stepTime': 104.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 105, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 105.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 105, 'stepTime': 105.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 106, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 106.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 106, 'stepTime': 106.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 107, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 107.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 107, 'stepTime': 107.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 108, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 108.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 108, 'stepTime': 108.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 109, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 109.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 109, 'stepTime': 109.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 110, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 110.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 110, 'stepTime': 110.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 111, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 111.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 111, 'stepTime': 111.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 112, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 112.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 112, 'stepTime': 112.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 113, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 113.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 113, 'stepTime': 113.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 114, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 114.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 114, 'stepTime': 114.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 115, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 115.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 115, 'stepTime': 115.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 116, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 116.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 116, 'stepTime': 116.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 117, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 117.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 117, 'stepTime': 117.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 118, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 118.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 118, 'stepTime': 118.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 119, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 119.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 119, 'stepTime': 119.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 120, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 120.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 120, 'stepTime': 120.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 121, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 121.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 121, 'stepTime': 121.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 122, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 122.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 122, 'stepTime': 122.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 123, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 123.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 123, 'stepTime': 123.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 124, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 124.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 124, 'stepTime': 124.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 125, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 125.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 125, 'stepTime': 125.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 126, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 126.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 126, 'stepTime': 126.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 127, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 127.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 127, 'stepTime': 127.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 128, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 128.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 128, 'stepTime': 128.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 129, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 129.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 129, 'stepTime': 129.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 130, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 130.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 130, 'stepTime': 130.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 131, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 131.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 131, 'stepTime': 131.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 132, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 132.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 132, 'stepTime': 132.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 133, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 133.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 133, 'stepTime': 133.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 134, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 134.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 134, 'stepTime': 134.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 135, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 135.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 135, 'stepTime': 135.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 136, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 136.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 136, 'stepTime': 136.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 137, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 137.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 137, 'stepTime': 137.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 138, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 138.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 138, 'stepTime': 138.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 139, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 139.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 139, 'stepTime': 139.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 140, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 140.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 140, 'stepTime': 140.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ODB_FRAME, {
+    'phase': STANDARD_PHASE, 'step': 0, 'frame': 141, 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(STATUS, {'totalTime': 141.0, 
+    'attempts': 1, 'timeIncrement': 1.0, 'increment': 141, 'stepTime': 141.0, 
+    'step': 1, 'jobName': 'notched_plate_default_solver', 'severe': 0, 
+    'iterations': 1, 'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['notched_plate_default_solver']._Message(ERROR, {
+    'phase': STANDARD_PHASE, 
+    'message': 'Process terminated by external request (SIGTERM or SIGINT received).', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(INTERRUPTED, {
+    'phase': STANDARD_PHASE, 
+    'message': 'Analysis interrupted by external signal', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'notched_plate_default_solver'})
+mdb.jobs['notched_plate_default_solver']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'notched_plate_default_solver'})
+# Save by nguyenb5 on 2025_04_07-18.38.37; build 2023.HF4 2023_07_21-20.45.57 RELr425 183702
