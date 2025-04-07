@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 19:22:54
+   Abaqus 2023.HF4                                  Date 07-Apr-2025   Time 20:33:57
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -212,10 +212,10 @@
        USER TIME (SEC)      =     0.20    
        SYSTEM TIME (SEC)    =     0.10    
        TOTAL CPU TIME (SEC) =     0.30    
-       WALLCLOCK TIME (SEC) =            0
+       WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 19:23:00
+   Abaqus 2023.HF4                                  Date 07-Apr-2025   Time 20:34:03
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -228,10 +228,10 @@
                                                                                           
 
      AUTOMATIC TIME CONTROL WITH -
-          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
-          AND A TOTAL TIME PERIOD OF                            100.    
+          A SUGGESTED INITIAL TIME INCREMENT OF                1.000E+07
+          AND A TOTAL TIME PERIOD OF                           1.000E+09
           THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-04
-          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                1.000E+07
 
           CREEP AND SWELLING EFFECTS ARE OMITTED IN THIS STEP
 
@@ -290,11 +290,12 @@
 
                               ANALYSIS COMPLETE
                               WITH      3 WARNING MESSAGES ON THE DAT FILE
+                              AND     101 WARNING MESSAGES ON THE MSG FILE
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      24.    
-       SYSTEM TIME (SEC)    =      4.6    
-       TOTAL CPU TIME (SEC) =      29.    
-       WALLCLOCK TIME (SEC) =           21
+       USER TIME (SEC)      =      27.    
+       SYSTEM TIME (SEC)    =      5.7    
+       TOTAL CPU TIME (SEC) =      32.    
+       WALLCLOCK TIME (SEC) =           23

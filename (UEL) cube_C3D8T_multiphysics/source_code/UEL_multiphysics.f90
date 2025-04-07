@@ -1033,7 +1033,6 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
                 end do
             end do
 
-
             amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
                 amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
                                 (K_material + K_geometry + K_velocity)
@@ -1219,7 +1218,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! Steady-State Fully Coupled Thermal-Stress Analysis has lflags(1) = 71
         ! Transient Fully Coupled Thermal-Stress Analysis has lflags(1) = 72 or 73
 
-        ! In steady state analysis, the internal hydro change and hydro capacitance is zero
+        ! In steady state analysis, the internal hydrogen change and hydrogen mass capacitance is zero
         if (lflags(1) == 31 .or. lflags(1) == 71) then
             M_hydro_kIP_t = 0.0d0
             F_hydro_dC_kIP_t = 0.0d0
@@ -1228,13 +1227,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! BEWARE: AT THE FIRST INCREMENT, DTIME IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HYDROGEN TRANSFER FIELD
 
-        ! amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
-        !     amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
-        !     + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
-            
-        ! rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
-        !     - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
-
+        if (kinc > 1) then
+            amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
+                amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
+                + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
+                
+            rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
+                - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
+        end if
         ! ================================================================== !
         !                                                                    !
         !                    SOLVING THE HEAT TRANSFER FIELD                 !
@@ -1422,14 +1422,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! BEWARE: AT THE FIRST INCREMENT, THE TIME STEP IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HEAT TRANSFER FIELD
-        ! if (kinc > 1) then
-        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-        !         + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
+        if (kinc > 1) then
+            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+                amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+                + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
                 
-        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-        !         - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
-        ! end if
+            rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+                - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
+        end if
 
         ! ================================================================== !
         !                                                                    !

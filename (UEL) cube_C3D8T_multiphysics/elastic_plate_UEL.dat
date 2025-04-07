@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 20:48:37
+   Abaqus 2023.HF4                                  Date 07-Apr-2025   Time 20:33:40
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -235,13 +235,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.20    
+       USER TIME (SEC)      =     0.30    
        SYSTEM TIME (SEC)    =      0.0    
-       TOTAL CPU TIME (SEC) =     0.20    
-       WALLCLOCK TIME (SEC) =            0
+       TOTAL CPU TIME (SEC) =     0.30    
+       WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 06-Apr-2025   Time 20:48:42
+   Abaqus 2023.HF4                                  Date 07-Apr-2025   Time 20:33:46
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -254,10 +254,10 @@
                                                                                           
 
      AUTOMATIC TIME CONTROL WITH -
-          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
-          AND A TOTAL TIME PERIOD OF                            100.    
+          A SUGGESTED INITIAL TIME INCREMENT OF                1.000E+07
+          AND A TOTAL TIME PERIOD OF                           1.000E+09
           THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-04
-          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                1.000E+07
 
           CREEP AND SWELLING EFFECTS ARE OMITTED IN THIS STEP
 
@@ -277,7 +277,7 @@
               OPERATIONS           REQUIRED          MINIMIZE I/O
              PER ITERATION           (MB)               (MB)
   
-     1          9.05E+08               22                 86
+     1          3.86E+08               21                 65
   
  NOTE:
       (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
@@ -316,13 +316,13 @@
 
                               ANALYSIS COMPLETE
                               WITH      8 WARNING MESSAGES ON THE DAT FILE
-                              AND    8208 WARNING MESSAGES ON THE MSG FILE
-                                     8206 WARNINGS ARE FOR NUMERICAL PROBLEMS
+                              AND  318483 WARNING MESSAGES ON THE MSG FILE
+                                   318384 WARNINGS ARE FOR NUMERICAL PROBLEMS
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      47.    
+       USER TIME (SEC)      =      54.    
        SYSTEM TIME (SEC)    =      4.8    
-       TOTAL CPU TIME (SEC) =      52.    
-       WALLCLOCK TIME (SEC) =           65
+       TOTAL CPU TIME (SEC) =      59.    
+       WALLCLOCK TIME (SEC) =           72

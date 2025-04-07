@@ -4799,7 +4799,7 @@
     1,  1509,     1
 *End Assembly
 *Amplitude, name=ramp
-             0.,              0.,            100.,              1.
+             0.,              0.,            1e+9.,              1.
 ** 
 ** MATERIALS
 ** 
@@ -4824,7 +4824,7 @@ ALLN, 20.
 ** 
 *Step, name=Step-1, nlgeom=YES, inc=10000000
 *Coupled Temperature-displacement, creep=none, deltmx=100000.
-1., 100., 0.0001, 1.
+1e+7, 1e+9., 0.0001, 1e+7
 ** 
 ** BOUNDARY CONDITIONS
 ** 

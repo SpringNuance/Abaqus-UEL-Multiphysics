@@ -4799,13 +4799,13 @@
     1,  1509,     1
 *End Assembly
 *Amplitude, name=ramp
-             0.,              0.,            100.,              1.
+             0.,              0.,     1000000000.,              1.
 ** 
 ** MATERIALS
 ** 
 *Material, name=multiphysics
 *Conductivity
-2.,
+ 2e-05,
 *Density
 7900.,
 *Elastic
@@ -4818,7 +4818,7 @@
 ** 
 *Step, name=Step-1, nlgeom=YES, inc=10000000
 *Coupled Temperature-displacement, creep=none, deltmx=100000.
-1., 100., 0.0001, 1.
+1e+07, 1e+09, 0.0001, 1e+07
 ** 
 ** BOUNDARY CONDITIONS
 ** 
@@ -4848,6 +4848,6 @@ zsymm_side, 3, 3
 *Node Output
 NT, RF, RFL, U
 *Element Output, directions=YES
-S, SDV
+HFL, S, SDV, TEMP
 *Output, history, frequency=0
 *End Step

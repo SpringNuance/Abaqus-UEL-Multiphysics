@@ -629,11 +629,13 @@ def main():
     parser = argparse.ArgumentParser(description="Process UEL input file")
     # Add the --geometry flag, expecting a string argument
     parser.add_argument('--input', type=str, required=True, help='input file name')
+    parser.add_argument('--process', type=str, required=True, help='processing input folder')
     
     # Parse the command-line arguments
     args = parser.parse_args()
     # Access the geometry argument
     inp_file_name = args.input
+    processing_input_path = args.process
     # subroutine_file_name = args.subroutine
 
     output_simulation_path = os.getcwd()
@@ -684,9 +686,9 @@ def main():
     # STEP 2: Extracting all information #
     ######################################
 
-    properties_path_excel = f"processing_input/properties.xlsx"
-    flow_curve_excel_path = f"processing_input/flow_curve.xlsx"
-    depvar_excel_path = f"processing_input/depvar.xlsx"
+    properties_path_excel = f"{processing_input_path}/properties.xlsx"
+    flow_curve_excel_path = f"{processing_input_path}/flow_curve.xlsx"
+    depvar_excel_path = f"{processing_input_path}/depvar.xlsx"
 
     description_properties_dict = return_description_properties(properties_path_excel, flow_curve_excel_path)
     UEL_PROPERTY, total_num_properties, props_indices = return_UEL_property(description_properties_dict)
@@ -699,7 +701,7 @@ def main():
 
     node_coordinates, total_nodes, start_node_idx, end_node_idx = extracting_nodes_coordinates(flines)
 
-    with open(f"processing_input/nodes.inc", 'w') as fid:
+    with open(f"{processing_input_path}/nodes.inc", 'w') as fid:
         for line_idx in range(len(node_coordinates) - 1):
             fid.write(node_coordinates[line_idx] + "\n")
         fid.write(node_coordinates[-1])
@@ -707,7 +709,7 @@ def main():
     # Now, we remove everything between start_node_idx and end_node_idx, and insert
     include_nodes = [
         "**",
-        f"*INCLUDE, INPUT=\"processing_input/nodes.inc\"",
+        f"*INCLUDE, INPUT=\"{processing_input_path}/nodes.inc\"",
         "**",
     ]
 
@@ -743,12 +745,12 @@ def main():
 
 
     # Write the original mesh. We must avoid empty line at the end
-    with open(f"processing_input/elements_UEL.inc", 'w') as fid:
+    with open(f"{processing_input_path}/elements_UEL.inc", 'w') as fid:
         for line_idx in range(len(original_mesh_UEL) - 1):
             fid.write(original_mesh_UEL[line_idx] + "\n")
         fid.write(original_mesh_UEL[-1])
 
-    with open(f"processing_input/elements_VISUAL.inc", 'w') as fid:
+    with open(f"{processing_input_path}/elements_VISUAL.inc", 'w') as fid:
         for line_idx in range(len(original_mesh_VISUAL) - 1):
             fid.write(original_mesh_VISUAL[line_idx] + "\n")
         fid.write(original_mesh_VISUAL[-1])
@@ -756,13 +758,13 @@ def main():
     # Now, we remove everything between start_element_idx and end_element_idx, and insert
     include_UEL_elements = [
         "**",
-        f"*INCLUDE, INPUT=\"processing_input/elements_UEL.inc\"",
+        f"*INCLUDE, INPUT=\"{processing_input_path}/elements_UEL.inc\"",
         "**",
     ]
 
     include_VISUAL_elements = [
         "**",
-        f"*INCLUDE, INPUT=\"processing_input/elements_VISUAL.inc\"",
+        f"*INCLUDE, INPUT=\"{processing_input_path}/elements_VISUAL.inc\"",
         "**",
     ]
     
@@ -799,7 +801,7 @@ def main():
     # # STEP 7: Adding the controls #
     # ###############################
 
-    controls_path_excel = f"processing_input/controls.xlsx"
+    controls_path_excel = f"{processing_input_path}/controls.xlsx"
     CONTROLS = return_control_settings(controls_path_excel)
     # print("The CONTROLS are:\n", "\n".join(CONTROLS))
 
@@ -824,7 +826,7 @@ def main():
     # STEP 8: Replace field output #
     ################################
     
-    field_output_path_excel = f"processing_input/field_output.xlsx"
+    field_output_path_excel = f"{processing_input_path}/field_output.xlsx"
     
     node_output, element_output = return_field_output(field_output_path_excel)
 
@@ -869,7 +871,7 @@ def main():
     ##############################################
 
     # Finally, we would write the fortran file userinputs.f90 to the source_code folder
-    element_file_path = f"/processing_input/elements_UEL.inc"
+    element_file_path = f"/{processing_input_path}/elements_UEL.inc"
     USERINPUTS = return_userinputs_fortran(total_elems, total_nodes, props_indices, SDV_names, nstatev, 
                             SDV_chosen_index_flags, SDV_field_names, SDV_descriptions, grad_SDV_flags, element_file_path)
 
