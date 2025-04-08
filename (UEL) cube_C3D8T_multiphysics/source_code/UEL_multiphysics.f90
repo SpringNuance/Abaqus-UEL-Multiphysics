@@ -902,19 +902,24 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
             ! Rotating stress
 
-            ! ! Convert stress from Voigt to tensor
+            ! Convert stress from Voigt to tensor
             ! call stress_voigt_to_tensor(stress_tm1, stress_tensor_tm1, ntensor, ndim)
+            ! call stran_voigt_to_tensor(stran_tm1, stran_tensor_tm1, ntensor, ndim)
 
             ! ! Rotate stress tensor: σ = Rᵀ ⋅ σᵣ ⋅ R
             ! rotated_stress_tensor_tm1 = matmul(transpose(dR_rotation), matmul(stress_tensor_tm1, dR_rotation))
+            ! rotated_stran_tensor_tm1 = matmul(transpose(dR_rotation), matmul(stran_tensor_tm1, dR_rotation))
 
             ! ! Convert back to Voigt form
-            ! call stress_tensor_to_voigt(stress_tm1, rotated_stress_tensor_tm1, ntensor, ndim)
+            ! call stress_tensor_to_voigt(rotated_stress_tm1, rotated_stress_tensor_tm1, ntensor, ndim)
+            ! call stran_tensor_to_voigt(rotated_stran_tm1, rotated_stran_tensor_tm1, ntensor, ndim)
 
-            ! stress = stress_tm1
+            ! stress = rotated_stress_tm1
+            ! stran = rotated_stran_tm1
+            
 
-            call rotsig(stress_tm1(sig_start_idx),dR_rotation,rotated_stress_tm1,1,ndirect,nshear)
-            call rotsig(stran_tm1(stran_start_idx),dR_rotation,rotated_stran_tm1,2,ndirect,nshear)
+            call rotsig(stress_tm1(sig_start_idx:sig_end_idx),dR_rotation,rotated_stress_tm1,1,ndirect,nshear)
+            call rotsig(stran_tm1(stran_start_idx:stran_end_idx),dR_rotation,rotated_stran_tm1,2,ndirect,nshear)
             stress = rotated_stress_tm1
             stran = rotated_stran_tm1
 
@@ -1006,36 +1011,36 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             !     end do
             ! end do
 
-            call stress_voigt_to_tensor(stress_t, stress_tensor_t, ntensor, ndim)
+            !call stress_voigt_to_tensor(stress_t, stress_tensor_t, ntensor, ndim)
 
             ! Initialize K_velocity to zero first
-            K_velocity = 0.0d0
+            ! K_velocity = 0.0d0
 
-            do i = 1, nnode
-                do j = 1, nnode
-                    do m = 1, ndim
-                        do n = 1, ndim
-                            K_velocity((i-1)*ndim + m, (j-1)*ndim + n) = K_velocity((i-1)*ndim + m, (j-1)*ndim + n) + &
-                                stress_tensor_t(m,n) * N_grad_NP_inter_bar_global_t(m,i) * N_grad_NP_inter_bar_global_t(n,j)
-                        end do
-                    end do
-                end do
-            end do
+            ! do i = 1, nnode
+            !     do j = 1, nnode
+            !         do m = 1, ndim
+            !             do n = 1, ndim
+            !                 K_velocity((i-1)*ndim + m, (j-1)*ndim + n) = K_velocity((i-1)*ndim + m, (j-1)*ndim + n) + &
+            !                     stress_tensor_t(m,n) * N_grad_NP_inter_bar_global_t(m,i) * N_grad_NP_inter_bar_global_t(n,j)
+            !             end do
+            !         end do
+            !     end do
+            ! end do
 
             ! Initialize K_geometry to zero first
-            K_geometry = 0.0d0
+            ! K_geometry = 0.0d0
 
-            do ktens = 1, ntensor
-                do i = 1, ndim*nnode
-                    do j = 1, ndim*nnode
-                        K_geometry(i,j) = K_geometry(i,j) - 2.0d0 * stress_t(ktens) * Bu_bar_t(ktens,i) * Bu_bar_t(ktens,j)
-                    end do
-                end do
-            end do
+            ! do ktens = 1, ntensor
+            !     do i = 1, ndim*nnode
+            !         do j = 1, ndim*nnode
+            !             K_geometry(i,j) = K_geometry(i,j) - 2.0d0 * stress_t(ktens) * Bu_bar_t(ktens,i) * Bu_bar_t(ktens,j)
+            !         end do
+            !     end do
+            ! end do
 
             amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
                 amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
-                                (K_material + K_geometry + K_velocity)
+                                (K_material)! + K_geometry + K_velocity)
                 
             rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
                 dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))   
@@ -1227,14 +1232,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! BEWARE: AT THE FIRST INCREMENT, DTIME IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HYDROGEN TRANSFER FIELD
 
-        if (kinc > 1) then
-            amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
-                amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
-                + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
+        ! if (kinc > 1) then
+        !     amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
+        !         amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
+        !         + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
                 
-            rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
-                - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
-        end if
+        !     rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
+        !         - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
+        ! end if
         ! ================================================================== !
         !                                                                    !
         !                    SOLVING THE HEAT TRANSFER FIELD                 !
@@ -1422,14 +1427,14 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         ! BEWARE: AT THE FIRST INCREMENT, THE TIME STEP IS ZERO
         ! WE SHOULD SKIP THE FIRST INCREMENT FOR THE HEAT TRANSFER FIELD
-        if (kinc > 1) then
-            amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
-                amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
+        ! if (kinc > 1) then
+        !     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
+        !         amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
+        !         + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
                 
-            rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
-        end if
+        !     rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
+        !         - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
+        ! end if
 
         ! ================================================================== !
         !                                                                    !

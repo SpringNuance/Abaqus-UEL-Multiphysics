@@ -49,7 +49,7 @@ options = {
     'importSim':OFF,
     'importer':OFF,
     'importerParts':OFF,
-    'includes':['processing_input/nodes.inc', 'processing_input/elements_UEL.inc', 'processing_input/elements_VISUAL.inc'],
+    'includes':['processing_input_notched_plate/nodes.inc', 'processing_input_notched_plate/elements_UEL.inc', 'processing_input_notched_plate/elements_VISUAL.inc'],
     'inertiarelief':OFF,
     'initialConditionsFile':OFF,
     'input':'notched_plate_UEL',

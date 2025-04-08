@@ -21,7 +21,7 @@
 **
 *Part, name=plate
 **
-*INCLUDE, INPUT="processing_input/nodes.inc"
+*INCLUDE, INPUT="processing_input_notched_plate/nodes.inc"
 **
 *************************************************
 *User element, nodes=8, type=U1, properties=264, coordinates=3, variables=640
@@ -30,10 +30,10 @@
 1, 12
 *************************************************
 **
-*INCLUDE, INPUT="processing_input/elements_UEL.inc"
+*INCLUDE, INPUT="processing_input_notched_plate/elements_UEL.inc"
 **
 **
-*INCLUDE, INPUT="processing_input/elements_VISUAL.inc"
+*INCLUDE, INPUT="processing_input_notched_plate/elements_VISUAL.inc"
 **
 *******************************************************
 *UEL PROPERTY, ELSET=SOLID                             
