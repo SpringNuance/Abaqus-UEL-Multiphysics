@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 08-Apr-2025   Time 11:08:34
+   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 20:13:16
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -176,13 +176,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.30    
+       USER TIME (SEC)      =     0.40    
        SYSTEM TIME (SEC)    =     0.20    
-       TOTAL CPU TIME (SEC) =     0.50    
+       TOTAL CPU TIME (SEC) =     0.60    
        WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 08-Apr-2025   Time 11:08:41
+   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 20:13:23
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -249,17 +249,3 @@
           BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
           ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
       (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
-
-
-
-                              ANALYSIS COMPLETE
-                              WITH      3 ERROR MESSAGES ON THE MSG FILE
-                              AND       7 WARNING MESSAGES ON THE DAT FILE
-
-
-
-     JOB TIME SUMMARY
-       USER TIME (SEC)      =      35.    
-       SYSTEM TIME (SEC)    =      1.8    
-       TOTAL CPU TIME (SEC) =      37.    
-       WALLCLOCK TIME (SEC) =           43

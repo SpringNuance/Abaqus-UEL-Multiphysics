@@ -3,22 +3,20 @@ Abaqus JOB notched_plate_default_solver
 Abaqus 2023.HF4
 Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 5 tokens from Flexnet server lic-abaqus.aalto.fi.
-<12 out of 100 licenses remain available>.
+<55 out of 100 licenses remain available>.
 Begin Analysis Input File Processor
-07/04/2025 13:19:17
+08/04/2025 17:54:52
 Run pre.exe
-07/04/2025 13:19:23
+08/04/2025 17:54:59
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-07/04/2025 13:19:23
+08/04/2025 17:54:59
 Run standard.exe
-ReadFile from pipe failed 2225 109
-07/04/2025 13:21:57
-Abaqus Error: Abaqus/Standard Analysis exited with an error - Please see the 
-message file for possible error messages if the file exists.
+08/04/2025 18:12:19
+End Abaqus/Standard Analysis
 Begin SIM Wrap-up
-07/04/2025 13:21:58
+08/04/2025 18:12:21
 Run SMASimUtility.exe
-07/04/2025 13:21:58
+08/04/2025 18:12:21
 End SIM Wrap-up
-Abaqus/Analysis exited with errors
+Abaqus JOB notched_plate_default_solver COMPLETED

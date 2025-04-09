@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 08-Apr-2025   Time 11:08:41
+   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 20:13:23
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -73,7 +73,7 @@
      EQUILIBRIUM ITERATION COUNT FOR CUT-BACK IN NEXT INCREMENT               10
      MAXIMUM EQUILIB. ITERS IN TWO INCREMENTS FOR TIME INCREMENT INCREASE      4
      MAXIMUM ITERATIONS FOR SEVERE DISCONTINUITIES                            50
-     MAXIMUM ATTEMPTS ALLOWED IN AN INCREMENT                                  5
+ *** MAXIMUM ATTEMPTS ALLOWED IN AN INCREMENT                                100
      MAXIMUM DISCON. ITERS IN TWO INCREMENTS FOR TIME INCREMENT INCREASE      50
      MAXIMUM CONTACT AUGMENTATIONS FOR *SURFACE BEHAVIOR,AUGMENTED LAGRANGE   50
      CONSECUTIVE INCS MEETING TIME INTEG. TOL. FOR TIME INC. INCREASE          3
@@ -94,6 +94,9 @@
      MAX. RATIO OF TIME INCREMENT TO STABILITY LIMIT                   1.000    
      FRACTION OF STABILITY LIMIT FOR NEW TIME INCREMENT               0.9500    
      TIME INCREMENT INCREASE FACTOR BEFORE A TIME POINT                1.000    
+
+ *** INDICATES USE OF NON-DEFAULT TIME INCREMENTATION CONTROL PARAMETER
+     SELECTED WITH *CONTROLS
      GLOBAL STABILIZATION CONTROL IS NOT USED
 
           PRINT OF INCREMENT NUMBER, TIME, ETC., EVERY    1  INCREMENTS
@@ -126,7 +129,7 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  148ms
+        SOLVER ELAPSED TIME:  172ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -152,15 +155,15 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  176ms
+        SOLVER ELAPSED TIME:  159ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
 
 
  AVERAGE FORCE                      2.059E-05   TIME AVG. FORCE       2.059E-05
- LARGEST SCALED RESIDUAL FORCE     -6.194E-11   AT NODE        487   DOF  2
+ LARGEST SCALED RESIDUAL FORCE     -6.010E-11   AT NODE        275   DOF  2
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -6.194E-11
+  CORRESPONDING RESIDUAL FORCE     -6.010E-11
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE         10   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        1.160E-12   AT NODE        378   DOF  1
@@ -189,18 +192,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  137ms
+        SOLVER ELAPSED TIME:  248ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      8.332E-05   TIME AVG. FORCE       5.196E-05
- LARGEST SCALED RESIDUAL FORCE     -1.491E-10   AT NODE        487   DOF  2
+ LARGEST SCALED RESIDUAL FORCE      4.845E-10   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -1.491E-10
+  CORRESPONDING RESIDUAL FORCE      4.845E-10
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE         10   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.715E-12   AT NODE        378   DOF  1
+ LARGEST CORRECTION TO DISP.        2.714E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -226,16 +229,16 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  140ms
+        SOLVER ELAPSED TIME:  156ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.250E-04   TIME AVG. FORCE       7.630E-05
- LARGEST SCALED RESIDUAL FORCE      1.854E-10   AT NODE         44   DOF  2
+ LARGEST SCALED RESIDUAL FORCE      7.235E-10   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      1.854E-10
- LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
+  CORRESPONDING RESIDUAL FORCE      7.235E-10
+ LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE         10   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.715E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
@@ -263,15 +266,15 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  134ms
+        SOLVER ELAPSED TIME:  157ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      1.666E-04   TIME AVG. FORCE       9.888E-05
- LARGEST SCALED RESIDUAL FORCE      2.226E-10   AT NODE         44   DOF  2
+ LARGEST SCALED RESIDUAL FORCE      9.618E-10   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      2.226E-10
+  CORRESPONDING RESIDUAL FORCE      9.618E-10
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.714E-12   AT NODE        378   DOF  1
@@ -300,15 +303,15 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  137ms
+        SOLVER ELAPSED TIME:  183ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.083E-04   TIME AVG. FORCE       1.208E-04
- LARGEST SCALED RESIDUAL FORCE      2.600E-10   AT NODE         44   DOF  2
+ LARGEST SCALED RESIDUAL FORCE      1.201E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      2.600E-10
+  CORRESPONDING RESIDUAL FORCE      1.201E-09
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.714E-12   AT NODE        378   DOF  1
@@ -337,15 +340,15 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  126ms
+        SOLVER ELAPSED TIME:  157ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.499E-04   TIME AVG. FORCE       1.423E-04
- LARGEST SCALED RESIDUAL FORCE     -3.083E-10   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.440E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -3.083E-10
+  CORRESPONDING RESIDUAL FORCE      1.440E-09
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.714E-12   AT NODE        378   DOF  1
@@ -374,18 +377,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  137ms
+        SOLVER ELAPSED TIME:  166ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      2.915E-04   TIME AVG. FORCE       1.636E-04
- LARGEST SCALED RESIDUAL FORCE     -3.614E-10   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.679E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -3.614E-10
+  CORRESPONDING RESIDUAL FORCE      1.679E-09
  LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.713E-12   AT NODE        275   DOF  1
+ LARGEST CORRECTION TO DISP.        2.713E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -411,16 +414,16 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  132ms
+        SOLVER ELAPSED TIME:  162ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.332E-04   TIME AVG. FORCE       1.848E-04
- LARGEST SCALED RESIDUAL FORCE     -4.145E-10   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      1.919E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -4.145E-10
- LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE         10   DOF  2
+  CORRESPONDING RESIDUAL FORCE      1.919E-09
+ LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.713E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
@@ -448,18 +451,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  134ms
+        SOLVER ELAPSED TIME:  159ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      3.748E-04   TIME AVG. FORCE       2.059E-04
- LARGEST SCALED RESIDUAL FORCE     -4.677E-10   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.159E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -4.677E-10
+  CORRESPONDING RESIDUAL FORCE      2.159E-09
  LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.713E-12   AT NODE        275   DOF  1
+ LARGEST CORRECTION TO DISP.        2.713E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -485,18 +488,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  141ms
+        SOLVER ELAPSED TIME:  217ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      4.165E-04   TIME AVG. FORCE       2.270E-04
- LARGEST SCALED RESIDUAL FORCE     -5.209E-10   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.399E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -5.209E-10
- LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE         10   DOF  2
+  CORRESPONDING RESIDUAL FORCE      2.399E-09
+ LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.712E-12   AT NODE        275   DOF  1
+ LARGEST CORRECTION TO DISP.        2.712E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -522,15 +525,15 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  144ms
+        SOLVER ELAPSED TIME:  172ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      4.581E-04   TIME AVG. FORCE       2.480E-04
- LARGEST SCALED RESIDUAL FORCE     -5.742E-10   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.640E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -5.742E-10
+  CORRESPONDING RESIDUAL FORCE      2.640E-09
  LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
  LARGEST CORRECTION TO DISP.        2.712E-12   AT NODE        378   DOF  1
@@ -559,18 +562,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  132ms
+        SOLVER ELAPSED TIME:  186ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      4.997E-04   TIME AVG. FORCE       2.690E-04
- LARGEST SCALED RESIDUAL FORCE     -6.277E-10   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      2.881E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -6.277E-10
- LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE         10   DOF  2
+  CORRESPONDING RESIDUAL FORCE      2.881E-09
+ LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.712E-12   AT NODE        275   DOF  1
+ LARGEST CORRECTION TO DISP.        2.712E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -596,18 +599,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  142ms
+        SOLVER ELAPSED TIME:  167ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      5.413E-04   TIME AVG. FORCE       2.899E-04
- LARGEST SCALED RESIDUAL FORCE     -6.820E-10   AT NODE          4   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.122E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -6.820E-10
+  CORRESPONDING RESIDUAL FORCE      3.122E-09
  LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.118E-11   AT NODE       6345   DOF  3
+ LARGEST CORRECTION TO DISP.        2.711E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -633,18 +636,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  129ms
+        SOLVER ELAPSED TIME:  169ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      5.829E-04   TIME AVG. FORCE       3.108E-04
- LARGEST SCALED RESIDUAL FORCE     -7.407E-10   AT NODE          2   DOF  1
+ LARGEST SCALED RESIDUAL FORCE      3.364E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -7.407E-10
- LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE         10   DOF  2
+  CORRESPONDING RESIDUAL FORCE      3.364E-09
+ LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -7.145E-11   AT NODE       6346   DOF  3
+ LARGEST CORRECTION TO DISP.        2.711E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -670,18 +673,18 @@
         NUMBER OF EQUATIONS:  31062
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  158ms
+        SOLVER ELAPSED TIME:  203ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
 
  AVERAGE FORCE                      6.246E-04   TIME AVG. FORCE       3.318E-04
- LARGEST SCALED RESIDUAL FORCE      2.439E-09   AT NODE       4015   DOF  2
+ LARGEST SCALED RESIDUAL FORCE      3.605E-09   AT NODE          4   DOF  1
    INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      2.439E-09
+  CORRESPONDING RESIDUAL FORCE      3.605E-09
  LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE          7   DOF  2
    INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        4.878E-10   AT NODE       6345   DOF  3
+ LARGEST CORRECTION TO DISP.        2.711E-12   AT NODE        378   DOF  1
    INSTANCE: PLATE-1                                                                         
           THE FORCE     EQUILIBRIUM EQUATIONS HAVE CONVERGED
 
@@ -701,624 +704,3 @@
 
 
   INCREMENT    16 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  139ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      6.662E-04   TIME AVG. FORCE       3.527E-04
- LARGEST SCALED RESIDUAL FORCE      1.770E-08   AT NODE       6088   DOF  2
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      1.770E-08
- LARGEST INCREMENT OF DISP.         5.321E-08   AT NODE         10   DOF  2
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -3.543E-09   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- ESTIMATE OF DISP.    CORRECTION    6.105E-11
- FORCE     EQUILIB. ACCEPTED BASED ON SMALL RESIDUAL AND ESTIMATED CORRECTION
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
-
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    0.00    
-
- ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
-   0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
-
- TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED  1.600E-02
- STEP TIME COMPLETED        16.0    ,  TOTAL TIME COMPLETED         16.0    
-
-
-  INCREMENT    17 STARTS. ATTEMPT NUMBER  1, TIME INCREMENT   1.00    
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  147ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      7.084E-04   TIME AVG. FORCE       3.736E-04
- LARGEST SCALED RESIDUAL FORCE     -2.108E-07   AT NODE       8209   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -2.108E-07
- LARGEST INCREMENT OF DISP.         5.322E-08   AT NODE          7   DOF  2
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        2.727E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  150ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                      7.145E-04   TIME AVG. FORCE       3.739E-04
- LARGEST SCALED RESIDUAL FORCE      2.117E-06   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      2.117E-06
- LARGEST INCREMENT OF DISP.        -7.550E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -9.961E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  156ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     3
-
-
- AVERAGE FORCE                      7.066E-04   TIME AVG. FORCE       3.735E-04
- LARGEST SCALED RESIDUAL FORCE     -2.653E-05   AT NODE       6801   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -2.653E-05
- LARGEST INCREMENT OF DISP.         2.884E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        3.638E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     4
-
-
- AVERAGE FORCE                      7.076E-04   TIME AVG. FORCE       3.735E-04
- LARGEST SCALED RESIDUAL FORCE      3.475E-04   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      3.475E-04
- LARGEST INCREMENT OF DISP.        -1.040E-06   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -1.328E-06   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-
- ***NOTE: THE SOLUTION APPEARS TO BE DIVERGING. CONVERGENCE IS JUDGED UNLIKELY.
-
-
-  INCREMENT    17 STARTS. ATTEMPT NUMBER  2, TIME INCREMENT  0.250    
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  128ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      6.773E-04   TIME AVG. FORCE       3.718E-04
- LARGEST SCALED RESIDUAL FORCE     -8.807E-08   AT NODE       8209   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -8.807E-08
- LARGEST INCREMENT OF DISP.         1.506E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.583E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                      6.797E-04   TIME AVG. FORCE       3.719E-04
- LARGEST SCALED RESIDUAL FORCE      7.096E-07   AT NODE      10183   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      7.096E-07
- LARGEST INCREMENT OF DISP.        -4.022E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -5.526E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  143ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     3
-
-
- AVERAGE FORCE                      6.786E-04   TIME AVG. FORCE       3.718E-04
- LARGEST SCALED RESIDUAL FORCE     -7.618E-06   AT NODE       6801   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -7.618E-06
- LARGEST INCREMENT OF DISP.         1.527E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.929E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  139ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     4
-
-
- AVERAGE FORCE                      6.723E-04   TIME AVG. FORCE       3.715E-04
- LARGEST SCALED RESIDUAL FORCE      8.995E-05   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      8.995E-05
- LARGEST INCREMENT OF DISP.        -5.208E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -6.735E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-
- ***NOTE: THE SOLUTION APPEARS TO BE DIVERGING. CONVERGENCE IS JUDGED UNLIKELY.
-
-
-  INCREMENT    17 STARTS. ATTEMPT NUMBER  3, TIME INCREMENT  6.250E-02
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      6.695E-04   TIME AVG. FORCE       3.713E-04
- LARGEST SCALED RESIDUAL FORCE      6.218E-07   AT NODE          2   DOF  1
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      6.218E-07
- LARGEST INCREMENT OF DISP.         1.222E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.222E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                      6.707E-04   TIME AVG. FORCE       3.714E-04
- LARGEST SCALED RESIDUAL FORCE      4.390E-07   AT NODE      10183   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      4.390E-07
- LARGEST INCREMENT OF DISP.        -2.995E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -4.216E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  130ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     3
-
-
- AVERAGE FORCE                      6.747E-04   TIME AVG. FORCE       3.716E-04
- LARGEST SCALED RESIDUAL FORCE     -4.395E-06   AT NODE       6801   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -4.395E-06
- LARGEST INCREMENT OF DISP.         1.156E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.455E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  136ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     4
-
-
- AVERAGE FORCE                      6.674E-04   TIME AVG. FORCE       3.712E-04
- LARGEST SCALED RESIDUAL FORCE      5.021E-05   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      5.021E-05
- LARGEST INCREMENT OF DISP.        -3.866E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -5.021E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-
- ***NOTE: THE SOLUTION APPEARS TO BE DIVERGING. CONVERGENCE IS JUDGED UNLIKELY.
-
-
-  INCREMENT    17 STARTS. ATTEMPT NUMBER  4, TIME INCREMENT  1.562E-02
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  144ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      6.676E-04   TIME AVG. FORCE       3.712E-04
- LARGEST SCALED RESIDUAL FORCE      1.559E-07   AT NODE          2   DOF  1
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      1.559E-07
- LARGEST INCREMENT OF DISP.         1.219E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.219E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  131ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                      6.688E-04   TIME AVG. FORCE       3.713E-04
- LARGEST SCALED RESIDUAL FORCE      4.349E-07   AT NODE      10183   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      4.349E-07
- LARGEST INCREMENT OF DISP.        -2.976E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -4.194E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  134ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     3
-
-
- AVERAGE FORCE                      6.728E-04   TIME AVG. FORCE       3.715E-04
- LARGEST SCALED RESIDUAL FORCE     -4.326E-06   AT NODE       6801   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -4.326E-06
- LARGEST INCREMENT OF DISP.         1.146E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.443E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     4
-
-
- AVERAGE FORCE                      6.656E-04   TIME AVG. FORCE       3.711E-04
- LARGEST SCALED RESIDUAL FORCE      4.913E-05   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      4.913E-05
- LARGEST INCREMENT OF DISP.        -3.820E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -4.966E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-
- ***NOTE: THE SOLUTION APPEARS TO BE DIVERGING. CONVERGENCE IS JUDGED UNLIKELY.
-
-
-  INCREMENT    17 STARTS. ATTEMPT NUMBER  5, TIME INCREMENT  1.000E-02
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  133ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
-
-
- AVERAGE FORCE                      6.673E-04   TIME AVG. FORCE       3.712E-04
- LARGEST SCALED RESIDUAL FORCE      9.988E-08   AT NODE          2   DOF  1
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      9.988E-08
- LARGEST INCREMENT OF DISP.         1.219E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.219E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  132ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     2
-
-
- AVERAGE FORCE                      6.686E-04   TIME AVG. FORCE       3.712E-04
- LARGEST SCALED RESIDUAL FORCE      4.344E-07   AT NODE      10183   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      4.344E-07
- LARGEST INCREMENT OF DISP.        -2.973E-08   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -4.192E-08   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          DISP.    CORRECTION TOO LARGE COMPARED TO DISP.    INCREMENT
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  131ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     3
-
-
- AVERAGE FORCE                      6.727E-04   TIME AVG. FORCE       3.715E-04
- LARGEST SCALED RESIDUAL FORCE     -4.318E-06   AT NODE       6801   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE     -4.318E-06
- LARGEST INCREMENT OF DISP.         1.145E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.        1.442E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-	UNSYMMETRIC NEW DIRECT SPARSE SOLVER RUNNING ON
- 	1 HOST x 1 MPI RANK PER HOST x 1 THREAD PER RANK
-        NUMBER OF EQUATIONS:  31062
-        NUMBER OF RHS:        1
-        NUMBER OF FLOPS:      3.596e+09
-        SOLVER ELAPSED TIME:  129ms
-
-               CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     4
-
-
- AVERAGE FORCE                      6.654E-04   TIME AVG. FORCE       3.711E-04
- LARGEST SCALED RESIDUAL FORCE      4.900E-05   AT NODE       8775   DOF  3
-   INSTANCE: PLATE-1                                                                         
-  CORRESPONDING RESIDUAL FORCE      4.900E-05
- LARGEST INCREMENT OF DISP.        -3.815E-07   AT NODE       6345   DOF  3
-   INSTANCE: PLATE-1                                                                         
- LARGEST CORRECTION TO DISP.       -4.960E-07   AT NODE       6346   DOF  3
-   INSTANCE: PLATE-1                                                                         
-          FORCE     EQUILIBRIUM NOT ACHIEVED WITHIN TOLERANCE.
-
- AVERAGE HEAT FLUX                   0.00       TIME AVG. HEAT FLUX   1.000E-02
- ALL HEAT FLUX RESIDUALS ARE ZERO
- ALL TEMP.    INCREMENTS ARE ZERO
- ALL CORRECTION TO TEMP.    ARE ZERO
-          THERE IS ZERO HEAT FLUX EVERYWHERE
- 
-
- ***NOTE: THE SOLUTION APPEARS TO BE DIVERGING. CONVERGENCE IS JUDGED UNLIKELY.
- 
-
- ***ERROR: TIME INCREMENT REQUIRED IS LESS THAN THE MINIMUM SPECIFIED
- 
-
- ***ERROR: TOO MANY ATTEMPTS MADE FOR THIS INCREMENT
-
- ***ERROR: THE ANALYSIS HAS BEEN TERMINATED DUE TO PREVIOUS ERRORS. ALL OUTPUT 
-           REQUESTS HAVE BEEN WRITTEN FOR THE LAST CONVERGED INCREMENT.
-
-
-
-     ANALYSIS SUMMARY:
-     TOTAL OF         17  INCREMENTS
-                       5  CUTBACKS IN AUTOMATIC INCREMENTATION
-                      37  ITERATIONS INCLUDING CONTACT ITERATIONS IF PRESENT
-                      37  PASSES THROUGH THE EQUATION SOLVER OF WHICH 
-                      37  INVOLVE MATRIX DECOMPOSITION, INCLUDING
-                       0  DECOMPOSITION(S) OF THE MASS MATRIX
-                       1  REORDERING OF EQUATIONS TO MINIMIZE WAVEFRONT
-                       0  ADDITIONAL RESIDUAL EVALUATIONS FOR LINE SEARCHES
-                       0  ADDITIONAL OPERATOR EVALUATIONS FOR LINE SEARCHES
-                       7  WARNING MESSAGES DURING USER INPUT PROCESSING
-                       0  WARNING MESSAGES DURING ANALYSIS
-                       0  ANALYSIS WARNINGS ARE NUMERICAL PROBLEM MESSAGES
-                       0  ANALYSIS WARNINGS ARE NEGATIVE EIGENVALUE MESSAGES
-                       3  ERROR MESSAGES
-
-
-
-     JOB TIME SUMMARY
-       USER TIME (SEC)      =      35.    
-       SYSTEM TIME (SEC)    =      1.8    
-       TOTAL CPU TIME (SEC) =      37.    
-       WALLCLOCK TIME (SEC) =           43
-       MEMORY PEAK (GB)     =            0

@@ -8,6 +8,20 @@ import copy
 # Going to current directory
 os.chdir(os.getcwd())
 
+# multiprocessing mode in Abaqus can be either mpi or threads or hybrid
+# For mpi case:
+# abaqus job=input_file_name cpus=n threads_per_mpi_process=1
+
+# For threads case:
+# abaqus job=input_file_name cpus=n threads_per_mpi_process=n
+
+# For hybrid case:
+# abaqus job=input_file_name cpus=n threads_per_mpi_process=m where m must be divisible by n
+
+# mp_mode = "mpi"
+mp_mode = "threads"
+# mp_mode = "hybrid"
+
 def return_description_properties(properties_path_excel, flow_curve_excel_path):
     description_properties_dict = {
         "field_properties": {},
@@ -610,6 +624,20 @@ def return_userinputs_fortran(total_elems, total_nodes, props_indices, SDV_names
 
     USERINPUTS.append("")
 
+    if mp_mode == "threads":
+        mp_mode_flag = "1"
+    elif mp_mode == "mpi":
+        mp_mode_flag = "2"
+    elif mp_mode == "hybrid":
+        mp_mode_flag = "3"
+
+    USERINPUTS.append("\t! =============================")
+    USERINPUTS.append("\t! Parallelization mode settings ")
+    USERINPUTS.append("\t! =============================")
+
+    USERINPUTS.append("")
+    
+    USERINPUTS.append("\tinteger, parameter :: mp_mode = 1 ! 1 for threads, 2 for mpi, 3 for hybrid")
     USERINPUTS.append(f"\tsave")
     USERINPUTS.append("end module")
 
@@ -647,14 +675,19 @@ def main():
         flines = fid.readlines()  # Read file as a list of lines
     flines = [line.strip() for line in flines]  # Remove trailing and newline symbols
 
-    ##############################
-    # STEP 0: Deleting lck file  #
-    ##############################
+    ######################################
+    # STEP 0: Deleting lck file          #
+    #  and copy environment file         #
+    # abaqus_v6.env into the main folder #
+    ######################################
 
     # Delete all files ending in .lck in output_simulation_path
     for file in os.listdir(output_simulation_path):
         if file.endswith(".lck"):
             os.remove(os.path.join(output_simulation_path, file))
+
+    # Copy abaqus_v6.env into the main folder
+    shutil.copyfile(f"{processing_input_path}/abaqus_v6.env", f"{output_simulation_path}/abaqus_v6.env")
 
     ###################################
     # STEP 1: Adding unit description #

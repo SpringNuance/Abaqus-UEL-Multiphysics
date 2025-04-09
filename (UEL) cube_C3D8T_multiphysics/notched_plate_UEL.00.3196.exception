@@ -1,0 +1,50 @@
+<Description>
+   standard.exe / rank 0 / thread 0  encountered a system exception 0xC0000005 (EXCEPTION_ACCESS_VIOLATION)
+</Description>
+
+<Context>
+   INITIAL STRESS
+</Context>
+
+<Phase>
+   std | Exec | Substep | std_Elmas_driver | std_elmas
+</Phase>
+
+<Callstack>
+  1)  libifcoremd.dll             for__issue_diagnostic                   
+  2)  libifcoremd.dll             for_rtl_finish_                         
+  3)  KERNELBASE.dll              CtrlRoutine                             
+  4)  KERNEL32.DLL                BaseThreadInitThunk                     
+  5)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          2 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          43 GB </Size>
+       <Used>          34 GB </Used>
+       <Free>           9 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_notched_plate_UEL_21476 </current> <free>     27 GB </free>   <used>    448 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </indir>   <free>     27 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </outdir>  <free>     27 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_notched_plate_UEL_21476 </tmpdir>  <free>     27 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     27 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_notched_plate_UEL_21476\standard.exe </Executable>
+</Installation>
+

@@ -9,13 +9,13 @@ module userinputs
 	! YOU MUST CHANGE IT TO THE ACTUAL NUMBER OF ELEMENTS AND NODES IN .INP FILE
 	! YOU CAN USE PYTHON SCRIPTING TO CHANGE VALUES AS WELL
 
-	integer, parameter :: total_elems = 5086 ! Storing the actual number of elements
-	integer, parameter :: max_elem_idx = 10172 ! Maximum element index for UEL and VISUAL elements
-	integer, parameter :: total_nodes = 10354 ! Storing the actual number of nodes
+	integer, parameter :: total_elems = 1509 ! Storing the actual number of elements
+	integer, parameter :: max_elem_idx = 3018 ! Maximum element index for UEL and VISUAL elements
+	integer, parameter :: total_nodes = 3216 ! Storing the actual number of nodes
 	integer, parameter :: nstatev = 80 ! Number of state variables at integration points
 
 	! Element information
-	character(len=256), parameter :: element_file_path = "/processing_input_notched_plate/elements_UEL.inc" ! Path to the element file
+	character(len=256), parameter :: element_file_path = "/processing_input_elastic_plate/elements_UEL.inc" ! Path to the element file
 	character(len=256), parameter :: element_name = 'C3D8' ! Element type
 	integer, parameter :: nmax_elems = 20 ! Maximum number of elements a node can belong to
 	integer, parameter :: ndim = 3 ! Number of spatial dimensions
@@ -138,5 +138,10 @@ module userinputs
 	integer, parameter :: history_idx = 79 ! SDV index of history variable (-)
 	integer, parameter :: Gc_idx = 80 ! SDV index of critical energy release rate (J/m^2)
 
+	! =============================
+	! Parallelization mode settings 
+	! =============================
+
+	integer, parameter :: mp_mode = 1 ! 1 for threads, 2 for mpi, 3 for hybrid
 	save
 end module

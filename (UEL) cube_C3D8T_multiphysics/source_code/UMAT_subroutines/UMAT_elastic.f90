@@ -6,7 +6,7 @@
 !***********************************************************************
 
 subroutine UMAT_elastic(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, &
-    drplde,drpldt,stran,dstran,time,dtime,temp2,dtemp,predef,dpred, &
+    drplde,drpldt,stran,dstran,time,dtime,temp,dtemp,predef,dpred, &
     cmname,ndi,nshr,ntens,nstatv,props,nprops,coords,drot,pnewdt, &
     celent,dfgrd0,dfgrd1,noel,npt,layer,kspt,jstep,kinc)
 

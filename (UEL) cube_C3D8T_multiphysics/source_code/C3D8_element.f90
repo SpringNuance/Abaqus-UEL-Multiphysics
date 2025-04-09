@@ -62,114 +62,144 @@ module iso_module
 end module iso_module
 
 
-subroutine calc_N_shape_NP_inter_to_coords(xi_coords, eta_coords, zeta_coords, &
+subroutine calc_N_shape_NP_inter_to_coords(xi, eta, zeta, &
                                         N_shape_NP_inter_to_coords)
     ! Calculate the shape function at the integration points
-    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the integration points
+    ! xi, eta, zeta: Isoparametric coordinates of the integration points
 
     use precision
     real(kind=dp), dimension(8) :: N_shape_NP_inter_to_coords ! nnode
-    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
+    real(kind=dp) :: xi, eta, zeta
     real(kind=dp), parameter :: NP_inter = 1.0d0
 
     !   shape functions
-    N_shape_NP_inter_to_coords(1)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(2)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(3)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(4)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(5)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(6)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(7)=0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_shape_NP_inter_to_coords(8)=0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-
-end
-
-subroutine calc_N_shape_IP_inter_to_coords(xi_coords, eta_coords, zeta_coords, &
-                                           N_shape_IP_inter_to_coords)
-
-    use precision
-    real(kind=dp), intent(out) :: N_shape_IP_inter_to_coords(8)
-    real(kind=dp), intent(in)  :: xi_coords, eta_coords, zeta_coords
-    
-    real(kind=dp), parameter :: IP_inter = 1.0d0 / sqrt(3.0d0)
-
-    ! Shape functions for a C3D8 element at the given xi/eta/zeta
-    N_shape_IP_inter_to_coords(1) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(2) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(3) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(4) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 - IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(5) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(6) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 - IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(7) = 0.125d0 * (1.0d0 + IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
-    N_shape_IP_inter_to_coords(8) = 0.125d0 * (1.0d0 - IP_inter * xi_coords) * (1.0d0 + IP_inter * eta_coords) * (1.0d0 + IP_inter * zeta_coords)
+    N_shape_NP_inter_to_coords(1)=0.125d0 * (1.0d0 - xi) * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_shape_NP_inter_to_coords(2)=0.125d0 * (1.0d0 + xi) * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_shape_NP_inter_to_coords(3)=0.125d0 * (1.0d0 + xi) * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_shape_NP_inter_to_coords(4)=0.125d0 * (1.0d0 - xi) * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_shape_NP_inter_to_coords(5)=0.125d0 * (1.0d0 - xi) * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_shape_NP_inter_to_coords(6)=0.125d0 * (1.0d0 + xi) * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_shape_NP_inter_to_coords(7)=0.125d0 * (1.0d0 + xi) * (1.0d0 + eta) * (1.0d0 + zeta)
+    N_shape_NP_inter_to_coords(8)=0.125d0 * (1.0d0 - xi) * (1.0d0 + eta) * (1.0d0 + zeta)
 
 end
 
 
-
-
-subroutine calc_N_shape_IP_extra_to_coords(xi_coords, eta_coords, zeta_coords, &
+subroutine calc_N_shape_IP_extra_to_coords(xi, eta, zeta, &
                                             N_shape_IP_extra_to_coords)
     ! Calculate the shape function at the nodal points
-    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the nodal points
+    ! xi, eta, zeta: Isoparametric coordinates of the nodal points
 
     use precision
     real(kind=dp), dimension(8) :: N_shape_IP_extra_to_coords ! ninpt
-    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
-    real(kind=dp), parameter :: IP_extra = 1.0d0
+    real(kind=dp) :: xi, eta, zeta
     
     !   shape functions
-    N_shape_IP_extra_to_coords(1) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(2) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(3) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(4) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 - IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(5) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(6) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 - IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(7) = 0.125d0 * (1.0d0 - IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
-    N_shape_IP_extra_to_coords(8) = 0.125d0 * (1.0d0 + IP_extra * xi_coords) * (1.0d0 + IP_extra * eta_coords) * (1.0d0 + IP_extra * zeta_coords)
+    N_shape_IP_extra_to_coords(1) = 0.125d0 * (1.0d0 - xi) * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_shape_IP_extra_to_coords(2) = 0.125d0 * (1.0d0 + xi) * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_shape_IP_extra_to_coords(3) = 0.125d0 * (1.0d0 - xi) * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_shape_IP_extra_to_coords(4) = 0.125d0 * (1.0d0 + xi) * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_shape_IP_extra_to_coords(5) = 0.125d0 * (1.0d0 - xi) * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_shape_IP_extra_to_coords(6) = 0.125d0 * (1.0d0 + xi) * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_shape_IP_extra_to_coords(7) = 0.125d0 * (1.0d0 - xi) * (1.0d0 + eta) * (1.0d0 + zeta)
+    N_shape_IP_extra_to_coords(8) = 0.125d0 * (1.0d0 + xi) * (1.0d0 + eta) * (1.0d0 + zeta)
 
 end
 
 
-subroutine calc_N_grad_NP_inter_to_coords_local(xi_coords, eta_coords, zeta_coords, N_grad_NP_inter_to_kIP_inter_local)
+! subroutine calc_N_grad_NP_inter_to_coords_local(xi, eta, zeta, N_grad_NP_inter_to_kIP_inter_local)
+!     ! Calculate the shape function derivative at the integration points
+!     ! Basically derivatives of calc_N_shape_NP_inter_to_coords
+!     ! N_grad_NP_inter_to_kIP_inter_local: (ninpt, ndim, nnode)
+!     ! xi, eta, zeta: Isoparametric coordinates of the integration points
+
+!     use precision
+!     real(kind=dp), dimension(3, 8) :: N_grad_NP_inter_to_kIP_inter_local ! (ndim, nnode)
+!     real(kind=dp) :: xi, eta, zeta
+
+!     !   derivative d(Ni)/d(xi)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 1) = -0.125d0 * (1.0d0 - eta) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 2) =  0.125d0 * (1.0d0 - eta) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 3) =  0.125d0 * (1.0d0 + eta) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 4) = -0.125d0 * (1.0d0 + eta) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 5) = -0.125d0 * (1.0d0 - eta) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 6) =  0.125d0 * (1.0d0 - eta) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 7) =  0.125d0 * (1.0d0 + eta) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(1, 8) = -0.125d0 * (1.0d0 + eta) * (1.0d0 + zeta)
+
+!     !     derivative d(Ni)/d(eta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 1) = -0.125d0 * (1.0d0 - xi) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 2) = -0.125d0 * (1.0d0 + xi) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 3) =  0.125d0 * (1.0d0 + xi) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 4) =  0.125d0 * (1.0d0 - xi) * (1.0d0 - zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 5) = -0.125d0 * (1.0d0 - xi) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 6) = -0.125d0 * (1.0d0 + xi) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 7) =  0.125d0 * (1.0d0 + xi) * (1.0d0 + zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(2, 8) =  0.125d0 * (1.0d0 - xi) * (1.0d0 + zeta)
+
+!     !     derivative d(Ni)/d(zeta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 1) = -0.125d0 * (1.0d0 - xi) * (1.0d0 - eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 2) = -0.125d0 * (1.0d0 + xi) * (1.0d0 - eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 3) = -0.125d0 * (1.0d0 + xi) * (1.0d0 + eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 4) = -0.125d0 * (1.0d0 - xi) * (1.0d0 + eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 5) =  0.125d0 * (1.0d0 - xi) * (1.0d0 - eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 6) =  0.125d0 * (1.0d0 + xi) * (1.0d0 - eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 7) =  0.125d0 * (1.0d0 + xi) * (1.0d0 + eta)
+!     N_grad_NP_inter_to_kIP_inter_local(3, 8) =  0.125d0 * (1.0d0 - xi) * (1.0d0 + eta)
+
+! end
+
+
+subroutine calc_N_grad_NP_inter_to_coords_local(xi, eta, zeta, N_grad_NP_inter_to_kIP_inter_local)
     ! Calculate the shape function derivative at the integration points
     ! Basically derivatives of calc_N_shape_NP_inter_to_coords
-    ! N_grad_NP_inter_to_kIP_inter_local: (ninpt, ndim, nnode)
-    ! xi_coords, eta_coords, zeta_coords: Isoparametric coordinates of the integration points
+    ! N_grad_NP_inter_to_kIP_inter_local: (nnode, ndim)
+    ! xi, eta, zeta: Isoparametric coordinates of the integration points
 
     use precision
-    real(kind=dp), dimension(3, 8) :: N_grad_NP_inter_to_kIP_inter_local ! (ndim, nnode)
-    real(kind=dp) :: xi_coords, eta_coords, zeta_coords
+    real(kind=dp), dimension(8, 3) :: N_grad_NP_inter_to_kIP_inter_local ! (nnode, ndim)
+    real(kind=dp) :: xi, eta, zeta
     real(kind=dp), parameter :: NP_inter = 1.0d0
 
-    !   derivative d(Ni)/d(xi_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 1) = -0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 2) =  0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 3) =  0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 4) = -0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 5) = -0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 6) =  0.125d0 * (1.0d0 - NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 7) =  0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(1, 8) = -0.125d0 * (1.0d0 + NP_inter * eta_coords) * (1.0d0 + NP_inter * zeta_coords)
+    ! Grouped by node: [dN/dxi, dN/deta, dN/dzeta] per node
+    ! Node 1
+    N_grad_NP_inter_to_kIP_inter_local(1,1) = -0.125d0 * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(1,2) = -0.125d0 * (1.0d0 - xi ) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(1,3) = -0.125d0 * (1.0d0 - xi ) * (1.0d0 - eta )
 
-    !     derivative d(Ni)/d(eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 1) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 2) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 3) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 4) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 5) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 6) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 7) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(2, 8) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * zeta_coords)
+    ! Node 2
+    N_grad_NP_inter_to_kIP_inter_local(2,1) =  0.125d0 * (1.0d0 - eta) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(2,2) = -0.125d0 * (1.0d0 + xi ) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(2,3) = -0.125d0 * (1.0d0 + xi ) * (1.0d0 - eta )
 
-    !     derivative d(Ni)/d(zeta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 1) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 2) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 3) = -0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 4) = -0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 5) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 6) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 - NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 7) =  0.125d0 * (1.0d0 + NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
-    N_grad_NP_inter_to_kIP_inter_local(3, 8) =  0.125d0 * (1.0d0 - NP_inter * xi_coords) * (1.0d0 + NP_inter * eta_coords)
+    ! Node 3
+    N_grad_NP_inter_to_kIP_inter_local(3,1) =  0.125d0 * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(3,2) =  0.125d0 * (1.0d0 + xi ) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(3,3) = -0.125d0 * (1.0d0 + xi ) * (1.0d0 + eta )
+
+    ! Node 4
+    N_grad_NP_inter_to_kIP_inter_local(4,1) = -0.125d0 * (1.0d0 + eta) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(4,2) =  0.125d0 * (1.0d0 - xi ) * (1.0d0 - zeta)
+    N_grad_NP_inter_to_kIP_inter_local(4,3) = -0.125d0 * (1.0d0 - xi ) * (1.0d0 + eta )
+
+    ! Node 5
+    N_grad_NP_inter_to_kIP_inter_local(5,1) = -0.125d0 * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(5,2) = -0.125d0 * (1.0d0 - xi ) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(5,3) =  0.125d0 * (1.0d0 - xi ) * (1.0d0 - eta )
+
+    ! Node 6
+    N_grad_NP_inter_to_kIP_inter_local(6,1) =  0.125d0 * (1.0d0 - eta) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(6,2) = -0.125d0 * (1.0d0 + xi ) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(6,3) =  0.125d0 * (1.0d0 + xi ) * (1.0d0 - eta )
+
+    ! Node 7
+    N_grad_NP_inter_to_kIP_inter_local(7,1) =  0.125d0 * (1.0d0 + eta) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(7,2) =  0.125d0 * (1.0d0 + xi ) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(7,3) =  0.125d0 * (1.0d0 + xi ) * (1.0d0 + eta )
+
+    ! Node 8
+    N_grad_NP_inter_to_kIP_inter_local(8,1) = -0.125d0 * (1.0d0 + eta) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(8,2) =  0.125d0 * (1.0d0 - xi ) * (1.0d0 + zeta)
+    N_grad_NP_inter_to_kIP_inter_local(8,3) =  0.125d0 * (1.0d0 - xi ) * (1.0d0 + eta)
 
 end

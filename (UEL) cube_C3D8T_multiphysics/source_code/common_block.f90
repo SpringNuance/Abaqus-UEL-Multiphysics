@@ -57,10 +57,9 @@ module common_block
     real(kind=dp) :: all_N_shape_NP_inter_to_kIP_inter(ninpt, nnode) 
     real(kind=dp) :: all_N_shape_NP_inter_to_kIP_extra(ninpt, nnode) 
     
-    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_inter_local(ninpt, ndim, nnode) 
-    real(kind=dp) :: all_N_grad_NP_inter_to_kNP_inter_local(nnode, ndim, nnode)
-    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_extra_local(ninpt, ndim, nnode)
-  ! (nnode, ndim, nnode)
+    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_inter_local(ninpt, nnode, ndim) 
+    real(kind=dp) :: all_N_grad_NP_inter_to_kNP_inter_local(nnode, nnode, ndim)
+    real(kind=dp) :: all_N_grad_NP_inter_to_kIP_extra_local(ninpt, nnode, ndim)
 
     ! This stores the determinant of Jacobian matrix of all nodes based on coordinates of the previous increment
     real(kind=dp) :: djac_all_elems_at_NPs(total_elems, nnode) 

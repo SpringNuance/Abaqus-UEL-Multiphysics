@@ -1,0 +1,55 @@
+<Description>
+   standard.exe / rank 0 / thread 0  encountered a system exception 0xC0000005 (EXCEPTION_ACCESS_VIOLATION)
+</Description>
+
+<PriorErrors>
+1) Process terminated by external request (SIGTERM or SIGINT received).
+</PriorErrors>
+
+<Context>
+   ELEMENT LOOP
+</Context>
+
+<Phase>
+   Increment | Attempt | Iteration
+</Phase>
+
+<Callstack>
+  1)  ABQSMAEliLicenseModule.dll  eli_LicenseManager::DataLock            
+  2)  ABQSMAEliLicenseModule.dll  eli_HeartbeatTask::RunHeartbeat         
+  3)  ABQSMAAbuBasicUtils.dll     thr_ThreadPool::ThreadDriver            
+  4)  ucrtbase.dll                configthreadlocale                      
+  5)  KERNEL32.DLL                BaseThreadInitThunk                     
+  6)  ntdll.dll                   RtlUserThreadStart                      
+</Callstack>
+
+<Memory>
+   <Current>            1 GB </Current>
+   <Resident>           0 GB </Resident>
+   <Physical>          15 GB </Physical>
+   <Limit>             12 GB </Limit>
+   <Accessible>        15 GB </Accessible>
+   <Available>          1 GB </Available>
+   <Allocator>            DL </Allocator>
+</Memory>
+
+<Swap>
+       <Size>          56 GB </Size>
+       <Used>          24 GB </Used>
+       <Free>          31 GB </Free>
+</Swap>
+
+<Directories>
+  <current> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_elastic_plate_UEL_12000 </current> <free>     18 GB </free>   <used>    456 GB </used> 
+    <indir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </indir>   <free>     18 GB </free>  
+   <outdir> C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics </outdir>  <free>     18 GB </free> 
+   <tmpdir> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_elastic_plate_UEL_12000 </tmpdir>  <free>     18 GB </free> 
+     <temp> C:\Users\nguyenb5\AppData\Local\Temp </temp>    <free>     18 GB </free>
+</Directories>
+
+<Installation>
+     <Version> 2023.HF4 6.23-5 </Version>
+       <Build> 2023_07_21-20.45.57 RELr425 183702 </Build>
+  <Executable> C:\Users\nguyenb5\AppData\Local\Temp\nguyenb5_elastic_plate_UEL_12000\standard.exe </Executable>
+</Installation>
+

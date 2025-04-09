@@ -42,7 +42,7 @@
 **
 ** FIELD INFO PROPERTIES
 **
-** mech_field (1 - ON, 0 - OFF), temp_field (1 - ON, 0 - OFF), hydro_field (1 - ON, 0 - OFF), damage_field (1 - ON, 0 - OFF)
+** mech_field (1 - ON, 0 - OFF), hydro_field (1 - ON, 0 - OFF), temp_field (1 - ON, 0 - OFF), damage_field (1 - ON, 0 - OFF)
 ** none, none, none, none
 1, 1, 1, 1, 0, 0, 0, 0
 **
@@ -297,7 +297,7 @@
 *CONTROLS, PARAMETERS=CONSTRAINTS
  ,  ,  ,  ,  ,  ,  ,  ,
 *CONTROLS, PARAMETERS=TIME INCREMENTATION
- ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,
+ ,  ,  ,  ,  ,  ,  , 100,  ,  ,  ,  ,  ,
  ,  ,  ,  ,  ,  ,  ,  ,
  ,  ,  ,  ,  ,  ,  ,  ,
  ,

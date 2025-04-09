@@ -147,6 +147,13 @@ subroutine stress_tensor_to_voigt(voigt, tensor, ntens, ndim)
     voigt(6) = tensor(2,3)
 end
 
+pure integer function kronecker_delta(i,j)
+    integer, intent(in) :: i, j
+    kronecker_delta = 0
+    if (i == j) kronecker_delta = 1
+end function
+
+
 subroutine calc_matrix_sqrt(matrix, matrix_sqrt, ndim)
     use precision
     integer :: ndim

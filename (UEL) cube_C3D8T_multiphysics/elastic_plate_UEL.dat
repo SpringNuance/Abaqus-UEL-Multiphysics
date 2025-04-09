@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 08-Apr-2025   Time 09:53:34
+   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 22:18:44
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -236,12 +236,12 @@
 
      JOB TIME SUMMARY
        USER TIME (SEC)      =     0.20    
-       SYSTEM TIME (SEC)    =      0.0    
-       TOTAL CPU TIME (SEC) =     0.20    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.30    
        WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 08-Apr-2025   Time 09:53:41
+   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 22:18:50
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -310,21 +310,19 @@
       (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
 
 
-          THE ANALYSIS IS ENDED BECAUSE OF THE PROBLEMS ENCOUNTERED
-          LOOK AT THE MSG FILE FOR THE CAUSE OF THE TERMINATION
+          THE ANALYSIS HAS BEEN COMPLETED
 
 
 
-                              ANALYSIS IS ENDED
-                              WITH      1 ERROR MESSAGES ON THE MSG FILE
-                              AND       8 WARNING MESSAGES ON THE DAT FILE
-                              AND  112595 WARNING MESSAGES ON THE MSG FILE
-                                   112560 WARNINGS ARE FOR NUMERICAL PROBLEMS
+                              ANALYSIS COMPLETE
+                              WITH      8 WARNING MESSAGES ON THE DAT FILE
+                              AND  318483 WARNING MESSAGES ON THE MSG FILE
+                                   318384 WARNINGS ARE FOR NUMERICAL PROBLEMS
 
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      25.    
-       SYSTEM TIME (SEC)    =      2.9    
-       TOTAL CPU TIME (SEC) =      28.    
-       WALLCLOCK TIME (SEC) =           34
+       USER TIME (SEC)      =      45.    
+       SYSTEM TIME (SEC)    =      4.1    
+       TOTAL CPU TIME (SEC) =      49.    
+       WALLCLOCK TIME (SEC) =           59

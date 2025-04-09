@@ -43,8 +43,8 @@ subroutine calc_djac_all_elems_at_NPs()
     include 'aba_param.inc'
 
     real(kind=dp), dimension(ndim,ndim) :: xjac, xjac_inv
-    real(kind=dp), dimension(ndim, nnode) :: N_grad_NP_inter_to_kNP_inter_local
-    real(kind=dp), dimension(nnode, ndim) :: coords_kelem_all_NPs
+    real(kind=dp), dimension(nnode, ndim) :: N_grad_NP_inter_to_kNP_inter_local
+    real(kind=dp), dimension(ndim, nnode) :: coords_kelem_all_NPs
     real(kind=dp) :: djac
 
     do element_ID = 1, total_elems
@@ -52,15 +52,17 @@ subroutine calc_djac_all_elems_at_NPs()
         do knode = 1,nnode
             !   Retrieve the node_ID of the current node in this element
             node_ID = elems_to_NPs_matrix(element_ID,knode)
-            coords_kelem_all_NPs(knode, 1:ndim) = coords_all_NPs(node_ID,1:ndim)
+            coords_kelem_all_NPs(1, knode) = coords_all_NPs(node_ID,1)
+            coords_kelem_all_NPs(2, knode) = coords_all_NPs(node_ID,2)
+            coords_kelem_all_NPs(3, knode) = coords_all_NPs(node_ID,3)
         end do
 
         ! Loop over each node in the current element
         do knode = 1, nnode
 
-            N_grad_NP_inter_to_kNP_inter_local = all_N_grad_NP_inter_to_kNP_inter_local(knode,1:ndim,1:nnode)
+            N_grad_NP_inter_to_kNP_inter_local = all_N_grad_NP_inter_to_kNP_inter_local(knode,1:nnode,1:ndim)
             ! Calculate Jacobian matrix xjac at the current node
-            xjac = matmul(N_grad_NP_inter_to_kNP_inter_local, coords_kelem_all_NPs)
+            xjac = matmul(coords_kelem_all_NPs, N_grad_NP_inter_to_kNP_inter_local)
             call calc_matrix_inv(xjac, xjac_inv, djac, ndim)
             ! Store djac for the current node in the element
             djac_all_elems_at_NPs(element_ID, knode) = djac
@@ -140,9 +142,9 @@ subroutine calc_scalar_grad_kelem_at_kIP(kelem, kinpt)
 
     integer :: kelem, knode, kinpt, node_ID, idim, jdim
     real(kind=dp), dimension(nnode) :: statev_kelem_all_NPs
-    real(kind=dp), dimension(ndim,nnode) :: N_grad_NP_inter_to_kIP_inter_local, N_grad_NP_inter_to_kIP_inter_global
+    real(kind=dp), dimension(nnode, ndim) :: N_grad_NP_inter_to_kIP_inter_local, N_grad_NP_inter_to_kIP_inter_global
     real(kind=dp), dimension(ndim) :: statev_grad_kelem_at_kIP
-    real(kind=dp), dimension(nnode, ndim) :: coords_kelem_all_NPs
+    real(kind=dp), dimension(ndim, nnode) :: coords_kelem_all_NPs
     real(kind=dp), dimension(ndim,ndim) :: xjac, xjac_inv
 
     do kstatev = 1, num_grad_SDVs
@@ -154,21 +156,23 @@ subroutine calc_scalar_grad_kelem_at_kIP(kelem, kinpt)
             statev_kelem_all_NPs(knode) = statev_at_NPs(statev_idx, node_ID)
         end do
                 
-        N_grad_NP_inter_to_kIP_inter_local = all_N_grad_NP_inter_to_kIP_inter_local(kinpt, 1:ndim, 1:nnode)
+        N_grad_NP_inter_to_kIP_inter_local = all_N_grad_NP_inter_to_kIP_inter_local(kinpt, 1:nnode, 1:ndim)
 
         do knode = 1,nnode
             node_ID = elems_to_NPs_matrix(kelem,knode)
-            coords_kelem_all_NPs(knode,1:ndim) = coords_all_NPs(node_ID,1:ndim)
+            coords_kelem_all_NPs(1, knode) = coords_all_NPs(node_ID,1)
+            coords_kelem_all_NPs(2, knode) = coords_all_NPs(node_ID,2)
+            coords_kelem_all_NPs(3, knode) = coords_all_NPs(node_ID,3)
         end do
 
-        xjac = matmul(N_grad_NP_inter_to_kIP_inter_local, coords_kelem_all_NPs)
+        xjac = matmul(coords_kelem_all_NPs, N_grad_NP_inter_to_kIP_inter_local)
 
         call calc_matrix_inv(xjac, xjac_inv, djac, ndim)
 
     !   Compute the derivatives of shape functions with respect to global coordinates
-        N_grad_NP_inter_to_kIP_inter_global = matmul(xjac_inv, N_grad_NP_inter_to_kIP_inter_local)
+        N_grad_NP_inter_to_kIP_inter_global = matmul(N_grad_NP_inter_to_kIP_inter_local, xjac_inv)
 
-        statev_grad_kelem_at_kIP = matmul(N_grad_NP_inter_to_kIP_inter_global, statev_kelem_all_NPs) 
+        statev_grad_kelem_at_kIP = matmul(transpose(N_grad_NP_inter_to_kIP_inter_global), statev_kelem_all_NPs) 
 
         statev_grad_all_elems_at_IPs(statev_idx, kelem, kinpt, 1:ndim) = statev_grad_kelem_at_kIP
     end do

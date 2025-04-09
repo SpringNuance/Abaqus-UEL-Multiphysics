@@ -1,0 +1,697 @@
+# -*- coding: mbcs -*-
+#
+# Abaqus/CAE Release 2023.HF4 replay file
+# Internal Version: 2023_07_21-20.45.57 RELr425 183702
+# Run by nguyenb5 on Tue Apr  8 12:22:39 2025
+#
+
+# from driverUtils import executeOnCaeGraphicsStartup
+# executeOnCaeGraphicsStartup()
+#: Executing "onCaeGraphicsStartup()" in the site directory ...
+from abaqus import *
+from abaqusConstants import *
+session.Viewport(name='Viewport: 1', origin=(0.0, 0.0), width=239.635406494141, 
+    height=174.682861328125)
+session.viewports['Viewport: 1'].makeCurrent()
+session.viewports['Viewport: 1'].maximize()
+from caeModules import *
+from driverUtils import executeOnCaeStartup
+executeOnCaeStartup()
+openMdb('cube_test_multiphysics.cae')
+#: The model database "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae" has been opened.
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+session.viewports['Viewport: 1'].partDisplay.geometryOptions.setValues(
+    referenceRepresentation=ON)
+p = mdb.models['elastic_plate'].parts['elastic_plate']
+session.viewports['Viewport: 1'].setValues(displayedObject=p)
+session.viewports['Viewport: 1'].setValues(displayedObject=None)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00209616, 
+    farPlane=0.00371229, width=0.00140569, height=0.000641341, 
+    viewOffsetX=-3.73126e-05, viewOffsetY=-1.81492e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00217969, 
+    farPlane=0.00362876, width=0.000891012, height=0.00040652, 
+    viewOffsetX=-5.31969e-05, viewOffsetY=-7.35157e-06)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00202908, 
+    farPlane=0.00377937, width=0.00182094, height=0.000830794, 
+    viewOffsetX=-3.64202e-06, viewOffsetY=4.09159e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#25_EQPLAS', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00224574, 
+    farPlane=0.00356271, width=0.000485619, height=0.000221561, 
+    viewOffsetX=-0.00010195, viewOffsetY=4.69898e-05)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00210859, 
+    farPlane=0.00369989, width=0.00132919, height=0.000606435, 
+    viewOffsetX=-9.16511e-05, viewOffsetY=-1.03348e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00228598, 
+    farPlane=0.0035225, width=0.000239538, height=0.000109288, 
+    viewOffsetX=-6.6529e-05, viewOffsetY=-1.53168e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].view.setValues(width=0.00206666, 
+    height=0.000942906, viewOffsetX=6.9303e-06, viewOffsetY=1.0309e-05)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00217106, 
+    farPlane=0.0036374, width=0.000944129, height=0.000430754, 
+    viewOffsetX=-1.96099e-05, viewOffsetY=1.02555e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0022914, 
+    farPlane=0.00351705, width=0.00021918, height=0.0001, 
+    viewOffsetX=-5.4022e-05, viewOffsetY=5.89448e-06)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(width=0.00021918, 
+    height=0.0001, viewOffsetX=-5.40227e-05, viewOffsetY=5.89447e-06)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00229108, 
+    farPlane=0.00351707, width=0.00021918, height=0.0001, 
+    viewOffsetX=-4.78511e-05, viewOffsetY=1.35163e-06)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=22 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=23 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=24 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=25 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=26 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00215257, 
+    farPlane=0.00365562, width=0.00118435, height=0.000540354, 
+    viewOffsetX=-7.58701e-05, viewOffsetY=1.13195e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00205251, 
+    farPlane=0.00364473, width=0.0011293, height=0.000515237, cameraPosition=(
+    0.00240837, 0.00104159, -0.0011089), cameraUpVector=(-0.768401, 0.579882, 
+    -0.270734), cameraTarget=(-5.74281e-05, -5.48966e-05, -3.49867e-05), 
+    viewOffsetX=-7.23435e-05, viewOffsetY=1.07933e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00239161, 
+    farPlane=0.00337119, width=0.00131588, height=0.000600361, cameraPosition=(
+    0.000293261, 0.00163192, 0.00236155), cameraUpVector=(-0.367954, 0.556294, 
+    -0.745082), cameraTarget=(8.89332e-05, 1.6149e-05, -4.32896e-05), 
+    viewOffsetX=-8.42956e-05, viewOffsetY=1.25765e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0021716, 
+    farPlane=0.00360196, width=0.00119483, height=0.000545132, cameraPosition=(
+    0.000597402, 0.00244384, 0.0014226), cameraUpVector=(-0.376945, 0.221507, 
+    -0.899359), cameraTarget=(8.57177e-05, -1.04034e-05, -4.38874e-05), 
+    viewOffsetX=-7.6541e-05, viewOffsetY=1.14195e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00219411, 
+    farPlane=0.00357945, width=0.00124017, height=0.000565823, 
+    viewOffsetX=-9.82676e-05, viewOffsetY=3.20287e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00224563, 
+    farPlane=0.00347869, width=0.00126929, height=0.000579109, cameraPosition=(
+    0.00121622, 0.0012961, 0.00224847), cameraUpVector=(-0.35295, 0.689219, 
+    -0.632775), cameraTarget=(7.29102e-05, -1.83371e-05, -7.54911e-05), 
+    viewOffsetX=-0.000100575, viewOffsetY=3.27808e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00229737, 
+    farPlane=0.00342694, width=0.000853226, height=0.00038928, 
+    viewOffsetX=-0.000145263, viewOffsetY=2.96676e-05)
+session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb'].close(
+    )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00206889, 
+    farPlane=0.00373951, width=0.00157017, height=0.000716382, 
+    viewOffsetX=-3.27507e-05, viewOffsetY=-4.18285e-06)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=21 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00229172, 
+    farPlane=0.00351702, width=0.00021918, height=0.0001, 
+    viewOffsetX=-2.35288e-05, viewOffsetY=9.18323e-07)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=20 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00220381, 
+    farPlane=0.00360453, width=0.000742088, height=0.000338574, 
+    viewOffsetX=-8.95681e-05, viewOffsetY=-4.83932e-06)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=19 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00219582, 
+    farPlane=0.00361265, width=0.000890215, height=0.000406157, 
+    viewOffsetX=-9.85329e-05, viewOffsetY=-8.97759e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00210549, 
+    farPlane=0.00355472, width=0.000853595, height=0.000389449, 
+    cameraPosition=(0.00118179, 0.00206901, -0.00153336), cameraUpVector=(
+    -0.420982, 0.415165, 0.806482), cameraTarget=(-0.000174279, 1.93067e-05, 
+    1.43842e-05), viewOffsetX=-9.44796e-05, viewOffsetY=-8.60828e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00242191, 
+    farPlane=0.00317391, width=0.000981874, height=0.000447976, 
+    cameraPosition=(0.000800899, 0.000480549, -0.00263971), cameraUpVector=(
+    -0.116374, 0.881846, 0.456952), cameraTarget=(-0.000174489, 4.97707e-05, 
+    6.19099e-05), viewOffsetX=-0.000108678, viewOffsetY=-9.90194e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00204339, 
+    farPlane=0.00353439, width=0.000828419, height=0.000377963, 
+    cameraPosition=(0.00266172, 0.000664217, -0.000517782), cameraUpVector=(
+    -0.548036, 0.833835, -0.0661524), cameraTarget=(-0.000139638, 1.66997e-05, 
+    -0.000106891), viewOffsetX=-9.16929e-05, viewOffsetY=-8.35439e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00246754, 
+    farPlane=0.00311546, width=0.00100038, height=0.000456417, cameraPosition=(
+    0.000804311, 0.000453745, 0.00264022), cameraUpVector=(-0.171294, 0.886095, 
+    -0.43069), cameraTarget=(7.89365e-05, 5.30839e-05, -0.00014349), 
+    viewOffsetX=-0.000110726, viewOffsetY=-1.00885e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00256143, 
+    farPlane=0.00302159, width=0.00021918, height=0.0001, 
+    viewOffsetX=-0.000121875, viewOffsetY=-4.84732e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=18 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=137 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=137 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=137 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=137 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=137 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00255084, 
+    farPlane=0.00303146, width=0.000299956, height=0.000136853, 
+    viewOffsetX=-0.000143445, viewOffsetY=-6.92708e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00247943, 
+    farPlane=0.00310288, width=0.000791165, height=0.000360965, 
+    viewOffsetX=-0.000220151, viewOffsetY=-8.71994e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00202058, 
+    farPlane=0.00339256, width=0.000644749, height=0.000294164, 
+    cameraPosition=(0.0020146, 0.00115366, 0.00140561), cameraUpVector=(
+    -0.475269, 0.72195, -0.5029), cameraTarget=(-6.69809e-05, -2.37491e-05, 
+    -0.000242559), viewOffsetX=-0.000179409, viewOffsetY=-7.1062e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00262967, 
+    farPlane=0.00294744, width=0.000839105, height=0.000382838, 
+    cameraPosition=(3.07393e-05, 0.00027876, 0.00278478), cameraUpVector=(
+    -0.0765573, 0.915517, -0.394926), cameraTarget=(0.000181913, 0.000100075, 
+    -0.000110207), viewOffsetX=-0.000233491, viewOffsetY=-9.24832e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00261568, 
+    farPlane=0.00296143, width=0.000693239, height=0.000316287, 
+    viewOffsetX=-0.000222888, viewOffsetY=-9.12432e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=168 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00269072, 
+    farPlane=0.00288628, width=0.000263454, height=0.0001202, 
+    viewOffsetX=-0.000198271, viewOffsetY=-8.33185e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=172 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=209 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=209 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=209 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=209 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00234608, 
+    farPlane=0.00323079, width=0.00235524, height=0.00107457, 
+    viewOffsetX=-0.000451254, viewOffsetY=-3.71014e-05)
+a = mdb.models['elastic_plate'].rootAssembly
+session.viewports['Viewport: 1'].setValues(displayedObject=a)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(
+    optimizationTasks=OFF, geometricRestrictions=OFF, stopConditions=OFF)
+mdb.jobs['notched_plate_default_solver'].submit(consistencyChecking=OFF)
+#: The job input file "notched_plate_default_solver.inp" has been submitted for analysis.
+#: Job notched_plate_default_solver: Analysis Input File Processor completed successfully.
+#: Job notched_plate_default_solver: Abaqus/Standard completed successfully.
+#: Job notched_plate_default_solver completed successfully. 
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00217991, 
+    farPlane=0.00362875, width=0.0008911, height=0.00040656, 
+    viewOffsetX=-0.000162147, viewOffsetY=-1.28162e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00229163, 
+    farPlane=0.00351703, width=0.00021918, height=0.0001, 
+    viewOffsetX=-6.21588e-05, viewOffsetY=2.1198e-07)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00226678, 
+    farPlane=0.00354168, width=0.00040256, height=0.000183666, 
+    viewOffsetX=-5.9983e-05, viewOffsetY=-5.68085e-06)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#32_SIG_H_GRAD_X', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0022914, 
+    farPlane=0.00351705, width=0.00021918, height=0.0001, 
+    viewOffsetX=-4.34416e-05, viewOffsetY=-4.94761e-06)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#33_SIG_H_GRAD_Y', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#34_SIG_H_GRAD_Z', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#33_SIG_H_GRAD_Y', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00228205, 
+    farPlane=0.00352641, width=0.00029743, height=0.000135701, 
+    viewOffsetX=-4.86327e-05, viewOffsetY=-1.04136e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#32_SIG_H_GRAD_X', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0022914, 
+    farPlane=0.00351705, width=0.00021918, height=0.0001, 
+    viewOffsetX=-4.19997e-05, viewOffsetY=1.89114e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00216552, 
+    farPlane=0.00362877, width=0.00021918, height=0.0001, cameraPosition=(
+    0.00169873, 0.0023373, -0.000217359), cameraUpVector=(-0.958372, 0.284365, 
+    -0.0256707), cameraTarget=(-1.09046e-05, -3.87415e-06, -3.90507e-05), 
+    viewOffsetX=-4.19997e-05, viewOffsetY=1.89114e-06)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00213241, 
+    farPlane=0.00366189, width=0.000460964, height=0.000210313, 
+    viewOffsetX=-6.71458e-05, viewOffsetY=-5.32158e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00234341, 
+    farPlane=0.00350034, width=0.000506577, height=0.000231124, 
+    cameraPosition=(0.00205772, -0.000869652, 0.00188721), cameraUpVector=(
+    -0.423832, 0.83518, 0.350485), cameraTarget=(5.17316e-05, 6.16317e-05, 
+    4.52803e-06), viewOffsetX=-7.379e-05, viewOffsetY=-5.84816e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0025359, 
+    farPlane=0.00336311, width=0.000548187, height=0.000250109, 
+    cameraPosition=(-0.000613368, -0.00124146, 0.0026081), cameraUpVector=(
+    -0.174621, 0.982676, 0.0620886), cameraTarget=(5.78972e-05, 2.27129e-05, 
+    8.08401e-05), viewOffsetX=-7.98511e-05, viewOffsetY=-6.32853e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00281002, 
+    farPlane=0.00311269, width=0.000607444, height=0.000277145, 
+    cameraPosition=(0.000108505, 0.000402436, 0.00293587), cameraUpVector=(
+    -0.371885, 0.825053, -0.425428), cameraTarget=(6.74975e-05, 6.97528e-05, 
+    5.08393e-05), viewOffsetX=-8.84827e-05, viewOffsetY=-7.01262e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00246769, 
+    farPlane=0.00347085, width=0.000533442, height=0.000243382, 
+    cameraPosition=(0.000806561, 0.00168552, 0.00231166), cameraUpVector=(
+    -0.12818, 0.585122, -0.800751), cameraTarget=(8.54185e-05, 4.96066e-05, 
+    2.26671e-05), viewOffsetX=-7.77033e-05, viewOffsetY=-6.15831e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00252004, 
+    farPlane=0.00342015, width=0.000544758, height=0.000248545, 
+    cameraPosition=(0.000612003, 0.00164725, 0.00239848), cameraUpVector=(
+    -0.111568, 0.603379, -0.789612), cameraTarget=(8.24717e-05, 5.31325e-05, 
+    2.90634e-05), viewOffsetX=-7.93516e-05, viewOffsetY=-6.28895e-07)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00256846, 
+    farPlane=0.00337172, width=0.00021918, height=0.0001, 
+    viewOffsetX=-7.47385e-05, viewOffsetY=-2.11072e-05)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00272132, 
+    farPlane=0.00321841, width=0.000232224, height=0.000105951, 
+    cameraPosition=(0.000645322, 0.000706715, 0.0028151), cameraUpVector=(
+    -0.0330709, 0.836934, -0.546304), cameraTarget=(8.5192e-05, 3.37057e-05, 
+    4.57894e-05), viewOffsetX=-7.91864e-05, viewOffsetY=-2.23633e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_default_solver.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_default_solver.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       9
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00218941, 
+    farPlane=0.00359338, width=0.000794043, height=0.000362279, 
+    viewOffsetX=-8.7024e-05, viewOffsetY=3.79218e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='S', outputPosition=INTEGRATION_POINT, refinement=(INVARIANT, 
+    'Pressure'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00270006, 
+    farPlane=0.00323968, width=0.000379534, height=0.000173161, 
+    viewOffsetX=-8.45015e-05, viewOffsetY=-2.43505e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF1'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(COMPONENT, 'RF2'), )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00244191, 
+    farPlane=0.00349784, width=0.00189746, height=0.000865708, 
+    viewOffsetX=-0.000115037, viewOffsetY=4.17443e-06)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.0023883, 
+    farPlane=0.00355145, width=0.00226317, height=0.00103256, 
+    viewOffsetX=-0.000107054, viewOffsetY=-2.33364e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00267157, 
+    farPlane=0.00326819, width=0.000575754, height=0.000262685, 
+    viewOffsetX=-6.01264e-05, viewOffsetY=-2.65386e-05)
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_default_solver.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=17 )
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_default_solver.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+leaf = dgo.Leaf(leafType=DEFAULT_MODEL)
+session.viewports['Viewport: 1'].odbDisplay.displayGroup.replace(leaf=leaf)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=0 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=2 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=3 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=4 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=5 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=6 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=7 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=8 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=9 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=10 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=11 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=12 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=13 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=14 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#35_SIG_VONMISES', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00266673, 
+    farPlane=0.00327301, width=0.000540229, height=0.000246477, 
+    viewOffsetX=-5.9165e-05, viewOffsetY=-2.34975e-05)
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=1.40579, 
+    farPlane=2.78401, width=0.000596859, height=0.000272314, cameraPosition=(
+    0.536961, 0.645102, 2.65438), viewOffsetX=-9.74232e-06, 
+    viewOffsetY=3.73069e-06)
+o7 = session.odbs['C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_default_solver.odb']
+session.viewports['Viewport: 1'].setValues(displayedObject=o7)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+session.viewports['Viewport: 1'].view.setValues(nearPlane=0.00264895, 
+    farPlane=0.0032908, width=0.000731195, height=0.000333605, 
+    viewOffsetX=-5.6568e-05, viewOffsetY=-4.88362e-05)
+o1 = session.openOdb(
+    name='C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb')
+session.viewports['Viewport: 1'].setValues(displayedObject=o1)
+#: Model: C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb
+#: Number of Assemblies:         1
+#: Number of Assembly instances: 0
+#: Number of Part instances:     1
+#: Number of Meshes:             1
+#: Number of Element Sets:       11
+#: Number of Node Sets:          9
+#: Number of Steps:              1
+session.viewports['Viewport: 1'].odbDisplay.display.setValues(plotState=(
+    CONTOURS_ON_DEF, ))
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='RF', outputPosition=NODAL, refinement=(INVARIANT, 
+    'Magnitude'), )
+session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+    variableLabel='SDV_#31_SIG_H', outputPosition=INTEGRATION_POINT, )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=16 )
+session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=15 )
+#: Warning: The output database 'C:/LocalUserData/User-data/nguyenb5/Abaqus-UEL-Multiphysics/(UEL) cube_C3D8T_multiphysics/notched_plate_UEL.odb' disk file has changed.
+#: 
+#: The current plot operation has been canceled, re-open the file to view the results
+mdb.save()
+#: The model database has been saved to "C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\cube_test_multiphysics.cae".
