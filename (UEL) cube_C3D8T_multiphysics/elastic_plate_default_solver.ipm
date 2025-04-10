@@ -4,7 +4,7 @@
 <Warning><message type="string">OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE C3D8T</message><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Warning>
 <Odb_File><file type="string">C:\LocalUserData\User-data\nguyenb5\Abaqus-UEL-Multiphysics\(UEL) cube_C3D8T_multiphysics\elastic_plate_default_solver.odb</file><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Odb_File>
 <Completed><message type="string">Analysis phase complete</message><phase type="symconst">BATCHPRE_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Completed>
-<Started><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName><clientHost type="string">L23-0203</clientHost><handle type="integer">30676</handle></Started>
+<Started><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName><clientHost type="string">L23-0203</clientHost><handle type="integer">4536</handle></Started>
 <Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Step>
 <Odb_Frame><step type="integer">0</step><frame type="integer">0</frame><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Odb_Frame>
 <MEMORY_ESTIMATE><memory type="float">76</memory><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></MEMORY_ESTIMATE>
@@ -313,3 +313,4 @@
 <Status><step type="integer">1</step><increment type="integer">100</increment><attempts type="integer">1</attempts><severe type="integer">0</severe><equilibrium type="integer">1</equilibrium><iterations type="integer">1</iterations><totalTime type="float">1000000000</totalTime><stepTime type="float">1000000000</stepTime><timeIncrement type="float">10000000</timeIncrement><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Status>
 <End_Step><stepId type="integer">1</stepId><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></End_Step>
 <Completed><message type="string">Analysis phase complete</message><phase type="symconst">STANDARD_PHASE</phase><jobName type="string">elastic_plate_default_solver</jobName></Completed>
+<JOB_COMPLETED><jobName type="string">elastic_plate_default_solver</jobName><time type="string">Thu Apr 10 15:51:01 2025</time></JOB_COMPLETED></msgwrapper>

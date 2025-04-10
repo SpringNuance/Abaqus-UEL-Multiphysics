@@ -425,6 +425,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
     integer :: start_ux_idx, end_ux_idx, start_temp_idx, end_temp_idx, start_CL_mol_idx, end_CL_mol_idx, start_phi_idx, end_phi_idx
     integer :: UMAT_model, UMATHT_hydro_model, mech_field_flag, temp_field_flag, hydro_field_flag, damage_field_flag
+    integer :: i, j, k, k1, k2, knode, kinpt
+    integer :: closest_NP_idx
 
     ! ==============================================================
     ! TENSORS COMMON TO ALL FIELDS (DEFORMATION, DIFFUSION, DAMAGE)
@@ -542,7 +544,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
     real(kind=dp), dimension(nnode) :: temp_NPs_t, dtemp_NPs, temp_NPs_tm1
 
     real(kind=dp) :: temp_kIP_t, dtemp_kIP, temp_kIP_tm1
-    real(kind=dp), dimension(ndim) :: temp_grad_kIP_t
+    real(kind=dp), dimension(ndim) :: temp_grad_kIP_t, temp_grad_kIP_gauss_t
 
     real(kind=dp) :: u_heat_kIP_t, u_heat_kIP_tm1, dudt_heat_kIP_t, du_heat_kIP, r_heat_kIP_t, drdt_heat_kIP
     real(kind=dp), dimension(ndim) :: dudg_heat_kIP_t, dudg_heat_kIP_inter_t, dudg_heat_kIP_extra_t
@@ -939,6 +941,8 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         end if
 
         UMAT_model = props(start_mech_props_idx)
+        ! Scaling factor helps prevent the error "THERE IS ZERO FORCE EVERYWHERE"
+        sfd_mech = props(start_mech_props_idx + 1)
         
         nprops_UMAT = end_flow_props_idx - start_mech_props_idx + 1
 
@@ -1002,10 +1006,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             if (mech_field_flag == 1) then
                 amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
                     amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
-                                    (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
+                                sfd_mech * (matmul(matmul(transpose(Bu_bar_t),ddsdde),Bu_bar_t))
                     
                 rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-                    dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))    
+                    dvol_inter_t * sfd_mech * (matmul(transpose(Bu_bar_t),stress_t))    
             end if
 
         else if (lflags(2) == 1) then
@@ -1046,10 +1050,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             if (mech_field_flag == 1) then
                 amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) = &
                     amatrx(start_ux_idx:end_ux_idx,start_ux_idx:end_ux_idx) + dvol_inter_t * &
-                                    (K_material + K_geometry)
+                                sfd_mech * (K_material + K_geometry)
                     
                 rhs(start_ux_idx:end_ux_idx,nrhs) = rhs(start_ux_idx:end_ux_idx,nrhs) - &
-                    dvol_inter_t * (matmul(transpose(Bu_bar_t),stress_t))   
+                    dvol_inter_t * sfd_mech * (matmul(transpose(Bu_bar_t),stress_t))   
             end if
 
             ! if (kinc == 16) then
@@ -1136,6 +1140,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! https://help.3ds.com/2025/english/dssimulia_established/SIMACAESUBRefMap/simasub-c-umatht.htm?contextscope=all
 
         UMATHT_hydro_model = props(start_CL_mol_props_idx)
+        ! Scaling factor helps prevent the error "THERE IS ZERO HEAT FLUX EVERYWHERE"
+        sfd_hydro = props(start_CL_mol_props_idx+1)
+        ! sfd_hydro = 1.0e15
 
         ! UMATHT_hydro_model = 1: Oriani model
         ! UMATHT_hydro_model = 2: McNabb Foster model
@@ -1245,10 +1252,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             if (kinc > 1) then
                 amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) = &
                     amatrx(start_CL_mol_idx:end_CL_mol_idx,start_CL_mol_idx:end_CL_mol_idx) &
-                    + dvol_inter_t * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
+                    + dvol_inter_t * sfd_hydro * (K_hydro_kIP_t + M_hydro_kIP_t/dtime)
                     
                 rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) = rhs(start_CL_mol_idx:end_CL_mol_idx,nrhs) &
-                    - dvol_inter_t * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
+                    - dvol_inter_t * sfd_hydro * (F_hydro_r_kIP_t + F_hydro_flux_kIP_t + F_hydro_dC_kIP_t/dtime)
             end if
         end if
 
@@ -1294,20 +1301,45 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         ! temp_kIP_t: Temperature at the end of the increment.
         ! dtemp_kIP: Increment of temperature.
         
+
+        ! Separate integration schemes are used for the internal energy storage, heat conduction, and plastic dissipation (coupling contribution) 
+        ! terms for the first-order elements.
+        ! Point 1: The thermal strain is taken as constant throughout the element because it is desirable to have the same interpolation for thermal strains as for total strains so as to avoid spurious hydrostatic stresses.
+        ! Point 2: The internal energy storage term is integrated at the nodes, which yields a lumped internal energy matrix and, 
+        !           thereby, improves the accuracy for problems with latent heat effects. 
+        !           Abaqus lumps the capacity matrix by integrating specific heat × ΔT at the nodes, not Gauss points. 
+        !           This makes the thermal mass matrix diagonal. 
+        ! Point 3: In fully integrated elements, the heat conduction term is integrated at the Gauss points.
+        !          For heat flux divergence (∇·q), Abaqus uses standard Gauss quadrature. Integration is accurate with the mechanical stiffness terms.
+        ! Point 4: The temperature at a Gauss point is assumed to be the temperature of its nearest node. 
+        !          Even though displacements use interpolation to get ux, temperature is not interpolated at Gauss points. Abaqus uses the temperature at the closest NP for the current IP
+        ! Source: Interpolation in Coupled Temperature-Displacement Elements and Interpolation of Temperature and Field Variables in Stress/Displacement Elements 
+        ! https://help.3ds.com/2024/english/dssimulia_established/SIMACAEELMRefMap/simaelm-c-solidcont.htm?
+
         N_shape_NP_inter_to_kIP_extra(1:nnode) = all_N_shape_NP_inter_to_kIP_extra(kinpt,1:nnode)
-        N_grad_NP_inter_to_kIP_extra_local(1:nnode,1:ndim) = all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:nnode,1:ndim) 
+        N_grad_NP_inter_to_kIP_extra_local(1:nnode,1:ndim) = all_N_grad_NP_inter_to_kIP_extra_local(kinpt,1:nnode,1:ndim)
 
         xjac_extra_t = matmul(coords_kelem_NPs_t, N_grad_NP_inter_to_kIP_extra_local)
         call calc_matrix_inv(xjac_extra_t, xjac_inv_extra_t, djac_extra_t, ndim)
 
         N_grad_NP_inter_to_kIP_extra_global_t = matmul(N_grad_NP_inter_to_kIP_extra_local, xjac_inv_extra_t)
         
-        temp_kIP_tm1 = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_tm1)
-        temp_kIP_t = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_t)
+        ! The temperature at a Gauss point is assumed to be the temperature of its nearest node.
+        closest_NP_idx = closest_NP_idx_kIP(kinpt)
+        temp_kIP_tm1 = temp_NPs_tm1(closest_NP_idx)
+        temp_kIP_t = temp_NPs_t(closest_NP_idx)
         dtemp_kIP = temp_kIP_t - temp_kIP_tm1
         temp_grad_kIP_t = matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), temp_NPs_t)
+
+        temp_kIP_gauss_tm1 = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_tm1)
+        temp_kIP_gauss_t = dot_product(N_shape_NP_inter_to_kIP_inter, temp_NPs_t)
+        dtemp_kIP_gauss = temp_kIP_gauss_t - temp_kIP_gauss_tm1
+        temp_grad_kIP_gauss_t = matmul(transpose(N_grad_NP_inter_to_kIP_inter_global_t), temp_NPs_t)
         
+    
         rho_heat = props(start_temp_props_idx)
+        ! Scaling factor helps prevent the error "THERE IS ZERO HEAT FLUX EVERYWHERE"
+        sfd_temp = props(start_temp_props_idx+1)
 
         ! The internal energy per unit mass
         u_heat_kIP = statev(u_heat_idx)
@@ -1325,8 +1357,9 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
 
         call UMATHT_heat_transfer(u_heat_kIP,dudt_heat_kIP_t,dudg_heat_kIP_t, &
                                   flux_heat_kIP,dfdt_heat_kIP_t,dfdg_heat_kIP_t, &
-                                  statev,temp_kIP_tm1,dtemp_kIP,temp_grad_kIP_t,time,dtime, &
-                                  predef_kIP_tm1,dpred_kIP,cmname,ndim,nstatev, &
+                                  statev,temp_kIP_tm1,dtemp_kIP,temp_grad_kIP_t, &
+                                  temp_kIP_gauss_tm1,dtemp_kIP_gauss,temp_grad_kIP_gauss_t, &
+                                  time,dtime, predef_kIP_tm1,dpred_kIP,cmname,ndim,nstatev, &
                                   props(start_temp_props_idx:end_temp_props_idx), &
                                   nprops_UMATHT_heat_transfer,coords_kelem_kIP_t, &
                                   pnewdt,jelem,kinpt,layer,kspt,kstep,kinc)
@@ -1406,7 +1439,7 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
         F_heat_flux_kIP_t  = - matmul(N_grad_NP_inter_to_kIP_inter_global_t, flux_heat_kIP_t)
 
         ! (nnode) = (nnode) * scalar
-        F_heat_r_kIP_t = - N_shape_NP_inter_to_kIP_inter * r_heat_kIP_t
+        F_heat_r_kIP_t = - N_shape_NP_inter_to_kIP_extra * r_heat_kIP_t
 
         ! (nnode) = (nnode) * scalar * scalar
         ! This code is valid for quadratic elements
@@ -1443,10 +1476,10 @@ subroutine UEL(rhs,amatrx,svars,energy,ndofel,nrhs,nsvars, &
             if (kinc > 1) then
                 amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) = &
                     amatrx(start_temp_idx:end_temp_idx,start_temp_idx:end_temp_idx) &
-                    + dvol_inter_t * (K_heat_kIP_t + M_heat_kIP_t/dtime)
+                    + dvol_inter_t * sfd_temp * (K_heat_kIP_t + M_heat_kIP_t/dtime)
                     
                 rhs(start_temp_idx:end_temp_idx,nrhs) = rhs(start_temp_idx:end_temp_idx,nrhs) &
-                    - dvol_inter_t * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
+                    - dvol_inter_t * sfd_temp * (F_heat_r_kIP_t + F_heat_flux_kIP_t + F_heat_du_kIP_t/dtime)
             end if
         end if
 

@@ -3,21 +3,20 @@ Abaqus JOB elastic_plate_default_solver
 Abaqus 2023.HF4
 Abaqus License Manager checked out the following licenses:
 Abaqus/Standard checked out 6 tokens from Flexnet server lic-abaqus.aalto.fi.
-<2 out of 100 licenses remain available>.
+<61 out of 100 licenses remain available>.
 Begin Analysis Input File Processor
-07/04/2025 20:33:53
+10/04/2025 15:50:24
 Run pre.exe
-07/04/2025 20:33:58
+10/04/2025 15:50:30
 End Analysis Input File Processor
 Begin Abaqus/Standard Analysis
-07/04/2025 20:33:58
+10/04/2025 15:50:30
 Run standard.exe
-07/04/2025 20:34:26
+10/04/2025 15:50:59
 End Abaqus/Standard Analysis
 Begin SIM Wrap-up
-07/04/2025 20:34:27
+10/04/2025 15:51:00
 Run SMASimUtility.exe
-07/04/2025 20:34:27
+10/04/2025 15:51:01
 End SIM Wrap-up
 Abaqus JOB elastic_plate_default_solver COMPLETED
-Socket error: [Errno 10061] No connection could be made because the target machine actively refused it

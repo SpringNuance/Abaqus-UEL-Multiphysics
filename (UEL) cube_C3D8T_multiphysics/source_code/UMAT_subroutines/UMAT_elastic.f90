@@ -30,8 +30,9 @@ subroutine UMAT_elastic(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, &
     real(kind=dp) :: sig_principal_1, sig_principal_2, sig_principal_3
 
     UMAT_model = props(1)  ! UMAT model number
-    E = props(2)           ! Young's modulus 
-    nu = props(3)          ! Poisson's ratio 
+    sfd_mech = props(2)    ! Scaling factor
+    E = props(3)           ! Young's modulus 
+    nu = props(4)          ! Poisson's ratio 
     
     ! Lame's parameters
     mu = E/(2.0d0 * (1.0d0 + nu))  ! Shear modulus

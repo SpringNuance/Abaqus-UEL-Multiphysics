@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 22:18:44
+   Abaqus 2023.HF4                                  Date 10-Apr-2025   Time 22:07:19
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
 
@@ -235,13 +235,13 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =     0.20    
-       SYSTEM TIME (SEC)    =     0.10    
-       TOTAL CPU TIME (SEC) =     0.30    
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
        WALLCLOCK TIME (SEC) =            1
 1
 
-   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 22:18:50
+   Abaqus 2023.HF4                                  Date 10-Apr-2025   Time 22:07:25
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                                STEP    1  INCREMENT    1
@@ -322,7 +322,7 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      45.    
-       SYSTEM TIME (SEC)    =      4.1    
-       TOTAL CPU TIME (SEC) =      49.    
-       WALLCLOCK TIME (SEC) =           59
+       USER TIME (SEC)      =      39.    
+       SYSTEM TIME (SEC)    =      3.9    
+       TOTAL CPU TIME (SEC) =      43.    
+       WALLCLOCK TIME (SEC) =           54

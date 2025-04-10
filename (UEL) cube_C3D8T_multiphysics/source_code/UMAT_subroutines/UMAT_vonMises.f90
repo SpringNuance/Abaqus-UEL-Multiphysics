@@ -37,8 +37,9 @@ subroutine UMAT_isotropic_vonMises(stress,statev,ddsdde,sse,spd,scd,rpl,ddsddt, 
     ! material properties
 
     UMAT_model = props(1)  ! UMAT model number
-    E = props(2)           ! Young's modulus 
-    nu = props(3)          ! Poisson's ratio 
+    sfd_mech = props(2)    ! Scaling factor
+    E = props(3)           ! Young's modulus 
+    nu = props(4)          ! Poisson's ratio 
     
     eelas(1:ntens) = statev(eelas_start_idx:eelas_end_idx)
     eplas(1:ntens) = statev(eplas_start_idx:eplas_end_idx)

@@ -27,7 +27,7 @@ subroutine UMATHT_hydrogen_Oriani(C_pred_mol, dC_mol_dCL_mol, dC_mol_dgrad_CL_mo
     real(kind=dp), parameter :: conversion_mol_to_molfrac = 7.068977d-6 ! molfrac
     
     ! Define all real for all variables used 
-    real(kind=dp) :: R, temp, VH, DL, DL0, WB_L, sfd
+    real(kind=dp) :: R, temp, VH, DL, DL0, WB_L, sfd_hydro
     real(kind=dp) :: avogadro, NL, alpha_dis, alpha_gb, alpha_carb, NT_dis, NT_gb, NT_carb
     real(kind=dp) :: WB_dis, WB_gb, WB_carb, beta_BCC, beta_FCC, a_lattice_BCC, a_lattice_FCC
     real(kind=dp) :: gamma, rho_d0, theta_coverage, k_HEDE
@@ -43,7 +43,7 @@ subroutine UMATHT_hydrogen_Oriani(C_pred_mol, dC_mol_dCL_mol, dC_mol_dgrad_CL_mo
     integer :: dis_trap_active, gb_trap_active, carb_trap_active, void_trap_active
     
     UMATHT_hydro_model = props(1) ! (1 - Oriani's equation | 2 - McNabb-Foster’s equation)
-    sfd = props(2) ! Scaling factor to prevent "zero heat flux" numerical issues. Default is 1.0d0
+    sfd_hydro = props(2) ! Scaling factor to prevent "zero heat flux" numerical issues. Default is 1.0d0
     crystal_structure = props(3)  ! (1 - BCC, 2 - FCC)
     a_lattice_BCC = props(4)  ! Lattice parameter for BCC (m)
     a_lattice_FCC = props(5)  ! Lattice parameter for FCC (m)

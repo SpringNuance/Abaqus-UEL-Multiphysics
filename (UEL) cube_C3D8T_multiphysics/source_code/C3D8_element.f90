@@ -27,6 +27,7 @@ module iso_module
     
     ! weight_kIP is the integration point weight for their shape function contribution
     real(kind=dp), parameter :: weight_kIP(8) = [1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0, 1.0d0]
+    integer, parameter :: closest_NP_idx_kIP(8) = [1, 2, 4, 3, 5, 6, 8, 7]
 
     ! Isoparametric coordinates for NP for interpolation from NP to IP
     real(kind=dp), parameter :: xi_NP_inter(8)   = [ -NP_inter,  NP_inter,  NP_inter, -NP_inter, &

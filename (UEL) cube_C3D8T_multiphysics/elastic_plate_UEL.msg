@@ -1,6 +1,6 @@
 1
 
-   Abaqus 2023.HF4                                  Date 09-Apr-2025   Time 22:18:50
+   Abaqus 2023.HF4                                  Date 10-Apr-2025   Time 22:07:25
    For use by AALTO UNIVERSITY under license from Dassault Systemes or its subsidiary.
 
                                                                                  
@@ -126,7 +126,7 @@
         NUMBER OF EQUATIONS:  9702
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      3.856e+08
-        SOLVER ELAPSED TIME:  26ms
+        SOLVER ELAPSED TIME:  25ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -654,9 +654,9 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.201E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         6.691E-09   AT NODE       2937   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.134E-18   AT NODE       3197   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          77.4       AT NODE       2861   DOF 12
+ LARGEST INCREMENT OF TEMP.          77.9       AT NODE       2861   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST CORRECTION TO TEMP.        -100.       AT NODE       2083   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -669,7 +669,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    77.4    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    77.9    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -685,7 +685,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -700,12 +700,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.199E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.062E-09   AT NODE       3097   DOF 12
+ AVERAGE HEAT FLUX                  2.198E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.475E-19   AT NODE       3041   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          18.5       AT NODE       2864   DOF 12
+ LARGEST INCREMENT OF TEMP.          18.3       AT NODE       2864   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.        -66.8       AT NODE       2861   DOF 12
+ LARGEST CORRECTION TO TEMP.        -68.2       AT NODE       2861   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -716,7 +716,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    18.5    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    18.3    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -732,7 +732,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  71ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -748,11 +748,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.188E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.923E-10   AT NODE       3057   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -2.873E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          10.5       AT NODE       2894   DOF 12
+ LARGEST INCREMENT OF TEMP.          10.4       AT NODE       2894   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.        -10.2       AT NODE       2130   DOF 12
+ LARGEST CORRECTION TO TEMP.        -9.86       AT NODE       2130   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -763,7 +763,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    10.5    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    10.4    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -779,7 +779,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  77ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -795,11 +795,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.167E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.811E-11   AT NODE       3018   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.821E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          7.36       AT NODE       2889   DOF 12
+ LARGEST INCREMENT OF TEMP.          7.33       AT NODE       2889   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.        -3.93       AT NODE       2128   DOF 12
+ LARGEST CORRECTION TO TEMP.        -3.85       AT NODE       2128   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -810,7 +810,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    7.36    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    7.33    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -826,7 +826,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -841,12 +841,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.134E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.471E-12   AT NODE       3040   DOF 12
+ AVERAGE HEAT FLUX                  2.133E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.503E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          5.69       AT NODE       2848   DOF 12
+ LARGEST INCREMENT OF TEMP.          5.68       AT NODE       2848   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.        -2.07       AT NODE       2149   DOF 12
+ LARGEST CORRECTION TO TEMP.        -2.05       AT NODE       2149   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -857,7 +857,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    5.69    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    5.68    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -873,7 +873,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  76ms
+        SOLVER ELAPSED TIME:  66ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -888,12 +888,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.090E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         1.859E-12   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  2.089E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.943E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          4.67       AT NODE       2875   DOF 12
+ LARGEST INCREMENT OF TEMP.          4.66       AT NODE       2875   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.        -1.26       AT NODE       2126   DOF 12
+ LARGEST CORRECTION TO TEMP.        -1.25       AT NODE       2150   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -904,7 +904,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    4.67    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    4.66    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -920,7 +920,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -935,12 +935,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.037E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         1.639E-12   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  2.036E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.191E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          4.01       AT NODE       2874   DOF 12
+ LARGEST INCREMENT OF TEMP.          4.00       AT NODE       2874   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.839       AT NODE       2154   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.837       AT NODE       2168   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -951,7 +951,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    4.01    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    4.00    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -967,7 +967,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  66ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -982,12 +982,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.978E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         1.303E-12   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.977E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.296E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          3.58       AT NODE       2842   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.592       AT NODE       2167   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.591       AT NODE       2155   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1014,7 +1014,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1029,8 +1029,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.914E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         9.786E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.913E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.312E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          3.30       AT NODE       2844   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -1061,7 +1061,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1076,8 +1076,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.848E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         7.082E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.847E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.252E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          3.14       AT NODE       2887   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -1108,7 +1108,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1123,12 +1123,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.781E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         4.980E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.780E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.150E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          3.07       AT NODE         23   DOF 12
+ LARGEST INCREMENT OF TEMP.          3.06       AT NODE        894   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.254       AT NODE       2847   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.254       AT NODE       2839   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1139,7 +1139,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    3.07    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS    3.06    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -1155,7 +1155,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1170,12 +1170,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.713E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         3.408E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.712E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.017E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          3.03       AT NODE        975   DOF 12
+ LARGEST INCREMENT OF TEMP.          3.03       AT NODE        976   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.203       AT NODE       2882   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.203       AT NODE       2875   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1217,8 +1217,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.647E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         2.256E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.646E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.871E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.97       AT NODE        963   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -1249,7 +1249,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1264,12 +1264,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.582E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         1.424E-13   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.581E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.704E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.90       AT NODE          7   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.141       AT NODE       2841   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.141       AT NODE       2840   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1296,7 +1296,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  65ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1312,11 +1312,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.518E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         8.308E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.541E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.82       AT NODE       1762   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.123       AT NODE       2842   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.123       AT NODE       2868   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1343,7 +1343,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1358,8 +1358,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.457E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX         4.109E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  1.456E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.371E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.73       AT NODE       1750   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -1390,7 +1390,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  64ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1405,12 +1405,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.397E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.577E-14   AT NODE       3047   DOF 12
+ AVERAGE HEAT FLUX                  1.396E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.201E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          2.63       AT NODE       1767   DOF 12
+ LARGEST INCREMENT OF TEMP.          2.63       AT NODE       1763   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -0.103       AT NODE       2846   DOF 12
+ LARGEST CORRECTION TO TEMP.       -0.103       AT NODE       2845   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1437,7 +1437,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1453,11 +1453,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.339E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.997E-14   AT NODE       3207   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.042E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          2.54       AT NODE       1812   DOF 12
+ LARGEST INCREMENT OF TEMP.          2.54       AT NODE       1807   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.870E-02   AT NODE         46   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.859E-02   AT NODE        917   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1484,7 +1484,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  66ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1500,11 +1500,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.284E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.257E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.879E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.44       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.683E-02   AT NODE          3   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.669E-02   AT NODE        874   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1531,7 +1531,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  85ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1546,12 +1546,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.231E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.183E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.230E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.724E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.35       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.536E-02   AT NODE        106   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.523E-02   AT NODE        978   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1578,7 +1578,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  85ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1593,12 +1593,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.180E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.780E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.179E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.565E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.26       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.326E-02   AT NODE         98   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.314E-02   AT NODE         98   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1625,7 +1625,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1640,12 +1640,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.131E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.144E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  1.130E-09   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.422E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          2.17       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.073E-02   AT NODE        962   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.063E-02   AT NODE         91   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1672,7 +1672,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  78ms
+        SOLVER ELAPSED TIME:  91ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1688,11 +1688,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.083E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.344E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.283E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          2.08       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.          2.08       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -8.794E-02   AT NODE          7   DOF 12
+ LARGEST CORRECTION TO TEMP.       -8.784E-02   AT NODE          7   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1719,7 +1719,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  75ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1735,11 +1735,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.038E-09   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.429E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.141E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.99       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -8.499E-02   AT NODE          7   DOF 12
+ LARGEST CORRECTION TO TEMP.       -8.491E-02   AT NODE          7   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1766,7 +1766,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  66ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1781,12 +1781,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.948E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.434E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  9.945E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.019E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.91       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -8.196E-02   AT NODE       1762   DOF 12
+ LARGEST CORRECTION TO TEMP.       -8.189E-02   AT NODE       1762   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1828,12 +1828,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.532E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.385E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  9.530E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.893E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          1.83       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.          1.83       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.892E-02   AT NODE       1754   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.886E-02   AT NODE       1754   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1860,7 +1860,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1875,12 +1875,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.134E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.298E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  9.131E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.768E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.76       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.590E-02   AT NODE       1767   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.585E-02   AT NODE       1767   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1907,7 +1907,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1922,12 +1922,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.751E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.188E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  8.749E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.661E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.68       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.294E-02   AT NODE       1808   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.289E-02   AT NODE       1811   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -1954,7 +1954,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -1969,12 +1969,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.385E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.062E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  8.383E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.541E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.61       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.005E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.001E-02   AT NODE       1802   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2001,7 +2001,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2016,12 +2016,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.034E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.927E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  8.033E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.433E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.55       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.724E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.720E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2048,7 +2048,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  82ms
+        SOLVER ELAPSED TIME:  72ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2063,12 +2063,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.698E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.788E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  7.697E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.333E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.48       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.452E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.448E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2110,12 +2110,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.376E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.647E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  7.375E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.235E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.42       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.188E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.185E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2157,12 +2157,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.067E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.507E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  7.066E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.143E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.36       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.934E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.931E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2189,7 +2189,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2204,12 +2204,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  6.771E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.369E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  6.770E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.056E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          1.30       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.          1.30       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.689E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.686E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2236,7 +2236,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  74ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2251,12 +2251,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  6.488E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.235E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  6.487E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.972E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          1.25       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.          1.25       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.453E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.451E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2283,7 +2283,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2299,11 +2299,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  6.216E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.104E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.882E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          1.20       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.          1.20       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.227E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.224E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2330,7 +2330,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  74ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2345,12 +2345,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.956E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.977E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.955E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.803E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.15       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.009E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.007E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2377,7 +2377,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  66ms
+        SOLVER ELAPSED TIME:  65ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2392,12 +2392,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.707E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.854E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.706E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.728E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.10       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.801E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.798E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2424,7 +2424,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  65ms
+        SOLVER ELAPSED TIME:  72ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2439,12 +2439,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.468E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.736E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.467E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.659E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.          1.05       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.600E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.598E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2487,11 +2487,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  5.239E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.623E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.584E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.          1.01       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.          1.01       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.408E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.406E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2518,7 +2518,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  84ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2533,12 +2533,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.020E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.514E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  5.019E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.522E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.967       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.967       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.224E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.222E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2565,7 +2565,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2580,12 +2580,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.810E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.409E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  4.809E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.463E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.927       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.926       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.047E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.046E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2596,7 +2596,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   0.927    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   0.926    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -2612,7 +2612,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  66ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2628,11 +2628,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  4.608E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.309E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.415E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.888       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.878E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.877E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2674,12 +2674,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.416E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.212E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  4.415E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.361E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.851       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.716E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.714E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2706,7 +2706,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  67ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2722,11 +2722,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  4.231E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.120E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.298E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.815       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.560E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.559E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2753,7 +2753,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2769,11 +2769,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  4.054E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.031E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.236E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.781       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.411E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.410E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2816,11 +2816,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.884E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.946E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.176E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.748       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.268E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.267E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2847,7 +2847,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  67ms
+        SOLVER ELAPSED TIME:  85ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2863,7 +2863,7 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.722E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.865E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.137E-19   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.717       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -2894,7 +2894,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2910,11 +2910,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.566E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.787E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.080E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.687       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.000E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.999E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2941,7 +2941,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  74ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -2957,11 +2957,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.417E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.712E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -1.041E-19   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.658       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.875E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.874E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -2988,7 +2988,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  80ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3004,7 +3004,7 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.274E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.640E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -9.894E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.631       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3035,7 +3035,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  66ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3051,11 +3051,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  3.137E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.572E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -9.598E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.604       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.639E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.638E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3082,7 +3082,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  78ms
+        SOLVER ELAPSED TIME:  65ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3097,10 +3097,10 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  3.005E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.506E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  3.006E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -9.223E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.579       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.579       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST CORRECTION TO TEMP.       -2.528E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3129,7 +3129,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  67ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3145,11 +3145,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.880E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.443E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -8.844E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.555       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.555       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.423E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.422E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3176,7 +3176,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3192,11 +3192,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.759E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.382E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -8.340E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.531       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.532       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.321E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.321E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3207,7 +3207,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   0.531    
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   0.532    
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -3239,11 +3239,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.644E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.324E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -8.008E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.509       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.224E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.224E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3270,7 +3270,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  76ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3286,11 +3286,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.533E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.269E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -7.674E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.488       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.131E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.130E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3317,7 +3317,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  71ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3332,12 +3332,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.427E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.216E-14   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  2.428E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -7.365E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.468       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -2.042E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -2.041E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3364,7 +3364,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3380,7 +3380,7 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.326E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.165E-14   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -7.034E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.448       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3411,7 +3411,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  75ms
+        SOLVER ELAPSED TIME:  72ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3426,8 +3426,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.228E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.116E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  2.229E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -6.753E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.429       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3458,7 +3458,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3473,8 +3473,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  2.135E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.069E-14   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  2.136E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -6.492E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.411       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3521,11 +3521,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  2.046E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -1.025E-14   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -6.245E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.394       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.394       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.721E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.720E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3567,12 +3567,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.960E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -9.818E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.961E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.955E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.378       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.378       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.649E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.648E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3599,7 +3599,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3614,12 +3614,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.878E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -9.407E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  1.879E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.671E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.362       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.580E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.579E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3646,7 +3646,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  67ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3662,7 +3662,7 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.800E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -9.013E-15   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -5.506E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.347       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3693,7 +3693,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  73ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3708,12 +3708,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.724E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -8.636E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.725E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.207E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.332       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.450E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.450E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3740,7 +3740,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  80ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3755,8 +3755,8 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.652E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -8.274E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  1.653E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -5.006E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.318       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3787,7 +3787,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  80ms
+        SOLVER ELAPSED TIME:  71ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3802,12 +3802,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.583E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -7.928E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  1.584E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -4.791E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.305       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.331E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.331E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3834,7 +3834,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  71ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3850,9 +3850,9 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.517E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -7.596E-15   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.652E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.292       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.292       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST CORRECTION TO TEMP.       -1.275E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -3881,7 +3881,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  69ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3897,11 +3897,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.454E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -7.278E-15   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.424E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.280       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.280       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.222E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.222E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3944,11 +3944,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.393E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -6.974E-15   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.350E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.268       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.268       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.171E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.171E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -3975,7 +3975,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  68ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -3991,11 +3991,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.335E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -6.682E-15   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -4.246E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.257       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.122E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.122E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4022,7 +4022,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4038,11 +4038,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.279E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -6.402E-15   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.990E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.246       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.246       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.075E-02   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.075E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4069,7 +4069,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  79ms
+        SOLVER ELAPSED TIME:  75ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4084,12 +4084,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  1.225E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -6.134E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  1.226E-10   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.716E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.236       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.236       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -1.030E-02   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -1.030E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4116,7 +4116,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4132,11 +4132,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.174E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -5.878E-15   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.543E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.226       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.868E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.869E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4179,11 +4179,11 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.125E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -5.632E-15   AT NODE          8   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.486E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.217       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -9.455E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -9.456E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4210,7 +4210,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4226,7 +4226,7 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.078E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -5.396E-15   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.476E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.208       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -4257,7 +4257,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4273,9 +4273,9 @@
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
  AVERAGE HEAT FLUX                  1.033E-10   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -5.170E-15   AT NODE        879   DOF 12
+ LARGEST RESIDUAL HEAT FLUX        -3.152E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.199       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.199       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST CORRECTION TO TEMP.       -8.681E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
@@ -4304,7 +4304,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4319,12 +4319,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.897E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.954E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  9.901E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -3.093E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.191       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.191       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -8.317E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -8.318E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4351,7 +4351,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  82ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4366,12 +4366,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.483E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.747E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  9.487E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.913E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.183       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.183       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.969E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.970E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4398,7 +4398,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4413,12 +4413,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  9.087E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.548E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  9.091E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.828E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.175       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.175       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.636E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.637E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4445,7 +4445,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  134ms
+        SOLVER ELAPSED TIME:  70ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4460,12 +4460,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.707E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.358E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  8.711E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.701E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.168       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.316E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.317E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4492,7 +4492,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  133ms
+        SOLVER ELAPSED TIME:  82ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4507,12 +4507,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  8.343E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.176E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  8.347E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.514E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.161       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.161       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -7.010E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -7.011E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4539,7 +4539,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  120ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4554,12 +4554,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.994E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -4.001E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  7.998E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.499E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.154       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.154       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.717E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.718E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4586,7 +4586,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  158ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4601,12 +4601,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.660E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.834E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  7.664E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.348E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.148       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.436E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.437E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4633,7 +4633,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4648,12 +4648,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.340E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.673E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  7.344E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.356E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.141       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.141       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -6.167E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -6.168E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4680,7 +4680,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  70ms
+        SOLVER ELAPSED TIME:  84ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4695,12 +4695,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  7.033E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.520E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  7.037E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.193E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.135       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.135       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.909E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.910E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4727,7 +4727,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4742,12 +4742,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  6.739E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.372E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  6.743E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -2.091E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.130       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.661E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.663E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4774,7 +4774,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  74ms
+        SOLVER ELAPSED TIME:  81ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4789,12 +4789,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  6.458E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.231E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  6.461E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.971E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.124       AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.124       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.425E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.426E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4821,7 +4821,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  79ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4836,12 +4836,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  6.188E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -3.096E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  6.191E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.963E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         0.119       AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         0.119       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -5.198E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -5.199E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4868,7 +4868,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4883,12 +4883,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.929E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.967E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.932E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.832E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.114       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.980E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.981E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4915,7 +4915,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  109ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4930,12 +4930,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.681E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.843E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.685E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.843E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.109       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.772E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.773E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -4962,7 +4962,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  72ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -4977,12 +4977,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.444E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.724E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  5.447E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.656E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.105       AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.572E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.574E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5009,7 +5009,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  94ms
+        SOLVER ELAPSED TIME:  69ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5024,12 +5024,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  5.217E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.610E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  5.220E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.578E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
  LARGEST INCREMENT OF TEMP.         0.100       AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.381E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.382E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5056,7 +5056,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5071,12 +5071,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.999E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.501E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  5.002E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.542E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         9.624E-02   AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         9.630E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.198E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.199E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5087,7 +5087,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   9.624E-02
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   9.630E-02
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -5103,7 +5103,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  93ms
+        SOLVER ELAPSED TIME:  77ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5118,12 +5118,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.790E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.396E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  4.793E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.444E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         9.222E-02   AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         9.228E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -4.022E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -4.023E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5134,7 +5134,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   9.222E-02
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   9.228E-02
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -5150,7 +5150,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  71ms
+        SOLVER ELAPSED TIME:  68ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5165,12 +5165,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.590E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.296E-15   AT NODE        879   DOF 12
+ AVERAGE HEAT FLUX                  4.592E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.407E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         8.837E-02   AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         8.842E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.854E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.855E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5181,7 +5181,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.837E-02
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.842E-02
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -5197,7 +5197,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  73ms
+        SOLVER ELAPSED TIME:  76ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5212,12 +5212,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.398E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.200E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  4.401E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.352E-20   AT NODE       3216   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         8.467E-02   AT NODE       1769   DOF 12
+ LARGEST INCREMENT OF TEMP.         8.473E-02   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.693E-03   AT NODE       1768   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.694E-03   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5228,7 +5228,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.467E-02
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.473E-02
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -5244,7 +5244,7 @@
         NUMBER OF EQUATIONS:  16080
         NUMBER OF RHS:        1
         NUMBER OF FLOPS:      1.776e+09
-        SOLVER ELAPSED TIME:  88ms
+        SOLVER ELAPSED TIME:  67ms
 
                CONVERGENCE CHECKS FOR EQUILIBRIUM ITERATION     1
 
@@ -5259,12 +5259,12 @@
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THE FORCE     EQUILIBRIUM RESPONSE WAS LINEAR IN THIS INCREMENT
 
- AVERAGE HEAT FLUX                  4.214E-11   TIME AVG. HEAT FLUX   1.000E-02
- LARGEST RESIDUAL HEAT FLUX        -2.108E-15   AT NODE          8   DOF 12
+ AVERAGE HEAT FLUX                  4.217E-11   TIME AVG. HEAT FLUX   1.000E-02
+ LARGEST RESIDUAL HEAT FLUX        -1.268E-20   AT NODE       3056   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST INCREMENT OF TEMP.         8.114E-02   AT NODE       1768   DOF 12
+ LARGEST INCREMENT OF TEMP.         8.119E-02   AT NODE       1769   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
- LARGEST CORRECTION TO TEMP.       -3.538E-03   AT NODE       1769   DOF 12
+ LARGEST CORRECTION TO TEMP.       -3.540E-03   AT NODE       1768   DOF 12
    INSTANCE: ELASTIC_PLATE_1                                                                 
           THERE IS ZERO HEAT FLUX EVERYWHERE
  
@@ -5275,7 +5275,7 @@
              ENOUGH TO BE TREATED AS ZERO. IF NOT, PLEASE USE THE SOLUTION 
              CONTROLS TO RESET THE CRITERION FOR ZERO HEAT FLUX.
 
- MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.114E-02
+ MAXIMUM NON-PRESCRIBED INCREMENT IN TEMPERATURE IS   8.119E-02
 
  ITERATION SUMMARY FOR THE INCREMENT:   1 TOTAL ITERATIONS, OF WHICH
    0 ARE SEVERE DISCONTINUITY ITERATIONS AND  1 ARE EQUILIBRIUM ITERATIONS.
@@ -5307,8 +5307,8 @@
 
 
      JOB TIME SUMMARY
-       USER TIME (SEC)      =      45.    
-       SYSTEM TIME (SEC)    =      4.1    
-       TOTAL CPU TIME (SEC) =      49.    
-       WALLCLOCK TIME (SEC) =           59
+       USER TIME (SEC)      =      39.    
+       SYSTEM TIME (SEC)    =      3.9    
+       TOTAL CPU TIME (SEC) =      43.    
+       WALLCLOCK TIME (SEC) =           54
        MEMORY PEAK (GB)     =            0

@@ -32,13 +32,13 @@ module userinputs
 	integer, parameter :: start_field_flag_idx = 1     ! Index of the first field flag in UEL props
 	integer, parameter :: end_field_flag_idx = 4       ! Index of the last field flag in UEL props
 	integer, parameter :: start_mech_props_idx = 9     ! Index of the first mechanical property in UEL props
-	integer, parameter :: end_mech_props_idx = 11      ! Index of the last mechanical property in UEL props
+	integer, parameter :: end_mech_props_idx = 12      ! Index of the last mechanical property in UEL props
 	integer, parameter :: start_flow_props_idx = 17    ! Index of the first flow curve data in UEL props
 	integer, parameter :: end_flow_props_idx = 216     ! Index of the last flow curve data in UEL props
 	integer, parameter :: start_CL_mol_props_idx = 217   ! Index of the first hydrogen diffusion in UEL props
 	integer, parameter :: end_CL_mol_props_idx = 254     ! Index of the last hydrogen diffusion in UEL props
 	integer, parameter :: start_temp_props_idx = 257   ! Index of the first temperature data in UEL props
-	integer, parameter :: end_temp_props_idx = 259     ! Index of the last temperature data in UEL props
+	integer, parameter :: end_temp_props_idx = 260     ! Index of the last temperature data in UEL props
 	integer, parameter :: start_damage_props_idx = 265 ! Index of the first damage property in UEL props
 	integer, parameter :: end_damage_props_idx = 269   ! Index of the last damage property in UEL props
 

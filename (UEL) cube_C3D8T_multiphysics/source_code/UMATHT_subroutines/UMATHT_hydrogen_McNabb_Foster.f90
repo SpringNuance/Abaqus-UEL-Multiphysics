@@ -27,7 +27,7 @@ subroutine UMATHT_McNabb_Foster(u,dudt,dudg,flux,dfdt,dfdg, &
     real(kind=dp), parameter :: conversion_mol_to_molfrac = 7.068977d-6 ! molfrac
     
     ! Define all real for all variables used 
-    real(kind=dp) :: R, T, VH, DL, DL0, WB_L, sfd
+    real(kind=dp) :: R, T, VH, DL, DL0, WB_L, sfd_hydro
     real(kind=dp) :: avogadro, NL, alpha_dis, alpha_gb, alpha_carb, NT_dis, NT_gb, NT_carb
     real(kind=dp) :: WB_dis, WB_gb, WB_carb, beta_BCC, beta_FCC, a_lattice_BCC, a_lattice_FCC
     real(kind=dp) :: gamma, rho_d0, theta_coverage, k_HEDE
@@ -43,7 +43,7 @@ subroutine UMATHT_McNabb_Foster(u,dudt,dudg,flux,dfdt,dfdg, &
     integer :: ntrap, equilibrium_equation, dis_trap_mode, temperature_mode, coefficient_formula, crystal_structure
     
     UMATHT_model = props(1) ! (1 - Oriani's equation | 2 - McNabb-Foster’s equation)
-    sfd = props(2) ! Scaling factor to prevent "zero heat flux" numerical issues. Default is 1.0d0
+    sfd_hydro = props(2) ! Scaling factor to prevent "zero heat flux" numerical issues. Default is 1.0d0
     crystal_structure = props(3)  ! (1 - BCC, 2 - FCC)
     a_lattice_BCC = props(4)  ! Lattice parameter for BCC (m)
     a_lattice_FCC = props(5)  ! Lattice parameter for FCC (m)
@@ -283,16 +283,6 @@ subroutine UMATHT_McNabb_Foster(u,dudt,dudg,flux,dfdt,dfdg, &
     mu_stress = - sig_H * VH ! (J/mol)
     mu = mu0 + R * T * dlog(C_mol / C0_mol) + mu_stress ! (J/mol)
     
-    ! Calculate the 
-    ! Finally, we multiply all variables with the scaling factor sfd
-    ! to prevent the error "There is zero heat flux every where"
-    u = u * sfd
-    dudt = dudt * sfd
-    dudg = dudg * sfd
-    flux = flux * sfd
-    dfdt = dfdt * sfd
-    dfdg = dfdg * sfd
-
     statev(C_mol_idx) = C_mol
     statev(CL_mol_idx) = CL_mol
     statev(CT_mol_idx) = CT_mol

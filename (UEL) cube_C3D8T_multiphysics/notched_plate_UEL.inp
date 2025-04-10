@@ -50,9 +50,9 @@
 **
 ** MECHANICAL PROPERTIES
 **
-** UMAT_model (1 - elastic, 2 - isotropic vM, 3 - enHill48), Young's modulus - E (Pa), Poisson ratio - nu (dimless), none
+** UMAT_model (1 - elastic, 2 - isotropic vM, 3 - enHill48), scaling_factor - SFD (dimless), Young's modulus - E (Pa), Poisson ratio - nu (dimless)
 ** none, none, none, none
-1, 210.0e+9, 0.3e0, 0.0, 0.0, 0.0, 0.0, 0.0
+1, 1.0e0, 210.0e+9, 0.3e0, 0.0, 0.0, 0.0, 0.0
 **
 ** =====================
 **
@@ -109,9 +109,9 @@
 **
 ** HEAT TRANSFER PROPERTIES
 **
-** Density - rho_temp (kg/m^3), Specific heat - cp_temp (N*m/(kg*K)), Conductivity - k_temp (N/(s*K)), none
+** Density - rho_temp (kg/m^3), scaling_factor - SFD (dimless), Specific heat - cp_temp (N*m/(kg*K)), Conductivity - k_temp (N/(s*K))
 ** none, none, none, none
-7900, 400, 2, 0.0, 0.0, 0.0, 0.0, 0.0
+7900, 1.0e0, 400, 2e-05, 0.0, 0.0, 0.0, 0.0
 **
 ** ======================
 **
